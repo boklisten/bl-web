@@ -2,11 +2,9 @@
 @import "../../styles";
 
 .bl-header {
-  width: 100vw;
   background-color: $primary-color;
   height: 50px;
-  padding-left: 50px;
-  padding-top: 10px;
+  padding: 5px;
 }
 
 .bl-logo-container {
@@ -16,13 +14,12 @@
 .bl-logo {
   height: 40px;
   width: 40px;
-  float: left;
+  text-align: center;
 }
 
 .bl-logo-text {
   color: #ffffff;
   font-size: 25px;
-  float: left;
   padding-top: 6px;
   padding-left: 10px;
 }
