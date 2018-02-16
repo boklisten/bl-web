@@ -23,4 +23,8 @@ export class WelcomeComponent implements OnInit {
 		this._router.navigate(['/auth/register'], {relativeTo: this._route});
 	}
 	
+	onTestUserClick() {
+		this._router.navigate(['/u/home'], {relativeTo: this._route});
+	}
+	
 }

@@ -9,6 +9,11 @@ import {HomeModule} from "./home/home.module";
 import {LoginModule} from "bl-login";
 import { WelcomeComponent } from './welcome/welcome.component';
 import { InfoComponent } from './info/info.component';
+import { UserComponent } from './user/user.component';
+import {UserModule} from "./user/user.module";
+import { BranchSelectComponent } from './branch/branch-select/branch-select.component';
+import {FormsModule} from "@angular/forms";
+import {BranchModule} from "./branch/branch.module";
 
 
 @NgModule({
@@ -16,13 +21,17 @@ import { InfoComponent } from './info/info.component';
 		AppComponent,
 		HeaderComponent,
 		WelcomeComponent,
-		InfoComponent
+		InfoComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
 		HomeModule,
 		AppRoutingModule,
-		LoginModule
+		LoginModule,
+		UserModule,
+		BranchModule,
+		FormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
