@@ -31,4 +31,7 @@ export class WelcomeComponent implements OnInit {
 		this._router.navigate(['/b/5a1d67cdf14cbe78ff047d00'], {relativeTo: this._route});
 	}
 	
+	onTestItemClick() {
+		this._router.navigate(['/i/select'], {relativeTo: this._route});
+	}
 }

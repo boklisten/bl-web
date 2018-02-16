@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import {HomeComponent} from './home/home.component';
 import {UserRoutingModule} from "./user-routing.module";
 import {UserService} from "./user.service";
-import {BranchSelectComponent} from "../branch/branch-select/branch-select.component";
 import {BranchModule} from "../branch/branch.module";
+import {UserComponent} from "./user.component";
 
 @NgModule({
 	imports: [
@@ -13,7 +13,8 @@ import {BranchModule} from "../branch/branch.module";
 		BranchModule
 	],
 	declarations: [
-		HomeComponent
+		HomeComponent,
+		UserComponent
 	],
 	providers: [
 		UserService

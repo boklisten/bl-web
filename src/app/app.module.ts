@@ -14,6 +14,8 @@ import {UserModule} from "./user/user.module";
 import { BranchSelectComponent } from './branch/branch-select/branch-select.component';
 import {FormsModule} from "@angular/forms";
 import {BranchModule} from "./branch/branch.module";
+import { ItemComponent } from './item/item.component';
+import {ItemModule} from "./item/item.module";
 
 
 @NgModule({
@@ -21,8 +23,7 @@ import {BranchModule} from "./branch/branch.module";
 		AppComponent,
 		HeaderComponent,
 		WelcomeComponent,
-		InfoComponent,
-		UserComponent
+		InfoComponent
 	],
 	imports: [
 		BrowserModule,
@@ -31,7 +32,8 @@ import {BranchModule} from "./branch/branch.module";
 		LoginModule,
 		UserModule,
 		BranchModule,
-		FormsModule
+		FormsModule,
+		ItemModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

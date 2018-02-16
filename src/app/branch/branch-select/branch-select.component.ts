@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BlApiError, Branch} from "bl-model";
 import {BranchStoreService} from "../branch-store.service";
 import {BranchService} from "bl-connect";
@@ -9,11 +9,13 @@ import {BranchService} from "bl-connect";
 	styleUrls: ['./branch-select.component.scss']
 })
 export class BranchSelectComponent implements OnInit {
-	public branches: Branch[];
+	@Output() branchSelect: EventEmitter<Branch>;
 	
+	public branches: Branch[];
 	public selectedBranch: Branch;
 	
 	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService) {
+		this.branchSelect = new EventEmitter<Branch>();
 	}
 	
 	ngOnInit() {
@@ -25,6 +27,7 @@ export class BranchSelectComponent implements OnInit {
 	}
 	
 	onBranchSelectUpdate(branch: Branch) {
+		this.branchSelect.emit(branch);
 		this._branchStoreService.setCurrentBranch(branch);
 	}
 	
