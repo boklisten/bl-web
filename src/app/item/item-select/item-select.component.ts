@@ -26,7 +26,6 @@ export class ItemSelectComponent implements OnInit {
 	
 	onBranchSelect(branch: Branch) {
 		this._itemService.getManyByIds(branch.items).then((items: Item[]) => {
-			console.log('the items are here', items);
 			this.items = items;
 		}).catch((blApiError: BlApiError) => {
 			console.log('the error', blApiError);
