@@ -4,7 +4,7 @@
     <div class="input-group-prepend">
         <label class="input-group-text" for="branchSelect">Choose a branch</label>
     </div>
-    <select class="custom-select" [(ngModel)]="selectedBranch" id="branchSelect" value="Select a branch">
+    <select class="custom-select" [(ngModel)]="selectedBranch" id="branchSelect" value="Select a branch" (ngModelChange)="onBranchSelectUpdate($event)">
         <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.name}}</option>
     </select>
 </div>

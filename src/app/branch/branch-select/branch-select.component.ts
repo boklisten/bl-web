@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {BranchService} from "bl-connect";
 import {BlApiError, Branch} from "bl-model";
+import {BranchStoreService} from "../branch-store.service";
+import {BranchService} from "bl-connect";
 
 @Component({
 	selector: 'app-branch-select',
@@ -12,7 +13,7 @@ export class BranchSelectComponent implements OnInit {
 	
 	public selectedBranch: Branch;
 	
-	constructor(private _branchService: BranchService) {
+	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService) {
 	}
 	
 	ngOnInit() {
@@ -22,5 +23,11 @@ export class BranchSelectComponent implements OnInit {
 			console.log('could not get branches');
 		});
 	}
+	
+	onBranchSelectUpdate(branch: Branch) {
+		this._branchStoreService.setCurrentBranch(branch);
+	}
+	
+	
 	
 }
