@@ -1,0 +1,13 @@
+<ngb-alert [type]="warning" *ngIf="warningText">{{warningText}}</ngb-alert>
+
+<div class="container" *ngIf="branch">
+	<div class="row">
+		<div class="col-4">
+			<h3>{{branch.name}}</h3>
+			<p>{{branch.desc}}</p>
+		</div>
+		<div class="col-4">
+		</div>
+
+	</div>
+</div>

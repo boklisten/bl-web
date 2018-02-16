@@ -27,4 +27,8 @@ export class WelcomeComponent implements OnInit {
 		this._router.navigate(['/u/home'], {relativeTo: this._route});
 	}
 	
+	onTestBranchClick() {
+		this._router.navigate(['/b/5a1d67cdf14cbe78ff047d00'], {relativeTo: this._route});
+	}
+	
 }
