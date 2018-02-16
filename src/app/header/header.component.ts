@@ -14,12 +14,6 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 	}
 	
-	onLoginClick() {
-		this._router.navigate(['/auth/login'], {relativeTo: this._route});
-	}
 	
-	onRegisterClick() {
-		this._router.navigate(['/auth/register'], {relativeTo: this._route});
-	}
 	
 }

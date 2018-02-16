@@ -1,21 +1,25 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginModule} from 'bl-login';
-import {AuthComponent} from "./auth/auth.component";
+import {WelcomeComponent} from "./welcome/welcome.component";
 
 
 const routes: Routes = [
 	{
-		path: 'auth',
-		component: AuthComponent,
-		loadChildren: () => LoginModule
+		path: '',
+		redirectTo: 'welcome',
+		pathMatch: 'full'
+	},
+	{
+		path: 'welcome',
+		component: WelcomeComponent
 	}
 ];
 
 @NgModule({
 	imports: [
 		RouterModule.forRoot(routes),
-		LoginModule
+		LoginModule.withConfig({successPath: 'home'})
 	],
 	exports: [RouterModule]
 })

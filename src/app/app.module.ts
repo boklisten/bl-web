@@ -7,14 +7,16 @@ import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HomeModule} from "./home/home.module";
 import {LoginModule} from "bl-login";
-import { AuthComponent } from './auth/auth.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
-		AuthComponent
+		WelcomeComponent,
+		InfoComponent
 	],
 	imports: [
 		BrowserModule,
