@@ -7,6 +7,9 @@ import { BranchInfoComponent } from './branch-info/branch-info.component';
 import {BranchRoutingModule} from "./branch-routing.module";
 import { BranchComponent } from './branch.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { BranchOpeningHoursComponent } from './branch-opening-hours/branch-opening-hours.component';
+import {BranchOpeningHoursService} from "./branch-opening-hours/branch-opening-hours.service";
+import { BranchContactInfoComponent } from './branch-contact-info/branch-contact-info.component';
 
 @NgModule({
 	imports: [
@@ -18,13 +21,16 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 	declarations: [
 		BranchSelectComponent,
 		BranchInfoComponent,
-		BranchComponent
+		BranchComponent,
+		BranchOpeningHoursComponent,
+		BranchContactInfoComponent
 	],
 	exports: [
 		BranchSelectComponent
 	],
 	providers: [
-		BranchStoreService
+		BranchStoreService,
+		BranchOpeningHoursService
 	]
 })
 export class BranchModule {
