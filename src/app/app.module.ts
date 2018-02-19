@@ -17,6 +17,7 @@ import {BranchModule} from "./branch/branch.module";
 import { ItemComponent } from './item/item.component';
 import {ItemModule} from "./item/item.module";
 import { CartComponent } from './cart/cart.component';
+import { HeaderCartComponent } from './header/header-cart/header-cart.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
 		AppComponent,
 		HeaderComponent,
 		WelcomeComponent,
-		InfoComponent
+		InfoComponent,
+		HeaderCartComponent
 	],
 	imports: [
 		BrowserModule,

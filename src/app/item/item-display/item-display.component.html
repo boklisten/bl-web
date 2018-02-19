@@ -1,14 +1,14 @@
 <div class="container">
 
 	<div class="row bl-item-display-container">
-		<div class="col-1 bl-item-image">
+		<div class="col-sm-2 col-xs-12 col-12 bl-item-image">
 			<i class="fas fa-2x fa-book"></i>
 		</div>
-		<div class="col-9 bl-item-text">
+		<div class="col-sm-8 col-xs-8 col-8 bl-item-text">
 			<h5><b>{{item.title}}</b></h5>
 			<p><i class="fas fa-barcode"></i> {{item.info.isbn}}</p>
 		</div>
-		<div class="col-2 bl-item-select">
+		<div class="col-sm-2 col-xs-4 col-4 bl-item-select">
 			<button class="btn btn-outline-success btn-block" (click)="onAdd()" *ngIf="!isAdded()">
 				<i class="fas fa-2x fa-cart-plus"></i>
 			</button>

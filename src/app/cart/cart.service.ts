@@ -30,4 +30,15 @@ export class CartService {
 		return false;
 	}
 	
+	public isEmpty(): boolean {
+		if (this._cart.length > 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public getCart(): Item[] {
+		return this._cart;
+	}
+	
 }

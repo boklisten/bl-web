@@ -1,0 +1,17 @@
+
+@import "../../../styles";
+
+
+.bl-cart-icon-disabled {
+	color: $secondary-color;
+	cursor: pointer;
+}
+
+.bl-cart-icon-warning {
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.bl-cart-icon-warning:hover {
+	color: #adadad;
+}
