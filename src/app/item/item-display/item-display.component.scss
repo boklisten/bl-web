@@ -3,6 +3,23 @@
 .bl-item-display-container {
 	background-color: #ffffff;
 	margin-bottom: 10px;
-	padding-top: 10px;
 	border-radius: 3px;
 }
+
+.bl-item-image {
+	text-align: center;
+	background-color: #283d3b;
+	color: #ffffff;
+	line-height: 92px;
+}
+
+.bl-item-text {
+	padding-top: 10px;
+}
+
+.bl-item-select {
+	text-align: center;
+	line-height: 92px;
+	padding-top: 20px;
+}
+

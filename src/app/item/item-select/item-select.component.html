@@ -1,8 +1,14 @@
 
-<div class="container">
+<div class="container bl-item-select-branch">
 	<div class="row">
 		<div class="col-12">
 			<app-branch-select (branchSelect)="onBranchSelect($event)"></app-branch-select>
+		</div>
+	</div>
+
+	<div class="row" *ngIf="branch">
+		<div class="col-12">
+			<h2>Bøker tilhørende {{branch.name}}</h2>
 		</div>
 	</div>
 

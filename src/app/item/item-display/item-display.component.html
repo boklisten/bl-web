@@ -1,16 +1,19 @@
 <div class="container">
 
 	<div class="row bl-item-display-container">
-		<div class="col-10">
-			<h3>{{item.title}}</h3>
-			<p>{{item.info.isbn}}</p>
+		<div class="col-1 bl-item-image">
+			<i class="fas fa-2x fa-book"></i>
 		</div>
-		<div class="col-2">
-			<button class="btn btn-success btn-block" (click)="onAdd()" *ngIf="!isAdded()">
+		<div class="col-9 bl-item-text">
+			<h5><b>{{item.title}}</b></h5>
+			<p><i class="fas fa-barcode"></i> {{item.info.isbn}}</p>
+		</div>
+		<div class="col-2 bl-item-select">
+			<button class="btn btn-outline-success btn-block" (click)="onAdd()" *ngIf="!isAdded()">
 				<i class="fas fa-2x fa-cart-plus"></i>
 			</button>
-			<button class="btn btn-danger btn-block" (click)="onDelete()" *ngIf="isAdded()">
-				<i class="fas fa-2x fa-cart-plus"></i>
+			<button class="btn btn-success btn-block" (click)="onDelete()" *ngIf="isAdded()">
+				<i class="fas fa-2x fa-check"></i>
 			</button>
 		</div>
 	</div>

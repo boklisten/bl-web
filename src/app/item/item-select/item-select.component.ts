@@ -9,6 +9,8 @@ import {BlApiError, Branch, Item} from "bl-model";
 })
 export class ItemSelectComponent implements OnInit {
 	public items: Item[];
+	public branch: Branch;
+	
 	constructor(private _itemService: ItemService, private _branchService: BranchService) {
 	}
 	
@@ -25,6 +27,7 @@ export class ItemSelectComponent implements OnInit {
 	}
 	
 	onBranchSelect(branch: Branch) {
+		this.branch = branch;
 		this._itemService.getManyByIds(branch.items).then((items: Item[]) => {
 			this.items = items;
 		}).catch((blApiError: BlApiError) => {
