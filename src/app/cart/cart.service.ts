@@ -53,7 +53,7 @@ export class CartService {
 	}
 	
 	public isEmpty(): boolean {
-		return (this._cart.length > 0);
+		return !(this._cart.length > 0);
 	}
 	
 	public getCart(): {item: Item, orderItem: OrderItem}[] {

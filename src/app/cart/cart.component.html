@@ -1,3 +1,12 @@
-<p>
-  cart works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="bl-cart-title col-12">
+			Cart
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<app-cart-item *ngFor="let cartItem of getCart()" [cartItem]="cartItem"></app-cart-item>
+		</div>
+	</div>
+</div>
