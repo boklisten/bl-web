@@ -23,11 +23,11 @@ export class ItemDisplayComponent implements OnInit {
 	}
 	
 	onDelete() {
-		this._cartService.removeItem(this.item);
+		this._cartService.remove(this.item.id);
 	}
 	
 	isAdded(): boolean {
-		return this._cartService.containsItem(this.item);
+		return this._cartService.contains(this.item.id);
 	}
 	
 }

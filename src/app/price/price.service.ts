@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Item} from "bl-model";
+import {Item, OrderItem} from "bl-model";
 import {BranchService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 
@@ -9,11 +9,11 @@ export class PriceService {
 	constructor(private _branchStoreService: BranchStoreService) {
 	}
 	
-	public calculatePrice(item: Item, semester: "one" | "two"): number {
+	public calculatePrice(orderItem: OrderItem, semester: "one" | "two"): number {
 		if (semester === "one") {
-			return this.roundDown(item.price * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);
+			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);
 		} else {
-			return this.roundDown(item.price * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
+			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
 		}
 	}
 	

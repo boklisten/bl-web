@@ -9,7 +9,7 @@
 			<p><i class="fas fa-barcode"></i> {{item.info.isbn}}</p>
 		</div>
 		<div class="col-sm-2 col-xs-4 col-4 bl-item-select">
-			<button class="btn btn-outline-success btn-block" (click)="onAdd()" *ngIf="!isAdded()">
+			<button class="btn btn-outline-info btn-block" (click)="onAdd()" *ngIf="!isAdded()">
 				<i class="fas fa-2x fa-cart-plus"></i>
 			</button>
 			<button class="btn btn-success btn-block" (click)="onDelete()" *ngIf="isAdded()">

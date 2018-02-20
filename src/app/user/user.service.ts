@@ -8,14 +8,21 @@ export class UserService {
 	constructor(private _tokenService: TokenService) {
 	}
 	
-	getUserName(): string {
+	public getUserName(): string {
 		if (!this._tokenService.haveAccessToken()) {
 			return '';
 		}
 		return this._tokenService.getAccessTokenBody().username;
 	}
 	
-	getPermission(): UserPermission {
+	public getUserId(): string {
+		if (!this._tokenService.haveAccessToken()) {
+			return '';
+		}
+		return this._tokenService.getAccessTokenBody().sub;
+	}
+	
+	public getPermission(): UserPermission {
 		if (!this._tokenService.haveAccessToken()) {
 			return;
 		}

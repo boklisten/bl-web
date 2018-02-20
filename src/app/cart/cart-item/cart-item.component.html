@@ -1,28 +1,25 @@
-<div class="bl-cart-item">
-    <div class="row">
-        <div class="col-7">
-			<div class="row">
-				<div class="col-12 bl-cart-item-title">
-					{{cartItem.item.title}}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<i class="fas fa-barcode"></i> {{cartItem.item.info.isbn}}
-				</div>
-			</div>
-        </div>
-        <div class="col-4">
+
+	<div class="row bl-item-display-container">
+		<div class="col-sm-2 col-12 bl-item-image">
+			<i class="fas fa-2x fa-book"></i>
+		</div>
+
+		<div class="col-sm-5 col-12 bl-item-text">
+			<h5><b>{{orderItem.title}}</b></h5>
+			<p><i class="fas fa-barcode"></i> some id</p>
+		</div>
+
+		<div class="col-sm-3 col-8">
 			<div class="row">
 				<div class="col-12">
-                    <div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
-                        <label ngbButtonLabel class="btn-info">
-                            <input ngbButton type="radio" value="one">one semester
-                        </label>
-                        <label ngbButtonLabel class="btn-info">
-                            <input ngbButton type="radio" value="two">two semesters
-                        </label>
-                    </div>
+					<div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
+						<label ngbButtonLabel class="btn-info">
+							<input ngbButton type="radio" value="one">one semester
+						</label>
+						<label ngbButtonLabel class="btn-info">
+							<input ngbButton type="radio" value="two">two semesters
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -30,9 +27,9 @@
 					rent to <b>{{getDate()}}</b>
 				</div>
 			</div>
-        </div>
-		<div class="col-1 bl-cart-item-price">
+		</div>
+
+		<div class="col-sm-2 col-4 bl-cart-item-price">
 			{{getPrice()}}
 		</div>
-    </div>
-</div>
+	</div>

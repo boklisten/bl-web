@@ -4,9 +4,15 @@
 			Cart
 		</div>
 	</div>
-	<div class="row">
+	<div class="row bl-cart-container">
+		<div class="col-12 bl-cart-container">
+			<app-cart-item *ngFor="let orderItem of getCart()" [showPrice]="showPrice" [orderItem]="orderItem"></app-cart-item>
+		</div>
+	</div>
+	<div class="row bl-cart-payment">
 		<div class="col-12">
-			<app-cart-item *ngFor="let cartItem of getCart()" [cartItem]="cartItem"></app-cart-item>
+			totalPrice: {{getTotalPrice()}}
+			<button type="button" class="btn btn-success" (click)="onPayment()">To payment</button>
 		</div>
 	</div>
 </div>

@@ -10,7 +10,8 @@ import {PriceService} from "../../price/price.service";
 })
 export class CartItemComponent implements OnInit {
 	
-	@Input() cartItem: {item: Item, orderItem: OrderItem};
+	@Input() orderItem: OrderItem;
+	@Input() showPrice: boolean;
 	
 	public semester: "one" | "two" = "one";
 	
@@ -21,7 +22,8 @@ export class CartItemComponent implements OnInit {
 	}
 	
 	getPrice(): number {
-		return this._priceService.calculatePrice(this.cartItem.item, this.semester);
+		this.orderItem.amount = this._priceService.calculatePrice(this.orderItem, this.semester);
+		return this.orderItem.amount;
 	}
 	
 	getDate(): string {
