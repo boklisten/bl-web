@@ -1,44 +1,62 @@
 import {Injectable} from '@angular/core';
-import {Item} from "bl-model";
+import {Item, OrderItem} from "bl-model";
+import {BranchService} from "bl-connect";
 
 @Injectable()
 export class CartService {
 	
-	private _cart: Item[];
+	private _cart: {item: Item, orderItem: OrderItem}[];
 	
-	constructor() {
+	constructor(private _branchService: BranchService) {
 		this._cart = [];
 	}
 	
 	
 	public add(item: Item) {
-		this._cart.push(item);
+		let orderItem: OrderItem = {} as OrderItem;
+		orderItem.item = item.id;
+		this._cart.push({item: item, orderItem: orderItem});
 	}
 	
-	public remove(item: Item) {
-		const index = this._cart.indexOf(item);
-		
-		if (index > -1) {
-			this._cart.splice(index, 1);
+	public removeItem(item: Item) {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].item === item) {
+				this._cart.splice(i, 1);
+			}
 		}
 	}
 	
-	public contains(item: Item): boolean {
-		if (this._cart.indexOf(item) > -1) {
-			return true;
+	public removeOrderItem(orderItem: OrderItem) {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].orderItem === orderItem) {
+				this._cart.splice(i, 1);
+			}
+		}
+	}
+	
+	public containsItem(item: Item): boolean {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].item === item) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public containsOrderItem(orderItem: OrderItem): boolean {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].orderItem === orderItem) {
+				return true;
+			}
 		}
 		return false;
 	}
 	
 	public isEmpty(): boolean {
-		if (this._cart.length > 0) {
-			return false;
-		}
-		return true;
+		return (this._cart.length > 0);
 	}
 	
-	public getCart(): Item[] {
+	public getCart(): {item: Item, orderItem: OrderItem}[] {
 		return this._cart;
 	}
-	
 }

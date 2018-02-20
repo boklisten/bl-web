@@ -1,3 +1,4 @@
 
 <i class="fas fa-shopping-cart fa-2x"
-   [ngClass]="{'bl-cart-icon-disabled': !displayCart(), 'bl-cart-icon-warning': displayCart()}"></i>
+   [ngClass]="{'bl-cart-icon-disabled': !displayCart(), 'bl-cart-icon-warning': displayCart()}"
+	(click)="onCartClick()"></i>

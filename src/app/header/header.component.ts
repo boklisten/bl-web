@@ -15,5 +15,10 @@ export class HeaderComponent implements OnInit {
 	}
 	
 	
+	public onLogoClick() {
+		this._router.navigateByUrl('/welcome');
+	}
+	
+	
 	
 }
