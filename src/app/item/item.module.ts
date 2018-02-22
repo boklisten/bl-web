@@ -7,6 +7,8 @@ import { ItemSelectComponent } from './item-select/item-select.component';
 import {BranchModule} from "../branch/branch.module";
 import { ItemDisplayComponent } from './item-display/item-display.component';
 import {CartModule} from "../cart/cart.module";
+import { ItemInfoComponent } from './item-info/item-info.component';
+import { ItemAddComponent } from './item-add/item-add.component';
 
 @NgModule({
 	imports: [
@@ -18,7 +20,9 @@ import {CartModule} from "../cart/cart.module";
 	declarations: [
 		ItemComponent,
 		ItemSelectComponent,
-		ItemDisplayComponent
+		ItemDisplayComponent,
+		ItemInfoComponent,
+		ItemAddComponent
 		
 	]
 })

@@ -3,6 +3,7 @@ import {Item, OrderItem} from "bl-model";
 import {DateService} from "../../date/date.service";
 import {PriceService} from "../../price/price.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-cart-item',
@@ -16,7 +17,8 @@ export class CartItemComponent implements OnInit {
 	
 	public semester: "one" | "two" = "one";
 	
-	constructor(private _dateService: DateService, private _priceService: PriceService, private _branchStoreService: BranchStoreService) {
+	constructor(private _dateService: DateService, private _priceService: PriceService, private _branchStoreService: BranchStoreService,
+				private _router: Router) {
 		this.remove = new EventEmitter<string>();
 	
 	}
@@ -50,6 +52,10 @@ export class CartItemComponent implements OnInit {
 	
 	showPrice(): boolean {
 		return !this._branchStoreService.getCurrentBranch().payment.branchResponsible;
+	}
+	
+	onItemClick() {
+		this._router.navigateByUrl('i/' + this.orderItem.item);
 	}
 	
 }

@@ -5,16 +5,11 @@
 			<i class="fas fa-2x fa-book"></i>
 		</div>
 		<div class="col-sm-8 col-xs-8 col-8 bl-item-text">
-			<h5><b>{{item.title}}</b></h5>
+			<h5 (click)="onItemClick()"><b>{{item.title}}</b></h5>
 			<p><i class="fas fa-barcode"></i> {{item.info.isbn}}</p>
 		</div>
 		<div class="col-sm-2 col-xs-4 col-4 bl-item-select">
-			<button class="btn btn-outline-info btn-block" (click)="onAdd()" *ngIf="!isAdded()">
-				<i class="fas fa-2x fa-cart-plus"></i>
-			</button>
-			<button class="btn btn-success btn-block" (click)="onDelete()" *ngIf="isAdded()">
-				<i class="fas fa-2x fa-check"></i>
-			</button>
+			<app-item-add [item]="item"></app-item-add>
 		</div>
 	</div>
 
