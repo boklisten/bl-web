@@ -21,6 +21,7 @@ export class BranchSelectComponent implements OnInit {
 	ngOnInit() {
 		this._branchService.get().then((branches: Branch[]) => {
 			this.branches = branches;
+			this._branchStoreService.setCurrentBranch(branches[0]);
 		}).catch((blApiError: BlApiError) => {
 			console.log('could not get branches');
 		});

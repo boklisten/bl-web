@@ -17,10 +17,17 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 	public add(item: Item) {
 		let orderItem: OrderItem = {} as OrderItem;
 		orderItem.item = item.id;
-		orderItem.amount = 0;
 		orderItem.title = item.title;
+		orderItem.amount = 0;
 		orderItem.unitPrice = item.price;
+		orderItem.taxAmount = 0;
+		orderItem.taxRate = 0;
+		orderItem.type = "rent";
 		orderItem.discount = 0;
+		orderItem.rentInfo = {
+			oneSemester: true,
+			twoSemesters: false
+		};
 		this._cart.push(orderItem);
 	}
 	
@@ -60,14 +67,33 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 	
 	public createOrder(): Order {
 		const order: Order = {} as Order;
-		order.amount = this.getTotalPrice();
-		order.branch = this._branchStoreService.getCurrentBranch().id;
-		order.customer = this._userService.getUserName();
-		order.orderItems = this._cart;
-		order.application = 'bl-web';
-		order.byCustomer = true;
-		order.payments = [];
+		
+		if (this._cart.length > 0) {
+			order.amount = this.getTotalPrice();
+			order.branch = this._branchStoreService.getCurrentBranch().id;
+			order.customer = this._userService.getUserDetailId();
+			order.orderItems = this._cart;
+			order.application = 'bl-web';
+			order.byCustomer = true;
+			order.user = {
+				id: this._userService.getUserId()
+			};
+			order.payments = [
+				{
+					method: "card",
+					amount: this.getTotalPrice(),
+					confirmed: false,
+					time: new Date(),
+					byBranch: false
+				}
+			];
+			
+		}
 		
 		return order;
+	}
+	
+	public emptyCart() {
+		this._cart = [];
 	}
 }

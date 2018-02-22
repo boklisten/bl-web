@@ -14,10 +14,10 @@
 				<div class="col-12">
 					<div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
 						<label ngbButtonLabel class="btn-info">
-							<input ngbButton type="radio" value="one">one semester
+							<input ngbButton type="radio" value="one" (click)="onSemesterUpdate()">one semester
 						</label>
 						<label ngbButtonLabel class="btn-info">
-							<input ngbButton type="radio" value="two">two semesters
+							<input ngbButton type="radio" value="two" (click)="onSemesterUpdate()">two semesters
 						</label>
 					</div>
 				</div>

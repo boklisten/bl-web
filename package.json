@@ -25,7 +25,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.6",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0",
     "bl-connect": "^0.4.3",
-    "bl-model": "^0.11.3",
+    "bl-model": "^0.11.5",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.3",
     "rxjs": "^5.5.6",

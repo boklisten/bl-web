@@ -21,6 +21,16 @@ export class CartItemComponent implements OnInit {
 	ngOnInit() {
 	}
 	
+	onSemesterUpdate() {
+		if (this.semester === "one") {
+			this.orderItem.rentInfo.oneSemester = true;
+			this.orderItem.rentInfo.twoSemesters = false;
+		} else {
+			this.orderItem.rentInfo.oneSemester = false;
+			this.orderItem.rentInfo.twoSemesters = true;
+		}
+	}
+	
 	getPrice(): number {
 		this.orderItem.amount = this._priceService.calculatePrice(this.orderItem, this.semester);
 		return this.orderItem.amount;

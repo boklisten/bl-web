@@ -20,7 +20,7 @@ export class WelcomeComponent implements OnInit {
 	}
 	
 	onRegisterClick() {
-		this._router.navigate(['/auth/register'], {relativeTo: this._route});
+		this._router.navigateByUrl('/auth/register');
 	}
 	
 	onTestUserClick() {
@@ -33,5 +33,9 @@ export class WelcomeComponent implements OnInit {
 	
 	onTestItemClick() {
 		this._router.navigate(['/i/select'], {relativeTo: this._route});
+	}
+	
+	onTestOrderClick() {
+		this._router.navigate(['/u/order'], {relativeTo: this._route});
 	}
 }

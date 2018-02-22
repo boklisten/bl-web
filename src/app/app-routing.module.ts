@@ -19,7 +19,7 @@ const routes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(routes),
-		LoginModule.withConfig({successPath: 'home'})
+		LoginModule.withConfig({successPath: 'welcome'})
 	],
 	exports: [RouterModule]
 })

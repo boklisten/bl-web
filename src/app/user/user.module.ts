@@ -5,6 +5,7 @@ import {UserRoutingModule} from "./user-routing.module";
 import {UserService} from "./user.service";
 import {BranchModule} from "../branch/branch.module";
 import {UserComponent} from "./user.component";
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
 	imports: [
@@ -14,7 +15,8 @@ import {UserComponent} from "./user.component";
 	],
 	declarations: [
 		HomeComponent,
-		UserComponent
+		UserComponent,
+		OrderComponent
 	],
 	providers: [
 		UserService

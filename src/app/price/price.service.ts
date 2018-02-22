@@ -18,7 +18,7 @@ export class PriceService {
 	}
 	
 	private roundDown(num: number): number {
-		return Math.round(num / 10) * 10;
+		return parseInt((num / 10).toString(), 10) * 10;
 	}
 	
 }
