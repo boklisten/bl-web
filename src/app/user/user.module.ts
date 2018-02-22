@@ -6,6 +6,7 @@ import {UserService} from "./user.service";
 import {BranchModule} from "../branch/branch.module";
 import {UserComponent} from "./user.component";
 import { OrderComponent } from './order/order.component';
+import { OrderInfoComponent } from './order/order-info/order-info.component';
 
 @NgModule({
 	imports: [
@@ -16,7 +17,8 @@ import { OrderComponent } from './order/order.component';
 	declarations: [
 		HomeComponent,
 		UserComponent,
-		OrderComponent
+		OrderComponent,
+		OrderInfoComponent
 	],
 	providers: [
 		UserService

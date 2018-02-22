@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BlApiError, Order, UserDetail} from "bl-model";
 import {UserService} from "../user.service";
 import {OrderService, UserDetailService} from "bl-connect";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-order',

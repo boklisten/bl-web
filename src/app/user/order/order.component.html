@@ -14,21 +14,5 @@
 			<div class="alert alert-warning">You have no Orders yet</div>
 		</div>
 	</div>
-	<div class="row" *ngFor="let order of orders">
-		<div class="col-12 mb-3">
-			<div class="card">
-				<div class="card-header">
-					Order #{{order.id}} at {{order.creationTime | date}}
-				</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item" *ngFor="let orderItem of order.orderItems">
-							<b>{{orderItem.title}}</b> <i>{{orderItem.type}}</i> - {{orderItem.amount}}kr</li>
-                    </ul>
-                </div>
-                <div class="card-footer ">
-                    <button type="button" class="btn btn-info">Get Receipt</button>
-                </div>
-			</div>
-		</div>
-	</div>
+
+	<app-order-info *ngFor="let order of orders" [order]="order"></app-order-info>
