@@ -19,6 +19,10 @@ export class HeaderComponent implements OnInit {
 		this._router.navigateByUrl('/welcome');
 	}
 	
+	public onUserClick() {
+		this._router.navigateByUrl('/u/home');
+	}
+	
 	
 	
 }
