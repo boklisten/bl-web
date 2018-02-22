@@ -36,6 +36,10 @@ export class CartComponent implements OnInit {
 		*/
 	}
 	
+	public showCart(): boolean {
+		return (this.getCart().length > 0);
+	}
+	
 	public getCart(): OrderItem[] {
 		return this._cartService.getCart();
 	}

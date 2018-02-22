@@ -4,15 +4,26 @@
 			Cart
 		</div>
 	</div>
+	<div class="row" *ngIf="!showCart()">
+		<div class="col-12">
+			<div class="alert alert-warning">Cart is empty</div>
+		</div>
+	</div>
 	<div class="row bl-cart-container">
 		<div class="col-12 bl-cart-container">
 			<app-cart-item *ngFor="let orderItem of getCart()" [orderItem]="orderItem" (remove)="onRemove($event)"></app-cart-item>
 		</div>
 	</div>
-	<div class="row bl-cart-payment">
+	<div class="row bl-cart-payment" *ngIf="showCart()">
 		<div class="col-12">
-			totalPrice: {{getTotalPrice()}}
-			<button type="button" class="btn btn-success" (click)="onPayment()">To payment</button>
+			<div class="row">
+				<div class="col-6 bl-cart-total-price">
+					{{getTotalPrice()}}
+				</div>
+				<div class="col-6">
+					<button type="button" class="btn btn-success btn-block" (click)="onPayment()">Confirm</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -14,5 +14,11 @@
 .bl-cart-payment {
 	background-color: #ffffff;
 	padding: 20px;
-	margin: 5px;
+}
+
+.bl-cart-total-price {
+	font-size: 20px;
+	font-weight: bold;
+	color: $secondary-color;
+	text-align: center;
 }

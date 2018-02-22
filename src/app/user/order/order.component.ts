@@ -37,4 +37,8 @@ export class OrderComponent implements OnInit {
 		});
 	}
 	
+	showOrders(): boolean {
+		return (this.orders.length > 0);
+	}
+	
 }
