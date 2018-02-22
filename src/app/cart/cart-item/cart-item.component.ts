@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Item, OrderItem} from "bl-model";
+import {BlApiError, Item, OrderItem} from "bl-model";
 import {DateService} from "../../date/date.service";
 import {PriceService} from "../../price/price.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {Router} from "@angular/router";
+import {ItemService} from "bl-connect";
 
 @Component({
 	selector: 'app-cart-item',
@@ -16,41 +17,49 @@ export class CartItemComponent implements OnInit {
 	@Output() remove: EventEmitter<string>;
 	
 	public semester: "one" | "two" = "one";
+	public item: Item;
+	private _type: "one" | "two" | "buy";
 	
 	constructor(private _dateService: DateService, private _priceService: PriceService, private _branchStoreService: BranchStoreService,
-				private _router: Router) {
+				private _router: Router, private _itemService: ItemService) {
 		this.remove = new EventEmitter<string>();
+		this._type = "one";
 	
 	}
 	
 	ngOnInit() {
+		this._itemService.getById(this.orderItem.item).then((item: Item) => {
+			this.item = item;
+		}).catch((blApiErr: BlApiError) => {
+			console.log('could not get item');
+		});
 	}
 	
-	onSemesterUpdate() {
-		if (this.semester === "two") {
-			this.orderItem.rentInfo.oneSemester = true;
-			this.orderItem.rentInfo.twoSemesters = false;
-		} else {
-			this.orderItem.rentInfo.oneSemester = false;
-			this.orderItem.rentInfo.twoSemesters = true;
-		}
-		console.log('semester update', this.semester, this.orderItem);
+	onTypeChange(type: "one" | "two" | "buy") {
+		this._type = type;
 	}
+	
 	
 	onRemove() {
 		this.remove.emit(this.orderItem.item);
 	}
 	
 	getPrice(): number {
-		this.orderItem.amount = this._priceService.calculatePrice(this.orderItem, this.semester);
+		if (this._type === "one") {
+			this.orderItem.amount = this._priceService.oneSemester(this.item);
+		} else if (this._type === "two") {
+			this.orderItem.amount = this._priceService.twoSemesters(this.item);
+		} else {
+			this.orderItem.amount = this.orderItem.unitPrice;
+		}
 		return this.orderItem.amount;
 	}
 	
-	getDate(): string {
-		return this._dateService.getDate(this.semester);
-	}
 	
 	showPrice(): boolean {
+		if (!this.item) {
+			return false;
+		}
 		return !this._branchStoreService.getCurrentBranch().payment.branchResponsible;
 	}
 	

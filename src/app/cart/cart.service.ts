@@ -93,6 +93,40 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 		return order;
 	}
 	
+	public get(itemId: string): OrderItem {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].item === itemId) {
+				return this._cart[i];
+			}
+		}
+	}
+	
+	public updateType(itemId: string, type: "one" | "two" | "buy") {
+		for (let cartItem of this._cart) {
+			if (cartItem.item === itemId) {
+				if (type !== "buy") {
+					if (!cartItem.rentInfo) {
+						cartItem.rentInfo = {oneSemester: false, twoSemesters: false}
+					}
+					
+					if (type === "one") {
+						cartItem.rentInfo.oneSemester = true;
+						cartItem.rentInfo.twoSemesters = false;
+					}
+					
+					if (type === "two") {
+						cartItem.rentInfo.oneSemester = false;
+						cartItem.rentInfo.twoSemesters = true;
+					}
+					cartItem.type = "rent";
+				} else {
+					cartItem.rentInfo = null;
+					cartItem.type = "buy";
+				}
+			}
+		}
+	}
+	
 	public emptyCart() {
 		this._cart = [];
 	}

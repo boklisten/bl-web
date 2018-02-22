@@ -9,6 +9,20 @@ export class PriceService {
 	constructor(private _branchStoreService: BranchStoreService) {
 	}
 	
+	public oneSemester(item: Item): number {
+		if (this._branchStoreService.getCurrentBranch().payment.branchResponsible) {
+			return 0;
+		}
+		return this.roundDown(item.price * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);
+	}
+	
+	public twoSemesters(item: Item): number {
+		if (this._branchStoreService.getCurrentBranch().payment.branchResponsible) {
+			return 0;
+		}
+		return this.roundDown(item.price * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
+	}
+	
 	public calculatePrice(orderItem: OrderItem, semester: "one" | "two"): number {
 		if (semester === "one") {
 			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);

@@ -11,21 +11,7 @@
             </div>
 
             <div class="col-md-4 col-sm-4 col-8 bl-cart-item-semester" *ngIf="showPrice()">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
-                            <label ngbButtonLabel class="btn-info">
-                                <input ngbButton type="radio" value="one" (click)="onSemesterUpdate()">one semester
-                            </label>
-                            <label ngbButtonLabel class="btn-info">
-                                <input ngbButton type="radio" value="two" (click)="onSemesterUpdate()">two semesters
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        rent to <b>{{getDate()}}</b>
-                    </div>
-                </div>
+				<app-cart-item-type-select [item]="item" (type)="onTypeChange($event)"></app-cart-item-type-select>
             </div>
 
             <div class="col-md-1 col-sm-3 col-4 bl-cart-item-price" *ngIf="showPrice()">

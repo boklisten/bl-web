@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "bl-model";
 import {CartService} from "../../cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PriceService} from "../../price/price.service";
 
 @Component({
 	selector: 'app-item-display',
@@ -12,27 +13,40 @@ export class ItemDisplayComponent implements OnInit {
 	
 	@Input() item: Item;
 	
-	constructor(private _cartService: CartService, private _router: Router, private _route: ActivatedRoute) {
+	public type: "one" | "two" | "buy";
+	
+	constructor(private _router: Router, private _priceService: PriceService) {
 	}
 	
 	ngOnInit() {
 	
 	}
 	
-	onAdd() {
-		this._cartService.add(this.item);
-	}
-	
-	onDelete() {
-		this._cartService.remove(this.item.id);
-	}
-	
-	isAdded(): boolean {
-		return this._cartService.contains(this.item.id);
-	}
-	
-	onItemClick() {
+	public onItemClick() {
 		this._router.navigateByUrl('i/' + this.item.id);
+	}
+	
+	public onItemTypeChange(type: "one" | "two" | "buy") {
+		this.type = type;
+	}
+	
+	public getPrice(): number {
+		if (this.type === "one") {
+			return this._priceService.oneSemester(this.item);
+		} else if (this.type === "two") {
+			return this._priceService.twoSemesters(this.item);
+		} else {
+			return this.item.price;
+		}
+		
+	}
+	
+	public priceOneSemester(): number {
+		return this._priceService.oneSemester(this.item);
+	}
+	
+	public priceTwoSemesters(): number {
+		return this._priceService.twoSemesters(this.item);
 	}
 	
 }

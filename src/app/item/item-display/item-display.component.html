@@ -1,15 +1,22 @@
 <div class="container">
 
-	<div class="row bl-item-display-container">
+	<div class="row bl-item-display-container align-items-center">
 		<div class="col-sm-2 col-xs-12 col-12 bl-item-image">
 			<i class="fas fa-2x fa-book"></i>
 		</div>
-		<div class="col-sm-8 col-xs-8 col-8 bl-item-text">
+		<div class="col-sm-6 col-xs-6 col-6 bl-item-text">
 			<h5 (click)="onItemClick()"><b>{{item.title}}</b></h5>
-			<p><i class="fas fa-barcode"></i> {{item.info.isbn}}</p>
+			<app-cart-item-type-select [item]="item" (type)="onItemTypeChange($event)"></app-cart-item-type-select>
 		</div>
-		<div class="col-sm-2 col-xs-4 col-4 bl-item-select">
-			<app-item-add [item]="item"></app-item-add>
+		<div class="col-sm-4 col-xs-4 col-4">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-4 bl-item-price">
+					{{getPrice()}} kr
+				</div>
+				<div class="col-8">
+					<app-item-add [item]="item" [type]="type"></app-item-add>
+				</div>
+			</div>
 		</div>
 	</div>
 

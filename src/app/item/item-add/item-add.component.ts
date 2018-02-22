@@ -10,6 +10,7 @@ import {Item} from "bl-model";
 export class ItemAddComponent implements OnInit {
 	
 	@Input() item: Item;
+	@Input() type: "one" | "two" | "buy";
 	
 	constructor(private _cartService: CartService) {
 	}
@@ -19,6 +20,10 @@ export class ItemAddComponent implements OnInit {
 	
 	onAdd() {
 		this._cartService.add(this.item);
+		if (this.type) {
+			this._cartService.updateType(this.item.id, this.type);
+			console.log('we updated the type, item is now', this._cartService.get(this.item.id));
+		}
 	}
 	
 	onDelete() {
