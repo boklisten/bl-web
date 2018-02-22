@@ -11,7 +11,6 @@ export class BranchStoreService {
 	}
 	
 	public getCurrentBranch(): Branch {
-		
 		return this._currentBranch;
 	}
 	

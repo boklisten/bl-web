@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {BranchInfoComponent} from "./branch-info/branch-info.component";
 import {BranchComponent} from "./branch.component";
+import {BranchSetComponent} from "./branch-set/branch-set.component";
 
 const routes: Routes = [
 	{
@@ -9,7 +10,11 @@ const routes: Routes = [
 		component: BranchComponent,
 		children: [
 			{
-				path: ':id',
+				path: 'set',
+				component: BranchSetComponent
+			},
+			{
+				path: 'info/:id',
 				component: BranchInfoComponent
 			}
 		]
