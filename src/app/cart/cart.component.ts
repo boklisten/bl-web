@@ -21,10 +21,27 @@ export class CartComponent implements OnInit {
 	}
 	
 	ngOnInit() {
+	/*
+		this._branchService.getById("5a1d67cdf14cbe78ff047d00").then((branch: Branch) => {
+			this._branchStoreService.setCurrentBranch(branch);
+			
+			this._itemService.getById("5a1d67cdf14cbe78ff047d02").then((item: Item) => {
+				this._cartService.add(item);
+			}).catch(() => {
+				console.log('could not get item');
+			});
+		}).catch(() => {
+			console.log('could not get branch');
+		});
+		*/
 	}
 	
 	public getCart(): OrderItem[] {
 		return this._cartService.getCart();
+	}
+	
+	public onRemove(itemId: string) {
+		this._cartService.remove(itemId);
 	}
 	
 	public getTotalPrice(): number {

@@ -1,35 +1,41 @@
+<div class="row">
+	<div class="col-11">
+        <div class="row bl-item-display-container">
+            <div class="col-md-2 col-sm-12 col-12 bl-item-image">
+                <i class="fas fa-2x fa-book"></i>
+            </div>
 
-	<div class="row bl-item-display-container">
-		<div class="col-sm-2 col-12 bl-item-image">
-			<i class="fas fa-2x fa-book"></i>
-		</div>
+            <div class="col-md-5 col-sm-5 col-12 bl-item-text">
+                <h5><b>{{orderItem.title}}</b></h5>
+                <p><i class="fas fa-barcode"></i> some id</p>
+            </div>
 
-		<div class="col-sm-5 col-12 bl-item-text">
-			<h5><b>{{orderItem.title}}</b></h5>
-			<p><i class="fas fa-barcode"></i> some id</p>
-		</div>
+            <div class="col-md-4 col-sm-4 col-8 bl-cart-item-semester" *ngIf="showPrice()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
+                            <label ngbButtonLabel class="btn-info">
+                                <input ngbButton type="radio" value="one" (click)="onSemesterUpdate()">one semester
+                            </label>
+                            <label ngbButtonLabel class="btn-info">
+                                <input ngbButton type="radio" value="two" (click)="onSemesterUpdate()">two semesters
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        rent to <b>{{getDate()}}</b>
+                    </div>
+                </div>
+            </div>
 
-		<div class="col-sm-3 col-8">
-			<div class="row">
-				<div class="col-12">
-					<div class="btn-group btn-group-toggle" ngbRadioGroup name="semester" [(ngModel)]="semester">
-						<label ngbButtonLabel class="btn-info">
-							<input ngbButton type="radio" value="one" (click)="onSemesterUpdate()">one semester
-						</label>
-						<label ngbButtonLabel class="btn-info">
-							<input ngbButton type="radio" value="two" (click)="onSemesterUpdate()">two semesters
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					rent to <b>{{getDate()}}</b>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-2 col-4 bl-cart-item-price">
-			{{getPrice()}}
-		</div>
+            <div class="col-md-1 col-sm-3 col-4 bl-cart-item-price" *ngIf="showPrice()">
+                {{getPrice()}}
+            </div>
+        </div>
 	</div>
+	<div class="col-1 bl-cart-item-delete">
+		<button type="button" class="btn btn-outline-secondary" (click)="onRemove()">
+			<i class="fa fa-times"></i>
+		</button>
+	</div>
+</div>
