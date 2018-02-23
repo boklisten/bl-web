@@ -19,6 +19,7 @@ import {ItemModule} from "./item/item.module";
 import { CartComponent } from './cart/cart.component';
 import { HeaderCartComponent } from './header/header-cart/header-cart.component';
 import { FooterComponent } from './footer/footer.component';
+import {InfoModule} from "./info/info.module";
 
 
 @NgModule({
@@ -26,7 +27,6 @@ import { FooterComponent } from './footer/footer.component';
 		AppComponent,
 		HeaderComponent,
 		WelcomeComponent,
-		InfoComponent,
 		HeaderCartComponent,
 		FooterComponent
 	],
@@ -38,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
 		UserModule,
 		BranchModule,
 		FormsModule,
-		ItemModule
+		ItemModule,
+		InfoModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
