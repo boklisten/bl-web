@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
 		this._router.navigateByUrl('/u/home');
 	}
 	
+	public onItemSelectClick() {
+		this._router.navigateByUrl('/i/select');
+	}
+	
 	
 	
 }

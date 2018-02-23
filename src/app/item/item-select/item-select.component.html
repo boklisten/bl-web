@@ -8,7 +8,7 @@
 
 	<div class="row" *ngIf="branch">
 		<div class="col-12">
-			<h2>Bøker tilhørende {{branch.name}}</h2>
+			<h2>Bøker tilhørende <i class="bl-item-select-branch-title" (click)="onBranchClick()">{{branch.name}}</i></h2>
 		</div>
 	</div>
 

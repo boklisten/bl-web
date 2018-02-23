@@ -2,8 +2,9 @@
 
 .bl-header {
 	background-color: $primary-color;
-	height: 50px;
-	padding: 5px;
+	height: 80px;
+	padding: 10px;
+	border-bottom: 2px solid $secondary-color;
 }
 
 .bl-logo-container {
@@ -11,34 +12,35 @@
 }
 
 .bl-logo {
-	height: 40px;
-	width: 40px;
 	text-align: center;
 	font-size: 20px;
 	color: #ffffff;
-	font-weight: bold;
 	cursor: pointer;
-	font-family: serif;
 }
 
 .bl-logo-text {
 	color: #ffffff;
 	font-size: 25px;
-	padding-top: 6px;
 	padding-left: 10px;
+	font-family: serif;
+}
+
+.bl-logo-text:hover {
+	text-decoration: underline;
 }
 
 .bl-header-buttons {
 	text-align: center;
 }
 
-.bl-user-button {
+.bl-header-button {
 	color: $secondary-color;
 	margin-left: 10px;
+	margin-right: 10px;
 	cursor: pointer;
 }
 
-.bl-user-button:hover {
+.bl-header-button:hover {
 	color: #3593b3;
 }
 
