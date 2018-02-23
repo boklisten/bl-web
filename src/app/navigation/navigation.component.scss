@@ -1,0 +1,18 @@
+
+@import "../../styles";
+
+
+.bl-navigation-container {
+	margin-top: 10px;
+}
+
+.bl-navigation-text {
+	color: $secondary-color;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.bl-navigation-container:hover {
+	text-decoration: underline;
+
+}
