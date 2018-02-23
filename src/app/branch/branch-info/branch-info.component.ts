@@ -20,6 +20,21 @@ export class BranchInfoComponent implements OnInit {
 		this.warningText = null;
 		const id = this._route.snapshot.paramMap.get('id');
 		
+		this.getBranch(id);
+	
+	}
+	
+	public onBranchSelect(branch: Branch) {
+		if (branch.id === this.branch.id) {
+			return;
+		}
+		
+		this._router.navigateByUrl('/b/info/' + branch.id);
+		
+		this.getBranch(branch.id);
+	}
+	
+	private getBranch(id: string) {
 		this._branchService.getById(id).then((branch: Branch) => {
 			this.branch = branch;
 		}).catch((blApiError: BlApiError) => {
@@ -28,8 +43,6 @@ export class BranchInfoComponent implements OnInit {
 				return;
 			}
 			this.warningText = 'could not get the branch';
-			
-			
 		});
 	}
 }

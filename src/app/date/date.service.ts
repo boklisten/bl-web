@@ -13,4 +13,8 @@ export class DateService {
 		return "01.07.2019";
 	}
 	
+	public getCurrentYear(): string {
+		return "2018";
+	}
+	
 }

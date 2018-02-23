@@ -18,6 +18,7 @@ import { ItemComponent } from './item/item.component';
 import {ItemModule} from "./item/item.module";
 import { CartComponent } from './cart/cart.component';
 import { HeaderCartComponent } from './header/header-cart/header-cart.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HeaderCartComponent } from './header/header-cart/header-cart.component'
 		HeaderComponent,
 		WelcomeComponent,
 		InfoComponent,
-		HeaderCartComponent
+		HeaderCartComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,

@@ -12,6 +12,23 @@ body {
 	background-color: #adadad;
 }
 
+a {
+	color: inherit;
+	cursor: pointer;
+}
+
+a:link {
+	color: inherit;
+}
+
+a:link:hover {
+	color: inherit;
+}
+
+a:visited {
+	color: inherit;
+}
+
 .bl-body {
 	background-color: #e3e3e3;
 }

@@ -3,6 +3,7 @@ import {BranchService, ItemService} from "bl-connect";
 import {BlApiError, Branch, Item} from "bl-model";
 import {CartService} from "../../cart/cart.service";
 import {Router} from "@angular/router";
+import {BranchStoreService} from "../../branch/branch-store.service";
 
 @Component({
 	selector: 'app-item-select',
@@ -14,21 +15,21 @@ export class ItemSelectComponent implements OnInit {
 	public branch: Branch;
 	
 	constructor(private _itemService: ItemService, private _branchService: BranchService, private _cartService: CartService,
-				private _router: Router) {
+				private _router: Router, private _branchStoreService: BranchStoreService) {
 		
 	}
 	
 	ngOnInit() {
-		this.testGetBranch();
-	}
-	
-	onBranchSelect(branch: Branch) {
-		this.branch = branch;
-		this._itemService.getManyByIds(branch.items).then((items: Item[]) => {
-			this.items = items;
-		}).catch((blApiError: BlApiError) => {
-			console.log('the error', blApiError);
-		});
+		if (!this._branchStoreService.getCurrentBranch()) {
+			this._router.navigateByUrl('b/set');
+		} else {
+			this.branch = this._branchStoreService.getCurrentBranch();
+			this._itemService.getManyByIds(this.branch.items).then((items: Item[]) => {
+				this.items = items;
+			}).catch((blApiErr: BlApiError) => {
+				console.log('ItemSelectComponent: could not get items for branch');
+			});
+		}
 	}
 	
 	public onBranchClick() {
@@ -46,13 +47,4 @@ export class ItemSelectComponent implements OnInit {
 	public onCartClick() {
 		this._router.navigateByUrl('/cart');
 	}
-	
-	private testGetBranch() {
-		this._branchService.get().then((branches: Branch[]) => {
-			this.onBranchSelect(branches[0]);
-		}).catch((blApiError: BlApiError) => {
-			console.log('error getting testGetBranch: ', blApiError);
-		});
-	}
-	
 }

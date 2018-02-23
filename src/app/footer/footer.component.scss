@@ -1,0 +1,27 @@
+
+
+.bl-footer-container {
+	color: #ffffff;
+	background-color: #283d3b;
+	min-height: 100px;
+	padding-top: 20px;
+	border-top: 2px solid #ffffff;
+}
+
+.bl-footer-text {
+	color: #ffffff;
+	text-align: center;
+}
+
+.bl-footer-list-item {
+	cursor: pointer;
+}
+
+.bl-footer-list-item:hover {
+	text-decoration: underline;
+}
+
+
+ul {
+	list-style-type: none;
+}

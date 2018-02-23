@@ -16,6 +16,6 @@ export class BranchSetComponent implements OnInit {
 	}
 	
 	onBranchSelect() {
-		this._router.navigateByUrl('b/info/' + this._branchStoreService.getCurrentBranch().id);
+		this._router.navigateByUrl('/i/select');
 	}
 }
