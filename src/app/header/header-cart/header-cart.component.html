@@ -1,4 +1,10 @@
 
-<i class="fas fa-shopping-cart fa-2x"
-   [ngClass]="{'bl-cart-icon-disabled': !displayCart(), 'bl-cart-icon-warning': displayCart()}"
-	(click)="onCartClick()"></i>
+<div class="row">
+	<div class="col-12">
+		<i class="fas fa-shopping-cart fa-2x"
+		   [ngClass]="{'bl-header-button': !displayCart(), 'bl-header-button-alert': displayCart()}"
+		   (click)="onCartClick()"></i>
+		<div class="bl-alert-circle" *ngIf="displayCart()"></div>
+	</div>
+</div>
+

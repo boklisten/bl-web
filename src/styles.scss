@@ -29,6 +29,25 @@ a:visited {
 	color: inherit;
 }
 
+
+.bl-header-button {
+	color: $secondary-color;
+	margin-left: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.bl-header-button:hover {
+	color: #3593b3;
+}
+
+.bl-header-button-alert {
+	@extend .bl-header-button;
+	color: #ffffff;
+
+}
+
+
 .bl-body {
 	background-color: #e3e3e3;
 }

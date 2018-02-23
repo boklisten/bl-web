@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
 		return (this.getCart().length > 0);
 	}
 	
-	public getCart(): OrderItem[] {
+	public getCart(): {item: Item, orderItem: OrderItem}[] {
 		return this._cartService.getCart();
 	}
 	

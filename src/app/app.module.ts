@@ -21,6 +21,7 @@ import { HeaderCartComponent } from './header/header-cart/header-cart.component'
 import { FooterComponent } from './footer/footer.component';
 import {InfoModule} from "./info/info.module";
 import { NavigationComponent } from './navigation/navigation.component';
+import {CartModule} from "./cart/cart.module";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 		BranchModule,
 		FormsModule,
 		ItemModule,
-		InfoModule
+		InfoModule,
+		CartModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

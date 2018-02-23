@@ -11,7 +11,7 @@
 	</div>
 	<div class="row bl-cart-container">
 		<div class="col-12 bl-cart-container">
-			<app-cart-item *ngFor="let orderItem of getCart()" [orderItem]="orderItem" (remove)="onRemove($event)"></app-cart-item>
+			<app-item-display *ngFor="let cartItem of getCart()" [item]="cartItem.item"></app-item-display>
 		</div>
 	</div>
 	<div class="row bl-cart-payment" *ngIf="showCart()">

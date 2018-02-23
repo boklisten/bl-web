@@ -3,19 +3,20 @@ import {Item, Order, OrderItem} from "bl-model";
 import {BranchService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
+import {PriceService} from "../price/price.service";
 
 @Injectable()
 export class CartService {
 
-private _cart: OrderItem[];
+private _cart: {item: Item, orderItem: OrderItem}[];
 
-constructor(private _branchStoreService: BranchStoreService, private _userService: UserService) {
+constructor(private _branchStoreService: BranchStoreService, private _userService: UserService, private _priceService: PriceService) {
 		this._cart = [];
 	}
 	
 	
 	public add(item: Item) {
-		let orderItem: OrderItem = {} as OrderItem;
+		const orderItem: OrderItem = {} as OrderItem;
 		orderItem.item = item.id;
 		orderItem.title = item.title;
 		orderItem.amount = 0;
@@ -28,12 +29,12 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 			oneSemester: true,
 			twoSemesters: false
 		};
-		this._cart.push(orderItem);
+		this._cart.push({item: item, orderItem: orderItem});
 	}
 	
 	public remove(itemId: string) {
 		for (let i = 0; i < this._cart.length; i++) {
-			if (this._cart[i].item === itemId) {
+			if (this._cart[i].item.id === itemId) {
 				this._cart.splice(i, 1);
 			}
 		}
@@ -41,7 +42,7 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 	
 	public contains(itemId: string): boolean {
 		for (let i = 0; i < this._cart.length; i++) {
-			if (this._cart[i].item === itemId) {
+			if (this._cart[i].item.id === itemId) {
 				return true;
 			}
 		}
@@ -51,8 +52,8 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 	public getTotalPrice(): number {
 		let sum = 0;
 		
-		for (const orderItem of this._cart) {
-			sum += orderItem.amount;
+		for (const cartItem of this._cart) {
+			sum += cartItem.orderItem.amount;
 		}
 		return sum;
 	}
@@ -61,8 +62,18 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 		return !(this._cart.length > 0);
 	}
 	
-	public getCart(): OrderItem[] {
+	public getCart(): {item: Item, orderItem: OrderItem}[] {
 		return this._cart;
+	}
+	
+	public getOrderItems(): OrderItem[] {
+		const orderItems: OrderItem[] = [];
+		
+		for (const cartItem of this._cart) {
+			orderItems.push(cartItem.orderItem);
+		}
+		
+		return orderItems;
 	}
 	
 	public createOrder(): Order {
@@ -72,7 +83,7 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 			order.amount = this.getTotalPrice();
 			order.branch = this._branchStoreService.getCurrentBranch().id;
 			order.customer = this._userService.getUserDetailId();
-			order.orderItems = this._cart;
+			order.orderItems = this.getOrderItems();
 			order.application = 'bl-web';
 			order.byCustomer = true;
 			order.user = {
@@ -95,33 +106,37 @@ constructor(private _branchStoreService: BranchStoreService, private _userServic
 	
 	public get(itemId: string): OrderItem {
 		for (let i = 0; i < this._cart.length; i++) {
-			if (this._cart[i].item === itemId) {
-				return this._cart[i];
+			if (this._cart[i].item.id === itemId) {
+				return this._cart[i].orderItem;
 			}
 		}
 	}
 	
 	public updateType(itemId: string, type: "one" | "two" | "buy") {
-		for (let cartItem of this._cart) {
-			if (cartItem.item === itemId) {
+		for (const cartItem of this._cart) {
+			if (cartItem.item.id === itemId) {
 				if (type !== "buy") {
-					if (!cartItem.rentInfo) {
-						cartItem.rentInfo = {oneSemester: false, twoSemesters: false}
+					if (!cartItem.orderItem.rentInfo) {
+						cartItem.orderItem.rentInfo = {oneSemester: false, twoSemesters: false};
 					}
 					
 					if (type === "one") {
-						cartItem.rentInfo.oneSemester = true;
-						cartItem.rentInfo.twoSemesters = false;
+						cartItem.orderItem.rentInfo.oneSemester = true;
+						cartItem.orderItem.rentInfo.twoSemesters = false;
+						cartItem.orderItem.amount = this._priceService.oneSemester(cartItem.item);
+						
 					}
 					
 					if (type === "two") {
-						cartItem.rentInfo.oneSemester = false;
-						cartItem.rentInfo.twoSemesters = true;
+						cartItem.orderItem.rentInfo.oneSemester = false;
+						cartItem.orderItem.rentInfo.twoSemesters = true;
+						cartItem.orderItem.amount = this._priceService.twoSemesters(cartItem.item);
 					}
-					cartItem.type = "rent";
+					cartItem.orderItem.type = "rent";
 				} else {
-					cartItem.rentInfo = null;
-					cartItem.type = "buy";
+					cartItem.orderItem.rentInfo = null;
+					cartItem.orderItem.type = "buy";
+					cartItem.orderItem.amount = cartItem.orderItem.unitPrice;
 				}
 			}
 		}
