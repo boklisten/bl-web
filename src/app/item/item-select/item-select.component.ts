@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {BranchService, ItemService} from "bl-connect";
 import {BlApiError, Branch, Item} from "bl-model";
+import {CartService} from "../../cart/cart.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-item-select',
@@ -11,7 +13,7 @@ export class ItemSelectComponent implements OnInit {
 	public items: Item[];
 	public branch: Branch;
 	
-	constructor(private _itemService: ItemService, private _branchService: BranchService) {
+	constructor(private _itemService: ItemService, private _branchService: BranchService, private _cartSevice: CartService, private _router: Router) {
 	}
 	
 	ngOnInit() {
@@ -33,6 +35,18 @@ export class ItemSelectComponent implements OnInit {
 		}).catch((blApiError: BlApiError) => {
 			console.log('the error', blApiError);
 		});
+	}
+	
+	public showNavigateToCart(): boolean {
+		return (this._cartSevice.getCart().length > 0);
+	}
+	
+	public numOfItemsInCart(): number {
+		return this._cartSevice.getCart().length;
+	}
+	
+	public onCartClick() {
+		this._router.navigateByUrl('/cart');
 	}
 	
 }
