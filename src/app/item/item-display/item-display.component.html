@@ -1,19 +1,19 @@
 <div class="container">
 
 	<div class="row bl-item-display-container align-items-center">
-		<div class="col-sm-2 col-xs-12 col-12 bl-item-image">
+		<div class="col-sm-1 col-xs-12 col-12 bl-item-image">
 			<i class="fas fa-2x fa-book"></i>
 		</div>
-		<div class="col-sm-6 col-xs-6 col-6 bl-item-text">
-			<h5 (click)="onItemClick()"><b>{{item.title}}</b></h5>
+		<div class="col-sm-7 col-xs-6 col-6">
+			<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
 			<app-cart-item-type-select [item]="item" (type)="onItemTypeChange($event)"></app-cart-item-type-select>
 		</div>
 		<div class="col-sm-4 col-xs-4 col-4">
 			<div class="row justify-content-center align-items-center">
-				<div class="col-4 bl-item-price">
+				<div class="col-4 bl-item-price" *ngIf="showPrice()">
 					{{getPrice()}} kr
 				</div>
-				<div class="col-8">
+				<div [ngClass]="{'col-8': showPrice(), 'col-12': !showPrice()}">
 					<app-item-add [item]="item" [type]="type"></app-item-add>
 				</div>
 			</div>

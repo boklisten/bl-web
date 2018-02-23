@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Item} from "bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../cart.service";
+import {PriceService} from "../../price/price.service";
 
 @Component({
 	selector: 'app-cart-item-type-select',
@@ -15,7 +16,7 @@ export class CartItemTypeSelectComponent implements OnInit {
 	
 	private typeSelect: "one" | "two" | "buy";
 	
-	constructor(private _dateService: DateService, private _cartService: CartService) {
+	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService) {
 		this.type = new EventEmitter<string>();
 		this.typeSelect = 'one';
 	}
@@ -60,6 +61,10 @@ export class CartItemTypeSelectComponent implements OnInit {
 			
 		}
 		this.onTypeUpdate(this.typeSelect);
+	}
+	
+	public showPrice(): boolean {
+		return this._priceService.showPrice();
 	}
 	
 }

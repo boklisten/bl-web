@@ -41,12 +41,7 @@ export class ItemDisplayComponent implements OnInit {
 		
 	}
 	
-	public priceOneSemester(): number {
-		return this._priceService.oneSemester(this.item);
+	public showPrice(): boolean {
+		return this._priceService.showPrice();
 	}
-	
-	public priceTwoSemesters(): number {
-		return this._priceService.twoSemesters(this.item);
-	}
-	
 }

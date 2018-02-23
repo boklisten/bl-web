@@ -23,6 +23,10 @@ export class PriceService {
 		return this.roundDown(item.price * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
 	}
 	
+	public showPrice(): boolean {
+		return !this._branchStoreService.getCurrentBranch().payment.branchResponsible;
+	}
+	
 	public calculatePrice(orderItem: OrderItem, semester: "one" | "two"): number {
 		if (semester === "one") {
 			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);
