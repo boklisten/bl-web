@@ -1,0 +1,20 @@
+
+
+
+<div class="row">
+	<div class="col-12">
+		<h2>Your Items</h2>
+	</div>
+</div>
+
+<div class="row" *ngIf="customerItems.length <= 0">
+	<div class="col-12">
+		<div class="alert alert-warning">You currently have no items <b><a routerLink="/i/select">click here to rent some</a></b></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12" *ngFor="let customerItem of customerItems">
+		<app-user-customer-item [customerItem]="customerItem"></app-user-customer-item>
+	</div>
+</div>

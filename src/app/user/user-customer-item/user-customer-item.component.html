@@ -1,0 +1,24 @@
+
+<div class="row bl-item-display-container align-items-center" *ngIf="item">
+    <div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
+        <i class="fas fa-2x fa-book"></i>
+    </div>
+    <div class="col-lg-6 col-md-10 col-sm-10 col-10">
+		<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
+		<p>Deadline: <b>{{customerItem.deadline | date}}</b>, deliver it at: <a *ngIf="branch" routerLink="/b/info/{{branch.id}}">{{branch.name}}</a></p>
+    </div>
+    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+        <div class="row justify-content-center align-items-center">
+			<div class="col-4">
+				<button type="button" class="btn btn-outline-info btn-block">Extend</button>
+			</div>
+			<div class="col-4">
+				<button type="button" class="btn btn-outline-info btn-block">Buyout</button>
+			</div>
+			<div class="col-4">
+				<button type="button" class="btn btn-outline-info btn-block" (click)="onDeliverClick()">Deliver</button>
+			</div>
+        </div>
+    </div>
+</div>
+

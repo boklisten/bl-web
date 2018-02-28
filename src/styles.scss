@@ -58,6 +58,16 @@ a:visited {
 	margin-bottom: 10px;
 	border-radius: 3px;
 	padding: 10px;
+
+}
+
+.bl-item-title {
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.bl-item-title:hover {
+	text-decoration: underline;
 }
 
 .bl-item-image {

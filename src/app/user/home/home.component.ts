@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
 		this._router.navigateByUrl('auth/register/detail');
 	}
 	
+	onYourItemsClick() {
+		this._router.navigateByUrl('u/items');
+	}
+	
 	onBranchClick() {
 		if (!this._branchStoreService.getCurrentBranch()) {
 			this._userService.getUserDetail().then((userDetail: UserDetail) => {
