@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Item} from "bl-model";
+import {CustomerItem, Item} from "bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
@@ -12,18 +12,21 @@ import {PriceService} from "../../price/price.service";
 export class ItemTypeSelectComponent implements OnInit {
 	
 	@Input() item: Item;
+	@Input() customerItem: CustomerItem;
 	@Output() type: EventEmitter<string>;
 	
-	public typeSelect: "one" | "two" | "buy";
+	public typeSelect: "one" | "two" | "buy" | "buyout" | "extend";
+	public desc: string;
+	public date: string;
 	
 	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService) {
 		this.type = new EventEmitter<string>();
 		this.typeSelect = 'one';
+		this.desc = '';
 	}
 	
 	
 	ngOnInit() {
-		
 		this.updateBasedOnCart();
 	}
 	
@@ -31,35 +34,58 @@ export class ItemTypeSelectComponent implements OnInit {
 		return (this.typeSelect !== "buy");
 	}
 	
-	public onTypeUpdate(type: "one" | "two" | "buy") {
+	isCustomerItem(): boolean {
+		return !(!this.customerItem);
+	}
+	
+	public onTypeUpdate(type: "one" | "two" | "buy" | "buyout" | "extend") {
 		if (this._cartService.contains(this.item.id)) {
 			this._cartService.updateType(this.item.id, type);
 		}
+		this.desc = this.getDesc(type);
+		this.date = this.getDate(type);
 		this.type.emit(type);
 	}
 	
-	public getDate(): string {
-		if (this.typeSelect === "buy") {
-			return '';
+	private getDesc(type: "one" | "two" | "buy" | "buyout" | "extend") {
+		switch (type) {
+			case "one":
+				return "rent to " + this.getDate(type);
+			case "two":
+				return "rent to " + this.getDate(type);
+			case "buy":
+				return "buy this item";
+			case "buyout":
+				return "buyout this item";
+			case "extend":
+				return "extend deadline to " + this.getDate(type);
 		}
-		return this._dateService.getDate(this.typeSelect);
+	}
+	
+	public getDate(type): string {
+		return this._dateService.getDate(type);
 	}
 	
 	updateBasedOnCart() {
 		if (this._cartService.contains(this.item.id)) {
 			const orderItem = this._cartService.get(this.item.id);
-			if (orderItem.rentInfo) {
+			
+			if (orderItem.type === "rent") {
 				if (orderItem.rentInfo.oneSemester) {
 					this.typeSelect = "one";
 				} else if (orderItem.rentInfo.twoSemesters) {
 					this.typeSelect = "two";
 				}
-			} else {
+			} else if (orderItem.type === "buy") {
 				this.typeSelect = "buy";
+			} else if (orderItem.type === "buyout") {
+				this.typeSelect = "buyout";
+			} else if (orderItem.type === "extend") {
+				this.typeSelect = "extend";
 			}
-			
 		}
-		this.onTypeUpdate(this.typeSelect);
+		this.type.emit(this.typeSelect);
+		this.desc = this.getDesc(this.typeSelect);
 	}
 	
 	public showPrice(): boolean {

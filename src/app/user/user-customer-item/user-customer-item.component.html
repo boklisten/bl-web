@@ -9,13 +9,15 @@
     </div>
     <div class="col-lg-5 col-md-12 col-sm-12 col-12">
         <div class="row justify-content-center align-items-center">
-			<div class="col-4">
-				<button type="button" class="btn btn-outline-info btn-block">Extend</button>
+			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
+				<button type="button" class="btn btn-outline-info btn-block" (click)="onExtendClick()" *ngIf="!extend">Extend</button>
+				<button type="button" class="btn btn-success btn-block" (click)="onExtendClick()" *ngIf="extend"><i class="fa fa-check"></i> Extend</button>
 			</div>
-			<div class="col-4">
-				<button type="button" class="btn btn-outline-info btn-block">Buyout</button>
+			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
+				<button type="button" class="btn btn-outline-info btn-block" (click)="onBuyoutClick()" *ngIf="!buyout">Buyout</button>
+				<button type="button" class="btn btn-success btn-block" (click)="onBuyoutClick()" *ngIf="buyout"><i class="fa fa-check"></i> Buyout</button>
 			</div>
-			<div class="col-4">
+			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
 				<button type="button" class="btn btn-outline-info btn-block" (click)="onDeliverClick()">Deliver</button>
 			</div>
         </div>

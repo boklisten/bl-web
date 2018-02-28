@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {CustomerItem} from "bl-model";
 
 @Injectable()
 export class DateService {
@@ -6,11 +7,16 @@ export class DateService {
 	constructor() {
 	}
 	
-	public getDate(semester: "one" | "two") {
-		if (semester === "one") {
+	public getDate(orderItemType: "one" | "two" | "buy" | "buyout" | "extend", customerItem?: CustomerItem) {
+		if (orderItemType === "one") {
 			return "20.12.2018";
+		} else if (orderItemType === "two") {
+			return "01.07.2019";
+		} else if (orderItemType === "extend") {
+			return "01.07.2019";
+		} else {
+			return "";
 		}
-		return "01.07.2019";
 	}
 	
 	public getCurrentYear(): string {

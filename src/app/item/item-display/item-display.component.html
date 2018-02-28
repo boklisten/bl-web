@@ -1,23 +1,24 @@
-<div class="container">
-
-	<div class="row bl-item-display-container align-items-center">
-		<div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
-			<i class="fas fa-2x fa-book"></i>
-		</div>
-		<div class="col-lg-6 col-md-10 col-sm-10 col-10">
-					<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
-					<app-item-type-select [item]="item" (type)="onItemTypeChange($event)"></app-item-type-select>
-		</div>
-		<div class="col-lg-5 col-md-12 col-sm-12 col-12">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-6 bl-item-price" *ngIf="showPrice()">
-					{{getPrice()}} kr
-				</div>
-				<div [ngClass]="{'col-6': showPrice(), 'col-12': !showPrice()}">
-					<app-item-add [item]="item" [type]="type"></app-item-add>
-				</div>
-			</div>
-		</div>
+<div class="row" *ngIf="isCustomerItem()">
+	<div class="col-sm-2 col-6 bl-item-display-your-item">
+		Your item
 	</div>
-
+</div>
+<div class="row bl-item-display-container align-items-center" [ngClass]="{'bl-item-display-container-your-item': isCustomerItem()}">
+    <div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
+        <i class="fas fa-2x fa-book"></i>
+    </div>
+    <div class="col-lg-6 col-md-10 col-sm-10 col-10">
+                <h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
+                <app-item-type-select [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)"></app-item-type-select>
+    </div>
+    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6 bl-item-price" *ngIf="showPrice()">
+                {{getPrice()}} kr
+            </div>
+            <div [ngClass]="{'col-6': showPrice(), 'col-12': !showPrice()}">
+                <app-item-add [item]="item" [type]="type"></app-item-add>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Item, OrderItem} from "bl-model";
+import {Branch, CustomerItem, Item, OrderItem} from "bl-model";
 import {BranchService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 
@@ -33,6 +33,14 @@ export class PriceService {
 		} else {
 			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
 		}
+	}
+	
+	public buyoutPrice(customerItem: CustomerItem, item: Item): number {
+		return this.roundDown(customerItem.totalAmount - item.price);
+	}
+	
+	public extendPrice(customerItem: CustomerItem, branch: Branch): number {
+		return branch.payment.extendPrice;
 	}
 	
 	private roundDown(num: number): number {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "./cart.service";
-import {BlApiError, Branch, Item, Order, OrderItem} from "bl-model";
-import {BranchService, ItemService, OrderService} from "bl-connect";
+import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem, UserDetail} from "bl-model";
+import {BranchService, CustomerItemService, ItemService, OrderService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -16,19 +16,28 @@ export class CartComponent implements OnInit {
 	
 	constructor(private _cartService: CartService, private _branchService: BranchService, private _itemService: ItemService,
 				private _branchStoreService: BranchStoreService, private _userService: UserService, private _orderService: OrderService,
-				private _router: Router, private _route: ActivatedRoute) {
+				private _router: Router, private _route: ActivatedRoute, private _customerItemService: CustomerItemService) {
 		
 	}
 	
 	ngOnInit() {
-	/*
+		/*
 		this._branchService.getById("5a1d67cdf14cbe78ff047d00").then((branch: Branch) => {
 			this._branchStoreService.setCurrentBranch(branch);
-			
-			this._itemService.getById("5a1d67cdf14cbe78ff047d02").then((item: Item) => {
-				this._cartService.add(item);
+			this._userService.getUserDetail().then((userDetail: UserDetail) => {
+				this._customerItemService.getManyByIds(userDetail.customerItems).then((customerItems: CustomerItem[]) => {
+					for (const customerItem of customerItems) {
+						this._itemService.getById(customerItem.item).then((item: Item) => {
+							
+							this._cartService.addCustomerItemExtend(customerItem, item, this._branchStoreService.getCurrentBranch());
+							
+						}).catch(() => {
+							console.log('could not get items');
+						});
+					}
+				});
 			}).catch(() => {
-				console.log('could not get item');
+				console.log('could not get customerItems');
 			});
 		}).catch(() => {
 			console.log('could not get branch');

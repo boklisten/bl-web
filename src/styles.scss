@@ -58,6 +58,21 @@ a:visited {
 	margin-bottom: 10px;
 	border-radius: 3px;
 	padding: 10px;
+}
+
+.bl-item-display-container-your-item {
+	@extend .bl-item-display-container;
+	border: 5px solid $primary-color;
+}
+
+.bl-item-display-your-item {
+	background-color: $primary-color;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 5px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 
 }
 

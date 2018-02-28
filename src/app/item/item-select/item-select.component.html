@@ -8,7 +8,7 @@
 	</div>
 
 
-	<app-item-display *ngFor="let item of items" [item]="item"></app-item-display>
+	<app-item-display *ngFor="let item of items" [item]="item" [branch]="branch"></app-item-display>
 
 	<div class="row bl-item-select-navigate-to-cart justify-content-center align-items-center" *ngIf="showNavigateToCart()">
 		<div class="col-6">
