@@ -11,6 +11,7 @@ import { ItemAddComponent } from './item-add/item-add.component';
 import {ItemTypeSelectComponent} from "./item-type-select/item-type-select.component";
 import {FormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { ItemDisplayCategoryComponent } from './item-display-category/item-display-category.component';
 
 @NgModule({
 	imports: [
@@ -26,7 +27,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 		ItemDisplayComponent,
 		ItemInfoComponent,
 		ItemAddComponent,
-		ItemTypeSelectComponent
+		ItemTypeSelectComponent,
+		ItemDisplayCategoryComponent
 	],
 	exports: [
 		ItemDisplayComponent

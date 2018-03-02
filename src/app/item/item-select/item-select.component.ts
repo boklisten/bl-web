@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {BranchService, ItemService} from "bl-connect";
-import {BlApiError, Branch, Item} from "bl-model";
+import {BlApiError, Branch, Item, UserDetail} from "bl-model";
 import {CartService} from "../../cart/cart.service";
 import {Router} from "@angular/router";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {UserService} from "../../user/user.service";
 
 @Component({
 	selector: 'app-item-select',
@@ -15,13 +16,23 @@ export class ItemSelectComponent implements OnInit {
 	public branch: Branch;
 	
 	constructor(private _itemService: ItemService, private _branchService: BranchService, private _cartService: CartService,
-				private _router: Router, private _branchStoreService: BranchStoreService) {
+				private _router: Router, private _branchStoreService: BranchStoreService, private _userServie: UserService) {
 		
 	}
 	
 	ngOnInit() {
 		if (!this._branchStoreService.getCurrentBranch()) {
-			this._router.navigateByUrl('b/set');
+			this._userServie.getUserDetail().then((userDetail: UserDetail) => {
+				this._branchService.getById(userDetail.branch).then((branch: Branch) => {
+					this._branchStoreService.setCurrentBranch(branch);
+					this.branch = branch;
+				}).catch(() => {
+					console.log('ItemSelectComponent: could not get branch');
+				});
+			}).catch(() => {
+				console.log('ItemSelectComponent: could not get user details');
+				this._router.navigateByUrl('b/set');
+			});
 		} else {
 			this.branch = this._branchStoreService.getCurrentBranch();
 			this._itemService.getManyByIds(this.branch.items).then((items: Item[]) => {

@@ -3,6 +3,7 @@ import {BlApiError, Branch, CustomerItem, Item} from "bl-model";
 import {BranchService, ItemService} from "bl-connect";
 import {Router} from "@angular/router";
 import {CartService} from "../../cart/cart.service";
+import {DateService} from "../../date/date.service";
 
 @Component({
 	selector: 'app-user-customer-item',
@@ -17,7 +18,8 @@ export class UserCustomerItemComponent implements OnInit {
 	public extend: boolean;
 	public buyout: boolean;
 	
-	constructor(private _itemService: ItemService, private _router: Router, private _branchService: BranchService, private _cartService: CartService) {
+	constructor(private _itemService: ItemService, private _router: Router, private _branchService: BranchService,
+				private _cartService: CartService, private _dateService: DateService) {
 		this.extend = false;
 		this.buyout = false;
 	}
@@ -75,6 +77,10 @@ export class UserCustomerItemComponent implements OnInit {
 		
 		this.buyout = true;
 		this._cartService.addCustomerItemBuyout(this.customerItem, this.item, this.branch);
+	}
+	
+	isExpired(): boolean {
+		return this._dateService.isDeadlineExpired(this.customerItem.deadline.toString());
 	}
 	
 	removeCustomerItem() {

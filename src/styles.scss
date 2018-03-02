@@ -55,9 +55,13 @@ a:visited {
 
 .bl-item-display-container {
 	background-color: #ffffff;
-	margin-bottom: 10px;
 	border-radius: 3px;
 	padding: 10px;
+}
+
+.bl-item-display-container-disabled {
+	@extend .bl-item-display-container;
+	border: 5px solid $warning-color;
 }
 
 .bl-item-display-container-your-item {
@@ -89,8 +93,8 @@ a:visited {
 	text-align: center;
 	background-color: #ececec;
 	color: #cfcfcf;
-	height: 92px;
-	line-height: 92px;
+	height: 123px;
+	line-height: 123px;
 }
 
 .bl-item-text {

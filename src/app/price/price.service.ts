@@ -27,16 +27,8 @@ export class PriceService {
 		return !this._branchStoreService.getCurrentBranch().payment.branchResponsible;
 	}
 	
-	public calculatePrice(orderItem: OrderItem, semester: "one" | "two"): number {
-		if (semester === "one") {
-			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.oneSemester);
-		} else {
-			return this.roundDown(orderItem.unitPrice * this._branchStoreService.getCurrentBranch().payment.rentPricePercentage.twoSemesters);
-		}
-	}
-	
 	public buyoutPrice(customerItem: CustomerItem, item: Item): number {
-		return this.roundDown(customerItem.totalAmount - item.price);
+		return this.roundDown(item.price - customerItem.totalAmount);
 	}
 	
 	public extendPrice(customerItem: CustomerItem, branch: Branch): number {

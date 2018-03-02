@@ -1,22 +1,19 @@
 
-<div class="container bl-item-select-branch">
 
-	<div class="row" *ngIf="branch">
-		<div class="col-12">
-			<h2>Bøker tilhørende <i class="bl-item-select-branch-title" (click)="onBranchClick()">{{branch.name}}</i></h2>
-		</div>
-	</div>
+<div class="row" *ngIf="branch">
+    <div class="col-12">
+        <h2>Bøker tilhørende <i class="bl-item-select-branch-title" (click)="onBranchClick()">{{branch.name}}</i></h2>
+    </div>
+</div>
 
+<app-item-display-category [branch]="branch" *ngIf="branch"></app-item-display-category>
 
-	<app-item-display *ngFor="let item of items" [item]="item" [branch]="branch"></app-item-display>
+<div class="row bl-item-select-navigate-to-cart justify-content-center align-items-center" *ngIf="showNavigateToCart()">
+    <div class="col-6">
+        number of items in cart: {{this.numOfItemsInCart()}}
+    </div>
+    <div class="col-6">
+        <button type="button" class="btn btn-success btn-block" (click)="onCartClick()">Go to Cart</button>
+    </div>
 
-	<div class="row bl-item-select-navigate-to-cart justify-content-center align-items-center" *ngIf="showNavigateToCart()">
-		<div class="col-6">
-			number of items in cart: {{this.numOfItemsInCart()}}
-		</div>
-		<div class="col-6">
-			<button type="button" class="btn btn-success btn-block" (click)="onCartClick()">Go to Cart</button>
-		</div>
-
-	</div>
 </div>

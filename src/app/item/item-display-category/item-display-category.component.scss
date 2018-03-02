@@ -1,0 +1,29 @@
+@import "../../../styles";
+
+.bl-display-category-header {
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	//background-color: $primary-color;
+	padding-left: 10px;
+	font-weight: bold;
+	color: $secondary-color;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.bl-display-category-spacer {
+	//background-color: $primary-color;
+	height: 7px;
+	margin-left: 10px;
+}
+
+.bl-display-category-footer {
+	//background-color: $primary-color;
+	height: 7px;
+	margin-left: 10px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	margin-bottom: 20px;
+}
+
+

@@ -23,4 +23,8 @@ export class DateService {
 		return "2018";
 	}
 	
+	public isDeadlineExpired(deadline: string): boolean {
+		return (new Date(deadline).getTime() < new Date().getTime());
+	}
+	
 }
