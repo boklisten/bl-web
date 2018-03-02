@@ -19,11 +19,7 @@ export class ItemAddComponent implements OnInit {
 	}
 	
 	onAdd() {
-		this._cartService.add(this.item);
-		if (this.type) {
-			this._cartService.updateType(this.item.id, this.type);
-			console.log('we updated the type, item is now', this._cartService.get(this.item.id));
-		}
+		this._cartService.add(this.item, this.type);
 	}
 	
 	onDelete() {

@@ -19,20 +19,35 @@ private _cart: CartItem[];
 	}
 	
 	
-	public add(item: Item) {
+	public add(item: Item, orderItemType: "one" | "two" | "buy") {
 		const orderItem: OrderItem = {} as OrderItem;
 		orderItem.item = item.id;
 		orderItem.title = item.title;
-		orderItem.amount = 0;
 		orderItem.unitPrice = item.price;
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
-		orderItem.type = "rent";
 		orderItem.discount = 0;
-		orderItem.rentInfo = {
-			oneSemester: true,
-			twoSemesters: false
-		};
+		
+		if (orderItemType === "one") {
+			orderItem.type = "rent";
+			orderItem.amount = this._priceService.oneSemester(item);
+			orderItem.rentInfo = {
+				oneSemester: true,
+				twoSemesters: false
+			};
+		} else if (orderItemType === "two") {
+			orderItem.type = "rent";
+			orderItem.amount = this._priceService.twoSemesters(item);
+			orderItem.rentInfo = {
+				oneSemester: false,
+				twoSemesters: true
+			};
+		} else if (orderItemType === "buy") {
+			orderItem.type = "buy";
+			orderItem.amount = item.price;
+			orderItem.rentInfo = null;
+		}
+		
 		this._cart.push({item: item, orderItem: orderItem});
 	}
 	
@@ -177,6 +192,7 @@ private _cart: CartItem[];
 						break;
 				}
 			}
+		
 		}
 	}
 	

@@ -19,7 +19,7 @@
                 {{getPrice()}} kr
             </div>
             <div [ngClass]="{'col-6': showPrice(), 'col-12': !showPrice()}">
-                <app-item-add [item]="item" [type]="type"></app-item-add>
+                <app-item-add [item]="item" [type]="orderItemType"></app-item-add>
             </div>
         </div>
     </div>
