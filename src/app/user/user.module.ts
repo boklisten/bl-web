@@ -9,12 +9,14 @@ import { OrderComponent } from './order/order.component';
 import { OrderInfoComponent } from './order/order-info/order-info.component';
 import { UserItemComponent } from './user-item/user-item.component';
 import { UserCustomerItemComponent } from './user-customer-item/user-customer-item.component';
+import {ItemModule} from "../item/item.module";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		UserRoutingModule,
-		BranchModule
+		BranchModule,
+		ItemModule
 	],
 	declarations: [
 		HomeComponent,

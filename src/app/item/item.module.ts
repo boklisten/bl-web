@@ -12,6 +12,8 @@ import {ItemTypeSelectComponent} from "./item-type-select/item-type-select.compo
 import {FormsModule} from "@angular/forms";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ItemDisplayCategoryComponent } from './item-display-category/item-display-category.component';
+import {CartModule} from "../cart/cart.module";
+import {CartGoToBarComponent} from "./cart-go-to-bar/cart-go-to-bar.component";
 
 @NgModule({
 	imports: [
@@ -28,10 +30,12 @@ import { ItemDisplayCategoryComponent } from './item-display-category/item-displ
 		ItemInfoComponent,
 		ItemAddComponent,
 		ItemTypeSelectComponent,
-		ItemDisplayCategoryComponent
+		ItemDisplayCategoryComponent,
+		CartGoToBarComponent
 	],
 	exports: [
-		ItemDisplayComponent
+		ItemDisplayComponent,
+		CartGoToBarComponent
 	]
 })
 export class ItemModule {

@@ -41,9 +41,9 @@ import {CartModule} from "./cart/cart.module";
 		UserModule,
 		BranchModule,
 		FormsModule,
+		CartModule,
 		ItemModule,
-		InfoModule,
-		CartModule
+		InfoModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

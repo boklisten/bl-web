@@ -1,0 +1,11 @@
+<div class="row bl-cart-go-to-bar-container justify-content-center align-items-center" *ngIf="showCartGoToBar()">
+    <div class="col-6">
+        number of items in cart: {{this.numOfItemsInCart()}}
+    </div>
+	<div class="col-3">
+		<h3>{{totalPriceOfCart()}} kr</h3>
+	</div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success btn-block" routerLink="/cart">Go to Cart</button>
+    </div>
+</div>
