@@ -62,8 +62,15 @@ a:visited {
 
 .bl-item-display-container-disabled {
 	@extend .bl-item-display-container;
+	background-color: #cecece;
+}
+
+.bl-item-display-container-warning {
+	@extend .bl-item-display-container;
 	border: 5px solid $warning-color;
 }
+
+
 
 .bl-item-display-container-your-item {
 	@extend .bl-item-display-container;
@@ -80,6 +87,7 @@ a:visited {
 	border-top-right-radius: 3px;
 
 }
+
 
 .bl-item-title {
 	cursor: pointer;
