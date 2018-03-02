@@ -1,6 +1,11 @@
 
+<div class="row mb-3">
+	<div class="col-12">
+		<app-branch-item-category-filter [branch]="branch" (itemCategories)="onItemCategoryFilterChange($event)"></app-branch-item-category-filter>
+	</div>
+</div>
 
-<div class="row" *ngFor="let itemCategory of itemCategories">
+<div class="row" *ngFor="let itemCategory of selectedItemCategories">
 	<div class="col-12">
 		<div class="row">
 			<div class="col-6 bl-display-category-header">

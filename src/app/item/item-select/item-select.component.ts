@@ -43,6 +43,8 @@ export class ItemSelectComponent implements OnInit {
 		}
 	}
 	
+	
+	
 	public onBranchClick() {
 		this._router.navigateByUrl('/b/info/' + this.branch.id);
 	}

@@ -13,22 +13,40 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	
 	private items: Item[];
 	private itemCategories: {name: string, items: Item[]}[];
+	private selectedItemCategories: {name: string, items: Item[]}[];
 	
 	constructor(private _itemService: ItemService) {
 		this.itemCategories = [];
+		this.selectedItemCategories = [];
 		this.items = [];
 	}
 	
 	ngOnInit() {
-		console.log('we got the branch');
 		for (const category of this.branch.itemCategories) {
-			console.log('the category: ', category.name, category.items);
 			this._itemService.getManyByIds(category.items).then((items: Item[]) => {
 				this.itemCategories.push({name: category.name, items: items});
-				console.log('got the items', this.itemCategories);
+				this.selectedItemCategories.push({name: category.name, items: items});
 			}).catch((blApiErr: BlApiError) => {
 				console.log('itemDisplayCategoryComponent: could not get items', blApiErr);
 			});
 		}
+	}
+	
+	onItemCategoryFilterChange(itemCategoryFilters: string[]) {
+		let selectedCategories: {name: string, items: Item[]}[] = [];
+		
+		for (let i = itemCategoryFilters.length; i >= 0; i--) {
+			for (const itemCategory of this.itemCategories) {
+				if (itemCategory.name === itemCategoryFilters[i]) {
+					selectedCategories.push(itemCategory);
+				}
+			}
+		}
+		
+		if (selectedCategories.length <= 0) {
+			selectedCategories = this.itemCategories;
+		}
+		
+		this.selectedItemCategories = selectedCategories;
 	}
 }

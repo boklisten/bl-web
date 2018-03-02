@@ -11,6 +11,7 @@ import { BranchOpeningHoursComponent } from './branch-opening-hours/branch-openi
 import {BranchOpeningHoursService} from "./branch-opening-hours/branch-opening-hours.service";
 import { BranchContactInfoComponent } from './branch-contact-info/branch-contact-info.component';
 import { BranchSetComponent } from './branch-set/branch-set.component';
+import { BranchItemCategoryFilterComponent } from './branch-item-category-filter/branch-item-category-filter.component';
 
 @NgModule({
 	imports: [
@@ -25,10 +26,12 @@ import { BranchSetComponent } from './branch-set/branch-set.component';
 		BranchComponent,
 		BranchOpeningHoursComponent,
 		BranchContactInfoComponent,
-		BranchSetComponent
+		BranchSetComponent,
+		BranchItemCategoryFilterComponent
 	],
 	exports: [
-		BranchSelectComponent
+		BranchSelectComponent,
+		BranchItemCategoryFilterComponent
 	],
 	providers: [
 		BranchStoreService,
