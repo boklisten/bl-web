@@ -27,6 +27,7 @@ export class UserCustomerItemComponent implements OnInit {
 	ngOnInit() {
 		this._itemService.getById(this.customerItem.item).then((item: Item) => {
 			this.item = item;
+			this.initByCart();
 		}).catch((itemBlApiErr: BlApiError) => {
 			console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
 		});
@@ -38,11 +39,16 @@ export class UserCustomerItemComponent implements OnInit {
 		});
 	}
 	
-	isCustomerItemAdded(): boolean {
-		if (!this.item) {
-			return false;
+	initByCart() {
+		if (this._cartService.contains(this.item.id)) {
+			const orderItem = this._cartService.get(this.item.id);
+			
+			if (orderItem.type === "extend") {
+				this.extend = true;
+			} else if (orderItem.type === "buyout") {
+				this.buyout = true;
+			}
 		}
-		return this._cartService.contains(this.item.id);
 	}
 	
 	onItemClick() {
