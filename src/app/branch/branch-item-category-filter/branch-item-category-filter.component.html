@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<button
 			*ngFor="let itemCategoryName of itemCategoryNames"
-			type="button" class="btn btn-sm mr-2"
+			type="button" class="btn mr-2 mb-2"
 			[ngClass]="{'btn-outline-info': !contains(itemCategoryName), 'btn-secondary': contains(itemCategoryName)}"
 			(click)="onSelectCategory(itemCategoryName)">
 				<i class="fa fa-check" *ngIf="contains(itemCategoryName)"></i> {{itemCategoryName}}

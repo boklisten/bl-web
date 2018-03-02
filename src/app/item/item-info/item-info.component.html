@@ -26,18 +26,21 @@
                             <li class="list-group-item">
                                 <b>ISBN:</b> {{item.info.isbn}}
                             </li>
+							<li class="list-group-item">
+								<b>Categories:</b> <h3 class="badge badge-secondary mr-2" *ngFor="let category of item.categories">{{category}}</h3>
+							</li>
                         </ul>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="card">
 						<div class="card-header">
-							Schools that have this book
+							Branches that have this item
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">
-								something
-							</li>
+							<a *ngFor="let branch of branches" routerLink="/b/info/{{branch.id}}" class="list-group-item list-group-item-action">
+								{{branch.name}}
+							</a>
 						</ul>
 					</div>
 				</div>
