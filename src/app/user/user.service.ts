@@ -37,8 +37,8 @@ export class UserService {
 	
 	public getUserDetail(): Promise<UserDetail> {
 		return new Promise((resolve, reject) => {
-			if (!this._tokenService.haveAccessToken()) {
-				reject(new BlError('can not get user detail since user is not logged in'));
+			if (!this.loggedIn()) {
+				return reject(new BlError('can not get user detail since user is not logged in'));
 			}
 			
 			this._userDetailService.getById(this.getUserDetailId()).then((userDetail: UserDetail) => {
@@ -57,7 +57,14 @@ export class UserService {
 		return this._tokenService.getAccessTokenBody().details;
 	}
 	
+	public loggedIn(): boolean {
+		return (this._tokenService.haveAccessToken());
+	}
+	
 	public isCustomerItemActive(itemId: string): Promise<boolean> {
+		if (!this.loggedIn()) {
+			return Promise.reject(new BlError('user is not logged in'));
+		}
 		return new Promise((resolve, reject) => {
 			this.getCustomerItems().then((customerItems: CustomerItem[]) => {
 				for (const customerItem of customerItems) {

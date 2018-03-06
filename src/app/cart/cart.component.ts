@@ -5,6 +5,7 @@ import {BranchService, CustomerItemService, ItemService, OrderService} from "bl-
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {BL_CONFIG} from "bl-connect/bl-connect/bl-config";
 
 @Component({
 	selector: 'app-cart',
@@ -13,14 +14,28 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CartComponent implements OnInit {
 	public showPrice: boolean;
+	public warningMsg: string;
+	private userNotLoggedInMsg: string;
+	
+	public loginUrl: string;
+	public registerUrl: string;
+	public loginButtonText: string;
+	public registerButtonText: string;
 	
 	constructor(private _cartService: CartService, private _branchService: BranchService, private _itemService: ItemService,
 				private _branchStoreService: BranchStoreService, private _userService: UserService, private _orderService: OrderService,
 				private _router: Router, private _route: ActivatedRoute, private _customerItemService: CustomerItemService) {
 		
+		this.userNotLoggedInMsg = 'You must login to order items';
+		this.loginUrl = '/auth/login';
+		this.registerUrl = '/auth/register';
+		this.loginButtonText = 'Login';
+		this.registerButtonText = 'Register';
+		
 	}
 	
 	ngOnInit() {
+		
 		/*
 		this._branchService.getById("5a1d67cdf14cbe78ff047d00").then((branch: Branch) => {
 			this._branchStoreService.setCurrentBranch(branch);
@@ -61,7 +76,18 @@ export class CartComponent implements OnInit {
 		return this._cartService.getTotalPrice();
 	}
 	
+	public setWarning(msg: string) {
+		this.warningMsg = msg;
+	}
+	
 	public onPayment() {
+		this.warningMsg = '';
+		
+		if (!this._userService.loggedIn()) {
+			this.setWarning(this.userNotLoggedInMsg);
+			return;
+		}
+		
 		let order = this._cartService.createOrder();
 		this._cartService.emptyCart();
 		console.log('the order is like this: ', order);

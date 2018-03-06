@@ -4,11 +4,23 @@
 			Cart
 		</div>
 	</div>
+
+	<div class=row *ngIf="warningMsg">
+		<div class="col-12">
+			<ngb-alert type="warning" (close)="warningMsg = null">{{warningMsg}}
+				<button class="btn btn-outline-info" routerLink="{{registerUrl}}">{{registerButtonText}}</button>
+				<button class="btn btn-outline-success" routerLink="{{loginUrl}}">{{loginButtonText}}</button>
+			</ngb-alert>
+		</div>
+	</div>
+
 	<div class="row" *ngIf="!showCart()">
 		<div class="col-12">
 			<div class="alert alert-warning">Cart is empty</div>
 		</div>
 	</div>
+
+
 	<div class="row bl-cart-container">
 		<div class="col-12 bl-cart-container">
 			<app-item-display *ngFor="let cartItem of getCart()" [inCart]="true" [item]="cartItem.item" [customerItem]="cartItem.customerItem" [branch]="cartItem.branch"></app-item-display>
