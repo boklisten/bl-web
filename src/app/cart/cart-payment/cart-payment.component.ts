@@ -3,8 +3,9 @@ import {CartPaymentService} from "./cart-payment.service";
 import {CartService} from "../cart.service";
 import {PaymentMethod} from "bl-model/dist/payment/payment-method/payment-method";
 import {BlApiError, Delivery, Order, Payment} from "bl-model";
-import {OrderService} from 'bl-connect';
+import {OrderService, PaymentService} from 'bl-connect';
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -21,13 +22,14 @@ export class CartPaymentComponent implements OnInit {
 	public showDibsPayment: boolean;
 	@ViewChild(CartPaymentDibsComponent) cartPaymentDibsRef: CartPaymentDibsComponent;
 	
-	public paymentMethod: "dibs" | "stand";
+	public paymentMethod: "branch" | "dibs";
 	
 
 	
 	public showPayment: boolean;
 	
-	constructor(private _cartPaymentService: CartPaymentService, private _cartService: CartService, private _orderService: OrderService) {
+	constructor(private _cartPaymentService: CartPaymentService, private _cartService: CartService, private _orderService: OrderService,
+				private _paymentService: PaymentService, private _router: Router) {
 		this.showPayment = false;
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
@@ -36,6 +38,23 @@ export class CartPaymentComponent implements OnInit {
 	
 	ngOnInit() {
 		this.onPriceUpdate();
+	}
+	
+	onPaymentMethodChange(paymentMethod: "branch" | "dibs") {
+		this.paymentMethod = paymentMethod;
+		console.log('the payment method', this.paymentMethod);
+	}
+	
+	onPayLaterCofirm() {
+		this.order.active = true;
+		
+		this._orderService.add(this.order).then((addedOrder: Order) => {
+			console.log('the added order', addedOrder);
+			this._cartService.emptyCart();
+			this._router.navigateByUrl('/u/order');
+		}).catch((blApiErr: BlApiError) => {
+			console.log('error with adding the error', blApiErr);
+		});
 	}
 	
 	onDeliveryChange(delivery: Delivery) {
