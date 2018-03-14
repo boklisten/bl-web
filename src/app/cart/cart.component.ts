@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
 	public showPrice: boolean;
 	public warningMsg: string;
 	private userNotLoggedInMsg: string;
+	public order: Order;
 	
 	public loginUrl: string;
 	public registerUrl: string;
@@ -33,7 +34,7 @@ export class CartComponent implements OnInit {
 		this.registerUrl = '/auth/register';
 		this.loginButtonText = 'Login';
 		this.registerButtonText = 'Register';
-		
+	
 	}
 	
 	ngOnInit() {
@@ -43,58 +44,11 @@ export class CartComponent implements OnInit {
 		
 		const order = this._cartService.createOrder();
 		
-		
-		
-		
-		
 		this._orderService.add(order).then((addedOrder: Order) => {
-			
-			const payment: any = {
-				method: "dibs",
-				order: addedOrder.id,
-				info: {},
-				amount: order.amount,
-				confirmed: false,
-				customer: this._userService.getUserDetailId(),
-				branch: this._branchStoreService.getCurrentBranch().id
-			};
-			
-			this._paymentService.add(payment).then((addedPayment: Payment) => {
-				console.log('we added a payment and waiting for confirmation', addedPayment);
-			}).catch(() => {
-				console.log('could not add payment');
-			});
-			
-			
-			
+			this.order = addedOrder;
 		}).catch((blApiErr: BlApiError) => {
 			console.log('the api err', blApiErr);
 		});
-		
-		
-		
-		/*
-		this._branchService.getById("5a1d67cdf14cbe78ff047d00").then((branch: Branch) => {
-			this._branchStoreService.setCurrentBranch(branch);
-			this._userService.getUserDetail().then((userDetail: UserDetail) => {
-				this._customerItemService.getManyByIds(userDetail.customerItems).then((customerItems: CustomerItem[]) => {
-					for (const customerItem of customerItems) {
-						this._itemService.getById(customerItem.item).then((item: Item) => {
-							
-							this._cartService.addCustomerItemExtend(customerItem, item, this._branchStoreService.getCurrentBranch());
-							
-						}).catch(() => {
-							console.log('could not get items');
-						});
-					}
-				});
-			}).catch(() => {
-				console.log('could not get customerItems');
-			});
-		}).catch(() => {
-			console.log('could not get branch');
-		});
-		*/
 	}
 	
 	public showCart(): boolean {
@@ -116,25 +70,4 @@ export class CartComponent implements OnInit {
 	public setWarning(msg: string) {
 		this.warningMsg = msg;
 	}
-	
-	public onPayment() {
-		this.warningMsg = '';
-		
-		if (!this._userService.loggedIn()) {
-			this.setWarning(this.userNotLoggedInMsg);
-			return;
-		}
-		
-		let order = this._cartService.createOrder();
-		this._cartService.emptyCart();
-		console.log('the order is like this: ', order);
-		
-		this._orderService.add(order).then((apiOrder: Order) => {
-			console.log('we got the order back from api!', apiOrder);
-			this._router.navigateByUrl('/u/order');
-		}).catch((apiError: BlApiError) => {
-			console.log('we got an error from api', apiError);
-		});
-	}
-	
 }

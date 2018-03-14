@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CustomerItem} from "bl-model";
+import * as moment from 'moment';
 
 @Injectable()
 export class DateService {
@@ -17,6 +18,10 @@ export class DateService {
 		} else {
 			return "";
 		}
+	}
+	
+	public daysUntil(date: Date): string {
+		return moment(date).endOf('day').fromNow();
 	}
 	
 	public getCurrentYear(): string {

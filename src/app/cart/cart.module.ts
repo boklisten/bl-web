@@ -11,6 +11,8 @@ import {PriceService} from "../price/price.service";
 import {ItemModule} from "../item/item.module";
 import { CartPaymentComponent } from './cart-payment/cart-payment.component';
 import {CartPaymentService} from "./cart-payment/cart-payment.service";
+import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
+import { CartPaymentDibsComponent } from './cart-payment/cart-payment-dibs/cart-payment-dibs.component';
 
 @NgModule({
 	imports: [
@@ -22,7 +24,9 @@ import {CartPaymentService} from "./cart-payment/cart-payment.service";
 	],
 	declarations: [
 		CartComponent,
-		CartPaymentComponent
+		CartPaymentComponent,
+		CartDeliveryComponent,
+		CartPaymentDibsComponent
 	],
 	providers: [
 		CartService,

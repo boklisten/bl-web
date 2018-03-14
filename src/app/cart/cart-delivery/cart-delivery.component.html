@@ -1,0 +1,40 @@
+
+<div class="row mt-3">
+	<div class="col-12">
+		<div class="card">
+
+			<div class="card-header">
+				<div class="card-title">
+					<h3>Delivery method</h3>
+				</div>
+			</div>
+
+				<div class="list-group list-group-flush">
+					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('branch')">
+						<div class="row align-items-center justify-content-between">
+                            <div class="col-10">
+                                <h5>Hent selv</h5>
+                                <p>Hent selv hos Sonans på våre oppgitte tider</p>
+                            </div>
+                            <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'branch'">
+                                <i class="fa fa-check fa-2x"></i>
+                            </div>
+						</div>
+					</button>
+
+					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('bring')">
+						<div class="row align-items-center justify-content-between">
+                            <div class="col-10">
+                                <h5>Levering i posten</h5>
+                                <p>Få bøkene levert i posten av Bring.</p>
+								<p *ngIf="currentDelivery">Pris: <b>{{currentDelivery.info['amount']}}kr</b> Leveringstid: <b>{{getEstimatedDelivery()}}</b></p>
+                            </div>
+                            <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'bring'">
+                                <i class="fa fa-check fa-2x"></i>
+                            </div>
+						</div>
+					</button>
+				</div>
+		</div>
+	</div>
+</div>

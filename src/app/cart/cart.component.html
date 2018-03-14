@@ -27,5 +27,5 @@
 		</div>
 	</div>
 
-	<app-cart-payment></app-cart-payment>
+	<app-cart-payment [order]="order" *ngIf="order"></app-cart-payment>
 </div>

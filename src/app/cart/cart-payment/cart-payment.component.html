@@ -1,5 +1,30 @@
 
+<div class="row">
+	<div class="col-12">
+		<div class="btn-group btn-group-toggle btn-group-lg btn-block" ngbRadioGroup name="paymentMethod" [(ngModel)]="paymentMethod">
+            <label ngbButtonLabel class="btn-outline-info">
+                <input ngbButton type="radio" value="dibs" (click)="onTypeUpdate('extend')">Betal nå
+            </label>
+            <label ngbButtonLabel class="btn-outline-info">
+                <input ngbButton type="radio" value="stand" (click)="onTypeUpdate('buyout')">Betal senere på stand
+            </label>
+        </div>
+	</div>
+</div>
+
+<div class="row" *ngIf="paymentMethod === 'dibs'">
+	<div class="col-5">
+		<app-cart-delivery [order]="order" (delivery)="onDeliveryChange($event)"></app-cart-delivery>
+	</div>
+	<div class="col-7">
+		<app-cart-payment-dibs [method]="paymentMethod"></app-cart-payment-dibs>
+		<div class="row">
+			<div class="col-12">
+				total price: {{getTotalPrice()}}kr
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
-	<div id="dibs-complete-checkout"></div>
