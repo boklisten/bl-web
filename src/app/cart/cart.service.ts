@@ -148,15 +148,7 @@ private _cart: CartItem[];
 			order.user = {
 				id: this._userService.getUserId()
 			};
-			order.payments = [
-				{
-					method: "card",
-					amount: this.getTotalPrice(),
-					confirmed: false,
-					time: new Date(),
-					byBranch: false
-				}
-			];
+			order.payments = [];
 			
 		}
 		

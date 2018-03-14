@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "./cart.service";
-import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem, UserDetail} from "bl-model";
+import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem, Payment, UserDetail} from "bl-model";
 import {BranchService, CustomerItemService, ItemService, OrderService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BL_CONFIG} from "bl-connect/bl-connect/bl-config";
+import {PaymentService} from "bl-connect";
 
 @Component({
 	selector: 'app-cart',
@@ -24,7 +25,8 @@ export class CartComponent implements OnInit {
 	
 	constructor(private _cartService: CartService, private _branchService: BranchService, private _itemService: ItemService,
 				private _branchStoreService: BranchStoreService, private _userService: UserService, private _orderService: OrderService,
-				private _router: Router, private _route: ActivatedRoute, private _customerItemService: CustomerItemService) {
+				private _router: Router, private _route: ActivatedRoute, private _customerItemService: CustomerItemService,
+				private _paymentService: PaymentService) {
 		
 		this.userNotLoggedInMsg = 'You must login to order items';
 		this.loginUrl = '/auth/login';
@@ -35,6 +37,41 @@ export class CartComponent implements OnInit {
 	}
 	
 	ngOnInit() {
+		if (this._cartService.isEmpty()) {
+			return;
+		}
+		
+		const order = this._cartService.createOrder();
+		
+		
+		
+		
+		
+		this._orderService.add(order).then((addedOrder: Order) => {
+			
+			const payment: any = {
+				method: "dibs",
+				order: addedOrder.id,
+				info: {},
+				amount: order.amount,
+				confirmed: false,
+				customer: this._userService.getUserDetailId(),
+				branch: this._branchStoreService.getCurrentBranch().id
+			};
+			
+			this._paymentService.add(payment).then((addedPayment: Payment) => {
+				console.log('we added a payment and waiting for confirmation', addedPayment);
+			}).catch(() => {
+				console.log('could not add payment');
+			});
+			
+			
+			
+		}).catch((blApiErr: BlApiError) => {
+			console.log('the api err', blApiErr);
+		});
+		
+		
 		
 		/*
 		this._branchService.getById("5a1d67cdf14cbe78ff047d00").then((branch: Branch) => {

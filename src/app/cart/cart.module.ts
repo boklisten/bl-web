@@ -9,6 +9,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {DateService} from "../date/date.service";
 import {PriceService} from "../price/price.service";
 import {ItemModule} from "../item/item.module";
+import { CartPaymentComponent } from './cart-payment/cart-payment.component';
+import {CartPaymentService} from "./cart-payment/cart-payment.service";
 
 @NgModule({
 	imports: [
@@ -19,12 +21,14 @@ import {ItemModule} from "../item/item.module";
 		ItemModule
 	],
 	declarations: [
-		CartComponent
+		CartComponent,
+		CartPaymentComponent
 	],
 	providers: [
 		CartService,
 		DateService,
-		PriceService
+		PriceService,
+		CartPaymentService
 	]
 })
 export class CartModule {
