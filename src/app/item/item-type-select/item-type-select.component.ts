@@ -71,9 +71,9 @@ export class ItemTypeSelectComponent implements OnInit {
 			const orderItem = this._cartService.get(this.item.id);
 			
 			if (orderItem.type === "rent") {
-				if (orderItem.rentInfo.oneSemester) {
+				if (orderItem.info.periodType === "semester") {
 					this.typeSelect = "one";
-				} else if (orderItem.rentInfo.twoSemesters) {
+				} else if (orderItem.info.periodType === "year") {
 					this.typeSelect = "two";
 				}
 			} else if (orderItem.type === "buy") {

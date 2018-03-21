@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BlApiError, Delivery, Order} from "bl-model";
-import {DeliveryMethod} from "bl-model/dist/delivery/delivery-method/delivery-method";
-import {DeliveryService} from "bl-connect";
+import {BlApiError, Delivery, Order, DeliveryMethod} from "bl-model";
 import {DateService} from "../../date/date.service";
+import {DeliveryService} from 'bl-connect';
 
 @Component({
 	selector: 'app-cart-delivery',
@@ -46,7 +45,9 @@ export class CartDeliveryComponent implements OnInit {
 				id: '',
 				amount: 0,
 				method: 'branch',
-				info: {},
+				info: {
+					branch: 'branch1'
+				},
 				order: this.order.id
 			};
 			this.delivery.emit(defaultDelivery);
@@ -74,7 +75,9 @@ export class CartDeliveryComponent implements OnInit {
 		const delivery: Delivery = {
 			id: '',
 			method: this.deliveryMethod,
-			info: {},
+			info: {
+				branch: 'branch2'
+			},
 			order: this.order.id,
 			amount: 0
 		};

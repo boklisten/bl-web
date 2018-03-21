@@ -46,7 +46,6 @@ export class ItemDisplayComponent implements OnInit {
 	
 	public isCustomerItemActive(): Promise<boolean> {
 		return new Promise((resolve, reject) => {
-			
 			this._userService.isCustomerItemActive(this.item.id).then(() => {
 				this.customerItemActive = true;
 				resolve(true);
@@ -68,21 +67,17 @@ export class ItemDisplayComponent implements OnInit {
 	public getPrice(): number {
 		switch (this.orderItemType) {
 			case "one":
-				return this._priceService.oneSemester(this.item);
+				return this._priceService.getItemPrice(this.item, this.branch, "semester");
 			case "two":
-				return this._priceService.twoSemesters(this.item);
+				return this._priceService.getItemPrice(this.item, this.branch, "year");
 			case "buy":
-				return this.item.price;
+				return this._priceService.getItemPrice(this.item, this.branch, "buy");
 			case "buyout":
-				if (!this.customerItem) {
-					return;
-				}
-				return this._priceService.buyoutPrice(this.customerItem, this.item);
+				return this._priceService.getCustomerItemPrice(this.customerItem, this.item, this.branch, "buyout");
 			case "extend":
-				if (!this.customerItem) {
-					return;
-				}
-				return this._priceService.extendPrice(this.customerItem, this.branch);
+				return this._priceService.getCustomerItemPrice(this.customerItem, this.item, this.branch, "extend");
+			default:
+				return -1;
 		}
 	}
 	

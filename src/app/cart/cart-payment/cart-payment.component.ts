@@ -1,8 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
 import {CartService} from "../cart.service";
-import {PaymentMethod} from "bl-model/dist/payment/payment-method/payment-method";
-import {BlApiError, Delivery, Order, Payment} from "bl-model";
+import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "bl-model";
 import {OrderService, PaymentService} from 'bl-connect';
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
 import {Router} from "@angular/router";

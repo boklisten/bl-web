@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Branch, CustomerItem, Item, Order, OrderItem} from "bl-model";
-import {BranchService} from "bl-connect";
+import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem} from "bl-model";
+import {OrderService} from "bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
-import {createUrlTree} from "@angular/router/src/create_url_tree";
 
 
 type CartItem = {item: Item, orderItem: OrderItem, customerItem?: CustomerItem, branch?: Branch};
@@ -13,8 +12,10 @@ type CartItem = {item: Item, orderItem: OrderItem, customerItem?: CustomerItem, 
 export class CartService {
 
 private _cart: CartItem[];
-
-	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService, private _priceService: PriceService) {
+	private _currentOrder: Order;
+	
+	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
+				private _priceService: PriceService, private _orderService: OrderService) {
 		this._cart = [];
 	}
 	
@@ -25,44 +26,54 @@ private _cart: CartItem[];
 		orderItem.title = item.title;
 		orderItem.unitPrice = item.price;
 		orderItem.taxAmount = 0;
-		orderItem.taxRate = 0;
-		orderItem.discount = 0;
-		
+		orderItem.taxRate = item.taxRate;
+	/*
+		orderItem.discount = {
+			amount: 0
+		};
+	*/
 		if (orderItemType === "one") {
 			orderItem.type = "rent";
-			orderItem.amount = this._priceService.oneSemester(item);
-			orderItem.rentInfo = {
-				oneSemester: true,
-				twoSemesters: false
+			orderItem.info = {
+				from: new Date(),
+				to: new Date(),
+				numberOfPeriods: 1,
+				periodType: "semester"
 			};
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
 		} else if (orderItemType === "two") {
 			orderItem.type = "rent";
-			orderItem.amount = this._priceService.twoSemesters(item);
-			orderItem.rentInfo = {
-				oneSemester: false,
-				twoSemesters: true
+			orderItem.info = {
+				from: new Date(),
+				to: new Date(),
+				numberOfPeriods: 1,
+				periodType: 'year'
 			};
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
 		} else if (orderItemType === "buy") {
 			orderItem.type = "buy";
-			orderItem.amount = item.price;
-			orderItem.rentInfo = null;
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
 		}
 		
-		this._cart.push({item: item, orderItem: orderItem});
+		this._cart.push({item: item, orderItem: orderItem, branch: this._branchStoreService.getCurrentBranch()});
 	}
 	
 	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branch: Branch) {
-		
 		const orderItem: OrderItem = {} as OrderItem;
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.unitPrice = item.price;
-		orderItem.customerItem = customerItem.id;
-		orderItem.amount = this._priceService.extendPrice(customerItem, branch);
+		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.type = "extend";
-		orderItem.discount = 0;
+		orderItem.info = {
+			from: new Date(),
+			to: new Date(),
+			numberOfPeriods: 1,
+			periodType: "semester",
+			customerItem: customerItem.id
+		};
 		
 		this._cart.push({item: item, orderItem: orderItem, customerItem: customerItem, branch: branch});
 	}
@@ -74,10 +85,8 @@ private _cart: CartItem[];
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.title = item.title;
-		orderItem.customerItem = customerItem.id;
-		orderItem.amount = this._priceService.buyoutPrice(customerItem, item);
+		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
 		orderItem.type = "buyout";
-		orderItem.discount = 0;
 		
 		this._cart.push({item: item, orderItem: orderItem, customerItem: customerItem, branch: branch});
 	}
@@ -135,7 +144,33 @@ private _cart: CartItem[];
 		return orderItems;
 	}
 	
-	public createOrder(): Order {
+	
+	public getOrder(): Promise<Order> {
+		const createdOrder = this.createOrder();
+		
+		if (!this._currentOrder) {
+			return this._orderService.add(createdOrder).then((addedOrder: Order) => {
+				console.log('we got a order back from api', addedOrder);
+				this._currentOrder = addedOrder;
+				return this._currentOrder;
+			}).catch((blApiErr) => {
+				return Promise.reject(blApiErr);
+			});
+		}
+		
+		if (createdOrder === this._currentOrder) {
+			return Promise.resolve(this._currentOrder);
+		}
+		
+		return this._orderService.update(this._currentOrder.id, createdOrder).then((updatedOrder: Order) => {
+			this._currentOrder = updatedOrder;
+			return updatedOrder;
+		}).catch((blApiErr: BlApiError) => {
+			return Promise.reject(blApiErr);
+		});
+	}
+	
+	private createOrder(): Order {
 		const order: Order = {} as Order;
 		
 		if (this._cart.length > 0) {
@@ -143,13 +178,8 @@ private _cart: CartItem[];
 			order.branch = this._branchStoreService.getCurrentBranch().id;
 			order.customer = this._userService.getUserDetailId();
 			order.orderItems = this.getOrderItems();
-			order.application = 'bl-web';
 			order.byCustomer = true;
-			order.user = {
-				id: this._userService.getUserId()
-			};
 			order.payments = [];
-			
 		}
 		
 		return order;
@@ -189,43 +219,49 @@ private _cart: CartItem[];
 	}
 	
 	private updateTypeBuyout(cartItem: CartItem) {
-		cartItem.orderItem.rentInfo = null;
+		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buyout";
-		cartItem.orderItem.amount = this._priceService.buyoutPrice(cartItem.customerItem, cartItem.item);
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 	
 	private updateTypeExtend(cartItem: CartItem) {
-		cartItem.orderItem.rentInfo = null;
+		cartItem.orderItem.info = {
+			from: new Date(),
+			to: new Date(),
+			numberOfPeriods: 1,
+			periodType: "semester",
+			customerItem: cartItem.customerItem.id
+		};
 		cartItem.orderItem.type = "extend";
-		cartItem.orderItem.amount = this._priceService.extendPrice(cartItem.customerItem, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 	
 	private updateTypeBuy(cartItem: CartItem) {
-		cartItem.orderItem.rentInfo = null;
+		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buy";
-		cartItem.orderItem.amount = cartItem.orderItem.unitPrice;
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 	
 	private updateTypeOneSemester(cartItem: CartItem) {
-		this.addRentInfo(cartItem);
-		cartItem.orderItem.rentInfo.oneSemester = true;
-		cartItem.orderItem.rentInfo.twoSemesters = false;
-		cartItem.orderItem.amount = this._priceService.oneSemester(cartItem.item);
+		cartItem.orderItem.info = {
+			from: new Date(),
+			to: new Date(),
+			numberOfPeriods: 1,
+			periodType: "semester"
+		};
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 		cartItem.orderItem.type = "rent";
 	}
 	
 	private updateTypeTwoSemesters(cartItem: CartItem) {
-		this.addRentInfo(cartItem);
-		cartItem.orderItem.rentInfo.oneSemester = false;
-		cartItem.orderItem.rentInfo.twoSemesters = true;
-		cartItem.orderItem.amount = this._priceService.twoSemesters(cartItem.item);
+		cartItem.orderItem.info = {
+			from: new Date(),
+			to: new Date(),
+			numberOfPeriods: 1,
+			periodType: "semester"
+		};
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 		cartItem.orderItem.type = "rent";
-	}
-	
-	private addRentInfo(cartItem: CartItem) {
-		if (!cartItem.orderItem.rentInfo) {
-			cartItem.orderItem.rentInfo = {oneSemester: false, twoSemesters: false};
-		}
 	}
 	
 	public emptyCart() {

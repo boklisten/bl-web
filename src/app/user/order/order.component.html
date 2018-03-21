@@ -15,4 +15,4 @@
 		</div>
 	</div>
 
-	<app-order-info *ngFor="let order of orders" [order]="order"></app-order-info>
+	<app-order-info *ngFor="let order of orders.reverse()" [order]="order"></app-order-info>

@@ -42,12 +42,10 @@ export class CartComponent implements OnInit {
 			return;
 		}
 		
-		const order = this._cartService.createOrder();
-		
-		this._orderService.add(order).then((addedOrder: Order) => {
-			this.order = addedOrder;
+		this._cartService.getOrder().then((order: Order) => {
+			this.order = order;
 		}).catch((blApiErr: BlApiError) => {
-			console.log('the api err', blApiErr);
+			console.log('could not get the order');
 		});
 	}
 	

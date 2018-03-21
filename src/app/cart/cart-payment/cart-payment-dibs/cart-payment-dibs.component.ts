@@ -1,7 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {BlApiError, Payment} from "bl-model";
+import {BlApiError, Payment, PaymentMethod} from "bl-model";
 import {CartPaymentService} from "../cart-payment.service";
-import {PaymentMethod} from "bl-model/dist/payment/payment-method";
 
 @Component({
 	selector: 'app-cart-payment-dibs',

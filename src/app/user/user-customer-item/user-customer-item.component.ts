@@ -32,11 +32,14 @@ export class UserCustomerItemComponent implements OnInit {
 			console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
 		});
 		
+		/*
+		
 		this._branchService.getById(this.customerItem.handoutBranch).then((branch: Branch) => {
 			this.branch = branch;
 		}).catch((branchBlApiErr: BlApiError) => {
 			console.log('userCustomerItemComponent: could not get branch', branchBlApiErr);
 		});
+		*/
 	}
 	
 	initByCart() {
@@ -56,7 +59,9 @@ export class UserCustomerItemComponent implements OnInit {
 	}
 	
 	onDeliverClick() {
+		/*
 		this._router.navigateByUrl('b/info/' + this.customerItem.handoutBranch);
+		*/
 	}
 	
 	onExtendClick() {
