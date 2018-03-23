@@ -1,11 +1,5 @@
-<div class="container">
-	<div class="row">
-		<div class="bl-cart-title col-12">
-			Cart
-		</div>
-	</div>
-
-	<div class=row *ngIf="warningMsg">
+<div class="container mt-5">
+	<div class="row" *ngIf="warningMsg">
 		<div class="col-12">
 			<ngb-alert type="warning" (close)="warningMsg = null">{{warningMsg}}
 				<button class="btn btn-outline-info" routerLink="{{registerUrl}}">{{registerButtonText}}</button>
@@ -14,11 +8,8 @@
 		</div>
 	</div>
 
-	<div class="row" *ngIf="!showCart()">
-		<div class="col-12">
-			<div class="alert alert-warning">Cart is empty</div>
-		</div>
-	</div>
+	<app-cart-empty *ngIf="!showCart()"></app-cart-empty>
+
 
 	<div class="row bl-cart-container">
 		<div class="col-12 bl-cart-container">
@@ -26,5 +17,5 @@
 		</div>
 	</div>
 
-	<app-cart-checkout></app-cart-checkout>
+	<app-cart-checkout *ngIf="showCart()"></app-cart-checkout>
 </div>

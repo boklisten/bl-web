@@ -1,16 +1,37 @@
 
-
-<div class="row">
-	<div class="col-12">
-		----
+<div class="row justify-content-center">
+	<div class="col-3">
+		<div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
+			<label ngbButtonLabel class="btn-info">
+				<input ngbButton type="radio" value="now"> Pay now
+			</label>
+			<label ngbButtonLabel class="btn-info">
+				<input ngbButton type="radio" value="later"> Pay later
+			</label>
+		</div>
 	</div>
 </div>
 
-<div class="row">
+<div class="row mt-5" *ngIf="paymentDecision === 'now'">
 	<div class="col-6">
 		<app-cart-delivery></app-cart-delivery>
 	</div>
 	<div class="col-6">
 		<!-- <app-cart-payment [order]="order"></app-cart-payment> -->
+	</div>
+</div>
+
+<div class="row mt-5 justify-content-center" *ngIf="paymentDecision === 'later'">
+	<div class="col-12 bl-cart-pay-later">
+		<div class="row align-items-center">
+			<div class="col-6">
+				Pay <b>{{getPrice()}} kr</b> later at branch
+			</div>
+			<div class="col-6">
+				<button class="btn btn-block btn-lg btn-success">
+					Confirm order
+				</button>
+			</div>
+		</div>
 	</div>
 </div>

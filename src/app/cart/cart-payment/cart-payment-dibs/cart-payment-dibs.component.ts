@@ -37,7 +37,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 			containerId: 'dibs-complete-checkout',
 			language: 'nb-NO'
 		};
-		
+		/*
 		this._cartPaymentService.payDibs(this.order).then((payment: Payment) => {
 			this.currentPayment = payment;
 			this.dibsCheckoutOptions.paymentId = payment.id;
@@ -52,5 +52,6 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 		}).catch((blApiErr: BlApiError) => {
 			console.log('the api err', blApiErr);
 		});
+		*/
 	}
 }
