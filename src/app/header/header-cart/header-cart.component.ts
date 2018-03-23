@@ -20,6 +20,10 @@ export class HeaderCartComponent implements OnInit {
 		return (!this._cartService.isEmpty() && (this._location.path().indexOf('cart') <= -1));
 	}
 	
+	getCartSize(): number {
+		return this._cartService.getSize();
+	}
+	
 	displaySelected(): boolean {
 		return (this._location.path().indexOf('cart') > -1);
 	}

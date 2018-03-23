@@ -153,6 +153,10 @@ private _cart: CartItem[];
 		return this._cart;
 	}
 	
+	public getSize(): number {
+		return this._cart.length;
+	}
+	
 	public getOrderItems(): OrderItem[] {
 		const orderItems: OrderItem[] = [];
 		

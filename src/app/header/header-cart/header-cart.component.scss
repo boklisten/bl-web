@@ -19,11 +19,14 @@
 .bl-alert-circle {
 	background-color: $alert-color;
 	border-radius: 50%;
-	height: 15px;
-	width: 15px;
+	height: 18px;
+	width: 18px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
 	margin-left: auto;
 	margin-right: auto;
 	position: absolute;
-	top: -13%;
+	top: -21%;
 	left: 55%;
 }
