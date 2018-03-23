@@ -7,6 +7,7 @@ import {UserService} from "../user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BL_CONFIG} from "bl-connect/bl-connect/bl-config";
 import {PaymentService} from "bl-connect";
+import {CartOrderService} from "./order/cart-order.service";
 
 @Component({
 	selector: 'app-cart',
@@ -27,7 +28,7 @@ export class CartComponent implements OnInit {
 	constructor(private _cartService: CartService, private _branchService: BranchService, private _itemService: ItemService,
 				private _branchStoreService: BranchStoreService, private _userService: UserService, private _orderService: OrderService,
 				private _router: Router, private _route: ActivatedRoute, private _customerItemService: CustomerItemService,
-				private _paymentService: PaymentService) {
+				private _paymentService: PaymentService, private _cartOrderService: CartOrderService) {
 		
 		this.userNotLoggedInMsg = 'You must login to order items';
 		this.loginUrl = '/auth/login';

@@ -10,31 +10,19 @@ import {CartCheckoutService} from "./cart-checkout.service";
 export class CartCheckoutComponent implements OnInit {
 	
 	public paymentDecision: "now" | "later";
+	public order: Order;
 	
 	constructor(private _cartCheckoutService: CartCheckoutService) {
 	}
 	
 	ngOnInit() {
 		this.paymentDecision = "now";
-		this._cartCheckoutService.onOrderChange().subscribe((order: Order) => {
-			console.log('the order changed!', order);
-		});
+		
 	}
-	
-	
-	public onDeliveryUpdate(delivery: Delivery) {
-		console.log('the delivery changed', delivery);
-	}
-	
-	public onPaymentUpdate(payment: Payment) {
-		console.log('the payment changed', payment);
-	}
+
 	
 	public getPrice(): number {
-		if (!this._cartCheckoutService.getOrder()) {
-			return -1;
-		}
-		return this._cartCheckoutService.getOrder().amount;
+		return -1;
 	}
 	
 }

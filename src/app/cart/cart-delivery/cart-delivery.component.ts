@@ -5,6 +5,8 @@ import {DeliveryService} from 'bl-connect';
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "./cart-delivery.service";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
+import {CartService} from "../cart.service";
+import {CartOrderService} from "../order/cart-order.service";
 
 @Component({
 	selector: 'app-cart-delivery',
@@ -13,17 +15,17 @@ import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 })
 export class CartDeliveryComponent implements OnInit {
 	
-	
 	@Output() delivery: EventEmitter<Delivery>;
+	
+	public order: Order;
 	
 	public deliveryMethod: DeliveryMethod;
 	public currentDelivery: Delivery;
-	private order: Order;
 	public toPostalCode: string;
 	
 	
 	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService,
-				private _cartCheckoutService: CartCheckoutService) {
+				private _cartCheckoutService: CartCheckoutService, private _cartService: CartService, private _cartOrderService: CartOrderService) {
 		
 		this.deliveryMethod = 'branch';
 		this.delivery = new EventEmitter();
@@ -31,16 +33,15 @@ export class CartDeliveryComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		this.order = this._cartCheckoutService.getOrder();
 		
+		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		
-		if (this.order) {
-			this.addOrUpdateDelivery();
+		if (this.currentDelivery) {
+			this.deliveryMethod = this.currentDelivery.method;
 		}
 		
-		this._cartCheckoutService.onOrderChange().subscribe((order: Order) => {
+		this._cartDeliveryService.onOrderChange().subscribe((order: Order) => {
 			this.order = order;
-			this.addOrUpdateDelivery();
 		});
 	}
 	
@@ -69,6 +70,7 @@ export class CartDeliveryComponent implements OnInit {
 	}
 	
 	private updateDelivery(updatedDelivery: Delivery) {
+		console.log('we have updated the delivery', updatedDelivery);
 		this.currentDelivery = updatedDelivery;
 	}
 	

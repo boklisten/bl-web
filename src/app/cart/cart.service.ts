@@ -19,7 +19,6 @@ interface CartItem {
 export class CartService {
 
 private _cart: CartItem[];
-	private _currentOrder: Order;
 	private cartChange$: Subject<boolean>;
 	
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,

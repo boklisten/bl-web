@@ -3,6 +3,8 @@ import {OrderService, PaymentService} from "bl-connect";
 import {CartService} from "../cart.service";
 import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "bl-model";
 import {Subject} from "rxjs/Subject";
+import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
+import {CartOrderService} from "../order/cart-order.service";
 
 @Injectable()
 export class CartPaymentService {
@@ -10,16 +12,16 @@ export class CartPaymentService {
 	private currentPayment: Payment;
 	private paymentChange$: Subject<Payment>;
 	
-	constructor(private _paymentService: PaymentService, private _cartService: CartService) {
+	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService) {
 		this.paymentChange$ = new Subject();
+		
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			console.log('cartPaymentService: order changed', order);
+		});
 	}
 	
-	public clearPayment() {
-		this.currentPayment = null;
-	}
-	
-	public getPayment() {
-		return this.currentPayment;
+	public onPaymentChange() {
+		return this.paymentChange$;
 	}
 	
 	public changePaymentMethod(order: Order, method: "dibs" | "later"): Promise<Payment> {
@@ -29,6 +31,14 @@ export class CartPaymentService {
 			case "later":
 				return this.updateOrSetPayment(this.updateLaterPayment(order));
 		}
+	}
+	
+	public clearPayment() {
+		this.currentPayment = null;
+	}
+	
+	public getPayment() {
+		return this.currentPayment;
 	}
 	
 	private updateDibsPayment(order: Order): Payment {

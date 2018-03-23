@@ -17,6 +17,7 @@ import {CartDeliveryService} from "./cart-delivery/cart-delivery.service";
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import {CartCheckoutService} from "./cart-checkout/cart-checkout.service";
 import { CartEmptyComponent } from './cart-empty/cart-empty.component';
+import {CartOrderService} from "./order/cart-order.service";
 
 @NgModule({
 	imports: [
@@ -37,6 +38,7 @@ import { CartEmptyComponent } from './cart-empty/cart-empty.component';
 	providers: [
 		CartService,
 		DateService,
+		CartOrderService,
 		PriceService,
 		CartPaymentService,
 		CartDeliveryService,

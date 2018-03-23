@@ -4,18 +4,38 @@ import {DeliveryService} from 'bl-connect';
 import {Delivery, BlApiError, Order} from 'bl-model';
 import {Subject} from "rxjs/Subject";
 import {del} from "selenium-webdriver/http";
+import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
+import {CartService} from "../cart.service";
+import {CartOrderService} from "../order/cart-order.service";
 
 @Injectable()
 export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
+	private _orderChange$: Subject<Order>;
 	private _currentDelivery: Delivery;
 	
-	constructor(private _branchStoreService: BranchStoreService, private _deliveryService: DeliveryService) {
+	constructor(private _branchStoreService: BranchStoreService, private _deliveryService: DeliveryService,
+				private _cartService: CartService, private _cartOrderService: CartOrderService) {
+		
 		this._deliveryChange$ = new Subject();
+		this._orderChange$ = new Subject();
+		
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			console.log('cartDeliveryService: orderUpdated', order);
+			this._orderChange$.next(order);
+		});
+	}
+	
+	public onOrderChange(): Subject<Order> {
+		return this._orderChange$;
 	}
 	
 	public onDeliveryChange(): Subject<Delivery> {
 		return this._deliveryChange$;
+	}
+	
+	public getDelivery(): Delivery {
+		return this._currentDelivery;
 	}
 	
 	public updateDeliveryBring(order: Order, toPostal: string): Promise<Delivery> {

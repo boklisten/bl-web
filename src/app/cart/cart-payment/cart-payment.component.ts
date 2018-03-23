@@ -15,27 +15,15 @@ import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 })
 export class CartPaymentComponent implements OnInit {
 	
-	@Input() order: Order;
-	@Output() paymentUpdate: EventEmitter<Payment>;
 	
-	public method: PaymentMethod;
-	public payment: Payment;
-	public delivery: Delivery;
-	public showDibsPayment: boolean;
 	@ViewChild(CartPaymentDibsComponent) cartPaymentDibsRef: CartPaymentDibsComponent;
-	
+	public payment: Payment;
+	public showDibsPayment: boolean;
 	public paymentMethod: "later" | "dibs";
 	
-
-	
-	public showPayment: boolean;
-	
 	constructor(private _cartPaymentService: CartPaymentService) {
-		
-		this.showPayment = false;
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
-		this.paymentUpdate = new EventEmitter();
 	}
 	
 	ngOnInit() {
@@ -46,9 +34,6 @@ export class CartPaymentComponent implements OnInit {
 	}
 	
 	getTotalPrice(): number {
-		if (!this.delivery) {
-			return this.order.amount;
-		}
-		return this.order.amount + this.delivery.amount;
+		return -1;
 	}
 }
