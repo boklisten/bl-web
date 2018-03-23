@@ -13,6 +13,9 @@ import { CartPaymentComponent } from './cart-payment/cart-payment.component';
 import {CartPaymentService} from "./cart-payment/cart-payment.service";
 import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
 import { CartPaymentDibsComponent } from './cart-payment/cart-payment-dibs/cart-payment-dibs.component';
+import {CartDeliveryService} from "./cart-delivery/cart-delivery.service";
+import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+import {CartCheckoutService} from "./cart-checkout/cart-checkout.service";
 
 @NgModule({
 	imports: [
@@ -26,13 +29,16 @@ import { CartPaymentDibsComponent } from './cart-payment/cart-payment-dibs/cart-
 		CartComponent,
 		CartPaymentComponent,
 		CartDeliveryComponent,
-		CartPaymentDibsComponent
+		CartPaymentDibsComponent,
+		CartCheckoutComponent
 	],
 	providers: [
 		CartService,
 		DateService,
 		PriceService,
-		CartPaymentService
+		CartPaymentService,
+		CartDeliveryService,
+		CartCheckoutService
 	]
 })
 export class CartModule {

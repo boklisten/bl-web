@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
 import {CartService} from "../cart.service";
 import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "bl-model";
 import {OrderService, PaymentService} from 'bl-connect';
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
 import {Router} from "@angular/router";
+import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 
 
 @Component({
@@ -15,51 +16,46 @@ import {Router} from "@angular/router";
 export class CartPaymentComponent implements OnInit {
 	
 	@Input() order: Order;
+	@Output() paymentUpdate: EventEmitter<Payment>;
+	
 	public method: PaymentMethod;
 	public payment: Payment;
 	public delivery: Delivery;
 	public showDibsPayment: boolean;
 	@ViewChild(CartPaymentDibsComponent) cartPaymentDibsRef: CartPaymentDibsComponent;
 	
-	public paymentMethod: "branch" | "dibs";
+	public paymentMethod: "later" | "dibs";
 	
 
 	
 	public showPayment: boolean;
 	
 	constructor(private _cartPaymentService: CartPaymentService, private _cartService: CartService, private _orderService: OrderService,
-				private _paymentService: PaymentService, private _router: Router) {
+				private _paymentService: PaymentService, private _router: Router, private _cartDeliveryService: CartDeliveryService) {
+		
+		
 		this.showPayment = false;
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
+		this.paymentUpdate = new EventEmitter();
 	
 	}
 	
 	ngOnInit() {
-		this.onPriceUpdate();
 	}
 	
-	onPaymentMethodChange(paymentMethod: "branch" | "dibs") {
-		this.paymentMethod = paymentMethod;
-		console.log('the payment method', this.paymentMethod);
+	onDibsPaymentUpdate(payment: Payment) {
+		console.log('we got a updated payment from dibs component', this.payment);
+		this.paymentUpdate.emit(payment);
+	}
+
+	
+	onPayLaterConfirm() {
+	
 	}
 	
-	onPayLaterCofirm() {
-		this.order.active = true;
-		
-		this._orderService.add(this.order).then((addedOrder: Order) => {
-			console.log('the added order', addedOrder);
-			this._cartService.emptyCart();
-			this._router.navigateByUrl('/u/order');
-		}).catch((blApiErr: BlApiError) => {
-			console.log('error with adding the error', blApiErr);
-		});
-	}
 	
 	onDeliveryChange(delivery: Delivery) {
-		console.log('we have the delivery in cartPayment', delivery);
-		console.log('the order', this.order);
-		
 		if (this.delivery !== delivery) {
 			if (this.cartPaymentDibsRef) {
 				this.cartPaymentDibsRef.ngOnDestroy();
@@ -69,14 +65,14 @@ export class CartPaymentComponent implements OnInit {
 			
 			this.delivery = delivery;
 			
-			console.log('the delivery is now', this.delivery);
 			
 			this.onPriceUpdate();
 			
-			this._orderService.update(this.order.id, orderData).then((order: Order) => {
+			this._orderService.getById(this.order.id).then((order: Order) => {
+				this.order = order;
 				console.log('we got back the updated order', order);
 			}).catch((blApiErr: BlApiError) => {
-				console.log('blApierr', blApiErr);
+				console.log('cartPaymentComponent: could not get order by id', blApiErr);
 			});
 		}
 	}

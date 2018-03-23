@@ -42,11 +42,13 @@ export class CartComponent implements OnInit {
 			return;
 		}
 		
-		this._cartService.getOrder().then((order: Order) => {
-			this.order = order;
-		}).catch((blApiErr: BlApiError) => {
-			console.log('could not get the order');
-		});
+		if (!this._branchStoreService.getCurrentBranch()) {
+			this._branchService.get().then((branches: Branch[]) => {
+				this._branchStoreService.setCurrentBranch(branches[0]);
+			}).catch(() => {
+				console.log('TEST cartService: could not get branches');
+			});
+		}
 	}
 	
 	public showCart(): boolean {

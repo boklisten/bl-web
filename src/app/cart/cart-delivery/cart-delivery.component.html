@@ -13,7 +13,7 @@
 					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('branch')">
 						<div class="row align-items-center justify-content-between">
                             <div class="col-10">
-                                <h5>Hent selv</h5>
+                                <h4>Hent selv</h4>
                                 <p>Hent selv hos Sonans på våre oppgitte tider</p>
                             </div>
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'branch'">
@@ -25,9 +25,9 @@
 					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('bring')">
 						<div class="row align-items-center justify-content-between">
                             <div class="col-10">
-                                <h5>Levering i posten</h5>
+                                <h4>Levering i posten</h4>
                                 <p>Få bøkene levert i posten av Bring.</p>
-								<p *ngIf="currentDelivery">Pris: <b>{{currentDelivery.info['amount']}}kr</b> Leveringstid: <b>{{getEstimatedDelivery()}}</b></p>
+								<p *ngIf="currentDelivery && currentDelivery.info['amount']">Pris: <b>{{currentDelivery.info['amount']}}kr</b> Leveringstid: <b>{{getEstimatedDelivery()}}</b></p>
                             </div>
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'bring'">
                                 <i class="fa fa-check fa-2x"></i>

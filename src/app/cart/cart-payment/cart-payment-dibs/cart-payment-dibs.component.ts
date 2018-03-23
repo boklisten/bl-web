@@ -1,5 +1,5 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {BlApiError, Payment, PaymentMethod} from "bl-model";
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {BlApiError, Payment, PaymentMethod, Order} from "bl-model";
 import {CartPaymentService} from "../cart-payment.service";
 
 @Component({
@@ -16,18 +16,18 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 		language: string
 	};
 	
-	@Input() method: PaymentMethod;
-	
-	public payment: Payment;
+	@Input() order: Order;
+	@Output() payment: EventEmitter<Payment>;
+	private currentPayment: Payment;
 	
 	constructor(private _cartPaymentService: CartPaymentService) {
+		this.payment = new EventEmitter();
 	}
 	
 	ngOnInit() {
 		this.onDibsPayment();
 	}
 	ngOnDestroy() {
-		console.log('destroyedd');
 	}
 	
 	onDibsPayment() {
@@ -38,12 +38,10 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 			language: 'nb-NO'
 		};
 		
-		
-		this.method = "dibs";
-		
-		this._cartPaymentService.getPayment(this.method).then((payment: Payment) => {
-			this.payment = payment;
+		this._cartPaymentService.payDibs(this.order).then((payment: Payment) => {
+			this.currentPayment = payment;
 			this.dibsCheckoutOptions.paymentId = payment.id;
+			this.payment.emit(this.currentPayment);
 			
 			const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
 			
