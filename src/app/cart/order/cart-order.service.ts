@@ -13,11 +13,13 @@ export class CartOrderService {
 	constructor(private _cartService: CartService, private _orderService: OrderService) {
 		this._orderChange$ = new Subject();
 		
-		if (this._cartService.getSize()) {
+		if (this._cartService.getSize() > 0) {
+			console.log('cartOrderService: creating order');
 			this.updateOrder(this._cartService.createOrder());
 		}
 		
 		this._cartService.onCartChange().subscribe(() => {
+			console.log('cartOrderService: the cart changed', this._cartService.getSize());
 			if (this._cartService.getSize() > 0) {
 				this.updateOrder(this._cartService.createOrder());
 			}
@@ -44,6 +46,7 @@ export class CartOrderService {
 		}
 		
 		if (this._currentOrder) {
+			console.log('cartOrderService: trying to update');
 			this._orderService.update(this._currentOrder.id, order).then((updatedOrder: Order) => {
 				this._currentOrder = updatedOrder;
 				this._orderChange$.next(this._currentOrder);
@@ -51,6 +54,7 @@ export class CartOrderService {
 				console.log('cartOrderService: could not update order', blApiErr);
 			});
 		} else {
+			console.log('cartOrderService: trying to add');
 			this._orderService.add(order).then((addedOrder: Order) => {
 				this._currentOrder = addedOrder;
 				this._orderChange$.next(this._currentOrder);

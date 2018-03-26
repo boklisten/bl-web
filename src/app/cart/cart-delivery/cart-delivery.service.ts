@@ -13,15 +13,28 @@ export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
 	private _orderChange$: Subject<Order>;
 	private _currentDelivery: Delivery;
+	private _initialConfigDone: boolean;
 	
 	constructor(private _branchStoreService: BranchStoreService, private _deliveryService: DeliveryService,
 				private _cartService: CartService, private _cartOrderService: CartOrderService) {
 		
 		this._deliveryChange$ = new Subject();
 		this._orderChange$ = new Subject();
+		this._initialConfigDone = false;
 		
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			console.log('cartDeliveryService: orderUpdated', order);
+			
+			if (!this._initialConfigDone) {
+				this.updateDeliveryBranch().then((addedDelivery: Delivery) => {
+					console.log('the added delivery');
+					this._currentDelivery = addedDelivery;
+					this._initialConfigDone = false;
+					this._deliveryChange$.next(this._currentDelivery);
+				}).catch((blApiError: BlApiError) => {
+					console.log('cartDeliveryService: could not add initial delivery from api');
+				});
+			}
 			this._orderChange$.next(order);
 		});
 	}
@@ -38,13 +51,13 @@ export class CartDeliveryService {
 		return this._currentDelivery;
 	}
 	
-	public updateDeliveryBring(order: Order, toPostal: string): Promise<Delivery> {
-		const bringDeliveryPatch = this.createBringDelivery(order, toPostal);
+	public updateDeliveryBring(toPostal: string): Promise<Delivery> {
+		const bringDeliveryPatch = this.createBringDelivery(toPostal);
 		return this.addOrUpdateDelivery(bringDeliveryPatch);
 	}
 	
-	public updateDeliveryBranch(order: Order): Promise<Delivery> {
-		const branchDeliveryPatch = this.createBranchDelivery(order);
+	public updateDeliveryBranch(): Promise<Delivery> {
+		const branchDeliveryPatch = this.createBranchDelivery();
 		return this.addOrUpdateDelivery(branchDeliveryPatch);
 	}
 	
@@ -55,22 +68,23 @@ export class CartDeliveryService {
 				this._currentDelivery = updatedDelivery;
 				return updatedDelivery;
 			}).catch((blApiErr: BlApiError) => {
-				console.log('cartDeliveryComponent: could not update delivery', blApiErr);
+				console.log('cartDeliveryService: could not update delivery', blApiErr);
 				return Promise.reject(blApiErr);
 			});
 		} else {
 			return this._deliveryService.add(delivery).then((addedDelivery: Delivery) => {
-				this._deliveryChange$.next(addedDelivery);
 				this._currentDelivery = addedDelivery;
+				this._deliveryChange$.next(addedDelivery);
 				return addedDelivery;
 			}).catch((blApiErr: BlApiError) => {
-				console.log('cartDeliveryComponent: could not add delivery', blApiErr);
+				console.log('cartDeliveryService: could not add delivery', blApiErr);
 				return Promise.reject(blApiErr);
 			});
 		}
 	}
 	
-	private createBringDelivery(order: Order, toPostal: string): any {
+	private createBringDelivery(toPostal: string): any {
+		const order = this._cartOrderService.getOrder();
 		return {
 			method: "bring",
 			info: {
@@ -82,7 +96,8 @@ export class CartDeliveryService {
 		};
 	}
 	
-	private createBranchDelivery(order: Order): any {
+	private createBranchDelivery(): any {
+		const order = this._cartOrderService.getOrder();
 		return {
 			method: 'branch',
 			info: {

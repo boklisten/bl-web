@@ -17,7 +17,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 		language: string
 	};
 	
-	private order: Order;
+	@Input() order: Order;
 	
 	
 	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService) {

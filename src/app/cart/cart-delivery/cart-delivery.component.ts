@@ -17,8 +17,6 @@ export class CartDeliveryComponent implements OnInit {
 	
 	@Output() delivery: EventEmitter<Delivery>;
 	
-	public order: Order;
-	
 	public deliveryMethod: DeliveryMethod;
 	public currentDelivery: Delivery;
 	public toPostalCode: string;
@@ -30,66 +28,59 @@ export class CartDeliveryComponent implements OnInit {
 		this.deliveryMethod = 'branch';
 		this.delivery = new EventEmitter();
 		this.toPostalCode = "7070";
-	}
-	
-	ngOnInit() {
-		
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
 		}
-		
-		this._cartDeliveryService.onOrderChange().subscribe((order: Order) => {
-			this.order = order;
+	}
+	
+	ngOnInit() {
+		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
+			console.log('cartDeliveryCOmponent: the delivery updated!', delivery);
+			this.currentDelivery = this._cartDeliveryService.getDelivery();
+			this.deliveryMethod = this.currentDelivery.method;
 		});
 	}
 	
-	addOrUpdateDelivery() {
-		if (this.deliveryMethod === 'branch') {
-			this.updateDeliveryBranch();
-		} else if (this.deliveryMethod === 'bring') {
-			this.updateDeliveryBring(this.toPostalCode);
-		}
-	}
-	
 	private updateDeliveryBring(toPostal: string) {
-		this._cartDeliveryService.updateDeliveryBring(this.order, toPostal).then((updatedDelivery: Delivery) => {
-			this.updateDelivery(updatedDelivery);
+		this._cartDeliveryService.updateDeliveryBring(toPostal).then((updatedDelivery: Delivery) => {
+			this.currentDelivery = updatedDelivery;
+			this.deliveryMethod = updatedDelivery.method;
+			console.log('cartDeliveryComponent: delivery updated');
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartDeliveryComponent: failed to update delivery type branch');
 		});
 	}
 	
 	private updateDeliveryBranch() {
-		this._cartDeliveryService.updateDeliveryBranch(this.order).then((updatedDelivery: Delivery) => {
-			this.updateDelivery(updatedDelivery);
+		this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
+			this.currentDelivery = updatedDelivery;
+			this.deliveryMethod = updatedDelivery.method;
+			console.log('cartDeliveryComponent: delivery updated');
+			
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartDeliveryComponent: failed to update delivery type branch');
 		});
-	}
-	
-	private updateDelivery(updatedDelivery: Delivery) {
-		console.log('we have updated the delivery', updatedDelivery);
-		this.currentDelivery = updatedDelivery;
 	}
 	
 	onDeliveryClick(deliveryMethod: DeliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 		
 		if (!this.currentDelivery) {
-			return;
+			this.currentDelivery = this._cartDeliveryService.getDelivery();
 		}
 		
-		if (this.currentDelivery.id) {
-			switch (deliveryMethod) {
-				case "bring":
-					this.updateDeliveryBring(this.toPostalCode);
-					break;
-				case "branch":
-					this.updateDeliveryBranch();
-					break;
-			}
+		console.log('cartDeliveryComponent: delivery click ', this.currentDelivery);
+		
+	
+		switch (deliveryMethod) {
+			case "bring":
+				this.updateDeliveryBring(this.toPostalCode);
+				break;
+			case "branch":
+				this.updateDeliveryBranch();
+				break;
 		}
 	}
 	
