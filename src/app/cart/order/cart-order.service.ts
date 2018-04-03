@@ -40,13 +40,24 @@ export class CartOrderService {
 		return this._currentOrder;
 	}
 	
+	public reloadOrder() {
+		this._orderService.getById(this._currentOrder.id).then((reloadedOrder: Order) => {
+			console.log('cartOrderService: reloaded order');
+			if (this._currentOrder !== reloadedOrder) {
+				this._currentOrder = reloadedOrder;
+				this._orderChange$.next(this._currentOrder);
+			}
+		}).catch((blApiErr: BlApiError) => {
+			console.log('cartOrderService: error when trying to get order', blApiErr);
+		});
+	}
+	
 	private updateOrder(order: Order) {
 		if (order === this._currentOrder) {
 			return;
 		}
 		
 		if (this._currentOrder) {
-			console.log('cartOrderService: trying to update');
 			this._orderService.update(this._currentOrder.id, order).then((updatedOrder: Order) => {
 				this._currentOrder = updatedOrder;
 				this._orderChange$.next(this._currentOrder);
@@ -54,7 +65,6 @@ export class CartOrderService {
 				console.log('cartOrderService: could not update order', blApiErr);
 			});
 		} else {
-			console.log('cartOrderService: trying to add');
 			this._orderService.add(order).then((addedOrder: Order) => {
 				this._currentOrder = addedOrder;
 				this._orderChange$.next(this._currentOrder);

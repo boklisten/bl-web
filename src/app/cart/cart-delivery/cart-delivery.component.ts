@@ -36,8 +36,11 @@ export class CartDeliveryComponent implements OnInit {
 	}
 	
 	ngOnInit() {
+		this.currentDelivery = this._cartDeliveryService.getDelivery();
+		if (this.currentDelivery) {
+			this.deliveryMethod = this.currentDelivery.method;
+		}
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
-			console.log('cartDeliveryCOmponent: the delivery updated!', delivery);
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 			this.deliveryMethod = this.currentDelivery.method;
 		});
@@ -47,7 +50,6 @@ export class CartDeliveryComponent implements OnInit {
 		this._cartDeliveryService.updateDeliveryBring(toPostal).then((updatedDelivery: Delivery) => {
 			this.currentDelivery = updatedDelivery;
 			this.deliveryMethod = updatedDelivery.method;
-			console.log('cartDeliveryComponent: delivery updated');
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartDeliveryComponent: failed to update delivery type branch');
 		});
@@ -57,7 +59,6 @@ export class CartDeliveryComponent implements OnInit {
 		this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
 			this.currentDelivery = updatedDelivery;
 			this.deliveryMethod = updatedDelivery.method;
-			console.log('cartDeliveryComponent: delivery updated');
 			
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartDeliveryComponent: failed to update delivery type branch');
@@ -71,9 +72,6 @@ export class CartDeliveryComponent implements OnInit {
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 		}
 		
-		console.log('cartDeliveryComponent: delivery click ', this.currentDelivery);
-		
-	
 		switch (deliveryMethod) {
 			case "bring":
 				this.updateDeliveryBring(this.toPostalCode);

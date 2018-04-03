@@ -28,6 +28,9 @@ export class CartCheckoutComponent implements OnInit {
 
 	
 	public getPrice(): number {
+		if (!this.order) {
+			return 0;
+		}
 		return this.order.amount;
 	}
 	

@@ -11,36 +11,52 @@ import {CartOrderService} from "../order/cart-order.service";
 @Injectable()
 export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
-	private _orderChange$: Subject<Order>;
 	private _currentDelivery: Delivery;
 	private _initialConfigDone: boolean;
+	private _fromPostalService: string;
 	
 	constructor(private _branchStoreService: BranchStoreService, private _deliveryService: DeliveryService,
 				private _cartService: CartService, private _cartOrderService: CartOrderService) {
 		
 		this._deliveryChange$ = new Subject();
-		this._orderChange$ = new Subject();
 		this._initialConfigDone = false;
+		this._fromPostalService = '1316';
 		
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+		const orderChange$ = this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			console.log('cartDeliveryService: orderUpdated', order);
 			
-			if (!this._initialConfigDone) {
+			if (!this._currentDelivery || this._currentDelivery.method === 'branch') {
 				this.updateDeliveryBranch().then((addedDelivery: Delivery) => {
-					console.log('the added delivery');
 					this._currentDelivery = addedDelivery;
-					this._initialConfigDone = false;
+					this._initialConfigDone = true;
 					this._deliveryChange$.next(this._currentDelivery);
 				}).catch((blApiError: BlApiError) => {
 					console.log('cartDeliveryService: could not add initial delivery from api');
 				});
 			}
-			this._orderChange$.next(order);
+		});
+		
+		const cartChange$ = this._cartService.onCartChange().subscribe(() => {
+			this.updateDelivery().then(() => {
+			
+			}).catch((blApiErr: BlApiError) => {
+				console.log('cartDeliveryService: could not update delivery', blApiErr);
+			});
+		});
+		
+		this.onDeliveryChange().subscribe(() => {
+			this._cartOrderService.reloadOrder();
+			orderChange$.unsubscribe();
 		});
 	}
 	
-	public onOrderChange(): Subject<Order> {
-		return this._orderChange$;
+	private updateDelivery(): Promise<Delivery> {
+		switch (this._currentDelivery.method) {
+			case "bring":
+				return this.updateDeliveryBring(this._currentDelivery.info['to']);
+			case "branch":
+				return this.updateDeliveryBranch();
+		}
 	}
 	
 	public onDeliveryChange(): Subject<Delivery> {
@@ -88,7 +104,7 @@ export class CartDeliveryService {
 		return {
 			method: "bring",
 			info: {
-				from: '0560',
+				from: this._fromPostalService,
 				to: toPostal
 			},
 			order: order.id,
