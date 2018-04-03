@@ -51,7 +51,7 @@ private _cart: CartItem[];
 				numberOfPeriods: 1,
 				periodType: "semester"
 			};
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		} else if (orderItemType === "two") {
 			orderItem.type = "rent";
 			orderItem.info = {
@@ -60,13 +60,13 @@ private _cart: CartItem[];
 				numberOfPeriods: 1,
 				periodType: 'year'
 			};
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		} else if (orderItemType === "buy") {
 			orderItem.type = "buy";
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
+			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		}
 		
-		this.addToCart(item, orderItem, this._branchStoreService.getCurrentBranch());
+		this.addToCart(item, orderItem, this._branchStoreService.getBranch());
 	}
 	
 	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branch: Branch) {
@@ -74,7 +74,7 @@ private _cart: CartItem[];
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.unitPrice = item.price;
-		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
+		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.type = "extend";
@@ -96,7 +96,7 @@ private _cart: CartItem[];
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.title = item.title;
-		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getCurrentBranch());
+		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		orderItem.type = "buyout";
 		
 		this.addToCart(item, orderItem, branch, customerItem);
@@ -179,7 +179,7 @@ private _cart: CartItem[];
 		const order: Order = {} as Order;
 		
 		order.amount = this.getTotalPrice();
-		order.branch = this._branchStoreService.getCurrentBranch().id;
+		order.branch = this._branchStoreService.getBranch().id;
 		order.customer = this._userService.getUserDetailId();
 		order.orderItems = this.getOrderItems();
 		order.byCustomer = true;

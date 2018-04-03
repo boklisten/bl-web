@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
 			return;
 		}
 		
-		if (!this._branchStoreService.getCurrentBranch()) {
+		if (!this._branchStoreService.getBranch()) {
 			this._branchService.get().then((branches: Branch[]) => {
 				this._branchStoreService.setCurrentBranch(branches[0]);
 			}).catch(() => {

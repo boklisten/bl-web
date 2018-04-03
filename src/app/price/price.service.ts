@@ -76,7 +76,11 @@ export class PriceService {
 	}
 	
 	public showPrice(): boolean {
-		return !this._branchStoreService.getCurrentBranch().paymentInfo.responsible;
+		if (!this._branchStoreService.getBranch()) {
+			return false;
+		}
+		
+		return !this._branchStoreService.getBranch().paymentInfo.responsible;
 	}
 	
 	private roundDown(num: number): number {

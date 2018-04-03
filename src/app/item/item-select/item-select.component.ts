@@ -21,7 +21,7 @@ export class ItemSelectComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		if (!this._branchStoreService.getCurrentBranch()) {
+		if (!this._branchStoreService.getBranch()) {
 			this._userServie.getUserDetail().then((userDetail: UserDetail) => {
 				this._branchService.getById(userDetail.branch).then((branch: Branch) => {
 					this._branchStoreService.setCurrentBranch(branch);
@@ -34,7 +34,7 @@ export class ItemSelectComponent implements OnInit {
 				this._router.navigateByUrl('b/set');
 			});
 		} else {
-			this.branch = this._branchStoreService.getCurrentBranch();
+			this.branch = this._branchStoreService.getBranch();
 			this._itemService.getManyByIds(this.branch.items).then((items: Item[]) => {
 				this.items = items;
 			}).catch((blApiErr: BlApiError) => {

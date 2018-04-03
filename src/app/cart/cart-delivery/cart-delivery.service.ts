@@ -117,7 +117,7 @@ export class CartDeliveryService {
 		return {
 			method: 'branch',
 			info: {
-				branch: this._branchStoreService.getCurrentBranch().id
+				branch: order.branch
 			},
 			order: order.id,
 			amount: 0
