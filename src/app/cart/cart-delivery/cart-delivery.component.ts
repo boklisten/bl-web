@@ -57,8 +57,8 @@ export class CartDeliveryComponent implements OnInit {
 	
 	private updateDeliveryBranch() {
 		this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
-			this.currentDelivery = updatedDelivery;
 			this.deliveryMethod = updatedDelivery.method;
+			this.currentDelivery = updatedDelivery;
 			
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartDeliveryComponent: failed to update delivery type branch');

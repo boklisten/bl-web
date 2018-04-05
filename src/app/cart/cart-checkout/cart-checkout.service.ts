@@ -11,18 +11,28 @@ import {CartOrderService} from "../order/cart-order.service";
 export class CartCheckoutService {
 	private currentDelivery: Delivery;
 	private currentPayment: Payment;
+	private currentOrder: Order;
 	
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
-				private _cartOrderService: CartOrderService) {
+				private _cartOrderService: CartOrderService, private _orderService: OrderService) {
 		
 		this.onDeliveryChange();
 		this.onPaymentChange();
 		this.onOrderChange();
 	}
 	
+	public placeOrder(): Promise<Order> {
+		return this._orderService.update(this.currentOrder.id, {placed: true}).then((placedOrder: Order) => {
+			return placedOrder;
+		}).catch((blApiError: BlApiError) => {
+			return Promise.reject(blApiError);
+		});
+	}
+	
 	private onOrderChange() {
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			console.log('cartCheckoutService: the order changed', order);
+			this.currentOrder = order;
 		});
 	}
 	

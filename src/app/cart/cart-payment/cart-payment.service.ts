@@ -45,6 +45,7 @@ export class CartPaymentService {
 		return {
 			method: 'dibs',
 			order: order.id,
+			amount: order.amount,
 			info: {},
 			taxAmount: this.getOrderTaxAmount(order),
 			customer: order.customer,
@@ -54,13 +55,17 @@ export class CartPaymentService {
 	
 	private updateLaterPayment(order: Order): Payment {
 		return {
+			id: '',
 			method: 'later',
 			order: order.id,
-			info: {},
+			amount: order.amount,
+			info: {
+				branch: order.branch
+			},
 			taxAmount: this.getOrderTaxAmount(order),
 			customer: order.customer,
 			branch: order.branch
-		} as Payment;
+		};
 	}
 	private updateOrSetPayment(payment: Payment): Promise<Payment> {
 		return new Promise((resolve, reject) => {
