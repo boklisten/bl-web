@@ -26,6 +26,10 @@ export class CartOrderService {
 		});
 	}
 	
+	public clearOrder() {
+		this._currentOrder = null;
+	}
+	
 	
 	public setOrder(order: Order) {
 		this._currentOrder = order;

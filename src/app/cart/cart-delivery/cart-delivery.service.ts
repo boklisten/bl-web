@@ -59,6 +59,10 @@ export class CartDeliveryService {
 		}
 	}
 	
+	public clearDelivery() {
+		this._currentDelivery = null;
+	}
+	
 	public onDeliveryChange(): Subject<Delivery> {
 		return this._deliveryChange$;
 	}

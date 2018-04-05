@@ -166,7 +166,7 @@ private _cart: CartItem[];
 		return orderItems;
 	}
 	
-	public emptyCart() {
+	public clearCart() {
 		this._cart = [];
 		this.cartChange$.next(true);
 	}

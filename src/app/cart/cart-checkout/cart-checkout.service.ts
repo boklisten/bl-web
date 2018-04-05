@@ -14,7 +14,7 @@ export class CartCheckoutService {
 	private currentOrder: Order;
 	
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
-				private _cartOrderService: CartOrderService, private _orderService: OrderService) {
+				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService) {
 		
 		this.onDeliveryChange();
 		this.onPaymentChange();
@@ -23,6 +23,13 @@ export class CartCheckoutService {
 	
 	public placeOrder(): Promise<Order> {
 		return this._orderService.update(this.currentOrder.id, {placed: true}).then((placedOrder: Order) => {
+			// we need to clear everything after order is placed
+			
+			this._cartOrderService.clearOrder();
+			this._cartPaymentService.clearPayment();
+			this._cartDeliveryService.clearDelivery();
+			this._cartService.clearCart();
+			
 			return placedOrder;
 		}).catch((blApiError: BlApiError) => {
 			return Promise.reject(blApiError);

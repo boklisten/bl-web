@@ -53,6 +53,7 @@ export class CartCheckoutComponent implements OnInit {
 	
 	public onConfirmOrder() {
 		this._cartCheckoutService.placeOrder().then((placedOrder: Order) => {
+			
 			this._router.navigateByUrl('u/order');
 		});
 	}
