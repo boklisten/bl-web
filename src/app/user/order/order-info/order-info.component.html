@@ -7,7 +7,8 @@
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item" *ngFor="let orderItem of order.orderItems">
-                        <b>{{orderItem.title}}</b> <i>{{orderItem.type}}</i> - {{orderItem.amount}}kr</li>
+						<app-order-item-info [orderItem]="orderItem"></app-order-item-info>
+					</li>
                 </ul>
             </div>
             <div class="card-footer ">

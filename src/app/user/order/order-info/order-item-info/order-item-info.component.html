@@ -1,0 +1,24 @@
+
+
+
+<div class="row">
+
+	<div class="col-8">
+		<h5>{{orderItem.title}}</h5>
+	</div>
+
+	<div class="col-4">
+		<b>{{getStatus()}}</b>
+	</div>
+
+	 <div class="col-12">
+		 <div *ngIf="orderItem.type === 'rent'">
+			 Rent to <b>{{orderItem.info.to | date}}</b>
+		 </div>
+
+		 <div *ngIf="orderItem.amount > 0">
+			 <small>Price: {{orderItem.amount}} kr</small>
+		 </div>
+	 </div>
+
+</div>
