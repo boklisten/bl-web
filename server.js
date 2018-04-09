@@ -5,7 +5,6 @@ const path = require('path');
 
 app.use(express.static(__dirname + '/dist'));
 
-
 // If an incoming request uses
 // a protocol other than HTTPS,
 // redirect that request to the
