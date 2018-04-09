@@ -29,7 +29,7 @@ const forceSSL = function() {
 // to use the forceSSL
 // middleware
 
-app.use(forceSSL());
+//app.use(forceSSL());
 
 
 

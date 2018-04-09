@@ -36,7 +36,7 @@ import {BlConnectModule} from "@wizardcoder/bl-connect";
 	],
 	imports: [
 		BrowserModule,
-		BlConnectModule.withConfig({basePath: 'http://api.boklisten.co/api/v1/'}),
+		BlConnectModule,
 		HomeModule,
 		AppRoutingModule,
 		LoginModule,
@@ -51,4 +51,8 @@ import {BlConnectModule} from "@wizardcoder/bl-connect";
 	bootstrap: [AppComponent]
 })
 export class AppModule {
+	constructor() {
+		BlConnectModule.withConfig({basePath: 'http://api.boklisten.co/api/v1/'});
+		LoginModule.withConfig({successPath: 'u/home'});
+	}
 }

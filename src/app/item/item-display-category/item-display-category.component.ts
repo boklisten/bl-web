@@ -11,9 +11,9 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	
 	@Input() branch: Branch;
 	
-	private items: Item[];
-	private itemCategories: {name: string, items: Item[]}[];
-	private selectedItemCategories: {name: string, items: Item[]}[];
+	items: Item[];
+	itemCategories: {name: string, items: Item[]}[];
+	selectedItemCategories: {name: string, items: Item[]}[];
 	
 	constructor(private _itemService: ItemService) {
 		this.itemCategories = [];

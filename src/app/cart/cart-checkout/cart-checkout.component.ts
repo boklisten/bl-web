@@ -16,7 +16,7 @@ export class CartCheckoutComponent implements OnInit {
 	
 	public paymentDecision: "now" | "later";
 	public order: Order;
-	private showPaymentDecision: boolean;
+	showPaymentDecision: boolean;
 	
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
