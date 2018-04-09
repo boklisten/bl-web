@@ -23,12 +23,15 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	
 	ngOnInit() {
 		for (const category of this.branch.itemCategories) {
-			this._itemService.getManyByIds(category.items).then((items: Item[]) => {
-				this.itemCategories.push({name: category.name, items: items});
-				this.selectedItemCategories.push({name: category.name, items: items});
-			}).catch((blApiErr: BlApiError) => {
-				console.log('itemDisplayCategoryComponent: could not get items', blApiErr);
-			});
+			
+			if (category.items && category.items.length > 0) {
+				this._itemService.getManyByIds(category.items).then((items: Item[]) => {
+					this.itemCategories.push({name: category.name, items: items});
+					this.selectedItemCategories.push({name: category.name, items: items});
+				}).catch((blApiErr: BlApiError) => {
+					console.log('itemDisplayCategoryComponent: could not get items', blApiErr);
+				});
+			}
 		}
 	}
 	
