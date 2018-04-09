@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {OrderService, PaymentService} from "bl-connect";
+import {OrderService, PaymentService} from "@wizardcoder/bl-connect";
 import {CartService} from "../cart.service";
-import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "bl-model";
+import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "@wizardcoder/bl-model";
 import {Subject} from "rxjs/Subject";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 import {CartOrderService} from "../order/cart-order.service";

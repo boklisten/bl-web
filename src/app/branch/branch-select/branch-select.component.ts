@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {BlApiError, Branch} from "bl-model";
+import {BlApiError, Branch} from "@wizardcoder/bl-model";
 import {BranchStoreService} from "../branch-store.service";
-import {BranchService} from "bl-connect";
+import {BranchService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'app-branch-select',

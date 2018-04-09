@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Order, Payment, Delivery, BlApiError} from 'bl-model';
+import {Order, Payment, Delivery, BlApiError} from '@wizardcoder/bl-model';
 import {CartCheckoutService} from "./cart-checkout.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";

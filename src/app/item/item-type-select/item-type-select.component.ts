@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CustomerItem, Item} from "bl-model";
+import {CustomerItem, Item} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";

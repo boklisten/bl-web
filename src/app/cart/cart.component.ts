@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "./cart.service";
-import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem, Payment, UserDetail} from "bl-model";
-import {BranchService, CustomerItemService, ItemService, OrderService} from "bl-connect";
+import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem, Payment, UserDetail} from "@wizardcoder/bl-model";
+import {BranchService, CustomerItemService, ItemService, OrderService, PaymentService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BL_CONFIG} from "bl-connect/bl-connect/bl-config";
-import {PaymentService} from "bl-connect";
 import {CartOrderService} from "./order/cart-order.service";
 
 @Component({

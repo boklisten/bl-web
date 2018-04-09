@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenService} from "bl-connect";
 import {UserService} from "./user.service";
 
 @Component({

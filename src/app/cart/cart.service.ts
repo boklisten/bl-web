@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem} from "bl-model";
-import {OrderService} from "bl-connect";
+import {BlApiError, Branch, CustomerItem, Item, Order, OrderItem} from "@wizardcoder/bl-model";
+import {OrderService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";

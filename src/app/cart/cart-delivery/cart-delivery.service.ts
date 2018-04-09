@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BranchStoreService} from "../../branch/branch-store.service";
-import {DeliveryService} from 'bl-connect';
-import {Delivery, BlApiError, Order} from 'bl-model';
+import {DeliveryService} from '@wizardcoder/bl-connect';
+import {Delivery, BlApiError, Order} from '@wizardcoder/bl-model';
 import {Subject} from "rxjs/Subject";
 import {del} from "selenium-webdriver/http";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";

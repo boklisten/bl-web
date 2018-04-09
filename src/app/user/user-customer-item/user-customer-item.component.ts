@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BlApiError, Branch, CustomerItem, Item} from "bl-model";
-import {BranchService, ItemService} from "bl-connect";
+import {BlApiError, Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
+import {BranchService, ItemService} from "@wizardcoder/bl-connect";
 import {Router} from "@angular/router";
 import {CartService} from "../../cart/cart.service";
 import {DateService} from "../../date/date.service";

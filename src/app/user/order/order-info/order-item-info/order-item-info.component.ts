@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OrderItem, CustomerItem, BlApiError} from 'bl-model';
-import {CustomerItemService} from 'bl-connect';
+import {OrderItem, CustomerItem, BlApiError} from '@wizardcoder/bl-model';
+import {CustomerItemService} from '@wizardcoder/bl-connect';
 
 @Component({
 	selector: 'app-order-item-info',

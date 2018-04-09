@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {LoginModule} from 'bl-login';
+import {LoginModule} from '@wizardcoder/bl-login';
 import {WelcomeComponent} from "./welcome/welcome.component";
 
 

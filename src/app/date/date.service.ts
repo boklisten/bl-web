@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CustomerItem} from "bl-model";
+import {CustomerItem} from "@wizardcoder/bl-model";
 import * as moment from 'moment';
 
 @Injectable()

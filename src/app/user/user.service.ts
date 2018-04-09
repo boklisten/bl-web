@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {CustomerItemService, TokenService, UserDetailService} from "bl-connect";
-import {BlApiError, BlError, CustomerItem, UserDetail, UserPermission} from "bl-model";
+import {CustomerItemService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
+import {BlApiError, BlError, CustomerItem, UserDetail, UserPermission} from "@wizardcoder/bl-model";
 
 @Injectable()
 export class UserService {

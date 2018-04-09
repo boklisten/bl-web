@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HomeModule} from "./home/home.module";
-import {LoginModule} from "bl-login";
+import {LoginModule} from "@wizardcoder/bl-login";
 import { WelcomeComponent } from './welcome/welcome.component';
 import { InfoComponent } from './info/info.component';
 import { UserComponent } from './user/user.component';
@@ -22,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
 import {InfoModule} from "./info/info.module";
 import { NavigationComponent } from './navigation/navigation.component';
 import {CartModule} from "./cart/cart.module";
+import {BlConnectModule} from "@wizardcoder/bl-connect";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {CartModule} from "./cart/cart.module";
 	],
 	imports: [
 		BrowserModule,
+		BlConnectModule.withConfig({basePath: 'http://api.boklisten.co/api/v1/'}),
 		HomeModule,
 		AppRoutingModule,
 		LoginModule,

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Branch} from "bl-model";
+import {Branch} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'app-branch-contact-info',

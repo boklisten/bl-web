@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from "../../cart/cart.service";
-import {Item} from "bl-model";
+import {Item} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'app-item-add',

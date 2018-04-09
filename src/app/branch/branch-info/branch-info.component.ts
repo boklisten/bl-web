@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {BranchService} from "bl-connect";
-import {BlApiError, BlApiNotFoundError, Branch} from "bl-model";
+import {BranchService} from "@wizardcoder/bl-connect";
+import {BlApiError, BlApiNotFoundError, Branch} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'app-branch-info',

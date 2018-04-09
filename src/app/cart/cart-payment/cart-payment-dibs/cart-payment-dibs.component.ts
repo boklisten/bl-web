@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {BlApiError, Payment, PaymentMethod, Order} from "bl-model";
+import {BlApiError, Payment, PaymentMethod, Order} from "@wizardcoder/bl-model";
 import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 

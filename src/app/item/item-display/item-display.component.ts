@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Branch, CustomerItem, Item} from "bl-model";
+import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
 import {CartService} from "../../cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PriceService} from "../../price/price.service";

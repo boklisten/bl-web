@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BlApiError, BlApiNotFoundError, Branch, Item} from "bl-model";
-import {ItemService} from "bl-connect";
+import {BlApiError, BlApiNotFoundError, Branch, Item} from "@wizardcoder/bl-model";
+import {ItemService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'app-item-display-category',

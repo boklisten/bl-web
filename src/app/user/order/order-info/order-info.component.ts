@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Order} from "bl-model";
+import {Order} from "@wizardcoder/bl-model";
 import {Router} from "@angular/router";
 
 @Component({

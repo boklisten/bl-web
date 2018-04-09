@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Branch, CustomerItem, Item, OrderItem} from "bl-model";
-import {BranchService} from "bl-connect";
+import {Branch, CustomerItem, Item, OrderItem} from "@wizardcoder/bl-model";
+import {BranchService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 
 @Injectable()

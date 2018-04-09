@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
 import {CartService} from "../cart.service";
-import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "bl-model";
-import {OrderService, PaymentService} from 'bl-connect';
+import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "@wizardcoder/bl-model";
+import {OrderService, PaymentService} from '@wizardcoder/bl-connect';
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
 import {Router} from "@angular/router";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";

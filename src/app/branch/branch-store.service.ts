@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BlApiError, Branch, UserDetail} from "bl-model";
-import {BranchService, TokenService} from "bl-connect";
+import {BlApiError, Branch, UserDetail} from "@wizardcoder/bl-model";
+import {BranchService, TokenService} from "@wizardcoder/bl-connect";
 import {UserService} from "../user/user.service";
 
 @Injectable()

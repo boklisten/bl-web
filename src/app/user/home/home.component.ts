@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {UserService} from "../user.service";
-import {BlApiError, Branch, UserDetail} from "bl-model";
-import {BranchService} from "bl-connect";
+import {BlApiError, Branch, UserDetail} from "@wizardcoder/bl-model";
+import {BranchService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'app-home',

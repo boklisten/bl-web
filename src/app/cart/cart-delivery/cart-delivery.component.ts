@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BlApiError, Delivery, Order, DeliveryMethod} from "bl-model";
+import {BlApiError, Delivery, Order, DeliveryMethod} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
-import {DeliveryService} from 'bl-connect';
+import {DeliveryService} from '@wizardcoder/bl-connect';
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "./cart-delivery.service";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";

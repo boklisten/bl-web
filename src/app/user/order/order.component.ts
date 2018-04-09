@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {BlApiError, Order, UserDetail} from "bl-model";
+import {BlApiError, Order, UserDetail} from "@wizardcoder/bl-model";
 import {UserService} from "../user.service";
-import {OrderService, UserDetailService} from "bl-connect";
+import {OrderService, UserDetailService} from "@wizardcoder/bl-connect";
 import {Router} from "@angular/router";
 
 @Component({
