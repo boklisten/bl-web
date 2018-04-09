@@ -6,7 +6,7 @@
 
 <div *ngIf="view" class="row bl-item-display-container align-items-center" [ngClass]="{'bl-item-display-container-your-item': isCustomerItem(), 'bl-item-display-container-disabled': showAsCustomerItem()}">
     <div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
-        <i class="fas fa-2x fa-book"></i>
+        <fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
     </div>
     <div class="col-lg-6 col-md-10 col-sm-10 col-10">
 		<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>

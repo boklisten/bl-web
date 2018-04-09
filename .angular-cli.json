@@ -21,8 +21,7 @@
 			"styles": [
 				"styles.scss",
 				"../node_modules/bootstrap/dist/css/bootstrap.min.css",
-				"../node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
-				"assets/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.css"
+				"../node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
 			],
 			"scripts": [],
 			"environmentSource": "environments/environment.ts",

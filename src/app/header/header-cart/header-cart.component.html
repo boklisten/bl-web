@@ -1,9 +1,11 @@
 
 <div class="row">
 	<div class="col-12">
-		<i class="fas fa-shopping-cart fa-2x"
-		   [ngClass]="{'bl-header-button': !displayCart(), 'bl-header-button-alert': displayCart()}"
-		   (click)="onCartClick()"></i>
+		<fa-icon
+			[icon]="['fa', 'shopping-cart']"
+			size="2x"
+			[ngClass]="{'bl-header-button': !displayCart(), 'bl-header-button-alert': displayCart()}"
+			(click)="onCartClick()"></fa-icon>
 		<div class="bl-alert-circle" *ngIf="displayCart()">{{getCartSize()}}</div>
 	</div>
 </div>

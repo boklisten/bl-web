@@ -23,7 +23,13 @@ import {InfoModule} from "./info/info.module";
 import { NavigationComponent } from './navigation/navigation.component';
 import {CartModule} from "./cart/cart.module";
 import {BlConnectModule} from "@wizardcoder/bl-connect";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {library} from "@fortawesome/fontawesome-svg-core";
 
+import {faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright} from '@fortawesome/free-solid-svg-icons';
+import {environment} from "../environments/environment";
+
+library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright);
 
 @NgModule({
 	declarations: [
@@ -45,14 +51,15 @@ import {BlConnectModule} from "@wizardcoder/bl-connect";
 		FormsModule,
 		CartModule,
 		ItemModule,
-		InfoModule
+		InfoModule,
+		FontAwesomeModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
 	constructor() {
-		BlConnectModule.withConfig({basePath: 'http://api.boklisten.co/api/v1/'});
+		BlConnectModule.withConfig({basePath: environment.apiPath});
 		LoginModule.withConfig({successPath: 'u/home'});
 	}
 }

@@ -12,13 +12,15 @@ import {BranchOpeningHoursService} from "./branch-opening-hours/branch-opening-h
 import { BranchContactInfoComponent } from './branch-contact-info/branch-contact-info.component';
 import { BranchSetComponent } from './branch-set/branch-set.component';
 import { BranchItemCategoryFilterComponent } from './branch-item-category-filter/branch-item-category-filter.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		BranchRoutingModule,
-		NgbModule
+		NgbModule,
+		FontAwesomeModule
 	],
 	declarations: [
 		BranchSelectComponent,

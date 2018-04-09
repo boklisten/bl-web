@@ -17,7 +17,7 @@
                                 <p>Retrieve the items yourself at your branch</p>
                             </div>
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'branch'">
-                                <i class="fa fa-check fa-2x"></i>
+                                <fa-icon [icon]="'check'" size="2x"></fa-icon>
                             </div>
 						</div>
 					</button>
@@ -30,7 +30,7 @@
 								<p *ngIf="currentDelivery && currentDelivery.info['amount']">Price: <b>{{currentDelivery.info['amount']}}kr</b> Delivery time: <b>{{getEstimatedDelivery()}}</b></p>
                             </div>
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'bring'">
-                                <i class="fa fa-check fa-2x"></i>
+								<fa-icon [icon]="'check'" size="2x"></fa-icon>
                             </div>
 						</div>
 					</button>

@@ -14,6 +14,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ItemDisplayCategoryComponent } from './item-display-category/item-display-category.component';
 import {CartModule} from "../cart/cart.module";
 import {CartGoToBarComponent} from "./cart-go-to-bar/cart-go-to-bar.component";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
 	imports: [
@@ -21,7 +22,8 @@ import {CartGoToBarComponent} from "./cart-go-to-bar/cart-go-to-bar.component";
 		FormsModule,
 		ItemRoutingModule,
 		NgbModule,
-		BranchModule
+		BranchModule,
+		FontAwesomeModule
 	],
 	declarations: [
 		ItemComponent,

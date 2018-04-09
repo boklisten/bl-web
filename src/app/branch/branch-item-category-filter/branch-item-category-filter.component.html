@@ -5,7 +5,7 @@
 			type="button" class="btn mr-2 mb-2"
 			[ngClass]="{'btn-outline-info': !contains(itemCategoryName), 'btn-secondary': contains(itemCategoryName)}"
 			(click)="onSelectCategory(itemCategoryName)">
-				<i class="fa fa-check" *ngIf="contains(itemCategoryName)"></i> {{itemCategoryName}}
+				<fa-icon [icon]="'check'" *ngIf="contains(itemCategoryName)"></fa-icon> {{itemCategoryName}}
 		</button>
 	</div>
 </div>
