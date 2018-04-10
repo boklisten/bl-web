@@ -6,7 +6,7 @@
 		"ng": "ng",
 		"start": "node server.js",
 		"serve:local": "npm run build && node server.js",
-		"watch": "ng serve --preserve-symlinks",
+		"watch": "ng serve --env=${ANGULAR_ENV}",
 		"postinstall": "npm run build",
 		"build": "ng build --aot --prod --env=${ANGULAR_ENV}",
 		"test": "ng test",
