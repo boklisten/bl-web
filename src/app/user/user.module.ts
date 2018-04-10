@@ -11,6 +11,7 @@ import { UserItemComponent } from './user-item/user-item.component';
 import { UserCustomerItemComponent } from './user-customer-item/user-customer-item.component';
 import {ItemModule} from "../item/item.module";
 import {OrderItemInfoComponent} from "./order/order-info/order-item-info/order-item-info.component";
+import {UserGuardService} from "./user-guard.service";
 
 @NgModule({
 	imports: [
@@ -29,7 +30,8 @@ import {OrderItemInfoComponent} from "./order/order-info/order-item-info/order-i
 		UserCustomerItemComponent
 	],
 	providers: [
-		UserService
+		UserService,
+		UserGuardService
 	]
 })
 export class UserModule {

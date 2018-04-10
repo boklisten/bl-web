@@ -4,11 +4,13 @@ import {UserComponent} from "./user.component";
 import {HomeComponent} from "./home/home.component";
 import {OrderComponent} from "./order/order.component";
 import {UserItemComponent} from "./user-item/user-item.component";
+import {UserGuardService} from "./user-guard.service";
 
 const routes: Routes = [
 	{
 		path: 'u',
 		component: UserComponent,
+		canActivate: [UserGuardService],
 		children: [
 			{
 				path: 'home',

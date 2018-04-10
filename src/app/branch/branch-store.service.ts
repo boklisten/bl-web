@@ -43,7 +43,6 @@ export class BranchStoreService {
 	}
 	
 	public setCurrentBranch(branch: Branch): void {
-		console.log('set the current branch', branch);
 		this._currentBranch = branch;
 	}
 	
