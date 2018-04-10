@@ -13,24 +13,29 @@ export class BranchSelectComponent implements OnInit {
 	
 	public branches: Branch[];
 	public selectedBranch: Branch;
+	public branchSelectDefaultText: string;
 	
 	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService) {
 		this.branchSelect = new EventEmitter<Branch>();
+		this.branchSelectDefaultText = 'Select a school';
 	}
 	
 	ngOnInit() {
 		this._branchService.get().then((branches: Branch[]) => {
 			this.branches = branches;
-			console.log('sets the current branch to: ', branches[0]);
-			this._branchStoreService.setCurrentBranch(branches[0]);
 		}).catch((blApiError: BlApiError) => {
 			console.log('could not get branches');
 		});
 	}
 	
 	onBranchSelectUpdate(branch: Branch) {
-		this.branchSelect.emit(branch);
 		this._branchStoreService.setCurrentBranch(branch);
+		
+		this._branchStoreService.setUserdetailBranch(branch).then(() => {
+		}).catch(() => {
+		this.branchSelect.emit(branch);
+			console.log('branchSelectComponent: could not update user details');
+		});
 	}
 	
 	

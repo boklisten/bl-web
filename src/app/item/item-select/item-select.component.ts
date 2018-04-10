@@ -21,26 +21,20 @@ export class ItemSelectComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		if (!this._branchStoreService.getBranch()) {
-			this._userServie.getUserDetail().then((userDetail: UserDetail) => {
-				this._branchService.getById(userDetail.branch).then((branch: Branch) => {
-					this._branchStoreService.setCurrentBranch(branch);
-					this.branch = branch;
-				}).catch(() => {
-					console.log('ItemSelectComponent: could not get branch');
-				});
-			}).catch(() => {
-				console.log('ItemSelectComponent: could not get user details');
-				this._router.navigateByUrl('b/set');
-			});
-		} else {
-			this.branch = this._branchStoreService.getBranch();
-			this._itemService.getManyByIds(this.branch.items).then((items: Item[]) => {
-				this.items = items;
-			}).catch((blApiErr: BlApiError) => {
-				console.log('ItemSelectComponent: could not get items for branch');
-			});
-		}
+		this._branchStoreService.getActiveBranch().then((branch: Branch) => {
+			this.branch = branch;
+			this.fetchItems(this.branch);
+		}).catch((e) => {
+			this._router.navigateByUrl('b/set');
+		});
+	}
+	
+	private fetchItems(branch: Branch) {
+		this._itemService.getManyByIds(branch.items).then((items: Item[]) => {
+			this.items = items;
+		}).catch((blApiErr: BlApiError) => {
+			console.log('ItemSelectComponent: could not get items for branch');
+		});
 	}
 	
 	
