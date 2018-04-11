@@ -17,8 +17,9 @@ export class UserService {
 		this._customerItems = [];
 	}
 	
-	public onLogin(): Observable<boolean> {
-		return this._onLogin$;
+	public logout(): Promise<boolean> {
+		this._tokenService.removeTokens();
+		return Promise.resolve(true);
 	}
 	
 	public getUserName(): string {

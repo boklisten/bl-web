@@ -12,13 +12,15 @@ import { UserCustomerItemComponent } from './user-customer-item/user-customer-it
 import {ItemModule} from "../item/item.module";
 import {OrderItemInfoComponent} from "./order/order-info/order-item-info/order-item-info.component";
 import {UserGuardService} from "./user-guard.service";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		UserRoutingModule,
 		BranchModule,
-		ItemModule
+		ItemModule,
+		FontAwesomeModule
 	],
 	declarations: [
 		HomeComponent,

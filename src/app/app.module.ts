@@ -26,10 +26,10 @@ import {BlConnectModule} from "@wizardcoder/bl-connect";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 
-import {faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap} from '@fortawesome/free-solid-svg-icons';
+import {faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt,
+	faClipboard, faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
-
-library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap);
+library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown);
 
 @NgModule({
 	declarations: [
