@@ -84,6 +84,6 @@ export class ItemDisplayComponent implements OnInit {
 	}
 	
 	public showPrice(): boolean {
-		return this._priceService.showPrice();
+		return (!this.branch.paymentInfo.responsible || this.orderItemType === 'buy');
 	}
 }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
+import {Branch, CustomerItem, Item, OrderItem} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
@@ -36,44 +36,55 @@ export class ItemTypeSelectComponent implements OnInit {
 	
 	
 	ngOnInit() {
-		this.updateBasedOnCart();
-		
 		this.branch = this._branchStoreService.getBranch();
-		
+		this.displaySelectedPeriodType();
+	}
+	
+	private displaySelectedPeriodType() {
 		this.calculateOptions(this.item);
+		
+		if (this._cartService.contains(this.item.id)) {
+			this.updateBasedOnCart(this._cartService.get(this.item.id));
+		} else {
+			this.preselectPeriodType(this.item);
+		}
+		
+		this.type.emit(this.typeSelect);
+		this.desc = this.getDesc(this.typeSelect);
+	}
+	
+	preselectPeriodType(item: Item) {
+		if (item.rent) {
+			for (const rentPeriod of this.branch.paymentInfo.rentPeriods) {
+				if (rentPeriod.type === 'semester') {
+					this.onTypeUpdate('one');
+					return;
+				} else if (rentPeriod.type === 'year') {
+					this.onTypeUpdate('two');
+					return;
+				}
+			}
+		} else if (item.buy) {
+			this.onTypeUpdate('buy');
+		}
 		
 	}
 	
+	
 	calculateOptions(item: Item) {
-		let firstOption = true;
-		
 		if (item.rent) {
-			
-			
 			for (const rentPeriod of this.branch.paymentInfo.rentPeriods) {
-				
 				if (rentPeriod.type === 'semester') {
 					this.rentSemesterOption = true;
-					if (firstOption) {
-						this.onTypeUpdate('one');
-					}
+					
 				} else if (rentPeriod.type === 'year') {
 					this.rentYearOption = true;
-					if (firstOption) {
-						this.onTypeUpdate('two');
-					}
 				}
-				firstOption = false;
 			}
-			
 		}
 		
 		if (item.buy) {
 			this.buyOption = true;
-			
-			if (firstOption) {
-				this.onTypeUpdate('buy');
-			}
 		}
 	}
 	
@@ -114,26 +125,22 @@ export class ItemTypeSelectComponent implements OnInit {
 		return this._dateService.getDate(type);
 	}
 	
-	updateBasedOnCart() {
-		if (this._cartService.contains(this.item.id)) {
-			const orderItem = this._cartService.get(this.item.id);
-			
-			if (orderItem.type === "rent") {
-				if (orderItem.info.periodType === "semester") {
-					this.typeSelect = "one";
-				} else if (orderItem.info.periodType === "year") {
-					this.typeSelect = "two";
-				}
-			} else if (orderItem.type === "buy") {
-				this.typeSelect = "buy";
-			} else if (orderItem.type === "buyout") {
-				this.typeSelect = "buyout";
-			} else if (orderItem.type === "extend") {
-				this.typeSelect = "extend";
+	updateBasedOnCart(orderItem: OrderItem) {
+		
+		if (orderItem.type === "rent") {
+			if (orderItem.info.periodType === "semester") {
+				this.typeSelect = "one";
+			} else if (orderItem.info.periodType === "year") {
+				this.typeSelect = "two";
 			}
+		} else if (orderItem.type === "buy") {
+			this.typeSelect = "buy";
+		} else if (orderItem.type === "buyout") {
+			this.typeSelect = "buyout";
+		} else if (orderItem.type === "extend") {
+			this.typeSelect = "extend";
 		}
-		this.type.emit(this.typeSelect);
-		this.desc = this.getDesc(this.typeSelect);
+		
 	}
 	
 	public showPrice(): boolean {
