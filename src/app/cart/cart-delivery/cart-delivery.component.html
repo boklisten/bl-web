@@ -11,30 +11,57 @@
 			</div>
 
 				<div class="list-group list-group-flush">
-					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('branch')">
+					<div class="list-group-item list-group-item-action">
 						<div class="row align-items-center justify-content-between">
                             <div class="col-10">
                                 <h4>Get at branch</h4>
                                 <p>Retrieve the items yourself at your branch</p>
                             </div>
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'branch'">
-                                <fa-icon [icon]="'check'" size="2x"></fa-icon>
+                                <fa-icon [icon]="'check-square'" size="3x"></fa-icon>
                             </div>
+							<div class="col-2 align-items-center" *ngIf="deliveryMethod !== 'branch'"  >
+								<fa-icon [icon]="['far','square']" size="3x" (click)="onSetDelivery('branch')"></fa-icon>
+							</div>
 						</div>
-					</button>
+					</div>
 
-					<button type="button" class="list-group-item list-group-item-action" (click)="onDeliveryClick('bring')">
+					<div class="list-group-item list-group-item-action" >
 						<div class="row align-items-center justify-content-between">
                             <div class="col-10">
                                 <h4>Delivery by mail</h4>
-                                <p>Get the items delivered to you by Bring</p>
-								<p *ngIf="currentDelivery && currentDelivery.info['amount']">Price: <b>{{currentDelivery.info['amount']}}kr</b> Delivery time: <b>{{getEstimatedDelivery()}}</b></p>
+								<p>Get the items sent to you with Bring from one of our storage facilities</p>
+
+								<div class="input-group mb-3" *ngIf="deliveryMethod === 'bring'">
+									<div class="input-group-prepend">
+										<span class="input-group-text">
+											to postal code
+										</span>
+									</div>
+
+									<input type="number" maxlength="4" class="form-control" placeholder="Postal code" [(ngModel)]="toPostalCode" (change)="onSetDelivery('bring')">
+
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" (click)="onSetDelivery('bring')" >
+											<fa-icon [icon]="'sync'"></fa-icon>
+										</button>
+									</div>
+									<p *ngIf="postalCodeFailureText" class="text-danger"> {{postalCodeFailureText}}</p>
+
+									<div *ngIf="currentDelivery && currentDelivery.info['amount']" class="mt-1">Price: <b>{{currentDelivery.info['amount']}}kr</b> Delivery time: <b>{{getEstimatedDelivery()}}</b></div>
+								</div>
+
+
                             </div>
+
                             <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'bring'">
-								<fa-icon [icon]="'check'" size="2x"></fa-icon>
+								<fa-icon [icon]="'check-square'" size="3x"></fa-icon>
                             </div>
+							<div class="col-2 align-items-center" *ngIf="deliveryMethod !== 'bring'" >
+								<fa-icon [icon]="['far','square']" size="3x" (click)="onSetDelivery('bring')"></fa-icon>
+							</div>
 						</div>
-					</button>
+					</div>
 				</div>
 		</div>
 	</div>

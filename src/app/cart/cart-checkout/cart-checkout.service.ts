@@ -16,10 +16,21 @@ export class CartCheckoutService {
 	
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
 				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService) {
-		
+		/*
 		this.onDeliveryChange();
 		this.onPaymentChange();
 		this.onOrderChange();
+		*/
+	}
+	
+	public getOrder(): Promise<Order> {
+		return new Promise((resolve, reject) => {
+			this._cartOrderService.getOrder().then((order: Order) => {
+				resolve(order);
+			}).catch((getOrderError) => {
+				reject(new Error('cartCheckoutService: could not get order: ' + getOrderError));
+			});
+		});
 	}
 	
 	public placeOrder(): Promise<Order> {

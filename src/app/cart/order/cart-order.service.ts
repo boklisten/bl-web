@@ -10,111 +10,90 @@ export class CartOrderService {
 	
 	private _currentOrder: Order;
 	private _orderChange$: Subject<Order>;
+	private _orderClear$: Subject<boolean>;
 	
 	constructor(private _cartService: CartService, private _orderService: OrderService, private _userService: UserService) {
 		this._orderChange$ = new Subject();
+		this._orderClear$ = new Subject();
+		
 		
 		if (this._cartService.getSize() > 0) {
-			this.updateOrder(this._cartService.createOrder()).then((updatedOrder: Order) => {
-				this.onCartChange();
-			}).catch((updateOrderError) => {
-				console.log('cartOrderService: on init: could not update order', updateOrderError);
-			});
-		} else {
-			this.onCartChange();
+			this.createOrder();
 		}
+		
+		this.onCartChange();
 	}
 	
 	private onCartChange() {
 		this._cartService.onCartChange().subscribe(() => {
 			if (this._cartService.getSize() > 0) {
-				this.updateOrder(this._cartService.createOrder()).then(() => {
-					// the order is updated
-				}).catch((updateOrderError) => {
-					console.log('cartOrderService: could not update order', updateOrderError);
-				});
+				console.log('the cart changed', this._cartService.getCart());
+				if (this._currentOrder) {
+					console.log('there was already a order made, updating that one');
+					this.updateOrder(this._cartService.createOrder());
+				} else {
+					console.log('there was no order, creating new one');
+					this.createOrder();
+				}
 			}
 		});
 	}
-	
-	public createOrder(): Promise<Order> {
-		if (this._cartService.getSize() <= 0) {
-			return Promise.reject(new Error('cartOrderService: can not create a order from a empty cart'));
-		}
-		
-		return new Promise((resolve, reject) => {
-			if (this._currentOrder) {
-				resolve(this._currentOrder);
-			} else {
-				const order = this._cartService.createOrder();
-				
-				this._orderService.add(order).then((addedOrder: Order) => {
-					this._currentOrder = addedOrder;
-					this._orderChange$.next(this._currentOrder);
-				}).catch((blApiErr: BlApiError) => {
-					console.log('cartOrderService: could not add order', blApiErr);
-				});
-			}
-		});
-	}
-	
-	public clearOrder() {
-		this._currentOrder = null;
-	}
-	
 	
 	public setOrder(order: Order) {
 		this._currentOrder = order;
-		this.updateOrder(order);
+		this._orderChange$.next(this._currentOrder);
+	}
+	
+	private createOrder() {
+		const order = this._cartService.createOrder();
+		
+		this._orderService.add(order).then((addedOrder: Order) => {
+			this.setOrder(addedOrder);
+		}).catch((blApiErr: BlApiError) => {
+			console.log('cartOrderService: could not add order', blApiErr);
+		});
+	}
+	
+	public getOrder(): Order {
+		return this._currentOrder;
+	}
+
+	public clearOrder() {
+		this._currentOrder = null;
+		this._orderClear$.next(true);
+	}
+	
+	public onClearOrder(): Subject<boolean> {
+		return this._orderClear$;
 	}
 	
 	public onOrderChange(): Subject<Order> {
 		return this._orderChange$;
 	}
 	
-	public getOrder(): Order {
-		return this._currentOrder;
-	}
-	
-	public reloadOrder() {
-		this._orderService.getById(this._currentOrder.id).then((reloadedOrder: Order) => {
-			if (this._currentOrder !== reloadedOrder) {
-				this._currentOrder = reloadedOrder;
-				this._orderChange$.next(this._currentOrder);
+	/**
+	 * used by other classes to tell the cartOrderService that the order has changed on remote api
+	 */
+	public refetchOrder() {
+		if (!this._currentOrder) {
+			return;
+		}
+		
+		this._orderService.getById(this._currentOrder.id).then((refetchedOrder: Order) => {
+			if (this._currentOrder !== refetchedOrder) {
+				console.log('the order was refetched from api', refetchedOrder);
+				this.setOrder(refetchedOrder);
 			}
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartOrderService: error when trying to get order', blApiErr);
 		});
 	}
 	
-	private updateOrder(order: Order): Promise<Order> {
-		return new Promise((resolve, reject) => {
-			if (order === this._currentOrder) {
-				resolve(this._currentOrder);
-			}
-			
-			// no point in adding a order if the user is not logged in
-			if (!this._userService.loggedIn()) {
-				reject(new Error('cartOrderService: updatedOrder: user not logged in'));
-			}
-			
-			if (this._currentOrder) {
-				this._orderService.update(this._currentOrder.id, order).then((updatedOrder: Order) => {
-					this._currentOrder = updatedOrder;
-					this._orderChange$.next(this._currentOrder);
-					resolve(this._currentOrder);
-				}).catch((blApiErr: BlApiError) => {
-					reject(new Error('cartOrderService: could not update order: ' + blApiErr));
-				});
-			} else {
-				this._orderService.add(order).then((addedOrder: Order) => {
-					this._currentOrder = addedOrder;
-					this._orderChange$.next(this._currentOrder);
-					resolve(this._currentOrder);
-				}).catch((blApiErr: BlApiError) => {
-					reject(new Error('cartOrderService: could not add order: ' + blApiErr));
-				});
-			}
+	private updateOrder(order: Order) {
+		this._orderService.update(this._currentOrder.id, order).then((updatedOrder: Order) => {
+			this.setOrder(updatedOrder);
+		}).catch((blApiErr: BlApiError) => {
+			console.log('cartOrderService: could not update order: ', blApiErr);
 		});
 	}
 }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BlApiError, Delivery, Order, DeliveryMethod} from "@wizardcoder/bl-model";
+import {BlApiError, Delivery, Order, DeliveryMethod, UserDetail} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
 import {DeliveryService} from '@wizardcoder/bl-connect';
 import {BranchStoreService} from "../../branch/branch-store.service";
@@ -7,6 +7,8 @@ import {CartDeliveryService} from "./cart-delivery.service";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 import {CartService} from "../cart.service";
 import {CartOrderService} from "../order/cart-order.service";
+import {isNumber} from "util";
+import {UserService} from "../../user/user.service";
 
 @Component({
 	selector: 'app-cart-delivery',
@@ -19,20 +21,31 @@ export class CartDeliveryComponent implements OnInit {
 	
 	public deliveryMethod: DeliveryMethod;
 	public currentDelivery: Delivery;
-	public toPostalCode: string;
+	public toPostalCode: number;
+	public postalCodeFailure: boolean;
+	public postalCodeFailureText: string;
 	
 	
-	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService,
-				private _cartCheckoutService: CartCheckoutService, private _cartService: CartService, private _cartOrderService: CartOrderService) {
+	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService, private _userService: UserService) {
 		
 		this.deliveryMethod = 'branch';
 		this.delivery = new EventEmitter();
-		this.toPostalCode = "7070";
+		this.postalCodeFailure = true;
+		this.toPostalCode = 0;
+		this.postalCodeFailureText = null;
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
 		}
+		
+		this._userService.getUserDetail().then((userDetail: UserDetail) => {
+			if (userDetail.postCode) {
+				this.toPostalCode = parseInt(userDetail.postCode, 10);
+			}
+		}).catch((getUserDetailError) => {
+			console.log('cartDeliveryService: could not get user detail');
+		});
 	}
 	
 	ngOnInit() {
@@ -46,26 +59,7 @@ export class CartDeliveryComponent implements OnInit {
 		});
 	}
 	
-	private updateDeliveryBring(toPostal: string) {
-		this._cartDeliveryService.updateDeliveryBring(toPostal).then((updatedDelivery: Delivery) => {
-			this.currentDelivery = updatedDelivery;
-			this.deliveryMethod = updatedDelivery.method;
-		}).catch((blApiErr: BlApiError) => {
-			console.log('cartDeliveryComponent: failed to update delivery type branch');
-		});
-	}
-	
-	private updateDeliveryBranch() {
-		this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
-			this.deliveryMethod = updatedDelivery.method;
-			this.currentDelivery = updatedDelivery;
-			
-		}).catch((blApiErr: BlApiError) => {
-			console.log('cartDeliveryComponent: failed to update delivery type branch');
-		});
-	}
-	
-	onDeliveryClick(deliveryMethod: DeliveryMethod) {
+	onSetDelivery(deliveryMethod: DeliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 		
 		if (!this.currentDelivery) {
@@ -74,11 +68,20 @@ export class CartDeliveryComponent implements OnInit {
 		
 		switch (deliveryMethod) {
 			case "bring":
-				this.updateDeliveryBring(this.toPostalCode);
+				this.updateDeliveryBring();
 				break;
 			case "branch":
-				this.updateDeliveryBranch();
+				this._cartDeliveryService.updateDeliveryBranch();
 				break;
+		}
+	}
+	
+	private updateDeliveryBring() {
+		if (isNumber(this.toPostalCode) && this.toPostalCode.toString().length === 4) {
+			this.postalCodeFailureText = null;
+			this._cartDeliveryService.updateDeliveryBring(this.toPostalCode.toString());
+		} else {
+			this.postalCodeFailureText = 'please provide a valid postal code';
 		}
 	}
 	

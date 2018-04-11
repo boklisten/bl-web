@@ -13,7 +13,7 @@ export class CartPaymentService {
 	private paymentChange$: Subject<Payment>;
 	
 	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService) {
-		this.paymentChange$ = new Subject();
+		// this.paymentChange$ = new Subject();
 	}
 	
 	public onPaymentChange() {
