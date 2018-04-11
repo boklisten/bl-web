@@ -23,3 +23,10 @@
 		</div>
 	</div>
 </div>
+
+
+<div class="row" *ngIf="!selectedItemCategories || selectedItemCategories.length <= 0">
+	<div class="col-12">
+		<ngb-alert [type]="'warning'">There are currently no items for this branch</ngb-alert>
+	</div>
+</div>
