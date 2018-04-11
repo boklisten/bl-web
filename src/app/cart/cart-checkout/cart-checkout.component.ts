@@ -6,6 +6,7 @@ import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../user/user.service";
 
 @Component({
 	selector: 'app-cart-checkout',
@@ -17,14 +18,20 @@ export class CartCheckoutComponent implements OnInit {
 	public paymentDecision: "now" | "later";
 	public order: Order;
 	showPaymentDecision: boolean;
+	public showUserMustLogin: boolean;
 	
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
-				private _cartPaymentService: CartPaymentService, private _router: Router) {
+				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService) {
 	}
 	
 	ngOnInit() {
-		// if branch is responsible the payment decision should be 'later'
+		
+		if (!this._userService.loggedIn()) {
+			this.showUserMustLogin = true;
+			return;
+		}
+		
 		const branch = this._branchStoreService.getBranch();
 		
 		if (branch.paymentInfo.responsible) {
@@ -34,8 +41,6 @@ export class CartCheckoutComponent implements OnInit {
 			this.paymentDecision = 'now';
 			this.showPaymentDecision = true;
 		}
-		
-		this.order = this._cartOrderService.getOrder();
 		
 		this._cartOrderService.onOrderChange().subscribe(() => {
 			this.order = this._cartOrderService.getOrder();
@@ -52,9 +57,30 @@ export class CartCheckoutComponent implements OnInit {
 	}
 	
 	public onConfirmOrder() {
+		if (!this._userService.loggedIn()) {
+			this._router.navigateByUrl('auth/menu');
+			return;
+		}
+		
 		this._cartCheckoutService.placeOrder().then((placedOrder: Order) => {
-			
 			this._router.navigateByUrl('u/order');
+		});
+	}
+	
+	public onConfirmOrderBranchResponsible() {
+		if (!this._userService.loggedIn()) {
+			this._router.navigateByUrl('auth/menu');
+			return;
+		}
+		
+		this._cartPaymentService.changePaymentMethod(this._cartOrderService.getOrder(), 'later').then((payment: Payment) => {
+			this._cartCheckoutService.placeOrder().then((placedOrder: Order) => {
+				this._router.navigateByUrl('u/order');
+			}).catch((placeOrderError) => {
+				console.log('cartCheckoutComponent: could not place order', placeOrderError);
+			});
+		}).catch((blApiError: BlApiError) => {
+			console.log('cartCheckoutComponent: failed to update paymentMethod onConfirmOrderBranchResponsible');
 		});
 	}
 	
@@ -62,8 +88,7 @@ export class CartCheckoutComponent implements OnInit {
 		if (decision === 'later') {
 			this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
 				this._cartPaymentService.changePaymentMethod(this._cartOrderService.getOrder(), 'later').then((payment: Payment) => {
-					console.log('changed the payment to "later"', payment);
-					console.log('updated delivery to branch', updatedDelivery);
+				
 				}).catch((blApiError: BlApiError) => {
 					console.log('cartCheckoutComponent: failed to update payment', blApiError);
 				});

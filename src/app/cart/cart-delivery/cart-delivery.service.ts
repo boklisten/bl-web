@@ -23,7 +23,6 @@ export class CartDeliveryService {
 		this._fromPostalService = '1316';
 		
 		const orderChange$ = this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			console.log('cartDeliveryService: orderUpdated', order);
 			
 			if (!this._currentDelivery || this._currentDelivery.method === 'branch') {
 				this.updateDeliveryBranch().then((addedDelivery: Delivery) => {

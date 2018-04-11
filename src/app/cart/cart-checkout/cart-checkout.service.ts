@@ -6,6 +6,7 @@ import {Subject} from "rxjs/Subject";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {CartOrderService} from "../order/cart-order.service";
+import {UserService} from "../../user/user.service";
 
 @Injectable()
 export class CartCheckoutService {
@@ -38,21 +39,18 @@ export class CartCheckoutService {
 	
 	private onOrderChange() {
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			console.log('cartCheckoutService: the order changed', order);
 			this.currentOrder = order;
 		});
 	}
 	
 	private onDeliveryChange() {
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
-			console.log('cartCheckoutService: the delivery changed', delivery);
 			this.currentDelivery = delivery;
 		});
 	}
 	
 	private onPaymentChange() {
 		this._cartPaymentService.onPaymentChange().subscribe((payment: Payment) => {
-			console.log('cartCheckoutService: the payment changed', payment);
 			this.currentPayment = payment;
 		});
 	}

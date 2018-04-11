@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CustomerItem, Item} from "@wizardcoder/bl-model";
+import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
+import {BranchStoreService} from "../../branch/branch-store.service";
 
 @Component({
 	selector: 'app-item-type-select',
@@ -19,7 +20,15 @@ export class ItemTypeSelectComponent implements OnInit {
 	public desc: string;
 	public date: string;
 	
-	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService) {
+	public rentSemesterOption: boolean;
+	public rentYearOption: boolean;
+	public buyOption: boolean;
+	public buyoutOption: boolean;
+	public extendOption: boolean;
+	private branch: Branch;
+	
+	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService,
+				private _branchStoreService: BranchStoreService) {
 		this.type = new EventEmitter<string>();
 		this.typeSelect = 'one';
 		this.desc = '';
@@ -28,6 +37,44 @@ export class ItemTypeSelectComponent implements OnInit {
 	
 	ngOnInit() {
 		this.updateBasedOnCart();
+		
+		this.branch = this._branchStoreService.getBranch();
+		
+		this.calculateOptions(this.item);
+		
+	}
+	
+	calculateOptions(item: Item) {
+		let firstOption = true;
+		
+		if (item.rent) {
+			
+			
+			for (const rentPeriod of this.branch.paymentInfo.rentPeriods) {
+				
+				if (rentPeriod.type === 'semester') {
+					this.rentSemesterOption = true;
+					if (firstOption) {
+						this.onTypeUpdate('one');
+					}
+				} else if (rentPeriod.type === 'year') {
+					this.rentYearOption = true;
+					if (firstOption) {
+						this.onTypeUpdate('two');
+					}
+				}
+				firstOption = false;
+			}
+			
+		}
+		
+		if (item.buy) {
+			this.buyOption = true;
+			
+			if (firstOption) {
+				this.onTypeUpdate('buy');
+			}
+		}
 	}
 	
 	showDate(): boolean {
@@ -44,6 +91,7 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 		this.desc = this.getDesc(type);
 		this.date = this.getDate(type);
+		this.typeSelect = type;
 		this.type.emit(type);
 	}
 	

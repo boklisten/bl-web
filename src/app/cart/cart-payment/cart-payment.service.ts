@@ -16,7 +16,7 @@ export class CartPaymentService {
 		this.paymentChange$ = new Subject();
 		
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			console.log('cartPaymentService: order changed', order);
+		
 		});
 	}
 	

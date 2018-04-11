@@ -1,54 +1,75 @@
 <p *ngIf="order">the order price: {{order.amount}}</p>
 
-<div class="row justify-content-center" *ngIf="showPaymentDecision">
-	<div class="col-3">
-		<div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
-			<label ngbButtonLabel class="btn-info">
-				<input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')"> Pay now
-			</label>
-			<label ngbButtonLabel class="btn-info">
-				<input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')"> Pay later
-			</label>
-		</div>
-	</div>
-</div>
 
-<div class="row mt-5" *ngIf="showPaymentDecision && paymentDecision === 'now'">
-	<div class="col-6">
-		<app-cart-delivery></app-cart-delivery>
+<div class="row text-center" *ngIf="showUserMustLogin">
+	<div class="col-12">
+		<h3>You must login or register to place a order</h3>
 	</div>
-	<div class="col-6">
-		<app-cart-payment></app-cart-payment>
-	</div>
-</div>
-
-<div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'">
-	<div class="col-12 bl-cart-pay-later">
-		<div class="row align-items-center">
+	<div class="col-12">
+		<div class="row">
 			<div class="col-6">
-				Pay <b>{{getPrice()}} kr</b> later at branch
+				<button class="btn btn-success btn-block" routerLink="/auth/login">Login</button>
 			</div>
 			<div class="col-6">
-				<button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()">
-					Confirm order
-				</button>
+				<button class="btn btn-info btn-block" routerLink="/auth/register">Register</button>
 			</div>
 		</div>
 	</div>
 </div>
 
+<div class="row" *ngIf="!showUserMustLogin && order">
+	<div class="col-12">
+        <div class="row justify-content-center" *ngIf="showPaymentDecision">
+            <div class="col-3">
+                <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
+                    <label ngbButtonLabel class="btn-info">
+                        <input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')"> Pay now
+                    </label>
+                    <label ngbButtonLabel class="btn-info">
+                        <input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')"> Pay later
+                    </label>
+                </div>
+            </div>
+        </div>
 
-<div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision">
-	<div class="col-12 bl-cart-pay-later">
-		<div class="row align-items-center">
-			<div class="col-6">
-				Retrieve the items at branch
-			</div>
-			<div class="col-6">
-				<button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()">
-					Confirm order
-				</button>
-			</div>
-		</div>
+        <div class="row mt-5" *ngIf="showPaymentDecision && paymentDecision === 'now'">
+            <div class="col-6">
+                <app-cart-delivery></app-cart-delivery>
+            </div>
+            <div class="col-6">
+                <app-cart-payment></app-cart-payment>
+            </div>
+        </div>
+
+        <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'">
+            <div class="col-12 bl-cart-pay-later">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        Pay <b>{{getPrice()}} kr</b> later at branch
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()">
+                            Confirm order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision">
+            <div class="col-12 bl-cart-pay-later">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        Retrieve the items at branch
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrderBranchResponsible()">
+                            Confirm order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 </div>

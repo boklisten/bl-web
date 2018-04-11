@@ -14,7 +14,7 @@
 		<div><small *ngIf="showAsCustomerItem()">You already have this item, <b><a routerLink="/u/items">click here to view your items</a></b> </small></div>
 		<div *ngIf="!showAsCustomerItem()"><small *ngFor="let category of item.categories" class="badge badge-secondary mr-1">{{category}}</small></div>
 	</div>
-    <div class="col-lg-5 col-md-12 col-sm-12 col-12 mt-md-2" *ngIf="!showAsCustomerItem()">
+    <div class="col-lg-5 col-md-12 col-sm-12 col-12 mt-md-2 mt-2" *ngIf="!showAsCustomerItem()">
         <div class="row justify-content-center align-items-center">
             <div class="col-6 bl-item-price" *ngIf="showPrice()">
                 {{getPrice()}} kr

@@ -4,6 +4,7 @@ import {CartService} from "../../cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PriceService} from "../../price/price.service";
 import {UserService} from "../../user/user.service";
+import {BranchStoreService} from "../../branch/branch-store.service";
 
 @Component({
 	selector: 'app-item-display',
@@ -23,7 +24,8 @@ export class ItemDisplayComponent implements OnInit {
 	
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
 	
-	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService) {
+	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService,
+				private _branchStoreService: BranchStoreService) {
 		this.customerItemActive = false;
 		this.view = false;
 	}
@@ -34,6 +36,7 @@ export class ItemDisplayComponent implements OnInit {
 		}).catch(() => {
 			this.view = true;
 		});
+		
 	}
 	
 	public onItemClick() {

@@ -21,13 +21,9 @@ export class CartService {
 private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 	
-	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
-				private _priceService: PriceService, private _orderService: OrderService) {
+	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService, private _priceService: PriceService) {
 		this._cart = [];
-		
-		
 		this.cartChange$ = new Subject();
-		
 	}
 	
 	public onCartChange(): Subject<boolean> {
@@ -42,6 +38,7 @@ private _cart: CartItem[];
 		orderItem.unitPrice = item.price;
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = item.taxRate;
+		
 
 		if (orderItemType === "one") {
 			orderItem.type = "rent";

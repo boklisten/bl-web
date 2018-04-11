@@ -1,14 +1,14 @@
 
-<div class="row" *ngIf="showPrice()">
+<div class="row">
     <div class="col-12" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-info">
+            <label ngbButtonLabel class="btn-outline-info" *ngIf="rentSemesterOption">
                 <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">one semester
             </label>
-            <label ngbButtonLabel class="btn-outline-info">
-                <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">two semesters
+            <label ngbButtonLabel class="btn-outline-info" *ngIf="rentYearOption">
+                <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">one year
             </label>
-			<label ngbButtonLabel class="btn-outline-info">
+			<label ngbButtonLabel class="btn-outline-info" *ngIf="buyOption">
                 <input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">buy
             </label>
         </div>
