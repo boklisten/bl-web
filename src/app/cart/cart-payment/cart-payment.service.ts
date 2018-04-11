@@ -14,10 +14,6 @@ export class CartPaymentService {
 	
 	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService) {
 		this.paymentChange$ = new Subject();
-		
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-		
-		});
 	}
 	
 	public onPaymentChange() {

@@ -24,8 +24,7 @@ export class ItemDisplayComponent implements OnInit {
 	
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
 	
-	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService,
-				private _branchStoreService: BranchStoreService) {
+	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService) {
 		this.customerItemActive = false;
 		this.view = false;
 	}
