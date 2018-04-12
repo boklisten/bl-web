@@ -36,6 +36,12 @@ export class CartOrderService {
 		});
 	}
 	
+	private onLogin() {
+	}
+	
+	private onLogout() {
+	}
+	
 	public setOrder(order: Order) {
 		this._currentOrder = order;
 		this._orderChange$.next(this._currentOrder);

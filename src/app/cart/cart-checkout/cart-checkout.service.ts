@@ -32,8 +32,9 @@ export class CartCheckoutService {
 			
 			this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
 				// we need to clear everything after order is placed
-				this._cartOrderService.clearOrder();
 				this._cartService.clearCart();
+				this._cartOrderService.clearOrder();
+				
 				resolve(true);
 			}).catch((blApiError: BlApiError) => {
 				reject(new Error('order could not be placed: ' + blApiError));

@@ -30,21 +30,9 @@ export class CartPaymentComponent implements OnInit {
 	
 	ngOnInit() {
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			console.log('the order changed, must update price', order);
 			this.currentOrder = order;
 		});
 		
 		this.currentOrder = this._cartOrderService.getOrder();
-	}
-	
-	onPayLaterConfirm() {
-	
-	}
-	
-	getTotalPrice(): number {
-		if (!this.currentOrder) {
-			return -1;
-		}
-		return this.currentOrder.amount;
 	}
 }

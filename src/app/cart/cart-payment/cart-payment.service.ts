@@ -22,10 +22,8 @@ export class CartPaymentService {
 		
 		if (branch) {
 			if (branch.paymentInfo.responsible) {
-			console.log('the branch is responsible for payment');
 				this._paymentMethod = 'later';
 			} else {
-				console.log('the branch is not responsible for payment');
 				this._paymentMethod = 'dibs';
 			}
 		}
@@ -34,17 +32,13 @@ export class CartPaymentService {
 		const initialOrder = this._cartOrderService.getOrder();
 		
 		if (initialOrder) {
-			console.log('there was a initial order, must create a payment');
 			this.createPayment(initialOrder);
 		}
 		
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			console.log('cartPaymentService: the order changed', order);
 			if (!this._currentPayment) {
-				console.log('we dont have a payment, must create');
 				this.createPayment(order);
 			} else {
-				console.log('we have a payment, updating');
 				this.updatePayment(order);
 			}
 		});

@@ -61,7 +61,7 @@ export class CartCheckoutComponent implements OnInit {
 	
 	
 	public onConfirmOrder() {
-		this._cartCheckoutService.placeOrder().catch(() => {
+		this._cartCheckoutService.placeOrder().then(() => {
 				this._router.navigateByUrl('u/order');
 		}).catch(() => {
 			this.orderPlacedFailureText = 'The order could not be placed, try again shortly';
