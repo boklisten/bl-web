@@ -1,4 +1,9 @@
 
+<div class="row" *ngIf="orderPlacedFailureText">
+	<div class="col-12">
+		<ngb-alert [type]="'danger'"><fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{orderPlacedFailureText}}</ngb-alert>
+	</div>
+</div>
 <div class="row text-center" *ngIf="showUserMustLogin">
 	<div class="col-12">
 		<h3>You must login or register to place a order</h3>
@@ -35,7 +40,7 @@
                 <app-cart-delivery></app-cart-delivery>
             </div>
             <div class="col-6">
-				<!--<app-cart-payment></app-cart-payment>-->
+				<app-cart-payment></app-cart-payment>
             </div>
         </div>
 

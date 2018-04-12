@@ -1,25 +1,12 @@
 
 <div class="row" *ngIf="paymentMethod === 'dibs'">
 	<div class="col-7">
+
 		<app-cart-payment-dibs></app-cart-payment-dibs>
+
 		<div class="row">
 			<div class="col-12">
-				total price: {{getTotalPrice()}}kr
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row mt-5 justify-content-center" *ngIf="paymentMethod === 'later'">
-	<div class="col-12 align-items-center">
-		<div class="row bl-pay-later">
-			<div class="col-6">
-				Pay <b>{{getTotalPrice()}}kr</b> later at branch
-			</div>
-			<div class="col-6">
-				<button class="btn btn-block btn-success" (click)="onPayLaterConfirm()">
-					Confirm
-				</button>
+				total price: {{currentOrder.amount}}kr
 			</div>
 		</div>
 	</div>

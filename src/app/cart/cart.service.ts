@@ -182,6 +182,7 @@ private _cart: CartItem[];
 		order.byCustomer = true;
 		order.payments = [];
 		
+		
 		return order;
 	}
 	
@@ -214,8 +215,8 @@ private _cart: CartItem[];
 						break;
 				}
 			}
-		
 		}
+		
 		this.cartChange$.next(true);
 	}
 	
@@ -250,8 +251,8 @@ private _cart: CartItem[];
 			numberOfPeriods: 1,
 			periodType: "semester"
 		};
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 		cartItem.orderItem.type = "rent";
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 	
 	private updateTypeTwoSemesters(cartItem: CartItem) {
@@ -259,9 +260,9 @@ private _cart: CartItem[];
 			from: new Date(),
 			to: new Date(),
 			numberOfPeriods: 1,
-			periodType: "semester"
+			periodType: "year"
 		};
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 		cartItem.orderItem.type = "rent";
+		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 }

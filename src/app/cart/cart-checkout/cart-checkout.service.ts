@@ -20,24 +20,24 @@ export class CartCheckoutService {
 				private _router: Router, private _userService: UserService) {
 	}
 	
-	public placeOrder() {
+	public placeOrder(): Promise<boolean> {
 		if (!this._userService.loggedIn()) {
 			this._router.navigateByUrl('auth/menu');
-			return;
+			return Promise.reject(new Error('the user is not logged in when trying to place order'));
 		}
 		
 		const order = this._cartOrderService.getOrder();
 		
-		this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
-			// we need to clear everything after order is placed
+		return new Promise((resolve, reject) => {
 			
-			this._cartOrderService.clearOrder();
-			this._cartService.clearCart();
-			this._router.navigateByUrl('u/order');
-			
-			
-		}).catch((blApiError: BlApiError) => {
-			this._router.navigateByUrl('u/home');
+			this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
+				// we need to clear everything after order is placed
+				this._cartOrderService.clearOrder();
+				this._cartService.clearCart();
+				resolve(true);
+			}).catch((blApiError: BlApiError) => {
+				reject(new Error('order could not be placed: ' + blApiError));
+			});
 		});
 	}
 	

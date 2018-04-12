@@ -26,13 +26,15 @@ export class CartPaymentComponent implements OnInit {
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService) {
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
-		
-		this._cartOrderService.onOrderChange().subscribe(() => {
-			this.currentOrder = this._cartOrderService.getOrder();
-		});
 	}
 	
 	ngOnInit() {
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			console.log('the order changed, must update price', order);
+			this.currentOrder = order;
+		});
+		
+		this.currentOrder = this._cartOrderService.getOrder();
 	}
 	
 	onPayLaterConfirm() {

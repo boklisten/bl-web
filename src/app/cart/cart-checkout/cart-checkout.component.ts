@@ -19,10 +19,13 @@ export class CartCheckoutComponent implements OnInit {
 	public order: Order;
 	showPaymentDecision: boolean;
 	public showUserMustLogin: boolean;
+	public orderPlacedFailureText: string;
 	
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService) {
+		
+		this.orderPlacedFailureText = null;
 	}
 	
 	ngOnInit() {
@@ -58,7 +61,11 @@ export class CartCheckoutComponent implements OnInit {
 	
 	
 	public onConfirmOrder() {
-		this._cartCheckoutService.placeOrder();
+		this._cartCheckoutService.placeOrder().catch(() => {
+				this._router.navigateByUrl('u/order');
+		}).catch(() => {
+			this.orderPlacedFailureText = 'The order could not be placed, try again shortly';
+		});
 	}
 	
 	public onPaymentDecicionChange(decision: "now" | "later") {
