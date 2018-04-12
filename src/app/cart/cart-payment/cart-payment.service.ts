@@ -5,39 +5,116 @@ import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "@wizardcoder/
 import {Subject} from "rxjs/Subject";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 import {CartOrderService} from "../order/cart-order.service";
+import {BranchStoreService} from "../../branch/branch-store.service";
 
 @Injectable()
 export class CartPaymentService {
 	
-	private currentPayment: Payment;
+	private _currentPayment: Payment;
 	private paymentChange$: Subject<Payment>;
+	private _paymentMethod: PaymentMethod;
 	
-	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService) {
-		// this.paymentChange$ = new Subject();
+	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService,
+				private _branchService: BranchStoreService) {
+		this.paymentChange$ = new Subject();
+		
+		const branch = this._branchService.getBranch();
+		
+		if (branch) {
+			if (branch.paymentInfo.responsible) {
+			console.log('the branch is responsible for payment');
+				this._paymentMethod = 'later';
+			} else {
+				console.log('the branch is not responsible for payment');
+				this._paymentMethod = 'dibs';
+			}
+		}
+		
+		
+		const initialOrder = this._cartOrderService.getOrder();
+		
+		if (initialOrder) {
+			console.log('there was a initial order, must create a payment');
+			this.createPayment(initialOrder);
+		}
+		
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			console.log('cartPaymentService: the order changed', order);
+			if (!this._currentPayment) {
+				console.log('we dont have a payment, must create');
+				this.createPayment(order);
+			} else {
+				console.log('we have a payment, updating');
+				this.updatePayment(order);
+			}
+		});
+		
+		this._cartOrderService.onClearOrder().subscribe(() => {
+			this._currentPayment = null;
+		});
 	}
 	
 	public onPaymentChange() {
 		return this.paymentChange$;
 	}
 	
-	public changePaymentMethod(order: Order, method: "dibs" | "later"): Promise<Payment> {
-		switch (method) {
-			case "dibs":
-				return this.updateOrSetPayment(this.updateDibsPayment(order));
-			case "later":
-				return this.updateOrSetPayment(this.updateLaterPayment(order));
-		}
+	public changePaymentMethod(method: "dibs" | "later") {
+		this._paymentMethod = method;
+		const order = this._cartOrderService.getOrder();
+		this.updatePayment(order);
 	}
 	
+	private createPayment(order: Order) {
+		let payment: Payment;
+		
+		if (this._paymentMethod === 'later') {
+			payment = this.createLaterPayment(order);
+		} else if (this._paymentMethod === 'dibs') {
+			payment = this.createDibsPayment(order);
+		}
+		
+		this._paymentService.add(payment).then((addedPayment: Payment) => {
+			this.setPayment(addedPayment);
+		}).catch((blApiErr: BlApiError) => {
+			console.log('paymentService: could not add payment');
+		});
+	
+	}
+	
+	private updatePayment(order: Order) {
+		if (!this._currentPayment) {
+			return;
+		}
+		
+		let paymentPatch: any;
+		
+		if (this._paymentMethod === 'later') {
+			paymentPatch = this.createLaterPayment(order);
+		} else {
+			paymentPatch = this.createDibsPayment(order);
+		}
+		
+		this._paymentService.update(this._currentPayment.id, paymentPatch).then((updatedPayment: Payment) => {
+			this.setPayment(updatedPayment);
+		}).catch((updatePaymentError) => {
+			console.log('cartPaymentService: could not update payment', updatePaymentError);
+		});
+	}
+	
+	private setPayment(payment: Payment) {
+		this._currentPayment = payment;
+		this.paymentChange$.next(payment);
+	}
+
 	public clearPayment() {
-		this.currentPayment = null;
+		this._currentPayment = null;
 	}
 	
 	public getPayment() {
-		return this.currentPayment;
+		return this._currentPayment;
 	}
 	
-	private updateDibsPayment(order: Order): Payment {
+	private createDibsPayment(order: Order): Payment {
 		return {
 			method: 'dibs',
 			order: order.id,
@@ -49,9 +126,8 @@ export class CartPaymentService {
 		} as Payment;
 	}
 	
-	private updateLaterPayment(order: Order): Payment {
+	private createLaterPayment(order: Order): Payment {
 		return {
-			id: '',
 			method: 'later',
 			order: order.id,
 			amount: order.amount,
@@ -61,30 +137,8 @@ export class CartPaymentService {
 			taxAmount: this.getOrderTaxAmount(order),
 			customer: order.customer,
 			branch: order.branch
-		};
+		} as any;
 	}
-	private updateOrSetPayment(payment: Payment): Promise<Payment> {
-		return new Promise((resolve, reject) => {
-			if (this.currentPayment) {
-				this._paymentService.update(this.currentPayment.id, payment).then((updatedPayment: Payment) => {
-					this.currentPayment = updatedPayment;
-					this.paymentChange$.next(this.currentPayment);
-					resolve(updatedPayment);
-				}).catch((blApiErr: BlApiError) => {
-					reject(blApiErr);
-				});
-			} else {
-				this._paymentService.add(payment).then((addedPayment: Payment) => {
-					this.currentPayment = addedPayment;
-					this.paymentChange$.next(this.currentPayment);
-					resolve(this.currentPayment);
-				}).catch((blApiErr: BlApiError) => {
-					reject(blApiErr);
-				});
-			}
-		});
-	}
-	
 	
 	private getOrderTaxAmount(order: Order): number {
 		let taxAmount = 0;

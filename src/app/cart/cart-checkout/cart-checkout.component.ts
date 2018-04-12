@@ -26,8 +26,6 @@ export class CartCheckoutComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		
-		
 		if (!this._userService.loggedIn()) {
 			this.showUserMustLogin = true;
 			return;
@@ -42,7 +40,6 @@ export class CartCheckoutComponent implements OnInit {
 			this.paymentDecision = 'now';
 			this.showPaymentDecision = true;
 		}
-		
 		
 		this.order = this._cartOrderService.getOrder();
 		
@@ -59,59 +56,16 @@ export class CartCheckoutComponent implements OnInit {
 		return this.order.amount;
 	}
 	
-	public onConfirmOrder() {
-		if (!this._userService.loggedIn()) {
-			this._router.navigateByUrl('auth/menu');
-			return;
-		}
-		
-		this._cartCheckoutService.placeOrder().then((placedOrder: Order) => {
-			this._router.navigateByUrl('u/order');
-		});
-	}
 	
-	public onConfirmOrderBranchResponsible() {
-		if (!this._userService.loggedIn()) {
-			this._router.navigateByUrl('auth/menu');
-			return;
-		}
-		
-		/*
-		this._cartOrderService.getOrder().then((order: Order) => {
-			this._cartPaymentService.changePaymentMethod(order, 'later').then((payment: Payment) => {
-				
-				this._cartCheckoutService.placeOrder().then((placedOrder: Order) => {
-					this._router.navigateByUrl('u/order');
-				}).catch((placeOrderError) => {
-					console.log('cartCheckoutComponent: could not place order', placeOrderError);
-				});
-			}).catch((blApiError: BlApiError) => {
-				console.log('cartCheckoutComponent: failed to update paymentMethod onConfirmOrderBranchResponsible');
-			});
-		}).catch((getOrderError) => {
-			console.log('cartCheckoutComponent: could not get order when trying to place order when branch responsible is true ', getOrderError);
-		});
-		*/
+	public onConfirmOrder() {
+		this._cartCheckoutService.placeOrder();
 	}
 	
 	public onPaymentDecicionChange(decision: "now" | "later") {
-		/*
 		if (decision === 'later') {
-			this._cartDeliveryService.updateDeliveryBranch().then((updatedDelivery: Delivery) => {
-				this._cartOrderService.getOrder().then((order: Order) => {
-					this._cartPaymentService.changePaymentMethod(order, 'later').then((payment: Payment) => {
-					
-					}).catch((blApiError: BlApiError) => {
-						console.log('cartCheckoutComponent: failed to update payment', blApiError);
-					});
-				}).catch((getOrderError) => {
-					console.log('cartCheckoutComponent: could not get order when trying to update decision', getOrderError);
-				});
-			}).catch((blApiErr: BlApiError) => {
-				console.log('cartCheckoutComponent: failed to update delivery to branch');
-			});
+			this._cartDeliveryService.updateDeliveryBranch();
+			this._cartPaymentService.changePaymentMethod('later');
 		}
-		*/
 	}
 	
 }

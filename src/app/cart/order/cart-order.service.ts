@@ -27,12 +27,9 @@ export class CartOrderService {
 	private onCartChange() {
 		this._cartService.onCartChange().subscribe(() => {
 			if (this._cartService.getSize() > 0) {
-				console.log('the cart changed', this._cartService.getCart());
 				if (this._currentOrder) {
-					console.log('there was already a order made, updating that one');
 					this.updateOrder(this._cartService.createOrder());
 				} else {
-					console.log('there was no order, creating new one');
 					this.createOrder();
 				}
 			}

@@ -7,6 +7,7 @@ import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {UserService} from "../../user/user.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class CartCheckoutService {
@@ -15,36 +16,28 @@ export class CartCheckoutService {
 	private currentOrder: Order;
 	
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
-				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService) {
-		/*
-		this.onDeliveryChange();
-		this.onPaymentChange();
-		this.onOrderChange();
-		*/
+				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService,
+				private _router: Router, private _userService: UserService) {
 	}
 	
-	public getOrder(): Promise<Order> {
-		return new Promise((resolve, reject) => {
-			this._cartOrderService.getOrder().then((order: Order) => {
-				resolve(order);
-			}).catch((getOrderError) => {
-				reject(new Error('cartCheckoutService: could not get order: ' + getOrderError));
-			});
-		});
-	}
-	
-	public placeOrder(): Promise<Order> {
-		return this._orderService.update(this.currentOrder.id, {placed: true}).then((placedOrder: Order) => {
+	public placeOrder() {
+		if (!this._userService.loggedIn()) {
+			this._router.navigateByUrl('auth/menu');
+			return;
+		}
+		
+		const order = this._cartOrderService.getOrder();
+		
+		this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
 			// we need to clear everything after order is placed
 			
 			this._cartOrderService.clearOrder();
-			this._cartPaymentService.clearPayment();
-			this._cartDeliveryService.clearDelivery();
 			this._cartService.clearCart();
+			this._router.navigateByUrl('u/order');
 			
-			return placedOrder;
+			
 		}).catch((blApiError: BlApiError) => {
-			return Promise.reject(blApiError);
+			this._router.navigateByUrl('u/home');
 		});
 	}
 	
