@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-root',
@@ -8,7 +9,9 @@ import {Component} from '@angular/core';
 export class AppComponent {
 	title = 'app';
 	
-	constructor() {
-	
+	constructor(private _router: Router) {
+		_router.events.subscribe(() =>  {
+			window.scroll(0, 0);
+		});
 	}
 }
