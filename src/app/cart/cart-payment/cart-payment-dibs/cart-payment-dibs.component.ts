@@ -17,14 +17,14 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 		language: string
 	};
 	
-	@Input() order: Order;
+	@Input() payment: Payment;
 	
 	
 	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService) {
 	}
 	
 	ngOnInit() {
-	
+		this.onDibsPayment();
 	}
 	ngOnDestroy() {
 	}
@@ -32,25 +32,11 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy {
 	onDibsPayment() {
 		this.dibsCheckoutOptions = {
 			checkoutKey: 'test-checkout-key-5d1531c5046e43f9ba5f44a40327d317',
-			paymentId: '',
+			paymentId: this.payment.info['paymentId'],
 			containerId: 'dibs-complete-checkout',
 			language: 'nb-NO'
 		};
-		/*
-		this._cartPaymentService.payDibs(this.order).then((payment: Payment) => {
-			this.currentPayment = payment;
-			this.dibsCheckoutOptions.paymentId = payment.id;
-			this.payment.emit(this.currentPayment);
-			
-			const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
-			
-			checkout.on('payment-completed', (response) => {
-				console.log('the payment is completed!', response);
-			});
-			
-		}).catch((blApiErr: BlApiError) => {
-			console.log('the api err', blApiErr);
-		});
-		*/
+		
+		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
 	}
 }

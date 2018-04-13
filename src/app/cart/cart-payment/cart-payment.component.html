@@ -1,14 +1,13 @@
 
-<div class="row" *ngIf="paymentMethod === 'dibs'">
-	<div class="col-7">
+<div class="row" *ngIf="currentPayment">
+    <div class="col-12">
+        total price: {{currentPayment.amount}}kr
+    </div>
+</div>
 
-		<app-cart-payment-dibs></app-cart-payment-dibs>
-
-		<div class="row">
-			<div class="col-12">
-				total price: {{currentOrder.amount}}kr
-			</div>
-		</div>
+<div class="row" *ngIf="currentPayment && showDibsPayment">
+	<div class="col-12">
+		<app-cart-payment-dibs [payment]="currentPayment"></app-cart-payment-dibs>
 	</div>
 </div>
 

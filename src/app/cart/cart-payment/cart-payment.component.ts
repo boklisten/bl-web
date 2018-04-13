@@ -1,11 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
-import {CartService} from "../cart.service";
 import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "@wizardcoder/bl-model";
-import {OrderService, PaymentService} from '@wizardcoder/bl-connect';
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
-import {Router} from "@angular/router";
-import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartOrderService} from "../order/cart-order.service";
 
 
@@ -18,10 +14,9 @@ export class CartPaymentComponent implements OnInit {
 	
 	
 	@ViewChild(CartPaymentDibsComponent) cartPaymentDibsRef: CartPaymentDibsComponent;
-	public payment: Payment;
 	public showDibsPayment: boolean;
 	public paymentMethod: "later" | "dibs";
-	public currentOrder: Order;
+	public currentPayment: Payment;
 	
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService) {
 		this.paymentMethod = "dibs";
@@ -29,10 +24,12 @@ export class CartPaymentComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this.currentOrder = order;
+		this._cartPaymentService.onPaymentChange().subscribe((payment: Payment) => {
+			this.currentPayment = payment;
+			
+			if (this.currentPayment.method === 'dibs') {
+				this.showDibsPayment = true;
+			}
 		});
-		
-		this.currentOrder = this._cartOrderService.getOrder();
 	}
 }

@@ -5,5 +5,5 @@
 
 export const environment = {
 	production: false,
-	apiPath: 'http://localhost:1337/api/v1/',
+	apiPath: 'http://api.boklisten.co/api/v1/',
 };
