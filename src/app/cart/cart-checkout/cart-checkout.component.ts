@@ -70,8 +70,10 @@ export class CartCheckoutComponent implements OnInit {
 	
 	public onPaymentDecicionChange(decision: "now" | "later") {
 		if (decision === 'later') {
-			this._cartDeliveryService.updateDeliveryBranch();
+			this._cartDeliveryService.updateDeliveryBranch()
 			this._cartPaymentService.changePaymentMethod('later');
+		} else if (decision === 'now') {
+			this._cartPaymentService.changePaymentMethod('dibs');
 		}
 	}
 	

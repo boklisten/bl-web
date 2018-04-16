@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-2">
 	<div class="row" *ngIf="warningMsg">
 		<div class="col-12">
 			<ngb-alert type="warning" (close)="warningMsg = null">{{warningMsg}}
@@ -10,8 +10,13 @@
 
 	<app-cart-empty *ngIf="!showCart()"></app-cart-empty>
 
+	<div class="row" *ngIf="showCart()">
+		<div class="col-12">
+			<h1>Cart</h1>
+		</div>
+	</div>
 
-	<div class="row bl-cart-container">
+	<div class="row bl-cart-container" *ngIf="showCart()">
 		<div class="col-12 bl-cart-container">
 			<app-item-display *ngFor="let cartItem of getCart()" [inCart]="true" [item]="cartItem.item" [customerItem]="cartItem.customerItem" [branch]="cartItem.branch"></app-item-display>
 		</div>

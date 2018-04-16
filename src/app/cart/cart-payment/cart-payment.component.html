@@ -1,13 +1,13 @@
 
 <div class="row" *ngIf="currentPayment">
     <div class="col-12">
-        total price: {{currentPayment.amount}}kr
+		<h3>Total price: <b>{{currentPayment.amount}} kr</b></h3>
     </div>
 </div>
 
 <div class="row" *ngIf="currentPayment && showDibsPayment">
 	<div class="col-12">
-		<app-cart-payment-dibs [payment]="currentPayment"></app-cart-payment-dibs>
+		<app-cart-payment-dibs></app-cart-payment-dibs>
 	</div>
 </div>
 
