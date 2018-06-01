@@ -1,24 +1,29 @@
-
-
-
-<div class="row">
-
-	<div class="col-8">
+<div class="row justify-content-between">
+	<div class="col-auto">
 		<h5>{{orderItem.title}}</h5>
 	</div>
-
-	<div class="col-4">
-		<b>{{getStatus()}}</b>
+	<div class="col-auto" *ngIf="orderItem.amount !== 0">
+		{{orderItem.amount | blcPrice}}
 	</div>
+</div>
+<div class="row">
+	<div class="col-auto text-secondary">
+		<div *ngIf="orderItem.type === 'rent'">
+			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
+			Rent
+			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
+			<b>{{orderItem.info.to | date}}</b>
+		</div>
+		<div *ngIf="orderItem.type === 'extend'">
+			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
+			Extend
+			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
+			<b>{{orderItem.info.to | date}}</b>
+		</div>
 
-	 <div class="col-12">
-		 <div *ngIf="orderItem.type === 'rent'">
-			 Rent to <b>{{orderItem.info.to | date}}</b>
-		 </div>
-
-		 <div *ngIf="orderItem.amount > 0">
-			 <small>Price: {{orderItem.amount}} kr</small>
-		 </div>
-	 </div>
-
+		<div *ngIf="orderItem.type === 'buy' || orderItem.type === 'buyout'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
+			Buy
+		</div>
+	</div>
 </div>

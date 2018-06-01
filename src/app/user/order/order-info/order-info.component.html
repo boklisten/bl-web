@@ -1,6 +1,9 @@
-<div class="row">
-    <div class="col-12 mb-3">
+<div class="row mb-5">
+    <div class="col-12">
         <div class="card">
+			<div class="card-header">
+
+			</div>
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item" *ngFor="let orderItem of order.orderItems">
@@ -8,19 +11,19 @@
 					</li>
                 </ul>
 
-				<div class="row mt-2 justify-content-end">
-					<div class="col-4">
+				<div class="row mt-2 justify-content-end p-2">
+					<div class="col-lg-4 col-md-6 col-sm-12 col-12">
 						<app-order-payment-info [order]="order"></app-order-payment-info>
 					</div>
 				</div>
             </div>
-            <div class="card-footer ">
+            <div class="card-footer">
 				<div class="row justify-content-between align-items-center">
-					<div class="col-auto">
-						<button type="button" class="btn btn-info" (click)="onWhereToGetClick()">Where to get the items</button>
-					</div>
 					<div class="col-auto text-secondary">
 						<fa-icon [icon]="'clock'" class="mr-2"></fa-icon> {{order.creationTime}}
+					</div>
+					<div class="col-auto text-secondary font-italic">
+						<small>{{order.id}}</small>
 					</div>
 				</div>
             </div>

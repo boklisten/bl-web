@@ -1,12 +1,16 @@
 
 
 
-	<div class="row">
-		<div class="col-12">
-			<h3>
-				Your orders
-			</h3>
+	<div class="row justify-content-center mt-3">
+		<div class="col-auto text-secondary">
+			<fa-icon [icon]="'receipt'" [size]="'3x'"></fa-icon>
 		</div>
+	</div>
+
+	<div class="row justify-content-center mt-2 mb-3">
+		<h2 class="col-auto text-secondary">
+			Order history
+		</h2>
 	</div>
 
 	<div class="row" *ngIf="!showOrders()">

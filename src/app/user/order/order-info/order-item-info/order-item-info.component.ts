@@ -10,10 +10,10 @@ import {CustomerItemService} from '@wizardcoder/bl-connect';
 export class OrderItemInfoComponent implements OnInit {
 	@Input() orderItem: OrderItem;
 	public customerItem: CustomerItem;
-	
+
 	constructor(private _customerItemService: CustomerItemService) {
 	}
-	
+
 	ngOnInit() {
 		if (this.orderItem.type === 'rent' && this.orderItem.info.customerItem) {
 			this._customerItemService.getById(this.orderItem.info.customerItem).then((customerItem: CustomerItem) => {
@@ -23,8 +23,4 @@ export class OrderItemInfoComponent implements OnInit {
 			});
 		}
 	}
-	
-	getStatus() {
-	}
-	
 }

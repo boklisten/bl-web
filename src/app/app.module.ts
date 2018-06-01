@@ -27,15 +27,16 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 
 import {
-	faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt,
+	faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt,
 	faClipboard, faCartArrowDown, faSquare, faCheckSquare, faSync, faExclamationTriangle, faClock, faCheckCircle,
-	faTimes, faCreditCard, faMoneyBillAlt
+	faTimes, faCreditCard, faMoneyBillAlt, faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faList
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
-	faSync, faExclamationTriangle, faClock, faCheckCircle, faTimes, faCreditCard, faMoneyBillAlt);
+	faSync, faExclamationTriangle, faClock, faCheckCircle, faTimes, faCreditCard, faMoneyBillAlt,
+	faCalendarPlus, faCalendar, faCalendarAlt, faReceipt);
 
 @NgModule({
 	declarations: [

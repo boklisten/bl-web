@@ -10,18 +10,27 @@ import {Order, Payment} from "@wizardcoder/bl-model";
 export class OrderPaymentInfoComponent implements OnInit {
 	@Input() order: Order;
 	payments: Payment[];
+	showPayment: boolean;
 
 	constructor(private _paymentService: PaymentService) {
 		this.payments = [];
+		this.showPayment = true;
 	}
 
 	ngOnInit() {
-		console.log('the order, has no payments?', this.order.payments);
+		if (!this.order.payments || this.order.payments.length <= 0) {
+			if (this.order.amount === 0) {
+				this.showPayment = false;
+			}
+		}
+
+
 		this._paymentService.getManyByIds(this.order.payments).then((payments: Payment[]) => {
 			this.payments = payments;
 		}).catch((getPaymentsError) => {
 			console.log('orderPaymentInfoComponent: could not get payments from branch');
 		});
+
 	}
 
 }

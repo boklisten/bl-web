@@ -14,6 +14,7 @@ import {OrderItemInfoComponent} from "./order/order-info/order-item-info/order-i
 import {UserGuardService} from "./user-guard.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { OrderPaymentInfoComponent } from './order/order-info/order-payment-info/order-payment-info.component';
+import {BlCommonModule} from "../bl-common/bl-common.module";
 
 @NgModule({
 	imports: [
@@ -21,7 +22,8 @@ import { OrderPaymentInfoComponent } from './order/order-info/order-payment-info
 		UserRoutingModule,
 		BranchModule,
 		ItemModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		BlCommonModule
 	],
 	declarations: [
 		HomeComponent,
