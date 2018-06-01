@@ -14,12 +14,12 @@ import {UserService} from "../../user/user.service";
 export class ItemSelectComponent implements OnInit {
 	public items: Item[];
 	public branch: Branch;
-	
+
 	constructor(private _itemService: ItemService, private _branchService: BranchService, private _cartService: CartService,
 				private _router: Router, private _branchStoreService: BranchStoreService, private _userServie: UserService) {
-		
+
 	}
-	
+
 	ngOnInit() {
 		this._branchStoreService.getActiveBranch().then((branch: Branch) => {
 			this.branch = branch;
@@ -28,29 +28,31 @@ export class ItemSelectComponent implements OnInit {
 			this._router.navigateByUrl('b/set');
 		});
 	}
-	
+
 	private fetchItems(branch: Branch) {
+		/*
 		this._itemService.getManyByIds(branch.items).then((items: Item[]) => {
 			this.items = items;
 		}).catch((blApiErr: BlApiError) => {
 			console.log('ItemSelectComponent: could not get items for branch');
 		});
+		*/
 	}
-	
-	
-	
+
+
+
 	public onBranchClick() {
 		this._router.navigateByUrl('/b/info/' + this.branch.id);
 	}
-	
+
 	public showNavigateToCart(): boolean {
 		return (this._cartService.getCart().length > 0);
 	}
-	
+
 	public numOfItemsInCart(): number {
 		return this._cartService.getCart().length;
 	}
-	
+
 	public onCartClick() {
 		this._router.navigateByUrl('/cart');
 	}

@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
+import {Branch, BranchItem, CustomerItem, Item} from "@wizardcoder/bl-model";
 import {CartService} from "../../cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PriceService} from "../../price/price.service";
 import {UserService} from "../../user/user.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {ItemService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'app-item-display',
@@ -12,40 +13,49 @@ import {BranchStoreService} from "../../branch/branch-store.service";
 	styleUrls: ['./item-display.component.scss']
 })
 export class ItemDisplayComponent implements OnInit {
-	
+
 	@Input() item: Item;
+	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
 	@Input() branch: Branch;
 	@Input() inCart: boolean;
-	
+
 	public view: boolean;
-	
+
 	public customerItemActive: boolean;
-	
+
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
-	
-	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService) {
+
+	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService, private _itemService: ItemService) {
 		this.customerItemActive = false;
 		this.view = false;
 	}
-	
+
 	ngOnInit() {
+		if (this.branchItem) {
+			this._itemService.getById(this.branchItem.item).then((item: Item) => {
+				this.item = item;
+			}).catch((getItemError) => {
+				console.log('ItemDisplayComponent: could not get item based on branchItem');
+			});
+		}
+
 		this.isCustomerItemActive().then(() => {
 			this.view = true;
 		}).catch(() => {
 			this.view = true;
 		});
-		
+
 	}
-	
+
 	public onItemClick() {
 		this._router.navigateByUrl('i/' + this.item.id);
 	}
-	
+
 	public onItemTypeChange(type: "one" | "two" | "buy" | "buyout" | "extend") {
 		this.orderItemType = type;
 	}
-	
+
 	public isCustomerItemActive(): Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			this._userService.isCustomerItemActive(this.item.id).then(() => {
@@ -57,15 +67,15 @@ export class ItemDisplayComponent implements OnInit {
 			});
 		});
 	}
-	
+
 	public showAsCustomerItem() {
 		return (this.customerItemActive && !this.inCart);
 	}
-	
+
 	public isCustomerItem(): boolean {
 		return !(!this.customerItem);
 	}
-	
+
 	public getPrice(): number {
 		switch (this.orderItemType) {
 			case "one":
@@ -82,7 +92,7 @@ export class ItemDisplayComponent implements OnInit {
 				return -1;
 		}
 	}
-	
+
 	public showPrice(): boolean {
 		return (!this.branch.paymentInfo.responsible || this.orderItemType === 'buy');
 	}

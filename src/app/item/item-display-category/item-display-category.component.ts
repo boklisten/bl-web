@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BlApiError, BlApiNotFoundError, Branch, Item} from "@wizardcoder/bl-model";
-import {ItemService} from "@wizardcoder/bl-connect";
+import {BlApiError, BlApiNotFoundError, Branch, BranchItem, Item} from "@wizardcoder/bl-model";
+import {BranchItemService, ItemService} from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: 'app-item-display-category',
@@ -8,48 +8,74 @@ import {ItemService} from "@wizardcoder/bl-connect";
 	styleUrls: ['./item-display-category.component.scss']
 })
 export class ItemDisplayCategoryComponent implements OnInit {
-	
+
 	@Input() branch: Branch;
-	
+
 	items: Item[];
-	itemCategories: {name: string, items: Item[]}[];
-	selectedItemCategories: {name: string, items: Item[]}[];
-	
-	constructor(private _itemService: ItemService) {
-		this.itemCategories = [];
-		this.selectedItemCategories = [];
+	selectedBranchItemCategories: {name: string, branchItems: BranchItem[]}[];
+	branchItems: BranchItem[];
+	branchItemCategories: {name: string, branchItems: BranchItem[]}[];
+	branchItemCategoryNames: string[];
+
+	constructor(private _itemService: ItemService, private _branchItemService: BranchItemService) {
+		this.selectedBranchItemCategories = [];
 		this.items = [];
+		this.branchItems = [];
+		this.branchItemCategories = [];
+		this.branchItemCategoryNames = [];
 	}
-	
+
 	ngOnInit() {
-		for (const category of this.branch.itemCategories) {
-			
-			if (category.items && category.items.length > 0) {
-				this._itemService.getManyByIds(category.items).then((items: Item[]) => {
-					this.itemCategories.push({name: category.name, items: items});
-					this.selectedItemCategories.push({name: category.name, items: items});
-				}).catch((blApiErr: BlApiError) => {
-					console.log('itemDisplayCategoryComponent: could not get items', blApiErr);
-				});
+		this._branchItemService.getManyByIds(this.branch.branchItems).then((branchItems: BranchItem[]) => {
+			this.branchItems = branchItems;
+
+			for (const branchItem of this.branchItems) {
+				this.addBranchItemToCategory(branchItem);
 			}
-		}
+
+		}).catch((getBranchItemError) => {
+			console.log('ItemDisplayCategoryComponent: could not get branch items');
+		});
 	}
-	
-	onItemCategoryFilterChange(itemCategoryFilters: string[]) {
-		let selectedCategories: {name: string, items: Item[]}[] = [];
-		
-		for (let i = itemCategoryFilters.length; i >= 0; i--) {
-			for (const itemCategory of this.itemCategories) {
-				if (itemCategory.name === itemCategoryFilters[i]) {
-					selectedCategories.push(itemCategory);
+
+	onBranchItemCategoryFilterChange(branchItemCategoryFilter: string[]) {
+		let selectedCategories: {name: string, branchItems: BranchItem[]}[] = [];
+
+		for (let i = branchItemCategoryFilter.length; i >= 0; i--) {
+			for (const branchItemCategory of this.branchItemCategories) {
+				if (branchItemCategory.name === branchItemCategoryFilter[i]) {
+					selectedCategories.push(branchItemCategory);
 				}
 			}
 		}
-		
+
 		if (selectedCategories.length <= 0) {
-			selectedCategories = this.itemCategories;
+			selectedCategories = this.branchItemCategories;
 		}
-		
-		this.selectedItemCategories = selectedCategories;
+
+		this.selectedBranchItemCategories = selectedCategories;
+	}
+
+	private addBranchItemToCategory(branchItem: BranchItem) {
+		if (!branchItem.categories || branchItem.categories.length <= 0) {
+			this.branchItemCategories.push({name: '', branchItems: [branchItem]});
+			return;
+		}
+
+		for (const category of branchItem.categories) {
+			let foundCategory = false;
+
+			for (let i = 0; i < this.branchItemCategories.length; i++) {
+				if (this.branchItemCategories[i].name === category) {
+					this.branchItemCategories[i].branchItems.push(branchItem);
+					foundCategory = true;
+				}
+			}
+
+			if (!foundCategory) {
+				this.branchItemCategories.push({name: category, branchItems: [branchItem]});
+				this.branchItemCategoryNames.push(category);
+			}
+		}
 	}
 }

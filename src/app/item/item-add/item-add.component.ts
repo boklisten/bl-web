@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from "../../cart/cart.service";
-import {Item} from "@wizardcoder/bl-model";
+import {BranchItem, Item} from "@wizardcoder/bl-model";
 
 @Component({
 	selector: 'app-item-add',
@@ -8,24 +8,25 @@ import {Item} from "@wizardcoder/bl-model";
 	styleUrls: ['./item-add.component.scss']
 })
 export class ItemAddComponent implements OnInit {
-	
+
 	@Input() item: Item;
 	@Input() type: "one" | "two" | "buy";
-	
+	@Input() branchItem: BranchItem;
+
 	constructor(private _cartService: CartService) {
 	}
-	
+
 	ngOnInit() {
 	}
-	
+
 	onAdd() {
-		this._cartService.add(this.item, this.type);
+		this._cartService.add(this.item, this.branchItem, this.type);
 	}
-	
+
 	onDelete() {
 		this._cartService.remove(this.item.id);
 	}
-	
+
 	isAdded(): boolean {
 		return this._cartService.contains(this.item.id);
 	}

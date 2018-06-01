@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-12">
 		<button
-			*ngFor="let itemCategoryName of itemCategoryNames"
+			*ngFor="let categoryName of branchItemCategories"
 			type="button" class="btn mr-2 mb-2"
-			[ngClass]="{'btn-outline-info': !contains(itemCategoryName), 'btn-secondary': contains(itemCategoryName)}"
-			(click)="onSelectCategory(itemCategoryName)">
-				<fa-icon [icon]="'check'" *ngIf="contains(itemCategoryName)"></fa-icon> {{itemCategoryName}}
+			[ngClass]="{'btn-outline-info': !contains(itemCategoryName), 'btn-secondary': contains(categoryName)}"
+			(click)="onSelectCategory(categoryName)">
+				<fa-icon [icon]="'check'" *ngIf="contains(categoryName)"></fa-icon> {{categoryName}}
 		</button>
 	</div>
 </div>

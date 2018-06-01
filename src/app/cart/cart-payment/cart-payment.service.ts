@@ -10,7 +10,7 @@ import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 
 @Injectable()
 export class CartPaymentService {
-	
+	public orderShouldHavePayment: boolean; // if false, no need to add or update the payment
 	private _currentPayment: Payment;
 	private paymentChange$: Subject<Payment>;
 	private _paymentMethod: PaymentMethod;
@@ -24,27 +24,30 @@ export class CartPaymentService {
 		const branch = this._branchService.getBranch();
 		
 		if (branch) {
-			if (branch.paymentInfo.responsible) {
-				this._paymentMethod = 'later';
+			if (branch.paymentInfo.responsible) { // no need to add payment if branch is responsible
+				return;
 			} else {
 				this._paymentMethod = 'dibs';
 			}
 		}
 		
-		
 		const initialOrder = this._cartOrderService.getOrder();
 		
-		if (initialOrder) {
+		if (initialOrder) { // if we have a order
 			this.createPayment(initialOrder);
 		}
 		
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			this._currentOrder = order;
 			
-			if (order.delivery) {
-				this._currentDelivery = this._cartDeliveryService.getDelivery();
+			if (this.orderShouldHavePayment) {
+				
+				if (this._currentOrder.delivery) {
+					this._currentDelivery = this._cartDeliveryService.getDelivery();
+				}
+				
+				this.createOrUpdatePayment();
 			}
-			this.createOrUpdatePayment();
 		});
 		
 		this._cartOrderService.onClearOrder().subscribe(() => {
@@ -54,7 +57,10 @@ export class CartPaymentService {
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
 			this._currentOrder = this._cartOrderService.getOrder();
 			this._currentDelivery = delivery;
-			this.createOrUpdatePayment();
+			
+			if (this.orderShouldHavePayment) {
+				this.createOrUpdatePayment();
+			}
 		});
 	}
 	
@@ -70,7 +76,7 @@ export class CartPaymentService {
 		return this.paymentChange$;
 	}
 	
-	public changePaymentMethod(method: "dibs" | "later") {
+	public changePaymentMethod(method: "dibs") {
 		this._paymentMethod = method;
 		const order = this._cartOrderService.getOrder();
 		this.updatePayment(order);
@@ -79,13 +85,9 @@ export class CartPaymentService {
 	private createPayment(order: Order, delivery?: Delivery) {
 		let payment: Payment;
 		
-		if (this._paymentMethod === 'later') {
-			payment = this.createLaterPayment(order, delivery);
-		} else if (this._paymentMethod === 'dibs') {
+		if (this._paymentMethod === 'dibs') {
 			payment = this.createDibsPayment(order, delivery);
 		}
-		
-		console.log('creating payment', payment);
 		
 		this._paymentService.add(payment).then((addedPayment: Payment) => {
 			this.setPayment(addedPayment);
@@ -100,13 +102,7 @@ export class CartPaymentService {
 			return;
 		}
 		
-		let paymentPatch: any;
-		
-		if (this._paymentMethod === 'later') {
-			paymentPatch = this.createLaterPayment(order, delivery);
-		} else {
-			paymentPatch = this.createDibsPayment(order, delivery);
-		}
+		const paymentPatch = this.createDibsPayment(order, delivery);
 		
 		this._paymentService.update(this._currentPayment.id, paymentPatch).then((updatedPayment: Payment) => {
 			this.setPayment(updatedPayment);
@@ -138,20 +134,6 @@ export class CartPaymentService {
 			customer: order.customer,
 			branch: order.branch
 		} as Payment;
-	}
-	
-	private createLaterPayment(order: Order, delivery?: Delivery): Payment {
-		return {
-			method: 'later',
-			order: order.id,
-			amount: this.calculatePaymentAmount(order, delivery),
-			info: {
-				branch: order.branch
-			},
-			taxAmount: this.calculateTaxAmount(order, delivery),
-			customer: order.customer,
-			branch: order.branch
-		} as any;
 	}
 	
 	private calculatePaymentAmount(order: Order, delivery?: Delivery): number {

@@ -26,6 +26,14 @@ export class CartCheckoutComponent implements OnInit {
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService) {
 		
 		this.orderPlacedFailureText = null;
+		
+		const branch = this._branchStoreService.getBranch();
+		
+		if (branch.paymentInfo.responsible) {
+			this._cartPaymentService.orderShouldHavePayment = false;
+		} else {
+			this._cartPaymentService.orderShouldHavePayment = true;
+		}
 	}
 	
 	ngOnInit() {
@@ -37,7 +45,6 @@ export class CartCheckoutComponent implements OnInit {
 		const branch = this._branchStoreService.getBranch();
 		
 		if (branch.paymentInfo.responsible) {
-			this.paymentDecision = 'later';
 			this.showPaymentDecision = false;
 		} else {
 			this.paymentDecision = 'now';
@@ -70,8 +77,11 @@ export class CartCheckoutComponent implements OnInit {
 	
 	public onPaymentDecicionChange(decision: "now" | "later") {
 		if (decision === 'later') {
-			this._cartDeliveryService.updateDeliveryBranch()
-			this._cartPaymentService.changePaymentMethod('later');
+			console.log('the order IS ', this._cartOrderService.getOrder());
+			this._cartPaymentService.orderShouldHavePayment = false;
+			
+			this._cartDeliveryService.updateDeliveryBranch();
+			this._cartOrderService.updateOrderWithNoPayments();
 		} else if (decision === 'now') {
 			this._cartPaymentService.changePaymentMethod('dibs');
 		}

@@ -18,7 +18,11 @@
 
 	<div class="row bl-cart-container" *ngIf="showCart()">
 		<div class="col-12 bl-cart-container">
-			<app-item-display *ngFor="let cartItem of getCart()" [inCart]="true" [item]="cartItem.item" [customerItem]="cartItem.customerItem" [branch]="cartItem.branch"></app-item-display>
+			<app-item-display *ngFor="let cartItem of getCart()"
+							  [inCart]="true" [item]="cartItem.item"
+							  [customerItem]="cartItem.customerItem"
+							  [branchItem]="cartItem.branchItem"
+							  [branch]="cartItem.branch"></app-item-display>
 		</div>
 	</div>
 

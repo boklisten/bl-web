@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row" *ngIf="branchItem">
     <div class="col-12" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-info" *ngIf="rentSemesterOption">

@@ -24,6 +24,37 @@ export class CartOrderService {
 		this.onCartChange();
 	}
 	
+	public setOrder(order: Order) {
+		this._currentOrder = order;
+		this._orderChange$.next(this._currentOrder);
+	}
+	
+	public getOrder(): Order {
+		return this._currentOrder;
+	}
+	
+	public clearOrder() {
+		this._currentOrder = null;
+		this._orderClear$.next(true);
+	}
+	
+	public onClearOrder(): Subject<boolean> {
+		return this._orderClear$;
+	}
+	
+	public onOrderChange(): Subject<Order> {
+		return this._orderChange$;
+	}
+	
+	public updateOrderWithNoPayments() {
+		this._orderService.update(this._currentOrder.id, {payments: []}).then((updatedOrder: Order) => {
+			console.log('successfully changed order with no payments', updatedOrder);
+			this.setOrder(updatedOrder);
+		}).catch((blApiErr: BlApiError) => {
+			console.log('cartOrderService: could not patch order: ', blApiErr);
+		});
+	}
+	
 	private onCartChange() {
 		this._cartService.onCartChange().subscribe(() => {
 			if (this._cartService.getSize() > 0) {
@@ -42,11 +73,6 @@ export class CartOrderService {
 	private onLogout() {
 	}
 	
-	public setOrder(order: Order) {
-		this._currentOrder = order;
-		this._orderChange$.next(this._currentOrder);
-	}
-	
 	private createOrder() {
 		const order = this._cartService.createOrder();
 		
@@ -54,41 +80,6 @@ export class CartOrderService {
 			this.setOrder(addedOrder);
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartOrderService: could not add order', blApiErr);
-		});
-	}
-	
-	public getOrder(): Order {
-		return this._currentOrder;
-	}
-
-	public clearOrder() {
-		this._currentOrder = null;
-		this._orderClear$.next(true);
-	}
-	
-	public onClearOrder(): Subject<boolean> {
-		return this._orderClear$;
-	}
-	
-	public onOrderChange(): Subject<Order> {
-		return this._orderChange$;
-	}
-	
-	/**
-	 * used by other classes to tell the cartOrderService that the order has changed on remote api
-	 */
-	public refetchOrder() {
-		if (!this._currentOrder) {
-			return;
-		}
-		
-		this._orderService.getById(this._currentOrder.id).then((refetchedOrder: Order) => {
-			if (this._currentOrder !== refetchedOrder) {
-				console.log('the order was refetched from api', refetchedOrder);
-				this.setOrder(refetchedOrder);
-			}
-		}).catch((blApiErr: BlApiError) => {
-			console.log('cartOrderService: error when trying to get order', blApiErr);
 		});
 	}
 	

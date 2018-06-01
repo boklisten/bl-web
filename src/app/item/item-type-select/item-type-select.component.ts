@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Branch, CustomerItem, Item, OrderItem} from "@wizardcoder/bl-model";
+import {Branch, BranchItem, CustomerItem, Item, OrderItem} from "@wizardcoder/bl-model";
 import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
@@ -11,91 +11,111 @@ import {BranchStoreService} from "../../branch/branch-store.service";
 	styleUrls: ['./item-type-select.component.scss']
 })
 export class ItemTypeSelectComponent implements OnInit {
-	
+
 	@Input() item: Item;
+	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
 	@Output() type: EventEmitter<string>;
-	
+
 	public typeSelect: "one" | "two" | "buy" | "buyout" | "extend";
 	public desc: string;
 	public date: string;
-	
+
 	public rentSemesterOption: boolean;
 	public rentYearOption: boolean;
 	public buyOption: boolean;
 	public buyoutOption: boolean;
 	public extendOption: boolean;
 	private branch: Branch;
-	
+
 	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService,
 				private _branchStoreService: BranchStoreService) {
 		this.type = new EventEmitter<string>();
 		this.typeSelect = 'one';
 		this.desc = '';
 	}
-	
-	
+
+
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
 		this.displaySelectedPeriodType();
 	}
-	
+
 	private displaySelectedPeriodType() {
 		this.calculateOptions(this.item);
-		
+
 		if (this._cartService.contains(this.item.id)) {
 			this.updateBasedOnCart(this._cartService.get(this.item.id));
 		} else {
 			this.preselectPeriodType(this.item);
 		}
-		
+
 		this.type.emit(this.typeSelect);
 		this.desc = this.getDesc(this.typeSelect);
 	}
-	
+
 	preselectPeriodType(item: Item) {
-		if (item.rent) {
-			for (const rentPeriod of this.branch.paymentInfo.rentPeriods) {
-				if (rentPeriod.type === 'semester') {
-					this.onTypeUpdate('one');
-					return;
-				} else if (rentPeriod.type === 'year') {
-					this.onTypeUpdate('two');
-					return;
+		// TODO: fix this to use BranchItem
+		if (this.branchItem.rent) {
+			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
+				const periodType =  this.branch.paymentInfo.rentPeriods[0].type;
+				if (periodType === 'semester') {
+					this.typeSelect = 'one';
+				} else if (periodType === 'year') {
+					this.typeSelect = 'two';
 				}
 			}
-		} else if (item.buy) {
-			this.onTypeUpdate('buy');
+		} else if (this.branchItem.buy) {
+			this.typeSelect = 'buy';
 		}
-		
 	}
-	
-	
-	calculateOptions(item: Item) {
-		if (item.rent) {
-			for (const rentPeriod of this.branch.paymentInfo.rentPeriods) {
-				if (rentPeriod.type === 'semester') {
-					this.rentSemesterOption = true;
-					
-				} else if (rentPeriod.type === 'year') {
-					this.rentYearOption = true;
+
+	isActionValid(action: 'one' | 'two' | 'buy' | 'buyout' | 'extend') {
+
+		if ((action === 'one' || action === 'two') && this.branchItem.rent) {
+			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
+				const periodType =  this.branch.paymentInfo.rentPeriods[0].type;
+
+				for (const period of this.branch.paymentInfo.rentPeriods) {
+					if (period.type === 'semester' && action === 'one') {
+						return true;
+					} else if (action === 'two' && period.type === 'year') {
+						return true;
+					}
 				}
 			}
+		} else if (action === 'buy' && this.branchItem.buy) {
+			return true;
 		}
-		
-		if (item.buy) {
+	}
+
+
+	calculateOptions(item: Item) {
+		if (this.customerItem) {
+			return;
+		}
+
+		if (this.isActionValid('one')) {
+			this.rentSemesterOption = true;
+		}
+
+		if (this.isActionValid('two')) {
+			this.rentYearOption = true;
+		}
+
+		if (this.isActionValid('buy')) {
 			this.buyOption = true;
 		}
 	}
-	
+
 	showDate(): boolean {
 		return (this.typeSelect !== "buy");
 	}
-	
+
 	isCustomerItem(): boolean {
 		return !(!this.customerItem);
 	}
-	
+
 	public onTypeUpdate(type: "one" | "two" | "buy" | "buyout" | "extend") {
 		if (this._cartService.contains(this.item.id)) {
 			this._cartService.updateType(this.item.id, type);
@@ -105,7 +125,7 @@ export class ItemTypeSelectComponent implements OnInit {
 		this.typeSelect = type;
 		this.type.emit(type);
 	}
-	
+
 	private getDesc(type: "one" | "two" | "buy" | "buyout" | "extend") {
 		switch (type) {
 			case "one":
@@ -120,13 +140,13 @@ export class ItemTypeSelectComponent implements OnInit {
 				return "extend deadline to " + this.getDate(type);
 		}
 	}
-	
+
 	public getDate(type): string {
 		return this._dateService.getDate(type);
 	}
-	
+
 	updateBasedOnCart(orderItem: OrderItem) {
-		
+
 		if (orderItem.type === "rent") {
 			if (orderItem.info.periodType === "semester") {
 				this.typeSelect = "one";
@@ -140,11 +160,11 @@ export class ItemTypeSelectComponent implements OnInit {
 		} else if (orderItem.type === "extend") {
 			this.typeSelect = "extend";
 		}
-		
+
 	}
-	
+
 	public showPrice(): boolean {
 		return this._priceService.showPrice();
 	}
-	
+
 }

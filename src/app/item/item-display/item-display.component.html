@@ -4,7 +4,7 @@
 	</div>
 </div>
 
-<div *ngIf="view" class="row bl-item-display-container align-items-center" [ngClass]="{'bl-item-display-container-your-item': isCustomerItem(), 'bl-item-display-container-disabled': showAsCustomerItem()}">
+<div *ngIf="view && item" class="row bl-item-display-container align-items-center" [ngClass]="{'bl-item-display-container-your-item': isCustomerItem(), 'bl-item-display-container-disabled': showAsCustomerItem()}">
 
 	<div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
         <fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
@@ -13,7 +13,7 @@
     <div class="col-lg-6 col-md-10 col-sm-10 col-10">
 		<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
 
-		<app-item-type-select [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+		<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
 
 		<div><small *ngIf="showAsCustomerItem()">You already have this item, <b><a routerLink="/u/items">click here to view your items</a></b> </small></div>
 		<div *ngIf="!showAsCustomerItem()"><small *ngFor="let category of item.categories" class="badge badge-secondary mr-1">{{category}}</small></div>
@@ -25,7 +25,7 @@
                 {{getPrice()}} kr
             </div>
             <div [ngClass]="{'col-6': showPrice(), 'col-12': !showPrice()}">
-                <app-item-add [item]="item" [type]="orderItemType"></app-item-add>
+                <app-item-add [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
             </div>
         </div>
     </div>
