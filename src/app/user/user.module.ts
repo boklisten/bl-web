@@ -13,6 +13,7 @@ import {ItemModule} from "../item/item.module";
 import {OrderItemInfoComponent} from "./order/order-info/order-item-info/order-item-info.component";
 import {UserGuardService} from "./user-guard.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { OrderPaymentInfoComponent } from './order/order-info/order-payment-info/order-payment-info.component';
 
 @NgModule({
 	imports: [
@@ -29,7 +30,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 		OrderInfoComponent,
 		OrderItemInfoComponent,
 		UserItemComponent,
-		UserCustomerItemComponent
+		UserCustomerItemComponent,
+		OrderPaymentInfoComponent
 	],
 	providers: [
 		UserService,
