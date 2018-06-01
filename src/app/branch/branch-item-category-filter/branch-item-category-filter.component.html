@@ -1,9 +1,15 @@
-<div class="row">
-	<div class="col-12">
+<div class="row justify-content-center mb-2">
+	<div class="col-auto">
+		Choose your subjects
+	</div>
+</div>
+
+<div class="row justify-content-center">
+	<div class="col-auto">
 		<button
 			*ngFor="let categoryName of branchItemCategories"
-			type="button" class="btn mr-2 mb-2"
-			[ngClass]="{'btn-outline-info': !contains(itemCategoryName), 'btn-secondary': contains(categoryName)}"
+			type="button" class="btn btn-lg mr-2 mb-2"
+			[ngClass]="{'btn-outline-secondary': !contains(categoryName), 'btn-info': contains(categoryName)}"
 			(click)="onSelectCategory(categoryName)">
 				<fa-icon [icon]="'check'" *ngIf="contains(categoryName)"></fa-icon> {{categoryName}}
 		</button>

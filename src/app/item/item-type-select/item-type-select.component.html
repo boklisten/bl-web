@@ -1,31 +1,51 @@
 
-<div class="row" *ngIf="branchItem">
-    <div class="col-12" *ngIf="!isCustomerItem()">
+<div class="row justify-content-start align-items-center" *ngIf="branchItem">
+    <div class="col-auto" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-info" *ngIf="rentSemesterOption">
-                <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">one semester
+                <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">
+				<span class="ml-2 mr-2">semester</span>
             </label>
             <label ngbButtonLabel class="btn-outline-info" *ngIf="rentYearOption">
-                <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">one year
+                <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">
+				<span class="mr-2 ml-2">year</span>
             </label>
 			<label ngbButtonLabel class="btn-outline-info" *ngIf="buyOption">
-                <input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">buy
+				<input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">
+				<span class="mr-2 ml-2">buy</span>
             </label>
         </div>
     </div>
 
-	<div class="col-12" *ngIf="isCustomerItem()">
+	<div class="col-auto" *ngIf="isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-info">
-                <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">extend
+                <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">
+				<span class="mr-2 ml-2">extend</span>
             </label>
             <label ngbButtonLabel class="btn-outline-info">
-                <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">buyout
+                <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">
+				<span class="mr-2 ml-2">buyout</span>
             </label>
         </div>
     </div>
 
-	<div class="col-12 bl-cart-item-type-select-text">
-		<i>{{desc}}</i>
+	<div class="col-auto mt-sm-0 mt-2 text-secondary">
+		<span *ngIf="typeSelect === 'one' || typeSelect === 'two'">
+			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
+			rent
+			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
+			{{getDate(typeSelect)}}
+		</span>
+		<span *ngIf="typeSelect === 'extend'">
+			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
+			extend
+			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
+			{{getDate(typeSelect)}}
+		</span>
+		<span *ngIf="typeSelect === 'buy'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
+			buy
+		</span>
     </div>
 </div>

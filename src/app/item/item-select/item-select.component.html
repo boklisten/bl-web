@@ -1,8 +1,20 @@
 
 
-<div class="row" *ngIf="branch">
-    <div class="col-12">
-        <h2>Bøker tilhørende <i class="bl-item-select-branch-title" (click)="onBranchClick()">{{branch.name}}</i></h2>
+<div class="row justify-content-center" *ngIf="branch">
+	<div class="col-auto text-secondary">
+		<fa-icon [icon]="'book'" [size]="'3x'"></fa-icon>
+	</div>
+</div>
+
+<div class="row justify-content-center mt-2">
+    <div class="col-auto text-secondary font-italic">
+		<small>Booklist for</small>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto text-secondary font-weight-bold">
+        <h2 (click)="onBranchClick()">{{branch.name}}</h2>
     </div>
 </div>
 

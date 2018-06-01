@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-lg-6 col-md-10 col-sm-10 col-10">
-		<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
+		<h5 (click)="onItemClick()"><b>{{item.title}}</b></h5>
 
 		<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
 
