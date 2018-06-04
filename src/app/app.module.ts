@@ -29,14 +29,15 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {
 	faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt,
 	faClipboard, faCartArrowDown, faSquare, faCheckSquare, faSync, faExclamationTriangle, faClock, faCheckCircle,
-	faTimes, faCreditCard, faMoneyBillAlt, faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faList
+	faTimes, faCreditCard, faMoneyBillAlt, faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faList,
+	faCircleNotch
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
 	faSync, faExclamationTriangle, faClock, faCheckCircle, faTimes, faCreditCard, faMoneyBillAlt,
-	faCalendarPlus, faCalendar, faCalendarAlt, faReceipt);
+	faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faCircleNotch);
 
 @NgModule({
 	declarations: [

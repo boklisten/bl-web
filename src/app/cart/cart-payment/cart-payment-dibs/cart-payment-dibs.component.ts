@@ -24,7 +24,7 @@ declare var Dibs: any;
 	styleUrls: ['./cart-payment-dibs.component.scss']
 })
 export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewInit {
-	
+
 	public dibsCheckoutOptions: {
 		checkoutKey: string,
 		paymentId: string,
@@ -32,30 +32,47 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		language: string
 	};
 	payment: Payment;
-	
-	
+	alertMsg: string;
+
+
 	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router,
 				private _cartOrderService: CartOrderService, private elementRef: ElementRef) {
 	}
-	
+
 	ngOnInit() {
+		console.log('the comp is init');
 		this.payment = this._cartPaymentService.getPayment();
-		
-		
-		if (this.payment && this.payment.method === 'dibs' && this.payment.info) {
-			this.createDibsPayment();
+
+		console.log('we have the payment in dibs', this.payment);
+
+
+		if (this.payment && this.payment.method === 'dibs') {
+			if (!this.payment.info) {
+				this.setAlert();
+			} else {
+				this.createDibsPayment();
+			}
 		}
-		
-		this._cartPaymentService.onPaymentChange().subscribe((payment: Payment) => {
-			if (payment.method === 'dibs' && payment.info) {
-				if (!document.getElementById('dibs-checkout-content')) {
-					this.payment = payment;
-					this.createDibsPayment();
+
+		this._cartPaymentService.onPaymentChange().subscribe(() => {
+			this.alertMsg = null;
+			this.payment = this._cartPaymentService.getPayment();
+			if (this.payment.method === 'dibs') {
+				if (!this.payment.info) {
+					this.setAlert();
+				} else {
+					if (!document.getElementById('dibs-checkout-content')) {
+						this.createDibsPayment();
+					}
 				}
 			}
 		});
 	}
-	
+
+	private setAlert() {
+		this.alertMsg = 'Could not create a payment for this order, try again later or click "pay later" to pay this order at branch';
+	}
+
 	private createDibsElement() {
 		const dibsWrapper = document.getElementById('bl-dibs-wrapper');
 		if (dibsWrapper) {
@@ -64,35 +81,38 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 			dibsWrapper.appendChild(dibsElement);
 		}
 	}
-	
+
 	ngOnDestroy() {
+		console.log('the comp is destroyed');
 	}
-	
+
 	ngAfterViewInit() {
+
 	}
-	
-	
-	
+
+
+
+
 	createDibsPayment() {
 		this.createDibsElement();
-		
+
 		this.dibsCheckoutOptions = {
 			checkoutKey: 'test-checkout-key-5d1531c5046e43f9ba5f44a40327d317',
 			paymentId: this.payment.info['paymentId'],
 			// containerId: 'dibs-complete-checkout',
 			language: 'nb-NO'
 		};
-		
+
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
-		
+
 		const cartCheckoutService = this._cartCheckoutService;
 		const router = this._router;
-		
+
 		checkout.on('payment-initialized', function (response) {
 			console.log('the payment is initialized');
 			checkout.send('payment-order-finalized', true);
 		});
-		
+
 		checkout.on('payment-completed', function (response) {
 			cartCheckoutService.placeOrder().then(() => {
 				router.navigateByUrl('u/order');

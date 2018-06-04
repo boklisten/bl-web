@@ -11,41 +11,48 @@ export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
 	private _currentDelivery: Delivery;
 	private _fromPostalCode: string;
-	
+
 	private _deliveryMethod: DeliveryMethod;
 	private _toPostalCode: string;
-	
+	private _deliveryReady: boolean;
+
 	constructor(private _deliveryService: DeliveryService, private _cartService: CartService, private _cartOrderService: CartOrderService) {
 		this._deliveryChange$ = new Subject();
 		this._deliveryMethod = 'branch';
 		this._fromPostalCode = '1316';
-		
+		this._deliveryReady = false;
+
 		const initialOrder = this._cartOrderService.getOrder();
-		
+
 		if (initialOrder) {
 			this.createDelivery(initialOrder);
 		}
-		
+
 		this.onOrderChange();
 		this.onOrderClear();
-		
+
 	}
-	
+
+	public deliveryReady(): boolean {
+		return this._deliveryReady;
+	}
+
 	public updateDeliveryBranch() {
 		this._deliveryMethod = 'branch';
 		const order = this._cartOrderService.getOrder();
 		this.updateDeliveryBasedOnDeliveryMethod(order);
 	}
-	
+
 	public updateDeliveryBring(toPostal: string) {
 		this._toPostalCode = toPostal;
 		this._deliveryMethod = 'bring';
 		const order = this._cartOrderService.getOrder();
 		this.updateDeliveryBasedOnDeliveryMethod(order);
 	}
-	
+
 	private onOrderChange() {
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			this._deliveryReady = false;
 			if (!this._currentDelivery) {
 				this.createDelivery(order);
 			} else {
@@ -53,31 +60,31 @@ export class CartDeliveryService {
 			}
 		});
 	}
-	
+
 	private onOrderClear() {
 		this._cartOrderService.onClearOrder().subscribe(() => {
 			this._currentDelivery = null;
 			this._fromPostalCode = '';
 		});
 	}
-	
+
 	private updateDeliveryBasedOnDeliveryMethod(order: Order) {
 		let deliveryPatch: any;
-		
+
 		if (this._deliveryMethod === 'branch') {
 			deliveryPatch = this.createBranchDelivery(order);
 		} else if (this._deliveryMethod === 'bring') {
 			deliveryPatch = this.createBringDelivery(order, this._toPostalCode);
 		}
-		
+
 		this._deliveryService.update(this._currentDelivery.id, deliveryPatch).then((updatedDelivery: Delivery) => {
 			this.setDelivery(updatedDelivery);
 		}).catch((updatedDeliveryError) => {
 			console.log('cartDeliveryService: could not update delivery' , updatedDeliveryError);
 		});
-		
+
 	}
-	
+
 	private createDelivery(order: Order) {
 		this._deliveryService.add(this.createBranchDelivery(order)).then((addedDelivery: Delivery) => {
 			this.setDelivery(addedDelivery);
@@ -85,24 +92,25 @@ export class CartDeliveryService {
 			console.log('cartDeliveryService: could not add delivery', addDeliveryError);
 		});
 	}
-	
+
 	private setDelivery(delivery: Delivery) {
 		this._currentDelivery = delivery;
+		this._deliveryReady = true;
 		this._deliveryChange$.next(this._currentDelivery);
 	}
-	
+
 	public clearDelivery() {
 		this._currentDelivery = null;
 	}
-	
+
 	public onDeliveryChange(): Subject<Delivery> {
 		return this._deliveryChange$;
 	}
-	
+
 	public getDelivery(): Delivery {
 		return this._currentDelivery;
 	}
-	
+
 	private createBringDelivery(order: Order, toPostal: string): any {
 		return {
 			method: "bring",
@@ -114,7 +122,7 @@ export class CartDeliveryService {
 			amount: 0
 		};
 	}
-	
+
 	private createBranchDelivery(order: Order): any {
 		return {
 			method: 'branch',

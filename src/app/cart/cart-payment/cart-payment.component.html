@@ -1,8 +1,8 @@
 
-<div class="row" *ngIf="currentPayment">
-    <div class="col-12">
-		<h3>Total price: <b>{{currentPayment.amount}} kr</b></h3>
-    </div>
+<div class="row justify-content-center mt-4" *ngIf="!currentPayment">
+	<div class="col-auto text-info">
+		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'3x'"></fa-icon>
+	</div>
 </div>
 
 <div class="row" *ngIf="currentPayment && showDibsPayment">

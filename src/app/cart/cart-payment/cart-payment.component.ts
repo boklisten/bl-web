@@ -11,36 +11,43 @@ import {CartOrderService} from "../order/cart-order.service";
 	styleUrls: ['./cart-payment.component.scss']
 })
 export class CartPaymentComponent implements OnInit {
-	
-	
+
+
 	public showDibsPayment: boolean;
 	public paymentMethod: "later" | "dibs";
 	public currentPayment: Payment;
 	private dibsCheckoutParent: any;
 	private dibsCheckoutChild: any;
-	
+
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService) {
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
 	}
-	
+
 	ngOnInit() {
+		console.log('we init!');
 		this.currentPayment = this._cartPaymentService.getPayment();
-		
-		this.dibsCheckoutChild = document.getElementById('dibs-checkout-content');
-		
-		this._cartPaymentService.onPaymentChange().subscribe((payment: Payment) => {
-			this.dibsCheckoutChild = document.getElementById('dibs-checkout-content');
-			
-			if (this.dibsCheckoutChild) {
-				this.dibsCheckoutChild.remove();
-			}
-			
-			this.currentPayment = payment;
-		
+
+		if (this.currentPayment && this.currentPayment.method === 'dibs') {
+			this.showDibsPayment = true;
+		} else {
+			this.removeDibsCheckout();
+		}
+
+		this._cartPaymentService.onPaymentChange().subscribe(() => {
+			this.currentPayment = this._cartPaymentService.getPayment();
+			this.removeDibsCheckout();
 			if (this.currentPayment.method === 'dibs') {
 				this.showDibsPayment = true;
 			}
 		});
+	}
+
+	private removeDibsCheckout() {
+		this.dibsCheckoutChild = document.getElementById('dibs-checkout-content');
+
+		if (this.dibsCheckoutChild) {
+			this.dibsCheckoutChild.remove();
+		}
 	}
 }

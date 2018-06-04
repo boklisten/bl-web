@@ -16,13 +16,13 @@ export class CartPaymentService {
 	private _paymentMethod: PaymentMethod;
 	private _currentOrder: Order;
 	private _currentDelivery: Delivery;
-	
+
 	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService,
 				private _branchService: BranchStoreService, private _cartDeliveryService: CartDeliveryService) {
 		this.paymentChange$ = new Subject();
-		
+
 		const branch = this._branchService.getBranch();
-		
+
 		if (branch) {
 			if (branch.paymentInfo.responsible) { // no need to add payment if branch is responsible
 				return;
@@ -30,87 +30,78 @@ export class CartPaymentService {
 				this._paymentMethod = 'dibs';
 			}
 		}
-		
-		const initialOrder = this._cartOrderService.getOrder();
-		
-		if (initialOrder) { // if we have a order
-			this.createPayment(initialOrder);
-		}
-		
+
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			this._currentOrder = order;
-			
+
 			if (this.orderShouldHavePayment) {
-				
+
 				if (this._currentOrder.delivery) {
 					this._currentDelivery = this._cartDeliveryService.getDelivery();
 				}
-				
-				this.createOrUpdatePayment();
+
+				this.createPayment();
 			}
 		});
-		
+
 		this._cartOrderService.onClearOrder().subscribe(() => {
 			this._currentPayment = null;
 		});
-		
+
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
 			this._currentOrder = this._cartOrderService.getOrder();
 			this._currentDelivery = delivery;
-			
+
 			if (this.orderShouldHavePayment) {
-				this.createOrUpdatePayment();
+				this.createPayment();
 			}
 		});
 	}
-	
-	private createOrUpdatePayment() {
-		if (!this._currentPayment) {
-			this.createPayment(this._currentOrder, this._currentDelivery);
-		} else {
-			this.updatePayment(this._currentOrder, this._currentDelivery);
-		}
-	}
-	
+
 	public onPaymentChange() {
 		return this.paymentChange$;
 	}
-	
+
 	public changePaymentMethod(method: "dibs") {
 		this._paymentMethod = method;
 		const order = this._cartOrderService.getOrder();
 		this.updatePayment(order);
 	}
-	
-	private createPayment(order: Order, delivery?: Delivery) {
-		let payment: Payment;
-		
-		if (this._paymentMethod === 'dibs') {
-			payment = this.createDibsPayment(order, delivery);
+
+	private createPayment() {
+		if (!this._cartDeliveryService.deliveryReady()) {
+			return;
 		}
-		
+
+		let payment: Payment;
+
+		if (this._paymentMethod === 'dibs') {
+			payment = this.createDibsPayment(this._currentOrder, this._currentDelivery);
+		}
+
 		this._paymentService.add(payment).then((addedPayment: Payment) => {
+			console.log('the payment', addedPayment);
 			this.setPayment(addedPayment);
 		}).catch((blApiErr: BlApiError) => {
 			console.log('paymentService: could not add payment');
 		});
-	
+
 	}
-	
+
 	private updatePayment(order: Order, delivery?: Delivery) {
 		if (!this._currentPayment) {
 			return;
 		}
-		
+
 		const paymentPatch = this.createDibsPayment(order, delivery);
-		
+
 		this._paymentService.update(this._currentPayment.id, paymentPatch).then((updatedPayment: Payment) => {
 			this.setPayment(updatedPayment);
 		}).catch((updatePaymentError) => {
 			console.log('cartPaymentService: could not update payment', updatePaymentError);
 		});
 	}
-	
+
 	private setPayment(payment: Payment) {
 		this._currentPayment = payment;
 		this.paymentChange$.next(payment);
@@ -119,11 +110,11 @@ export class CartPaymentService {
 	public clearPayment() {
 		this._currentPayment = null;
 	}
-	
+
 	public getPayment() {
 		return this._currentPayment;
 	}
-	
+
 	private createDibsPayment(order: Order, delivery?: Delivery): Payment {
 		return {
 			method: 'dibs',
@@ -135,25 +126,25 @@ export class CartPaymentService {
 			branch: order.branch
 		} as Payment;
 	}
-	
+
 	private calculatePaymentAmount(order: Order, delivery?: Delivery): number {
 		if (!delivery) {
 			return order.amount;
 		}
 		return order.amount + delivery.amount;
 	}
-	
+
 	private calculateTaxAmount(order: Order, delivery?: Delivery): number {
 		let taxAmount = 0;
-		
+
 		for (const orderItem of order.orderItems) {
 			taxAmount += orderItem.taxAmount;
 		}
-		
+
 		if (delivery && delivery.taxAmount) {
 			return taxAmount + delivery.taxAmount;
 		}
-		
+
 		return taxAmount;
 	}
 }

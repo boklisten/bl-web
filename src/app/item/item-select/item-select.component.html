@@ -12,13 +12,17 @@
     </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="branch">
     <div class="col-auto text-secondary font-weight-bold">
         <h2 (click)="onBranchClick()">{{branch.name}}</h2>
     </div>
 </div>
 
-<app-item-display-category [branch]="branch" *ngIf="branch" class="bl-container-padding"></app-item-display-category>
+<div class="row justify-content-center">
+	<div class="col-lg-8 col-md-8 col-sm-12 col-12">
+		<app-item-display-category [branch]="branch" *ngIf="branch" class="bl-container-padding"></app-item-display-category>
+	</div>
+</div>
 
 
 <app-cart-go-to-bar class="bl-container-padding"></app-cart-go-to-bar>

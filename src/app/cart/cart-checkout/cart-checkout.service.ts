@@ -14,49 +14,31 @@ export class CartCheckoutService {
 	private currentDelivery: Delivery;
 	private currentPayment: Payment;
 	private currentOrder: Order;
-	
+
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
 				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService,
 				private _router: Router, private _userService: UserService) {
 	}
-	
+
 	public placeOrder(): Promise<boolean> {
 		if (!this._userService.loggedIn()) {
 			this._router.navigateByUrl('auth/menu');
 			return Promise.reject(new Error('the user is not logged in when trying to place order'));
 		}
-		
+
 		const order = this._cartOrderService.getOrder();
-		
+
 		return new Promise((resolve, reject) => {
-			
+
 			this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
 				// we need to clear everything after order is placed
 				this._cartService.clearCart();
 				this._cartOrderService.clearOrder();
-				
+
 				resolve(true);
 			}).catch((blApiError: BlApiError) => {
 				reject(new Error('order could not be placed: ' + blApiError));
 			});
-		});
-	}
-	
-	private onOrderChange() {
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this.currentOrder = order;
-		});
-	}
-	
-	private onDeliveryChange() {
-		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
-			this.currentDelivery = delivery;
-		});
-	}
-	
-	private onPaymentChange() {
-		this._cartPaymentService.onPaymentChange().subscribe((payment: Payment) => {
-			this.currentPayment = payment;
 		});
 	}
 }
