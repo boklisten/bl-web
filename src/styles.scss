@@ -116,5 +116,23 @@ a:visited {
 	padding-top: 20px;
 }
 
+.bl-link {
+	cursor: pointer;
+}
+
+.bl-link:hover {
+	text-decoration-color: #ffffff;
+	text-decoration: underline;
+}
+
+.bl-link-black {
+	@extend .bl-link;
+}
+
+.bl-link-black:hover {
+	text-decoration-color: #000000;
+	text-decoration: underline;
+}
+
 
 

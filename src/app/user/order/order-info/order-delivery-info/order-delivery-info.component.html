@@ -1,0 +1,81 @@
+<div class="card" *ngIf="delivery">
+	<div class="card-header">
+		Delivery details
+	</div>
+
+	<div class="card-body" *ngIf="delivery.method === 'bring'">
+        <div class="row justify-content-between">
+			<div class="col-auto">
+				<span class="text-secondary font-weight-bold">
+					Shipment method
+				</span>
+			</div>
+            <div class="col-md-auto col-sm-12 col-12">
+				<span>
+					<fa-icon [icon]="'truck'" class="mr-2"></fa-icon> {{delivery.method}}
+				</span>
+            </div>
+        </div>
+		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
+			<div class="col-auto">
+				<span class="text-secondary font-weight-bold">
+					Deliver date
+				</span>
+			</div>
+            <div class="col-md-auto col-sm-12 col-12">
+				<span *ngIf="delivery.info['deliveryDate']">
+					<fa-icon [icon]="'clock'" class="mr-2"></fa-icon> {{delivery.info['deliveryDate'] | blcDate}}
+				</span>
+				<span *ngIf="!delivery.info['deliveryDate']" class="font-italic">
+					<fa-icon [icon]="'exclamation-triangle'"></fa-icon> Could not get delivery date info
+				</span>
+            </div>
+        </div>
+		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
+			<div class="col-auto text-secondary font-weight-bold">
+				Shipment address
+			</div>
+			<div class="col-md-auto col-sm-12 col-12">
+				{{delivery.info['to']}}
+			</div>
+		</div>
+		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
+			<div class="col-auto text-secondary font-weight-bold">
+				Tracking number
+			</div>
+			<div class="col-md-auto col-sm-12 col-12">
+				<span *ngIf="delivery.info['trackingNumber']">
+					{{delivery.info['trackingNumber']}}
+				</span>
+				<span *ngIf="!delivery.info['trackingNumber']" class="font-italic">
+					<fa-icon [icon]="'exclamation-triangle'"></fa-icon> No tracking number yet
+				</span>
+			</div>
+		</div>
+		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
+			<div class="col-auto text-secondary font-weight-bold">
+				Price
+			</div>
+			<div class="col-md-auto col-sm-12 col-12 ">
+				{{delivery.amount | blcPrice:'international'}}
+			</div>
+		</div>
+	</div>
+
+	<div class="card-body" *ngIf="delivery.method === 'branch'">
+		<div class="row justify-content-between">
+			<div class="col-auto">
+				<span class="text-secondary font-weight-bold">
+					Get it at
+				</span>
+			</div>
+			<div class="col-auto">
+				<span routerLink="{{'/b/info/' + delivery.info['branch']}}" class="bl-link-black">
+					<fa-icon [icon]="'warehouse'" class="mr-2"></fa-icon>
+					{{delivery.info['branch'].toString() | blcBranch | async}}
+				</span>
+			</div>
+		</div>
+	</div>
+
+</div>

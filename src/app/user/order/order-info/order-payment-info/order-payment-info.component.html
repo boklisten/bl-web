@@ -1,4 +1,7 @@
 <div class="card" *ngIf="showPayment && order.payments && order.payments.length > 0">
+	<div class="card-header">
+		Payment details
+	</div>
 
 	<div class="card-body" *ngIf="!payments || payments.length <= 0">
         <div class="alert alert-warning" role="alert">
@@ -6,8 +9,8 @@
         </div>
 	</div>
 
-	<ul class="list-group">
-		<li class="list-group-item" *ngFor="let payment of payments" [ngClass]="{'border-danger': !payment.confirmed, 'border-success': payment.confirmed}">
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item" *ngFor="let payment of payments">
 			<div class="row justify-content-between">
 				<div class="col-auto">
 					{{payment.amount | blcPrice:'international'}}
