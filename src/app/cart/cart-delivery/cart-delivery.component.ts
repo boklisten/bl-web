@@ -16,29 +16,34 @@ import {UserService} from "../../user/user.service";
 	styleUrls: ['./cart-delivery.component.scss']
 })
 export class CartDeliveryComponent implements OnInit {
-	
+
 	@Output() delivery: EventEmitter<Delivery>;
-	
+
 	public deliveryMethod: DeliveryMethod;
 	public currentDelivery: Delivery;
+
 	public toPostalCode: number;
+	public toName: string;
+	public toAddress: string;
+	public toPostalCity: string;
+
 	public postalCodeFailure: boolean;
 	public postalCodeFailureText: string;
-	
-	
+
+
 	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService, private _userService: UserService) {
-		
+
 		this.deliveryMethod = 'branch';
 		this.delivery = new EventEmitter();
 		this.postalCodeFailure = true;
 		this.toPostalCode = 0;
 		this.postalCodeFailureText = null;
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
-		
+
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
 		}
-		
+
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			if (userDetail.postCode) {
 				this.toPostalCode = parseInt(userDetail.postCode, 10);
@@ -47,9 +52,10 @@ export class CartDeliveryComponent implements OnInit {
 			console.log('cartDeliveryService: could not get user detail');
 		});
 	}
-	
+
 	ngOnInit() {
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
+
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
 		}
@@ -58,33 +64,37 @@ export class CartDeliveryComponent implements OnInit {
 			this.deliveryMethod = this.currentDelivery.method;
 		});
 	}
-	
+
 	onSetDelivery(deliveryMethod: DeliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
-		
+
 		if (!this.currentDelivery) {
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 		}
-		
+
 		switch (deliveryMethod) {
 			case "bring":
-				this.updateDeliveryBring();
+				this.setDeliveryBring();
 				break;
 			case "branch":
-				this._cartDeliveryService.updateDeliveryBranch();
+				this.setDeliveryBranch();
 				break;
 		}
 	}
-	
-	private updateDeliveryBring() {
+
+	private setDeliveryBranch() {
+		this._cartDeliveryService.setBranchDelivery();
+	}
+
+	private setDeliveryBring() {
 		if (isNumber(this.toPostalCode) && this.toPostalCode.toString().length === 4) {
 			this.postalCodeFailureText = null;
-			this._cartDeliveryService.updateDeliveryBring(this.toPostalCode.toString());
+			this._cartDeliveryService.setBringDelivery(this.toName, this.toAddress, this.toPostalCity, this.toPostalCode.toString());
 		} else {
 			this.postalCodeFailureText = 'please provide a valid postal code';
 		}
 	}
-	
+
 	public getEstimatedDelivery(): string {
 		if (!this.currentDelivery) {
 			return '';

@@ -35,16 +35,11 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	alertMsg: string;
 
 
-	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router,
-				private _cartOrderService: CartOrderService, private elementRef: ElementRef) {
+	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router) {
 	}
 
 	ngOnInit() {
-		console.log('the comp is init');
 		this.payment = this._cartPaymentService.getPayment();
-
-		console.log('we have the payment in dibs', this.payment);
-
 
 		if (this.payment && this.payment.method === 'dibs') {
 			if (!this.payment.info) {
@@ -83,7 +78,6 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	ngOnDestroy() {
-		console.log('the comp is destroyed');
 	}
 
 	ngAfterViewInit() {
@@ -109,7 +103,6 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		const router = this._router;
 
 		checkout.on('payment-initialized', function (response) {
-			console.log('the payment is initialized');
 			checkout.send('payment-order-finalized', true);
 		});
 

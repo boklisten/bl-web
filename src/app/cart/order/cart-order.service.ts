@@ -29,6 +29,10 @@ export class CartOrderService {
 		this._orderChange$.next(this._currentOrder);
 	}
 
+	public reloadOrder() {
+		this.createOrder();
+	}
+
 	public getOrder(): Order {
 		return this._currentOrder;
 	}
@@ -48,7 +52,6 @@ export class CartOrderService {
 
 	public updateOrderWithNoPayments() {
 		this._orderService.update(this._currentOrder.id, {payments: []}).then((updatedOrder: Order) => {
-			console.log('successfully changed order with no payments', updatedOrder);
 			this.setOrder(updatedOrder);
 		}).catch((blApiErr: BlApiError) => {
 			console.log('cartOrderService: could not patch order: ', blApiErr);

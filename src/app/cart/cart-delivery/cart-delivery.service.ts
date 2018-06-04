@@ -13,6 +13,9 @@ export class CartDeliveryService {
 	private _fromPostalCode: string;
 
 	private _deliveryMethod: DeliveryMethod;
+	private _toName: string;
+	private _toAddress: string;
+	private _toPostalCity: string;
 	private _toPostalCode: string;
 	private _deliveryReady: boolean;
 
@@ -25,82 +28,26 @@ export class CartDeliveryService {
 		const initialOrder = this._cartOrderService.getOrder();
 
 		if (initialOrder) {
-			this.createDelivery(initialOrder);
+			this.addDelivery(initialOrder);
 		}
 
 		this.onOrderChange();
 		this.onOrderClear();
-
 	}
 
-	public deliveryReady(): boolean {
-		return this._deliveryReady;
-	}
-
-	public updateDeliveryBranch() {
+	public setBranchDelivery() {
 		this._deliveryMethod = 'branch';
-		const order = this._cartOrderService.getOrder();
-		this.updateDeliveryBasedOnDeliveryMethod(order);
+		this._cartOrderService.reloadOrder(); // this will make a new order to be created, then updates delivery and payment
 	}
 
-	public updateDeliveryBring(toPostal: string) {
-		this._toPostalCode = toPostal;
+	public setBringDelivery(toName: string, toAddress: string, toPostalCity: string, toPostalCode: string) {
 		this._deliveryMethod = 'bring';
-		const order = this._cartOrderService.getOrder();
-		this.updateDeliveryBasedOnDeliveryMethod(order);
-	}
+		this._toName = toName;
+		this._toAddress = toAddress;
+		this._toPostalCity = toPostalCity;
+		this._toPostalCode = toPostalCode;
 
-	private onOrderChange() {
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this._deliveryReady = false;
-			if (!this._currentDelivery) {
-				this.createDelivery(order);
-			} else {
-				this.updateDeliveryBasedOnDeliveryMethod(order);
-			}
-		});
-	}
-
-	private onOrderClear() {
-		this._cartOrderService.onClearOrder().subscribe(() => {
-			this._currentDelivery = null;
-			this._fromPostalCode = '';
-		});
-	}
-
-	private updateDeliveryBasedOnDeliveryMethod(order: Order) {
-		let deliveryPatch: any;
-
-		if (this._deliveryMethod === 'branch') {
-			deliveryPatch = this.createBranchDelivery(order);
-		} else if (this._deliveryMethod === 'bring') {
-			deliveryPatch = this.createBringDelivery(order, this._toPostalCode);
-		}
-
-		this._deliveryService.update(this._currentDelivery.id, deliveryPatch).then((updatedDelivery: Delivery) => {
-			this.setDelivery(updatedDelivery);
-		}).catch((updatedDeliveryError) => {
-			console.log('cartDeliveryService: could not update delivery' , updatedDeliveryError);
-		});
-
-	}
-
-	private createDelivery(order: Order) {
-		this._deliveryService.add(this.createBranchDelivery(order)).then((addedDelivery: Delivery) => {
-			this.setDelivery(addedDelivery);
-		}).catch((addDeliveryError) => {
-			console.log('cartDeliveryService: could not add delivery', addDeliveryError);
-		});
-	}
-
-	private setDelivery(delivery: Delivery) {
-		this._currentDelivery = delivery;
-		this._deliveryReady = true;
-		this._deliveryChange$.next(this._currentDelivery);
-	}
-
-	public clearDelivery() {
-		this._currentDelivery = null;
+		this._cartOrderService.reloadOrder();
 	}
 
 	public onDeliveryChange(): Subject<Delivery> {
@@ -111,19 +58,60 @@ export class CartDeliveryService {
 		return this._currentDelivery;
 	}
 
-	private createBringDelivery(order: Order, toPostal: string): any {
+	private onOrderChange() { // each time the order changes, should create a new delivery
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			this._deliveryReady = false;
+			this.addDelivery(order);
+		});
+	}
+
+	private addDelivery(order: Order) {
+		this._deliveryService.add(this.createDelivery(order)).then((addedDelivery: Delivery) => {
+			this.setDelivery(addedDelivery);
+		}).catch((addDeliveryError) => {
+			console.log('cartDeliveryService: could not add delivery', addDeliveryError);
+		});
+	}
+
+	private createDelivery(order: Order): Delivery {
+		if (this._deliveryMethod === 'bring') {
+			return this.createBringDelivery(order);
+		} else if (this._deliveryMethod === 'branch') {
+			return this.createBranchDelivery(order);
+		}
+	}
+
+	private onOrderClear() {
+		this._cartOrderService.onClearOrder().subscribe(() => {
+			this._currentDelivery = null;
+			this._fromPostalCode = '';
+			this._deliveryMethod = 'branch';
+		});
+	}
+
+	private setDelivery(delivery: Delivery) {
+		this._currentDelivery = delivery;
+		this._deliveryReady = true;
+		this._deliveryChange$.next(this._currentDelivery);
+	}
+
+	private createBringDelivery(order: Order): Delivery {
 		return {
 			method: "bring",
 			info: {
 				from: this._fromPostalCode,
-				to: toPostal
+				to: this._toPostalCode,
+				toAddress: this._toAddress,
+				toPostalCity: this._toPostalCity,
+				toPostalCode: this._toPostalCode,
+				toName: this._toName
 			},
 			order: order.id,
 			amount: 0
-		};
+		} as any;
 	}
 
-	private createBranchDelivery(order: Order): any {
+	private createBranchDelivery(order: Order): Delivery {
 		return {
 			method: 'branch',
 			info: {
@@ -131,6 +119,6 @@ export class CartDeliveryService {
 			},
 			order: order.id,
 			amount: 0
-		};
+		} as any;
 	}
 }

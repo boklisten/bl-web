@@ -80,7 +80,7 @@ export class CartCheckoutComponent implements OnInit {
 			console.log('the order IS ', this._cartOrderService.getOrder());
 			this._cartPaymentService.orderShouldHavePayment = false;
 
-			this._cartDeliveryService.updateDeliveryBranch();
+			this._cartDeliveryService.setBranchDelivery();
 			this._cartOrderService.updateOrderWithNoPayments();
 		} else if (decision === 'now') {
 			this._cartPaymentService.changePaymentMethod('dibs');

@@ -16,7 +16,6 @@ export class CartPaymentComponent implements OnInit {
 	public showDibsPayment: boolean;
 	public paymentMethod: "later" | "dibs";
 	public currentPayment: Payment;
-	private dibsCheckoutParent: any;
 	private dibsCheckoutChild: any;
 
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService) {
@@ -25,7 +24,6 @@ export class CartPaymentComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log('we init!');
 		this.currentPayment = this._cartPaymentService.getPayment();
 
 		if (this.currentPayment && this.currentPayment.method === 'dibs') {

@@ -31,22 +31,13 @@ export class CartPaymentService {
 			}
 		}
 
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this._currentOrder = order;
-
-			if (this.orderShouldHavePayment) {
-
-				if (this._currentOrder.delivery) {
-					this._currentDelivery = this._cartDeliveryService.getDelivery();
-				}
-
-				this.createPayment();
-			}
-		});
-
 		this._cartOrderService.onClearOrder().subscribe(() => {
 			this._currentPayment = null;
 		});
+
+		if (this._cartDeliveryService.getDelivery()) {
+			this.createPayment();
+		}
 
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
 			this._currentOrder = this._cartOrderService.getOrder();
@@ -69,10 +60,6 @@ export class CartPaymentService {
 	}
 
 	private createPayment() {
-		if (!this._cartDeliveryService.deliveryReady()) {
-			return;
-		}
-
 		let payment: Payment;
 
 		if (this._paymentMethod === 'dibs') {
@@ -80,7 +67,6 @@ export class CartPaymentService {
 		}
 
 		this._paymentService.add(payment).then((addedPayment: Payment) => {
-			console.log('the payment', addedPayment);
 			this.setPayment(addedPayment);
 		}).catch((blApiErr: BlApiError) => {
 			console.log('paymentService: could not add payment');
@@ -105,10 +91,6 @@ export class CartPaymentService {
 	private setPayment(payment: Payment) {
 		this._currentPayment = payment;
 		this.paymentChange$.next(payment);
-	}
-
-	public clearPayment() {
-		this._currentPayment = null;
 	}
 
 	public getPayment() {
