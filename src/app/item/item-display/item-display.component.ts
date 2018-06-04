@@ -13,7 +13,7 @@ import {ItemService} from "@wizardcoder/bl-connect";
 	styleUrls: ['./item-display.component.scss']
 })
 export class ItemDisplayComponent implements OnInit {
-
+	@Input() compact: boolean;
 	@Input() item: Item;
 	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;

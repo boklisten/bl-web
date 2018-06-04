@@ -1,7 +1,7 @@
 
-<div class="row justify-content-start align-items-center" *ngIf="branchItem">
+<div class="row justify-content-center" *ngIf="branchItem">
     <div class="col-auto" *ngIf="!isCustomerItem()">
-        <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
+        <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-info" *ngIf="rentSemesterOption">
                 <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">
 				<span class="ml-2 mr-2">semester</span>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-	<div class="col-auto mt-sm-0 mt-2 text-secondary">
+	<div class="col-12 mt-sm-0 mt-2 text-secondary text-center">
 		<span *ngIf="typeSelect === 'one' || typeSelect === 'two'">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
 			rent

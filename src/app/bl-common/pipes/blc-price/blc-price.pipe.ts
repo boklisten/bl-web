@@ -6,10 +6,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class BlcPricePipe implements PipeTransform {
 
 	transform(price: string, identifier?: 'international'): string {
-		if (!identifier) {
-			return parseFloat(price) + ' kr';
-		} else if (identifier === 'international') {
+		if (identifier === 'international') {
 			return parseFloat(price) + ' NOK';
+		} else {
+			return parseFloat(price) + ' kr';
 		}
 	}
 

@@ -15,6 +15,7 @@ import { ItemDisplayCategoryComponent } from './item-display-category/item-displ
 import {CartModule} from "../cart/cart.module";
 import {CartGoToBarComponent} from "./cart-go-to-bar/cart-go-to-bar.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {BlCommonModule} from "../bl-common/bl-common.module";
 
 @NgModule({
 	imports: [
@@ -23,7 +24,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 		ItemRoutingModule,
 		NgbModule,
 		BranchModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		BlCommonModule
 	],
 	declarations: [
 		ItemComponent,

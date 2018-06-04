@@ -4,29 +4,41 @@
 	</div>
 </div>
 
-<div *ngIf="view && item" class="row bl-item-display-container align-items-center" [ngClass]="{'bl-item-display-container-your-item': isCustomerItem(), 'bl-item-display-container-disabled': showAsCustomerItem()}">
+<div *ngIf="view && item" class="row align-items-center">
+	<div class="col-12">
+        <div class="card">
 
-	<div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
-        <fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
-    </div>
-
-    <div class="col-lg-6 col-md-10 col-sm-10 col-10">
-		<h5 (click)="onItemClick()"><b>{{item.title}}</b></h5>
-
-		<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
-
-		<div><small *ngIf="showAsCustomerItem()">You already have this item, <b><a routerLink="/u/items">click here to view your items</a></b> </small></div>
-		<div *ngIf="!showAsCustomerItem()"><small *ngFor="let category of item.categories" class="badge badge-secondary mr-1">{{category}}</small></div>
-	</div>
-
-    <div class="col-lg-5 col-md-12 col-sm-12 col-12 mt-md-2 mt-2" *ngIf="!showAsCustomerItem()">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-6 bl-item-price" *ngIf="showPrice()">
-                {{getPrice()}} kr
+			<div class="card-header">
+                <div class="row justify-content-between">
+                    <div class="col-lg-auto col-md-12 col-sm-12 col-12 font-weight-bold">
+                        {{item.title}}
+                    </div>
+					<div class="mt-md-4 mt-sm-4 mt-4 col-md-12 col-sm-12 col-12 d-xl-none d-lg-none d-md-inline">
+						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+					</div>
+                </div>
             </div>
-            <div [ngClass]="{'col-6': showPrice(), 'col-12': !showPrice()}">
-                <app-item-add [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
-            </div>
+
+			<div class="card-footer">
+				<div class="row justify-content-xl-between justify-content-lg-between justify-content-between align-items-center">
+					<div class="col-xl-2 d-xl-inline d-lg-none d-md-none d-sm-none d-none">
+						<div class="bl-item-image">
+                        	<fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
+						</div>
+					</div>
+
+					<div *ngIf="compact" class="col-xl-6 col-lg-6 d-lg-inline d-md-none d-sm-none d-none">
+						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+					</div>
+
+					<div class="col-xl-2 col-lg-auto col-md-auto col-4 font-weight-bold text-center" *ngIf="getPrice() !== 0">
+						{{getPrice() | blcPrice}}
+					</div>
+					<div class="col-xl-2 col-lg-3 col-md-5 col-sm-8 col-8" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
+						<app-item-add [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
+					</div>
+				</div>
+			</div>
         </div>
-    </div>
+	</div>
 </div>
