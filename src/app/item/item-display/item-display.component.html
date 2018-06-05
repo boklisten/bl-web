@@ -3,11 +3,11 @@
         <div class="card">
 
 			<div class="card-header bg-info text-white">
-                <div class="row justify-content-between">
-                    <div class="col-auto">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-sm-auto col-12 text-sm-left text-center">
                         {{item.title}}
                     </div>
-					<div class="col-auto text-white font-weight-bold">
+					<div class="col-md-auto col-sm-auto col-12 mt-sm-0 mt-2 text-sm-left text-center text-white font-weight-bold bl-item-display-price">
 						<span *ngIf="!customerItem && getPrice() !== 0">{{getPrice() | blcPrice}}</span>
 						<span *ngIf="customerItem">{{customerItem | blcCustomerItemPrice:orderItemType | async | blcPrice}}</span>
 					</div>
@@ -21,28 +21,42 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-body d-md-none d-sm-inline d-inline">
-				<div class="row justify-content-center">
-					<div class="mt-md-4 mt-sm-4 mt-4 col-md-12 col-sm-12 col-12 d-xl-none d-lg-none d-md-inline">
+			<div class="card-body d-xl-none d-lg-inline d-md-inline d-sm-inline d-inline">
+				<div class="row justify-content-center align-items-center">
+					<div class="col-lg-3 col-md-4 col-sm-4 d-sm-inline d-none">
+						<div class="bl-item-image">
+                        	<fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-8 col-sm-8 col-12">
 						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)"></app-item-type-select>
 					</div>
 				</div>
 			</div>
 
 			<div class="card-footer">
-				<div class="row align-items-lg-center align-items-xl-center align-items-md-start justify-content-md-between justify-content-sm-center justify-content-center">
+				<div class="row align-items-xl-center align-items-lg-center align-items-md-start justify-content-md-between justify-content-sm-center justify-content-center">
 					<div class="col-xl-2 d-xl-inline d-lg-none d-md-none d-sm-none d-none">
 						<div class="bl-item-image">
                         	<fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
 						</div>
 					</div>
+					<div class="col-xl-10 col-lg-12">
+						<div class="row justify-content-xl-between justify-content-lg-end justify-content-md-end justify-content-sm-end align-items-center ">
+							<div class="d-xl-none d-lg-inline d-md-inline d-sm-inline d-inline col-5">
+								<button class="btn btn-outline-info btn-block btn-lg" routerLink="{{'/i/' + item.id}}">
+									<fa-icon [icon]="'info-circle'" [size]="'1x'"></fa-icon>
+								</button>
+							</div>
 
-					<div class="col-8 d-lg-inline d-md-inline d-sm-none d-none">
-						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)"></app-item-type-select>
-					</div>
+                            <div class="col-8 d-xl-inline d-lg-none d-md-none d-sm-none d-none">
+                                <app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)"></app-item-type-select>
+                            </div>
 
-					<div class="col-xl-2 col-lg-3 mb-lg-4 mb-xl-4 col-md-4 col-sm-12 col-12" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
-						<app-item-add *ngIf="showAdd" [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
+                            <div class="col-md-4 col-sm-12 col-7" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
+                                <app-item-add *ngIf="showAdd" [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
+                            </div>
+						</div>
 					</div>
 				</div>
 			</div>

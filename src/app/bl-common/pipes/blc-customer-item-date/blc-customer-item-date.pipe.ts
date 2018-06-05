@@ -12,12 +12,8 @@ export class BlcCustomerItemDatePipe implements PipeTransform {
 
 	}
 
-	transform(customerItem: CustomerItem, type: 'extend', periodType: 'semester' | 'year'): Promise<Date> {
-		return this._branchStoreService.getActiveBranch().then((branch: Branch) => {
-			return this._dateService.getExtendDate(branch, periodType);
-		}).catch((getBranchError) => {
-			throw new Error('BlcCusomterItemDatePipe: could not get branch: ' + getBranchError);
-		});
+	transform(customerItem: CustomerItem, type: 'extend', periodType: 'semester' | 'year'): Date {
+		return this._dateService.getExtendDate(periodType);
 	}
 
 }

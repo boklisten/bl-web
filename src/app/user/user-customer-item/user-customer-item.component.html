@@ -57,7 +57,7 @@
 							<div class="col-auto text-secondary">
 								<fa-icon [icon]="'calendar-plus'"></fa-icon>
 								<fa-icon [icon]="'arrow-right'"></fa-icon>
-								{{customerItem | blcCustomerItemDate:'extend':'semester' | async | blcDate}}
+								{{customerItem | blcCustomerItemDate:'extend':'semester' | blcDate}}
 							</div>
 						</div>
 						<div class="row justify-content-center" *ngIf="extend">
