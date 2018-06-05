@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
-import {BlApiError, Branch, UserDetail} from "@wizardcoder/bl-model";
-import {BranchService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
+import {BlApiError, Branch, BranchItem, UserDetail} from "@wizardcoder/bl-model";
+import {BranchItemService, BranchService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 import {UserService} from "../user/user.service";
 
 @Injectable()
 export class BranchStoreService {
-	private _currentBranch: Branch;
 	public redirectUrl: string;
+	private _currentBranch: Branch;
+	private _branchItems: BranchItem[];
 
-	constructor(private _userService: UserService, private _branchService: BranchService, private _userdetailService: UserDetailService) {
+	constructor(private _userService: UserService, private _branchService: BranchService, private _userdetailService: UserDetailService,
+				private _branchItemService: BranchItemService) {
+		this._branchItems = [];
 	}
 
 
@@ -43,6 +46,27 @@ export class BranchStoreService {
 		});
 	}
 
+	public getBranchItems(): BranchItem[] {
+		return this._branchItems;
+	}
+
+	public getBranchItem(itemId: string): BranchItem {
+		for (const branchItem of this._branchItems) {
+			if (branchItem.item === itemId) {
+				return branchItem;
+			}
+		}
+	}
+
+	public haveBranchItem(itemId: string): boolean {
+		for (const branchItem of this._branchItems) {
+			if (branchItem.item === itemId) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public setCurrentBranch(branch: Branch): void {
 		this._currentBranch = branch;
 	}
@@ -58,6 +82,15 @@ export class BranchStoreService {
 			}).catch((getUserdetailError: BlApiError) => {
 				reject(getUserdetailError);
 			});
+		});
+	}
+
+	public fetchBranchItems(): Promise<boolean> {
+		return this._branchItemService.getManyByIds(this._currentBranch.branchItems).then((branchItems: BranchItem[]) => {
+			this._branchItems = branchItems;
+			return true;
+		}).catch((getBranchItemsError) => {
+			throw new Error('BranchStoreService: could not get branchItems');
 		});
 	}
 

@@ -75,6 +75,8 @@ export class CartOrderService {
 	private createOrder() {
 		const order = this._cartService.createOrder();
 
+		console.log('the order to add', order);
+
 		this._orderService.add(order).then((addedOrder: Order) => {
 			this.setOrder(addedOrder);
 		}).catch((blApiErr: BlApiError) => {

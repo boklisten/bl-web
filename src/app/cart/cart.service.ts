@@ -72,7 +72,7 @@ private _cart: CartItem[];
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.unitPrice = item.price;
-		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
+		orderItem.amount = this._priceService.getCustomerItemPrice(customerItem, item, branch, 'extend');
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.type = "extend";
@@ -94,7 +94,7 @@ private _cart: CartItem[];
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.title = item.title;
-		orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
+		orderItem.amount = this._priceService.getCustomerItemPrice(customerItem, item, branch, 'buyout');
 		orderItem.type = "buyout";
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
@@ -224,7 +224,7 @@ private _cart: CartItem[];
 	private updateTypeBuyout(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buyout";
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.getCustomerItemPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'buyout');
 	}
 
 	private updateTypeExtend(cartItem: CartItem) {
@@ -236,7 +236,7 @@ private _cart: CartItem[];
 			customerItem: cartItem.customerItem.id
 		};
 		cartItem.orderItem.type = "extend";
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.getCustomerItemPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'extend');
 	}
 
 	private updateTypeBuy(cartItem: CartItem) {

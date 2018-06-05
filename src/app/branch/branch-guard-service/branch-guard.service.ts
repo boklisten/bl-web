@@ -15,12 +15,21 @@ export class BranchGuardService implements CanActivate {
 		}
 
 		return this._branchStoreService.getActiveBranch().then(() => {
-			return true;
+			return this._branchStoreService.fetchBranchItems().then(() => {
+				return true;
+			}).catch(() => {
+				return this.onFailure(state);
+			});
 		}).catch((getBranchError) => {
-			this._router.navigate(['/b/select']);
-			this._branchStoreService.redirectUrl = state.url;
-			return false;
+			return this.onFailure(state);
 		});
+	}
+
+	private onFailure(state: RouterStateSnapshot): boolean {
+		this._router.navigate(['/b/select']);
+		this._branchStoreService.redirectUrl = state.url;
+		return false;
+
 	}
 
 }

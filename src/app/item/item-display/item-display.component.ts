@@ -34,7 +34,7 @@ export class ItemDisplayComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.branchItem) {
+		if (this.branchItem && !this.item) {
 			this._itemService.getById(this.branchItem.item).then((item: Item) => {
 				this.item = item;
 			}).catch((getItemError) => {

@@ -28,11 +28,13 @@
 	<div class="row bl-cart-container" *ngIf="showCart()">
 		<div class="col-12 bl-cart-container mb-1" *ngFor="let cartItem of getCart()">
 			<app-item-display
-							  [compact]="true"
-							  [inCart]="true" [item]="cartItem.item"
-							  [customerItem]="cartItem.customerItem"
-							  [branchItem]="cartItem.branchItem"
-							  [branch]="cartItem.branch"></app-item-display>
+                  [compact]="true"
+                  [inCart]="true"
+				  [item]="cartItem.item"
+                  [customerItem]="cartItem.customerItem"
+                  [branchItem]="cartItem.branchItem"
+                  [branch]="cartItem.branch">
+			</app-item-display>
 		</div>
 	</div>
 
