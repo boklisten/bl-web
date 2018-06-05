@@ -1,22 +1,152 @@
 <div class="bl-header container-fluid">
 	<div class="row no-gutters align-items-center justify-content-between">
-		<div class="col-md-5 col-sm-4 col-xs-4 col-4 bl-logo" (click)="onLogoClick()">
+
+		<div class="col-md-5 col-sm-4 col-xs-4 col-3 bl-logo" (click)="onLogoClick()">
 			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="60" width="60">
 			<b class="bl-logo-text d-none d-lg-inline-block">Boklisten.no</b>
 		</div>
-		<div class="col-md-5 col-sm-8 col-xs-8 col-8 bl-header-buttons">
-			<div class="row no-gutters">
-				<div class="col-4">
-					<fa-icon [icon]="['fa', 'list']" size="2x" class="bl-header-button" (click)="onItemSelectClick()"></fa-icon>
+
+		<div class="col-md-5 col-sm-8 col-xs-8 col-9  bl-header-buttons ">
+			<div class="row no-gutters justify-content-sm-between justify-content-end">
+				<div class="col-3 d-sm-inline d-none">
+					<fa-icon [icon]="'info-circle'" size="2x" class="bl-header-button" (click)="onUserClick()"></fa-icon>
 				</div>
-				<div class="col-4">
+				<div class="col-3 d-sm-inline d-none">
+					<fa-icon [icon]="'book'" size="2x" class="bl-header-button" (click)="onItemSelectClick()"></fa-icon>
+				</div>
+				<div class="col-3 d-sm-inline d-none">
 					<app-header-cart></app-header-cart>
 				</div>
-				<div class="col-4">
-					<fa-icon [icon]="['fa', 'user']" size="2x" class="bl-header-button" (click)="onUserClick()"></fa-icon>
+				<div class="col-3 d-sm-inline d-none">
+					<fa-icon [icon]="'bars'" size="2x" class="bl-header-button             " (click)="onUserClick()"></fa-icon>
+				</div>
+				<div class="col-auto d-sm-none d-inline pr-3" (click)="onMenuClick()">
+					<fa-icon
+						*ngIf="!showMenu"
+						[icon]="'bars'"
+						size="2x"
+						class="bl-header-button">
+					</fa-icon>
+					<fa-icon
+						*ngIf="showMenu"
+						[icon]="'times'"
+						size="2x"
+						class="bl-header-button">
+					</fa-icon>
 				</div>
 			</div>
 
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid bl-header-menu" *ngIf="showMenu">
+	<div class="row">
+		<div class="col-12">
+			<ul class="list-group">
+				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('cart')">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'shopping-cart'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Cart</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('items')">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'book'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Find items</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('info')">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'info-circle'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">General info</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('branch')">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'graduation-cap'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">School info</span>
+						</div>
+					</div>
+				</li>
+
+				<li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-items')" *ngIf="isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'book-open'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Your items</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-orders')" *ngIf="isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'receipt'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Order history</span>
+						</div>
+					</div>
+				</li>
+				<li class="mt-4 list-group-item list-group-item-action bg-secondary text-white" (click)="onMenuItemClick('user-settings')" *ngIf="isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'user-cog'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">User setting</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action bg-danger text-white" (click)="onMenuItemClick('logout')" *ngIf="isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'sign-out-alt'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Logout</span>
+						</div>
+					</div>
+				</li>
+
+				<li class="mt-2 list-group-item list-group-item-action bg-info text-white" (click)="onMenuItemClick('register')" *ngIf="!isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'user-plus'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Register</span>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item list-group-item-action bg-success text-white" (click)="onMenuItemClick('login')" *ngIf="!isLoggedIn()">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<span><fa-icon [icon]="'sign-in-alt'" size="2x"></fa-icon></span>
+						</div>
+						<div class="col-8">
+							<span class="bl-header-menu-name">Login</span>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>

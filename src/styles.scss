@@ -31,14 +31,14 @@ a:visited {
 
 
 .bl-header-button {
-	color: $secondary-color;
+	color: #ffffff;
 	margin-left: 10px;
 	margin-right: 10px;
 	cursor: pointer;
 }
 
 .bl-header-button:hover {
-	color: #3593b3;
+	color: $secondary-color;
 }
 
 .bl-header-button-alert {
