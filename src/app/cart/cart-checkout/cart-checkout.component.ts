@@ -7,6 +7,7 @@ import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
+import {CartService} from "../cart.service";
 
 @Component({
 	selector: 'app-cart-checkout',
@@ -23,7 +24,8 @@ export class CartCheckoutComponent implements OnInit {
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
-				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService) {
+				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService,
+				private _cartService: CartService) {
 
 		this.orderPlacedFailureText = null;
 
@@ -56,6 +58,15 @@ export class CartCheckoutComponent implements OnInit {
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			this.order = order;
 		});
+	}
+
+	public isOnlyCustomerItems() {
+		for (const cartItem of this._cartService.getCart()) {
+			if (!cartItem.customerItem) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 

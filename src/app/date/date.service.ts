@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
 import * as moment from 'moment';
+import {BranchStoreService} from "../branch/branch-store.service";
 
 @Injectable()
 export class DateService {
 
-	constructor() {
+	constructor(private _branchStoreService: BranchStoreService) {
 	}
 
 	public dateString(date): string {
@@ -25,25 +26,35 @@ export class DateService {
 	}
 
 
-	public getExtendDate(branch: Branch, periodType: 'semester' | 'year'): Date {
+	public getExtendDate(periodType: 'semester' | 'year'): Date {
+		const branch = this._branchStoreService.getBranch();
+
 		if (branch.paymentInfo.extendPeriods) {
 			for (const extendPeriod of branch.paymentInfo.extendPeriods) {
 				if (extendPeriod.type === periodType) {
-					return moment().add(1, 'year').toDate();
+					return extendPeriod.date;
 				}
 			}
 		}
 	}
 
-	public getDate(orderItemType: "one" | "two" | "buy" | "buyout" | "extend", customerItem?: CustomerItem) {
-		if (orderItemType === "one") {
-			return "20.12.2018";
-		} else if (orderItemType === "two") {
-			return "01.07.2019";
-		} else if (orderItemType === "extend") {
-			return "01.07.2019";
-		} else {
-			return "";
+	public getPeriodDate(periodType: 'semester' | 'year') {
+		const branch = this._branchStoreService.getBranch();
+
+		for (const period of branch.paymentInfo.rentPeriods) {
+			if (period.type === periodType) {
+				return period.date;
+			}
+		}
+	}
+
+	public getDate(orderItemType: "one" | "two" | "buy" | "buyout" | "extend", customerItem?: CustomerItem): Date {
+		if (orderItemType === 'one') {
+			return this.getPeriodDate('semester');
+		} else if (orderItemType === 'two') {
+			return this.getPeriodDate('year');
+		} else if (orderItemType === 'extend') {
+			return this.getExtendDate('semester');
 		}
 	}
 
@@ -52,7 +63,7 @@ export class DateService {
 	}
 
 	public getCurrentYear(): string {
-		return "2018";
+		return moment().format('YYYY');
 	}
 
 	public isDeadlineExpired(deadline: string): boolean {

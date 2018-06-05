@@ -12,13 +12,13 @@
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
 			Rent
 			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
-			<b>{{orderItem.info.to | date}}</b>
+			<b>{{orderItem.info.to | blcDate}}</b>
 		</div>
 		<div *ngIf="orderItem.type === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
 			Extend
 			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
-			<b>{{orderItem.info.to | date}}</b>
+			<b>{{orderItem.info.to | blcDate}}</b>
 		</div>
 
 		<div *ngIf="orderItem.type === 'buy' || orderItem.type === 'buyout'">

@@ -10,8 +10,6 @@ export class PriceService {
 	}
 
 	public getOrderItemPrice(orderItem: OrderItem, item: Item, branch: Branch): number {
-		console.log('getting order item price', orderItem, item, branch);
-		console.log('should be', this.calculateExtendPrice(item, branch, orderItem.info.periodType))
 		if (orderItem.type === "rent") {
 			return this.calculatePriceBasedOnPeriodType(item, branch, orderItem.info.periodType);
 		} else if (orderItem.type === "buy") {

@@ -37,10 +37,10 @@
         </div>
 
         <div class="row mt-3" *ngIf="showPaymentDecision && paymentDecision === 'now'">
-            <div class="col-lg-6 col-md-12 col-12">
+            <div class="col-lg-6 col-md-12 col-12" *ngIf="!isOnlyCustomerItems()">
                 <app-cart-delivery></app-cart-delivery>
             </div>
-            <div class="col-lg-6 col-md-12 col-12 mt-md-3">
+            <div class="col-lg-6 col-md-12 col-12 mt-md-3" [ngClass]="{'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12': isOnlyCustomerItems()}">
 				<app-cart-payment></app-cart-payment>
             </div>
         </div>

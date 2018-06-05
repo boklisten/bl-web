@@ -143,7 +143,7 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	public getDate(type): string {
-		return this._dateService.getDate(type);
+		return this._dateService.dateString(this._dateService.getDate(type));
 	}
 
 	updateBasedOnCart(orderItem: OrderItem) {

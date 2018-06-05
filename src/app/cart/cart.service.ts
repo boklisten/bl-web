@@ -6,6 +6,7 @@ import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
+import {DateService} from "../date/date.service";
 
 
 export interface CartItem {
@@ -22,7 +23,8 @@ export class CartService {
 private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 
-	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService, private _priceService: PriceService) {
+	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
+				private _priceService: PriceService, private _dateService: DateService) {
 		this._cart = [];
 		this.cartChange$ = new Subject();
 	}
@@ -230,7 +232,7 @@ private _cart: CartItem[];
 	private updateTypeExtend(cartItem: CartItem) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: new Date(),
+			to: this._dateService.getExtendDate('semester'),
 			numberOfPeriods: 1,
 			periodType: "semester",
 			customerItem: cartItem.customerItem.id
@@ -248,7 +250,7 @@ private _cart: CartItem[];
 	private updateTypeOneSemester(cartItem: CartItem) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: new Date(),
+			to: this._dateService.getPeriodDate('semester'),
 			numberOfPeriods: 1,
 			periodType: "semester"
 		};
@@ -259,7 +261,7 @@ private _cart: CartItem[];
 	private updateTypeTwoSemesters(cartItem: CartItem) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: new Date(),
+			to: this._dateService.getPeriodDate('year'),
 			numberOfPeriods: 1,
 			periodType: "year"
 		};
