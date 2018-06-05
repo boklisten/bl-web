@@ -12,13 +12,22 @@
 
 	<div class="row" *ngIf="showCart()">
 		<div class="col-12">
-			<h1>Cart</h1>
+			<div class="row justify-content-center">
+				<div class="col-auto text-secondary">
+					<fa-icon [icon]="'shopping-cart'" [size]="'3x'"></fa-icon>
+				</div>
+			</div>
+			<div class="row justify-content-center mt-2">
+				<div class="col-auto justify-content-center text-secondary">
+					<h2>Cart</h2>
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="row bl-cart-container" *ngIf="showCart()">
-		<div class="col-12 bl-cart-container">
-			<app-item-display *ngFor="let cartItem of getCart()"
+		<div class="col-12 bl-cart-container mb-1" *ngFor="let cartItem of getCart()">
+			<app-item-display
 							  [compact]="true"
 							  [inCart]="true" [item]="cartItem.item"
 							  [customerItem]="cartItem.customerItem"

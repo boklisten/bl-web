@@ -15,7 +15,8 @@ export class ItemTypeSelectComponent implements OnInit {
 	@Input() item: Item;
 	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
-	@Output() type: EventEmitter<string>;
+	@Input() type: 'one' | 'two' | 'buy' | 'buyout' | 'extend';
+	@Output() typeChange: EventEmitter<string>;
 
 	public typeSelect: "one" | "two" | "buy" | "buyout" | "extend";
 	public desc: string;
@@ -30,7 +31,7 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService,
 				private _branchStoreService: BranchStoreService) {
-		this.type = new EventEmitter<string>();
+		this.typeChange = new EventEmitter<string>();
 		this.typeSelect = 'one';
 		this.desc = '';
 	}
@@ -50,7 +51,7 @@ export class ItemTypeSelectComponent implements OnInit {
 			this.preselectPeriodType(this.item);
 		}
 
-		this.type.emit(this.typeSelect);
+		this.typeChange.emit(this.typeSelect);
 		this.desc = this.getDesc(this.typeSelect);
 	}
 
@@ -123,7 +124,7 @@ export class ItemTypeSelectComponent implements OnInit {
 		this.desc = this.getDesc(type);
 		this.date = this.getDate(type);
 		this.typeSelect = type;
-		this.type.emit(type);
+		this.typeChange.emit(type);
 	}
 
 	private getDesc(type: "one" | "two" | "buy" | "buyout" | "extend") {

@@ -8,34 +8,38 @@
 	<div class="col-12">
         <div class="card">
 
-			<div class="card-header">
+			<div class="card-header bg-info text-white">
                 <div class="row justify-content-between">
-                    <div class="col-lg-auto col-md-12 col-sm-12 col-12 font-weight-bold">
+                    <div class="col-auto">
                         {{item.title}}
                     </div>
-					<div class="mt-md-4 mt-sm-4 mt-4 col-md-12 col-sm-12 col-12 d-xl-none d-lg-none d-md-inline">
-						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+					<div class="col-auto text-white font-weight-bold" *ngIf="getPrice() !== 0">
+						{{getPrice() | blcPrice}}
 					</div>
                 </div>
             </div>
+			<div class="card-body d-md-none d-sm-inline d-inline">
+				<div class="row justify-content-center">
+					<div class="mt-md-4 mt-sm-4 mt-4 col-md-12 col-sm-12 col-12 d-xl-none d-lg-none d-md-inline">
+						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+					</div>
+				</div>
+			</div>
 
 			<div class="card-footer">
-				<div class="row justify-content-xl-between justify-content-lg-between justify-content-between align-items-center">
+				<div class="row align-items-lg-center align-items-xl-center align-items-md-start justify-content-md-between justify-content-sm-center justify-content-center">
 					<div class="col-xl-2 d-xl-inline d-lg-none d-md-none d-sm-none d-none">
 						<div class="bl-item-image">
                         	<fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
 						</div>
 					</div>
 
-					<div *ngIf="compact" class="col-xl-6 col-lg-6 d-lg-inline d-md-none d-sm-none d-none">
-						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" (type)="onItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
+					<div class="col-8 d-lg-inline d-md-inline d-sm-none d-none">
+						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)" *ngIf="!showAsCustomerItem()"></app-item-type-select>
 					</div>
 
-					<div class="col-xl-2 col-lg-auto col-md-auto col-4 font-weight-bold text-center" *ngIf="getPrice() !== 0">
-						{{getPrice() | blcPrice}}
-					</div>
-					<div class="col-xl-2 col-lg-3 col-md-5 col-sm-8 col-8" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
-						<app-item-add [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
+					<div class="col-xl-2 col-lg-3 mb-lg-4 mb-xl-4 col-md-4 col-sm-12 col-12" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
+						<app-item-add *ngIf="showAdd" [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
 					</div>
 				</div>
 			</div>

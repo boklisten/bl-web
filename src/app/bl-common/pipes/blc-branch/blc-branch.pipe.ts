@@ -16,8 +16,8 @@ export class BlcBranchPipe implements PipeTransform {
 		if (!branchId) {
 			return Promise.reject('');
 		}
-		return this._branchService.get('?og=name&id=' + branchId).then((branches: Branch[]) => {
-			return branches[0].name;
+		return this._branchService.getById(branchId).then((branch: Branch) => {
+			return branch.name;
 		}).catch((getBranchError) => {
 			throw new Error('BlcBranchPipe: could not get branch: ' + getBranchError);
 		});

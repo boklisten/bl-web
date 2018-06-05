@@ -2,15 +2,15 @@
 <div class="row justify-content-center" *ngIf="branchItem">
     <div class="col-auto" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-info" *ngIf="rentSemesterOption">
+            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
                 <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">
 				<span class="ml-2 mr-2">semester</span>
             </label>
-            <label ngbButtonLabel class="btn-outline-info" *ngIf="rentYearOption">
+            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentYearOption">
                 <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">
 				<span class="mr-2 ml-2">year</span>
             </label>
-			<label ngbButtonLabel class="btn-outline-info" *ngIf="buyOption">
+			<label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyOption">
 				<input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">
 				<span class="mr-2 ml-2">buy</span>
             </label>

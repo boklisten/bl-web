@@ -25,10 +25,12 @@ export class ItemDisplayComponent implements OnInit {
 	public customerItemActive: boolean;
 
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
+	public showAdd: boolean;
 
 	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService, private _itemService: ItemService) {
 		this.customerItemActive = false;
 		this.view = false;
+		this.showAdd = false;
 	}
 
 	ngOnInit() {
@@ -48,12 +50,17 @@ export class ItemDisplayComponent implements OnInit {
 
 	}
 
-	public onItemClick() {
-		this._router.navigateByUrl('i/' + this.item.id);
+
+	public onOrderItemTypeChange(type: 'one' | 'two' | 'buy' | 'buyout' | 'extend') {
+
+		setTimeout(() => { // UUUgly, Expression changed after view init
+			this.showAdd = true;
+			this.orderItemType = type;
+		}, 0);
 	}
 
-	public onItemTypeChange(type: "one" | "two" | "buy" | "buyout" | "extend") {
-		this.orderItemType = type;
+	public onItemClick() {
+		this._router.navigateByUrl('i/' + this.item.id);
 	}
 
 	public isCustomerItemActive(): Promise<boolean> {
