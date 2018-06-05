@@ -5,15 +5,15 @@
 	</div>
 </div>
 
-<div class="row bl-item-display-padding" *ngFor="let branchItemCategory of selectedBranchItemCategories">
+<div class="row" *ngFor="let branchItemCategory of selectedBranchItemCategories">
 	<div class="col-12">
-		<div class="row">
+		<div class="row" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
 			<div class="col-6 bl-display-category-header">
-				{{branchItemCategory.name}}
+				<h2>{{branchItemCategory.name}}</h2>
 			</div>
 		</div>
-		<div class="row justify-content-center" *ngFor="let branchItem of branchItemCategory.branchItems">
-			<div class="col-12 mt-2">
+		<div class="row justify-content-center mb-2 p-2" *ngFor="let branchItem of branchItemCategory.branchItems">
+			<div class="col-12">
 				<app-item-display [branch]="branch" [compact]="true" [branchItem]="branchItem"></app-item-display>
 			</div>
 		</div>

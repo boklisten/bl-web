@@ -1,27 +1,88 @@
 
-<div class="row bl-item-display-container align-items-center" *ngIf="item" [ngClass]="{'bl-item-display-container-warning': isExpired()}">
-    <div class="col-lg-1 col-md-2 col-sm-2 col-2 bl-item-image d-none d-sm-inline-block">
-        <i class="fas fa-2x fa-book"></i>
-    </div>
-    <div class="col-lg-6 col-md-10 col-sm-10 col-10">
-		<h5 (click)="onItemClick()" class="bl-item-title"><b>{{item.title}}</b></h5>
-		<p *ngIf="!isExpired()">Deadline: <b>{{customerItem.deadline | date}}</b>, deliver it at: <a *ngIf="branch" routerLink="/b/info/{{branch.id}}">{{branch.name}}</a></p>
-		<p *ngIf="isExpired()">This item expired at <b>{{customerItem.deadline | date}}</b></p>
-    </div>
-    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-        <div class="row justify-content-center align-items-center" *ngIf="!isExpired()">
-			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
-				<button type="button" class="btn btn-outline-info btn-block" (click)="onExtendClick()" *ngIf="!extend">Extend</button>
-				<button type="button" class="btn btn-success btn-block" (click)="onExtendClick()" *ngIf="extend"><i class="fa fa-check"></i> Extend</button>
+<div class="row mb-2">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header bg-info">
+				<div class="row justify-content-between text-white">
+					<div class="col-auto" *ngIf="item">
+						{{item.title}}
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
-				<button type="button" class="btn btn-outline-info btn-block" (click)="onBuyoutClick()" *ngIf="!buyout">Buyout</button>
-				<button type="button" class="btn btn-success btn-block" (click)="onBuyoutClick()" *ngIf="buyout"><i class="fa fa-check"></i> Buyout</button>
+			<div class="card-body">
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary font-weight-bold">
+						Handed out
+					</div>
+					<div class="col-auto text-secondary">
+						{{customerItem.handoutInfo.time | blcDate:'until'}}
+					</div>
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary font-weight-bold">
+						Deadline
+					</div>
+					<div class="col-auto text-secondary">
+						<fa-icon [icon]="'clock'" class="mr-2"></fa-icon>
+						{{customerItem.deadline | blcDate}}
+					</div>
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary font-weight-bold">
+						Deliver to
+					</div>
+					<div class="col-auto text-secondary bl-link-black">
+						<span routerLink="{{'/b/info/' + customerItem.handoutInfo.handoutById}}">
+							{{customerItem.handoutInfo.handoutById | blcBranch | async}}
+						</span>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-12 mb-3 mt-3">
-				<button type="button" class="btn btn-info btn-block" (click)="onDeliverClick()">Deliver</button>
+			<div class="card-footer">
+				<div class="row justify-content-end">
+					<div class="col-sm-auto col-12">
+						<div class="row">
+							<div class="col-sm-auto col-12">
+                                <button class="btn btn-block" (click)="onExtendClick()" [ngClass]="{'btn-success': extend, 'btn-outline-secondary': !extend}">
+                                    <fa-icon *ngIf="!extend" [icon]="'calendar-plus'" class="mr-2"></fa-icon>
+                                    <fa-icon *ngIf="extend" [icon]="'check'" class="mr-2"></fa-icon>
+									<span>Extend</span>
+                                </button>
+							</div>
+						</div>
+						<div class="row justify-content-center mt-1" *ngIf="extend">
+							<div class="col-auto text-secondary">
+								<fa-icon [icon]="'calendar-plus'"></fa-icon>
+								<fa-icon [icon]="'arrow-right'"></fa-icon>
+								{{customerItem | blcCustomerItemDate:'extend':'semester' | async | blcDate}}
+							</div>
+						</div>
+						<div class="row justify-content-center" *ngIf="extend">
+							<div class="col-auto text-secondary">
+								{{customerItem | blcCustomerItemPrice:'extend' | async | blcPrice}}
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-auto col-12 mt-sm-0 mt-2">
+						<div class="row">
+							<div class="col-sm-auto col-12">
+                                <button class="btn btn-block" (click)="onBuyoutClick()" [ngClass]="{'btn-outline-secondary': !buyout, 'btn-success': buyout}">
+                                    <fa-icon [icon]="'money-bill-wave'" *ngIf="!buyout" class="mr-2"></fa-icon>
+									<fa-icon [icon]="'check'" *ngIf="buyout" class="mr-2"></fa-icon>
+									Buyout
+                                </button>
+							</div>
+						</div>
+						<div class="row justify-content-center mt-1" *ngIf="buyout">
+							<div class="col-auto text-secondary">
+								{{customerItem | blcCustomerItemPrice:'buyout' | async | blcPrice}}
+							</div>
+						</div>
+					</div>
+
+				</div>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 

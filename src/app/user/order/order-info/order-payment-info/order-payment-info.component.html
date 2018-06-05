@@ -24,7 +24,7 @@
 			<div class="row justify-content-between mt-2">
 				<div class="col-auto">
 					<span *ngIf="payment.method === 'card' || payment.method === 'dibs'"><fa-icon [icon]="'credit-card'" class="mr-2"></fa-icon> {{payment.method}}</span>
-					<span *ngIf="payment.method === 'cash'"><fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>Cash</span>
+					<span *ngIf="payment.method === 'cash'"><fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>Cash</span>
 				</div>
 				<div class="col-auto" *ngIf="payment.method === 'dibs'">
 					<span *ngIf="payment.info['cardInfo']">{{payment.info['cardInfo']}}</span>
