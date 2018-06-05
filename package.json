@@ -9,9 +9,9 @@
 		"serve:dev": "npm run build:dev && node server.js",
 		"watch": "ng serve --env=${ANGULAR_ENV}",
 		"postinstall": "npm run build",
-		"build": "ng build --aot --prod --env=${ANGULAR_ENV}",
-		"build:dev": "ng build --aot --prod --env=dev",
-		"build:local": "ng build --aot --prod --env=local",
+		"build": "ng build --sourcemaps false --aot --prod --env=${ANGULAR_ENV}",
+		"build:dev": "ng build --aot --sourcemaps false --prod --env=dev",
+		"build:local": "ng build --aot --sourcemaps false --prod --env=local",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e"
