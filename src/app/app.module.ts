@@ -33,6 +33,7 @@ import {
 	faCircleNotch, faTruck, faWarehouse, faArrowAltCircleDown, faBookOpen, faMoneyBillWave
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
+import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -63,7 +64,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		InfoModule,
 		FontAwesomeModule
 	],
-	providers: [],
+	providers: [BranchGuardService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

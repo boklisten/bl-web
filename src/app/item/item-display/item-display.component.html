@@ -1,9 +1,3 @@
-<div class="row" *ngIf="isCustomerItem()">
-	<div class="col-sm-2 col-6 bl-item-display-your-item">
-		Your item
-	</div>
-</div>
-
 <div *ngIf="view && item" class="row align-items-center">
 	<div class="col-12">
         <div class="card">
@@ -13,11 +7,20 @@
                     <div class="col-auto">
                         {{item.title}}
                     </div>
-					<div class="col-auto text-white font-weight-bold" *ngIf="getPrice() !== 0">
-						{{getPrice() | blcPrice}}
+					<div class="col-auto text-white font-weight-bold">
+						<span *ngIf="!customerItem && getPrice() !== 0">{{getPrice() | blcPrice}}</span>
+						<span *ngIf="customerItem">{{customerItem | blcCustomerItemPrice:orderItemType | async | blcPrice}}</span>
 					</div>
+
                 </div>
             </div>
+			<div class="card-body bg-secondary text-white" *ngIf="isCustomerItem()">
+				<div class="row">
+					<div class="col-auto">
+						Your item
+					</div>
+				</div>
+			</div>
 			<div class="card-body d-md-none d-sm-inline d-inline">
 				<div class="row justify-content-center">
 					<div class="mt-md-4 mt-sm-4 mt-4 col-md-12 col-sm-12 col-12 d-xl-none d-lg-none d-md-inline">

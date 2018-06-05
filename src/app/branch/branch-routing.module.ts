@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {BranchInfoComponent} from "./branch-info/branch-info.component";
 import {BranchComponent} from "./branch.component";
 import {BranchSetComponent} from "./branch-set/branch-set.component";
+import {BranchSelectComponent} from "./branch-select/branch-select.component";
 
 const routes: Routes = [
 	{
@@ -16,6 +17,10 @@ const routes: Routes = [
 			{
 				path: 'info/:id',
 				component: BranchInfoComponent
+			},
+			{
+				path: 'select',
+				component: BranchSelectComponent
 			}
 		]
 	}

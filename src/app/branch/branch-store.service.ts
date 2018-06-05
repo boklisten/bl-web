@@ -6,15 +6,16 @@ import {UserService} from "../user/user.service";
 @Injectable()
 export class BranchStoreService {
 	private _currentBranch: Branch;
-	
+	public redirectUrl: string;
+
 	constructor(private _userService: UserService, private _branchService: BranchService, private _userdetailService: UserDetailService) {
 	}
-	
-	
+
+
 	public getBranch(): Branch {
 		return this._currentBranch;
 	}
-	
+
 	public getActiveBranch(): Promise<Branch> {
 		return new Promise((resolve, reject) => {
 			if (this._userService.loggedIn()) {
@@ -41,11 +42,11 @@ export class BranchStoreService {
 			}
 		});
 	}
-	
+
 	public setCurrentBranch(branch: Branch): void {
 		this._currentBranch = branch;
 	}
-	
+
 	public setUserdetailBranch(branch: Branch): Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			this._userService.getUserDetail().then((userDetail: UserDetail) => {
@@ -59,7 +60,7 @@ export class BranchStoreService {
 			});
 		});
 	}
-	
+
 	private fetchUserBranch(): Promise<Branch> {
 		return this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			if (userDetail.branch) {
@@ -76,7 +77,7 @@ export class BranchStoreService {
 			return this.fetchFirstBranch();
 		});
 	}
-	
+
 	private fetchFirstBranch(): Promise<Branch> {
 		return new Promise((resolve, reject) => {
 			this._branchService.get().then((branches: Branch[]) => {
@@ -87,6 +88,6 @@ export class BranchStoreService {
 			});
 		});
 	}
-	
-	
+
+
 }

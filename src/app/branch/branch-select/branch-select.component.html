@@ -1,13 +1,27 @@
-
-
-<div class="input-group">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="branchSelect">
-			<fa-icon [icon]="'graduation-cap'"></fa-icon>
-		</label>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto text-secondary">
+            <fa-icon [icon]="'graduation-cap'" [size]="'3x'"></fa-icon>
+        </div>
     </div>
-    <select class="custom-select" [(ngModel)]="selectedBranch" id="branchSelect" value="Select a branch" (ngModelChange)="onBranchSelectUpdate($event)">
-		<option value="" selected disabled>{{branchSelectDefaultText}}</option>
-        <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.name}}</option>
-    </select>
+
+    <div class="row justify-content-center mt-2 mb-4">
+        <div class="col-auto text-secondary">
+            <h2>Select your school</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <button
+				*ngFor="let branch of branches"
+				class="btn btn-lg mr-2 ml-2 mt-2"
+				[ngClass]="{'btn-outline-secondary': selectedBranch !== branch, 'btn-secondary': selectedBranch === branch}"
+				(click)="onBranchSelect(branch)"
+				>
+                <fa-icon *ngIf="selectedBranch === branch" [icon]="'check'" class="mr-2"></fa-icon>
+				{{branch.name}}
+            </button>
+        </div>
+    </div>
 </div>

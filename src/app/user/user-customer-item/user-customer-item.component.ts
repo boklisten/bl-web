@@ -33,14 +33,12 @@ export class UserCustomerItemComponent implements OnInit {
 			console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
 		});
 
-		/*
 
-		this._branchService.getById(this.customerItem.handoutBranch).then((branch: Branch) => {
+		this._branchService.getById(this.customerItem.handoutInfo.handoutById).then((branch: Branch) => {
 			this.branch = branch;
 		}).catch((branchBlApiErr: BlApiError) => {
 			console.log('userCustomerItemComponent: could not get branch', branchBlApiErr);
 		});
-		*/
 	}
 
 	initByCart() {
@@ -53,16 +51,6 @@ export class UserCustomerItemComponent implements OnInit {
 				this.buyout = true;
 			}
 		}
-	}
-
-	onItemClick() {
-		this._router.navigateByUrl('i/' + this.item.id);
-	}
-
-	onDeliverClick() {
-		/*
-		this._router.navigateByUrl('b/info/' + this.customerItem.handoutBranch);
-		*/
 	}
 
 	onExtendClick() {
