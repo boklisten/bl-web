@@ -20,6 +20,7 @@ import { CartEmptyComponent } from './cart-empty/cart-empty.component';
 import {CartOrderService} from "./order/cart-order.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {BlCommonModule} from "../bl-common/bl-common.module";
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 
 @NgModule({
 	imports: [
@@ -37,7 +38,8 @@ import {BlCommonModule} from "../bl-common/bl-common.module";
 		CartDeliveryComponent,
 		CartPaymentDibsComponent,
 		CartCheckoutComponent,
-		CartEmptyComponent
+		CartEmptyComponent,
+		CartSummaryComponent
 	],
 	providers: [
 		CartService,

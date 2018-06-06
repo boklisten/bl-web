@@ -1,0 +1,55 @@
+
+<div class="row" *ngIf="!order || !delivery">
+	<div class="col-12">
+		<div class="alert alert-secondary">
+			Summary could not be provided
+		</div>
+	</div>
+</div>
+
+<div class="row" *ngIf="order && delivery">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				Payment summary
+			</div>
+
+			<div class="card-body">
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary">
+						Sum items
+					</div>
+					<div class="col-auto">
+						{{order.amount | blcPrice}}
+					</div>
+				</div>
+				<div class="row justify-content-between" *ngIf="delivery.amount !== 0">
+					<div class="col-auto text-secondary">
+						Shipment
+					</div>
+					<div class="col-auto">
+						{{delivery.amount | blcPrice}}
+					</div>
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary">
+						<small>Tax amount</small>
+					</div>
+					<div class="col-auto">
+						<small>{{0 | blcPrice}}</small>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary">
+						Total
+					</div>
+					<div class="col-auto font-weight-bold">
+						{{totalAmount() | blcPrice}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
