@@ -7,7 +7,7 @@
 		"start": "node server.js",
 		"serve:local": "npm run build:local && node server.js",
 		"serve:dev": "npm run build:dev && node server.js",
-		"watch": "ng serve --env=${ANGULAR_ENV}",
+		"watch": "ng serve --configuration=nb --env=${ANGULAR_ENV}",
 		"postinstall": "npm run build",
 		"build": "ng build --sourcemaps false --aot --prod --env=${ANGULAR_ENV}",
 		"build:dev": "ng build --aot --sourcemaps false --prod --env=dev",

@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
@@ -68,7 +68,10 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		InfoModule,
 		FontAwesomeModule
 	],
-	providers: [BranchGuardService],
+	providers: [
+		BranchGuardService,
+		{provide: LOCALE_ID, useValue: environment.localeId}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
