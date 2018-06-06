@@ -38,13 +38,11 @@ a:visited {
 }
 
 .bl-header-button:hover {
-	color: $secondary-color;
 }
 
 .bl-header-button-alert {
 	@extend .bl-header-button;
 	color: #ffffff;
-
 }
 
 

@@ -2,25 +2,26 @@
 	<div class="row no-gutters align-items-center justify-content-between">
 
 		<div class="col-md-5 col-sm-4 col-xs-4 col-3 bl-logo" (click)="onLogoClick()">
-			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="60" width="60">
+			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="60" width="60" class="d-sm-inline d-none">
+			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="40" width="40" class="d-sm-none d-inline">
 			<b class="bl-logo-text d-none d-lg-inline-block">Boklisten.no</b>
 		</div>
 
 		<div class="col-md-5 col-sm-8 col-xs-8 col-9  bl-header-buttons ">
 			<div class="row no-gutters justify-content-sm-between justify-content-end">
 				<div class="col-3 d-sm-inline d-none">
-					<fa-icon [icon]="'info-circle'" size="2x" class="bl-header-button" (click)="onUserClick()"></fa-icon>
+					<fa-icon [icon]="'info-circle'" size="2x" class="bl-header-button" (click)="onMenuItemClick('info')"></fa-icon>
 				</div>
-				<div class="col-3 d-sm-inline d-none">
-					<fa-icon [icon]="'book'" size="2x" class="bl-header-button" (click)="onItemSelectClick()"></fa-icon>
+				<div class="col-sm-auto col-4">
+					<fa-icon [icon]="'book'" size="2x" class="bl-header-button" (click)="onMenuItemClick('items')"></fa-icon>
 				</div>
-				<div class="col-3 d-sm-inline d-none">
+				<div class="col-sm-3 col-4">
 					<app-header-cart></app-header-cart>
 				</div>
 				<div class="col-3 d-sm-inline d-none">
-					<fa-icon [icon]="'bars'" size="2x" class="bl-header-button             " (click)="onUserClick()"></fa-icon>
+					<fa-icon [icon]="'bars'" size="2x" class="bl-header-button" (click)="onMenuItemClick('user-home')"></fa-icon>
 				</div>
-				<div class="col-auto d-sm-none d-inline pr-3" (click)="onMenuClick()">
+				<div class="col-4 d-sm-none d-inline" (click)="onMenuClick()">
 					<fa-icon
 						*ngIf="!showMenu"
 						[icon]="'bars'"
@@ -44,26 +45,6 @@
 	<div class="row">
 		<div class="col-12">
 			<ul class="list-group">
-				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('cart')">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'shopping-cart'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name">Cart</span>
-						</div>
-					</div>
-				</li>
-				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('items')">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'book'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name">Find items</span>
-						</div>
-					</div>
-				</li>
 				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('info')">
 					<div class="row align-items-center">
 						<div class="col-4">
@@ -74,7 +55,7 @@
 						</div>
 					</div>
 				</li>
-				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('branch')">
+				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('branch')" *ngIf="isLoggedIn()">
 					<div class="row align-items-center">
 						<div class="col-4">
 							<span><fa-icon [icon]="'graduation-cap'" size="2x"></fa-icon></span>
