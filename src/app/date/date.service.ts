@@ -14,7 +14,7 @@ export class DateService {
 	}
 
 	public timestampString(date: Date): string {
-		return moment(date).format('DD.MM.YYYY-HH.mm.ss');
+		return moment(date).format('DD.MM.YYYY') + ' kl. ' + moment(date).format('HH.mm.ss');
 	}
 
 	public hourString(date: Date): string {

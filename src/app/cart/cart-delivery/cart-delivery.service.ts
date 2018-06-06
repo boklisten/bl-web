@@ -12,6 +12,8 @@ export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
 	private _currentDelivery: Delivery;
 	private _fromPostalCode: string;
+	private _fromPostalCity: string;
+	private _fromAddress: string;
 	private _deliveryFailure$: Subject<boolean>;
 
 	private _deliveryMethod: DeliveryMethod;
@@ -24,7 +26,11 @@ export class CartDeliveryService {
 	constructor(private _deliveryService: DeliveryService, private _cartService: CartService, private _cartOrderService: CartOrderService) {
 		this._deliveryChange$ = new Subject();
 		this._deliveryMethod = 'branch';
+
 		this._fromPostalCode = '1316';
+		this._fromPostalCity = 'OSLO';
+		this._fromAddress = 'Postboks 8, 1316 Eiksmarka';
+
 		this._deliveryReady = false;
 		this._deliveryFailure$ = new Subject<boolean>();
 
@@ -117,7 +123,12 @@ export class CartDeliveryService {
 					name: this._toName,
 					address: this._toAddress,
 					postalCode: this._toPostalCode,
-					toPostalCity: this._toPostalCity
+					postalCity: this._toPostalCity
+				},
+				facilityAddress: {
+					address: this._fromAddress,
+					postalCode: this._fromPostalCode,
+					postalCity: this._fromPostalCity
 				}
 			},
 			order: order.id,

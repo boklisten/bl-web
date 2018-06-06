@@ -12,22 +12,22 @@
 			</div>
             <div class="col-md-auto col-sm-12 col-12">
 				<span>
-					<fa-icon [icon]="'truck'" class="mr-2"></fa-icon> {{delivery.method}}
+					{{delivery.method}}
 				</span>
             </div>
         </div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
 			<div class="col-auto">
 				<span class="text-secondary font-weight-bold">
-					Deliver date
+					Estimated delivery date
 				</span>
 			</div>
             <div class="col-md-auto col-sm-12 col-12">
-				<span *ngIf="delivery.info['deliveryDate']">
-					<fa-icon [icon]="'clock'" class="mr-2"></fa-icon> {{delivery.info['deliveryDate'] | blcDate}}
+				<span *ngIf="delivery.info['estimatedDelivery']">
+					{{delivery.info['estimatedDelivery'] | blcDate}}
 				</span>
-				<span *ngIf="!delivery.info['deliveryDate']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'"></fa-icon> Could not get delivery date info
+				<span *ngIf="!delivery.info['estimatedDelivery']" class="font-italic">
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> Could not get delivery date info
 				</span>
             </div>
         </div>
@@ -36,7 +36,12 @@
 				Shipment address
 			</div>
 			<div class="col-md-auto col-sm-12 col-12">
-				{{delivery.info['to']}}
+				<span *ngIf="delivery.info && delivery.info['shipmentAddress']">
+					{{delivery.info['shipmentAddress']['address']}}, {{delivery.info['shipmentAddress']['postalCode']}} {{delivery.info['shipmentAddress']['postalCity']}}
+				</span>
+				<span *ngIf="!delivery || !delivery.info['shipmentAddress']">
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> Could not get address
+				</span>
 			</div>
 		</div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
@@ -48,7 +53,7 @@
 					{{delivery.info['trackingNumber']}}
 				</span>
 				<span *ngIf="!delivery.info['trackingNumber']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'"></fa-icon> No tracking number yet
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> No tracking number yet
 				</span>
 			</div>
 		</div>
@@ -71,7 +76,6 @@
 			</div>
 			<div class="col-auto">
 				<span routerLink="{{'/b/info/' + delivery.info['branch']}}" class="bl-link-black">
-					<fa-icon [icon]="'warehouse'" class="mr-2"></fa-icon>
 					{{delivery.info['branch'].toString() | blcBranch | async}}
 				</span>
 			</div>
