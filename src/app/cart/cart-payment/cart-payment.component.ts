@@ -3,6 +3,7 @@ import {CartPaymentService} from "./cart-payment.service";
 import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "@wizardcoder/bl-model";
 import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
 import {CartOrderService} from "../order/cart-order.service";
+import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 
 
 @Component({
@@ -17,10 +18,12 @@ export class CartPaymentComponent implements OnInit {
 	public paymentMethod: "later" | "dibs";
 	public currentPayment: Payment;
 	private dibsCheckoutChild: any;
+	public failureText: string;
 
-	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService) {
+	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService, private _cartDeliveryService: CartDeliveryService) {
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
+		this.failureText = null;
 	}
 
 	ngOnInit() {
@@ -33,11 +36,17 @@ export class CartPaymentComponent implements OnInit {
 		}
 
 		this._cartPaymentService.onPaymentChange().subscribe(() => {
+			this.failureText = null;
 			this.currentPayment = this._cartPaymentService.getPayment();
 			this.removeDibsCheckout();
 			if (this.currentPayment.method === 'dibs') {
 				this.showDibsPayment = true;
 			}
+		});
+
+		this._cartDeliveryService.onDeliveryFailure().subscribe(() => {
+			this.removeDibsCheckout();
+			this.failureText = 'Waiting for valid delivery';
 		});
 	}
 

@@ -5,12 +5,14 @@ import {Delivery, BlApiError, Order, DeliveryMethod} from '@wizardcoder/bl-model
 import {Subject} from "rxjs/Subject";
 import {CartService} from "../cart.service";
 import {CartOrderService} from "../order/cart-order.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class CartDeliveryService {
 	private _deliveryChange$: Subject<Delivery>;
 	private _currentDelivery: Delivery;
 	private _fromPostalCode: string;
+	private _deliveryFailure$: Subject<boolean>;
 
 	private _deliveryMethod: DeliveryMethod;
 	private _toName: string;
@@ -24,6 +26,7 @@ export class CartDeliveryService {
 		this._deliveryMethod = 'branch';
 		this._fromPostalCode = '1316';
 		this._deliveryReady = false;
+		this._deliveryFailure$ = new Subject<boolean>();
 
 		const initialOrder = this._cartOrderService.getOrder();
 
@@ -58,6 +61,14 @@ export class CartDeliveryService {
 		return this._currentDelivery;
 	}
 
+	public onDeliveryFailure(): Observable<boolean> {
+		return this._deliveryFailure$;
+	}
+
+	public setDeliveryFailure() {
+		this._deliveryFailure$.next(true);
+	}
+
 	private onOrderChange() { // each time the order changes, should create a new delivery
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			this._deliveryReady = false;
@@ -70,6 +81,7 @@ export class CartDeliveryService {
 			this.setDelivery(addedDelivery);
 		}).catch((addDeliveryError) => {
 			console.log('cartDeliveryService: could not add delivery', addDeliveryError);
+			this._deliveryFailure$.next(true);
 		});
 	}
 
@@ -101,10 +113,12 @@ export class CartDeliveryService {
 			info: {
 				from: this._fromPostalCode,
 				to: this._toPostalCode,
-				toAddress: this._toAddress,
-				toPostalCity: this._toPostalCity,
-				toPostalCode: this._toPostalCode,
-				toName: this._toName
+				shipmentAddress: {
+					name: this._toName,
+					address: this._toAddress,
+					postalCode: this._toPostalCode,
+					toPostalCity: this._toPostalCity
+				}
 			},
 			order: order.id,
 			amount: 0

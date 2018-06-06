@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BlApiError, Branch, BranchItem, CustomerItem, Item, Order, OrderItem} from "@wizardcoder/bl-model";
-import {OrderService} from "@wizardcoder/bl-connect";
+import {ItemService, OrderService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
@@ -24,13 +24,20 @@ private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
-				private _priceService: PriceService, private _dateService: DateService) {
+				private _priceService: PriceService, private _dateService: DateService, private _itemService: ItemService) {
 		this._cart = [];
 		this.cartChange$ = new Subject();
+		this.onBranchChange();
 	}
 
 	public onCartChange(): Subject<boolean> {
 		return this.cartChange$;
+	}
+
+	private onBranchChange() {
+		this._branchStoreService.onBranchChange().subscribe(() => {
+			this.clearCart();
+		});
 	}
 
 

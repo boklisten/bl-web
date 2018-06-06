@@ -2,21 +2,29 @@ import {Injectable} from '@angular/core';
 import {BlApiError, Branch, BranchItem, UserDetail} from "@wizardcoder/bl-model";
 import {BranchItemService, BranchService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 import {UserService} from "../user/user.service";
+import {Subject} from "rxjs/Subject";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class BranchStoreService {
 	public redirectUrl: string;
 	private _currentBranch: Branch;
 	private _branchItems: BranchItem[];
+	private _branchChange$: Subject<boolean>;
 
 	constructor(private _userService: UserService, private _branchService: BranchService, private _userdetailService: UserDetailService,
 				private _branchItemService: BranchItemService) {
 		this._branchItems = [];
+		this._branchChange$ = new Subject<boolean>();
 	}
 
 
 	public getBranch(): Branch {
 		return this._currentBranch;
+	}
+
+	public onBranchChange(): Observable<boolean> {
+		return this._branchChange$;
 	}
 
 	public getActiveBranch(): Promise<Branch> {
@@ -69,6 +77,7 @@ export class BranchStoreService {
 
 	public setCurrentBranch(branch: Branch): void {
 		this._currentBranch = branch;
+		this._branchChange$.next(true);
 	}
 
 	public setUserdetailBranch(branch: Branch): Promise<boolean> {

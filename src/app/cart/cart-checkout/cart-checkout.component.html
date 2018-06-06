@@ -23,7 +23,7 @@
 
 <div class="row" *ngIf="!showUserMustLogin && order">
 	<div class="col-12">
-        <div class="row justify-content-center" *ngIf="showPaymentDecision">
+        <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
             <div class="col-auto">
                 <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
                     <label ngbButtonLabel class="btn-info">
@@ -40,7 +40,7 @@
             <div class="col-lg-6 col-md-12 col-12" *ngIf="!isOnlyCustomerItems()">
                 <app-cart-delivery></app-cart-delivery>
             </div>
-            <div class="col-lg-6 col-md-12 col-12 mt-md-3" [ngClass]="{'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12': isOnlyCustomerItems()}">
+            <div class="col-lg-6 col-md-12 col-12 mt-lg-0 mt-md-4 mt-sm-4 mt-4" [ngClass]="{'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12': isOnlyCustomerItems()}">
 				<app-cart-payment></app-cart-payment>
             </div>
         </div>

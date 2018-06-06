@@ -5,11 +5,21 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="currentPayment && showDibsPayment">
+<div class="row" *ngIf="failureText">
+	<div class="col-12">
+		<div class="alert alert-secondary" role="alert">
+			<fa-icon [icon]="'exclamation-circle'" class="mr-2"></fa-icon>
+			{{failureText}}
+		</div>
+	</div>
+</div>
+
+<div class="row" *ngIf="currentPayment && showDibsPayment && !failureText">
 	<div class="col-12">
 		<app-cart-payment-dibs></app-cart-payment-dibs>
 	</div>
 </div>
+
 
 
 

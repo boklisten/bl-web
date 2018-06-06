@@ -41,7 +41,7 @@
 		"@ng-bootstrap/ng-bootstrap": "^1.0.0",
 		"@wizardcoder/bl-connect": "^0.5.10",
 		"@wizardcoder/bl-login": "^0.1.2",
-		"@wizardcoder/bl-model": "^0.14.6",
+		"@wizardcoder/bl-model": "^0.14.7",
 		"bootstrap": "4.0.0",
 		"core-js": "^2.5.3",
 		"email-validator": "^1.1.1",

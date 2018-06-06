@@ -1,68 +1,146 @@
 
-<div class="row mt-3" *ngIf="currentDelivery">
+<div class="row mt-3">
 
 	<div class="col-12">
 		<div class="card">
 
 			<div class="card-header">
 				<div class="card-title">
-					<h3>Delivery method</h3>
+					<h4>Delivery method</h4>
 				</div>
 			</div>
+			<div class="card-body">
+				<ul class="nav nav-pills nav-fill">
+					<li class="nav-item" (click)="onSetDelivery('branch')">
+						<span class="nav-link" [ngClass]="{'active': deliveryMethod === 'branch'}">At branch</span>
+					</li>
+					<li class="nav-item" (click)="onSetDelivery('bring')">
+						<span class="nav-link" [ngClass]="{'active': deliveryMethod === 'bring'}">By mail</span>
+					</li>
+				</ul>
+			</div>
 
-				<div class="list-group list-group-flush">
-					<div class="list-group-item list-group-item-action">
-						<div class="row align-items-center justify-content-between">
-                            <div class="col-10">
-                                <h4>Get at branch</h4>
-                                <p>Retrieve the items yourself at your branch</p>
-                            </div>
-                            <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'branch'">
-                                <fa-icon [icon]="'check-square'" size="3x"></fa-icon>
-                            </div>
-							<div class="col-2 align-items-center" *ngIf="deliveryMethod !== 'branch'"  >
-								<fa-icon [icon]="['far','square']" size="3x" (click)="onSetDelivery('branch')"></fa-icon>
-							</div>
+			<div class="card-body" *ngIf="deliveryMethod === 'branch'">
+				<div class="row">
+                    <div class="col-12">
+                        <h4>Get items at branch</h4>
+						<p>Retrieve the items yourself at <b>{{branch.name}}</b></p>
+                    </div>
+                </div>
+			</div>
+
+			<div class="card-body" *ngIf="deliveryMethod === 'bring'">
+				<div class="row">
+                    <div class="col-12">
+                        <h4>Delivery by mail</h4>
+                        <p>Get the items sent to you with Bring from one of our storage facilities</p>
+                    </div>
+                </div>
+				<div class="row mt-2" *ngIf="failureText">
+					<div class="col-12">
+						<div class="alert alert-warning">
+							<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+							{{failureText}}
 						</div>
 					</div>
-
-					<div class="list-group-item list-group-item-action" >
-						<div class="row align-items-center justify-content-between">
-                            <div class="col-10">
-                                <h4>Delivery by mail</h4>
-								<p>Get the items sent to you with Bring from one of our storage facilities</p>
-
-								<div class="input-group mb-3" *ngIf="deliveryMethod === 'bring'">
-									<div class="input-group-prepend">
-										<span class="input-group-text">
-											to postal code
-										</span>
-									</div>
-
-									<input type="number" maxlength="4" class="form-control" placeholder="Postal code" [(ngModel)]="toPostalCode" (change)="onSetDelivery('bring')">
-
-									<div class="input-group-append">
-										<button class="btn btn-outline-secondary" type="button" (click)="onSetDelivery('bring')" >
-											<fa-icon [icon]="'sync'"></fa-icon>
-										</button>
-									</div>
-									<p *ngIf="postalCodeFailureText" class="text-danger"> {{postalCodeFailureText}}</p>
-
-									<div *ngIf="currentDelivery && currentDelivery.info['amount']" class="mt-1">Price: <b>{{currentDelivery.info['amount']}}kr</b> Delivery time: <b>{{getEstimatedDelivery()}}</b></div>
-								</div>
-
-
+				</div>
+				<div class="row mt-5" *ngIf="deliveryMethod === 'bring'">
+                    <div class="col-12">
+                        <h5>Shipment address</h5>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3 input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <fa-icon [icon]="'user'"></fa-icon>
+                                </span>
                             </div>
 
-                            <div class="col-2 align-items-center" *ngIf="deliveryMethod === 'bring'">
-								<fa-icon [icon]="'check-square'" size="3x"></fa-icon>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Full Name"
+								(change)="validateDeliveryMethodBring()"
+								(keydown.enter)="onSetDelivery('bring')"
+                                [(ngModel)]="toName">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3 input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+									<fa-icon [icon]="'address-card'"></fa-icon>
+                                </span>
                             </div>
-							<div class="col-2 align-items-center" *ngIf="deliveryMethod !== 'bring'" >
-								<fa-icon [icon]="['far','square']" size="3x" (click)="onSetDelivery('bring')"></fa-icon>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Address"
+								(change)="validateDeliveryMethodBring()"
+								(keydown.enter)="onSetDelivery('bring')"
+                                [(ngModel)]="toAddress">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3 input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <fa-icon [icon]="'address-card'"></fa-icon>
+                                </span>
+                            </div>
+
+                            <input
+                                type="text"
+                                maxlength="4"
+                                class="form-control"
+								(change)="onPostalCodeChange()"
+								(keydown.enter)="onSetDelivery('bring')"
+                                placeholder="Postal code"
+                                [(ngModel)]="toPostalCode">
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="city"
+								(keydown.enter)="onSetDelivery('bring')"
+								[(ngModel)]="toPostalCity">
+                        </div>
+                    </div>
+					<div class="col-12 mt-2">
+						<button class="btn btn-outline-success btn-block" (click)="onSetDelivery('bring')">
+							Confirm shipping address
+						</button>
+					</div>
+                </div>
+			</div>
+            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && currentDelivery.amount !== 0 && !failureText">
+				<div class="row justify-content-between">
+					<div class="col-auto text-secondary">
+						Estimated delivery date
+					</div>
+					<div class="col-auto">
+						<div class="row justify-content-end">
+							<div class="col-auto">
+								{{currentDelivery.info['estimatedDelivery'] | blcDate:'until'}}
+							</div>
+						</div>
+						<div class="row justify-content-end">
+							<div class="col-auto text-secondary">
+								<small>{{currentDelivery.info['estimatedDelivery'] | blcDate}}</small>
 							</div>
 						</div>
 					</div>
 				</div>
+                <div class="row justify-content-between mt-2">
+					<div class="col-auto text-secondary">
+						Delivery cost
+					</div>
+					<div class="col-auto font-weight-bold">
+						{{currentDelivery.amount | blcPrice}}
+					</div>
+				</div>
+            </div>
 		</div>
 	</div>
 </div>

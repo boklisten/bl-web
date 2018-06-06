@@ -12,9 +12,8 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-auto">
+        <div class="col-auto" *ngFor="let branch of branches">
             <button
-				*ngFor="let branch of branches"
 				class="btn btn-lg mr-2 ml-2 mt-2"
 				[ngClass]="{'btn-outline-secondary': selectedBranch !== branch, 'btn-secondary': selectedBranch === branch}"
 				(click)="onBranchSelect(branch)"
