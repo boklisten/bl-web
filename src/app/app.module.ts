@@ -69,8 +69,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		FontAwesomeModule
 	],
 	providers: [
-		BranchGuardService,
-		{provide: LOCALE_ID, useValue: environment.localeId}
+		BranchGuardService
 	],
 	bootstrap: [AppComponent]
 })

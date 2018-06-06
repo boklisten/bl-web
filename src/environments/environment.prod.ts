@@ -1,5 +1,4 @@
 export const environment = {
 	production: true,
-	apiPath: 'http://api.boklisten.no',
-	localeId: 'nb'
+	apiPath: 'http://api.boklisten.no'
 };

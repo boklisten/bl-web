@@ -4,20 +4,18 @@
 	<div class="row">
 		<div class="col-12">
 
-			<h3>Er du klar for å leie bøker?</h3>
+			<h3 i18n="welcome headline|a short pitch of what we do@@welcomeHeadline">Are you ready to rent some books?</h3>
 
-			<p>Boklisten.no gjør det enkelt for deg å leie de skolebøkene du trenger til din skolegang. Det eneste
-			du trenger å gjøre er å registrere deg.</p>
-
-
+			<p i18n="welcome paragraph|a short intro about what we are@@welcomeParagraph">Boklisten does it easy for you to rent books, easy for you, and saves the planet one page at a time.</p>
+			<p i18n="@@helloThere">Hello there!</p>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-12">
-			<button class="btn btn-info" (click)="onRegisterClick()">Register</button>
+			<button class="btn btn-info" (click)="onRegisterClick()" i18n="@@registerButton">Register</button>
 
-			<button class="btn btn-success" (click)="onLoginClick()">Login</button>
+			<button class="btn btn-success" (click)="onLoginClick()" i18n="@@loginButton">Login</button>
 		</div>
 	</div>
 </div>

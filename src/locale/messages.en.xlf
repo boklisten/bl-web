@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+      <trans-unit id="353ea04a11a328827f0cd62872f536565ffd2076" datatype="html">
+        <source>Boklisten logo</source><target state="final">Boklisten logo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/header/header.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="welcomeHeadline" datatype="html">
+        <source>Are you ready to rent some books?</source><target state="final">Are you ready to rent some books?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">a short pitch of what we do</note>
+        <note priority="1" from="meaning">welcome headline</note>
+      </trans-unit>
+      <trans-unit id="welcomeParagraph" datatype="html">
+        <source>Boklisten does it easy for you to rent books, easy for you, and saves the planet one page at a time.</source><target state="final">Boklisten does it easy for you to rent books, easy for you, and saves the planet one page at a time.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">a short intro about what we are</note>
+        <note priority="1" from="meaning">welcome paragraph</note>
+      </trans-unit>
+      <trans-unit id="helloThere" datatype="html">
+        <source>Hello there!</source><target state="final">Hello there!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>Register</source><target state="final">Register</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Login</source><target state="final">Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+    <trans-unit id="yourItemsHeadline" datatype="html">
+        <source>Your Items</source><target state="final">Your Items</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-item/user-item.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="noItems" datatype="html">
+        <source>You currently have no items <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source><target state="final">You currently have no items <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-item/user-item.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit></body>
+  </file>
+</xliff>

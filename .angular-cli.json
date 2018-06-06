@@ -3,6 +3,7 @@
 	"project": {
 		"name": "bl-web"
 	},
+
 	"apps": [
 		{
 			"root": "src",
