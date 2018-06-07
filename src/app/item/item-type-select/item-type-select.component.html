@@ -4,15 +4,15 @@
         <div class="btn-group btn-group-toggle btn-group-md" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
                 <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">
-				<span class="ml-2 mr-2">semester</span>
+				<span class="ml-2 mr-2" i18n="@@itemTypeSelectSemesterButton">semester</span>
             </label>
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentYearOption">
                 <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">
-				<span class="mr-2 ml-2">year</span>
+				<span class="mr-2 ml-2" i18n="@@itemTypeSelectYearButton">year</span>
             </label>
 			<label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyOption">
 				<input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">
-				<span class="mr-2 ml-2">buy</span>
+				<span class="mr-2 ml-2" i18n="@@itemTypeSelectBuyButton">buy</span>
             </label>
         </div>
     </div>
@@ -21,11 +21,11 @@
         <div class="btn-group btn-group-toggle btn-group-md" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-info">
                 <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">
-				<span class="mr-2 ml-2">extend</span>
+				<span class="mr-2 ml-2" i18n="@@itemTypeSelectExtendButton">extend</span>
             </label>
             <label ngbButtonLabel class="btn-outline-info">
                 <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">
-				<span class="mr-2 ml-2">buyout</span>
+				<span class="mr-2 ml-2" i18n="@@itemTypeSelectBuyoutButton">buyout</span>
             </label>
         </div>
     </div>
@@ -33,19 +33,19 @@
 	<div class="col-12 mt-2 text-secondary text-center">
 		<span *ngIf="typeSelect === 'one' || typeSelect === 'two'">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
-			rent
+			<span i18n="@@itemTypeSelectInfoRent">rent</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
 			{{getDate(typeSelect)}}
 		</span>
 		<span *ngIf="typeSelect === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
-			extend
+			<span i18n="@@itemTypeSelectInfoExtend">extend</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
 			{{getDate(typeSelect)}}
 		</span>
 		<span *ngIf="typeSelect === 'buy'">
 			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
-			buy
+			<span i18n="@@itemTypeSelectInfoBuy">buy</span>
 		</span>
     </div>
 </div>

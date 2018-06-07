@@ -21,32 +21,19 @@
 					<div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <b>Fullprice:</b> {{item.price}}
+                                <b i18n="@@itemInfoFullprice">Fullprice:</b> {{item.price}}
                             </li>
                             <li class="list-group-item">
-                                <b>ISBN:</b> {{item.info.isbn}}
+                                <b i18n="@@itemInfoIsbn">ISBN:</b> {{item.info.isbn}}
                             </li>
 							<li class="list-group-item">
-								<b>Categories:</b> <h3 class="badge badge-secondary mr-2" *ngFor="let category of item.categories">{{category}}</h3>
+								<b i18n="@@itemInfoCategories">Categories:</b>
+								<h3 class="badge badge-secondary mr-2" *ngFor="let category of item.categories">{{category}}</h3>
 							</li>
                         </ul>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="card">
-						<div class="card-header">
-							Branches that have this item
-						</div>
-						<ul class="list-group list-group-flush">
-							<a *ngFor="let branch of branches" routerLink="/b/info/{{branch.id}}" class="list-group-item list-group-item-action">
-								{{branch.name}}
-							</a>
-						</ul>
 					</div>
 				</div>
 			</div>
         </div>
 	</div>
-
-
 </div>

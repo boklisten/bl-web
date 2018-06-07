@@ -17,15 +17,12 @@
 				<app-item-display [branch]="branch" [compact]="true" [branchItem]="branchItem"></app-item-display>
 			</div>
 		</div>
-		<div class="row justify-content-center">
-			<div class="col-11 bl-display-category-footer"></div>
-		</div>
 	</div>
 </div>
 
 
 <div class="row" *ngIf="!selectedBranchItemCategories || selectedBranchItemCategories.length <= 0">
 	<div class="col-12">
-		<ngb-alert [type]="'warning'">There are currently no items for this branch</ngb-alert>
+		<ngb-alert [type]="'warning'" i18n="@@itemDisplayCategoryWarningNoItems">There are currently no items for this branch</ngb-alert>
 	</div>
 </div>
