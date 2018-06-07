@@ -1,7 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
-import {BlApiError, Delivery, Order, Payment, PaymentMethod} from "@wizardcoder/bl-model";
-import {CartPaymentDibsComponent} from "./cart-payment-dibs/cart-payment-dibs.component";
+import {Payment } from "@wizardcoder/bl-model";
 import {CartOrderService} from "../order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 
@@ -20,7 +19,8 @@ export class CartPaymentComponent implements OnInit {
 	private dibsCheckoutChild: any;
 	public failure: boolean;
 
-	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService, private _cartDeliveryService: CartDeliveryService) {
+	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService,
+				private _cartDeliveryService: CartDeliveryService) {
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
 		this.failure = false;
