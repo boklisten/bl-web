@@ -25,8 +25,6 @@ export class ItemTypeSelectComponent implements OnInit {
 	public rentSemesterOption: boolean;
 	public rentYearOption: boolean;
 	public buyOption: boolean;
-	public buyoutOption: boolean;
-	public extendOption: boolean;
 	private branch: Branch;
 
 	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService,
@@ -52,11 +50,9 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 
 		this.typeChange.emit(this.typeSelect);
-		this.desc = this.getDesc(this.typeSelect);
 	}
 
 	preselectPeriodType(item: Item) {
-		// TODO: fix this to use BranchItem
 		if (this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
 				const periodType =  this.branch.paymentInfo.rentPeriods[0].type;
@@ -75,7 +71,6 @@ export class ItemTypeSelectComponent implements OnInit {
 
 		if ((action === 'one' || action === 'two') && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
-				const periodType =  this.branch.paymentInfo.rentPeriods[0].type;
 
 				for (const period of this.branch.paymentInfo.rentPeriods) {
 					if (period.type === 'semester' && action === 'one') {
@@ -109,10 +104,6 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 	}
 
-	showDate(): boolean {
-		return (this.typeSelect !== "buy");
-	}
-
 	isCustomerItem(): boolean {
 		return !(!this.customerItem);
 	}
@@ -121,29 +112,13 @@ export class ItemTypeSelectComponent implements OnInit {
 		if (this._cartService.contains(this.item.id)) {
 			this._cartService.updateType(this.item.id, type);
 		}
-		this.desc = this.getDesc(type);
-		this.date = this.getDate(type);
 		this.typeSelect = type;
 		this.typeChange.emit(type);
 	}
 
-	private getDesc(type: "one" | "two" | "buy" | "buyout" | "extend") {
-		switch (type) {
-			case "one":
-				return "rent to " + this.getDate(type);
-			case "two":
-				return "rent to " + this.getDate(type);
-			case "buy":
-				return "buy this item";
-			case "buyout":
-				return "buyout this item";
-			case "extend":
-				return "extend deadline to " + this.getDate(type);
-		}
-	}
 
-	public getDate(type): string {
-		return this._dateService.dateString(this._dateService.getDate(type));
+	public getDate(type): Date {
+		return this._dateService.getDate(type);
 	}
 
 	updateBasedOnCart(orderItem: OrderItem) {

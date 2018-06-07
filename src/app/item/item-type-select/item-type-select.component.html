@@ -35,13 +35,13 @@
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoRent">rent</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
-			{{getDate(typeSelect)}}
+			{{getDate(typeSelect) | blcDate}}
 		</span>
 		<span *ngIf="typeSelect === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoExtend">extend</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
-			{{getDate(typeSelect)}}
+			{{getDate(typeSelect) | blcDate}}
 		</span>
 		<span *ngIf="typeSelect === 'buy'">
 			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>

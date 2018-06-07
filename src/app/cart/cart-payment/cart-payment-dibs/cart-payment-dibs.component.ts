@@ -45,7 +45,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		}
 
 		this._cartPaymentService.onPaymentChange().subscribe(() => {
-			this.alert = true;
+			this.alert = false;
 			this.payment = this._cartPaymentService.getPayment();
 			if (this.payment.method === 'dibs') {
 				if (!this.payment.info) {

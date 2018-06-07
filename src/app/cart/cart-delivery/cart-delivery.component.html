@@ -23,7 +23,10 @@
 				<div class="row">
                     <div class="col-12">
                         <h4 i18n="@@cartDeliveryOptionBranchTitle">Get items at branch</h4>
-						<p i18n="@@cartDeliveryOptionBranchDescription">Retrieve the items yourself at <b>{{branch.name}}</b></p>
+						<p>
+							<span i18n="@@cartDeliveryOptionBranchDescription">Retrieve the items yourself at</span>
+							<b>{{branch.name}}</b>
+						</p>
                     </div>
                 </div>
 			</div>
@@ -35,7 +38,7 @@
                         <p i18n="@@cartDeliveryOptionBringDescription">Get the items sent to you with Bring from one of our storage facilities</p>
                     </div>
                 </div>
-				<div class="row mt-2" *ngIf="failureText">
+				<div class="row mt-2" *ngIf="bringInputWarning">
 					<div class="col-12">
 						<div class="alert alert-warning">
 							<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>

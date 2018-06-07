@@ -11,8 +11,11 @@
 				</span>
 			</div>
             <div class="col-md-auto col-sm-12 col-12">
-				<span>
-					{{delivery.method}}
+				<span *ngIf="delivery.method === 'bring'" i18n="@@orderDeliveryInfoMethodBring">
+					Bring
+				</span>
+				<span *ngIf="delivery.method === 'branch'" i18n="@@orderDeliveryInfoMethodBranch">
+					Branch
 				</span>
             </div>
         </div>
@@ -73,7 +76,7 @@
 	<div class="card-body" *ngIf="delivery.method === 'branch'">
 		<div class="row justify-content-between">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoGetItAt">
+				<span class="text-secondary font-weight-bold" i18n="get the item at branch x @@orderDeliveryInfoGetItAt">
 					Get it at
 				</span>
 			</div>
