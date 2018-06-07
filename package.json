@@ -11,7 +11,7 @@
 
 		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
 
-		"watch": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --env=&{ANGULAR_ENV}",
+		"watch": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --env=${ANGULAR_ENV}",
 		"watch-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --env=${ANGULAR_ENV}",
 
 		"build": "ng build --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --prod --env=${ANGULAR_ENV}",

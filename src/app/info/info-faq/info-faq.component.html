@@ -1,0 +1,63 @@
+
+
+<div class="row">
+	<div class="col-12">
+		<h6 class="text-secondary">Frequently asked questions</h6>
+	</div>
+</div>
+
+<ngb-accordion [closeOthers]="true" activeIds="">
+	<ngb-panel id="faq1">
+		<ng-template ngbPanelTitle>
+			<span>How do I rent books as a private candidate?</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<p>
+				You can either order some books in the webstore and then get it at a branch, or you could just meet up at our branch at our opening times.
+				The opening times will be added at the webpage in good time for the semester end.
+			</p>
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel id="faq2">
+		<ng-template ngbPanelTitle>
+			<span>Can I buy books at Boklisten.no?</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<p>
+				Yes, but we really want you to consider to rent instead, don't you want to save the planet?
+			</p>
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel id="faq3">
+		<ng-template ngbPanelTitle>
+			<span>Can I keep the books?</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<p>
+				Yes, but if you don't deliver the books in set time you will get a replacement invoice.
+				This invoice is the books full price + 10% + 90 kr in fee. This will become expensive and we recomend you to deliver in time!
+				If you are a private candidate you can buyout the book in the webstore under the page "Your items" (before the deadline of course)
+			</p>
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel id="faq4">
+		<ng-template ngbPanelTitle>
+			<span>Can I extend the deadline?</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<p>
+				If you are a private candidate you can extend the deadline up to one semester each. Beware however, you need to do this before the old deadline!
+			</p>
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel id="faq5">
+		<ng-template ngbPanelTitle>
+			<span>Can I mark in the books?</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<p>
+				Yes, but we recomend you not to mark with pen or marker, only with pencils.
+			</p>
+		</ng-template>
+	</ngb-panel>
+</ngb-accordion>

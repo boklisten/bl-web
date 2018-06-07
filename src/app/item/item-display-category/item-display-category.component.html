@@ -8,11 +8,12 @@
 <div class="row" *ngFor="let branchItemCategory of selectedBranchItemCategories">
 	<div class="col-12">
 		<div class="row" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
-			<div class="col-6 bl-display-category-header">
+			<div class="col-12 mt-4 font-weight-bold text-secondary">
 				<h2>{{branchItemCategory.name}}</h2>
+				<hr>
 			</div>
 		</div>
-		<div class="row justify-content-center mb-2 p-2" *ngFor="let branchItem of branchItemCategory.branchItems">
+		<div class="row justify-content-center mb-2" *ngFor="let branchItem of branchItemCategory.branchItems">
 			<div class="col-12">
 				<app-item-display [branch]="branch" [compact]="true" [branchItem]="branchItem"></app-item-display>
 			</div>

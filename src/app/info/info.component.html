@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+
+		<ngb-tabset type="pills" [justify]="'justified'" [orientation]="'horizontal'">
+			<ngb-tab title="How does it work?">
+				<ng-template ngbTabContent>
+					<hr>
+					<div class="row">
+						<div class="col-12">
+                            <p>
+                                It is easy, you order some books online, you retrieve them at your school, do your reading and deliver them after the exam.
+                            </p>
+						</div>
+					</div>
+				</ng-template>
+			</ngb-tab>
+			<ngb-tab title="FAQ">
+				<ng-template ngbTabContent>
+					<hr>
+					<div class="row">
+						<div class="col-12">
+							<app-info-faq></app-info-faq>
+						</div>
+					</div>
+				</ng-template>
+			</ngb-tab>
+			<ngb-tab title="Contact us">
+				<ng-template ngbTabContent>
+					<hr>
+					<div class="row">
+						<div class="col-12">
+							Contact us by email: info@boklisten.no
+						</div>
+					</div>
+				</ng-template>
+			</ngb-tab>
+
+		</ngb-tabset>

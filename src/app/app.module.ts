@@ -28,6 +28,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
+import { WelcomeSliderComponent } from './welcome/welcome-slider/welcome-slider.component';
+import {WelcomeModule} from "./welcome/welcome.module";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -40,9 +42,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 	declarations: [
 		AppComponent,
 		HeaderComponent,
-		WelcomeComponent,
 		HeaderCartComponent,
-		FooterComponent
+		FooterComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -55,7 +56,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		CartModule,
 		ItemModule,
 		InfoModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		WelcomeModule
 	],
 	providers: [
 		BranchGuardService
