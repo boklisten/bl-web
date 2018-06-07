@@ -5,7 +5,6 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
-import {HomeModule} from "./home/home.module";
 import {LoginModule} from "@wizardcoder/bl-login";
 import {WelcomeComponent} from './welcome/welcome.component';
 import {UserModule} from "./user/user.module";
@@ -29,7 +28,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
-import { HeaderMenuItemComponent } from './header/header-menu/header-menu-item/header-menu-item.component';
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -44,13 +42,11 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		HeaderComponent,
 		WelcomeComponent,
 		HeaderCartComponent,
-		FooterComponent,
-		HeaderMenuItemComponent
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
 		BlConnectModule,
-		HomeModule,
 		AppRoutingModule,
 		LoginModule,
 		UserModule,
