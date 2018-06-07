@@ -11,14 +11,14 @@
 			</div>
 			<div class="card-body">
 				<div class="row justify-content-between">
-					<div class="col-auto text-secondary font-weight-bold">
+					<div class="col-auto text-secondary font-weight-bold" i18n="customer item handed out | handed out at@@customerItemHandedOut">
 						Handed out
 					</div>
 					<div class="col-auto text-secondary">
 						{{customerItem.handoutInfo.time | blcDate:'until'}}
 					</div>
 				</div>
-				<div class="row justify-content-between">
+				<div class="row justify-content-between" i18n="customer item deadline @@customerItemDeadline">
 					<div class="col-auto text-secondary font-weight-bold">
 						Deadline
 					</div>
@@ -27,7 +27,7 @@
 						{{customerItem.deadline | blcDate}}
 					</div>
 				</div>
-				<div class="row justify-content-between">
+				<div class="row justify-content-between" i18n="deliver customerItem to@@customerItemDeliverTo">
 					<div class="col-auto text-secondary font-weight-bold">
 						Deliver to
 					</div>
@@ -49,7 +49,7 @@
 										[disabled]="!canExtend">
                                     <fa-icon *ngIf="!extend" [icon]="'calendar-plus'" class="mr-2"></fa-icon>
                                     <fa-icon *ngIf="extend" [icon]="'check'" class="mr-2"></fa-icon>
-									<span>Extend</span>
+									<span i18n="@@customerItemExtendButton">Extend</span>
                                 </button>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 										[ngClass]="{'btn-outline-secondary': !buyout, 'btn-success': buyout}">
                                     <fa-icon [icon]="'money-bill-wave'" *ngIf="!buyout" class="mr-2"></fa-icon>
 									<fa-icon [icon]="'check'" *ngIf="buyout" class="mr-2"></fa-icon>
-									Buyout
+									<span i18n="@@customerItemBuyoutButton">Buyout</span>
                                 </button>
 							</div>
 						</div>

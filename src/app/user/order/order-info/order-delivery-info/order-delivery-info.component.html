@@ -1,12 +1,12 @@
 <div class="card" *ngIf="delivery">
-	<div class="card-header">
+	<div class="card-header" i18n="@@orderDeliveryInfoTitle">
 		Delivery details
 	</div>
 
 	<div class="card-body" *ngIf="delivery.method === 'bring'">
         <div class="row justify-content-between">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold">
+				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoShipmentMethod">
 					Shipment method
 				</span>
 			</div>
@@ -18,7 +18,7 @@
         </div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold">
+				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoEstimatedDate">
 					Estimated delivery date
 				</span>
 			</div>
@@ -27,12 +27,13 @@
 					{{delivery.info['estimatedDelivery'] | blcDate}}
 				</span>
 				<span *ngIf="!delivery.info['estimatedDelivery']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> Could not get delivery date info
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
+					<span i18n="@@orderDeliveryInfoEstimatedDateError">Could not get delivery date info</span>
 				</span>
             </div>
         </div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
-			<div class="col-auto text-secondary font-weight-bold">
+			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoShipmentAddress">
 				Shipment address
 			</div>
 			<div class="col-md-auto col-sm-12 col-12">
@@ -40,12 +41,13 @@
 					{{delivery.info['shipmentAddress']['address']}}, {{delivery.info['shipmentAddress']['postalCode']}} {{delivery.info['shipmentAddress']['postalCity']}}
 				</span>
 				<span *ngIf="!delivery || !delivery.info['shipmentAddress']">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> Could not get address
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
+					<span i18n="@@orderDeliveryInfoShipmentAddressError">Could not get address</span>
 				</span>
 			</div>
 		</div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
-			<div class="col-auto text-secondary font-weight-bold">
+			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoTrackingNumber">
 				Tracking number
 			</div>
 			<div class="col-md-auto col-sm-12 col-12">
@@ -53,12 +55,13 @@
 					{{delivery.info['trackingNumber']}}
 				</span>
 				<span *ngIf="!delivery.info['trackingNumber']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon> No tracking number yet
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
+					<span i18n="@@orderDeliveryInfoTrackingNumberError">No tracking number yet</span>
 				</span>
 			</div>
 		</div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
-			<div class="col-auto text-secondary font-weight-bold">
+			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoPrice">
 				Price
 			</div>
 			<div class="col-md-auto col-sm-12 col-12 ">
@@ -70,7 +73,7 @@
 	<div class="card-body" *ngIf="delivery.method === 'branch'">
 		<div class="row justify-content-between">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold">
+				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoGetItAt">
 					Get it at
 				</span>
 			</div>

@@ -1,11 +1,12 @@
 <div class="card" *ngIf="showPayment && order.payments && order.payments.length > 0">
-	<div class="card-header">
+	<div class="card-header" i18n="order payment info title @@orderPaymentInfoTitle">
 		Payment details
 	</div>
 
 	<div class="card-body" *ngIf="!payments || payments.length <= 0">
         <div class="alert alert-warning" role="alert">
-			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon> Could not retrieve the payment information for this order
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span i18n="order payment not retrievable @@orderPaymentInfoError">Could not retrieve the payment information for this order</span>
         </div>
 	</div>
 
@@ -16,15 +17,28 @@
 					{{payment.amount | blcPrice:'international'}}
 				</div>
 				<div class="col-auto">
-					<span class="text-success" *ngIf="payment.confirmed"><fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon> Confirmed</span>
-					<span class="text-danger" *ngIf="!payment.confirmed"><fa-icon [icon]="'times'" class="mr-2"></fa-icon> Not confirmed</span>
+					<span class="text-success" *ngIf="payment.confirmed">
+						<fa-icon [icon]="'check-circle'" class="mr-2"></fa-icon>
+						<span i18n="when payment is confirmed @@orderPaymentInfoConfirmed">Confirmed</span>
+					</span>
+					<span class="text-danger" *ngIf="!payment.confirmed">
+						<fa-icon [icon]="'times'" class="mr-2"></fa-icon>
+						<span i18n="when payment is not confirmed @@orderPaymentInfoNotConfirmed">Not confirmed</span>
+					</span>
 				</div>
 			</div>
 
 			<div class="row justify-content-between mt-2">
 				<div class="col-auto">
-					<span *ngIf="payment.method === 'card' || payment.method === 'dibs'"><fa-icon [icon]="'credit-card'" class="mr-2"></fa-icon> {{payment.method}}</span>
-					<span *ngIf="payment.method === 'cash'"><fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>Cash</span>
+					<span *ngIf="payment.method === 'card' || payment.method === 'dibs'">
+						<fa-icon [icon]="'credit-card'" class="mr-2"></fa-icon>
+						<span *ngIf="payment.method === 'dibs'" i18n="@@orderPaymentInfoMethodDibs">DIBS</span>
+						<span *ngIf="payment.method === 'card'" i18n="@@orderPaymentInfoMethodCard">Card</span>
+					</span>
+					<span *ngIf="payment.method === 'cash'">
+						<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
+						<span i18n="@@orderPaymentInfoMethodCash">Cash</span>
+					</span>
 				</div>
 				<div class="col-auto" *ngIf="payment.method === 'dibs'">
 					<span *ngIf="payment.info['cardInfo']">{{payment.info['cardInfo']}}</span>
