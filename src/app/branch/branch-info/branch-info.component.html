@@ -1,4 +1,6 @@
-<ngb-alert [type]="warning" *ngIf="warningText">{{warningText}}</ngb-alert>
+<ngb-alert [type]="'warning'" *ngIf="warning">
+	<span i18n="@@branchInfoNotFound">Branch not found</span>
+</ngb-alert>
 
 <div class="container" *ngIf="branch">
 	<div class="row">

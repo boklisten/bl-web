@@ -9,40 +9,37 @@ import {BlApiError, BlApiNotFoundError, Branch} from "@wizardcoder/bl-model";
 	styleUrls: ['./branch-info.component.scss']
 })
 export class BranchInfoComponent implements OnInit {
-	
+
 	public branch: Branch;
-	public warningText: string;
-	
+	public warning: boolean;
+
 	constructor(private _branchService: BranchService, private _router: Router, private _route: ActivatedRoute) {
 	}
-	
+
 	ngOnInit() {
-		this.warningText = null;
+		this.warning = true;
 		const id = this._route.snapshot.paramMap.get('id');
-		
+
 		this.getBranch(id);
-	
+
 	}
-	
+
 	public onBranchSelect(branch: Branch) {
 		if (branch.id === this.branch.id) {
 			return;
 		}
-		
+
 		this._router.navigateByUrl('/b/info/' + branch.id);
-		
+
 		this.getBranch(branch.id);
 	}
-	
+
 	private getBranch(id: string) {
+		this.warning = false;
 		this._branchService.getById(id).then((branch: Branch) => {
 			this.branch = branch;
 		}).catch((blApiError: BlApiError) => {
-			if (blApiError instanceof BlApiNotFoundError) {
-				this.warningText = 'branch not found';
-				return;
-			}
-			this.warningText = 'could not get the branch';
+			this.warning = true;
 		});
 	}
 }

@@ -2,17 +2,15 @@
 
 <div class="card" *ngIf="branch.contactInfo">
 	<div class="card-body">
-		<h5>{{branch.name}} sin kontaktinfo: </h5>
+		<h5><span i18n="@@branchContactInfoTitle">Contact info for</span>{{branch.name}}</h5>
 	</div>
 	<ul class="list-group list-group-flush">
-
 		<li class="list-group-item">
-			<b>Address:</b> {{branch.contactInfo.address}}, {{branch.contactInfo.postCode}} {{branch.contactInfo.postCity}}
+			<b i18n="@@branchContactInfoAddress">Address:</b> {{branch.contactInfo.address}}, {{branch.contactInfo.postCode}} {{branch.contactInfo.postCity}}
 		</li>
 
 		<li class="list-group-item">
-			<b>Email:</b> {{branch.contactInfo.email}}
+			<b i18n="@@branchContactInfoEmail">Email:</b> {{branch.contactInfo.email}}
 		</li>
 	</ul>
-
 </div>
