@@ -5,11 +5,11 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="failureText">
+<div class="row" *ngIf="failure">
 	<div class="col-12">
 		<div class="alert alert-secondary" role="alert">
 			<fa-icon [icon]="'exclamation-circle'" class="mr-2"></fa-icon>
-			{{failureText}}
+			<span i18n="@@cartPaymentWaitingForDeliveryError">Waiting for a valid delivery</span>
 		</div>
 	</div>
 </div>

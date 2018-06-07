@@ -1,21 +1,24 @@
 
 
-<div class="row" *ngIf="orderPlacedFailureText">
+<div class="row" *ngIf="orderPlacedFailure">
 	<div class="col-12">
-		<ngb-alert [type]="'danger'"><fa-icon [icon]="'exclamation-triangle'"></fa-icon> {{orderPlacedFailureText}}</ngb-alert>
+		<ngb-alert [type]="'danger'">
+			<fa-icon [icon]="'exclamation-triangle'"></fa-icon>
+			<span i18n="@@cartCheckoutOrderPlacedError">The order could not be placed, try again shortly</span>
+		</ngb-alert>
 	</div>
 </div>
 <div class="row text-center" *ngIf="showUserMustLogin">
 	<div class="col-12">
-		<h3>You must login or register to place a order</h3>
+		<h3 i18n="@@cartCheckoutMustLoginError">You must login or register to place a order</h3>
 	</div>
 	<div class="col-12">
 		<div class="row">
 			<div class="col-6">
-				<button class="btn btn-success btn-block" routerLink="/auth/login">Login</button>
+				<button class="btn btn-success btn-block" routerLink="/auth/login" i18n="@@cartCheckoutLoginButton">Login</button>
 			</div>
 			<div class="col-6">
-				<button class="btn btn-info btn-block" routerLink="/auth/register">Register</button>
+				<button class="btn btn-info btn-block" routerLink="/auth/register" i18n="@@cartCheckoutRegisterButton">Register</button>
 			</div>
 		</div>
 	</div>
@@ -27,10 +30,12 @@
             <div class="col-auto">
                 <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
                     <label ngbButtonLabel class="btn-info">
-                        <input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')"> Pay now
+                        <input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')">
+						<span i18n="@@cartCheckoutOptionPayNow">Pay now</span>
                     </label>
                     <label ngbButtonLabel class="btn-info">
-                        <input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')"> Pay later
+                        <input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')">
+						<span i18n="@@cartCheckoutOptionPayLater">Pay later</span>
                     </label>
                 </div>
             </div>
@@ -55,11 +60,11 @@
         <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'">
             <div class="col-12 bl-cart-pay-later">
                 <div class="row align-items-center">
-                    <div class="col-6">
+                    <div class="col-6" i18n="@@cartCheckoutPayLaterInfo">
                         Pay <b>{{getPrice()}} kr</b> later at branch
                     </div>
                     <div class="col-6">
-                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()">
+                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>
@@ -71,11 +76,11 @@
         <div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision">
             <div class="col-12 bl-cart-pay-later">
                 <div class="row align-items-center">
-                    <div class="col-6">
+                    <div class="col-6" i18n="@@cartCheckoutRetrieveItemsAtBranch">
                         Retrieve the items at branch
                     </div>
                     <div class="col-6">
-                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()">
+                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>

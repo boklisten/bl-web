@@ -20,14 +20,14 @@ export class CartCheckoutComponent implements OnInit {
 	public order: Order;
 	showPaymentDecision: boolean;
 	public showUserMustLogin: boolean;
-	public orderPlacedFailureText: string;
+	public orderPlacedFailure: boolean;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService,
 				private _cartService: CartService) {
 
-		this.orderPlacedFailureText = null;
+		this.orderPlacedFailure = false;
 
 		const branch = this._branchStoreService.getBranch();
 
@@ -82,7 +82,7 @@ export class CartCheckoutComponent implements OnInit {
 		this._cartCheckoutService.placeOrder().then(() => {
 			this._router.navigateByUrl('u/order');
 		}).catch(() => {
-			this.orderPlacedFailureText = 'The order could not be placed, try again shortly';
+			this.orderPlacedFailure = true;
 		});
 	}
 

@@ -1,7 +1,7 @@
 
 <div class="row" *ngIf="!order || !delivery">
 	<div class="col-12">
-		<div class="alert alert-secondary">
+		<div class="alert alert-secondary" i18n="@@cartSummaryError">
 			Summary could not be provided
 		</div>
 	</div>
@@ -10,13 +10,13 @@
 <div class="row" *ngIf="order && delivery">
 	<div class="col-12">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header" i18n="@@cartSummaryTitle">
 				Payment summary
 			</div>
 
 			<div class="card-body">
 				<div class="row justify-content-between">
-					<div class="col-auto text-secondary">
+					<div class="col-auto text-secondary" i18n="@@cartSummarySumItems">
 						Sum items
 					</div>
 					<div class="col-auto">
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="row justify-content-between" *ngIf="delivery.amount !== 0">
-					<div class="col-auto text-secondary">
+					<div class="col-auto text-secondary" i18n="@@cartSummaryShipment">
 						Shipment
 					</div>
 					<div class="col-auto">
@@ -33,7 +33,7 @@
 				</div>
 				<div class="row justify-content-between">
 					<div class="col-auto text-secondary">
-						<small>Tax amount</small>
+						<small i18n="@@cartSummaryTaxAmount">Tax amount</small>
 					</div>
 					<div class="col-auto">
 						<small>{{0 | blcPrice}}</small>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="row justify-content-between">
-					<div class="col-auto text-secondary">
+					<div class="col-auto text-secondary" i18n="@@cartSummaryTotal">
 						Total
 					</div>
 					<div class="col-auto font-weight-bold">

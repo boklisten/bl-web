@@ -31,6 +31,8 @@ export class CartDeliveryComponent implements OnInit {
 	public failureText: string;
 	public branch: Branch;
 
+	public bringInputWarning: string;
+
 	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService, private _userService: UserService,
 				private _branchStoreService: BranchStoreService) {
 
@@ -38,6 +40,7 @@ export class CartDeliveryComponent implements OnInit {
 		this.delivery = new EventEmitter();
 		this.postalCodeFailure = true;
 		this.toPostalCode = '';
+		this.bringInputWarning = '';
 
 		this.failureText = null;
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
@@ -89,29 +92,30 @@ export class CartDeliveryComponent implements OnInit {
 
 	validateDeliveryMethodBring(): boolean {
 		if (!this.toName || this.toName.length <= 0) {
-			this.failureText = 'please provide a valid name';
+			this.bringInputWarning = 'invalid-name';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toAddress || this.toAddress.length <= 0) {
-			this.failureText = 'please provide a valid address';
+			this.bringInputWarning = 'invalid-address';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toPostalCity || this.toPostalCity.length <= 0) {
-			this.failureText = 'please provide a valid postal city';
+			this.bringInputWarning = 'invalid-postal-city';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toPostalCode || this.toPostalCode.length < 4) {
-			this.failureText = 'please provide a valid postal code';
+			this.bringInputWarning = 'invalid-postal-code';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
+		this.bringInputWarning = '';
 		return true;
 	}
 
@@ -134,8 +138,7 @@ export class CartDeliveryComponent implements OnInit {
 
 	private onDeliveryFailure() {
 		this._cartDeliveryService.onDeliveryFailure().subscribe(() => {
-
-			this.failureText = (this.failureText) ? this.failureText : 'please provide a valid postal code';
+			this.bringInputWarning = (this.bringInputWarning) ? this.bringInputWarning : 'invalid-postal-code';
 		});
 	}
 

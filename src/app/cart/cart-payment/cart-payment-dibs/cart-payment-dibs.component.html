@@ -1,5 +1,8 @@
-<div class="alert alert-danger" *ngIf="alertMsg">
-	<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon> {{alertMsg}}
+<div class="alert alert-danger" *ngIf="alert">
+	<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+	<span i18n="@@cartPaymentDibsError">
+		Could not create a payment for this order, try again soon or click "pay later" to pay this order at branch
+	</span>
 </div>
 
 <div id="bl-dibs-wrapper"></div>

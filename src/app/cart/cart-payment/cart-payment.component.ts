@@ -18,12 +18,12 @@ export class CartPaymentComponent implements OnInit {
 	public paymentMethod: "later" | "dibs";
 	public currentPayment: Payment;
 	private dibsCheckoutChild: any;
-	public failureText: string;
+	public failure: boolean;
 
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService, private _cartDeliveryService: CartDeliveryService) {
 		this.paymentMethod = "dibs";
 		this.showDibsPayment = false;
-		this.failureText = null;
+		this.failure = false;
 	}
 
 	ngOnInit() {
@@ -36,7 +36,7 @@ export class CartPaymentComponent implements OnInit {
 		}
 
 		this._cartPaymentService.onPaymentChange().subscribe(() => {
-			this.failureText = null;
+			this.failure = false;
 			this.currentPayment = this._cartPaymentService.getPayment();
 			this.removeDibsCheckout();
 			if (this.currentPayment.method === 'dibs') {
@@ -46,7 +46,7 @@ export class CartPaymentComponent implements OnInit {
 
 		this._cartDeliveryService.onDeliveryFailure().subscribe(() => {
 			this.removeDibsCheckout();
-			this.failureText = 'Waiting for valid delivery';
+			this.failure = true;
 		});
 	}
 

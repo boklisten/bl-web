@@ -1,19 +1,13 @@
 import {
 	AfterViewInit,
 	Component,
-	ElementRef,
-	EventEmitter,
-	Input,
 	OnDestroy,
 	OnInit,
-	Output,
-	ViewChild
 } from '@angular/core';
-import {BlApiError, Payment, PaymentMethod, Order} from "@wizardcoder/bl-model";
+import {Payment} from "@wizardcoder/bl-model";
 import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
-import {CartOrderService} from "../../order/cart-order.service";
 
 
 declare var Dibs: any;
@@ -32,10 +26,11 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		language: string
 	};
 	payment: Payment;
-	alertMsg: string;
+	alert: boolean;
 
 
 	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router) {
+		this.alert = false;
 	}
 
 	ngOnInit() {
@@ -43,18 +38,18 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 
 		if (this.payment && this.payment.method === 'dibs') {
 			if (!this.payment.info) {
-				this.setAlert();
+				this.alert = true;
 			} else {
 				this.createDibsPayment();
 			}
 		}
 
 		this._cartPaymentService.onPaymentChange().subscribe(() => {
-			this.alertMsg = null;
+			this.alert = true;
 			this.payment = this._cartPaymentService.getPayment();
 			if (this.payment.method === 'dibs') {
 				if (!this.payment.info) {
-					this.setAlert();
+					this.alert = true;
 				} else {
 					if (!document.getElementById('dibs-checkout-content')) {
 						this.createDibsPayment();
@@ -62,10 +57,6 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 				}
 			}
 		});
-	}
-
-	private setAlert() {
-		this.alertMsg = 'Could not create a payment for this order, try again later or click "pay later" to pay this order at branch';
 	}
 
 	private createDibsElement() {
