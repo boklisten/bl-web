@@ -105,38 +105,6 @@
           <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="welcomeHeadline" datatype="html">
-        <source>Are you ready to rent some books?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <note priority="1" from="description">a short pitch of what we do</note>
-        <note priority="1" from="meaning">welcome headline</note>
-      </trans-unit>
-      <trans-unit id="welcomeParagraph" datatype="html">
-        <source>Boklisten does it easy for you to rent books, easy for you, and saves the planet one page at a time.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <note priority="1" from="description">a short intro about what we are</note>
-        <note priority="1" from="meaning">welcome paragraph</note>
-      </trans-unit>
-      <trans-unit id="registerButton" datatype="html">
-        <source>Register</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="loginButton" datatype="html">
-        <source>Login</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="footerLinkFaq" datatype="html">
         <source>FAQ</source>
         <context-group purpose="location">
@@ -184,6 +152,38 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/footer/footer.component.ts</context>
           <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="welcomeHeadline" datatype="html">
+        <source>Are you ready to rent some books?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">a short pitch of what we do</note>
+        <note priority="1" from="meaning">welcome headline</note>
+      </trans-unit>
+      <trans-unit id="welcomeParagraph" datatype="html">
+        <source>Boklisten does it easy for you to rent books, easy for you, and saves the planet one page at a time.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">a short intro about what we are</note>
+        <note priority="1" from="meaning">welcome paragraph</note>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userHomeMenuYourItems" datatype="html">
@@ -274,13 +274,28 @@
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="userCustomerItemNotReturnedError" datatype="html">
+        <source>This item has not been returned before the deadline, you will receive information about what to do next.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userCustomerItemReturnedMessage" datatype="html">
+        <source>This item has been returned, thanks!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">a happy message that tells the customer they have returned the item </note>
+      </trans-unit>
       <trans-unit id="customerItemHandedOut" datatype="html">
         <source>
 						Handed out
 					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">30</context>
         </context-group>
         <note priority="1" from="description">customer item handed out at time </note>
       </trans-unit>
@@ -290,7 +305,21 @@
 					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">customer item deadline </note>
+      </trans-unit>
+      <trans-unit id="customerItemReturned" datatype="html">
+        <source>
+						Returned
+					</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">customer item deadline </note>
       </trans-unit>
@@ -300,22 +329,30 @@
 					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <note priority="1" from="description">deliver customerItem to</note>
+      </trans-unit>
+      <trans-unit id="userCustomerItemNotOnCorrectBranch" datatype="html">
+        <source>This item is not from the current set branch. You can not do actions on this item unless you have the correct branch set.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <note priority="1" from="description">if the user has set another branch than the item was rented on</note>
       </trans-unit>
       <trans-unit id="customerItemExtendButton" datatype="html">
         <source>Extend</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
       <trans-unit id="customerItemBuyoutButton" datatype="html">
         <source>Buyout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="orderPaymentInfoTitle" datatype="html">
@@ -614,7 +651,7 @@
         <source>There are currently no items for this branch</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-display-category/item-display-category.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartTitle" datatype="html">
@@ -780,39 +817,46 @@
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="cartCheckoutOrderError" datatype="html">
+        <source>We have problems creating the order for you, please try again soon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="cartCheckoutMustLoginError" datatype="html">
         <source>You must login or register to place a order</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutLoginButton" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutRegisterButton" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutOptionPayNow" datatype="html">
         <source>Pay now</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutOptionPayLater" datatype="html">
         <source>Pay later</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutPayLaterInfo" datatype="html">
@@ -821,7 +865,7 @@
                     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutConfirmOrderButton" datatype="html">
@@ -830,11 +874,11 @@
                         </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartCheckoutRetrieveItemsAtBranch" datatype="html">
@@ -843,7 +887,7 @@
                     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartEmptyTitle" datatype="html">
