@@ -14,8 +14,8 @@
 		"watch": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --env=${ANGULAR_ENV}",
 		"watch-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --env=${ANGULAR_ENV}",
 
-		"build": "ng build --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --prod --env=${ANGULAR_ENV}",
-		"build-nb": "ng build --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --prod --env=${ANGULAR_ENV}",
+		"build": "ng build --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --prod --env=${ANGULAR_ENV} --sourcemaps false",
+		"build-nb": "ng build --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --prod --env=${ANGULAR_ENV} --sourcemaps false",
 
 		"postinstall": "npm run build-nb",
 
