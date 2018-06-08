@@ -8,8 +8,8 @@
 <div class="row" *ngFor="let branchItemCategory of selectedBranchItemCategories">
 	<div class="col-12">
 		<div class="row" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
-			<div class="col-12 mt-4 font-weight-bold text-secondary">
-				<h2>{{branchItemCategory.name}}</h2>
+			<div class="col-12 mt-1 font-weight-bold text-secondary">
+				<span class="bl-text-sm">{{branchItemCategory.name}}</span>
 				<hr>
 			</div>
 		</div>

@@ -4,10 +4,10 @@
 
 			<div class="card-header bg-info text-white">
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-sm-auto col-12 text-sm-left text-center" routerLink="{{'/i/' + item.id}}">
+                    <div class="col-sm-auto col-12 text-center bl-text-sm" routerLink="{{'/i/' + item.id}}">
                         {{item.title}}
                     </div>
-					<div class="col-md-auto col-sm-auto d-xl-inline d-lg-none d-md-none d-sm-none d-none text-white font-weight-bold bl-item-display-price">
+					<div class="col-md-auto col-sm-auto d-xl-inline d-lg-none d-md-none d-sm-none d-none text-white font-weight-bold bl-text-sm">
 						<span *ngIf="!customerItem && getPrice() !== 0">{{getPrice() | blcPrice}}</span>
 						<span *ngIf="customerItem">{{customerItem | blcCustomerItemPrice:orderItemType | async | blcPrice}}</span>
 					</div>
@@ -44,7 +44,7 @@
 					<div class="col-xl-10 col-lg-12">
 						<div class="row justify-content-xl-between justify-content-lg-end justify-content-md-end justify-content-sm-end align-items-center ">
 							<div class="d-xl-none d-lg-inline d-md-inline d-sm-inline d-inline col-6">
-								<div class="text-center text-secondary font-weight-bold bl-item-display-price">
+								<div class="text-center text-secondary font-weight-bold bl-text-sm">
                                     <span *ngIf="!customerItem && getPrice() !== 0">{{getPrice() | blcPrice}}</span>
                                     <span *ngIf="customerItem">{{customerItem | blcCustomerItemPrice:orderItemType | async | blcPrice}}</span>
                                 </div>

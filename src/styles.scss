@@ -6,9 +6,25 @@ $alert-color: #e63946;
 $success-color: #53dd6c;
 $warning-color: #ee8434;
 
+
+.bl-text-xs {
+	font-size: 10px;
+}
+
+.bl-text-sm {
+	font-size: 12px;
+}
+
+.bl-text-md {
+	font-size: 15px;
+}
+
+bl-text-lg {
+	font-size: 20px;
+}
+
 body {
 	margin: 0;
-
 	background-color: #adadad;
 }
 
@@ -130,6 +146,24 @@ a:visited {
 .bl-link-black:hover {
 	text-decoration-color: #000000;
 	text-decoration: underline;
+}
+
+
+// BOOTSTRAP SPECIFIC
+
+.card-header {
+	padding: 0.3rem;
+}
+.card-body {
+	padding: 0.5rem;
+}
+
+.card-footer {
+	padding: 0.3rem;
+}
+
+.card-header {
+	padding: 0.3rem;
 }
 
 
