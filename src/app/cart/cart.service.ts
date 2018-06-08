@@ -35,9 +35,11 @@ private _cart: CartItem[];
 	}
 
 	private onBranchChange() {
+		/*
 		this._branchStoreService.onBranchChange().subscribe(() => {
 			this.clearCart();
 		});
+		*/
 	}
 
 
@@ -87,7 +89,7 @@ private _cart: CartItem[];
 		orderItem.type = "extend";
 		orderItem.info = {
 			from: new Date(),
-			to: new Date(),
+			to: this._dateService.getExtendDate('semester'),
 			numberOfPeriods: 1,
 			periodType: "semester",
 			customerItem: customerItem.id

@@ -21,6 +21,7 @@ export class CartCheckoutComponent implements OnInit {
 	showPaymentDecision: boolean;
 	public showUserMustLogin: boolean;
 	public orderPlacedFailure: boolean;
+	public orderError: boolean;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
@@ -55,8 +56,21 @@ export class CartCheckoutComponent implements OnInit {
 
 		this.order = this._cartOrderService.getOrder();
 
+		if (!this.order) {
+			this.orderError = true;
+		}
+
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			this.orderError = false;
 			this.order = order;
+		});
+	}
+
+	private onOrderError() {
+		this._cartOrderService.onOrderError().subscribe((errorMsg) => {
+			console.log('cartCheckoutComponent: order error: ', errorMsg);
+			this.orderError = true;
+			this.order = null;
 		});
 	}
 
@@ -88,7 +102,6 @@ export class CartCheckoutComponent implements OnInit {
 
 	public onPaymentDecicionChange(decision: "now" | "later") {
 		if (decision === 'later') {
-			console.log('the order IS ', this._cartOrderService.getOrder());
 			this._cartPaymentService.orderShouldHavePayment = false;
 
 			this._cartDeliveryService.setBranchDelivery();

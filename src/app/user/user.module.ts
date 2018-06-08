@@ -16,6 +16,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { OrderPaymentInfoComponent } from './order/order-info/order-payment-info/order-payment-info.component';
 import {BlCommonModule} from "../bl-common/bl-common.module";
 import { OrderDeliveryInfoComponent } from './order/order-info/order-delivery-info/order-delivery-info.component';
+import {UserCustomerItemService} from "./user-customer-item/user-customer-item.service";
 
 @NgModule({
 	imports: [
@@ -39,7 +40,8 @@ import { OrderDeliveryInfoComponent } from './order/order-info/order-delivery-in
 	],
 	providers: [
 		UserService,
-		UserGuardService
+		UserGuardService,
+		UserCustomerItemService
 	]
 })
 export class UserModule {

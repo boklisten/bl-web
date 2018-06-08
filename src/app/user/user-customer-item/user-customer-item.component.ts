@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BlApiError, Branch, BranchItem, CustomerItem, Item} from "@wizardcoder/bl-model";
-import {BranchService, ItemService} from "@wizardcoder/bl-connect";
+import {BranchService, CustomerItemService, ItemService} from "@wizardcoder/bl-connect";
 import {Router} from "@angular/router";
 import {CartService} from "../../cart/cart.service";
 import {DateService} from "../../date/date.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {UserCustomerItemService} from "./user-customer-item.service";
 
 @Component({
 	selector: 'app-user-customer-item',
@@ -21,12 +22,21 @@ export class UserCustomerItemComponent implements OnInit {
 	public canExtend: boolean;
 	public canBuyout: boolean;
 	private _branchItem: BranchItem;
+	public correctBranch: boolean;
+	public notReturnedBeforeDeadline: boolean;
+	public returned: boolean;
 
 	constructor(private _itemService: ItemService, private _router: Router, private _branchService: BranchService,
-				private _cartService: CartService, private _dateService: DateService, private _branchStoreService: BranchStoreService) {
+				private _cartService: CartService, private _dateService: DateService, private _branchStoreService: BranchStoreService,
+				private _userCustomerItemService: UserCustomerItemService) {
+
 		this.extend = false;
 		this.buyout = false;
-
+		this.correctBranch = false;
+		this.canExtend = false;
+		this.canBuyout = false;
+		this.notReturnedBeforeDeadline = false;
+		this.returned = false;
 	}
 
 	ngOnInit() {
@@ -44,25 +54,31 @@ export class UserCustomerItemComponent implements OnInit {
 
 		this.branch = this._branchStoreService.getBranch();
 
-
+		this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(this.customerItem);
+		this.returned = this.customerItem.returned;
 	}
 
 	setValidOptions() {
+		let branchItem: BranchItem;
 		if (this._branchStoreService.haveBranchItem(this.item.id)) {
-			this._branchItem = this._branchStoreService.getBranchItem(this.item.id);
-
-			if (this._branchItem.rent) {
-				this.canExtend = true;
-			}
-
-			if (this._branchItem.buy) {
-				this.canBuyout = true;
-			}
-		} else {
-			this.canExtend = false;
-			this.canBuyout = false;
+			branchItem = this._branchStoreService.getBranchItem(this.item.id);
 		}
 
+		if (this._userCustomerItemService.isOnValidBranch(this.customerItem, branchItem)) {
+			this.correctBranch = true;
+
+			if (branchItem) {
+				this._userCustomerItemService.isExtendValid(branchItem, this.customerItem).then(() => {
+					this.canExtend = true;
+				}).catch(() => {
+					this.canExtend = false;
+				});
+
+				this.canBuyout = this._userCustomerItemService.isBuyoutValid(branchItem, this.customerItem);
+			}
+		} else {
+			this.correctBranch = false;
+		}
 	}
 
 	initByCart() {

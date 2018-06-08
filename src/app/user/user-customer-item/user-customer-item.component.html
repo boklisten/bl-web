@@ -9,25 +9,57 @@
 					</div>
 				</div>
 			</div>
+			<div class="card-body bg-danger text-white" *ngIf="notReturnedBeforeDeadline">
+				<div class="row">
+					<div class="col-auto">
+						<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+						<span i18n="@@userCustomerItemNotReturnedError">This item has not been returned before the deadline, you will receive information about what to do next.</span>
+					</div>
+				</div>
+			</div>
+			<div class="card-body bg-secondary text-white" *ngIf="returned">
+				<div class="row">
+					<div class="col-auto">
+						<fa-icon [icon]="'check'" class="mr-2"></fa-icon>
+						<span i18n="a happy message that tells the customer they have returned the item @@userCustomerItemReturnedMessage">This item has been returned, thanks!</span>
+					</div>
+				</div>
+			</div>
 			<div class="card-body">
 				<div class="row justify-content-between">
 					<div class="col-auto text-secondary font-weight-bold" i18n="customer item handed out at time @@customerItemHandedOut">
 						Handed out
 					</div>
 					<div class="col-auto text-secondary">
-						{{customerItem.handoutInfo.time | blcDate:'until'}}
+						{{customerItem.handoutInfo.time | blcDate}}
 					</div>
 				</div>
-				<div class="row justify-content-between" >
+				<div class="row justify-content-between" *ngIf="!returned">
 					<div class="col-auto text-secondary font-weight-bold" i18n="customer item deadline @@customerItemDeadline">
 						Deadline
 					</div>
 					<div class="col-auto text-secondary">
-						<fa-icon [icon]="'clock'" class="mr-2"></fa-icon>
-						{{customerItem.deadline | blcDate}}
+                        <fa-icon [icon]="'clock'" class="mr-2"></fa-icon>
+                        {{customerItem.deadline | blcDate}}
 					</div>
 				</div>
-				<div class="row justify-content-between">
+				<div class="row justify-content-between" *ngIf="returned">
+					<div class="col-auto text-secondary font-weight-bold" i18n="customer item deadline @@customerItemReturned">
+						Returned
+					</div>
+					<div class="col-auto text-secondary">
+						{{customerItem.returnInfo.time | blcDate}}
+					</div>
+				</div>
+				<div class="row justify-content-between" *ngIf="returned">
+					<div class="col-auto text-secondary font-weight-bold" i18n="customer item deadline @@customerItemReturned">
+						Returned to
+					</div>
+					<div class="col-auto text-secondary">
+						{{customerItem.returnInfo.returnedToId | blcBranch | async}}
+					</div>
+				</div>
+				<div class="row justify-content-between" *ngIf="!returned">
 					<div class="col-auto text-secondary font-weight-bold" i18n="deliver customerItem to@@customerItemDeliverTo">
 						Deliver to
 					</div>
@@ -38,7 +70,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-footer">
+			<div class="card-body bg-warning" *ngIf="!correctBranch && !notReturnedBeforeDeadline">
+				<div class="row">
+					<div class="col-auto">
+						<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+						<span i18n="if the user has set another branch than the item was rented on@@userCustomerItemNotOnCorrectBranch">This item is not from the current set branch. You can not do actions on this item unless you have the correct branch set.</span>
+					</div>
+				</div>
+			</div>
+			<div class="card-footer" *ngIf="correctBranch && !notReturnedBeforeDeadline && !returned">
 				<div class="row justify-content-end">
 					<div class="col-sm-auto col-12">
 						<div class="row">

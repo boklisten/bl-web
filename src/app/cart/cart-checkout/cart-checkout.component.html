@@ -8,6 +8,16 @@
 		</ngb-alert>
 	</div>
 </div>
+
+<div class="row" *ngIf="orderError && !order">
+	<div class="col-12">
+		<ngb-alert [type]="'danger'">
+			<fa-icon [icon]="'exclamation-triangle'"></fa-icon>
+			<span i18n="@@cartCheckoutOrderError">We have problems creating the order for you, please try again soon</span>
+		</ngb-alert>
+	</div>
+</div>
+
 <div class="row text-center" *ngIf="showUserMustLogin">
 	<div class="col-12">
 		<h3 i18n="@@cartCheckoutMustLoginError">You must login or register to place a order</h3>
