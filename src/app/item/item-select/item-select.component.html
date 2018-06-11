@@ -1,43 +1,50 @@
-  <div class="card">
-	  <div class="card-body">
-		  <div class="row justify-content-center align-items-center" *ngIf="branch">
-                <div class="col-auto text-secondary">
-                    <fa-icon [icon]="'book'" [size]="'2x'"></fa-icon>
-                </div>
-                <div class="col-auto">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-auto text-secondary font-italic">
-                            <span class="bl-text-sm" i18n="the booklist for branch x @@itemSelectBooklistFor">Booklist for</span>
+<div class="row justify-content-center">
+	<div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-center align-items-center" *ngIf="branch">
+                            <div class="col-auto text-secondary">
+                                <fa-icon [icon]="'book'" [size]="'2x'"></fa-icon>
+                            </div>
+                            <div class="col-auto">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto text-secondary font-italic">
+                                        <span class="bl-text-sm" i18n="the booklist for branch x @@itemSelectBooklistFor">Booklist for</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="bl-text-md font-weight-bold">{{branch.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <span class="bl-text-md font-weight-bold">{{branch.name}}</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <button class="btn btn-sm btn-block btn-outline-secondary bl-text-sm" routerLink="/b/select">
+                                    <span i18n="@@itemSelectChooseAnotherSchoolButton">Choose another school</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-		  </div>
-	  </div>
-	  <div class="card-footer">
-		  <div class="row justify-content-center">
-			  <div class="col-12">
-				  <button class="btn btn-sm btn-block btn-outline-secondary bl-text-sm" routerLink="/b/select">
-					  <span i18n="@@itemSelectChooseAnotherSchoolButton">Choose another school</span>
-				  </button>
-			  </div>
-		  </div>
-	  </div>
-  </div>
-
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-            <app-item-display-category [branch]="branch" *ngIf="branch" class="bl-container-padding"></app-item-display-category>
+            </div>
         </div>
-    </div>
 
-	<div class="row">
-		<div class="col-12">
-			<app-cart-go-to-bar></app-cart-go-to-bar>
-		</div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <app-item-display-category [branch]="branch" *ngIf="branch"
+                                           class="bl-container-padding"></app-item-display-category>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <app-cart-go-to-bar></app-cart-go-to-bar>
+            </div>
+        </div>
 	</div>
-
-
-
+</div>

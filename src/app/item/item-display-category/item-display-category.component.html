@@ -1,5 +1,5 @@
 
-<div class="row mb-3">
+<div class="row">
 	<div class="col-12">
 		<app-branch-item-category-filter [branchItemCategories]="branchItemCategoryNames" (branchItemCategoriesSelect)="onBranchItemCategoryFilterChange($event)"></app-branch-item-category-filter>
 	</div>
@@ -7,13 +7,13 @@
 
 <div class="row" *ngFor="let branchItemCategory of selectedBranchItemCategories">
 	<div class="col-12">
-		<div class="row" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
-			<div class="col-12 mt-1 font-weight-bold text-secondary">
+		<div class="row mt-1" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
+			<div class="col-12 font-weight-bold text-secondary">
 				<span class="bl-text-sm">{{branchItemCategory.name}}</span>
 				<hr>
 			</div>
 		</div>
-		<div class="row justify-content-center mb-2" *ngFor="let branchItem of branchItemCategory.branchItems">
+		<div class="row justify-content-center mb-1" *ngFor="let branchItem of branchItemCategory.branchItems">
 			<div class="col-12">
 				<app-item-display [branch]="branch" [compact]="true" [branchItem]="branchItem"></app-item-display>
 			</div>

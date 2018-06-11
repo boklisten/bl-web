@@ -1,4 +1,3 @@
-<div class="container mt-2">
 
 	<app-cart-empty *ngIf="!showCart()"></app-cart-empty>
 
@@ -6,19 +5,19 @@
 		<div class="col-12">
 			<div class="row justify-content-center">
 				<div class="col-auto text-secondary">
-					<fa-icon [icon]="'shopping-cart'" [size]="'3x'"></fa-icon>
+					<fa-icon [icon]="'shopping-cart'" [size]="'2x'"></fa-icon>
 				</div>
 			</div>
 			<div class="row justify-content-center mt-2">
 				<div class="col-auto justify-content-center text-secondary">
-					<h2 i18n="@@cartTitle">Cart</h2>
+					<h4 i18n="@@cartTitle">Cart</h4>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row bl-cart-container" *ngIf="showCart()">
-		<div class="col-12 bl-cart-container mb-1" *ngFor="let cartItem of getCart()">
+	<div class="row justify-content-center" *ngIf="showCart()">
+		<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 mb-1" *ngFor="let cartItem of getCart()">
 			<app-item-display
                   [compact]="true"
                   [inCart]="true"
@@ -31,4 +30,3 @@
 	</div>
 
 	<app-cart-checkout *ngIf="showCart()"></app-cart-checkout>
-</div>

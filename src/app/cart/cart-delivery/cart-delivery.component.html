@@ -4,9 +4,7 @@
 		<div class="card">
 
 			<div class="card-header">
-				<div class="card-title">
-					<h4 i18n="@@cartDeliveryTitle">Delivery method</h4>
-				</div>
+				<span i18n="@@cartDeliveryTitle">Delivery method</span>
 			</div>
 			<div class="card-body">
 				<ul class="nav nav-pills nav-fill">
@@ -22,7 +20,7 @@
 			<div class="card-body" *ngIf="deliveryMethod === 'branch'">
 				<div class="row">
                     <div class="col-12">
-                        <h4 i18n="@@cartDeliveryOptionBranchTitle">Get items at branch</h4>
+                        <h5 i18n="@@cartDeliveryOptionBranchTitle">Get items at branch</h5>
 						<p>
 							<span i18n="@@cartDeliveryOptionBranchDescription">Retrieve the items yourself at</span>
 							<b>{{branch.name}}</b>
@@ -34,7 +32,7 @@
 			<div class="card-body" *ngIf="deliveryMethod === 'bring'">
 				<div class="row">
                     <div class="col-12">
-                        <h4 i18n="@@cartDeliveryOptionBringTitle">Delivery by mail</h4>
+                        <h5 i18n="@@cartDeliveryOptionBringTitle">Delivery by mail</h5>
                         <p i18n="@@cartDeliveryOptionBringDescription">Get the items sent to you with Bring from one of our storage facilities</p>
                     </div>
                 </div>

@@ -34,16 +34,16 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="!showUserMustLogin && order">
+<div class="row mt-2" *ngIf="!showUserMustLogin && order">
 	<div class="col-12">
         <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
             <div class="col-auto">
-                <div class="btn-group btn-group-toggle btn-group-lg" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
-                    <label ngbButtonLabel class="btn-info">
+                <div class="btn-group btn-group-toggle btn-group-md" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
+                    <label ngbButtonLabel class="btn-outline-secondary">
                         <input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')">
 						<span i18n="@@cartCheckoutOptionPayNow">Pay now</span>
                     </label>
-                    <label ngbButtonLabel class="btn-info">
+                    <label ngbButtonLabel class="btn-outline-secondary">
                         <input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')">
 						<span i18n="@@cartCheckoutOptionPayLater">Pay later</span>
                     </label>
@@ -51,11 +51,11 @@
             </div>
         </div>
 
-        <div class="row mt-3" *ngIf="showPaymentDecision && paymentDecision === 'now'">
-            <div class="col-lg-6 col-md-12 col-12" *ngIf="!isOnlyCustomerItems()">
+        <div class="row mt-4" *ngIf="showPaymentDecision && paymentDecision === 'now'">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-2 mt-sm-2 mt-2" *ngIf="!isOnlyCustomerItems()">
                 <app-cart-delivery></app-cart-delivery>
             </div>
-            <div class="col-lg-6 col-md-12 col-12 mt-lg-0 mt-md-4 mt-sm-4 mt-4" [ngClass]="{'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12': isOnlyCustomerItems()}">
+            <div class="col-lg-6 col-md-12 col-12 mt-lg-0 mt-md-2 mt-sm-2 mt-2" [ngClass]="{'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12': isOnlyCustomerItems()}">
 				<div class="row">
 					<div class="col-12">
 						<app-cart-summary></app-cart-summary>
@@ -70,10 +70,10 @@
         <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'">
             <div class="col-12 bl-cart-pay-later">
                 <div class="row align-items-center">
-                    <div class="col-6" i18n="@@cartCheckoutPayLaterInfo">
+                    <div class="col-sm-6 col-12 mb-sm-0 mb-2" i18n="@@cartCheckoutPayLaterInfo">
                         Pay <b>{{getPrice()}} kr</b> later at branch
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6 col-12">
                         <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
