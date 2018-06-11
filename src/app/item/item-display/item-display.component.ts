@@ -27,7 +27,8 @@ export class ItemDisplayComponent implements OnInit {
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
 	public showAdd: boolean;
 
-	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService, private _itemService: ItemService) {
+	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService, private _itemService: ItemService,
+				private _cartService: CartService) {
 		this.customerItemActive = false;
 		this.view = false;
 		this.showAdd = false;
@@ -58,6 +59,7 @@ export class ItemDisplayComponent implements OnInit {
 			this.orderItemType = type;
 		}, 0);
 	}
+
 
 	public onItemClick() {
 		this._router.navigateByUrl('i/' + this.item.id);

@@ -40,22 +40,10 @@ export class ItemTypeSelectComponent implements OnInit {
 		this.displaySelectedPeriodType();
 	}
 
-	private displaySelectedPeriodType() {
-		this.calculateOptions(this.item);
-
-		if (this._cartService.contains(this.item.id)) {
-			this.updateBasedOnCart(this._cartService.get(this.item.id));
-		} else {
-			this.preselectPeriodType(this.item);
-		}
-
-		this.typeChange.emit(this.typeSelect);
-	}
-
 	preselectPeriodType(item: Item) {
 		if (this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
-				const periodType =  this.branch.paymentInfo.rentPeriods[0].type;
+				const periodType = this.branch.paymentInfo.rentPeriods[0].type;
 				if (periodType === 'semester') {
 					this.typeSelect = 'one';
 				} else if (periodType === 'year') {
@@ -85,7 +73,6 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 	}
 
-
 	calculateOptions(item: Item) {
 		if (this.customerItem) {
 			return;
@@ -109,13 +96,15 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	public onTypeUpdate(type: "one" | "two" | "buy" | "buyout" | "extend") {
-		if (this._cartService.contains(this.item.id)) {
-			this._cartService.updateType(this.item.id, type);
-		}
 		this.typeSelect = type;
-		this.typeChange.emit(type);
-	}
+		if (this._cartService.contains(this.item.id)) {
+			this._cartService.updateType(this.item.id, this.typeSelect);
+		} else {
 
+			this._cartService.add(this.item, this.branchItem, this.typeSelect as any);
+		}
+		this.typeChange.emit(this.typeSelect);
+	}
 
 	public getDate(type): Date {
 		return this._dateService.getDate(type);
@@ -141,6 +130,18 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	public showPrice(): boolean {
 		return this._priceService.showPrice();
+	}
+
+	private displaySelectedPeriodType() {
+		this.calculateOptions(this.item);
+
+		if (this._cartService.contains(this.item.id)) {
+			this.updateBasedOnCart(this._cartService.get(this.item.id));
+		} else {
+			this.preselectPeriodType(this.item);
+		}
+
+		this.typeChange.emit(this.typeSelect);
 	}
 
 }
