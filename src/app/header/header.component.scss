@@ -5,10 +5,30 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-bottom: 2px solid $secondary-color;
+	position: fixed;
+	top: 0;
+	overflow: hidden;
+	width: 100%;
+	z-index: 9999;
 }
 
 .bl-logo-container {
 
+}
+
+.bl-header-button {
+	color: #283d3b;
+	margin-left: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.bl-header-button:hover {
+}
+
+.bl-header-button-alert {
+	@extend .bl-header-button;
+	color: #ffffff;
 }
 
 .bl-logo {
@@ -31,6 +51,7 @@
 
 .bl-header-buttons {
 	text-align: center;
+	color: #283d3b;
 }
 
 .bl-header-menu {
@@ -38,6 +59,7 @@
 	margin-bottom: 10px;
 	padding-top: 30px;
 	height: 150vh;
+	margin-top: 40px;
 }
 
 .bl-header-menu-name {

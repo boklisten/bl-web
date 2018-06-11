@@ -1,7 +1,7 @@
 <div class="bl-header container-fluid">
 	<div class="row no-gutters align-items-center justify-content-between">
 
-		<div class="col-md-5 col-sm-4 col-xs-4 col-3 bl-logo" (click)="onLogoClick()">
+		<div class="col-md-5 col-sm-4 col-xs-4 col-3 bl-logo" (click)="onMenuItemClick('home')">
 			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="60" width="60" class="d-sm-inline d-none" i18n-title="@@headerBoklistenLogoAlt" title="Boklisten.no logo">
 			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="40" width="40" class="d-sm-none d-inline">
 			<b class="bl-logo-text d-none d-lg-inline-block" i18n="@@headerCompanyName">Boklisten.no</b>
@@ -15,7 +15,7 @@
 				<div class="col-sm-auto col-4">
 					<fa-icon [icon]="'book'" size="2x" class="bl-header-button" (click)="onMenuItemClick('items')"></fa-icon>
 				</div>
-				<div class="col-sm-3 col-4">
+				<div class="col-sm-3 col-4" (click)="onMenuItemClick('cart')">
 					<app-header-cart></app-header-cart>
 				</div>
 				<div class="col-3 d-sm-inline d-none">

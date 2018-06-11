@@ -5,7 +5,7 @@ import {UserService} from "../user/user.service";
 
 export type MenuItem = 'info' | 'branch' | 'cart' | 'items'
 	| 'user-settings' | 'user-items' | 'user-orders' | 'logout'
-	| 'login' | 'register' | 'user-home';
+	| 'login' | 'register' | 'user-home' | 'home';
 
 @Component({
 	selector: 'app-header',
@@ -26,21 +26,6 @@ export class HeaderComponent implements OnInit {
 	ngOnInit() {
 	}
 
-
-	public onLogoClick() {
-		this.showMenu = false;
-		this._router.navigateByUrl('/welcome');
-	}
-
-	public onUserClick() {
-		this.showMenu = false;
-		this._router.navigateByUrl('/u/home');
-	}
-
-	public onItemSelectClick() {
-		this.showMenu = false;
-		this._router.navigateByUrl('/i/select');
-	}
 
 	public onMenuItemClick(menuItem: MenuItem) {
 		if (menuItem === 'items') {
@@ -67,14 +52,13 @@ export class HeaderComponent implements OnInit {
 			this._router.navigateByUrl('/auth/login');
 		} else if (menuItem === 'register') {
 			this._router.navigateByUrl('/auth/register');
+		} else if (menuItem === 'home') {
+			this._router.navigateByUrl('/');
 		}
 
 		this.showMenu = false;
 	}
 
-	public onInfoClick() {
-		this.showMenu = false;
-	}
 
 	public onMenuClick() {
 		this.showMenu = !this.showMenu;

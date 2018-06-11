@@ -1,8 +1,25 @@
+@import "../styles";
+
+
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
 
 
 .bl-content {
 	min-height: 100vh;
 	padding-bottom: 60px;
 	padding-top: 15px;
+
+	@include media-breakpoint-between(sm, xl) {
+		margin-top: 70px;
+	}
+
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 50px;
+	}
 }
+
+
 
