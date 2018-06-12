@@ -32,7 +32,7 @@ export class CartCheckoutComponent implements OnInit {
 
 		const branch = this._branchStoreService.getBranch();
 
-		if (branch.paymentInfo.responsible) {
+		if (branch && branch.paymentInfo.responsible) {
 			this._cartPaymentService.orderShouldHavePayment = false;
 		} else {
 			this._cartPaymentService.orderShouldHavePayment = true;
@@ -47,7 +47,7 @@ export class CartCheckoutComponent implements OnInit {
 
 		const branch = this._branchStoreService.getBranch();
 
-		if (branch.paymentInfo.responsible) {
+		if (branch && branch.paymentInfo.responsible) {
 			this.showPaymentDecision = false;
 		} else {
 			this.paymentDecision = 'now';
@@ -66,13 +66,6 @@ export class CartCheckoutComponent implements OnInit {
 		});
 	}
 
-	private onOrderError() {
-		this._cartOrderService.onOrderError().subscribe((errorMsg) => {
-			console.log('cartCheckoutComponent: order error: ', errorMsg);
-			this.orderError = true;
-			this.order = null;
-		});
-	}
 
 	public isOnlyCustomerItems() {
 		for (const cartItem of this._cartService.getCart()) {
@@ -82,7 +75,6 @@ export class CartCheckoutComponent implements OnInit {
 		}
 		return true;
 	}
-
 
 	public getPrice(): number {
 		if (!this.order) {

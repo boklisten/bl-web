@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BlApiError, Branch, BranchItem, CustomerItem, Item, Order, OrderItem} from "@wizardcoder/bl-model";
-import {ItemService, OrderService} from "@wizardcoder/bl-connect";
+import {Branch, BranchItem, CustomerItem, Item, Order, OrderItem} from "@wizardcoder/bl-model";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
-import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {DateService} from "../date/date.service";
 
@@ -24,22 +22,13 @@ private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
-				private _priceService: PriceService, private _dateService: DateService, private _itemService: ItemService) {
+				private _priceService: PriceService, private _dateService: DateService) {
 		this._cart = [];
 		this.cartChange$ = new Subject();
-		this.onBranchChange();
 	}
 
 	public onCartChange(): Subject<boolean> {
 		return this.cartChange$;
-	}
-
-	private onBranchChange() {
-		/*
-		this._branchStoreService.onBranchChange().subscribe(() => {
-			this.clearCart();
-		});
-		*/
 	}
 
 
@@ -129,15 +118,6 @@ private _cart: CartItem[];
 	public contains(itemId: string): boolean {
 		for (let i = 0; i < this._cart.length; i++) {
 			if (this._cart[i].item.id === itemId) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public containsCustomerItem(itemId: string): boolean {
-		for (let i = 0; i < this._cart.length; i++) {
-			if (this._cart[i].item.id === itemId && this._cart[i].customerItem) {
 				return true;
 			}
 		}

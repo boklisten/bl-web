@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CartService} from "../cart.service";
-import {Order, BlApiError, Delivery, Payment} from '@wizardcoder/bl-model';
+import {Order, BlApiError} from '@wizardcoder/bl-model';
 import {OrderService} from '@wizardcoder/bl-connect';
-import {Subject} from "rxjs/Subject";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {CartOrderService} from "../order/cart-order.service";
@@ -11,9 +10,6 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class CartCheckoutService {
-	private currentDelivery: Delivery;
-	private currentPayment: Payment;
-	private currentOrder: Order;
 
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
 				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService,

@@ -1,25 +1,140 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CartCheckoutComponent } from './cart-checkout.component';
+import {CartCheckoutComponent} from './cart-checkout.component';
+import {Component, Injectable, Input} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {CartCheckoutService} from "./cart-checkout.service";
+import {CartOrderService} from "../order/cart-order.service";
+import {BranchStoreService} from "../../branch/branch-store.service";
+import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
+import {CartPaymentService} from "../cart-payment/cart-payment.service";
+import {UserService} from "../../user/user.service";
+import {CartService} from "../cart.service";
+import {Router} from "@angular/router";
+import {Subject} from "rxjs/Subject";
+import {Branch} from "@wizardcoder/bl-model";
+
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon: any;
+}
+
+@Component({selector: 'ngb-alert', template: ''})
+class NgbAlertStubComponent {
+	@Input() type: any;
+}
+
+@Component({selector: 'app-cart-delivery', template: ''})
+class CartDeliveryStubComponent {}
+
+@Component({selector: 'app-cart-summary', template: ''})
+class CartSummaryStubComponent {}
+
+@Component({selector: 'app-cart-payment', template: ''})
+class CartPaymentStubComponent {}
+
+@Injectable()
+class CartCheckoutStubService {
+}
+
+@Injectable()
+class CartOrderStubService {
+	onOrderChange() {
+		return new Subject();
+	}
+}
+
+@Injectable()
+class BranchStoreStubService {
+	getBranch(): Branch {
+		return {
+			id: '',
+			paymentInfo: {
+				responsible: true,
+				extendPeriods: [{} as any],
+				rentPeriods: [{} as any],
+				buyout: {
+					percentage: 0.1
+				},
+				acceptedMethods: []
+			},
+			name: '',
+			branchItems: [],
+		};
+	}
+}
+
+@Injectable()
+class CartDeliveryStubService {
+}
+
+@Injectable()
+class CartPaymentStubService {
+}
+
+@Injectable()
+class UserStubService {
+	loggedIn() {
+
+	}
+}
+
+@Injectable()
+class CartStubService {
+}
+
+@Injectable()
+class RouterStub {
+
+}
 
 describe('CartCheckoutComponent', () => {
-  let component: CartCheckoutComponent;
-  let fixture: ComponentFixture<CartCheckoutComponent>;
+	let component: CartCheckoutComponent;
+	let fixture: ComponentFixture<CartCheckoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CartCheckoutComponent ]
-    })
-    .compileComponents();
-  }));
+	const cartOrderStubService = new CartOrderStubService();
+	const branchStoreStubService = new BranchStoreStubService();
+	const cartDeliveryStubService = new CartDeliveryStubService();
+	const cartPaymentStubService = new CartPaymentStubService();
+	const userStubService = new UserStubService();
+	const cartStubService = new CartStubService();
+	const cartCheckoutStubService = new CartCheckoutStubService();
+	const routerStub = new RouterStub();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CartCheckoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [
+				CartCheckoutComponent,
+				FaIconStubComponent,
+				CartDeliveryStubComponent,
+				CartSummaryStubComponent,
+				CartPaymentStubComponent,
+				NgbAlertStubComponent
+			],
+			providers: [
+				{provide: CartCheckoutService, useValue: cartCheckoutStubService},
+				{provide: CartOrderService, useValue: cartOrderStubService},
+				{provide: BranchStoreService, useValue: branchStoreStubService},
+				{provide: CartDeliveryService, useValue: cartDeliveryStubService},
+				{provide: CartPaymentService, useValue: cartPaymentStubService},
+				{provide: UserService, useValue: userStubService},
+				{provide: CartService, useValue: cartStubService},
+				{provide: Router, useValue: routerStub}
+			],
+			imports: [
+				FormsModule
+			]
+		})
+			.compileComponents();
+	}));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(CartCheckoutComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

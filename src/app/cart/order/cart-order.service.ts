@@ -14,7 +14,7 @@ export class CartOrderService {
 	private _orderClear$: Subject<boolean>;
 	private _orderError$: Subject<string>;
 
-	constructor(private _cartService: CartService, private _orderService: OrderService, private _userService: UserService) {
+	constructor(private _cartService: CartService, private _orderService: OrderService) {
 		this._orderChange$ = new Subject();
 		this._orderClear$ = new Subject();
 		this._orderError$ = new Subject<string>();

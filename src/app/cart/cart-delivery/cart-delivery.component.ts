@@ -81,6 +81,7 @@ export class CartDeliveryComponent implements OnInit {
 
 
 		this.branch = this._branchStoreService.getBranch();
+
 	}
 
 

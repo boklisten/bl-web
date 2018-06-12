@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {OrderService, PaymentService} from "@wizardcoder/bl-connect";
-import {CartService} from "../cart.service";
+import {PaymentService} from "@wizardcoder/bl-connect";
 import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "@wizardcoder/bl-model";
 import {Subject} from "rxjs/Subject";
-import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
@@ -18,10 +16,10 @@ export class CartPaymentService {
 	private _currentDelivery: Delivery;
 
 	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService,
-				private _branchService: BranchStoreService, private _cartDeliveryService: CartDeliveryService) {
+				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService) {
 		this.paymentChange$ = new Subject();
 
-		const branch = this._branchService.getBranch();
+		const branch = this._branchStoreService.getBranch();
 
 		if (branch) {
 			if (branch.paymentInfo.responsible) { // no need to add payment if branch is responsible
