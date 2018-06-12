@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CustomerItemService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 import {BlApiError, BlError, CustomerItem, UserDetail, UserPermission} from "@wizardcoder/bl-model";
-import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
 @Injectable()
@@ -11,7 +10,8 @@ export class UserService {
 	private _userDetail: UserDetail;
 	private _onLogin$: Subject<boolean>;
 
-	constructor(private _tokenService: TokenService, private _userDetailService: UserDetailService,
+	constructor(private _tokenService: TokenService,
+				private _userDetailService: UserDetailService,
 				private _customerItemService: CustomerItemService) {
 
 		this._customerItems = [];

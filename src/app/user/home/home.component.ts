@@ -11,30 +11,28 @@ import {BranchService} from "@wizardcoder/bl-connect";
 	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-	
-	constructor(private _router: Router, private _branchStoreService: BranchStoreService, private _userService: UserService,
+
+	constructor(private _router: Router,
+				private _branchStoreService: BranchStoreService,
+				private _userService: UserService,
 				private _branchService: BranchService) {
 	}
-	
+
 	ngOnInit() {
 	}
-	
+
 	onOrderClick() {
 		this._router.navigateByUrl('u/order');
 	}
-	
-	onItemClick() {
-		this._router.navigateByUrl('i/select');
-	}
-	
+
 	onEditDetailClick() {
 		this._router.navigateByUrl('auth/register/detail');
 	}
-	
+
 	onYourItemsClick() {
 		this._router.navigateByUrl('u/items');
 	}
-	
+
 	onBranchClick() {
 		if (!this._branchStoreService.getBranch()) {
 			this._userService.getUserDetail().then((userDetail: UserDetail) => {
@@ -55,13 +53,13 @@ export class HomeComponent implements OnInit {
 			this._router.navigateByUrl('b/info/' + this._branchStoreService.getBranch().id);
 		}
 	}
-	
+
 	onLogout() {
 		this._userService.logout().then(() => {
 			this._router.navigateByUrl('welcome');
 		});
 	}
-	
-	
-	
+
+
+
 }

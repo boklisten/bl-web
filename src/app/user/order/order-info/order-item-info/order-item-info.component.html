@@ -1,4 +1,4 @@
-<div class="row justify-content-between">
+<div class="row justify-content-between" *ngIf="orderItem">
 	<div class="col-auto">
 		<h5>{{orderItem.title}}</h5>
 	</div>
@@ -6,7 +6,7 @@
 		{{orderItem.amount | blcPrice}}
 	</div>
 </div>
-<div class="row">
+<div class="row" *ngIf="orderItem">
 	<div class="col-auto text-secondary">
 		<div *ngIf="orderItem.type === 'rent'">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>

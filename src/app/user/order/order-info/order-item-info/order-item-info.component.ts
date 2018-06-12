@@ -15,7 +15,7 @@ export class OrderItemInfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.orderItem.type === 'rent' && this.orderItem.info.customerItem) {
+		if (this.orderItem && this.orderItem.type === 'rent' && this.orderItem.info.customerItem) {
 			this._customerItemService.getById(this.orderItem.info.customerItem).then((customerItem: CustomerItem) => {
 				this.customerItem = customerItem;
 			}).catch((customerItemError: BlApiError) => {

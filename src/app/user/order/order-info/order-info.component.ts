@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Order} from "@wizardcoder/bl-model";
-import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-order-info',
@@ -9,15 +8,12 @@ import {Router} from "@angular/router";
 })
 export class OrderInfoComponent implements OnInit {
 	@Input() order: Order;
-	
-	constructor(private _router: Router) {
+
+	constructor() {
 	}
-	
+
 	ngOnInit() {
 	}
-	
-	onWhereToGetClick() {
-		this._router.navigateByUrl('/b/info/' + this.order.branch);
-	}
-	
+
+
 }

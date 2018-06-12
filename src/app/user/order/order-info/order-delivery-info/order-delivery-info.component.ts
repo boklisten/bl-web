@@ -15,7 +15,7 @@ export class OrderDeliveryInfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.order.delivery) {
+		if (this.order && this.order.delivery) {
 			this._deliveryService.getById(this.order.delivery).then((delivery: Delivery) => {
 				this.delivery = delivery;
 			}).catch((getDeliveryError) => {

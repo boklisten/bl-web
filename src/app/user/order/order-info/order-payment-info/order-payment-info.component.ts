@@ -18,18 +18,20 @@ export class OrderPaymentInfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (!this.order.payments || this.order.payments.length <= 0) {
-			if (this.order.amount === 0) {
-				this.showPayment = false;
+		if (this.order) {
+			if (!this.order.payments || this.order.payments.length <= 0) {
+				if (this.order.amount === 0) {
+					this.showPayment = false;
+				}
 			}
+
+
+			this._paymentService.getManyByIds(this.order.payments).then((payments: Payment[]) => {
+				this.payments = payments;
+			}).catch((getPaymentsError) => {
+				console.log('orderPaymentInfoComponent: could not get payments from branch');
+			});
 		}
-
-
-		this._paymentService.getManyByIds(this.order.payments).then((payments: Payment[]) => {
-			this.payments = payments;
-		}).catch((getPaymentsError) => {
-			console.log('orderPaymentInfoComponent: could not get payments from branch');
-		});
 
 	}
 

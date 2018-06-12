@@ -26,8 +26,12 @@ export class UserCustomerItemComponent implements OnInit {
 	public notReturnedBeforeDeadline: boolean;
 	public returned: boolean;
 
-	constructor(private _itemService: ItemService, private _router: Router, private _branchService: BranchService,
-				private _cartService: CartService, private _dateService: DateService, private _branchStoreService: BranchStoreService,
+	constructor(private _itemService: ItemService,
+				private _router: Router,
+				private _branchService: BranchService,
+				private _cartService: CartService,
+				private _dateService: DateService,
+				private _branchStoreService: BranchStoreService,
 				private _userCustomerItemService: UserCustomerItemService) {
 
 		this.extend = false;
@@ -40,22 +44,24 @@ export class UserCustomerItemComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (!this.item) {
-			this._itemService.getById(this.customerItem.item).then((item: Item) => {
-				this.item = item;
-				this.initByCart();
+		if (this.customerItem) {
+			if (!this.item) {
+				this._itemService.getById(this.customerItem.item).then((item: Item) => {
+					this.item = item;
+					this.initByCart();
+					this.setValidOptions();
+				}).catch((itemBlApiErr: BlApiError) => {
+					console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
+				});
+			} else {
 				this.setValidOptions();
-			}).catch((itemBlApiErr: BlApiError) => {
-				console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
-			});
-		} else {
-			this.setValidOptions();
+			}
+
+			this.branch = this._branchStoreService.getBranch();
+
+			this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(this.customerItem);
+			this.returned = this.customerItem.returned;
 		}
-
-		this.branch = this._branchStoreService.getBranch();
-
-		this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(this.customerItem);
-		this.returned = this.customerItem.returned;
 	}
 
 	setValidOptions() {
@@ -117,10 +123,6 @@ export class UserCustomerItemComponent implements OnInit {
 
 		this.buyout = true;
 		this._cartService.addCustomerItemBuyout(this.customerItem, this._branchItem, this.item, this.branch);
-	}
-
-	isExpired(): boolean {
-		return this._dateService.isDeadlineExpired(this.customerItem.deadline.toString());
 	}
 
 	removeCustomerItem() {

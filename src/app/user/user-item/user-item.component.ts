@@ -9,13 +9,14 @@ import {UserService} from "../user.service";
 	styleUrls: ['./user-item.component.scss']
 })
 export class UserItemComponent implements OnInit {
-	
+
 	public customerItems: CustomerItem[];
-	
-	constructor(private _customerItemService: CustomerItemService, private _userService: UserService) {
+
+	constructor(private _customerItemService: CustomerItemService,
+				private _userService: UserService) {
 		this.customerItems = [];
 	}
-	
+
 	ngOnInit() {
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			this._customerItemService.getManyByIds(userDetail.customerItems).then((customerItems: CustomerItem[]) => {
@@ -28,5 +29,5 @@ export class UserItemComponent implements OnInit {
 			console.log('the error', blApiErr);
 		});
 	}
-	
+
 }

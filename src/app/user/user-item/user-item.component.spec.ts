@@ -1,25 +1,67 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserItemComponent } from './user-item.component';
+import {UserItemComponent} from './user-item.component';
+import {Component, Injectable, Input} from "@angular/core";
+import {CustomerItemService} from "@wizardcoder/bl-connect";
+import {UserService} from "../user.service";
+import {FaIconStubComponent} from "../../../test/stubs/fa-icon.component.stub";
+
+
+@Injectable()
+class CustomerItemStubService {
+	getManyByIds() {
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+}
+
+@Injectable()
+class UserStubService {
+	getUserDetail() {
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+}
+
+@Component({selector: 'app-cart-go-to-bar', template: ''})
+class CartGoToBarStubComponent {
+
+}
+
+@Component({selector: 'app-user-customer-item', template: ''})
+class UserCustomerItemStubComponent {
+	@Input() customerItem;
+}
 
 describe('UserItemComponent', () => {
-  let component: UserItemComponent;
-  let fixture: ComponentFixture<UserItemComponent>;
+	let component: UserItemComponent;
+	let fixture: ComponentFixture<UserItemComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UserItemComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [
+				UserItemComponent,
+				FaIconStubComponent,
+				UserCustomerItemStubComponent,
+				CartGoToBarStubComponent
+			],
+			providers: [
+				{provide: CustomerItemService, useValue: new CustomerItemStubService()},
+				{provide: UserService, useValue: new UserStubService()}
+			]
+		})
+			.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(UserItemComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

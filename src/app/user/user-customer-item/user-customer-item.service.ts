@@ -8,7 +8,9 @@ import {BranchStoreService} from "../../branch/branch-store.service";
 @Injectable()
 export class UserCustomerItemService {
 
-	constructor(private _branchService: BranchService, private _dateService: DateService, private _branchStoreService: BranchStoreService) {
+	constructor(private _branchService: BranchService,
+				private _dateService: DateService,
+				private _branchStoreService: BranchStoreService) {
 	}
 
 	public isOnValidBranch(customerItem: CustomerItem, branchItem?: BranchItem) {
