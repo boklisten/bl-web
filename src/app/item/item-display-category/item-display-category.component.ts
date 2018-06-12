@@ -26,16 +26,18 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this._branchItemService.getManyByIds(this.branch.branchItems).then((branchItems: BranchItem[]) => {
-			this.branchItems = branchItems;
+		if (this.branch) {
+			this._branchItemService.getManyByIds(this.branch.branchItems).then((branchItems: BranchItem[]) => {
+				this.branchItems = branchItems;
 
-			for (const branchItem of this.branchItems) {
-				this.addBranchItemToCategory(branchItem);
-			}
+				for (const branchItem of this.branchItems) {
+					this.addBranchItemToCategory(branchItem);
+				}
 
-		}).catch((getBranchItemError) => {
-			console.log('ItemDisplayCategoryComponent: could not get branch items');
-		});
+			}).catch((getBranchItemError) => {
+				console.log('ItemDisplayCategoryComponent: could not get branch items');
+			});
+		}
 	}
 
 	onBranchItemCategoryFilterChange(branchItemCategoryFilter: string[]) {

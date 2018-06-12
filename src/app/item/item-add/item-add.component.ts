@@ -20,14 +20,21 @@ export class ItemAddComponent implements OnInit {
 	}
 
 	onAdd() {
-		this._cartService.add(this.item, this.branchItem, this.type);
+		if (this.item && this.branchItem && this.type) {
+			this._cartService.add(this.item, this.branchItem, this.type);
+		}
 	}
 
 	onDelete() {
-		this._cartService.remove(this.item.id);
+		if (this.item && this.branchItem && this.type) {
+			this._cartService.remove(this.item.id);
+		}
 	}
 
 	isAdded(): boolean {
+		if (!this.item) {
+			return false;
+		}
 		return this._cartService.contains(this.item.id);
 	}
 }

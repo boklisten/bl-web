@@ -27,7 +27,9 @@ export class ItemTypeSelectComponent implements OnInit {
 	public buyOption: boolean;
 	private branch: Branch;
 
-	constructor(private _dateService: DateService, private _cartService: CartService, private _priceService: PriceService,
+	constructor(private _dateService: DateService,
+				private _cartService: CartService,
+				private _priceService: PriceService,
 				private _branchStoreService: BranchStoreService) {
 		this.typeChange = new EventEmitter<string>();
 		this.typeSelect = 'one';
@@ -37,11 +39,13 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
-		this.displaySelectedPeriodType();
+		if (this.branchItem && this.item) {
+			this.displaySelectedPeriodType();
+		}
 	}
 
-	preselectPeriodType(item: Item) {
-		if (this.branchItem.rent) {
+	preselectPeriodType() {
+		if (this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
 				const periodType = this.branch.paymentInfo.rentPeriods[0].type;
 				if (periodType === 'semester') {
@@ -50,14 +54,14 @@ export class ItemTypeSelectComponent implements OnInit {
 					this.typeSelect = 'two';
 				}
 			}
-		} else if (this.branchItem.buy) {
+		} else if (this.branchItem && this.branchItem.buy) {
 			this.typeSelect = 'buy';
 		}
 	}
 
 	isActionValid(action: 'one' | 'two' | 'buy' | 'buyout' | 'extend') {
 
-		if ((action === 'one' || action === 'two') && this.branchItem.rent) {
+		if ((action === 'one' || action === 'two') && this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
 
 				for (const period of this.branch.paymentInfo.rentPeriods) {
@@ -68,7 +72,7 @@ export class ItemTypeSelectComponent implements OnInit {
 					}
 				}
 			}
-		} else if (action === 'buy' && this.branchItem.buy) {
+		} else if (action === 'buy' && this.branchItem && this.branchItem.buy) {
 			return true;
 		}
 	}
@@ -128,17 +132,13 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	}
 
-	public showPrice(): boolean {
-		return this._priceService.showPrice();
-	}
-
 	private displaySelectedPeriodType() {
 		this.calculateOptions(this.item);
 
 		if (this._cartService.contains(this.item.id)) {
 			this.updateBasedOnCart(this._cartService.get(this.item.id));
 		} else {
-			this.preselectPeriodType(this.item);
+			this.preselectPeriodType();
 		}
 
 		this.typeChange.emit(this.typeSelect);

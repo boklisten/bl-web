@@ -27,8 +27,10 @@ export class ItemDisplayComponent implements OnInit {
 	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
 	public showAdd: boolean;
 
-	constructor(private _router: Router, private _priceService: PriceService, private _userService: UserService, private _itemService: ItemService,
-				private _cartService: CartService) {
+	constructor(private _router: Router,
+				private _priceService: PriceService,
+				private _userService: UserService,
+				private _itemService: ItemService) {
 		this.customerItemActive = false;
 		this.view = false;
 		this.showAdd = false;
@@ -60,11 +62,6 @@ export class ItemDisplayComponent implements OnInit {
 		}, 0);
 	}
 
-
-	public onItemClick() {
-		this._router.navigateByUrl('i/' + this.item.id);
-	}
-
 	public isCustomerItemActive(): Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			this._userService.isCustomerItemActive(this.item.id).then(() => {
@@ -75,10 +72,6 @@ export class ItemDisplayComponent implements OnInit {
 				reject(false);
 			});
 		});
-	}
-
-	public showAsCustomerItem() {
-		return (this.customerItemActive && !this.inCart);
 	}
 
 	public isCustomerItem(): boolean {
@@ -100,9 +93,5 @@ export class ItemDisplayComponent implements OnInit {
 			default:
 				return -1;
 		}
-	}
-
-	public showPrice(): boolean {
-		return (!this.branch.paymentInfo.responsible || this.orderItemType === 'buy');
 	}
 }
