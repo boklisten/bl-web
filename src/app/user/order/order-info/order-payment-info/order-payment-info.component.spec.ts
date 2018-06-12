@@ -1,13 +1,21 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderPaymentInfoComponent} from './order-payment-info.component';
-import {FaIconStubComponent} from "../../../../../test/stubs/fa-icon.component.stub";
-import {BlcPriceStubPipe} from "../../../../../test/stubs/bl-common/blc-price.pipe.stub";
-import {Injectable} from "@angular/core";
+import {Component, Injectable, Input, Pipe} from "@angular/core";
 import {PaymentService} from "@wizardcoder/bl-connect";
 
 @Injectable()
 class PaymentStubService {
+
+}
+
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon: any;
+}
+
+@Pipe({name: 'blcPrice'})
+class BlcPriceStubPipe {
 
 }
 

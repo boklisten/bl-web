@@ -1,14 +1,26 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderItemInfoComponent} from './order-item-info.component';
-import {Injectable} from "@angular/core";
+import {Component, Injectable, Input, Pipe} from "@angular/core";
 import {CustomerItemService} from "@wizardcoder/bl-connect";
-import {FaIconStubComponent} from "../../../../../test/stubs/fa-icon.component.stub";
-import {BlcDateStubPipe} from "../../../../../test/stubs/bl-common/blc-date.pipe.stub";
-import {BlcPriceStubPipe} from "../../../../../test/stubs/bl-common/blc-price.pipe.stub";
 
 @Injectable()
 class CustomerItemStubService {
+
+}
+
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon;
+}
+
+@Pipe({name: 'blcDate'})
+class BlcDateStubPipe {
+
+}
+
+@Pipe({name: 'blcPrice'})
+class BlcPriceStubPipe {
 
 }
 

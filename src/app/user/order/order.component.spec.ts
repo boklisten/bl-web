@@ -4,7 +4,6 @@ import {OrderComponent} from './order.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {UserService} from "../user.service";
 import {OrderService, UserDetailService} from "@wizardcoder/bl-connect";
-import {FaIconStubComponent} from "../../../test/stubs/fa-icon.component.stub";
 
 @Injectable()
 class UserStubService {
@@ -18,6 +17,13 @@ class OrderStubService {
 
 @Injectable()
 class UserDetailStubService {
+
+}
+
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon: any;
+	@Input() size: any;
 
 }
 

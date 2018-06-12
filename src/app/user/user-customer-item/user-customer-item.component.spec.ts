@@ -1,14 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserCustomerItemComponent} from './user-customer-item.component';
-import {FaIconStubComponent} from "../../../test/stubs/fa-icon.component.stub";
-import {BlcDateStubPipe} from "../../../test/stubs/bl-common/blc-date.pipe.stub";
-import {BlcPriceStubPipe} from "../../../test/stubs/bl-common/blc-price.pipe.stub";
-import {BlcBranchStubPipe} from "../../../test/stubs/bl-common/blc-branch.pipe.stub";
-import {BlcCustomerItemDateStubPipe} from "../../../test/stubs/bl-common/blc-customer-item.pipe.stub";
 import {RouterTestingModule} from "@angular/router/testing";
-import {BlcCustomerItemPriceStubPipe} from "../../../test/stubs/bl-common/blc-customer-item-price.pipe.stub";
-import {Injectable} from "@angular/core";
+import {Component, Injectable, Input, Pipe} from "@angular/core";
 import {BranchService, ItemService} from "@wizardcoder/bl-connect";
 import {Router} from "@angular/router";
 import {CartService} from "../../cart/cart.service";
@@ -50,6 +44,38 @@ class BranchStoreStubService {
 class UserCustomerItemStubService {
 
 }
+
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon: any;
+}
+
+@Pipe({name: 'blcDate'})
+class BlcDateStubPipe {
+
+}
+
+@Pipe({name: 'blcPrice'})
+class BlcPriceStubPipe {
+
+}
+
+@Pipe({name: 'blcBranch'})
+class BlcBranchStubPipe {
+
+}
+
+
+@Pipe({name: 'blcCustomerItemDate'})
+class BlcCustomerItemDateStubPipe {
+
+}
+
+@Pipe({name: 'blcCustomerItemPrice'})
+class BlcCustomerItemPriceStubPipe {
+
+}
+
 
 
 

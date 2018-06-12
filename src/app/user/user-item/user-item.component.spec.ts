@@ -4,7 +4,6 @@ import {UserItemComponent} from './user-item.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {CustomerItemService} from "@wizardcoder/bl-connect";
 import {UserService} from "../user.service";
-import {FaIconStubComponent} from "../../../test/stubs/fa-icon.component.stub";
 
 
 @Injectable()
@@ -35,6 +34,13 @@ class UserCustomerItemStubComponent {
 	@Input() customerItem;
 }
 
+@Component({selector: 'fa-icon', template: ''})
+export class FaIconStubComponent {
+	@Input() icon: any;
+	@Input() size: any;
+	@Input() spin: any;
+}
+
 describe('UserItemComponent', () => {
 	let component: UserItemComponent;
 	let fixture: ComponentFixture<UserItemComponent>;
@@ -43,9 +49,9 @@ describe('UserItemComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				UserItemComponent,
-				FaIconStubComponent,
 				UserCustomerItemStubComponent,
-				CartGoToBarStubComponent
+				CartGoToBarStubComponent,
+				FaIconStubComponent
 			],
 			providers: [
 				{provide: CustomerItemService, useValue: new CustomerItemStubService()},
