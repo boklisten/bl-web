@@ -15,9 +15,9 @@ export type MenuItem = 'info' | 'branch' | 'cart' | 'items'
 export class HeaderComponent implements OnInit {
 
 	public showMenu: boolean;
-	public loggedIn: boolean;
 
-	constructor(private _router: Router, private _route: ActivatedRoute, private _branchStoreService: BranchStoreService,
+	constructor(private _router: Router,
+				private _branchStoreService: BranchStoreService,
 				private _userService: UserService) {
 		this.showMenu = false;
 	}
