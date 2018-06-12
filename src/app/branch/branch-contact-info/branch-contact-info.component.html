@@ -1,6 +1,6 @@
 
 
-<div class="card" *ngIf="branch.contactInfo">
+<div class="card" *ngIf="branch && branch.contactInfo">
 	<div class="card-body">
 		<h5><span i18n="@@branchContactInfoTitle">Contact info for</span>{{branch.name}}</h5>
 	</div>

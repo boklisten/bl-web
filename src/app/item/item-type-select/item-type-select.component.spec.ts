@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CartItemTypeSelectComponent } from './cart-item-type-select.component';
+import {ItemTypeSelectComponent} from './item-type-select.component';
 
 describe('CartItemTypeSelectComponent', () => {
-  let component: CartItemTypeSelectComponent;
-  let fixture: ComponentFixture<CartItemTypeSelectComponent>;
+	let component: ItemTypeSelectComponent;
+	let fixture: ComponentFixture<ItemTypeSelectComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CartItemTypeSelectComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [ItemTypeSelectComponent]
+		})
+			.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CartItemTypeSelectComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(ItemTypeSelectComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

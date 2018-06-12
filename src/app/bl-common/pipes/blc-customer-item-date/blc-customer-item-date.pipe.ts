@@ -8,7 +8,7 @@ import {BranchStoreService} from "../../../branch/branch-store.service";
 })
 export class BlcCustomerItemDatePipe implements PipeTransform {
 
-	constructor(private _dateService: DateService, private _branchStoreService: BranchStoreService) {
+	constructor(private _dateService: DateService) {
 
 	}
 

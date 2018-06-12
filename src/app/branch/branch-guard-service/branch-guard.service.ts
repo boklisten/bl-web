@@ -6,7 +6,7 @@ import {UserService} from "../../user/user.service";
 @Injectable()
 export class BranchGuardService implements CanActivate {
 
-	constructor(private _branchStoreService: BranchStoreService, private _router: Router, private _userService: UserService) {
+	constructor(private _branchStoreService: BranchStoreService, private _router: Router) {
 	}
 
 	public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {

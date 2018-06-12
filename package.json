@@ -5,24 +5,16 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "node server.js",
-
 		"serve:local": "npm run build:local && node server.js",
 		"serve:dev": "npm run build:dev && node server.js",
-
 		"extract-i18n": "ng xi18n --output-path src/locale --locale en && xliffmerge --profile xliffmerge.json en nb",
-
 		"watch": "ng serve --aot --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --env=${ANGULAR_ENV}",
 		"watch-nb": "ng serve --aot --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --env=${ANGULAR_ENV}",
-
 		"build": "ng build --i18nFile=src/locale/messages.en.xlf --i18nFormat=xlf --locale=en --prod --env=${ANGULAR_ENV} --sourcemaps false",
 		"build-nb": "ng build --i18nFile=src/locale/messages.nb.xlf --i18nFormat=xlf --locale=nb --prod --env=${ANGULAR_ENV} --sourcemaps false",
-
 		"postinstall": "npm run build-nb",
-
-		"test": "ng test",
-
+		"test": "ng test --sourcemaps=false",
 		"lint": "ng lint",
-
 		"e2e": "ng e2e"
 	},
 	"engines": {
@@ -72,6 +64,7 @@
 		"karma": "~2.0.0",
 		"karma-chrome-launcher": "~2.2.0",
 		"karma-coverage-istanbul-reporter": "^1.2.1",
+		"karma-firefox-launcher": "^1.1.0",
 		"karma-jasmine": "~1.1.0",
 		"karma-jasmine-html-reporter": "^0.2.2",
 		"ngx-i18nsupport": "^0.16.2",

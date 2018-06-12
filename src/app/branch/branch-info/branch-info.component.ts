@@ -21,7 +21,6 @@ export class BranchInfoComponent implements OnInit {
 		const id = this._route.snapshot.paramMap.get('id');
 
 		this.getBranch(id);
-
 	}
 
 	public onBranchSelect(branch: Branch) {
@@ -30,12 +29,12 @@ export class BranchInfoComponent implements OnInit {
 		}
 
 		this._router.navigateByUrl('/b/info/' + branch.id);
-
 		this.getBranch(branch.id);
 	}
 
 	private getBranch(id: string) {
 		this.warning = false;
+
 		this._branchService.getById(id).then((branch: Branch) => {
 			this.branch = branch;
 		}).catch((blApiError: BlApiError) => {

@@ -1,25 +1,45 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BranchOpeningHoursComponent } from './branch-opening-hours.component';
+import {BranchOpeningHoursComponent} from './branch-opening-hours.component';
+import {Injectable} from "@angular/core";
+import {Branch} from "@wizardcoder/bl-model";
+import {BranchOpeningHoursService} from "./branch-opening-hours.service";
+
+
+@Injectable()
+class BranchOpeningHoursServiceStub {
+	getOpeningHours(branch: Branch) {
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+}
+
+
 
 describe('BranchOpeningHoursComponent', () => {
-  let component: BranchOpeningHoursComponent;
-  let fixture: ComponentFixture<BranchOpeningHoursComponent>;
+	let component: BranchOpeningHoursComponent;
+	let fixture: ComponentFixture<BranchOpeningHoursComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BranchOpeningHoursComponent ]
-    })
-    .compileComponents();
-  }));
+	const branchOpeningHoursServiceStub = new BranchOpeningHoursServiceStub();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BranchOpeningHoursComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [BranchOpeningHoursComponent],
+			providers: [
+				{provide: BranchOpeningHoursService, useValue: branchOpeningHoursServiceStub}
+			]
+		})
+			.compileComponents();
+	}));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(BranchOpeningHoursComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });
