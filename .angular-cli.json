@@ -10,7 +10,8 @@
 			"outDir": "dist",
 			"assets": [
 				"assets",
-				"favicon.ico"
+				"favicon.ico",
+				"loaderio-8f7895cb5ea4adb359bf199c3c147686.txt"
 			],
 			"index": "index.html",
 			"main": "main.ts",
