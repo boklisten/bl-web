@@ -25,7 +25,6 @@
 				"../node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
 			],
 			"scripts": [
-				"../node_modules/bootstrap/dist/js/bootstrap.js"
 			],
 			"environmentSource": "environments/environment.ts",
 			"environments": {

@@ -36,7 +36,7 @@
 
 <div class="row mt-2" *ngIf="!showUserMustLogin && order">
 	<div class="col-12">
-        <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
+        <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()" id="paymentDecision">
             <div class="col-auto">
                 <div class="btn-group btn-group-toggle btn-group-md" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
                     <label ngbButtonLabel class="btn-outline-secondary">
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="row mt-4" *ngIf="showPaymentDecision && paymentDecision === 'now'">
+        <div class="row mt-4" *ngIf="showPaymentDecision && paymentDecision === 'now'" id="payNow">
             <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-2 mt-sm-2 mt-2" *ngIf="!isOnlyCustomerItems()">
                 <app-cart-delivery></app-cart-delivery>
             </div>
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'">
+        <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'" id="payLater">
             <div class="col-12 bl-cart-pay-later">
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-sm-0 mb-2" i18n="@@cartCheckoutPayLaterInfo">
@@ -83,7 +83,7 @@
         </div>
 
 
-        <div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision">
+        <div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision" id="noPayment">
             <div class="col-12 bl-cart-pay-later">
                 <div class="row align-items-center">
                     <div class="col-6" i18n="@@cartCheckoutRetrieveItemsAtBranch">
