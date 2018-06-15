@@ -68,7 +68,7 @@ export class AppModule {
 	constructor() {
 		BlConnectModule.withConfig({basePath: environment.apiPath});
 		LoginModule.withConfig({
-			successPath: '/items',
+			successPath: '/i/select',
 			apiPath: environment.apiPath,
 			userAgreementUrl: '/info/agreement/rent',
 			permissionDeniedPath: '',
