@@ -67,6 +67,12 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 export class AppModule {
 	constructor() {
 		BlConnectModule.withConfig({basePath: environment.apiPath});
-		LoginModule.withConfig({successPath: 'u/home', apiPath: environment.apiPath, userAgreementUrl: '/info/agreement/rent'});
+		LoginModule.withConfig({
+			successPath: '/items',
+			apiPath: environment.apiPath,
+			userAgreementUrl: '/info/agreement/rent',
+			permissionDeniedPath: '',
+			permissions: ['customer'],
+			logoutPath: '/logout'});
 	}
 }
