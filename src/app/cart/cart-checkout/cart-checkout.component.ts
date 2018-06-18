@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Order, Payment, Delivery, BlApiError} from '@wizardcoder/bl-model';
+import {Order, Payment, Delivery, BlApiError, UserDetail} from '@wizardcoder/bl-model';
 import {CartCheckoutService} from "./cart-checkout.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
@@ -22,6 +22,7 @@ export class CartCheckoutComponent implements OnInit {
 	public showUserMustLogin: boolean;
 	public orderPlacedFailure: boolean;
 	public orderError: boolean;
+	public userEmailNotConfirmed: boolean;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
@@ -29,6 +30,7 @@ export class CartCheckoutComponent implements OnInit {
 				private _cartService: CartService) {
 
 		this.orderPlacedFailure = false;
+		this.userEmailNotConfirmed = false;
 
 		const branch = this._branchStoreService.getBranch();
 
@@ -45,24 +47,32 @@ export class CartCheckoutComponent implements OnInit {
 			return;
 		}
 
-		const branch = this._branchStoreService.getBranch();
+		this._userService.getUserDetail().then((userDetail: UserDetail) => {
+			if (!userDetail.emailConfirmed) {
+				this.userEmailNotConfirmed = true;
+				return;
+			}
 
-		if (branch && branch.paymentInfo.responsible) {
-			this.showPaymentDecision = false;
-		} else {
-			this.paymentDecision = 'now';
-			this.showPaymentDecision = true;
-		}
 
-		this.order = this._cartOrderService.getOrder();
+			const branch = this._branchStoreService.getBranch();
 
-		if (!this.order) {
-			this.orderError = true;
-		}
+			if (branch && branch.paymentInfo.responsible) {
+				this.showPaymentDecision = false;
+			} else {
+				this.paymentDecision = 'now';
+				this.showPaymentDecision = true;
+			}
 
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this.orderError = false;
-			this.order = order;
+			this.order = this._cartOrderService.getOrder();
+
+			if (!this.order) {
+				this.orderError = true;
+			}
+
+			this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+				this.orderError = false;
+				this.order = order;
+			});
 		});
 	}
 

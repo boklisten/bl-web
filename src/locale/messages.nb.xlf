@@ -949,6 +949,525 @@
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
           <context context-type="linenumber">16</context>
         </context-group>
-      </trans-unit></body>
+      </trans-unit>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <trans-unit id="registerTitle" datatype="html">
+        <source>Register new user</source><target state="final">Registrer ny bruker</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerMustAgree" datatype="html">
+        <source>You must agree to our terms to register</source><target state="final">Du må godta betingelsene for å registrere deg</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">the user must accept the user agreement before registering </note>
+      </trans-unit>
+      <trans-unit id="registerOrUseEmail" datatype="html">
+        <source>Or use your email to register</source><target state="final">Eller registrer deg med din e-postadresse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerGoToLoginPage" datatype="html">
+        <source>Go to login page</source><target state="final">Gå til innloggingssiden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+    <trans-unit id="registerDetailTitle" datatype="html">
+        <source>Register user details</source><target state="final">Registrer brukerinformasjon</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailUpdateDetailsFor" datatype="html">
+        <source>Update the details for</source><target state="final">Oppdater informasjonen for</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailErrorMsg" datatype="html">
+        <source>User details could not be updated</source><target state="final">Brukerinformasjon kunne ikke oppdateres</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailFullName" datatype="html">
+        <source>Full name</source><target state="final">Fullt navn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailPhoneNumber" datatype="html">
+        <source>Phone number</source><target state="final">Telefonnummer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailBirthday" datatype="html">
+        <source>Birthday</source><target state="final">Fødselsdato</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialRegisterWithFacebook" datatype="html">
+        <source>Register with Facebook</source><target state="final">Registrer deg via Facebook</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/social-register/social-register.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialRegisterWithGoogle" datatype="html">
+        <source>Register with Google</source><target state="final">Registrer deg via Google</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/social-register/social-register.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginLogo" datatype="html">
+        <source>Boklisten.no logo</source><target state="final">Boklisten.no logo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">the message shown if image is not found </note>
+      </trans-unit><trans-unit id="registerDetailAddress" datatype="html">
+        <source>Address</source><target state="final">Adresse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailPostCode" datatype="html">
+        <source>Post code</source><target state="final">Postnummer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailPostCity" datatype="html">
+        <source>Post city</source><target state="final">By</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailBranch" datatype="html">
+        <source>Branch</source><target state="final">Filial</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianTitle" datatype="html">
+        <source>Guardian details</source><target state="final">Foresattinformasjon</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">173</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianUnder18Info" datatype="html">
+        <source>
+							Since you are under the age of 18, we need details about your guardian. You can read more about why we need this by
+							visiting our
+						</source><target state="final">
+							Siden du er under 18 år gammel, må vi ha informasjon om din foresatte. Du kan lese mer om hvorfor vi trenger dette i våre </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">177</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianUserAgreement" datatype="html">
+        <source>user agreement page</source><target state="final">betingelser</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">182</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianFullName" datatype="html">
+        <source>Guardian full name</source><target state="final">Fullt navn foresatt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">202</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianEmail" datatype="html">
+        <source>Guardian email</source><target state="final">E-post foresatt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">210</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">219</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGuardianPhone" datatype="html">
+        <source>Guardian phone</source><target state="final">Telefonnummer foresatt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">227</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">236</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailUpdateDetailButton" datatype="html">
+        <source>Update details</source><target state="final">Oppdater informasjon</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">248</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailGoBackButton" datatype="html">
+        <source>Go back</source><target state="final">Gå tilbake</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-detail/register-detail.component.ts</context>
+          <context context-type="linenumber">253</context>
+        </context-group>
+      </trans-unit><trans-unit id="localLoginUserOrPasswordError" datatype="html">
+        <source>Username or password is incorrect</source><target state="final">Brukernavnet eller passordet er feil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="localLoginConnectionError" datatype="html">
+        <source>Something went wrong with the connection</source><target state="final">Noe gikk galt med tilkoblingen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="localLoginEmail" datatype="html">
+        <source>Email</source><target state="final">E-post</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit><trans-unit id="localLoginPassword" datatype="html">
+        <source>Password</source><target state="final">Passord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit><trans-unit id="localLoginButton" datatype="html">
+        <source>Login</source><target state="final">Logg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/local-login/local-login.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialLoginWithFacebook" datatype="html">
+        <source>Login with Facebook</source><target state="final">Logg inn med Facebook</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialLoginWithGoogle" datatype="html">
+        <source>Login with Google</source><target state="final">Logg inn med Google</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordTitle" datatype="html">
+        <source>Forgot password</source><target state="final">Glemt passord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordEmailError" datatype="html">
+        <source>Please provide a valid email</source><target state="final">Vennligst oppgi en gyldig e-postadresse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordNoResetLinkError" datatype="html">
+        <source>Something went wrong, could not send you the reset link. Are you sure you have the correct email?</source><target state="final">Noe gikk galt, vi kunne ikke sende gjenopprettelseslink. Er du sikker på at du har oppgitt korrekt e-postadresse?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordSuccessMsg" datatype="html">
+        <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">Du har fått tilsendt en e-post med instruksjoner for å gjenopprette passordet ditt.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordHowTo" datatype="html">
+        <source>
+			Write in your email and we will send you a link about how to reset your password
+		</source><target state="final">
+			Skriv inn din e-postadresse, så sender vi deg en lenke for å gjenopprette passordet ditt.
+		</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordEmail" datatype="html">
+        <source>Email</source><target state="final">E-post</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit><trans-unit id="forgotPasswordGoBackToLogin" datatype="html">
+        <source>Go back to login page</source><target state="final">Gå tilbake til innloggingssiden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginMenuRegisterButton" datatype="html">
+        <source>Register new user</source><target state="final">Registrer ny bruker</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-menu/login-menu.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginMenuLoginButton" datatype="html">
+        <source>Login</source><target state="final">Logg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-menu/login-menu.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginAuthTitle" datatype="html">
+        <source>Login</source><target state="final">Logg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-auth/login-auth.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginAuthOrUseEmail" datatype="html">
+        <source>Or use your email to login</source><target state="final">Eller bruk en e-postadresse til å logge deg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-auth/login-auth.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginAuthForgotPassword" datatype="html">
+        <source>Forgot your password?</source><target state="final">Glemt passordet?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-auth/login-auth.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginPermissionFailureTitle" datatype="html">
+        <source>Permission denied</source><target state="final">Tilgang avslått</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-permission-failure/login-permission-failure.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginPermissionFailureNotRightPermission" datatype="html">
+        <source>You don't have the right permission to access this content. You have been logged out.</source><target state="final">Du har ikke tillatelse til å se denne siden. Du har blitt logget ut.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-permission-failure/login-permission-failure.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginPermissionFailureWhatToDo" datatype="html">
+        <source>You can try login with another user or ask an administrator for details.</source><target state="final">Du kan logge inn med en annen bruker, eller spørre en administrator om tilgang.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-permission-failure/login-permission-failure.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit><trans-unit id="loginPermissionFailureLoginButton" datatype="html">
+        <source>Login</source><target state="final">Logg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/login-permission-failure/login-permission-failure.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterErrorMsg" datatype="html">
+        <source>Could not register</source><target state="final">Kunne ikke registrere</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterEmail" datatype="html">
+        <source>Email</source><target state="final">E-post</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterPassword" datatype="html">
+        <source>Password</source><target state="final">Passord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterButton" datatype="html">
+        <source>Register</source><target state="final">Registrer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/local-register/local-register.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
+        <source>
+			I have read and understood the user-agreement
+		</source><target state="final">
+			Jeg har lest og forstått betingelsene
+		</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-agreement/register-agreement.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerAgreementTitle" datatype="html">
+        <source>User agreement</source><target state="final">Betingelser</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-agreement/register-agreement.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit><trans-unit id="registerDetailIAgree" datatype="html">
+        <source>I Agree</source><target state="final">Jeg godtar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/register/register-agreement/register-agreement.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialLoginFailureErrorMsg" datatype="html">
+        <source>Failed to log you in, please try again soon.</source><target state="final">Innlogging feilet, vennligst prøv igjen senere.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-social-failure/auth-social-failure.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit><trans-unit id="socialLoginFailureGoBackButton" datatype="html">
+        <source>Go back</source><target state="final">Tilbake</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-social-failure/auth-social-failure.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetTitle" datatype="html">
+        <source>Create new password</source><target state="final">Lag nytt passord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetError" datatype="html">
+        <source>Failed to update password</source><target state="final">Oppdatering av passord feilet</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetPasswordNotValid" datatype="html">
+        <source>Password not valid. Must at least be 6 characters long</source><target state="final">Passord ikke gyldig - må være på minst 6 tegn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">should be at least 6 characters long </note>
+      </trans-unit><trans-unit id="passwordResetSuccessMsg" datatype="html">
+        <source>Your password was reset!</source><target state="final">Ditt passord har blitt nullstilt!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetLoginButton" datatype="html">
+        <source>Login</source><target state="final">Logg inn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetNewPassword" datatype="html">
+        <source>New password</source><target state="final">Nytt passord</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit><trans-unit id="passwordResetGoBackToLogin" datatype="html">
+        <source>Go back to login page</source><target state="final">Gå tilbake til innloggingssiden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-password-reset/auth-password-reset.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationEmailConfirmed" datatype="html">
+        <source>Email was confirmed</source><target state="new">Email was confirmed</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationConfirmError" datatype="html">
+        <source>Email could not be confirmed.</source><target state="new">Email could not be confirmed.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
+        <source>The link may be expired.</source><target state="new">The link may be expired.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationClickForNewLink" datatype="html">
+        <source>Click here to send a new confirmation link</source><target state="new">Click here to send a new confirmation link</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationNotLoggedInError" datatype="html">
+        <source>You must login to send a new confirmation link</source><target state="new">You must login to send a new confirmation link</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationClickToLogin" datatype="html">
+        <source>Click her to login</source><target state="new">Click her to login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationNewLinkSent" datatype="html">
+        <source>A new confirmation link has been sent to your email.</source><target state="new">A new confirmation link has been sent to your email.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/auth/auth-email-validation/auth-email-validation.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      
+      
+      
+      
+      
+      </body>
   </file>
 </xliff>

@@ -9,6 +9,15 @@
 	</div>
 </div>
 
+<div class="row" *ngIf="userEmailNotConfirmed">
+    <div class="col-12">
+		<div class="alert alert-warning">
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span i18n="@@cartCheckoutEmailConfirmationError">To rent or buy items you need to confirm your email. You should have gotten an email with a confirmation link.</span>
+		</div>
+    </div>
+</div>
+
 <div class="row" *ngIf="orderError && !order">
 	<div class="col-12">
 		<ngb-alert [type]="'danger'">
