@@ -88,8 +88,6 @@ private _cart: CartItem[];
 			orderItemType = orderItem.info.periodType;
 		}
 
-		console.log('calculating', item, this._branchStoreService.getBranch(), orderItemType);
-
 		const unitPrice = this._priceService.calculateItemUnitPrice(item, this._branchStoreService.getBranch(), orderItemType);
 		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
 
@@ -247,7 +245,7 @@ private _cart: CartItem[];
 	private updateTypeBuyout(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buyout";
-		cartItem.orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'buyout');
+		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
 	private updateTypeExtend(cartItem: CartItem) {
@@ -259,13 +257,13 @@ private _cart: CartItem[];
 			customerItem: cartItem.customerItem.id
 		};
 		cartItem.orderItem.type = "extend";
-		cartItem.orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'extend');
+		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
 	private updateTypeBuy(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buy";
-		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
 	private updateTypeOneSemester(cartItem: CartItem) {
@@ -276,7 +274,7 @@ private _cart: CartItem[];
 			periodType: "semester"
 		};
 		cartItem.orderItem.type = "rent";
-		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
 	private updateTypeTwoSemesters(cartItem: CartItem) {
@@ -287,6 +285,6 @@ private _cart: CartItem[];
 			periodType: "year"
 		};
 		cartItem.orderItem.type = "rent";
-		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 }

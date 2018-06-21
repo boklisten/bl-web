@@ -34,10 +34,9 @@ export class PriceService {
 
 	public calculateOrderItemPrices(unitPrice: number, taxRate: number): {amount: number, unitPrice: number, taxRate: number, taxAmount: number} {
 		const taxAmount = this.calculateOrderItemTaxAmount(unitPrice, taxRate);
-		const amount = this.calculateOrderItemAmount(unitPrice, taxAmount);
 
 		return {
-			amount: amount,
+			amount: this.calculateOrderItemAmount(unitPrice, taxAmount),
 			unitPrice: this.sanitize(unitPrice),
 			taxRate: taxRate,
 			taxAmount: taxAmount
@@ -98,14 +97,6 @@ export class PriceService {
 		}
 
 		throw new Error(`could not find price for item "${item.id}" for period "${period}"`);
-	}
-
-	public showPrice(): boolean {
-		if (!this._branchStoreService.getBranch()) {
-			return false;
-		}
-
-		return !this._branchStoreService.getBranch().paymentInfo.responsible;
 	}
 
 	private roundDown(roundDownNum: number): number {
