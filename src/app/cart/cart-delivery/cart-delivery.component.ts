@@ -60,10 +60,6 @@ export class CartDeliveryComponent implements OnInit {
 
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
-
-			if (this.deliveryMethod === 'bring') {
-				this.setDeliveryDetails();
-			}
 		}
 
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
@@ -71,10 +67,6 @@ export class CartDeliveryComponent implements OnInit {
 			this.bringInputWarning = '';
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 			this.deliveryMethod = this.currentDelivery.method;
-
-			if (this.deliveryMethod === 'bring') {
-				this.setDeliveryDetails();
-			}
 		});
 
 
@@ -160,7 +152,6 @@ export class CartDeliveryComponent implements OnInit {
 
 	private setDeliveryBring() {
 		if (this.validateDeliveryMethodBring()) {
-			this.setDeliveryDetails();
 			this._cartDeliveryService.setBringDelivery(this.toName, this.toAddress, this.toPostalCity, this.toPostalCode);
 		}
 	}

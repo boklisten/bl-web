@@ -99,7 +99,7 @@
                                 type="text"
                                 maxlength="4"
                                 class="form-control"
-								(change)="onPostalCodeChange()"
+								(change)="onPostalCodeChange() && validateDeliveryMethodBring()"
 								(keydown.enter)="onSetDelivery('bring')"
 								i18n-placeholder="@@cartDeliveryShipmentPostalCodePlaceholder"
                                 placeholder="Postal code"
@@ -108,6 +108,7 @@
                             <input
                                 type="text"
                                 class="form-control"
+								(change)="validateDeliveryMethodBring()"
 								i18n-placeholder="@@cartDeliveryShipmentPostalCityPlaceholder"
                                 placeholder="city"
 								(keydown.enter)="onSetDelivery('bring')"
