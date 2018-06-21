@@ -19,10 +19,6 @@ export class WelcomeSliderComponent implements OnInit, AfterViewInit {
 
 			this.imageWidth = welcomeSliderComp.offsetWidth;
 			this.imageHeight = welcomeSliderComp.offsetHeight;
-
-			console.log('imageWidth' , this.imageWidth);
-			console.log('imageHeight', this.imageHeight);
-
 		}, 0);
 	}
 

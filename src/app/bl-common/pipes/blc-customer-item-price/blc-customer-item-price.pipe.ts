@@ -15,7 +15,7 @@ export class BlcCustomerItemPricePipe implements PipeTransform {
 	transform(customerItem: CustomerItem, type: 'extend' | 'buyout'): Promise<number> {
 		return this._branchStoreService.getActiveBranch().then((branch: Branch) => {
 			return this._itemService.getById(customerItem.item).then((item: Item) => {
-				return this._priceService.getCustomerItemPrice(customerItem, item, branch, type);
+				return this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, type);
 			}).catch((getItemError) => {
 				throw new Error('BlcCustomerItemPricePipe: could not get item: ' + getItemError);
 			});

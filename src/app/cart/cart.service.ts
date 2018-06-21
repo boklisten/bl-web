@@ -5,6 +5,7 @@ import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
 import {Subject} from "rxjs/Subject";
 import {DateService} from "../date/date.service";
+import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 
 
 export interface CartItem {
@@ -31,17 +32,30 @@ private _cart: CartItem[];
 		return this.cartChange$;
 	}
 
+	public addOrUpdate(item: Item, branchItem: BranchItem, orderItemType: 'semester' | 'year'| 'buy') {
+		if (this.contains(item.id)) {
+			this.updateType(item.id, orderItemType);
+		} else {
+			this.add(item, branchItem, orderItemType);
+		}
+	}
 
-	public add(item: Item, branchItem: BranchItem, orderItemType: "one" | "two" | "buy") {
-		const orderItem: OrderItem = {} as OrderItem;
-		orderItem.item = item.id;
-		orderItem.title = item.title;
-		orderItem.unitPrice = item.price;
-		orderItem.taxAmount = 0;
-		orderItem.taxRate = item.taxRate;
+
+	public add(item: Item, branchItem: BranchItem, orderItemType: "semester" | "year" | "buy") {
+		const orderItem: OrderItem = {
+			item: item.id,
+			title: item.title,
+			type: null,
+			amount: 0,
+			unitPrice: 0,
+			taxRate: 0,
+			taxAmount: 0,
+			info: null
+		} as OrderItem;
 
 
-		if (orderItemType === "one") {
+
+		if (orderItemType === "semester") {
 			orderItem.type = "rent";
 			orderItem.info = {
 				from: new Date(),
@@ -49,8 +63,7 @@ private _cart: CartItem[];
 				numberOfPeriods: 1,
 				periodType: "semester"
 			};
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
-		} else if (orderItemType === "two") {
+		} else if (orderItemType === "year") {
 			orderItem.type = "rent";
 			orderItem.info = {
 				from: new Date(),
@@ -58,13 +71,32 @@ private _cart: CartItem[];
 				numberOfPeriods: 1,
 				periodType: 'year'
 			};
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		} else if (orderItemType === "buy") {
 			orderItem.type = "buy";
-			orderItem.amount = this._priceService.getOrderItemPrice(orderItem, item, this._branchStoreService.getBranch());
 		}
 
+		this.setPricesOnOrderItem(orderItem, item);
 		this.addToCart(item, branchItem, orderItem, this._branchStoreService.getBranch());
+	}
+
+	private setPricesOnOrderItem(orderItem: OrderItem, item: Item) {
+		let orderItemType: 'buy' | 'semester' | 'year';
+
+		if (orderItem.type === 'buy') {
+			orderItemType = 'buy';
+		} else if (orderItem.type === 'rent') {
+			orderItemType = orderItem.info.periodType;
+		}
+
+		console.log('calculating', item, this._branchStoreService.getBranch(), orderItemType);
+
+		const unitPrice = this._priceService.calculateItemUnitPrice(item, this._branchStoreService.getBranch(), orderItemType);
+		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
+
+		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
+		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
+		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
+		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
 	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branchItem: BranchItem, branch: Branch) {
@@ -72,7 +104,7 @@ private _cart: CartItem[];
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.unitPrice = item.price;
-		orderItem.amount = this._priceService.getCustomerItemPrice(customerItem, item, branch, 'extend');
+		orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'extend');
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.type = "extend";
@@ -94,7 +126,7 @@ private _cart: CartItem[];
 		orderItem.taxAmount = 0;
 		orderItem.taxRate = 0;
 		orderItem.title = item.title;
-		orderItem.amount = this._priceService.getCustomerItemPrice(customerItem, item, branch, 'buyout');
+		orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'buyout');
 		orderItem.type = "buyout";
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
@@ -186,14 +218,14 @@ private _cart: CartItem[];
 		}
 	}
 
-	public updateType(itemId: string, type: "one" | "two" | "buy" | "buyout" | "extend") {
+	public updateType(itemId: string, type: OrderItemType | 'semester' | 'year') {
 		for (const cartItem of this._cart) {
 			if (cartItem.item.id === itemId) {
 				switch (type) {
-					case "one":
+					case "semester":
 						this.updateTypeOneSemester(cartItem);
 						break;
-					case "two":
+					case "year":
 						this.updateTypeTwoSemesters(cartItem);
 						break;
 					case "buy":
@@ -215,7 +247,7 @@ private _cart: CartItem[];
 	private updateTypeBuyout(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buyout";
-		cartItem.orderItem.amount = this._priceService.getCustomerItemPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'buyout');
+		cartItem.orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'buyout');
 	}
 
 	private updateTypeExtend(cartItem: CartItem) {
@@ -227,13 +259,13 @@ private _cart: CartItem[];
 			customerItem: cartItem.customerItem.id
 		};
 		cartItem.orderItem.type = "extend";
-		cartItem.orderItem.amount = this._priceService.getCustomerItemPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'extend');
+		cartItem.orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(cartItem.customerItem, cartItem.item, cartItem.branch, 'extend');
 	}
 
 	private updateTypeBuy(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buy";
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 
 	private updateTypeOneSemester(cartItem: CartItem) {
@@ -244,7 +276,7 @@ private _cart: CartItem[];
 			periodType: "semester"
 		};
 		cartItem.orderItem.type = "rent";
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 
 	private updateTypeTwoSemesters(cartItem: CartItem) {
@@ -255,6 +287,6 @@ private _cart: CartItem[];
 			periodType: "year"
 		};
 		cartItem.orderItem.type = "rent";
-		cartItem.orderItem.amount = this._priceService.getOrderItemPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
+		cartItem.orderItem.amount = this._priceService.calculateOrderItemUnitPrice(cartItem.orderItem, cartItem.item, cartItem.branch);
 	}
 }

@@ -14,7 +14,7 @@ export class BlcItemPricePipe implements PipeTransform {
 
 	transform(item: Item, type: 'semester' | 'year' | 'buy'): any {
 		const branch = this._branchStoreService.getBranch();
-		return this._priceService.getItemPrice(item, branch, type);
+		return this._priceService.calculateItemUnitPrice(item, branch, type);
 	}
 
 }

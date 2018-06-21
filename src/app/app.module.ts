@@ -72,7 +72,7 @@ export class AppModule {
 			apiPath: environment.apiPath,
 			userAgreementUrl: '/info/agreement/rent',
 			permissionDeniedPath: '',
-			permissions: ['customer'],
+			permissions: ['customer', 'employee', 'admin', 'super'],
 			logoutPath: '/logout'});
 	}
 }

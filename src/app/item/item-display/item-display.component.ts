@@ -6,6 +6,7 @@ import {PriceService} from "../../price/price.service";
 import {UserService} from "../../user/user.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {ItemService} from "@wizardcoder/bl-connect";
+import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 
 @Component({
 	selector: 'app-item-display',
@@ -24,7 +25,7 @@ export class ItemDisplayComponent implements OnInit {
 
 	public customerItemActive: boolean;
 
-	public orderItemType: "one" | "two" | "buy" | "buyout" | "extend";
+	public orderItemType: OrderItemType | 'semester' | 'year';
 	public showAdd: boolean;
 
 	constructor(private _router: Router,
@@ -54,7 +55,7 @@ export class ItemDisplayComponent implements OnInit {
 	}
 
 
-	public onOrderItemTypeChange(type: 'one' | 'two' | 'buy' | 'buyout' | 'extend') {
+	public onOrderItemTypeChange(type: OrderItemType) {
 
 		setTimeout(() => { // UUUgly, Expression changed after view init
 			this.showAdd = true;
@@ -80,16 +81,16 @@ export class ItemDisplayComponent implements OnInit {
 
 	public getPrice(): number {
 		switch (this.orderItemType) {
-			case "one":
-				return this._priceService.getItemPrice(this.item, this.branch, "semester");
-			case "two":
-				return this._priceService.getItemPrice(this.item, this.branch, "year");
+			case "semester":
+				return this._priceService.calculateItemUnitPrice(this.item, this.branch, "semester");
+			case "year":
+				return this._priceService.calculateItemUnitPrice(this.item, this.branch, "year");
 			case "buy":
-				return this._priceService.getItemPrice(this.item, this.branch, "buy");
+				return this._priceService.calculateItemUnitPrice(this.item, this.branch, "buy");
 			case "buyout":
-				return this._priceService.getCustomerItemPrice(this.customerItem, this.item, this.branch, "buyout");
+				return this._priceService.calculateCustomerItemUnitPrice(this.customerItem, this.item, this.branch, "buyout");
 			case "extend":
-				return this._priceService.getCustomerItemPrice(this.customerItem, this.item, this.branch, "extend");
+				return this._priceService.calculateCustomerItemUnitPrice(this.customerItem, this.item, this.branch, "extend");
 			default:
 				return -1;
 		}

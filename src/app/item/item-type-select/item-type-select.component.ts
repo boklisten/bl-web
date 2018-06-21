@@ -4,6 +4,7 @@ import {DateService} from "../../date/date.service";
 import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 
 @Component({
 	selector: 'app-item-type-select',
@@ -15,10 +16,10 @@ export class ItemTypeSelectComponent implements OnInit {
 	@Input() item: Item;
 	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
-	@Input() type: 'one' | 'two' | 'buy' | 'buyout' | 'extend';
+	@Input() type: OrderItemType | 'semester' | 'year';
 	@Output() typeChange: EventEmitter<string>;
 
-	public typeSelect: "one" | "two" | "buy" | "buyout" | "extend";
+	public typeSelect: OrderItemType | 'semester' | 'year';
 	public desc: string;
 	public date: string;
 
@@ -32,7 +33,7 @@ export class ItemTypeSelectComponent implements OnInit {
 				private _priceService: PriceService,
 				private _branchStoreService: BranchStoreService) {
 		this.typeChange = new EventEmitter<string>();
-		this.typeSelect = 'one';
+		this.typeSelect = 'semester';
 		this.desc = '';
 	}
 
@@ -44,30 +45,25 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 	}
 
-	preselectPeriodType() {
+	private preselectPeriodType() {
 		if (this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
-				const periodType = this.branch.paymentInfo.rentPeriods[0].type;
-				if (periodType === 'semester') {
-					this.typeSelect = 'one';
-				} else if (periodType === 'year') {
-					this.typeSelect = 'two';
-				}
+				this.typeSelect = this.branch.paymentInfo.rentPeriods[0].type;
 			}
 		} else if (this.branchItem && this.branchItem.buy) {
 			this.typeSelect = 'buy';
 		}
 	}
 
-	isActionValid(action: 'one' | 'two' | 'buy' | 'buyout' | 'extend') {
+	private isActionValid(action: OrderItemType | 'semester' | 'year') {
 
-		if ((action === 'one' || action === 'two') && this.branchItem && this.branchItem.rent) {
+		if ((action === 'semester' || action === 'year') && this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
 
 				for (const period of this.branch.paymentInfo.rentPeriods) {
-					if (period.type === 'semester' && action === 'one') {
+					if (period.type === 'semester' && action === 'semester') {
 						return true;
-					} else if (action === 'two' && period.type === 'year') {
+					} else if (action === 'year' && period.type === 'year') {
 						return true;
 					}
 				}
@@ -77,16 +73,16 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 	}
 
-	calculateOptions(item: Item) {
+	private calculateOptions(item: Item) {
 		if (this.customerItem) {
 			return;
 		}
 
-		if (this.isActionValid('one')) {
+		if (this.isActionValid('semester')) {
 			this.rentSemesterOption = true;
 		}
 
-		if (this.isActionValid('two')) {
+		if (this.isActionValid('year')) {
 			this.rentYearOption = true;
 		}
 
@@ -99,14 +95,9 @@ export class ItemTypeSelectComponent implements OnInit {
 		return !(!this.customerItem);
 	}
 
-	public onTypeUpdate(type: "one" | "two" | "buy" | "buyout" | "extend") {
+	public onTypeUpdate(type: 'year' | 'semester' | 'year') {
 		this.typeSelect = type;
-		if (this._cartService.contains(this.item.id)) {
-			this._cartService.updateType(this.item.id, this.typeSelect);
-		} else {
-
-			this._cartService.add(this.item, this.branchItem, this.typeSelect as any);
-		}
+		this._cartService.addOrUpdate(this.item, this.branchItem, this.typeSelect);
 		this.typeChange.emit(this.typeSelect);
 	}
 
@@ -114,29 +105,23 @@ export class ItemTypeSelectComponent implements OnInit {
 		return this._dateService.getDate(type);
 	}
 
-	updateBasedOnCart(orderItem: OrderItem) {
-
+	private updateTypeBasedOnCart(orderItem: OrderItem) {
 		if (orderItem.type === "rent") {
 			if (orderItem.info.periodType === "semester") {
-				this.typeSelect = "one";
+				this.typeSelect = "semester";
 			} else if (orderItem.info.periodType === "year") {
-				this.typeSelect = "two";
+				this.typeSelect = "year";
 			}
-		} else if (orderItem.type === "buy") {
-			this.typeSelect = "buy";
-		} else if (orderItem.type === "buyout") {
-			this.typeSelect = "buyout";
-		} else if (orderItem.type === "extend") {
-			this.typeSelect = "extend";
+		} else {
+			this.typeSelect = orderItem.type;
 		}
-
 	}
 
 	private displaySelectedPeriodType() {
 		this.calculateOptions(this.item);
 
 		if (this._cartService.contains(this.item.id)) {
-			this.updateBasedOnCart(this._cartService.get(this.item.id));
+			this.updateTypeBasedOnCart(this._cartService.get(this.item.id));
 		} else {
 			this.preselectPeriodType();
 		}

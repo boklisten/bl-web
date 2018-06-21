@@ -22,7 +22,7 @@ export class OrderComponent implements OnInit {
 		this.getOrders().then((orders: Order[]) => {
 			this.orders = orders;
 		}).catch((apiErr: BlApiError) => {
-			console.log('could not get orders', apiErr);
+			// console.log('could not get orders', apiErr);
 		});
 	}
 

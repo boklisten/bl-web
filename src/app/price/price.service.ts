@@ -8,30 +8,55 @@ export class PriceService {
 	constructor(private _branchStoreService: BranchStoreService) {
 	}
 
-	public getOrderItemPrice(orderItem: OrderItem, item: Item, branch: Branch): number {
+	public calculateOrderItemUnitPrice(orderItem: OrderItem, item: Item, branch: Branch): number {
 		if (orderItem.type === "rent") {
-			return this.calculatePriceBasedOnPeriodType(item, branch, orderItem.info.periodType);
+			return this.calculateItemUnitPrice(item, branch, orderItem.info.periodType);
 		} else if (orderItem.type === "buy") {
-			return this.calculateBuyPrice(item, branch);
-		} else if (orderItem.type === "extend") {
-			return this.calculateExtendPrice(item, branch, orderItem.info.periodType);
+			return this.calculateItemUnitPrice(item, branch, 'buy');
 		}
 	}
 
-	public getItemPrice(item: Item, branch: Branch, type: "semester" | "year" | "buy"): number {
+	public calculateItemUnitPrice(item: Item, branch: Branch, type: "semester" | "year" | "buy"): number {
 		if (type === "semester" || type === "year") {
-			return this.calculatePriceBasedOnPeriodType(item, branch, type);
+			return this.sanitize(this.calculatePriceBasedOnPeriodType(item, branch, type));
 		} else if (type === "buy") {
-			return this.calculateBuyPrice(item, branch);
+			return this.sanitize(this.calculateBuyPrice(item, branch));
 		}
 	}
 
-	public getCustomerItemPrice(customerItem: CustomerItem, item: Item, branch: Branch, type: "extend" | "buyout") {
+	public calculateCustomerItemUnitPrice(customerItem: CustomerItem, item: Item, branch: Branch, type: "extend" | "buyout") {
 		if (type === "extend") {
-			return this.calculateExtendPrice(item, branch, "semester");
+			return this.sanitize(this.calculateExtendPrice(item, branch, "semester"));
 		} else if (type === "buyout") {
-			return this.calculateBuyoutPrice(customerItem, item, branch);
+			return this.sanitize(this.calculateBuyoutPrice(customerItem, item, branch));
 		}
+	}
+
+	public calculateOrderItemPrices(unitPrice: number, taxRate: number): {amount: number, unitPrice: number, taxRate: number, taxAmount: number} {
+		const taxAmount = this.calculateOrderItemTaxAmount(unitPrice, taxRate);
+		const amount = this.calculateOrderItemAmount(unitPrice, taxAmount);
+
+		return {
+			amount: amount,
+			unitPrice: this.sanitize(unitPrice),
+			taxRate: taxRate,
+			taxAmount: taxAmount
+		};
+	}
+
+	public calculateOrderItemTaxAmount(unitPrice: number, taxRate: number) {
+		if (unitPrice <= 0) { // no point in calculating tax amount on a price below 0
+			return 0;
+		}
+		return this.sanitize(unitPrice * taxRate);
+	}
+
+	public calculateOrderItemAmount(unitPrice: number, taxAmount: number) {
+		return this.sanitize(unitPrice + taxAmount);
+	}
+
+	private sanitize(sanitizeNumber: number): number {
+		return +sanitizeNumber.toFixed(2);
 	}
 
 
@@ -83,8 +108,11 @@ export class PriceService {
 		return !this._branchStoreService.getBranch().paymentInfo.responsible;
 	}
 
-	private roundDown(num: number): number {
-		return parseInt((num / 10).toString(), 10) * 10;
+	private roundDown(roundDownNum: number): number {
+		if (roundDownNum <= 0) { // we should not round down if the number is under 0
+			return roundDownNum;
+		}
+		return parseInt((roundDownNum / 10).toString(), 10) * 10;
 	}
 
 }

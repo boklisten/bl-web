@@ -3,11 +3,11 @@
     <div class="col-auto" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
-                <input ngbButton type="radio" value="one" (click)="onTypeUpdate('one')">
+                <input ngbButton type="radio" value="semester" (click)="onTypeUpdate('semester')">
 				<span class="ml-2 mr-2 bl-text-sm" i18n="@@itemTypeSelectSemesterButton">semester</span>
             </label>
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentYearOption">
-                <input ngbButton type="radio" value="two" (click)="onTypeUpdate('two')">
+                <input ngbButton type="radio" value="year" (click)="onTypeUpdate('year')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectYearButton">year</span>
             </label>
 			<label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyOption">
@@ -31,7 +31,7 @@
     </div>
 
 	<div class="col-12 mt-1 text-secondary text-center bl-text-xs">
-		<span *ngIf="typeSelect === 'one' || typeSelect === 'two'" class="bl-text-xs">
+		<span *ngIf="typeSelect === 'semester' || typeSelect === 'year'" class="bl-text-xs">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoRent">rent</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>

@@ -10,7 +10,7 @@ import {BranchItem, Item} from "@wizardcoder/bl-model";
 export class ItemAddComponent implements OnInit {
 
 	@Input() item: Item;
-	@Input() type: "one" | "two" | "buy";
+	@Input() type: "semester" | "year" | "buy";
 	@Input() branchItem: BranchItem;
 
 	constructor(private _cartService: CartService) {

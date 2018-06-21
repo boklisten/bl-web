@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	apiPath: 'http://api.boklisten.no'
+	apiPath: 'http://api.boklisten.co/'
 };
