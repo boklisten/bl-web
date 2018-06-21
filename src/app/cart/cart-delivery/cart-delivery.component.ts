@@ -51,37 +51,46 @@ export class CartDeliveryComponent implements OnInit {
 			this.deliveryMethod = this.currentDelivery.method;
 		}
 
-		this._userService.getUserDetail().then((userDetail: UserDetail) => {
-			this.toName = (userDetail.name) ? userDetail.name : '';
-			this.toAddress = (userDetail.address) ? userDetail.address : '';
-			this.toPostalCity = (userDetail.postCity) ? userDetail.postCity : '';
-			this.toPostalCode = (userDetail.postCode) ? userDetail.postCode : '';
-		}).catch((getUserDetailError) => {
-			console.log('cartDeliveryService: could not get user detail');
-		});
 	}
 
 	ngOnInit() {
+		this.bringInputWarning = '';
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
-
+		this.setDeliveryDetails();
 
 		if (this.currentDelivery) {
 			this.deliveryMethod = this.currentDelivery.method;
 
 			if (this.deliveryMethod === 'bring') {
-				this.validateDeliveryMethodBring();
+				this.setDeliveryDetails();
 			}
 		}
 
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
 			this.failureText = null;
+			this.bringInputWarning = '';
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 			this.deliveryMethod = this.currentDelivery.method;
+
+			if (this.deliveryMethod === 'bring') {
+				this.setDeliveryDetails();
+			}
 		});
 
 
 		this.branch = this._branchStoreService.getBranch();
+	}
 
+	private setDeliveryDetails() {
+		this._userService.getUserDetail().then((userDetail: UserDetail) => {
+			this.toName = (userDetail.name) ? userDetail.name : '';
+			this.toAddress = (userDetail.address) ? userDetail.address : '';
+			this.toPostalCity = (userDetail.postCity) ? userDetail.postCity : '';
+			this.toPostalCode = (userDetail.postCode) ? userDetail.postCode : '';
+			this.validateDeliveryMethodBring();
+		}).catch((getUserDetailError) => {
+			console.log('cartDeliveryService: could not get user detail');
+		});
 	}
 
 
@@ -92,7 +101,9 @@ export class CartDeliveryComponent implements OnInit {
 	}
 
 	validateDeliveryMethodBring(): boolean {
+		this.bringInputWarning = '';
 		if (!this.toName || this.toName.length <= 0) {
+			console.log('there is some problem here', this.toName);
 			this.bringInputWarning = 'invalid-name';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
@@ -149,6 +160,7 @@ export class CartDeliveryComponent implements OnInit {
 
 	private setDeliveryBring() {
 		if (this.validateDeliveryMethodBring()) {
+			this.setDeliveryDetails();
 			this._cartDeliveryService.setBringDelivery(this.toName, this.toAddress, this.toPostalCity, this.toPostalCode);
 		}
 	}

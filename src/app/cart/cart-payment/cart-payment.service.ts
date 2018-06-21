@@ -51,11 +51,6 @@ export class CartPaymentService {
 		return this.paymentChange$;
 	}
 
-	public changePaymentMethod(method: "dibs") {
-		this._paymentMethod = method;
-		const order = this._cartOrderService.getOrder();
-		this.updatePayment(order);
-	}
 
 	private createPayment() {
 		let payment: Payment;

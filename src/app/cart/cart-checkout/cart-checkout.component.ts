@@ -109,7 +109,7 @@ export class CartCheckoutComponent implements OnInit {
 			this._cartDeliveryService.setBranchDelivery();
 			this._cartOrderService.updateOrderWithNoPayments();
 		} else if (decision === 'now') {
-			this._cartPaymentService.changePaymentMethod('dibs');
+			this._cartOrderService.reloadOrder();
 		}
 	}
 
