@@ -4,7 +4,7 @@ import {CartOrderService} from './cart-order.service';
 import {Injectable} from "@angular/core";
 import {CartService} from "../cart.service";
 import {OrderService} from "@wizardcoder/bl-connect";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 @Injectable()
 class CartStubService {

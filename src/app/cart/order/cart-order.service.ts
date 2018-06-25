@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Order, BlApiError} from '@wizardcoder/bl-model';
-import {Subject} from "rxjs/Subject";
+import {Subject, Observable} from "rxjs";
 import {CartService} from "../cart.service";
 import {OrderService} from '@wizardcoder/bl-connect';
 import {UserService} from "../../user/user.service";
-import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class CartOrderService {

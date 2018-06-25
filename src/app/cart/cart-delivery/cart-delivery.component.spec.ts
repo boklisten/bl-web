@@ -8,7 +8,7 @@ import {DateService} from "../../date/date.service";
 import {CartDeliveryService} from "./cart-delivery.service";
 import {UserService} from "../../user/user.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {

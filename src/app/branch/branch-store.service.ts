@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {BlApiError, Branch, BranchItem, UserDetail} from "@wizardcoder/bl-model";
 import {BranchItemService, BranchService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 import {UserService} from "../user/user.service";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import {Subject, Observable} from "rxjs";
 
 @Injectable()
 export class BranchStoreService {

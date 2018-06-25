@@ -5,7 +5,7 @@ import {Component, Injectable, Input} from "@angular/core";
 import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 
 @Component({selector: 'fa-icon', template: ''})

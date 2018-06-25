@@ -3,7 +3,7 @@ import {Branch, BranchItem, CustomerItem, Item, Order, OrderItem} from "@wizardc
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
 import {PriceService} from "../price/price.service";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {DateService} from "../date/date.service";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 

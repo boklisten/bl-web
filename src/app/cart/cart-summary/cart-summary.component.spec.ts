@@ -4,7 +4,7 @@ import {CartSummaryComponent} from './cart-summary.component';
 import {Injectable} from "@angular/core";
 import {CartOrderService} from "../order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {BlCommonModule} from "../../bl-common/bl-common.module";
 
 @Injectable()

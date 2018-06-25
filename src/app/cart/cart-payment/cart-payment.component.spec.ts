@@ -5,12 +5,12 @@ import {Component, Injectable, Input} from "@angular/core";
 import {CartPaymentService} from "./cart-payment.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 @Injectable()
 class CartPaymentStubService {
 	onPaymentChange() {
-		return new Subject()
+		return new Subject();
 	}
 
 	getPayment() {

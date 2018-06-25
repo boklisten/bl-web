@@ -6,7 +6,7 @@ import {BranchService, PaymentService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartOrderService} from "../order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 
 @Injectable()
 class PaymentStubService {

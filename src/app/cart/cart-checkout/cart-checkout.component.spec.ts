@@ -11,7 +11,7 @@ import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {UserService} from "../../user/user.service";
 import {CartService} from "../cart.service";
 import {Router} from "@angular/router";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {Branch} from "@wizardcoder/bl-model";
 
 @Component({selector: 'fa-icon', template: ''})

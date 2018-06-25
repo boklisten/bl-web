@@ -12,7 +12,7 @@ class RouterStub {
 
 @Injectable()
 class BranchStoreStubService {
-	getActiveBranch() {
+	getBranch() {
 		return new Promise((resolve, reject) => {
 
 		});

@@ -9,6 +9,10 @@ class HeaderStubComponent {}
 @Component({selector: 'app-footer', template: ''})
 class FooterStubComponent {}
 
+
+@Component({selector: 'app-header-alert', template: ''})
+class AppHeaderAlertStubComponent {}
+
 @Component({selector: 'router-outlet', template: ''})
 class  RouterOutletStubComponent {}
 
@@ -20,7 +24,8 @@ describe('AppComponent', () => {
 				AppComponent,
 				HeaderStubComponent,
 				FooterStubComponent,
-				RouterOutletStubComponent
+				RouterOutletStubComponent,
+				AppHeaderAlertStubComponent
 			],
 		}).compileComponents();
 	}));

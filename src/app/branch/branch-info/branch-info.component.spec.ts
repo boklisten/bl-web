@@ -6,8 +6,6 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {Branch} from "@wizardcoder/bl-model";
 import {BranchService} from "@wizardcoder/bl-connect";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
 
 
 @Component({selector: 'ngb-alert', template: ''})
