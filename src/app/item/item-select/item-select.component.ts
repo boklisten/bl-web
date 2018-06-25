@@ -17,10 +17,6 @@ export class ItemSelectComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this._branchStoreService.getActiveBranch().then((branch: Branch) => {
-			this.branch = branch;
-		}).catch((e) => {
-			this._router.navigateByUrl('b/set');
-		});
+		this.branch = this._branchStoreService.getBranch();
 	}
 }

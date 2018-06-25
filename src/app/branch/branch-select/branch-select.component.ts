@@ -34,6 +34,7 @@ export class BranchSelectComponent implements OnInit {
 	onBranchSelect(branch: Branch) {
 		this._branchStoreService.setCurrentBranch(branch);
 		this.selectedBranch = branch;
+
 		if (this._branchStoreService.redirectUrl) {
 			this._router.navigateByUrl(this._branchStoreService.redirectUrl);
 			this._branchStoreService.redirectUrl = null;

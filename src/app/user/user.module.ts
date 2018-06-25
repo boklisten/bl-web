@@ -17,6 +17,8 @@ import { OrderPaymentInfoComponent } from './order/order-info/order-payment-info
 import {BlCommonModule} from "../bl-common/bl-common.module";
 import { OrderDeliveryInfoComponent } from './order/order-info/order-delivery-info/order-delivery-info.component';
 import {UserCustomerItemService} from "./user-customer-item/user-customer-item.service";
+import {UserEditComponent} from "./user-edit/user-edit.component";
+import {LoginModule} from "@wizardcoder/bl-login";
 
 @NgModule({
 	imports: [
@@ -25,7 +27,8 @@ import {UserCustomerItemService} from "./user-customer-item/user-customer-item.s
 		BranchModule,
 		ItemModule,
 		FontAwesomeModule,
-		BlCommonModule
+		BlCommonModule,
+		LoginModule
 	],
 	declarations: [
 		HomeComponent,
@@ -36,7 +39,8 @@ import {UserCustomerItemService} from "./user-customer-item/user-customer-item.s
 		UserItemComponent,
 		UserCustomerItemComponent,
 		OrderPaymentInfoComponent,
-		OrderDeliveryInfoComponent
+		OrderDeliveryInfoComponent,
+		UserEditComponent
 	],
 	providers: [
 		UserService,

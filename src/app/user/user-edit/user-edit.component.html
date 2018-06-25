@@ -1,0 +1,5 @@
+<div class="row bl-header-user-detail-alert">
+	<div class="col-12" *ngIf="userDetail">
+		<bl-user-detail-edit [userDetail]="userDetail" (patchValues)="onUserDetailSave($event)"></bl-user-detail-edit>
+	</div>
+</div>

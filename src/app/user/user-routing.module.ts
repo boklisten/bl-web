@@ -6,6 +6,7 @@ import {OrderComponent} from "./order/order.component";
 import {UserItemComponent} from "./user-item/user-item.component";
 import {UserGuardService} from "./user-guard.service";
 import {BranchGuardService} from "../branch/branch-guard-service/branch-guard.service";
+import {UserEditComponent} from "./user-edit/user-edit.component";
 
 const routes: Routes = [
 	{
@@ -25,6 +26,10 @@ const routes: Routes = [
 				path: 'items',
 				canActivate: [BranchGuardService],
 				component: UserItemComponent
+			},
+			{
+				path: 'edit',
+				component: UserEditComponent
 			}
 		]
 	}

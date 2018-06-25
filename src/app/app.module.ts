@@ -30,6 +30,9 @@ import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
 import { WelcomeSliderComponent } from './welcome/welcome-slider/welcome-slider.component';
 import {WelcomeModule} from "./welcome/welcome.module";
+import { HeaderUserDetailAlertComponent } from './header-alert/header-user-detail-alert/header-user-detail-alert.component';
+import {HeaderAlertModule} from "./header-alert/header-alert.module";
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -43,7 +46,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		AppComponent,
 		HeaderComponent,
 		HeaderCartComponent,
-		FooterComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
@@ -57,7 +60,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		ItemModule,
 		InfoModule,
 		FontAwesomeModule,
-		WelcomeModule
+		WelcomeModule,
+		HeaderAlertModule
 	],
 	providers: [
 		BranchGuardService
@@ -71,6 +75,7 @@ export class AppModule {
 			successPath: '/i/select',
 			apiPath: environment.apiPath,
 			userAgreementUrl: '/info/agreement/rent',
+			registerSuccessPath: '/i/select',
 			permissionDeniedPath: '',
 			permissions: ['customer', 'employee', 'admin', 'super'],
 			logoutPath: '/logout'});
