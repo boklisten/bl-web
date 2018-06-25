@@ -22,6 +22,10 @@ export class UserService {
 		return Promise.resolve(true);
 	}
 
+	public isUserDetailValid(): Promise<boolean> {
+		return Promise.resolve(true);
+	}
+
 	public getUserBranchId(): string {
 		if (this._userDetail) {
 			return this._userDetail.branch;

@@ -1,5 +1,13 @@
-<div class="row bl-header-user-detail-alert">
-	<div class="col-12" *ngIf="userDetail">
-		<bl-user-detail-edit [userDetail]="userDetail" (patchValues)="onUserDetailSave($event)"></bl-user-detail-edit>
+
+<div class="row justify-content-center">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				User details
+			</div>
+			<div class="card-body" *ngIf="userDetail">
+				<bl-user-detail-edit [userDetail]="userDetail" (patchValues)="onUserDetailSave($event)"></bl-user-detail-edit>
+			</div>
+		</div>
 	</div>
 </div>

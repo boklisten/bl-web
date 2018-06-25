@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserService} from "../../user/user.service";
 
 @Component({
 	selector: 'app-header-user-detail-alert',
@@ -7,11 +8,21 @@ import {Router} from "@angular/router";
 	styleUrls: ['./header-user-detail-alert.component.scss']
 })
 export class HeaderUserDetailAlertComponent implements OnInit {
+	showAlert: boolean;
 
-	constructor(private _router: Router) {
+	constructor(private _router: Router, private _userService: UserService) {
+		this.showAlert = false;
 	}
 
 	ngOnInit() {
+		this._userService.isUserDetailValid().then((valid: boolean) => {
+			if (valid) {
+				this.showAlert = false;
+			} else {
+				this.showAlert = true;
+			}
+		}).catch(() => {
+		});
 	}
 
 	onEditClick() {

@@ -3,6 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderUserDetailAlertComponent} from './header-user-detail-alert.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {Router} from "@angular/router";
+import {UserService} from "../../user/user.service";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -12,6 +13,13 @@ class FaIconStubComponent {
 @Injectable()
 class RouterStubService {
 
+}
+
+@Injectable()
+class UserStubService {
+	isUserDetailValid(): Promise<boolean> {
+		return Promise.resolve(true);
+	}
 }
 
 describe('HeaderUserDetailAlertComponent', () => {
@@ -25,7 +33,8 @@ describe('HeaderUserDetailAlertComponent', () => {
 				FaIconStubComponent
 			],
 			providers: [
-				{provide: Router, useClass: RouterStubService}
+				{provide: Router, useClass: RouterStubService},
+				{provide: UserService, useClass: UserStubService}
 			]
 		})
 			.compileComponents();

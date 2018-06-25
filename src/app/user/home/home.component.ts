@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	onEditDetailClick() {
-		this._router.navigateByUrl('auth/register/detail');
+		this._router.navigateByUrl('u/edit');
 	}
 
 	onYourItemsClick() {
