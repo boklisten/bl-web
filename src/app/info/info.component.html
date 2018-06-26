@@ -1,36 +1,33 @@
 
-		<ngb-tabset type="pills" [justify]="'justified'" [orientation]="'horizontal'">
-			<ngb-tab title="How does it work?">
-				<ng-template ngbTabContent>
-					<hr>
-					<div class="row">
-						<div class="col-12">
-                            <p>
-                                It is easy, you order some books online, you retrieve them at your school, do your reading and deliver them after the exam.
-                            </p>
-						</div>
-					</div>
-				</ng-template>
-			</ngb-tab>
-			<ngb-tab title="FAQ">
-				<ng-template ngbTabContent>
-					<hr>
-					<div class="row">
-						<div class="col-12">
-							<app-info-faq></app-info-faq>
-						</div>
-					</div>
-				</ng-template>
-			</ngb-tab>
-			<ngb-tab title="Contact us">
-				<ng-template ngbTabContent>
-					<hr>
-					<div class="row">
-						<div class="col-12">
-							Contact us by email: info@boklisten.no
-						</div>
-					</div>
-				</ng-template>
-			</ngb-tab>
+<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
+    <div class="col-12 ">
+        <button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
+			<span *ngIf="selectedMenuButton === 'how'">How does it work?</span>
+			<span *ngIf="selectedMenuButton === 'faq'">FAQ</span>
+			<span *ngIf="selectedMenuButton === 'contact'">Contact us</span>
+			<span *ngIf="selectedMenuButton === 'branch'">Branch info</span>
+            <fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
+        </button>
+    </div>
+    <div class="col-12 mt-2" *ngIf="showInfoMenu">
+		<app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
+    </div>
+</div>
 
-		</ngb-tabset>
+<div class="row d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
+	<div class="col-12">
+		<app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12" *ngIf="selectedMenuButton === 'faq'">
+		<app-info-faq></app-info-faq>
+	</div>
+    <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
+        <app-branch-info></app-branch-info>
+    </div>
+	<div class="col-12" *ngIf="selectedMenuButton === 'contact'">
+		<app-contact-info></app-contact-info>
+    </div>
+</div>

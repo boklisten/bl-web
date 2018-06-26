@@ -35,7 +35,8 @@ import {BlCommonModule} from "../bl-common/bl-common.module";
 	],
 	exports: [
 		BranchSelectComponent,
-		BranchItemCategoryFilterComponent
+		BranchItemCategoryFilterComponent,
+		BranchInfoComponent
 	],
 	providers: [
 		BranchStoreService,

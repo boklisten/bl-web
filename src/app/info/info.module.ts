@@ -8,20 +8,28 @@ import { InfoAgreementPrivacyComponent } from './info-agreement/info-agreement-p
 import { InfoAgreementRentComponent } from './info-agreement/info-agreement-rent/info-agreement-rent.component';
 import { InfoFaqComponent } from './info-faq/info-faq.component';
 import {NgbAccordionModule, NgbTabsetModule} from "@ng-bootstrap/ng-bootstrap";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {BranchModule} from "../branch/branch.module";
+import { InfoMenuListComponent } from './info-menu-list/info-menu-list.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		InfoRoutingModule,
 		NgbAccordionModule,
-		NgbTabsetModule
+		NgbTabsetModule,
+		FontAwesomeModule,
+		BranchModule
 	],
 	declarations: [
 		InfoComponent,
 		InfoAgreementComponent,
 		InfoAgreementPrivacyComponent,
 		InfoAgreementRentComponent,
-		InfoFaqComponent
+		InfoFaqComponent,
+		InfoMenuListComponent,
+		ContactInfoComponent
 	]
 })
 export class InfoModule {
