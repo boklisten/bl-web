@@ -71,6 +71,7 @@ export class BranchStoreService {
 
 	public setCurrentBranch(branch: Branch): void {
 		this._currentBranch = branch;
+		this._userService.updateUserDetail({branch: branch.id});
 		this._branchChange$.next(true);
 	}
 

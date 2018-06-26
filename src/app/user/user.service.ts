@@ -43,7 +43,6 @@ export class UserService {
 	}
 
 	public setUserDetail(userDetail: UserDetail) {
-		console.log('the user detail was set', userDetail);
 		this._userDetail = userDetail;
 		this.userDetail$.next(this._userDetail);
 	}

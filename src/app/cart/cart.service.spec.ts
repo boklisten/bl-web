@@ -6,10 +6,13 @@ import {BranchStoreService} from "../branch/branch-store.service";
 import {PriceService} from "../price/price.service";
 import {DateService} from "../date/date.service";
 import {UserService} from "../user/user.service";
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable()
 class BranchStoreStubService {
-
+	onBranchChange() {
+		return new Subject();
+	}
 }
 
 @Injectable()

@@ -19,4 +19,9 @@ export class ItemSelectComponent implements OnInit {
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
 	}
+
+	onBranchSelectClick() {
+		this._branchStoreService.redirectUrl = '/i/select';
+		this._router.navigate(['/b/select']);
+	}
 }

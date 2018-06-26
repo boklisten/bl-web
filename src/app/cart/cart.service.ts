@@ -26,6 +26,13 @@ private _cart: CartItem[];
 				private _priceService: PriceService, private _dateService: DateService) {
 		this._cart = [];
 		this.cartChange$ = new Subject();
+		this.onBranchChange();
+	}
+
+	private onBranchChange() {
+		this._branchStoreService.onBranchChange().subscribe(() => {
+			this.clearCart();
+		});
 	}
 
 	public onCartChange(): Subject<boolean> {
