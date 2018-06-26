@@ -8,6 +8,11 @@ class HeaderUserDetailAlertStubComponent {
 
 }
 
+@Component({selector: 'app-header-email-not-confirmed-alert', template: ''})
+class HeaderEmailNotConfirmedAlertStubComponent {
+
+}
+
 describe('HeaderAlertComponent', () => {
 	let component: HeaderAlertComponent;
 	let fixture: ComponentFixture<HeaderAlertComponent>;
@@ -16,7 +21,8 @@ describe('HeaderAlertComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				HeaderAlertComponent,
-				HeaderUserDetailAlertStubComponent
+				HeaderUserDetailAlertStubComponent,
+				HeaderEmailNotConfirmedAlertStubComponent
 			]
 		})
 			.compileComponents();

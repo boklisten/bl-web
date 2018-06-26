@@ -25,7 +25,7 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 		});
 
 		this._authService.onLogout().subscribe(() => {
-			this.checkIfUserDetailIsValid();
+			this.showAlert = false;
 		});
 
 		this._userService.onUserDetailChange().subscribe(() => {
