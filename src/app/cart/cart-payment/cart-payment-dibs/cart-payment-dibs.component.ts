@@ -51,9 +51,15 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 				if (!this.payment.info) {
 					this.alert = true;
 				} else {
-					if (!document.getElementById('dibs-checkout-content')) {
-						this.createDibsPayment();
+					const child = document.getElementById('dibs-checkout-content');
+
+					if (child) {
+						child.remove();
 					}
+
+					setTimeout(() => {
+						this.createDibsPayment();
+					});
 				}
 			}
 		});

@@ -38,14 +38,12 @@ export class CartPaymentComponent implements OnInit {
 		this._cartPaymentService.onPaymentChange().subscribe(() => {
 			this.failure = false;
 			this.currentPayment = this._cartPaymentService.getPayment();
-			this.removeDibsCheckout();
 			if (this.currentPayment.method === 'dibs') {
 				this.showDibsPayment = true;
 			}
 		});
 
 		this._cartDeliveryService.onDeliveryFailure().subscribe(() => {
-			this.removeDibsCheckout();
 			this.failure = true;
 		});
 	}

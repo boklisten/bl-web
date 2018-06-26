@@ -84,7 +84,6 @@ export class CartDeliveryService {
 		this._deliveryService.add(this.createDelivery(order)).then((addedDelivery: Delivery) => {
 			this.setDelivery(addedDelivery);
 		}).catch((addDeliveryError) => {
-			console.log('cartDeliveryService: could not add delivery', addDeliveryError);
 			this._deliveryFailure$.next(true);
 		});
 	}

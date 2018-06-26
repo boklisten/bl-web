@@ -120,7 +120,8 @@ export class CartCheckoutComponent implements OnInit {
 			this._cartPaymentService.orderShouldHavePayment = false;
 
 			this._cartDeliveryService.setBranchDelivery();
-			this._cartOrderService.updateOrderWithNoPayments();
+
+			this._cartOrderService.reloadOrder();
 			this.checkIfUserIsValid();
 		} else if (decision === 'now') {
 			this._cartOrderService.reloadOrder();

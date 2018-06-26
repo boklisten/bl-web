@@ -61,7 +61,6 @@ export class CartOrderService {
 		this._orderService.update(this._currentOrder.id, {payments: []}).then((updatedOrder: Order) => {
 			this.setOrder(updatedOrder);
 		}).catch((blApiErr: BlApiError) => {
-			console.log('cartOrderService: could not patch order: ', blApiErr);
 			this._orderError$.next('cartOrderService: could not patch order: ' + blApiErr);
 		});
 	}
@@ -86,7 +85,6 @@ export class CartOrderService {
 		this._orderService.add(order).then((addedOrder: Order) => {
 			this.setOrder(addedOrder);
 		}).catch((blApiErr: BlApiError) => {
-			console.log('cartOrderService: could not add order', blApiErr);
 			this._orderError$.next('cartOrderService: could not add order: ' + blApiErr);
 		});
 	}

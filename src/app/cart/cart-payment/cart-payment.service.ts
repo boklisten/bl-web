@@ -5,6 +5,7 @@ import {Subject} from "rxjs";
 import {CartOrderService} from "../order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
+import {Observable} from "rxjs/internal/Observable";
 
 @Injectable()
 export class CartPaymentService {
@@ -42,8 +43,8 @@ export class CartPaymentService {
 			this._currentDelivery = delivery;
 
 			if (this.orderShouldHavePayment) {
-				this.createPayment();
 			}
+				this.createPayment();
 		});
 	}
 
@@ -56,7 +57,9 @@ export class CartPaymentService {
 		let payment: Payment;
 
 		if (this._paymentMethod === 'dibs') {
-			payment = this.createDibsPayment(this._currentOrder, this._currentDelivery);
+			payment = this.createDibsPayment(this._cartOrderService.getOrder(), this._cartDeliveryService.getDelivery());
+		} else {
+			return;
 		}
 
 		this._paymentService.add(payment).then((addedPayment: Payment) => {

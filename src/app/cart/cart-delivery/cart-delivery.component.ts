@@ -95,7 +95,6 @@ export class CartDeliveryComponent implements OnInit {
 	validateDeliveryMethodBring(): boolean {
 		this.bringInputWarning = '';
 		if (!this.toName || this.toName.length <= 0) {
-			console.log('there is some problem here', this.toName);
 			this.bringInputWarning = 'invalid-name';
 			this._cartDeliveryService.setDeliveryFailure();
 			return false;
@@ -125,10 +124,6 @@ export class CartDeliveryComponent implements OnInit {
 
 	onSetDelivery(deliveryMethod: DeliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
-
-		if (!this.currentDelivery) {
-			this.currentDelivery = this._cartDeliveryService.getDelivery();
-		}
 
 		switch (deliveryMethod) {
 			case "bring":
