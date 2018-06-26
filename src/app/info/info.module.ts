@@ -12,6 +12,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {BranchModule} from "../branch/branch.module";
 import { InfoMenuListComponent } from './info-menu-list/info-menu-list.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { InfoAgreementTermsComponent } from './info-agreement/info-agreement-terms/info-agreement-terms.component';
 
 @NgModule({
 	imports: [
@@ -29,7 +30,8 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 		InfoAgreementRentComponent,
 		InfoFaqComponent,
 		InfoMenuListComponent,
-		ContactInfoComponent
+		ContactInfoComponent,
+		InfoAgreementTermsComponent
 	]
 })
 export class InfoModule {

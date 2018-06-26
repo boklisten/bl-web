@@ -1,44 +1,29 @@
 	<div class="container-fluid bl-footer-container">
-		<div class="row mb-3 justify-content-center">
-			<div class="col-lg-6 col-md-12 com-sm-12 col-12">
-				<div class="row justify-content-between">
-                    <div class="col-auto bl-footer-text font-weight-bold">
-                        <ul>
-                            <li class="bl-link" i18n="@@footerLinkFaq" routerLink="/info/faq">FAQ</li>
-                            <li class="bl-link" i18n="@@footerLinkContactUs">Contact us</li>
-                        </ul>
-                    </div>
-                    <div class="col-auto bl-footer-text font-weight-bold">
-                        <ul>
-                            <li routerLink="/info/agreement/privacy" class="bl-link" i18n="@@footerLinkPrivacyAgreement">Privacy agreement</li>
-                            <li routerLink="/info/agreement/rent" class="bl-link" i18n="@@footerLinkRentAgreement">Rent agreement</li>
-                        </ul>
-                    </div>
-                </div>
-			</div>
-		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg-6 col-md-12 col-sm-12 col-12 bl-footer-text text-center">
 				<div class="row">
                     <div class="col-12">
-						<span class="font-weight-bold" i18n="@@footerInfoEmailTitle">Email:</span>
-						<span>info@boklisten.no</span>
+						<span class="font-weight-bold mr-2" i18n="@@footerInfoEmailTitle">Email:</span>
+						<span i18n="@@footerInfoEmailValue">info@boklisten.no</span>
 					</div>
 					<div class="col-12">
-						<span class="font-weight-bold" i18n="@@footerInfoAddressTitle">Address:</span>
-						<span>Postboks 8, 1316 Eiksmarka</span>
+						<span class="font-weight-bold mr-2" i18n="@@footerInfoAddressTitle">Address:</span>
+						<span i18n="@@footerInfoAddressValue">Postboks 8, 1316 Eiksmarka</span>
 					</div>
-					<div class="col-12" >
-						<span class="font-weight-bold" i18n="@@footerInfoOrganizationNumberTitle">Organization number:</span>
-						<span>912047385 MVA</span>
+					<div class="col-12">
+						<span class="font-weight-bold mr-2" i18n="@@footerInfoOrganizationNumberTitle">Organization number:</span>
+						<span i18n="@@footerInfoOrganizationNumberValue">912047385 MVA</span>
 					</div>
                     <div class="col-12 mt-4">
-                        Boklisten.no AS <fa-icon [icon]="['fa','copyright']"></fa-icon> {{getCurrentYear()}}
+						<span i18n="@@footerCompanyName">Boklisten.no AS</span>
+                        <fa-icon [icon]="['fa','copyright']" class="mr-2 ml-2"></fa-icon>
+						<span>{{getCurrentYear()}}</span>
                     </div>
+
 					<div class="col-12 mt-5 mb-2">
-                        <small>
+                        <span class="bl-text-sm">
                             This site is made with <fa-icon [icon]="'coffee'"></fa-icon> and <fa-icon [icon]="'heart'"></fa-icon> by <span class="font-italic bl-link">Holskil</span>
-                        </small>
+                        </span>
 					</div>
 				</div>
 			</div>

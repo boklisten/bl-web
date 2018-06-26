@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<ngb-accordion [closeOthers]="true">
+	<ngb-panel>
+		<ng-template ngbPanelTitle>
+			<span i18n="@@infoRentAgreementTitle">Rent agreement</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<app-info-agreement-rent></app-info-agreement-rent>
+		</ng-template>
+	</ngb-panel>
+
+	<ngb-panel>
+		<ng-template ngbPanelTitle>
+			<span i18n="@@infoPrivacyAgreementTitle">Privacy policy</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<app-info-agreement-privacy></app-info-agreement-privacy>
+		</ng-template>
+	</ngb-panel>
+
+	<ngb-panel>
+		<ng-template ngbPanelTitle>
+			<span i18n="@@infoTermsOfServiceTitle">Terms of service</span>
+		</ng-template>
+		<ng-template ngbPanelContent>
+			<app-info-agreement-terms></app-info-agreement-terms>
+		</ng-template>
+	</ngb-panel>
+</ngb-accordion>

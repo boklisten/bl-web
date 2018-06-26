@@ -19,16 +19,23 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'contact'}"
-                    (click)="onSelectMenuButton('contact')">
-                    <span i18n="@@infoMenuListContactUsButton">Contact us</span>
+                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'branch'}"
+                    (click)="onSelectMenuButton('branch')">
+                    <span i18n="@@infoMenuListBranchInfoButton">Branch info</span>
+                </a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link"
+                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'policies'}"
+                    (click)="onSelectMenuButton('policies')">
+                    <span i18n="@@infoMenuListPoliciesButton">Policies</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'branch'}"
-                    (click)="onSelectMenuButton('branch')">
-                    <span i18n="@@infoMenuListBranchInfoButton">Branch info and opening hours</span>
+                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'contact'}"
+                    (click)="onSelectMenuButton('contact')">
+                    <span i18n="@@infoMenuListContactUsButton">Contact us</span>
                 </a>
             </li>
 		</ul>
