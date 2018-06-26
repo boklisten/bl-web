@@ -76,13 +76,13 @@
             </div>
         </div>
 
-		<div class="row mt-5 justify-content-center bl-cart-pay-later" *ngIf="!showPaymentDecision || paymentDecision === 'later'">
+		<div class="row mt-3 justify-content-center bl-cart-pay-later" *ngIf="!showPaymentDecision || paymentDecision === 'later'">
 			<div class="col-12" *ngIf="!userDetailValid">
 				<div class="row">
-					<div class="col-6" i18n="@@cartCheckoutNeedUserInformation">
+					<div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutNeedUserInformation">
 						We need some user details before you can place the order
 					</div>
-					<div class="col-6">
+					<div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
 						<button class="btn btn-block btn-outline-info" (click)="onEditUserDetailClick()">
 							<span i18n="@@cartCheckoutEditUserDetailButton">Edit your details</span>
 						</button>
@@ -92,10 +92,10 @@
 
             <div class="col-12 bl-cart-pay-later" *ngIf="showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
-                    <div class="col-sm-6 col-12 mb-sm-0 mb-2" i18n="@@cartCheckoutPayLaterInfo">
+                    <div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutPayLaterInfo">
                         Pay <b>{{getPrice()}} kr</b> later at branch
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
                         <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
@@ -105,10 +105,10 @@
 
             <div class="col-12 bl-cart-pay-later" *ngIf="!showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
-                    <div class="col-6" i18n="@@cartCheckoutRetrieveItemsAtBranch">
+                    <div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutRetrieveItemsAtBranch">
                         Retrieve the items at branch
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
                         <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
