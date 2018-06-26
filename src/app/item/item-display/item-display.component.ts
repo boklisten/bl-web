@@ -64,7 +64,16 @@ export class ItemDisplayComponent implements OnInit {
 	}
 
 	private checkIfAlreadyHaveItem() {
-		const itemId = (this.item) ? this.item.id : this.branchItem.item;
+		let itemId = '';
+
+		if (this.item) {
+			itemId = this.item.id;
+		} else if (this.branchItem) {
+			itemId = this.branchItem.item;
+		} else {
+			return;
+		}
+
 		this._userOrderService.alreadyHaveOrderedItem(itemId).then((haveOrdered: boolean) => {
 			this.alreadyOrdered = haveOrdered;
 		}).catch((err) => {

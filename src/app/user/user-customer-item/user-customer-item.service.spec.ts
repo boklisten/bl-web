@@ -2,9 +2,10 @@ import {TestBed, inject} from '@angular/core/testing';
 
 import {UserCustomerItemService} from './user-customer-item.service';
 import {Injectable} from "@angular/core";
-import {BranchService} from "@wizardcoder/bl-connect";
+import {BranchService, CustomerItemService} from "@wizardcoder/bl-connect";
 import {DateService} from "../../date/date.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
+import {UserService} from "../user.service";
 
 @Injectable()
 class BranchStubService {
@@ -21,6 +22,16 @@ class BranchStoreStubService {
 
 }
 
+@Injectable()
+class UserStubService {
+
+}
+
+@Injectable()
+class CustomerItemStubService {
+
+}
+
 describe('UserCustomerItemService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -28,7 +39,9 @@ describe('UserCustomerItemService', () => {
 				UserCustomerItemService,
 				{provide: BranchService, useValue: new BranchStubService()},
 				{provide: DateService, useValue: new DateStubService()},
-				{provide: BranchStoreService, useValue: new BranchStoreStubService()}
+				{provide: BranchStoreService, useValue: new BranchStoreStubService()},
+				{provide: UserService, useClass: UserStubService},
+				{provide: CustomerItemService, useClass: CustomerItemStubService}
 			]
 		});
 	});
