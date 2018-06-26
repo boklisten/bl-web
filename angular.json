@@ -2,6 +2,7 @@
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"newProjectRoot": "projects",
+
 	"projects": {
 		"bl-web": {
 			"root": "",
@@ -29,6 +30,40 @@
 						"scripts": []
 					},
 					"configurations": {
+						"production-nb": {
+							"optimization": false,
+							"outputHashing": "all",
+							"sourceMap": false,
+							"extractCss": true,
+							"namedChunks": false,
+							"aot": true,
+							"i18nFile": "src/locale/messages.nb.xlf",
+							"i18nFormat": "xlf",
+							"i18nLocale": "nb",
+							"extractLicenses": true,
+							"vendorChunk": false,
+							"buildOptimizer": true,
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							]
+						},
+						"dev-nb": {
+							"optimization": true,
+							"outputPath": "dist/bl-web-nb",
+							"aot": true,
+							"i18nFile": "src/locale/messages.nb.xlf",
+							"i18nFormat": "xlf",
+							"i18nLocale": "nb",
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.dev.ts"
+								}
+							]
+						},
 						"dev": {
 							"optimization": true,
 							"outputHashing": "all",
@@ -39,6 +74,9 @@
 							"extractLicenses": true,
 							"vendorChunk": false,
 							"buildOptimizer": true,
+							"i18nFile": "src/locale/messages.nb.xlf",
+							"i18nLocale": "nb",
+							"i18nFormat": "xlf",
 							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
@@ -76,23 +114,19 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"options": {
-						"browserTarget": "bl-web:build"
+                        "browserTarget": "bl-web:build:local"
 					},
 					"configurations": {
-						"dev": {
-							"browserTarget": "bl-web:build:dev"
-						},
-						"production": {
-							"browserTarget": "bl-web:build:production"
-						},
-						"local": {
-							"browserTarget": "bl-web:build:local"
+						"nb": {
+							"browserTarget":"bl-web:build:dev-nb"
 						}
 					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
+						"outputPath": "locale",
+						"i18nLocale": "en",
 						"browserTarget": "bl-web:build"
 					}
 				},
