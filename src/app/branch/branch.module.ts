@@ -13,6 +13,7 @@ import { BranchContactInfoComponent } from './branch-contact-info/branch-contact
 import { BranchSetComponent } from './branch-set/branch-set.component';
 import { BranchItemCategoryFilterComponent } from './branch-item-category-filter/branch-item-category-filter.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {BlCommonModule} from "../bl-common/bl-common.module";
 
 @NgModule({
 	imports: [
@@ -20,7 +21,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 		FormsModule,
 		BranchRoutingModule,
 		NgbModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		BlCommonModule
 	],
 	declarations: [
 		BranchSelectComponent,

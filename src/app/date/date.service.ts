@@ -25,6 +25,10 @@ export class DateService {
 		return this.daysUntil(date);
 	}
 
+	public isTodayAfter(date: Date) {
+		return moment(date).isBefore(new Date());
+	}
+
 
 	public getExtendDate(periodType: 'semester' | 'year'): Date {
 		const branch = this._branchStoreService.getBranch();

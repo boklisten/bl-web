@@ -1,16 +1,27 @@
 
 
 <div class="card" *ngIf="branch && branch.contactInfo">
-	<div class="card-body">
-		<h5><span i18n="@@branchContactInfoTitle">Contact info for</span>{{branch.name}}</h5>
-	</div>
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item">
-			<b i18n="@@branchContactInfoAddress">Address:</b> {{branch.contactInfo.address}}, {{branch.contactInfo.postCode}} {{branch.contactInfo.postCity}}
+			<div class="row justify-content-between">
+				<div class="col-auto text-secondary">
+					<span i18n="@@branchContactInfoAddress">Address:</span>
+				</div>
+				<div class="col-auto">
+					{{branch.contactInfo.address}}, {{branch.contactInfo.postCode}} {{branch.contactInfo.postCity}}
+				</div>
+			</div>
 		</li>
 
 		<li class="list-group-item">
-			<b i18n="@@branchContactInfoEmail">Email:</b> {{branch.contactInfo.email}}
+			<div class="row justify-content-between">
+				<div class="col-auto text-secondary">
+					<span i18n="@@branchContactInfoEmail">Email:</span>
+				</div>
+				<div class="col-auto">
+					{{branch.contactInfo.email}}
+				</div>
+			</div>
 		</li>
 	</ul>
 </div>

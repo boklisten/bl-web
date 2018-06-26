@@ -1,10 +1,26 @@
 <div class="card" *ngIf="branch">
-	<div class="card-body">
-		<h5 i18n="@@branchOpeningHoursTitle">We are at <b>{{branch.name}}</b> at these times</h5>
+	<div class="card-header">
+		<span class="font-weight-bold text-secondary" i18n="@@branchOpeningHoursTitle">Opening hours</span>
 	</div>
-	<ul class="list-group list-group-flush">
+	<div class="card-body" *ngIf="!openingHours || openingHours.length <= 0">
+        <div class="mt-5 alert alert-secondary" >
+            <span i18n="@@branchOpeningHoursNotFound">No opening hours found</span>
+        </div>
+	</div>
+
+	<ul class="list-group list-group-flush" *ngIf="openingHours && openingHours.length > 0">
 		<li class="list-group-item" *ngFor="let openingHour of openingHours">
-			{{openingHour.from | date}} - {{openingHour.to | date}}
+			<div class="row justify-content-between" [ngClass]="{'bl-opening-hour-old': isTodayAfter(openingHour.from)}">
+				<div class="col-auto">
+					<span class="mr-2 text-secondary font-weight-bold">{{openingHour.from | blcDate:'date'}}</span>
+				</div>
+				<div class="col-auto">
+                    <span>{{openingHour.from | blcDate:'hour'}}</span>
+                    <fa-icon [icon]="'arrow-right'" class="mr-2 ml-2 text-secondary"></fa-icon>
+                    <span>{{openingHour.to | blcDate:'hour'}}</span>
+				</div>
+			</div>
+
 		</li>
 	</ul>
 </div>

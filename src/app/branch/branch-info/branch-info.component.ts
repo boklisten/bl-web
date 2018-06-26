@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {BranchService} from "@wizardcoder/bl-connect";
 import {BlApiError, BlApiNotFoundError, Branch} from "@wizardcoder/bl-model";
+import {BranchStoreService} from "../branch-store.service";
 
 @Component({
 	selector: 'app-branch-info',
@@ -12,33 +13,37 @@ export class BranchInfoComponent implements OnInit {
 
 	public branch: Branch;
 	public warning: boolean;
+	public branches: Branch[];
+	public selectedBranch: Branch;
+	public showBranchMenu: boolean;
 
-	constructor(private _branchService: BranchService, private _router: Router, private _route: ActivatedRoute) {
+	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService) {
+		this.branches = [];
 	}
 
 	ngOnInit() {
-		this.warning = true;
-		const id = this._route.snapshot.paramMap.get('id');
 
-		this.getBranch(id);
+
+		this.selectedBranch = this._branchStoreService.getBranch();
+
+
+		this._branchService.get().then((branches: Branch[]) => {
+			this.branches = branches;
+
+			if (!this.selectedBranch) {
+				this.selectedBranch = this.branches[0];
+			}
+		}).catch((getBranchesError) => {
+			console.log('BranchInfoComponent: could not get brances', getBranchesError);
+		});
+	}
+
+	public onShowBranchMenu() {
+		this.showBranchMenu = !this.showBranchMenu;
 	}
 
 	public onBranchSelect(branch: Branch) {
-		if (branch.id === this.branch.id) {
-			return;
-		}
-
-		this._router.navigateByUrl('/b/info/' + branch.id);
-		this.getBranch(branch.id);
-	}
-
-	private getBranch(id: string) {
-		this.warning = false;
-
-		this._branchService.getById(id).then((branch: Branch) => {
-			this.branch = branch;
-		}).catch((blApiError: BlApiError) => {
-			this.warning = true;
-		});
+		this.selectedBranch = branch;
+		this.showBranchMenu = false;
 	}
 }

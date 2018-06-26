@@ -6,6 +6,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {Branch} from "@wizardcoder/bl-model";
 import {BranchService} from "@wizardcoder/bl-connect";
 import {ActivatedRoute, Router} from "@angular/router";
+import {BranchStoreService} from "../branch-store.service";
 
 
 @Component({selector: 'ngb-alert', template: ''})
@@ -26,6 +27,11 @@ class BranchOpeningHoursStubComponent {
 	@Input() branch: Branch;
 }
 
+@Component({selector: 'fa-icon', template: ''})
+class FaIconStubComponent {
+	@Input() icon: any;
+}
+
 @Injectable()
 class ActivatedRouteStub {
 	public snapshot: any;
@@ -42,6 +48,21 @@ class ActivatedRouteStub {
 @Injectable()
 class BranchServiceStub {
 	getById(id: string): Promise<any> {
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+
+	get() {
+		return new Promise((resolve, reject) => {
+
+		});
+	}
+}
+
+@Injectable()
+class BranchStoreStubService {
+	getBranch() {
 		return new Promise((resolve, reject) => {
 
 		});
@@ -65,12 +86,14 @@ describe('BranchInfoComponent', () => {
 				NgbAlertStubComponent,
 				BranchSelectStubComponent,
 				BranchContactInfoStubComponent,
-				BranchOpeningHoursStubComponent
+				BranchOpeningHoursStubComponent,
+				FaIconStubComponent
 			],
 			providers: [
 				{provide: BranchService, useValue: branchServiceStub},
 				{provide: Router, useValue: routerSpy},
-				{provide: ActivatedRoute, useValue: activatedRouteStub}
+				{provide: ActivatedRoute, useValue: activatedRouteStub},
+				{provide: BranchStoreService, useClass: BranchStoreStubService}
 			]
 		})
 			.compileComponents();

@@ -34,24 +34,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	onBranchClick() {
-		if (!this._branchStoreService.getBranch()) {
-			this._userService.getUserDetail().then((userDetail: UserDetail) => {
-				if (userDetail.branch) {
-					this._branchService.getById(userDetail.branch).then((branch: Branch) => {
-						this._branchStoreService.setCurrentBranch(branch);
-						this._router.navigateByUrl('b/info/' + this._branchStoreService.getBranch().id);
-					}).catch((branchApiError: BlApiError) => {
-						console.log('userHomeComponent: could not get branch');
-					});
-				} else {
-					this._router.navigateByUrl('b/set');
-				}
-			}).catch((blApiErr: BlApiError) => {
-				console.log('userHomeComponent: could not get userDetail');
-			});
-		} else {
-			this._router.navigateByUrl('b/info/' + this._branchStoreService.getBranch().id);
-		}
+		this._router.navigate(['/b/info']);
 	}
 
 	onLogout() {

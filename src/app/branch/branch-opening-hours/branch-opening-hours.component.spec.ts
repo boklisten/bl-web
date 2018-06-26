@@ -1,9 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {BranchOpeningHoursComponent} from './branch-opening-hours.component';
-import {Injectable} from "@angular/core";
+import {Component, Injectable, Input, Pipe} from "@angular/core";
 import {Branch} from "@wizardcoder/bl-model";
 import {BranchOpeningHoursService} from "./branch-opening-hours.service";
+import {BlCommonModule} from "../../bl-common/bl-common.module";
+import {DateService} from "../../date/date.service";
 
 
 @Injectable()
@@ -15,6 +17,23 @@ class BranchOpeningHoursServiceStub {
 	}
 }
 
+@Component({selector: 'fa-icon', template: ''})
+class FaIconComponent {
+	@Input() icon: any;
+}
+
+@Pipe({name: 'blcDate'})
+class BlcDateStubPipe {
+
+}
+
+@Injectable()
+class DateStubService {
+
+}
+
+
+
 
 
 describe('BranchOpeningHoursComponent', () => {
@@ -25,9 +44,15 @@ describe('BranchOpeningHoursComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [BranchOpeningHoursComponent],
+			declarations: [
+				BranchOpeningHoursComponent,
+				FaIconComponent,
+				BlcDateStubPipe
+			],
+			imports: [],
 			providers: [
-				{provide: BranchOpeningHoursService, useValue: branchOpeningHoursServiceStub}
+				{provide: BranchOpeningHoursService, useValue: branchOpeningHoursServiceStub},
+				{provide: DateService, useClass: DateStubService}
 			]
 		})
 			.compileComponents();

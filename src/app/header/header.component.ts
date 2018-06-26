@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
 		if (menuItem === 'items') {
 			this._router.navigateByUrl('/i/select');
 		} else if (menuItem === 'branch') {
-			this._router.navigateByUrl('/b/info/' + this._branchStoreService.getBranch().id);
+			this._router.navigateByUrl('/b/info');
 		} else if (menuItem === 'cart') {
 			this._router.navigateByUrl('/cart');
 		} else if (menuItem === 'info') {

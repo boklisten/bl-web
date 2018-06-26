@@ -1,36 +1,58 @@
-<ngb-alert [type]="'warning'" *ngIf="warning">
-	<span i18n="@@branchInfoNotFound">Branch not found</span>
-</ngb-alert>
 
-<div class="container" *ngIf="branch">
 	<div class="row">
-		<div class="col-12 mb-3">
-			<div class="row">
-				<div class="col-md-8 col-sm-12 col-12 mb-3">
-
+		<div class="col-md-4 col-sm-12 col-12 ">
+			<div class="row d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
+				<div class="col-12">
 					<div class="card">
 						<div class="card-body">
-							<h3>{{branch.name}}</h3>
-							<p>{{branch.desc}}</p>
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item" *ngFor="let branch of branches">
+                                    <a class="nav-link" [ngClass]="{'active': branch === selectedBranch}" (click)="onBranchSelect(branch)">{{branch.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
+                <div class="col-12">
+                    <button class="btn btn-block btn-outline-secondary" (click)="onShowBranchMenu()">
+						<span i18n="@@branchInfoSelectAnotherBranch">Select another branch</span>
+                        <fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
+                    </button>
+                </div>
+                <div class="col-12 mt-2" *ngIf="showBranchMenu">
+					<div class="card">
+						<div class="card-body">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item" *ngFor="let branch of branches">
+                                    <a class="nav-link text-center" [ngClass]="{'active': branch === selectedBranch}" (click)="onBranchSelect(branch)">{{branch.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+		<div class="col-md-8 col-sm-12 col-12 mb-3" *ngIf="selectedBranch">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<h3>{{selectedBranch.name}}</h3>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-12 col-12">
-					<app-branch-select (branchSelect)="onBranchSelect($event)"></app-branch-select>
-				</div>
-
 			</div>
-		</div>
-		<div class="col-12">
 			<div class="row">
-				<div class="col-md-6 col-sm-12 mb-3">
-					<app-branch-contact-info [branch]="branch"></app-branch-contact-info>
+				<div class="col-12">
+					<app-branch-contact-info [branch]="selectedBranch"></app-branch-contact-info>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<app-branch-opening-hours [branch]="branch"></app-branch-opening-hours>
+			</div>
+			<div class="row mt-2">
+				<div class="col-12">
+					<app-branch-opening-hours [branch]="selectedBranch"></app-branch-opening-hours>
 				</div>
 			</div>
 		</div>
-
 	</div>
-</div>

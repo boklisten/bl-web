@@ -15,7 +15,7 @@ const routes: Routes = [
 				component: BranchSetComponent
 			},
 			{
-				path: 'info/:id',
+				path: 'info',
 				component: BranchInfoComponent
 			},
 			{
