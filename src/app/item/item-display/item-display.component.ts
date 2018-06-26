@@ -7,6 +7,8 @@ import {UserService} from "../../user/user.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {ItemService} from "@wizardcoder/bl-connect";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import {UserOrderService} from "../../user/order/user-order/user-order.service";
+import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
 
 @Component({
 	selector: 'app-item-display',
@@ -24,6 +26,8 @@ export class ItemDisplayComponent implements OnInit {
 	public view: boolean;
 
 	public customerItemActive: boolean;
+	public alreadyHaveItem: boolean;
+	public alreadyOrdered: boolean;
 
 	public orderItemType: OrderItemType | 'semester' | 'year';
 	public showAdd: boolean;
@@ -31,16 +35,20 @@ export class ItemDisplayComponent implements OnInit {
 	constructor(private _router: Router,
 				private _priceService: PriceService,
 				private _userService: UserService,
+				private _userCustomerItemService: UserCustomerItemService,
+				private _userOrderService: UserOrderService,
 				private _itemService: ItemService) {
 		this.customerItemActive = false;
 		this.view = false;
 		this.showAdd = false;
+		this.alreadyHaveItem = false;
 	}
 
 	ngOnInit() {
 		if (this.branchItem && !this.item) {
 			this._itemService.getById(this.branchItem.item).then((item: Item) => {
 				this.item = item;
+				this.checkIfAlreadyHaveItem();
 			}).catch((getItemError) => {
 				console.log('ItemDisplayComponent: could not get item based on branchItem');
 			});
@@ -52,6 +60,22 @@ export class ItemDisplayComponent implements OnInit {
 			this.view = true;
 		});
 
+		this.checkIfAlreadyHaveItem();
+	}
+
+	private checkIfAlreadyHaveItem() {
+		const itemId = (this.item) ? this.item.id : this.branchItem.item;
+		this._userOrderService.alreadyHaveOrderedItem(itemId).then((haveOrdered: boolean) => {
+			this.alreadyOrdered = haveOrdered;
+		}).catch((err) => {
+			console.log('UserOrderService: could not check if user already have item', err);
+		});
+
+		this._userCustomerItemService.alreadyHaveItem(itemId).then((haveItem: boolean) => {
+			this.alreadyHaveItem = haveItem;
+		}).catch((err) => {
+			console.log('UserOrderService: could not check if user already have customer item', err);
+		});
 	}
 
 

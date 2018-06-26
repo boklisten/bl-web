@@ -20,6 +20,7 @@ import {UserCustomerItemService} from "./user-customer-item/user-customer-item.s
 import {UserEditComponent} from "./user-edit/user-edit.component";
 import {LoginModule} from "@wizardcoder/bl-login";
 import {UserEditService} from "./user-edit/user-edit.service";
+import {UserOrderService} from "./order/user-order/user-order.service";
 
 @NgModule({
 	imports: [
@@ -47,7 +48,8 @@ import {UserEditService} from "./user-edit/user-edit.service";
 		UserService,
 		UserGuardService,
 		UserCustomerItemService,
-		UserEditService
+		UserEditService,
+		UserOrderService
 	]
 })
 export class UserModule {
