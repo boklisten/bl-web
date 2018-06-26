@@ -4,6 +4,8 @@ import {HeaderUserDetailAlertComponent} from './header-user-detail-alert.compone
 import {Component, Injectable, Input} from "@angular/core";
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
+import {Subject} from "rxjs/internal/Subject";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -20,6 +22,25 @@ class UserStubService {
 	isUserDetailValid(): Promise<boolean> {
 		return Promise.resolve(true);
 	}
+
+	onUserDetailChange() {
+		return new Subject();
+	}
+}
+
+@Injectable()
+class AuthLoginStubService {
+	isLoggedIn() {
+		return true;
+	}
+
+	onLogin() {
+		return new Subject();
+	}
+
+	onLogout() {
+		return new Subject();
+	}
 }
 
 describe('HeaderUserDetailAlertComponent', () => {
@@ -34,7 +55,8 @@ describe('HeaderUserDetailAlertComponent', () => {
 			],
 			providers: [
 				{provide: Router, useClass: RouterStubService},
-				{provide: UserService, useClass: UserStubService}
+				{provide: UserService, useClass: UserStubService},
+				{provide: AuthLoginService, useClass: AuthLoginStubService}
 			]
 		})
 			.compileComponents();

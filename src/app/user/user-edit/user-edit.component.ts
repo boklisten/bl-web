@@ -15,20 +15,21 @@ export class UserEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			this.userDetail = userDetail;
 			this.userDetail.dob = new Date();
 		}).catch((getUserDetailError: BlApiError) => {
 			console.log('UserEditComponent: could not get UserDetail', getUserDetailError);
 		});
+
+		this._userService.onUserDetailChange().subscribe((userDetail: UserDetail) => {
+			this.userDetail = userDetail;
+		});
 	}
 
 	onUserDetailSave(patchedValues: any) {
-		this._userDetailService.update(this.userDetail.id, patchedValues).then((updatedUserDetail: UserDetail) => {
-			this.userDetail = updatedUserDetail;
-		}).catch((updateUserDetailError: BlApiError) => {
-			console.log('UserEditComponent: could not update userDetail', updateUserDetailError);
-		});
+		this._userService.updateUserDetail(patchedValues);
 	}
 
 }

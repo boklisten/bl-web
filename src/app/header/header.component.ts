@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
 		} else if (menuItem === 'info') {
 			this._router.navigateByUrl('/info');
 		} else if (menuItem === 'user-settings') {
-			this._router.navigateByUrl('/auth/register/detail');
+			this._router.navigateByUrl('/u/edit');
 		} else if (menuItem === 'user-items') {
 			this._router.navigateByUrl('/u/items');
 		} else if (menuItem === 'user-orders') {

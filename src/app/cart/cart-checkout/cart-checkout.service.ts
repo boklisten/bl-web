@@ -30,6 +30,7 @@ export class CartCheckoutService {
 				// we need to clear everything after order is placed
 				this._cartService.clearCart();
 				this._cartOrderService.clearOrder();
+				this._userService.reloadUserDetail();
 
 				resolve(true);
 			}).catch((blApiError: BlApiError) => {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 @Component({
 	selector: 'app-header-user-detail-alert',
@@ -10,11 +11,35 @@ import {UserService} from "../../user/user.service";
 export class HeaderUserDetailAlertComponent implements OnInit {
 	showAlert: boolean;
 
-	constructor(private _router: Router, private _userService: UserService) {
+	constructor(private _router: Router, private _userService: UserService, private _authService: AuthLoginService) {
 		this.showAlert = false;
 	}
 
 	ngOnInit() {
+		if (this._authService.isLoggedIn()) {
+			this.checkIfUserDetailIsValid();
+		}
+
+		this._authService.onLogin().subscribe(() => {
+			this.checkIfUserDetailIsValid();
+		});
+
+		this._authService.onLogout().subscribe(() => {
+			this.checkIfUserDetailIsValid();
+		});
+
+		this._userService.onUserDetailChange().subscribe(() => {
+			this.checkIfUserDetailIsValid();
+		});
+
+	}
+
+	private checkIfUserDetailIsValid() {
+		if (!this._authService.isLoggedIn()) {
+			this.showAlert = false;
+			return;
+		}
+
 		this._userService.isUserDetailValid().then((valid: boolean) => {
 			if (valid) {
 				this.showAlert = false;
@@ -22,6 +47,7 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 				this.showAlert = true;
 			}
 		}).catch(() => {
+
 		});
 	}
 

@@ -8,6 +8,7 @@ import Jasmine = jasmine.Jasmine;
 import Spy = jasmine.Spy;
 import {of} from "rxjs/internal/observable/of";
 import {UserDetail} from "@wizardcoder/bl-model";
+import {Subject} from "rxjs/internal/Subject";
 
 @Component({selector: 'bl-user-detail-edit', template: ''})
 class UserDetailEditStubComponent {
@@ -19,6 +20,10 @@ class UserDetailEditStubComponent {
 class UserStubService {
 	getUserDetail() {
 		return Promise.resolve({id: 'userDetail1'});
+	}
+
+	onUserDetailChange() {
+		return new Subject();
 	}
 }
 

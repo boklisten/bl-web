@@ -2,19 +2,62 @@ import {Injectable} from '@angular/core';
 import {CustomerItemService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
 import {BlApiError, BlError, CustomerItem, UserDetail, UserPermission} from "@wizardcoder/bl-model";
 import {Subject} from "rxjs";
+import {AuthLoginService} from "@wizardcoder/bl-login";
+import {Observable} from "rxjs/internal/Observable";
 
 @Injectable()
 export class UserService {
 
 	private _customerItems: CustomerItem[];
 	private _userDetail: UserDetail;
+	private userDetail$: Subject<UserDetail>;
 	private _onLogin$: Subject<boolean>;
 
 	constructor(private _tokenService: TokenService,
 				private _userDetailService: UserDetailService,
-				private _customerItemService: CustomerItemService) {
+				private _customerItemService: CustomerItemService,
+				private _authService: AuthLoginService) {
 
 		this._customerItems = [];
+		this.userDetail$ = new Subject<UserDetail>();
+
+		this._authService.onLogin().subscribe(() => {
+			this.fetchUserDetail();
+		});
+
+		this._authService.onLogout().subscribe(() => {
+			this._userDetail = null;
+		});
+
+		if (this._authService.isLoggedIn()) {
+			this.fetchUserDetail();
+		}
+	}
+
+	public updateUserDetail(data: any) {
+		this._userDetailService.update(this._userDetail.id, data).then((updatedUserDetail: UserDetail) => {
+			this.setUserDetail(updatedUserDetail);
+		}).catch((updateUserDetailError: BlApiError) => {
+			console.log('userService: could not update userDetail', updateUserDetailError);
+		});
+	}
+
+	public setUserDetail(userDetail: UserDetail) {
+		console.log('the user detail was set', userDetail);
+		this._userDetail = userDetail;
+		this.userDetail$.next(this._userDetail);
+	}
+
+	public reloadUserDetail() {
+		this._userDetailService.getById(this._userDetail.id).then((reloadedUserDetail: UserDetail) => {
+			this.setUserDetail(reloadedUserDetail);
+		}).catch((getUserDetailError: BlApiError) => {
+			console.log('userService: could not get userDetail', getUserDetailError);
+		});
+	}
+
+	public onUserDetailChange(): Observable<UserDetail> {
+		return this.userDetail$.asObservable();
 	}
 
 	public logout(): Promise<boolean> {
@@ -23,7 +66,31 @@ export class UserService {
 	}
 
 	public isUserDetailValid(): Promise<boolean> {
-		return Promise.resolve(true);
+		if (this.loggedIn() && this._userDetail) {
+
+			if (this._userDetail) {
+				if (!this._userDetail.orders || this._userDetail.orders.length <= 0) {
+					return Promise.resolve(true);
+				}
+			}
+
+			return this._userDetailService.isValid(this.getUserDetailId())
+				.then((isUserDetailValidObj: {valid: boolean, invalidFields?: string[]}) => {
+					return isUserDetailValidObj.valid;
+			}).catch((err: BlApiError) => {
+				throw err;
+			});
+		} else {
+			return Promise.resolve(true);
+		}
+	}
+
+	private fetchUserDetail() {
+		this.getUserDetail().then((userDetail: UserDetail) => {
+			this.setUserDetail(userDetail);
+		}).catch((getUserDetailError: BlApiError) => {
+			console.log('userService: could not get userDetail', getUserDetailError);
+		});
 	}
 
 	public getUserBranchId(): string {
@@ -54,6 +121,10 @@ export class UserService {
 	}
 
 	public getUserDetail(): Promise<UserDetail> {
+		if (this._userDetail) {
+			return Promise.resolve(this._userDetail);
+		}
+
 		return new Promise((resolve, reject) => {
 			if (!this.loggedIn()) {
 				return reject(new BlError('can not get user detail since user is not logged in'));
