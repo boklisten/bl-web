@@ -70,7 +70,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 })
 export class AppModule {
 	constructor() {
-		// BlConnectModule.withConfig({basePath: environment.apiPath});
+		BlConnectModule.withConfig({basePath: environment.apiPath});
 		LoginModule.withConfig({
 			successPath: '/i/select',
 			apiPath: environment.apiPath,

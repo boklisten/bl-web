@@ -51,7 +51,7 @@
 							]
 						},
 						"dev-nb": {
-							"optimization": true,
+							"optimization": false,
 							"outputPath": "dist/bl-web-nb",
 							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
@@ -60,7 +60,7 @@
 							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.dev.ts"
+									"with": "src/environments/environment.local.ts"
 								}
 							]
 						},
