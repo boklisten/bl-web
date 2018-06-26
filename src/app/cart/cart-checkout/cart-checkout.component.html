@@ -76,8 +76,21 @@
             </div>
         </div>
 
-        <div class="row mt-5 justify-content-center" *ngIf="showPaymentDecision && paymentDecision === 'later'" id="payLater">
-            <div class="col-12 bl-cart-pay-later">
+		<div class="row mt-5 justify-content-center bl-cart-pay-later" *ngIf="!showPaymentDecision || paymentDecision === 'later'">
+			<div class="col-12" *ngIf="!userDetailValid">
+				<div class="row">
+					<div class="col-6" i18n="@@cartCheckoutNeedUserInformation">
+						We need some user details before you can place the order
+					</div>
+					<div class="col-6">
+						<button class="btn btn-block btn-outline-info" (click)="onEditUserDetailClick()">
+							<span i18n="@@cartCheckoutEditUserDetailButton">Edit your details</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-12 bl-cart-pay-later" *ngIf="showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-sm-0 mb-2" i18n="@@cartCheckoutPayLaterInfo">
                         Pay <b>{{getPrice()}} kr</b> later at branch
@@ -89,11 +102,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-
-        <div class="row mt-5 justify-content-center" *ngIf="!showPaymentDecision" id="noPayment">
-            <div class="col-12 bl-cart-pay-later">
+            <div class="col-12 bl-cart-pay-later" *ngIf="!showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
                     <div class="col-6" i18n="@@cartCheckoutRetrieveItemsAtBranch">
                         Retrieve the items at branch
@@ -105,6 +115,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+		</div>
 	</div>
 </div>

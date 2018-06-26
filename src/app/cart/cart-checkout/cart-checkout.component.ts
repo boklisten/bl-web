@@ -8,6 +8,7 @@ import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
 import {CartService} from "../cart.service";
+import {UserEditService} from "../../user/user-edit/user-edit.service";
 
 @Component({
 	selector: 'app-cart-checkout',
@@ -23,14 +24,16 @@ export class CartCheckoutComponent implements OnInit {
 	public orderPlacedFailure: boolean;
 	public orderError: boolean;
 	public userEmailNotConfirmed: boolean;
+	public userDetailValid: boolean;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService,
-				private _cartService: CartService) {
+				private _cartService: CartService, private _userEditService: UserEditService) {
 
 		this.orderPlacedFailure = false;
 		this.userEmailNotConfirmed = false;
+		this.userDetailValid = false;
 
 		const branch = this._branchStoreService.getBranch();
 
@@ -73,6 +76,16 @@ export class CartCheckoutComponent implements OnInit {
 				this.orderError = false;
 				this.order = order;
 			});
+
+			this.checkIfUserIsValid();
+
+			this.onUserDetailUpdate();
+		});
+	}
+
+	private onUserDetailUpdate() {
+		this._userService.onUserDetailChange().subscribe(() => {
+			this.checkIfUserIsValid();
 		});
 	}
 
@@ -108,9 +121,23 @@ export class CartCheckoutComponent implements OnInit {
 
 			this._cartDeliveryService.setBranchDelivery();
 			this._cartOrderService.updateOrderWithNoPayments();
+			this.checkIfUserIsValid();
 		} else if (decision === 'now') {
 			this._cartOrderService.reloadOrder();
 		}
+	}
+
+	public onEditUserDetailClick() {
+		this._userEditService.redirectUrl = '/cart';
+		this._router.navigateByUrl('/u/edit');
+	}
+
+	private checkIfUserIsValid() {
+		this._userService.isUserDetailValid().then((valid: boolean) => {
+			this.userDetailValid = valid;
+		}).catch((userDetailValidError: BlApiError) => {
+			console.log('userService: could not check if user detail is valid: ', userDetailValidError);
+		});
 	}
 
 }

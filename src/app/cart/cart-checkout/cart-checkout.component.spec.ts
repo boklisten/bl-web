@@ -13,6 +13,7 @@ import {CartService} from "../cart.service";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
 import {Branch} from "@wizardcoder/bl-model";
+import {UserEditService} from "../../user/user-edit/user-edit.service";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -22,6 +23,11 @@ class FaIconStubComponent {
 @Component({selector: 'ngb-alert', template: ''})
 class NgbAlertStubComponent {
 	@Input() type: any;
+}
+
+@Injectable()
+class UserEditStubServie {
+
 }
 
 @Component({selector: 'app-cart-delivery', template: ''})
@@ -119,7 +125,8 @@ describe('CartCheckoutComponent', () => {
 				{provide: CartPaymentService, useValue: cartPaymentStubService},
 				{provide: UserService, useValue: userStubService},
 				{provide: CartService, useValue: cartStubService},
-				{provide: Router, useValue: routerStub}
+				{provide: Router, useValue: routerStub},
+				{provide: UserEditService, useClass: UserEditStubServie}
 			],
 			imports: [
 				FormsModule

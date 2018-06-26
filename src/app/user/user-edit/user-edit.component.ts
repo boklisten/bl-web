@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BlApiError, UserDetail} from "@wizardcoder/bl-model";
 import {UserService} from "../user.service";
-import {UserDetailService} from "@wizardcoder/bl-connect";
+import {UserEditService} from "./user-edit.service";
 
 @Component({
 	selector: 'app-user-edit',
@@ -11,7 +11,7 @@ import {UserDetailService} from "@wizardcoder/bl-connect";
 export class UserEditComponent implements OnInit {
 	userDetail: UserDetail;
 
-	constructor(private _userService: UserService, private _userDetailService: UserDetailService) {
+	constructor(private _userService: UserService, private _userEditService: UserEditService) {
 	}
 
 	ngOnInit() {
@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit {
 	}
 
 	onUserDetailSave(patchedValues: any) {
-		this._userService.updateUserDetail(patchedValues);
+		this._userEditService.updateUserDetail(patchedValues);
 	}
 
 }

@@ -64,15 +64,12 @@ export class UserService {
 		return Promise.resolve(true);
 	}
 
+	public haveOrders(): boolean {
+		return (this._userDetail && this._userDetail.orders && this._userDetail.orders.length > 0);
+	}
+
 	public isUserDetailValid(): Promise<boolean> {
 		if (this.loggedIn() && this._userDetail) {
-
-			if (this._userDetail) {
-				if (!this._userDetail.orders || this._userDetail.orders.length <= 0) {
-					return Promise.resolve(true);
-				}
-			}
-
 			return this._userDetailService.isValid(this.getUserDetailId())
 				.then((isUserDetailValidObj: {valid: boolean, invalidFields?: string[]}) => {
 					return isUserDetailValidObj.valid;

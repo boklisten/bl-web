@@ -40,15 +40,14 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 			return;
 		}
 
-		this._userService.isUserDetailValid().then((valid: boolean) => {
-			if (valid) {
-				this.showAlert = false;
-			} else {
-				this.showAlert = true;
-			}
-		}).catch(() => {
+		if (this._userService.haveOrders()) {
+			this._userService.isUserDetailValid().then((valid: boolean) => {
+				this.showAlert = !valid;
+			}).catch((isUserDetailValidError) => {
+				console.log('userService: could not check if user detail is not valid', isUserDetailValidError);
+			});
+		}
 
-		});
 	}
 
 	onEditClick() {

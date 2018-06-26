@@ -9,6 +9,7 @@ import Spy = jasmine.Spy;
 import {of} from "rxjs/internal/observable/of";
 import {UserDetail} from "@wizardcoder/bl-model";
 import {Subject} from "rxjs/internal/Subject";
+import {UserEditService} from "./user-edit.service";
 
 @Component({selector: 'bl-user-detail-edit', template: ''})
 class UserDetailEditStubComponent {
@@ -28,18 +29,13 @@ class UserStubService {
 }
 
 @Injectable()
-class UserDetailStubService {
-	update(id: string, data: any) {
-		return new Promise((resolve, reject) => {
+class UserEditStubService {
 
-		});
-	}
 }
 
 describe('UserEditComponent', () => {
 	let component: UserEditComponent;
 	let fixture: ComponentFixture<UserEditComponent>;
-	let updateUserDetailSpy;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -49,25 +45,16 @@ describe('UserEditComponent', () => {
 			],
 			providers: [
 				{provide: UserService, useClass: UserStubService},
-				{provide: UserDetailService, useClass: UserDetailStubService}
+				{provide: UserEditService, useClass: UserEditStubService}
 			]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		const userDetailService = jasmine.createSpyObj('UserDetailStubService', ['update']);
-		const userService = jasmine.createSpyObj('UserService', ['getUserDetail']);
-		let userGetUserDetailSpy = userService.getUserDetail.and.returnValue(of(Promise.resolve({id: 'userDetail1'})))
-
-		updateUserDetailSpy = userDetailService.update.and.returnValue(Promise.resolve('hi'));
-
 		fixture = TestBed.createComponent(UserEditComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-
-
-
 	});
 
 	it('should create', () => {

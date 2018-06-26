@@ -26,6 +26,10 @@ class UserStubService {
 	onUserDetailChange() {
 		return new Subject();
 	}
+
+	haveOrders() {
+		return true;
+	}
 }
 
 @Injectable()
