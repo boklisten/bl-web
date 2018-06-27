@@ -13,6 +13,11 @@ class FaIconStubComponent {
 	@Input() size: any;
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading: boolean;
+}
+
 @Injectable()
 class BranchStubService {
 	get() {
@@ -46,7 +51,8 @@ describe('BranchSelectComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				BranchSelectComponent,
-				FaIconStubComponent
+				FaIconStubComponent,
+				BlcSpinnerStubComponent
 			],
 			imports: [
 				RouterTestingModule,

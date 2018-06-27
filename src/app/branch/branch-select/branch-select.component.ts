@@ -15,6 +15,8 @@ export class BranchSelectComponent implements OnInit {
 	public branches: Branch[];
 	public selectedBranch: Branch;
 	public branchSelectDefaultText: string;
+	public loading: boolean;
+	public couldNotGetBranchesError: boolean;
 
 	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService, private _router: Router) {
 		this.branchSelect = new EventEmitter<Branch>();
@@ -23,11 +25,15 @@ export class BranchSelectComponent implements OnInit {
 
 	ngOnInit() {
 		this.selectedBranch = this._branchStoreService.getBranch();
+		this.loading = true;
+		this.couldNotGetBranchesError = false;
 
 		this._branchService.get().then((branches: Branch[]) => {
 			this.branches = branches;
+			this.loading = false;
 		}).catch((blApiError: BlApiError) => {
-			console.log('could not get branches');
+			this.loading = false;
+			this.couldNotGetBranchesError = true;
 		});
 	}
 
