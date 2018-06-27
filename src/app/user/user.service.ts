@@ -63,7 +63,8 @@ export class UserService {
 	}
 
 	public logout(): Promise<boolean> {
-		this._tokenService.removeTokens();
+		this._authService.logout('/welcome');
+		//this._tokenService.removeTokens();
 		return Promise.resolve(true);
 	}
 

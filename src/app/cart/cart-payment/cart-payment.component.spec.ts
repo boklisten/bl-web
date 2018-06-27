@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CartPaymentComponent} from './cart-payment.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {CartPaymentService} from "./cart-payment.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {Subject} from "rxjs";
 

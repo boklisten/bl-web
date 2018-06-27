@@ -4,6 +4,7 @@ import {Subject, Observable} from "rxjs";
 import {CartService} from "../cart.service";
 import {OrderService} from '@wizardcoder/bl-connect';
 import {UserService} from "../../user/user.service";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 @Injectable()
 export class CartOrderService {
@@ -13,7 +14,7 @@ export class CartOrderService {
 	private _orderClear$: Subject<boolean>;
 	private _orderError$: Subject<string>;
 
-	constructor(private _cartService: CartService, private _orderService: OrderService) {
+	constructor(private _cartService: CartService, private _orderService: OrderService, private _authLoginService: AuthLoginService) {
 		this._orderChange$ = new Subject();
 		this._orderClear$ = new Subject();
 		this._orderError$ = new Subject<string>();
@@ -24,6 +25,17 @@ export class CartOrderService {
 		}
 
 		this.onCartChange();
+		this.onLogin();
+	}
+
+	public onLogin() {
+		this._authLoginService.onLogin().subscribe(() => {
+			this.reloadOrder();
+		});
+
+		this._authLoginService.onLogout().subscribe(() => {
+			this.clearOrder();
+		});
 	}
 
 	public setOrder(order: Order) {

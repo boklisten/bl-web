@@ -1,7 +1,7 @@
 import {TestBed, inject} from '@angular/core/testing';
 
 import {CartCheckoutService} from './cart-checkout.service';
-import {Injectable} from "@angular/core";
+import {Injectable, Pipe} from "@angular/core";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
@@ -65,7 +65,8 @@ describe('CartCheckoutService', () => {
 				{provide: CartService, useValue: cartStubService},
 				{provide: UserService, useValue: userStubService},
 				{provide: Router, useValue: routerStub}
-			]
+			],
+
 		});
 	});
 

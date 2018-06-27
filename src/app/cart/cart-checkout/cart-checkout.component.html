@@ -26,17 +26,24 @@
 	</div>
 </div>
 
-<div class="row text-center" *ngIf="showUserMustLogin">
-	<div class="col-12">
-		<h3 i18n="@@cartCheckoutMustLoginError">You must login or register to place a order</h3>
-	</div>
-	<div class="col-12">
+<div class="row text-center mt-5 justify-content-center" *ngIf="showUserMustLogin">
+	<div class="col-md-6 col-sm-12 col-12">
+		<h5 i18n="@@cartCheckoutMustLoginError" class="text-secondary">You must login or register to place a order</h5>
 		<div class="row">
-			<div class="col-6">
-				<button class="btn btn-success btn-block" routerLink="/auth/login" i18n="@@cartCheckoutLoginButton">Login</button>
-			</div>
-			<div class="col-6">
-				<button class="btn btn-info btn-block" routerLink="/auth/register" i18n="@@cartCheckoutRegisterButton">Register</button>
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-12">
+								<button class="btn btn-success btn-block" (click)="goToLogin()" i18n="@@cartCheckoutLoginButton">Login</button>
+							</div>
+							<div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
+								<button class="btn btn-info btn-block" (click)="goToRegister()" i18n="@@cartCheckoutRegisterButton">Register</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

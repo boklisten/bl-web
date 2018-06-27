@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
 import {CartService} from "../cart.service";
 import {UserEditService} from "../../user/user-edit/user-edit.service";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 @Component({
 	selector: 'app-cart-checkout',
@@ -30,7 +31,8 @@ export class CartCheckoutComponent implements OnInit {
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService,
-				private _cartService: CartService, private _userEditService: UserEditService) {
+				private _cartService: CartService, private _userEditService: UserEditService,
+				private _authLoginService: AuthLoginService) {
 
 		this.orderPlacedFailure = false;
 		this.userEmailNotConfirmed = false;
@@ -111,6 +113,16 @@ export class CartCheckoutComponent implements OnInit {
 		}).catch(() => {
 			this.orderPlacedFailure = true;
 		});
+	}
+
+	public goToLogin() {
+		this._authLoginService.redirectUrl = '/cart';
+		this._router.navigateByUrl('/auth/login');
+	}
+
+	public goToRegister() {
+		this._authLoginService.redirectUrl = '/cart';
+		this._router.navigateByUrl('/auth/register');
 	}
 
 	public onPaymentDecicionChange(decision: "now" | "later") {

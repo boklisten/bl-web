@@ -6,6 +6,7 @@ import {PriceService} from "../price/price.service";
 import {Subject} from "rxjs";
 import {DateService} from "../date/date.service";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 
 export interface CartItem {
@@ -23,10 +24,18 @@ private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
-				private _priceService: PriceService, private _dateService: DateService) {
+				private _priceService: PriceService, private _dateService: DateService,
+				private _authLoginService: AuthLoginService) {
 		this._cart = [];
 		this.cartChange$ = new Subject();
 		this.onBranchChange();
+		this.onLogout();
+	}
+
+	private onLogout() {
+		this._authLoginService.onLogout().subscribe(() => {
+			this.clearCart();
+		});
 	}
 
 	private onBranchChange() {

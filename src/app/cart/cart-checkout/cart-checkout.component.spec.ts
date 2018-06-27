@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CartCheckoutComponent} from './cart-checkout.component';
-import {Component, Injectable, Input} from "@angular/core";
+import {Component, Injectable, Input, Pipe} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {CartCheckoutService} from "./cart-checkout.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
@@ -14,6 +14,7 @@ import {Router} from "@angular/router";
 import {Subject} from "rxjs";
 import {Branch} from "@wizardcoder/bl-model";
 import {UserEditService} from "../../user/user-edit/user-edit.service";
+import {AuthLoginService} from "@wizardcoder/bl-login";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -89,10 +90,21 @@ class UserStubService {
 class CartStubService {
 }
 
+
+@Injectable()
+class AuthLoginStubService {
+}
+
 @Injectable()
 class RouterStub {
 
 }
+
+
+@Pipe({name: 'blcPrice'})
+class BlcPriceStubPipe {
+}
+
 
 describe('CartCheckoutComponent', () => {
 	let component: CartCheckoutComponent;
@@ -115,7 +127,8 @@ describe('CartCheckoutComponent', () => {
 				CartDeliveryStubComponent,
 				CartSummaryStubComponent,
 				CartPaymentStubComponent,
-				NgbAlertStubComponent
+				NgbAlertStubComponent,
+				BlcPriceStubPipe
 			],
 			providers: [
 				{provide: CartCheckoutService, useValue: cartCheckoutStubService},
@@ -126,7 +139,8 @@ describe('CartCheckoutComponent', () => {
 				{provide: UserService, useValue: userStubService},
 				{provide: CartService, useValue: cartStubService},
 				{provide: Router, useValue: routerStub},
-				{provide: UserEditService, useClass: UserEditStubServie}
+				{provide: UserEditService, useClass: UserEditStubServie},
+				{provide: AuthLoginService, useClass: AuthLoginStubService}
 			],
 			imports: [
 				FormsModule

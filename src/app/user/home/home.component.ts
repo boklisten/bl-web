@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
 	onLogout() {
 		this._userService.logout().then(() => {
-			this._router.navigateByUrl('welcome');
+			this._router.navigateByUrl('/welcome');
 		});
 	}
 
