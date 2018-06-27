@@ -10,11 +10,21 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class CartCheckoutService {
+	public agreementConfirmed: boolean;
 
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
 				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService,
 				private _router: Router, private _userService: UserService) {
+
+		this.agreementConfirmed = false;
+
+		this._cartService.onCartChange().subscribe(() => {
+			if (this._cartService.getSize() <= 0) {
+				this.agreementConfirmed = false;
+			}
+		});
 	}
+
 
 	public placeOrder(): Promise<boolean> {
 		if (!this._userService.loggedIn()) {

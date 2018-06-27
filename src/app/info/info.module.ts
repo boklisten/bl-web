@@ -32,6 +32,11 @@ import { InfoAgreementTermsComponent } from './info-agreement/info-agreement-ter
 		InfoMenuListComponent,
 		ContactInfoComponent,
 		InfoAgreementTermsComponent
+	],
+	exports: [
+		InfoAgreementRentComponent,
+		InfoAgreementPrivacyComponent,
+		InfoAgreementTermsComponent
 	]
 })
 export class InfoModule {

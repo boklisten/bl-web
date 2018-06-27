@@ -9,6 +9,7 @@ import {OrderService} from "@wizardcoder/bl-connect";
 import {CartService} from "../cart.service";
 import {UserService} from "../../user/user.service";
 import {Router} from "@angular/router";
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable()
 class CartDeliveryStubService {
@@ -27,6 +28,9 @@ class UserStubService {
 
 @Injectable()
 class CartStubService {
+	onCartChange() {
+		return new Subject();
+	}
 }
 
 

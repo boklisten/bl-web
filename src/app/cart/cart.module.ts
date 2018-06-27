@@ -21,6 +21,8 @@ import {CartOrderService} from "./cart-order/cart-order.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {BlCommonModule} from "../bl-common/bl-common.module";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { CartAgreementComponent } from './cart-agreement/cart-agreement.component';
+import {InfoModule} from "../info/info.module";
 
 @NgModule({
 	imports: [
@@ -30,7 +32,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 		CartRoutingModule,
 		ItemModule,
 		FontAwesomeModule,
-		BlCommonModule
+		BlCommonModule,
+		InfoModule
 	],
 	declarations: [
 		CartComponent,
@@ -39,7 +42,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 		CartPaymentDibsComponent,
 		CartCheckoutComponent,
 		CartEmptyComponent,
-		CartSummaryComponent
+		CartSummaryComponent,
+		CartAgreementComponent
 	],
 	providers: [
 		CartService,

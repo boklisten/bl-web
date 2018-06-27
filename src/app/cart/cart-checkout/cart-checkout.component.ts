@@ -26,6 +26,7 @@ export class CartCheckoutComponent implements OnInit {
 	public orderError: boolean;
 	public userEmailNotConfirmed: boolean;
 	public userDetailValid: boolean;
+	public agreementConfirmed: boolean;
 	public branch: Branch;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
@@ -42,6 +43,7 @@ export class CartCheckoutComponent implements OnInit {
 
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
+		this.agreementConfirmed = this._cartCheckoutService.agreementConfirmed;
 
 		this._cartPaymentService.orderShouldHavePayment = !(this.branch && this.branch.paymentInfo.responsible);
 
@@ -81,6 +83,12 @@ export class CartCheckoutComponent implements OnInit {
 
 			this.onUserDetailUpdate();
 		});
+	}
+
+	public onConfirmAgreement(agreed: boolean) {
+		this._cartCheckoutService.agreementConfirmed = agreed;
+		this.agreementConfirmed = this._cartCheckoutService.agreementConfirmed;
+		console.log('agreement confirmed', this.agreementConfirmed);
 	}
 
 	private onUserDetailUpdate() {
