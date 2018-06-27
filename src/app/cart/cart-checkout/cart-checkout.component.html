@@ -56,8 +56,9 @@
 
 <div class="row mt-4" *ngIf="(!showUserMustLogin && order && agreementConfirmed) || !needToConfirmAgreement()">
 	<div class="col-12">
-		<div class="row" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
-			<div class="col-12 bl-checkout-bar">
+
+		<div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
+			<div class="col-md-6 col-sm-12 col-12 bl-checkout-bar">
                 <ul class="nav nav-pills flex-row nav-justified">
                     <li class="nav-item" (click)="onPaymentDecicionChange('now')">
                         <a class="nav-link" [ngClass]="{'bl-nav-btn-active': paymentDecision === 'now'}">
