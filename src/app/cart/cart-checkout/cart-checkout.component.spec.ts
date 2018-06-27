@@ -92,6 +92,10 @@ class CartStubService {
 	onCartChange() {
 		return new Subject();
 	}
+
+	getCart() {
+		return [];
+	}
 }
 
 

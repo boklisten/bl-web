@@ -98,12 +98,24 @@ export class CartCheckoutComponent implements OnInit {
 	}
 
 
-	public isOnlyCustomerItems() {
+	public isOnlyCustomerItems(): boolean {
 		for (const cartItem of this._cartService.getCart()) {
 			if (!cartItem.customerItem) {
 				return false;
 			}
 		}
+		return true;
+	}
+
+	public needToConfirmAgreement(): boolean {
+		if (this.isOnlyCustomerItems()) {
+			return false;
+		}
+
+		if (!this._cartOrderService.doesOrderIncludeType('rent')) {
+			return false;
+		}
+
 		return true;
 	}
 

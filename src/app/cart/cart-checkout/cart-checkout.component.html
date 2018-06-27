@@ -48,13 +48,13 @@
 	</div>
 </div>
 
-<div class="row mt-2 justify-content-center">
+<div class="row mt-2 justify-content-center" *ngIf="needToConfirmAgreement()">
 	<div class="col-md-6 col-sm-12 col-12">
 		<app-cart-agreement [confirmed]="agreementConfirmed" (confirmedChange)="onConfirmAgreement($event)"></app-cart-agreement>
 	</div>
 </div>
 
-<div class="row mt-4" *ngIf="!showUserMustLogin && order && agreementConfirmed">
+<div class="row mt-4" *ngIf="(!showUserMustLogin && order && agreementConfirmed) || !needToConfirmAgreement()">
 	<div class="col-12">
 		<div class="row" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
 			<div class="col-12 bl-checkout-bar">

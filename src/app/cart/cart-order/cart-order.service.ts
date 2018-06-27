@@ -5,6 +5,7 @@ import {CartService} from "../cart.service";
 import {OrderService} from '@wizardcoder/bl-connect';
 import {UserService} from "../../user/user.service";
 import {AuthLoginService} from "@wizardcoder/bl-login";
+import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 
 @Injectable()
 export class CartOrderService {
@@ -36,6 +37,15 @@ export class CartOrderService {
 		this._authLoginService.onLogout().subscribe(() => {
 			this.clearOrder();
 		});
+	}
+
+	public doesOrderIncludeType(orderItemType: OrderItemType) {
+		for (const orderItem of this._currentOrder.orderItems) {
+			if (orderItem.type === orderItemType) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public setOrder(order: Order) {
