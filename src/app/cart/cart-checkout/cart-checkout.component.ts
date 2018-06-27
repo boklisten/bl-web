@@ -41,7 +41,7 @@ export class CartCheckoutComponent implements OnInit {
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
 
-		this._cartPaymentService.orderShouldHavePayment = (this.branch && this.branch.paymentInfo.responsible);
+		this._cartPaymentService.orderShouldHavePayment = !(this.branch && this.branch.paymentInfo.responsible);
 
 		if (!this._userService.loggedIn()) {
 			this.showUserMustLogin = true;
