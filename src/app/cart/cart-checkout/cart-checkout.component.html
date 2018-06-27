@@ -127,8 +127,9 @@
 
             <div class="col-12 bl-cart-pay-later" *ngIf="!showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutRetrieveItemsAtBranch">
-                        Retrieve the items at branch
+                    <div class="col-md-6 col-sm-12 col-12 text-secondary" >
+						<span i18n="@@cartCheckoutRetrieveItemsAtBranch">Retrieve the items at</span>
+						<b> {{branch.name}}</b>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
                         <button class="btn btn-block btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
