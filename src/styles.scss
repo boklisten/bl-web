@@ -45,9 +45,14 @@ a:visited {
 	color: inherit;
 }
 
+.bl-nav-btn-active {
+	border-bottom: solid 3px #26768f;
+	border-radius: 0;
+}
 
-
-
+.nav-pills .nav-link {
+	border-radius: 0 !important;
+}
 
 .bl-body {
 	background-color: #e3e3e3;

@@ -8,17 +8,20 @@
 					</div>
 					<div class="col-12">
 						<span class="font-weight-bold mr-2" i18n="@@footerInfoAddressTitle">Address:</span>
-						<span i18n="@@footerInfoAddressValue">Postboks 8, 1316 Eiksmarka</span>
+						<span i18n="@@footerInfoAddressValue">Postboks 8, 1316 Eiksmarka, Norway</span>
 					</div>
 					<div class="col-12">
 						<span class="font-weight-bold mr-2" i18n="@@footerInfoOrganizationNumberTitle">Organization number:</span>
 						<span i18n="@@footerInfoOrganizationNumberValue">912047385 MVA</span>
 					</div>
-                    <div class="col-12 mt-4">
+                    <div class="col-12 mt-2 mb-2">
 						<span i18n="@@footerCompanyName">Boklisten.no AS</span>
                         <fa-icon [icon]="['fa','copyright']" class="mr-2 ml-2"></fa-icon>
 						<span>{{getCurrentYear()}}</span>
                     </div>
+					<div class="col-12 mt-4" (click)="goToDibs()">
+						<img src="../../assets/dibs/img/DIBS_shop_vertical_EN_10.png" alt="DIBS - Payments made easy" width="200"/>
+					</div>
 
 					<div class="col-12 mt-5 mb-2">
                         <span class="bl-text-sm">

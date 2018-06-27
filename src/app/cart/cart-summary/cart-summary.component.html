@@ -20,7 +20,7 @@
 						Sum items
 					</div>
 					<div class="col-auto">
-						{{order.amount | blcPrice}}
+						{{order.amount | blcPrice:'international'}}
 					</div>
 				</div>
 				<div class="row justify-content-between" *ngIf="delivery.amount !== 0">
@@ -28,7 +28,7 @@
 						Shipment
 					</div>
 					<div class="col-auto">
-						{{delivery.amount | blcPrice}}
+						{{delivery.amount | blcPrice:'international'}}
 					</div>
 				</div>
 				<div class="row justify-content-between">
@@ -36,7 +36,7 @@
 						<small i18n="@@cartSummaryTaxAmount">Tax amount</small>
 					</div>
 					<div class="col-auto">
-						<small>{{0 | blcPrice}}</small>
+						<small>{{0 | blcPrice:'international'}}</small>
 					</div>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 						Total
 					</div>
 					<div class="col-auto font-weight-bold">
-						{{totalAmount() | blcPrice}}
+						{{totalAmount() | blcPrice:'international'}}
 					</div>
 				</div>
 			</div>

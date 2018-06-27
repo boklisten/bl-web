@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Order, Payment, Delivery, BlApiError, UserDetail} from '@wizardcoder/bl-model';
+import {Order, Payment, Delivery, BlApiError, UserDetail, Branch} from '@wizardcoder/bl-model';
 import {CartCheckoutService} from "./cart-checkout.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
@@ -25,6 +25,7 @@ export class CartCheckoutComponent implements OnInit {
 	public orderError: boolean;
 	public userEmailNotConfirmed: boolean;
 	public userDetailValid: boolean;
+	public branch: Branch;
 
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
@@ -35,16 +36,13 @@ export class CartCheckoutComponent implements OnInit {
 		this.userEmailNotConfirmed = false;
 		this.userDetailValid = false;
 
-		const branch = this._branchStoreService.getBranch();
-
-		if (branch && branch.paymentInfo.responsible) {
-			this._cartPaymentService.orderShouldHavePayment = false;
-		} else {
-			this._cartPaymentService.orderShouldHavePayment = true;
-		}
 	}
 
 	ngOnInit() {
+		this.branch = this._branchStoreService.getBranch();
+
+		this._cartPaymentService.orderShouldHavePayment = (this.branch && this.branch.paymentInfo.responsible);
+
 		if (!this._userService.loggedIn()) {
 			this.showUserMustLogin = true;
 			return;
@@ -57,9 +55,9 @@ export class CartCheckoutComponent implements OnInit {
 			}
 
 
-			const branch = this._branchStoreService.getBranch();
+			this.branch = this._branchStoreService.getBranch();
 
-			if (branch && branch.paymentInfo.responsible) {
+			if (this.branch && this.branch.paymentInfo.responsible) {
 				this.showPaymentDecision = false;
 			} else {
 				this.paymentDecision = 'now';
@@ -117,6 +115,7 @@ export class CartCheckoutComponent implements OnInit {
 
 	public onPaymentDecicionChange(decision: "now" | "later") {
 		if (decision === 'later') {
+			this.paymentDecision = 'later';
 			this._cartPaymentService.clear();
 			this._cartPaymentService.orderShouldHavePayment = false;
 
@@ -125,6 +124,7 @@ export class CartCheckoutComponent implements OnInit {
 
 			this.checkIfUserIsValid();
 		} else if (decision === 'now') {
+			this.paymentDecision = 'now';
 			this._cartPaymentService.clear();
 			this._cartPaymentService.orderShouldHavePayment = true;
 

@@ -1,5 +1,4 @@
 
-
 <div class="row" *ngIf="orderPlacedFailure">
 	<div class="col-12">
 		<ngb-alert [type]="'danger'">
@@ -43,22 +42,30 @@
 	</div>
 </div>
 
-<div class="row mt-2" *ngIf="!showUserMustLogin && order">
+<div class="row mt-5" *ngIf="!showUserMustLogin && order">
 	<div class="col-12">
-        <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()" id="paymentDecision">
-            <div class="col-auto">
-                <div class="btn-group btn-group-toggle btn-group-md" ngbRadioGroup name="radioBasic" [(ngModel)]="paymentDecision">
-                    <label ngbButtonLabel class="btn-outline-secondary">
-                        <input ngbButton type="radio" value="now" (click)="onPaymentDecicionChange('now')">
-						<span i18n="@@cartCheckoutOptionPayNow">Pay now</span>
-                    </label>
-                    <label ngbButtonLabel class="btn-outline-secondary">
-                        <input ngbButton type="radio" value="later" (click)="onPaymentDecicionChange('later')">
-						<span i18n="@@cartCheckoutOptionPayLater">Pay later</span>
-                    </label>
-                </div>
-            </div>
-        </div>
+		<div class="row" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
+			<div class="col-12 bl-checkout-bar">
+                <ul class="nav nav-pills flex-row nav-justified">
+                    <li class="nav-item" (click)="onPaymentDecicionChange('now')">
+                        <a class="nav-link" [ngClass]="{'bl-nav-btn-active': paymentDecision === 'now'}">
+							<span i18n="@@cartCheckoutOptionPayNow">Pay now</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" (click)="onPaymentDecicionChange('later')">
+                        <a class="nav-link" [ngClass]="{'bl-nav-btn-active': paymentDecision === 'later'}">
+							<span i18n="@@cartCheckoutOptionPayLater">Pay later</span>
+                        </a>
+                    </li>
+                </ul>
+			</div>
+		</div>
+
+		<div class="row mt-4 justify-content-center" *ngIf="paymentDecision === 'now'">
+			<div class="col-auto">
+				<img src="../../../assets/dibs/img/DIBS_shop_vertical_EN_10.png" alt="DIBS - Payments made easy" width="200"/>
+			</div>
+		</div>
 
         <div class="row mt-4" *ngIf="showPaymentDecision && paymentDecision === 'now'" id="payNow">
             <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt-lg-0 mt-md-2 mt-sm-2 mt-2" *ngIf="!isOnlyCustomerItems()">
@@ -92,11 +99,14 @@
 
             <div class="col-12 bl-cart-pay-later" *ngIf="showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutPayLaterInfo">
-                        Pay <b>{{getPrice()}} kr</b> later at branch
+                    <div class="col-md-6 col-sm-12 col-12 text-secondary">
+						<span i18n="@@cartCheckoutPay">Pay</span>
+						<b> {{getPrice() | blcPrice}} </b>
+						<span i18n="@@cartCheckoutLaterAt">later at</span>
+						<b *ngIf="branch"> {{branch.name}}</b>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
-                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
+                        <button class="btn btn-block btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>
@@ -109,7 +119,7 @@
                         Retrieve the items at branch
                     </div>
                     <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
-                        <button class="btn btn-block btn-lg btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
+                        <button class="btn btn-block btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>
