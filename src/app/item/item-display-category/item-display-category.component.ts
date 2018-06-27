@@ -16,6 +16,8 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	branchItems: BranchItem[];
 	branchItemCategories: {name: string, branchItems: BranchItem[]}[];
 	branchItemCategoryNames: string[];
+	loading: boolean;
+	noItemsWarning: boolean;
 
 	constructor(private _itemService: ItemService, private _branchItemService: BranchItemService) {
 		this.selectedBranchItemCategories = [];
@@ -26,17 +28,32 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.noItemsWarning = false;
+
 		if (this.branch) {
-			this._branchItemService.getManyByIds(this.branch.branchItems).then((branchItems: BranchItem[]) => {
-				this.branchItems = branchItems;
+			if (!this.branch.branchItems || this.branch.branchItems.length <= 0) {
+				this.noItemsWarning = true;
+			} else {
+				this.loading = true;
+				this._branchItemService.getManyByIds(this.branch.branchItems).then((branchItems: BranchItem[]) => {
+					this.branchItems = branchItems;
 
-				for (const branchItem of this.branchItems) {
-					this.addBranchItemToCategory(branchItem);
-				}
+					for (const branchItem of this.branchItems) {
+						this.addBranchItemToCategory(branchItem);
+					}
 
-			}).catch((getBranchItemError) => {
-				console.log('ItemDisplayCategoryComponent: could not get branch items');
-			});
+					this.loading = false;
+
+					if (this.branchItemCategoryNames.length <= 0) {
+						this.noItemsWarning = true;
+					}
+
+				}).catch((getBranchItemError) => {
+					console.log('ItemDisplayCategoryComponent: could not get branch items');
+					this.loading = false;
+					this.noItemsWarning = true;
+				});
+			}
 		}
 	}
 

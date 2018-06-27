@@ -12,6 +12,11 @@ class ItemDisplayStubComponent {
 	@Input() branchItem;
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading: boolean;
+}
+
 @Component({selector: 'app-branch-item-category-filter', template: ''})
 class BranchItemCategoryFilterStubComponent {
 	@Input() branchItemCategories;
@@ -67,7 +72,8 @@ describe('ItemDisplayCategoryComponent', () => {
 				ItemDisplayCategoryComponent,
 				ItemDisplayStubComponent,
 				BranchItemCategoryFilterStubComponent,
-				NgbAlertStubComponent
+				NgbAlertStubComponent,
+				BlcSpinnerStubComponent
 			],
 			providers: [
 				{provide: ItemService, useValue: new ItemStubService()},
