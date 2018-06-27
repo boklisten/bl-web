@@ -19,8 +19,7 @@ export class FooterComponent implements OnInit {
 	}
 
 	goToDibs() {
-		//window.location.href = 'https://www.dibs.se';
-		window.open('https://www.dibs.se', '_blank');
+		window.open('https://www.dibs.no', '_blank');
 	}
 
 }
