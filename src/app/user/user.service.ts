@@ -36,11 +36,13 @@ export class UserService {
 	}
 
 	public updateUserDetail(data: any) {
-		this._userDetailService.update(this._userDetail.id, data).then((updatedUserDetail: UserDetail) => {
-			this.setUserDetail(updatedUserDetail);
-		}).catch((updateUserDetailError: BlApiError) => {
-			console.log('userService: could not update userDetail', updateUserDetailError);
-		});
+		if (this.loggedIn()) {
+			this._userDetailService.update(this._userDetail.id, data).then((updatedUserDetail: UserDetail) => {
+				this.setUserDetail(updatedUserDetail);
+			}).catch((updateUserDetailError: BlApiError) => {
+				console.log('userService: could not update userDetail', updateUserDetailError);
+			});
+		}
 	}
 
 	public setUserDetail(userDetail: UserDetail) {
