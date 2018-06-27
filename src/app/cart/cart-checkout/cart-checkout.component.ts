@@ -88,7 +88,6 @@ export class CartCheckoutComponent implements OnInit {
 	public onConfirmAgreement(agreed: boolean) {
 		this._cartCheckoutService.agreementConfirmed = agreed;
 		this.agreementConfirmed = this._cartCheckoutService.agreementConfirmed;
-		console.log('agreement confirmed', this.agreementConfirmed);
 	}
 
 	private onUserDetailUpdate() {

@@ -40,6 +40,10 @@ export class CartOrderService {
 	}
 
 	public doesOrderIncludeType(orderItemType: OrderItemType) {
+		if (!this._currentOrder) {
+			return false;
+		}
+
 		for (const orderItem of this._currentOrder.orderItems) {
 			if (orderItem.type === orderItemType) {
 				return true;
