@@ -1,8 +1,10 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {CartPaymentService} from "./cart-payment.service";
 import {Payment } from "@wizardcoder/bl-model";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
+import {Observable} from "rxjs/internal/Observable";
+import {Subscription} from "rxjs/internal/Subscription";
 
 
 @Component({
@@ -10,7 +12,7 @@ import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 	templateUrl: './cart-payment.component.html',
 	styleUrls: ['./cart-payment.component.scss']
 })
-export class CartPaymentComponent implements OnInit {
+export class CartPaymentComponent implements OnInit, OnDestroy {
 
 
 	public showDibsPayment: boolean;
@@ -18,6 +20,7 @@ export class CartPaymentComponent implements OnInit {
 	public currentPayment: Payment;
 	private dibsCheckoutChild: any;
 	public failure: boolean;
+	private paymentChange$: Subscription;
 
 	constructor(private _cartPaymentService: CartPaymentService, private _cartOrderService: CartOrderService,
 				private _cartDeliveryService: CartDeliveryService) {
@@ -35,7 +38,8 @@ export class CartPaymentComponent implements OnInit {
 			this.removeDibsCheckout();
 		}
 
-		this._cartPaymentService.onPaymentChange().subscribe(() => {
+
+		this.paymentChange$ = this._cartPaymentService.onPaymentChange().subscribe(() => {
 			this.failure = false;
 			this.currentPayment = this._cartPaymentService.getPayment();
 			if (this.currentPayment.method === 'dibs') {
@@ -46,6 +50,11 @@ export class CartPaymentComponent implements OnInit {
 		this._cartDeliveryService.onDeliveryFailure().subscribe(() => {
 			this.failure = true;
 		});
+	}
+
+	ngOnDestroy() {
+		this.paymentChange$.unsubscribe();
+		this.removeDibsCheckout();
 	}
 
 	private removeDibsCheckout() {

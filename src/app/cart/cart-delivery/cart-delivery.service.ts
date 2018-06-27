@@ -3,7 +3,7 @@ import {DeliveryService} from '@wizardcoder/bl-connect';
 import {Delivery, Order, DeliveryMethod} from '@wizardcoder/bl-model';
 import {Subject, Observable} from "rxjs";
 import {CartService} from "../cart.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 
 @Injectable()
 export class CartDeliveryService {

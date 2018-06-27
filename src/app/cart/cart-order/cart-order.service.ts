@@ -52,31 +52,12 @@ export class CartOrderService {
 		return this._orderChange$;
 	}
 
-
-	public onOrderError(): Observable<string> {
-		return this._orderError$;
-	}
-
-	public updateOrderWithNoPayments() {
-		this._orderService.update(this._currentOrder.id, {payments: []}).then((updatedOrder: Order) => {
-			this.setOrder(updatedOrder);
-		}).catch((blApiErr: BlApiError) => {
-			this._orderError$.next('cartOrderService: could not patch order: ' + blApiErr);
-		});
-	}
-
 	private onCartChange() {
 		this._cartService.onCartChange().subscribe(() => {
 			if (this._cartService.getSize() > 0) {
 				this.createOrder();
 			}
 		});
-	}
-
-	private onLogin() {
-	}
-
-	private onLogout() {
 	}
 
 	private createOrder() {

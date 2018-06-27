@@ -17,7 +17,7 @@ import {CartDeliveryService} from "./cart-delivery/cart-delivery.service";
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import {CartCheckoutService} from "./cart-checkout/cart-checkout.service";
 import { CartEmptyComponent } from './cart-empty/cart-empty.component';
-import {CartOrderService} from "./order/cart-order.service";
+import {CartOrderService} from "./cart-order/cart-order.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {BlCommonModule} from "../bl-common/bl-common.module";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';

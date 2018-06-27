@@ -4,7 +4,7 @@ import {Order, BlApiError} from '@wizardcoder/bl-model';
 import {OrderService} from '@wizardcoder/bl-connect';
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {UserService} from "../../user/user.service";
 import {Router} from "@angular/router";
 

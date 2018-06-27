@@ -4,7 +4,7 @@ import {CartCheckoutService} from './cart-checkout.service';
 import {Injectable} from "@angular/core";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {OrderService} from "@wizardcoder/bl-connect";
 import {CartService} from "../cart.service";
 import {UserService} from "../../user/user.service";

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Order, Payment, Delivery, BlApiError, UserDetail} from '@wizardcoder/bl-model';
 import {CartCheckoutService} from "./cart-checkout.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
@@ -117,13 +117,17 @@ export class CartCheckoutComponent implements OnInit {
 
 	public onPaymentDecicionChange(decision: "now" | "later") {
 		if (decision === 'later') {
+			this._cartPaymentService.clear();
 			this._cartPaymentService.orderShouldHavePayment = false;
 
 			this._cartDeliveryService.setBranchDelivery();
-
 			this._cartOrderService.reloadOrder();
+
 			this.checkIfUserIsValid();
 		} else if (decision === 'now') {
+			this._cartPaymentService.clear();
+			this._cartPaymentService.orderShouldHavePayment = true;
+
 			this._cartOrderService.reloadOrder();
 		}
 	}

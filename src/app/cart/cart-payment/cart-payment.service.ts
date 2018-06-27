@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {PaymentService} from "@wizardcoder/bl-connect";
 import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "@wizardcoder/bl-model";
 import {Subject} from "rxjs";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {Observable} from "rxjs/internal/Observable";
@@ -43,13 +43,19 @@ export class CartPaymentService {
 			this._currentDelivery = delivery;
 
 			if (this.orderShouldHavePayment) {
-			}
 				this.createPayment();
+			}
 		});
 	}
 
 	public onPaymentChange() {
 		return this.paymentChange$;
+	}
+
+	public clear() {
+		this._currentPayment = null;
+		this._currentOrder = null;
+		this._currentDelivery = null;
 	}
 
 
@@ -68,20 +74,6 @@ export class CartPaymentService {
 			console.log('paymentService: could not add payment');
 		});
 
-	}
-
-	private updatePayment(order: Order, delivery?: Delivery) {
-		if (!this._currentPayment) {
-			return;
-		}
-
-		const paymentPatch = this.createDibsPayment(order, delivery);
-
-		this._paymentService.update(this._currentPayment.id, paymentPatch).then((updatedPayment: Payment) => {
-			this.setPayment(updatedPayment);
-		}).catch((updatePaymentError) => {
-			console.log('cartPaymentService: could not update payment', updatePaymentError);
-		});
 	}
 
 	private setPayment(payment: Payment) {

@@ -8,6 +8,7 @@ import {Payment} from "@wizardcoder/bl-model";
 import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
+import {Subscription} from "rxjs/internal/Subscription";
 
 
 declare var Dibs: any;
@@ -28,6 +29,8 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	payment: Payment;
 	alert: boolean;
 
+	private paymentChange$: Subscription;
+
 
 	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router) {
 		this.alert = false;
@@ -44,7 +47,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 			}
 		}
 
-		this._cartPaymentService.onPaymentChange().subscribe(() => {
+		this.paymentChange$ = this._cartPaymentService.onPaymentChange().subscribe(() => {
 			this.alert = false;
 			this.payment = this._cartPaymentService.getPayment();
 			if (this.payment.method === 'dibs') {
@@ -75,6 +78,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	ngOnDestroy() {
+		this.paymentChange$.unsubscribe();
 	}
 
 	ngAfterViewInit() {

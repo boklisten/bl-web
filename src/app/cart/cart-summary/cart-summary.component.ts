@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {Delivery, Order} from "@wizardcoder/bl-model";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 

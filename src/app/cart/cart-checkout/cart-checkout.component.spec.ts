@@ -4,7 +4,7 @@ import {CartCheckoutComponent} from './cart-checkout.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {CartCheckoutService} from "./cart-checkout.service";
-import {CartOrderService} from "../order/cart-order.service";
+import {CartOrderService} from "../cart-order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
 import {CartPaymentService} from "../cart-payment/cart-payment.service";
