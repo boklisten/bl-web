@@ -64,7 +64,6 @@ export class UserService {
 
 	public logout(): Promise<boolean> {
 		this._authService.logout('/welcome');
-		//this._tokenService.removeTokens();
 		return Promise.resolve(true);
 	}
 
