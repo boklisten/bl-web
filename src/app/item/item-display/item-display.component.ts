@@ -37,7 +37,8 @@ export class ItemDisplayComponent implements OnInit {
 				private _userService: UserService,
 				private _userCustomerItemService: UserCustomerItemService,
 				private _userOrderService: UserOrderService,
-				private _itemService: ItemService) {
+				private _itemService: ItemService,
+				private _cartService: CartService) {
 		this.customerItemActive = false;
 		this.view = false;
 		this.showAdd = false;
@@ -76,12 +77,19 @@ export class ItemDisplayComponent implements OnInit {
 
 		this._userOrderService.alreadyHaveOrderedItem(itemId).then((haveOrdered: boolean) => {
 			this.alreadyOrdered = haveOrdered;
+
+			if (haveOrdered) {
+				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
+			}
 		}).catch((err) => {
 			console.log('UserOrderService: could not check if user already have item', err);
 		});
 
 		this._userCustomerItemService.alreadyHaveItem(itemId).then((haveItem: boolean) => {
 			this.alreadyHaveItem = haveItem;
+			if (haveItem) {
+				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
+			}
 		}).catch((err) => {
 			console.log('UserOrderService: could not check if user already have customer item', err);
 		});

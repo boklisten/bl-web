@@ -9,6 +9,7 @@ import {UserService} from "../../user/user.service";
 import {ItemService} from "@wizardcoder/bl-connect";
 import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
 import {UserOrderService} from "../../user/order/user-order/user-order.service";
+import {CartService} from "../../cart/cart.service";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -17,6 +18,11 @@ class FaIconStubComponent {
 
 @Injectable()
 class UserCustomerItemStubService {
+
+}
+
+@Injectable()
+class CartStubService {
 
 }
 
@@ -95,7 +101,8 @@ describe('ItemDisplayComponent', () => {
 				{provide: UserService, useValue: new UserStubService()},
 				{provide: ItemService, useValue: new ItemStubService()},
 				{provide: UserCustomerItemService, useClass: UserCustomerItemStubService},
-				{provide: UserOrderService, useClass: UserOrderStubService}
+				{provide: UserOrderService, useClass: UserOrderStubService},
+				{provide: CartService, useClass: CartStubService}
 			],
 			imports: [
 				RouterModule
