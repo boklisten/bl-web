@@ -21,12 +21,11 @@ export class UserItemComponent implements OnInit {
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			this._customerItemService.getManyByIds(userDetail.customerItems).then((customerItems: CustomerItem[]) => {
 				this.customerItems = customerItems;
-				console.log('got the customer items', this.customerItems);
 			}).catch((customerItemsError: BlApiError) => {
 				console.log('userItemComponent: could not get customerItems', customerItemsError);
 			});
 		}).catch((blApiErr: BlApiError) => {
-			console.log('the error', blApiErr);
+			console.log('UserItemComponent: could not get items: ', blApiErr);
 		});
 	}
 
