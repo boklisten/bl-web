@@ -54,7 +54,7 @@
                                 <app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)"></app-item-type-select>
                             </div>
 
-                            <div class="col-md-4 col-sm-12 col-6" [ngClass]="{'col-md-12 col-sm-12 col-12': getPrice() === 0}">
+                            <div class="col-md-4 col-sm-12 col-6" [ngClass]="{'col-12': getPrice() === 0}">
                                 <app-item-add *ngIf="showAdd" [item]="item" [type]="orderItemType" [branchItem]="branchItem"></app-item-add>
                             </div>
 						</div>
