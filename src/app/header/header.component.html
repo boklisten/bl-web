@@ -1,24 +1,27 @@
 <div class="bl-header container-fluid">
 	<div class="row no-gutters align-items-center justify-content-between">
 
-		<div class="col-md-5 col-sm-4 col-xs-4 col-3 bl-logo" (click)="onMenuItemClick('home')">
+		<div class="col-md-5 col-sm-3 col-3 bl-logo" (click)="onMenuItemClick('home')">
 			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="60" width="60" class="d-sm-inline d-none" i18n-title="@@headerBoklistenLogoAlt" title="Boklisten.no logo">
 			<img src="../../assets/img/boklisten_logo_v2_icon_white_lg.png" height="40" width="40" class="d-sm-none d-inline">
-			<b class="bl-logo-text d-none d-lg-inline-block" i18n="@@headerCompanyName">Boklisten.no</b>
+			<b class="bl-logo-text d-none d-md-inline-block d-lg-inline-block" i18n="@@headerCompanyName">Boklisten.no</b>
 		</div>
 
-		<div class="col-md-5 col-sm-8 col-xs-8 col-9  bl-header-buttons ">
+		<div class="col-md-5 col-sm-9 col-9 bl-header-buttons ">
 			<div class="row no-gutters justify-content-sm-between justify-content-end">
 				<div class="col-3 d-sm-inline d-none">
 					<fa-icon [icon]="'info-circle'" size="2x" class="bl-header-button" (click)="onMenuItemClick('info')"></fa-icon>
 				</div>
-				<div class="col-sm-auto col-4">
+
+				<div class="col-sm-3 col-4">
 					<fa-icon [icon]="'book'" size="2x" class="bl-header-button" (click)="onMenuItemClick('items')"></fa-icon>
 				</div>
+
 				<div class="col-sm-3 col-4" (click)="onMenuItemClick('cart')">
 					<app-header-cart></app-header-cart>
 				</div>
-				<div class="col-4 d-md-none d-sm-inline d-inline" (click)="onMenuClick()">
+
+				<div class="col-sm-3 col-4 d-md-none d-sm-inline d-inline" (click)="onMenuClick()">
 					<fa-icon
 						*ngIf="!showMenu"
 						[icon]="'bars'"
@@ -32,14 +35,14 @@
 						class="bl-header-button">
 					</fa-icon>
 				</div>
-				<div class="col-4 d-md-inline d-sm-none d-none">
+
+				<div class="col-3 d-md-inline d-sm-none d-none">
                     <div ngbDropdown class="d-inline-block">
 						<fa-icon [icon]="'bars'" [size]="'2x'" id="dropdownBasic10" ngbDropdownToggle (click)="onMenuClick()"></fa-icon>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic10">
                             <app-user-menu [(showMenu)]="showMenu"></app-user-menu>
                         </div>
                     </div>
-
 				</div>
 			</div>
 		</div>
