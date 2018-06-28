@@ -52,36 +52,35 @@ export class CartCheckoutComponent implements OnInit {
 			return;
 		}
 
+		this.branch = this._branchStoreService.getBranch();
+
+		if (this.branch && this.branch.paymentInfo.responsible) {
+			this.showPaymentDecision = false;
+		} else {
+			this.paymentDecision = this._cartCheckoutService.paymentDecision;
+			this.showPaymentDecision = true;
+		}
+
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			if (!userDetail.emailConfirmed) {
 				this.userEmailNotConfirmed = true;
 				return;
 			}
 
-
-			this.branch = this._branchStoreService.getBranch();
-
-			if (this.branch && this.branch.paymentInfo.responsible) {
-				this.showPaymentDecision = false;
-			} else {
-				this.paymentDecision = 'now';
-				this.showPaymentDecision = true;
-			}
-
-			this.order = this._cartOrderService.getOrder();
-
-			if (!this.order) {
-				this.orderError = true;
-			}
-
-			this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-				this.orderError = false;
-				this.order = order;
-			});
-
 			this.checkIfUserIsValid();
+		});
 
-			this.onUserDetailUpdate();
+		this.onUserDetailUpdate();
+
+		this.order = this._cartOrderService.getOrder();
+
+		if (!this.order) {
+			this.orderError = true;
+		}
+
+		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
+			this.orderError = false;
+			this.order = order;
 		});
 	}
 
@@ -145,8 +144,10 @@ export class CartCheckoutComponent implements OnInit {
 	}
 
 	public onPaymentDecicionChange(decision: "now" | "later") {
-		if (decision === 'later') {
-			this.paymentDecision = 'later';
+		this.paymentDecision = decision;
+		this._cartCheckoutService.paymentDecision = this.paymentDecision;
+
+		if (this.paymentDecision === 'later') {
 			this._cartPaymentService.clear();
 			this._cartPaymentService.orderShouldHavePayment = false;
 
@@ -154,7 +155,7 @@ export class CartCheckoutComponent implements OnInit {
 			this._cartOrderService.reloadOrder();
 
 			this.checkIfUserIsValid();
-		} else if (decision === 'now') {
+		} else if (this.paymentDecision === 'now') {
 			this.paymentDecision = 'now';
 			this._cartPaymentService.clear();
 			this._cartPaymentService.orderShouldHavePayment = true;

@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class CartCheckoutService {
 	public agreementConfirmed: boolean;
+	public paymentDecision: 'now' | 'later';
 
 	constructor(private _cartDeliveryService: CartDeliveryService, private _cartPaymentService: CartPaymentService,
 				private _cartOrderService: CartOrderService, private _orderService: OrderService, private _cartService: CartService,
@@ -18,9 +19,12 @@ export class CartCheckoutService {
 
 		this.agreementConfirmed = false;
 
+		this.paymentDecision  = 'now'; // default
+
 		this._cartService.onCartChange().subscribe(() => {
 			if (this._cartService.getSize() <= 0) {
 				this.agreementConfirmed = false;
+				this.paymentDecision = 'now';
 			}
 		});
 	}

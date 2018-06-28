@@ -92,33 +92,6 @@ export class UserService {
 		});
 	}
 
-	public getUserBranchId(): string {
-		if (this._userDetail) {
-			return this._userDetail.branch;
-		}
-	}
-
-	public getUserName(): string {
-		if (!this._tokenService.haveAccessToken()) {
-			return '';
-		}
-		return this._tokenService.getAccessTokenBody().username;
-	}
-
-	public getUserId(): string {
-		if (!this._tokenService.haveAccessToken()) {
-			return '';
-		}
-		return this._tokenService.getAccessTokenBody().sub;
-	}
-
-	public getPermission(): UserPermission {
-		if (!this._tokenService.haveAccessToken()) {
-			return;
-		}
-		return this._tokenService.getAccessTokenBody().permission;
-	}
-
 	public getUserDetail(): Promise<UserDetail> {
 		if (this._userDetail) {
 			return Promise.resolve(this._userDetail);
@@ -153,6 +126,7 @@ export class UserService {
 		if (!this.loggedIn()) {
 			return Promise.reject(new BlError('user is not logged in'));
 		}
+
 		return new Promise((resolve, reject) => {
 			this.getCustomerItems().then((customerItems: CustomerItem[]) => {
 				for (const customerItem of customerItems) {
@@ -204,5 +178,4 @@ export class UserService {
 			});
 		});
 	}
-
 }
