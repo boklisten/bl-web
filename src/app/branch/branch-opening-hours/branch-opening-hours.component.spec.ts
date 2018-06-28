@@ -32,6 +32,11 @@ class DateStubService {
 
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading;
+}
+
 
 
 
@@ -47,7 +52,8 @@ describe('BranchOpeningHoursComponent', () => {
 			declarations: [
 				BranchOpeningHoursComponent,
 				FaIconComponent,
-				BlcDateStubPipe
+				BlcDateStubPipe,
+				BlcSpinnerStubComponent
 			],
 			imports: [],
 			providers: [

@@ -11,7 +11,7 @@ import {DateService} from "../../date/date.service";
 })
 export class BranchOpeningHoursComponent implements OnInit, OnChanges {
 	@Input() branch: Branch;
-
+	public loading: boolean;
 	public openingHours: OpeningHour[];
 
 	constructor(private _branchOpeningHoursService: BranchOpeningHoursService, private _dateService: DateService) {
@@ -22,10 +22,20 @@ export class BranchOpeningHoursComponent implements OnInit, OnChanges {
 	}
 
 	ngOnChanges() {
+		this.openingHours = [];
+
+		if (!this.branch || !this.branch.openingHours || this.branch.openingHours.length <= 0) {
+			return;
+		}
+
+		this.loading = true;
+
 		this._branchOpeningHoursService.getOpeningHours(this.branch).then((openingHours: OpeningHour[]) => {
 			this.openingHours = openingHours;
+			this.loading = false;
 		}).catch(() => {
 			console.log('there was an error getting opening hours');
+			this.loading = false;
 		});
 	}
 

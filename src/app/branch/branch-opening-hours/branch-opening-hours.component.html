@@ -2,11 +2,15 @@
 	<div class="card-header">
 		<span class="font-weight-bold text-secondary" i18n="@@branchOpeningHoursTitle">Opening hours</span>
 	</div>
-	<div class="card-body" *ngIf="!openingHours || openingHours.length <= 0">
-        <div class="mt-5 alert alert-secondary" >
+
+	<app-blc-spinner [loading]="loading"></app-blc-spinner>
+
+	<div class="card-body" *ngIf="(!openingHours || openingHours.length <= 0) && !loading">
+        <div class="alert alert-secondary" >
             <span i18n="@@branchOpeningHoursNotFound">No opening hours found</span>
         </div>
 	</div>
+
 
 	<ul class="list-group list-group-flush" *ngIf="openingHours && openingHours.length > 0">
 		<li class="list-group-item" *ngFor="let openingHour of openingHours">
