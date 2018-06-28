@@ -33,6 +33,7 @@ import {WelcomeModule} from "./welcome/welcome.module";
 import { HeaderUserDetailAlertComponent } from './header-alert/header-user-detail-alert/header-user-detail-alert.component';
 import {HeaderAlertModule} from "./header-alert/header-alert.module";
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -61,7 +62,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		InfoModule,
 		FontAwesomeModule,
 		WelcomeModule,
-		HeaderAlertModule
+		HeaderAlertModule,
+		NgbDropdownModule
 	],
 	providers: [
 		BranchGuardService

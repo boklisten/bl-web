@@ -7,7 +7,7 @@
 	border-bottom: 2px solid $secondary-color;
 	position: fixed;
 	top: 0;
-	overflow: hidden;
+	overflow: visible;
 	width: 100%;
 	z-index: 9999;
 }
@@ -52,16 +52,4 @@
 .bl-header-buttons {
 	text-align: center;
 	color: #283d3b;
-}
-
-.bl-header-menu {
-	background-color: #8491a2;
-	margin-bottom: 10px;
-	padding-top: 30px;
-	height: 150vh;
-	margin-top: 40px;
-}
-
-.bl-header-menu-name {
-	font-size: 20px;
 }

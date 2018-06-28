@@ -1,0 +1,132 @@
+<div class="row d-md-none d-sm-inline d-inline" *ngIf="showMenu">
+    <div class="col-12">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action" (click)="onMenuItemClick('info')">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'info-circle'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuGeneralInfo">General info</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item list-group-item-action" (click)="onMenuItemClick('branch')" *ngIf="isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'graduation-cap'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuSchoolInfo">School info</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-items')" *ngIf="isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'book-open'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuYourItems">Your items</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-orders')" *ngIf="isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'receipt'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuOrderHistory">Order history</span>
+                    </div>
+                </div>
+            </li>
+            <li class="mt-4 list-group-item list-group-item-action bg-secondary text-white" (click)="onMenuItemClick('user-settings')" *ngIf="isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'user-cog'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuUserSettings">User setting</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item list-group-item-action bg-danger text-white" (click)="onMenuItemClick('logout')" *ngIf="isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'sign-out-alt'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuLogout">Logout</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="mt-2 list-group-item list-group-item-action bg-info text-white" (click)="onMenuItemClick('register')" *ngIf="!isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'user-plus'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuRegister">Register</span>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item list-group-item-action bg-success text-white" (click)="onMenuItemClick('login')" *ngIf="!isLoggedIn()">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <span><fa-icon [icon]="'sign-in-alt'"></fa-icon></span>
+                    </div>
+                    <div class="col-8">
+                        <span class="bl-header-menu-name" i18n="@@headerMenuLogin">Login</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="d-md-inline d-sm-none d-none" *ngIf="showMenu">
+	<button class="dropdown-item" *ngIf="isLoggedIn()" (click)="onMenuItemClick('user-items')">
+        <span class="mr-2"><fa-icon [icon]="'book-open'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuYourItems">Your items</span>
+    </button>
+
+	<button class="dropdown-item" *ngIf="isLoggedIn()" (click)="onMenuItemClick('user-orders')">
+        <span class="mr-2"><fa-icon [icon]="'receipt'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuOrderHistory">Order history</span>
+    </button>
+
+	<button class="dropdown-item" *ngIf="isLoggedIn()" (click)="onMenuItemClick('user-settings')">
+        <span class="mr-2"><fa-icon [icon]="'user-cog'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuUserSettings">User setting</span>
+    </button>
+
+	<button class="dropdown-item mt-2" (click)="onMenuItemClick('info')">
+		<span class="mr-2"><fa-icon [icon]="'info-circle'"></fa-icon></span>
+		<span class="bl-header-menu-name" i18n="@@headerMenuGeneralInfo">General info</span>
+    </button>
+
+	<button class="dropdown-item" (click)="onMenuItemClick('branch')">
+        <span class="mr-2"><fa-icon [icon]="'graduation-cap'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuSchoolInfo">School info</span>
+    </button>
+
+	<button class="dropdown-item bg-danger text-white mt-2" *ngIf="isLoggedIn()" (click)="onMenuItemClick('logout')">
+        <span class="mr-2"><fa-icon [icon]="'sign-out-alt'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuLogout">Logout</span>
+    </button>
+
+	<button class="dropdown-item bg-primary text-white mt-2" *ngIf="!isLoggedIn()" (click)="onMenuItemClick('register')">
+        <span class="mr-2"><fa-icon [icon]="'user-plus'"></fa-icon></span>
+        <span class="bl-header-menu-name" i18n="@@headerMenuRegister">Register</span>
+    </button>
+
+    <button class="dropdown-item bg-success text-white" *ngIf="!isLoggedIn()" (click)="onMenuItemClick('login')">
+		<span class="mr-2"><fa-icon [icon]="'sign-in-alt'"></fa-icon></span>
+		<span class="bl-header-menu-name" i18n="@@headerMenuLogin">Login</span>
+    </button>
+
+
+</div>

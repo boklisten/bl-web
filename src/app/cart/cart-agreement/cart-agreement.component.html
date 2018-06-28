@@ -22,7 +22,7 @@
 				<fa-icon [icon]="'check'" class="mr-2 text-success"></fa-icon>
 				<span i18n="@@cartAgreementYouHaveAgreed">You have agreed to our rent agreement</span>
 			</div>
-			<div class="col-md-auto col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2 text-secondary text-center" (click)="onShowAgreement()">
+			<div class="col-md-auto col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2 text-secondary text-center bl-pointer" (click)="onShowAgreement()">
 				<span *ngIf="!showAgreement">
                     <fa-icon [icon]="'angle-double-down'" class="mr-2"></fa-icon>
                     <span i18n="@@cartAgreementShow">Show</span>

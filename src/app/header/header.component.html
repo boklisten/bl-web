@@ -18,10 +18,7 @@
 				<div class="col-sm-3 col-4" (click)="onMenuItemClick('cart')">
 					<app-header-cart></app-header-cart>
 				</div>
-				<div class="col-3 d-sm-inline d-none">
-					<fa-icon [icon]="'bars'" size="2x" class="bl-header-button" (click)="onMenuItemClick('user-home')"></fa-icon>
-				</div>
-				<div class="col-4 d-sm-none d-inline" (click)="onMenuClick()">
+				<div class="col-4 d-md-none d-sm-inline d-inline" (click)="onMenuClick()">
 					<fa-icon
 						*ngIf="!showMenu"
 						[icon]="'bars'"
@@ -35,100 +32,20 @@
 						class="bl-header-button">
 					</fa-icon>
 				</div>
-			</div>
+				<div class="col-4 d-md-inline d-sm-none d-none">
+                    <div ngbDropdown class="d-inline-block">
+						<fa-icon [icon]="'bars'" [size]="'2x'" id="dropdownBasic10" ngbDropdownToggle (click)="onMenuClick()"></fa-icon>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic10">
+                            <app-user-menu [(showMenu)]="showMenu"></app-user-menu>
+                        </div>
+                    </div>
 
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="container-fluid bl-header-menu" *ngIf="showMenu">
-	<div class="row">
-		<div class="col-12">
-			<ul class="list-group">
-				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('info')">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'info-circle'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuGeneralInfo">General info</span>
-						</div>
-					</div>
-				</li>
-				<li class="list-group-item list-group-item-action" (click)="onMenuItemClick('branch')" *ngIf="isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'graduation-cap'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuSchoolInfo">School info</span>
-						</div>
-					</div>
-				</li>
-
-				<li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-items')" *ngIf="isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'book-open'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuYourItems">Your items</span>
-						</div>
-					</div>
-				</li>
-				<li class="list-group-item list-group-item-action bg-light" (click)="onMenuItemClick('user-orders')" *ngIf="isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'receipt'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuOrderHistory">Order history</span>
-						</div>
-					</div>
-				</li>
-				<li class="mt-4 list-group-item list-group-item-action bg-secondary text-white" (click)="onMenuItemClick('user-settings')" *ngIf="isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'user-cog'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuUserSettings">User setting</span>
-						</div>
-					</div>
-				</li>
-				<li class="list-group-item list-group-item-action bg-danger text-white" (click)="onMenuItemClick('logout')" *ngIf="isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'sign-out-alt'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuLogout">Logout</span>
-						</div>
-					</div>
-				</li>
-
-				<li class="mt-2 list-group-item list-group-item-action bg-info text-white" (click)="onMenuItemClick('register')" *ngIf="!isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'user-plus'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuRegister">Register</span>
-						</div>
-					</div>
-				</li>
-				<li class="list-group-item list-group-item-action bg-success text-white" (click)="onMenuItemClick('login')" *ngIf="!isLoggedIn()">
-					<div class="row align-items-center">
-						<div class="col-4">
-							<span><fa-icon [icon]="'sign-in-alt'" size="2x"></fa-icon></span>
-						</div>
-						<div class="col-8">
-							<span class="bl-header-menu-name" i18n="@@headerMenuLogin">Login</span>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
+	<div class="d-md-none d-sm-inline d-inline">
+		<app-user-menu [(showMenu)]="showMenu"></app-user-menu>
 	</div>
 </div>
 

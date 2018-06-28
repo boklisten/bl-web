@@ -1,10 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HeaderComponent} from './header.component';
-import {Component, Injectable, Input} from "@angular/core";
+import {Component, EventEmitter, Injectable, Input, Output} from "@angular/core";
 import {Router} from "@angular/router";
 import {BranchStoreService} from "../branch/branch-store.service";
 import {UserService} from "../user/user.service";
+import {NgbDropdownConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Injectable()
 class RouterStub {
@@ -30,11 +31,23 @@ class UserStubService {
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
 	@Input() icon: any;
+	@Input() size: any;
 }
 
 
 @Component({selector: 'app-header-cart', template: ''})
 class HeaderCartStubComponent {
+}
+
+@Component({selector: 'app-user-menu', template: ''})
+class UserMenuStubComponent {
+	@Input() showMenu;
+	@Output() showMenuChange = new EventEmitter<boolean>();
+}
+
+@Injectable()
+class NgbDropdownConfigStubService {
+	placement: any;
 }
 
 
@@ -47,12 +60,14 @@ describe('HeaderComponent', () => {
 			declarations: [
 				HeaderComponent,
 				FaIconStubComponent,
-				HeaderCartStubComponent
+				HeaderCartStubComponent,
+				UserMenuStubComponent
 			],
 			providers: [
 				{provide: Router, useValue: new RouterStub()},
 				{provide: BranchStoreService, useValue: new BranchStoreStubService()},
-				{provide: UserService, useValue: new UserStubService()}
+				{provide: UserService, useValue: new UserStubService()},
+				{provide: NgbDropdownConfig, useClass: NgbDropdownConfigStubService}
 			]
 		})
 			.compileComponents();

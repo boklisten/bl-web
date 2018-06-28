@@ -21,6 +21,7 @@ import {UserEditComponent} from "./user-edit/user-edit.component";
 import {LoginModule} from "@wizardcoder/bl-login";
 import {UserEditService} from "./user-edit/user-edit.service";
 import {UserOrderService} from "./order/user-order/user-order.service";
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
 	imports: [
@@ -42,7 +43,8 @@ import {UserOrderService} from "./order/user-order/user-order.service";
 		UserCustomerItemComponent,
 		OrderPaymentInfoComponent,
 		OrderDeliveryInfoComponent,
-		UserEditComponent
+		UserEditComponent,
+		UserMenuComponent
 	],
 	providers: [
 		UserService,
@@ -50,6 +52,9 @@ import {UserOrderService} from "./order/user-order/user-order.service";
 		UserCustomerItemService,
 		UserEditService,
 		UserOrderService
+	],
+	exports: [
+		UserMenuComponent
 	]
 })
 export class UserModule {

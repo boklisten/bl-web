@@ -1,35 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {BranchStoreService} from "../branch/branch-store.service";
-import {UserService} from "../user/user.service";
-import {NgbDropdownConfig} from "@ng-bootstrap/ng-bootstrap";
-
-export type MenuItem = 'info' | 'branch' | 'cart' | 'items'
-	| 'user-settings' | 'user-items' | 'user-orders' | 'logout'
-	| 'login' | 'register' | 'user-home' | 'home';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {MenuItem} from "../../header/header.component";
+import {Router} from "@angular/router";
+import {UserService} from "../user.service";
 
 @Component({
-	selector: 'app-header',
-	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.scss']
+	selector: 'app-user-menu',
+	templateUrl: './user-menu.component.html',
+	styleUrls: ['./user-menu.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class UserMenuComponent implements OnInit {
+	@Input() showMenu: boolean;
+	@Output() showMenuChange: EventEmitter<boolean>;
 
-	public showMenu: boolean;
-
-	constructor(private _router: Router,
-				private _branchStoreService: BranchStoreService,
-				private _userService: UserService,
-				private _dropdownConfig: NgbDropdownConfig) {
-		this.showMenu = false;
-
-		this._dropdownConfig.placement = 'bottom';
+	constructor(private _router: Router, private _userService: UserService) {
+		this.showMenuChange = new EventEmitter<boolean>();
 	}
-
 
 	ngOnInit() {
 	}
-
 
 	public onMenuItemClick(menuItem: MenuItem) {
 		if (menuItem === 'items') {
@@ -60,18 +48,15 @@ export class HeaderComponent implements OnInit {
 			this._router.navigateByUrl('/');
 		}
 
-		this.showMenu = false;
+		this.onMenuClick();
 	}
 
-
 	public onMenuClick() {
-		this.showMenu = !this.showMenu;
+		this.showMenuChange.emit(!this.showMenu);
 	}
 
 	public isLoggedIn() {
 		return this._userService.loggedIn();
 	}
-
-
 
 }
