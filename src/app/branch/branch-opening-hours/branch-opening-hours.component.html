@@ -16,7 +16,7 @@
 		<li class="list-group-item" *ngFor="let openingHour of openingHours">
 			<div class="row justify-content-between" [ngClass]="{'bl-opening-hour-old': isTodayAfter(openingHour.from)}">
 				<div class="col-auto">
-					<span class="mr-2 text-secondary font-weight-bold">{{openingHour.from | blcDate:'date'}}</span>
+					<span class="mr-2 text-secondary font-weight-bold">{{openingHour.from | blcDate:'day'}} {{openingHour.from | blcDate:'date'}}</span>
 				</div>
 				<div class="col-auto">
                     <span>{{openingHour.from | blcDate:'hour'}}</span>

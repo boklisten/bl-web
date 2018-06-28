@@ -7,10 +7,15 @@ import {BranchStoreService} from "../branch/branch-store.service";
 export class DateService {
 
 	constructor(private _branchStoreService: BranchStoreService) {
+		moment.locale('nb');
 	}
 
 	public dateString(date): string {
 		return moment(date).format('DD.MM.YYYY');
+	}
+
+	public dayString(date): string {
+		return moment(date).format('dddd');
 	}
 
 	public timestampString(date: Date): string {
