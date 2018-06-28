@@ -163,5 +163,14 @@ a:visited {
 	padding: 0.3rem;
 }
 
+// ng2-datepicker specific
+
+.ngx-datepicker-container {
+	z-index: 999 !important;
+	min-width: 240px;
+	.ngx-datepicker-calendar-container {
+		width: auto !important;
+	}
+}
 
 

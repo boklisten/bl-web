@@ -5,7 +5,14 @@
 			<div class="card-header">
 				User details
 			</div>
+
 			<div class="card-body" *ngIf="userDetail">
+				<div class="alert alert-success" *ngIf="saved">
+					<span>User details was saved</span>
+				</div>
+
+				<app-blc-spinner [loading]="loading"></app-blc-spinner>
+
 				<bl-user-detail-edit [userDetail]="userDetail" (patchValues)="onUserDetailSave($event)"></bl-user-detail-edit>
 			</div>
 		</div>

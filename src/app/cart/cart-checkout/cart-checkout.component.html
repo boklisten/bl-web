@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="row" *ngIf="orderError && !order">
+<div class="row" *ngIf="orderError && !order && !userEmailNotConfirmed">
 	<div class="col-12">
 		<ngb-alert [type]="'danger'">
 			<fa-icon [icon]="'exclamation-triangle'"></fa-icon>
@@ -54,7 +54,7 @@
 	</div>
 </div>
 
-<div class="row mt-4" *ngIf="!showUserMustLogin && ((order && agreementConfirmed) || !needToConfirmAgreement())">
+<div class="row mt-4" *ngIf="!showUserMustLogin && ((order && agreementConfirmed) || !needToConfirmAgreement()) && !userEmailNotConfirmed">
 	<div class="col-12">
 		<div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
 			<div class="col-lg-6 col-md-8 col-sm-12 col-12 bl-checkout-bar">

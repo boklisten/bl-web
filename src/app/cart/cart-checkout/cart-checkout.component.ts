@@ -38,6 +38,7 @@ export class CartCheckoutComponent implements OnInit {
 		this.orderPlacedFailure = false;
 		this.userEmailNotConfirmed = false;
 		this.userDetailValid = false;
+		this.orderError = false;
 
 	}
 
