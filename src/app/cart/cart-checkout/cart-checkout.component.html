@@ -49,16 +49,15 @@
 </div>
 
 <div class="row mt-2 justify-content-center" *ngIf="needToConfirmAgreement()">
-	<div class="col-md-6 col-sm-12 col-12">
+	<div class="col-lg-6 col-md-8 col-sm-12 col-12">
 		<app-cart-agreement [confirmed]="agreementConfirmed" (confirmedChange)="onConfirmAgreement($event)"></app-cart-agreement>
 	</div>
 </div>
 
 <div class="row mt-4" *ngIf="!showUserMustLogin && ((order && agreementConfirmed) || !needToConfirmAgreement())">
 	<div class="col-12">
-
 		<div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
-			<div class="col-md-6 col-sm-12 col-12 bl-checkout-bar">
+			<div class="col-lg-6 col-md-8 col-sm-12 col-12 bl-checkout-bar">
                 <ul class="nav nav-pills flex-row nav-justified">
                     <li class="nav-item" (click)="onPaymentDecicionChange('now')">
                         <a class="nav-link" [ngClass]="{'bl-nav-btn-active': paymentDecision === 'now'}">
@@ -96,9 +95,9 @@
             </div>
         </div>
 
-		<div class="row mt-3 justify-content-center bl-cart-pay-later" *ngIf="!showPaymentDecision || paymentDecision === 'later'">
+		<div class="row mt-3 justify-content-center" *ngIf="!showPaymentDecision || paymentDecision === 'later'">
 			<div class="col-12" *ngIf="!userDetailValid">
-				<div class="row">
+				<div class="row bl-cart-pay-later">
 					<div class="col-md-6 col-sm-12 col-12 text-secondary" i18n="@@cartCheckoutNeedUserInformation">
 						We need some user details before you can place the order
 					</div>
@@ -110,7 +109,7 @@
 				</div>
 			</div>
 
-            <div class="col-12 bl-cart-pay-later" *ngIf="showPaymentDecision && userDetailValid">
+            <div class="col-lg-6 col-md-8 col-sm-12 col-12 bl-cart-pay-later" *ngIf="showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-12 col-12 text-secondary">
 						<span i18n="@@cartCheckoutPay">Pay</span>
@@ -119,21 +118,21 @@
 						<b *ngIf="branch"> {{branch.name}}</b>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
-                        <button class="btn btn-block btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
+                        <button class="btn btn-block btn-outline-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 bl-cart-pay-later" *ngIf="!showPaymentDecision && userDetailValid">
+            <div class="col-lg-6 col-md-8 col-sm-12 col-12 bl-cart-pay-later" *ngIf="!showPaymentDecision && userDetailValid">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-12 col-12 text-secondary" >
 						<span i18n="@@cartCheckoutRetrieveItemsAtBranch">Retrieve the items at</span>
 						<b> {{branch.name}}</b>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2">
-                        <button class="btn btn-block btn-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
+                        <button class="btn btn-block btn-outline-success" (click)="onConfirmOrder()" i18n="@@cartCheckoutConfirmOrderButton">
                             Confirm order
                         </button>
                     </div>
