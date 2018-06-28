@@ -47,6 +47,7 @@ export class BranchInfoComponent implements OnInit {
 	}
 
 	public onBranchSelect(branch: Branch) {
+		window.scroll(0, 0);
 		this.selectedBranch = branch;
 		this.showBranchMenu = false;
 	}
