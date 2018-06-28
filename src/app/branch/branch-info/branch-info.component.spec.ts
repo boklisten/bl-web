@@ -32,6 +32,11 @@ class FaIconStubComponent {
 	@Input() icon: any;
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading;
+}
+
 @Injectable()
 class ActivatedRouteStub {
 	public snapshot: any;
@@ -87,7 +92,8 @@ describe('BranchInfoComponent', () => {
 				BranchSelectStubComponent,
 				BranchContactInfoStubComponent,
 				BranchOpeningHoursStubComponent,
-				FaIconStubComponent
+				FaIconStubComponent,
+				BlcSpinnerStubComponent
 			],
 			providers: [
 				{provide: BranchService, useValue: branchServiceStub},

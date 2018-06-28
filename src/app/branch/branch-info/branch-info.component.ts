@@ -16,6 +16,7 @@ export class BranchInfoComponent implements OnInit {
 	public branches: Branch[];
 	public selectedBranch: Branch;
 	public showBranchMenu: boolean;
+	public loading: boolean;
 
 	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService) {
 		this.branches = [];
@@ -25,7 +26,7 @@ export class BranchInfoComponent implements OnInit {
 
 
 		this.selectedBranch = this._branchStoreService.getBranch();
-
+		this.loading = true;
 
 		this._branchService.get().then((branches: Branch[]) => {
 			this.branches = branches;
@@ -33,8 +34,11 @@ export class BranchInfoComponent implements OnInit {
 			if (!this.selectedBranch) {
 				this.selectedBranch = this.branches[0];
 			}
+
+			this.loading = false;
 		}).catch((getBranchesError) => {
 			console.log('BranchInfoComponent: could not get brances', getBranchesError);
+			this.loading = false;
 		});
 	}
 
