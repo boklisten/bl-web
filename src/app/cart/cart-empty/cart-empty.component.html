@@ -1,18 +1,18 @@
 <div class="row justify-content-center align-items-center">
 	<div class="col-auto text-secondary">
-		<fa-icon [icon]="['fa', 'shopping-cart']" size="3x"></fa-icon>
+		<fa-icon [icon]="'shopping-cart'" size="2x"></fa-icon>
 	</div>
 </div>
-<div class="row justify-content-center mt-3 text-secondary">
+<div class="row justify-content-center mt-2 text-secondary">
 	<div class="col-auto">
-		<h3 class="text-center" i18n="@@cartEmptyTitle">
+		<h4 class="text-center" i18n="@@cartEmptyTitle">
 			Cart is empty
-		</h3>
+		</h4>
 	</div>
 </div>
 <div class="row justify-content-center align-items-center mt-5">
 	<div class="col-auto">
-		<button class="btn btn-info btn-block btn-lg" routerLink="/i/select">
+		<button class="btn btn-info btn-block" routerLink="/i/select">
 			<fa-icon [icon]="'cart-plus'" class="mr-2"></fa-icon>
 			<span i18n="@@cartEmptyRentSomeItemsButton">rent or buy some items</span>
 		</button>
