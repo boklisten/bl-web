@@ -20,6 +20,11 @@ class UserDetailStubService {
 
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading;
+}
+
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
 	@Input() icon: any;
@@ -42,7 +47,8 @@ describe('OrderComponent', () => {
 			declarations: [
 				OrderComponent,
 				FaIconStubComponent,
-				OrderInfoStubComponent
+				OrderInfoStubComponent,
+				BlcSpinnerStubComponent
 			],
 			providers: [
 				{provide: UserService, useVale: new UserStubService()},

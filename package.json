@@ -13,6 +13,8 @@
 		"build": "ng build --configuration=production-nb",
 		"postinstall": "npm run build",
 		"test": "ng test",
+		"test:coverage": "ng test --code-coverage",
+		"test-ci": "ng test --karma-config=karma.ci.conf.js",
 		"lint": "ng lint",
 		"e2e": "ng e2e"
 	},

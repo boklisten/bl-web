@@ -28,6 +28,11 @@ class UserStubService {
 	}
 }
 
+@Component({selector: 'app-blc-spinner', template: ''})
+class BlcSpinnerStubComponent {
+	@Input() loading;
+}
+
 @Injectable()
 class UserEditStubService {
 
@@ -41,7 +46,8 @@ describe('UserEditComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				UserEditComponent,
-				UserDetailEditStubComponent
+				UserDetailEditStubComponent,
+				BlcSpinnerStubComponent
 			],
 			providers: [
 				{provide: UserService, useClass: UserStubService},
