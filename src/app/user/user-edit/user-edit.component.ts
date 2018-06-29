@@ -43,6 +43,7 @@ export class UserEditComponent implements OnInit {
 
 	onUserDetailSave(patchedValues: any) {
 		this.loading = true;
+		window.scroll(0, 0);
 		this._userEditService.updateUserDetail(patchedValues);
 	}
 

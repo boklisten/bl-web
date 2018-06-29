@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class OrderComponent implements OnInit {
 	public orders: Order[];
+	public loading: boolean;
 
 	constructor(private _userService: UserService,
 				private _orderService: OrderService,
@@ -19,10 +20,13 @@ export class OrderComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.loading = true;
 		this.getOrders().then((orders: Order[]) => {
 			this.orders = orders;
+			this.loading = false;
 		}).catch((apiErr: BlApiError) => {
 			// console.log('could not get orders', apiErr);
+			this.loading = false;
 		});
 	}
 
