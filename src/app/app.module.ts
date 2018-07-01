@@ -72,7 +72,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 })
 export class AppModule {
 	constructor(private blConnectConfigService: BlConnectConfigService) {
-		blConnectConfigService.setConfig({basePath: 'http://localhost:1337/'});
+		blConnectConfigService.setConfig({basePath: environment.apiPath});
 		LoginModule.withConfig({
 			successPath: '/i/select',
 			apiPath: environment.apiPath,
