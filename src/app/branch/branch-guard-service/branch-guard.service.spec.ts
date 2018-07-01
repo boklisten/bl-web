@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 
 describe('BranchGuardService', () => {
 	beforeEach(() => {
-		const branchStoreServiceSpy = jasmine.createSpyObj('BranchStoreService', ['getActiveBranch', 'fetchBranchItems'])
+		const branchStoreServiceSpy = jasmine.createSpyObj('BranchStoreService', ['getActiveBranch', 'fetchBranchItems']);
 		const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
 		TestBed.configureTestingModule({

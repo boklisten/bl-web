@@ -15,7 +15,7 @@ import {HeaderCartComponent} from './header/header-cart/header-cart.component';
 import {FooterComponent} from './footer/footer.component';
 import {InfoModule} from "./info/info.module";
 import {CartModule} from "./cart/cart.module";
-import {BlConnectModule} from "@wizardcoder/bl-connect";
+import {BlConnectConfigService, BlConnectModule} from "@wizardcoder/bl-connect";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 
@@ -71,8 +71,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 	bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor() {
-		BlConnectModule.withConfig({basePath: environment.apiPath});
+	constructor(private blConnectConfigService: BlConnectConfigService) {
+		blConnectConfigService.setConfig({basePath: 'http://localhost:1337/'});
 		LoginModule.withConfig({
 			successPath: '/i/select',
 			apiPath: environment.apiPath,
