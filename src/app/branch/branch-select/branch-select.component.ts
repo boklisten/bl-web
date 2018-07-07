@@ -14,13 +14,11 @@ export class BranchSelectComponent implements OnInit {
 
 	public branches: Branch[];
 	public selectedBranch: Branch;
-	public branchSelectDefaultText: string;
 	public loading: boolean;
 	public couldNotGetBranchesError: boolean;
 
 	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService, private _router: Router) {
 		this.branchSelect = new EventEmitter<Branch>();
-		this.branchSelectDefaultText = 'Select a school';
 	}
 
 	ngOnInit() {
@@ -44,6 +42,8 @@ export class BranchSelectComponent implements OnInit {
 		if (this._branchStoreService.redirectUrl) {
 			this._router.navigateByUrl(this._branchStoreService.redirectUrl);
 			this._branchStoreService.redirectUrl = null;
+		} else {
+			this._router.navigateByUrl('/i/select');
 		}
 	}
 
