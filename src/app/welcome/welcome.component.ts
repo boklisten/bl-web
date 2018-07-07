@@ -16,7 +16,6 @@ export class WelcomeComponent implements OnInit {
 
 	onLoginClick() {
 		this._router.navigate(['/auth/login'], {relativeTo: this._route});
-
 	}
 
 	onRegisterClick() {
