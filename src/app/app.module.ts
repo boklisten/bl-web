@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginModule} from "@wizardcoder/bl-login";
-import {WelcomeComponent} from './welcome/welcome.component';
 import {UserModule} from "./user/user.module";
 import {FormsModule} from "@angular/forms";
 import {BranchModule} from "./branch/branch.module";
@@ -28,7 +27,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
-import { WelcomeSliderComponent } from './welcome/welcome-slider/welcome-slider.component';
 import {WelcomeModule} from "./welcome/welcome.module";
 import { HeaderUserDetailAlertComponent } from './header-alert/header-user-detail-alert/header-user-detail-alert.component';
 import {HeaderAlertModule} from "./header-alert/header-alert.module";
