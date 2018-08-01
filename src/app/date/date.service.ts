@@ -57,10 +57,10 @@ export class DateService {
 		}
 	}
 
-	public getDate(orderItemType: "one" | "two" | "buy" | "buyout" | "extend", customerItem?: CustomerItem): Date {
-		if (orderItemType === 'one') {
+	public getDate(orderItemType: "semester" | "year" | "one" | "two" | "buy" | "buyout" | "extend", customerItem?: CustomerItem): Date {
+		if (orderItemType === 'one' || orderItemType === 'semester') {
 			return this.getPeriodDate('semester');
-		} else if (orderItemType === 'two') {
+		} else if (orderItemType === 'two' || orderItemType === 'year') {
 			return this.getPeriodDate('year');
 		} else if (orderItemType === 'extend') {
 			return this.getExtendDate('semester');
