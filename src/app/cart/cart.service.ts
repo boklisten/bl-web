@@ -75,7 +75,7 @@ private _cart: CartItem[];
 			orderItem.type = "rent";
 			orderItem.info = {
 				from: new Date(),
-				to: new Date(),
+				to: this._dateService.getPeriodDate('semester'),
 				numberOfPeriods: 1,
 				periodType: "semester"
 			};
@@ -83,7 +83,7 @@ private _cart: CartItem[];
 			orderItem.type = "rent";
 			orderItem.info = {
 				from: new Date(),
-				to: new Date(),
+				to: this._dateService.getPeriodDate('year'),
 				numberOfPeriods: 1,
 				periodType: 'year'
 			};
