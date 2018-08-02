@@ -10,7 +10,7 @@
 		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
 		"watch": "ng serve",
 		"watch-nb": "ng serve --configuration=nb",
-		"build": "ng build --configuration=production-nb",
+		"build": "ng build --configuration=${ANGULAR_ENV}",
 		"postinstall": "npm run build",
 		"test": "ng test",
 		"test:coverage": "ng test --code-coverage",

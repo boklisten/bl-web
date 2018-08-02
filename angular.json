@@ -31,7 +31,7 @@
 					},
 					"configurations": {
 						"production-nb": {
-							"optimization": false,
+							"optimization": true,
 							"outputHashing": "all",
 							"sourceMap": false,
 							"extractCss": true,
@@ -51,6 +51,26 @@
 							]
 						},
 						"dev-nb": {
+							"optimization": false,
+							"outputHashing": "all",
+							"sourceMap": false,
+							"extractCss": true,
+							"namedChunks": false,
+							"aot": true,
+							"i18nFile": "src/locale/messages.nb.xlf",
+							"i18nFormat": "xlf",
+							"i18nLocale": "nb",
+							"extractLicenses": true,
+							"vendorChunk": false,
+							"buildOptimizer": true,
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.dev.ts"
+								}
+							]
+						},
+						"local-nb": {
 							"optimization": false,
 							"outputPath": "dist/bl-web-nb",
 							"aot": true,

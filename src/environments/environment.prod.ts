@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	apiPath: 'http://api.boklisten.co/'
+	apiPath: 'https://bl-api-prod.herokuapp.com/'
 };
