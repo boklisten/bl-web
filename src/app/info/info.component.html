@@ -1,37 +1,39 @@
+<div class="container">
 
-<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
-    <div class="col-12 ">
-        <button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
-			<span *ngIf="selectedMenuButton === 'how'" i18n="@@infoMenuListHowDoesItWorkButton">How does it work?</span>
-			<span *ngIf="selectedMenuButton === 'faq'" i18n="@@infoMenuListFaqButton">FAQ</span>
-			<span *ngIf="selectedMenuButton === 'contact'" i18n="@@infoMenuListContactUsButton">Contact us</span>
-			<span *ngIf="selectedMenuButton === 'branch'" i18n="@@infoMenuListBranchInfoButton">Branch info</span>
-			<span *ngIf="selectedMenuButton === 'policies'" i18n="@@infoMenuListAgreementsButton">Policies</span>
-            <fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
-        </button>
+    <div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
+        <div class="col-12 ">
+            <button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
+                <span *ngIf="selectedMenuButton === 'how'" i18n="@@infoMenuListHowDoesItWorkButton">How does it work?</span>
+                <span *ngIf="selectedMenuButton === 'faq'" i18n="@@infoMenuListFaqButton">FAQ</span>
+                <span *ngIf="selectedMenuButton === 'contact'" i18n="@@infoMenuListContactUsButton">Contact us</span>
+                <span *ngIf="selectedMenuButton === 'branch'" i18n="@@infoMenuListBranchInfoButton">Branch info</span>
+                <span *ngIf="selectedMenuButton === 'policies'" i18n="@@infoMenuListAgreementsButton">Policies</span>
+                <fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
+            </button>
+        </div>
+        <div class="col-12 mt-2" *ngIf="showInfoMenu">
+            <app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
+        </div>
     </div>
-    <div class="col-12 mt-2" *ngIf="showInfoMenu">
-		<app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
-    </div>
-</div>
 
-<div class="row d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
-	<div class="col-12">
-		<app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
-	</div>
-</div>
+    <div class="row d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
+        <div class="col-12">
+            <app-info-menu-list [selectedMenuButton]="selectedMenuButton" (selected)="onSelectMenuButton($event)"></app-info-menu-list>
+        </div>
+    </div>
 
-<div class="row">
-	<div class="col-12" *ngIf="selectedMenuButton === 'faq'">
-		<app-info-faq></app-info-faq>
-	</div>
-    <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
-        <app-branch-info></app-branch-info>
-    </div>
-	<div class="col-12" *ngIf="selectedMenuButton === 'contact'">
-		<app-contact-info></app-contact-info>
-    </div>
-	<div class="col-12" *ngIf="selectedMenuButton === 'policies'">
-		<app-info-agreement></app-info-agreement>
+    <div class="row">
+        <div class="col-12" *ngIf="selectedMenuButton === 'faq'">
+            <app-info-faq></app-info-faq>
+        </div>
+        <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
+            <app-branch-info></app-branch-info>
+        </div>
+        <div class="col-12" *ngIf="selectedMenuButton === 'contact'">
+            <app-contact-info></app-contact-info>
+        </div>
+        <div class="col-12" *ngIf="selectedMenuButton === 'policies'">
+            <app-info-agreement></app-info-agreement>
+        </div>
     </div>
 </div>
