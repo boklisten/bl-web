@@ -122,7 +122,7 @@
 					</div>
                 </div>
 			</div>
-            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && currentDelivery.amount !== 0 && !failureText">
+            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && !failureText">
 				<div class="row justify-content-between">
 					<div class="col-auto text-secondary">
 						<span i18n="@@cartDeliveryEstimatedDeliveryDate">Estimated delivery date</span>
