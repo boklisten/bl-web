@@ -89,7 +89,7 @@ export class UserCustomerItemService {
 		});
 	}
 
-	isBuyoutValid(branchItem: BranchItem, customerItem: CustomerItem): boolean {
+	public isBuyoutValid(branchItem: BranchItem, customerItem: CustomerItem): boolean {
 		if (!branchItem.buy) {
 			return false;
 		}

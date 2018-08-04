@@ -7,6 +7,7 @@ import {Subject} from "rxjs";
 import {DateService} from "../date/date.service";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 import {AuthLoginService} from "@wizardcoder/bl-login";
+import {Observable} from "rxjs/internal/Observable";
 
 
 export interface CartItem {
@@ -44,8 +45,8 @@ private _cart: CartItem[];
 		});
 	}
 
-	public onCartChange(): Subject<boolean> {
-		return this.cartChange$;
+	public onCartChange(): Observable<boolean> {
+		return this.cartChange$.asObservable();
 	}
 
 	public addOrUpdate(item: Item, branchItem: BranchItem, orderItemType: 'semester' | 'year'| 'buy') {
@@ -114,13 +115,18 @@ private _cart: CartItem[];
 	}
 
 	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branchItem: BranchItem, branch: Branch) {
+
 		const orderItem: OrderItem = {} as OrderItem;
+		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'extend');
+		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
+
+		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
+		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
+		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
+		orderItem.amount = calculatedOrderItemPrices.amount;
+
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
-		orderItem.unitPrice = item.price;
-		orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'extend');
-		orderItem.taxAmount = 0;
-		orderItem.taxRate = 0;
 		orderItem.type = "extend";
 		orderItem.info = {
 			from: new Date(),
@@ -135,12 +141,17 @@ private _cart: CartItem[];
 
 	public addCustomerItemBuyout(customerItem: CustomerItem, branchItem: BranchItem, item: Item, branch: Branch) {
 		const orderItem: OrderItem = {} as OrderItem;
+
+		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'buyout');
+		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
+
+		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
+		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
+		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
+		orderItem.amount = calculatedOrderItemPrices.amount;
+
 		orderItem.item = customerItem.item;
-		orderItem.unitPrice = item.price;
-		orderItem.taxAmount = 0;
-		orderItem.taxRate = 0;
 		orderItem.title = item.title;
-		orderItem.amount = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'buyout');
 		orderItem.type = "buyout";
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
@@ -230,6 +241,17 @@ private _cart: CartItem[];
 				return this._cart[i].orderItem;
 			}
 		}
+	}
+
+	public isCustomerItem(itemId: string): boolean {
+		for (let i = 0; i < this._cart.length; i++) {
+			if (this._cart[i].item.id === itemId) {
+				if (this._cart[i].customerItem) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public updateType(itemId: string, type: OrderItemType | 'semester' | 'year') {
