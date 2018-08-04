@@ -23,7 +23,7 @@
 						{{order.amount | blcPrice:'international'}}
 					</div>
 				</div>
-				<div class="row justify-content-between" *ngIf="delivery.amount !== 0">
+				<div class="row justify-content-between" *ngIf="delivery.method !== 'branch'">
 					<div class="col-auto text-secondary" i18n="@@cartSummaryShipment">
 						Shipment
 					</div>
