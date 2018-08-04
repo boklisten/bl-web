@@ -6,7 +6,9 @@
 		{{orderItem.amount | blcPrice}}
 	</div>
 </div>
-<div class="row" *ngIf="orderItem">
+
+
+<div class="row justify-content-between" *ngIf="orderItem">
 	<div class="col-auto text-secondary">
 		<div *ngIf="orderItem.type === 'rent'">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
@@ -21,9 +23,30 @@
 			<b>{{orderItem.info.to | blcDate}}</b>
 		</div>
 
-		<div *ngIf="orderItem.type === 'buy' || orderItem.type === 'buyout'">
+		<div *ngIf="orderItem.type === 'buy'">
 			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@orderItemInfoTypeBuy">Buy</span>
 		</div>
+
+		<div *ngIf="orderItem.type === 'buyout'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
+			<span i18n="@@orderItemInfoTypeBuyout">Buyout</span>
+		</div>
+
+		<div *ngIf="orderItem.type === 'cancel'">
+			<fa-icon [icon]="'ban'" class="mr-2"></fa-icon>
+			<span i18n="@@orderItemInfoTypeCancel">Cancel</span>
+		</div>
 	</div>
+
+	<div routerLink="/u/items" class="col-auto text-info bl-link-black" *ngIf="customerItem && customerItem.handout && !customerItem.returned">
+		<fa-icon [icon]="'arrow-alt-circle-up'" class="mr-2"></fa-icon>
+		<span i18n="@@orderItemInfoYouHaveItem">You have this item</span>
+	</div>
+
+	<div routerLink="/u/items" class="col-auto text-success bl-link-black" *ngIf="customerItem && customerItem.handout && customerItem.returned">
+		<fa-icon [icon]="'arrow-alt-circle-down'" class="mr-2"></fa-icon>
+		<span i18n="@@orderItemInfoReturned">returned</span>
+	</div>
+
 </div>
