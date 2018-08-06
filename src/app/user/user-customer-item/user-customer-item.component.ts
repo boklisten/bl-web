@@ -61,6 +61,7 @@ export class UserCustomerItemComponent implements OnInit {
 
 			this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(this.customerItem);
 			this.returned = this.customerItem.returned;
+
 		}
 	}
 
@@ -74,8 +75,8 @@ export class UserCustomerItemComponent implements OnInit {
 			this.correctBranch = true;
 
 			if (branchItem) {
-				this._userCustomerItemService.isExtendValid(branchItem, this.customerItem).then(() => {
-					this.canExtend = true;
+				this._userCustomerItemService.isExtendValid(branchItem, this.customerItem).then((canExtend) => {
+					this.canExtend = canExtend;
 				}).catch(() => {
 					this.canExtend = false;
 				});

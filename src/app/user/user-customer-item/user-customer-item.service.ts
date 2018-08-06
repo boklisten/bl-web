@@ -51,7 +51,7 @@ export class UserCustomerItemService {
 		}
 
 		for (const customerItem of this.customerItems) {
-			if (!customerItem.returned) {
+			if (!customerItem.returned && !customerItem.buyout && customerItem.handout) {
 				if (customerItem.item === itemId) {
 					return true;
 				}
@@ -83,7 +83,7 @@ export class UserCustomerItemService {
 		}
 
 		return this._branchService.getById(branchItem.branch).then((branch: Branch) => {
-			return this.isExtendPeriodValid('semester', branch);
+			return (this.isExtendPeriodValid(customerItem.deadline, 'semester', branch) && this.isExtendPeriodValidOnCustomerItem('semester', customerItem));
 		}).catch((getBranchError) => {
 			return Promise.reject('userCustomerItemService: could not get branch');
 		});
@@ -101,10 +101,19 @@ export class UserCustomerItemService {
 		return true;
 	}
 
-	private isExtendPeriodValid(period: Period, branch: Branch): boolean {
+	private isExtendPeriodValidOnCustomerItem(period: Period, customerItem: CustomerItem): boolean {
+		for (const extendPeriod of customerItem.periodExtends) {
+			if (extendPeriod.periodType === period) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private isExtendPeriodValid(originalDeadline: Date, period: Period, branch: Branch): boolean {
 		if (branch.paymentInfo && branch.paymentInfo.extendPeriods && branch.paymentInfo.extendPeriods.length > 0) {
 			for (const extendPeriod of branch.paymentInfo.extendPeriods) {
-				if (period === extendPeriod.type) {
+				if (period === extendPeriod.type && originalDeadline !== extendPeriod.date) {
 					return true;
 				}
 			}

@@ -29,8 +29,10 @@ export class UserOrderService {
 		for (const order of orders) {
 			for (const orderItem of order.orderItems) {
 				if (orderItem.item === itemId) {
-					if (!orderItem.delivered) {
-						return true;
+					if (!orderItem.delivered && !orderItem.info.customerItem) {
+						if (orderItem.type !== 'buyout' && orderItem.type !== 'extend') {
+							return true;
+						}
 					}
 				}
 			}

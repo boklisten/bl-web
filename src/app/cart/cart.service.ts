@@ -152,6 +152,7 @@ private _cart: CartItem[];
 		this.setPricesOnOrderItemByCustomerItem(customerItem, item, branch, orderItem);
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
+		orderItem.customerItem = customerItem.id;
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
 	}

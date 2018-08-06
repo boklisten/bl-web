@@ -75,23 +75,30 @@ export class ItemDisplayComponent implements OnInit {
 			return;
 		}
 
+
+
+		this._userCustomerItemService.alreadyHaveItem(itemId).then((haveItem: boolean) => {
+			this.alreadyHaveItem = haveItem;
+			if (haveItem && !this._cartService.isCustomerItem(itemId)) {
+				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
+			} else {
+				this.checkIfAlreadyOrdered(itemId);
+			}
+		}).catch((err) => {
+			console.log('UserOrderService: could not check if user already have customer item', err);
+			this.checkIfAlreadyOrdered(itemId);
+		});
+	}
+
+	private checkIfAlreadyOrdered(itemId: string) {
 		this._userOrderService.alreadyHaveOrderedItem(itemId).then((haveOrdered: boolean) => {
 			this.alreadyOrdered = haveOrdered;
 
 			if (haveOrdered && !this._cartService.isCustomerItem(itemId)) {
 				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
 			}
-		}).catch((err) => {
-			console.log('UserOrderService: could not check if user already have item', err);
-		});
-
-		this._userCustomerItemService.alreadyHaveItem(itemId).then((haveItem: boolean) => {
-			this.alreadyHaveItem = haveItem;
-			if (haveItem && !this._cartService.isCustomerItem(itemId)) {
-				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
-			}
-		}).catch((err) => {
-			console.log('UserOrderService: could not check if user already have customer item', err);
+		}).catch((alreadyOrderedError) => {
+			console.log('UserOrderService: could not check if user already have item', alreadyOrderedError);
 		});
 	}
 
