@@ -3,31 +3,21 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-app.use(express.static(__dirname + '/dist'));
 
 // If an incoming request uses
 // a protocol other than HTTPS,
 // redirect that request to the
 // same url but with HTTPS
 
-var forceSSL = function() {
-	return function (req, res, next) {
-		if (req.headers['x-forwarded-proto'] !== 'https') {
-			return res.redirect(
-				['https://', req.get('Host'), req.url].join('')
-			);
-		}
+app.get('*', function(req, res, next) {
+	if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
+		res.redirect('https://' + req.hostname + req.url);
+	} else {
 		next();
 	}
-};
+});
 
-// Instruct the app
-// to use the forceSSL
-// middleware
-
-if (env.NODE_ENV === 'production') {
-	app.use(forceSSL());
-}
+app.use(express.static(__dirname + '/dist'));
 
 
 
