@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Branch, CustomerItem, Item, OrderItem} from "@wizardcoder/bl-model";
 import {BranchStoreService} from "../branch/branch-store.service";
+import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 
 @Injectable()
 export class PriceService {
@@ -24,7 +25,7 @@ export class PriceService {
 		}
 	}
 
-	public calculateCustomerItemUnitPrice(customerItem: CustomerItem, item: Item, branch: Branch, type: "extend" | "buyout") {
+	public calculateCustomerItemUnitPrice(customerItem: CustomerItem, item: Item, branch: Branch, type: OrderItemType) {
 		if (type === "extend") {
 			return this.sanitize(this.calculateExtendPrice(item, branch, "semester"));
 		} else if (type === "buyout") {

@@ -28,13 +28,13 @@
                         	<fa-icon [icon]="['fa', 'book']" size="2x"></fa-icon>
 						</div>
 					</div>
-					<div class="col-lg-10 col-md-9 col-sm-9 col-12" *ngIf="!alreadyOrdered && !alreadyHaveItem">
+					<div class="col-lg-10 col-md-9 col-sm-9 col-12" *ngIf="isCustomerItem() || (!alreadyOrdered && !alreadyHaveItem)">
 						<app-item-type-select [branchItem]="branchItem" [item]="item" [customerItem]="customerItem" [type]="orderItemType" (typeChange)="onOrderItemTypeChange($event)"></app-item-type-select>
 					</div>
 				</div>
 			</div>
 
-			<div class="card-footer" *ngIf="!alreadyOrdered && !alreadyHaveItem">
+			<div class="card-footer" *ngIf="isCustomerItem() || (!alreadyOrdered && !alreadyHaveItem)">
 				<div class="row align-items-xl-center align-items-lg-center align-items-md-start justify-content-md-between justify-content-sm-center justify-content-center">
 					<div class="col-xl-1 d-xl-inline d-lg-none d-md-none d-sm-none d-none">
 						<div class="bl-item-image">
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 
-			<div class="card-footer" *ngIf="alreadyHaveItem || alreadyOrdered">
+			<div class="card-footer" *ngIf="!isCustomerItem() && (alreadyHaveItem || alreadyOrdered)">
 				<div class="row justify-content-center">
 					<div class="col-auto text-secondary">
 						<span *ngIf="alreadyHaveItem" i18n="@@itemDisplayAlreadyHaveThisItem">You already have this item</span>

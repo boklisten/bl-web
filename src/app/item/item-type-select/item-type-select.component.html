@@ -1,5 +1,5 @@
 
-<div class="row justify-content-center" *ngIf="branchItem">
+<div class="row justify-content-center" *ngIf="branchItem || isCustomerItem()">
     <div class="col-auto" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
@@ -14,16 +14,17 @@
 				<input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyButton">buy</span>
             </label>
+
         </div>
     </div>
 
-	<div class="col-auto" *ngIf="customerItem">
+	<div class="col-auto" *ngIf="isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-info">
+            <label ngbButtonLabel class="btn-outline-secondary">
                 <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectExtendButton">extend</span>
             </label>
-            <label ngbButtonLabel class="btn-outline-info">
+            <label ngbButtonLabel class="btn-outline-secondary">
                 <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyoutButton">buyout</span>
             </label>
@@ -46,6 +47,11 @@
 		<span *ngIf="typeSelect === 'buy'">
 			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoBuy">buy</span>
+		</span>
+
+		<span *ngIf="typeSelect === 'buyout'">
+			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
+			<span i18n="@@itemTypeSelectInfoBuyout">buyout this item</span>
 		</span>
     </div>
 </div>

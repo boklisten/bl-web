@@ -26,6 +26,8 @@ export class ItemTypeSelectComponent implements OnInit {
 	public rentSemesterOption: boolean;
 	public rentYearOption: boolean;
 	public buyOption: boolean;
+	public extendOption: boolean;
+	public buyoutOption: boolean;
 	private branch: Branch;
 
 	constructor(private _dateService: DateService,
@@ -40,13 +42,30 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
-		if (this.branchItem && this.item) {
+
+		if ((this.isCustomerItem() || this.branchItem) && this.item) {
 			this.displaySelectedPeriodType();
 		}
 	}
 
+	isCustomerItem(): boolean {
+		return !(!this.customerItem);
+	}
+
+	public onTypeUpdate(type: 'extend' | 'buyout' | 'semester' | 'year') {
+		this.typeSelect = type;
+		this._cartService.addOrUpdate(this.item, this.branchItem, this.typeSelect);
+		this.typeChange.emit(this.typeSelect);
+	}
+
+	public getDate(type): Date {
+		return this._dateService.getDate(type);
+	}
+
 	private preselectPeriodType() {
-		if (this.branchItem && this.branchItem.rent) {
+		if (this.customerItem) {
+			this.typeSelect = 'extend';
+		} else if (this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
 				this.typeSelect = this.branch.paymentInfo.rentPeriods[0].type;
 			}
@@ -70,6 +89,10 @@ export class ItemTypeSelectComponent implements OnInit {
 			}
 		} else if (action === 'buy' && this.branchItem && this.branchItem.buy) {
 			return true;
+		} else if (action === 'extend' && this.isCustomerItem()) {
+			return true;
+		} else if (action === 'buyout' && this.isCustomerItem()) {
+			return true;
 		}
 	}
 
@@ -89,20 +112,12 @@ export class ItemTypeSelectComponent implements OnInit {
 		if (this.isActionValid('buy')) {
 			this.buyOption = true;
 		}
-	}
 
-	isCustomerItem(): boolean {
-		return !(!this.customerItem);
-	}
+		if (this.isActionValid('extend')) {
+			this.extendOption = true;
+		}
 
-	public onTypeUpdate(type: 'year' | 'semester' | 'year') {
-		this.typeSelect = type;
-		this._cartService.addOrUpdate(this.item, this.branchItem, this.typeSelect);
-		this.typeChange.emit(this.typeSelect);
-	}
 
-	public getDate(type): Date {
-		return this._dateService.getDate(type);
 	}
 
 	private updateTypeBasedOnCart(orderItem: OrderItem) {

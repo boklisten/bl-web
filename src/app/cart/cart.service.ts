@@ -49,7 +49,7 @@ private _cart: CartItem[];
 		return this.cartChange$.asObservable();
 	}
 
-	public addOrUpdate(item: Item, branchItem: BranchItem, orderItemType: 'semester' | 'year'| 'buy') {
+	public addOrUpdate(item: Item, branchItem: BranchItem, orderItemType: OrderItemType | 'semester' | 'year') {
 		if (this.contains(item.id)) {
 			this.updateType(item.id, orderItemType);
 		} else {
@@ -58,7 +58,7 @@ private _cart: CartItem[];
 	}
 
 
-	public add(item: Item, branchItem: BranchItem, orderItemType: "semester" | "year" | "buy") {
+	public add(item: Item, branchItem: BranchItem, orderItemType: OrderItemType | "semester" | "year") {
 		const orderItem: OrderItem = {
 			item: item.id,
 			title: item.title,
@@ -114,20 +114,26 @@ private _cart: CartItem[];
 		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
-	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branchItem: BranchItem, branch: Branch) {
-
-		const orderItem: OrderItem = {} as OrderItem;
-		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'extend');
+	private setPricesOnOrderItemByCustomerItem(customerItem: CustomerItem, item: Item, branch: Branch, orderItem: OrderItem) {
+		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, orderItem.type);
 		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
 
 		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
 		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
 		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
 		orderItem.amount = calculatedOrderItemPrices.amount;
+	}
+
+
+	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branchItem: BranchItem, branch: Branch) {
+
+		const orderItem: OrderItem = {} as OrderItem;
+		orderItem.type = "extend";
+
+		this.setPricesOnOrderItemByCustomerItem(customerItem, item, branch, orderItem);
 
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
-		orderItem.type = "extend";
 		orderItem.info = {
 			from: new Date(),
 			to: this._dateService.getExtendDate('semester'),
@@ -141,18 +147,11 @@ private _cart: CartItem[];
 
 	public addCustomerItemBuyout(customerItem: CustomerItem, branchItem: BranchItem, item: Item, branch: Branch) {
 		const orderItem: OrderItem = {} as OrderItem;
+		orderItem.type = "buyout";
 
-		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, 'buyout');
-		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
-
-		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
-		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
-		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
-		orderItem.amount = calculatedOrderItemPrices.amount;
-
+		this.setPricesOnOrderItemByCustomerItem(customerItem, item, branch, orderItem);
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
-		orderItem.type = "buyout";
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
 	}
@@ -283,7 +282,8 @@ private _cart: CartItem[];
 	private updateTypeBuyout(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
 		cartItem.orderItem.type = "buyout";
-		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
+
+		this.setPricesOnOrderItemByCustomerItem(cartItem.customerItem, cartItem.item, cartItem.branch, cartItem.orderItem);
 	}
 
 	private updateTypeExtend(cartItem: CartItem) {
@@ -295,7 +295,7 @@ private _cart: CartItem[];
 			customerItem: cartItem.customerItem.id
 		};
 		cartItem.orderItem.type = "extend";
-		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
+		this.setPricesOnOrderItemByCustomerItem(cartItem.customerItem, cartItem.item, cartItem.branch, cartItem.orderItem);
 	}
 
 	private updateTypeBuy(cartItem: CartItem) {
