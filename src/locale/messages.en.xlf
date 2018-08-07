@@ -1622,14 +1622,14 @@
         <source>Contact us</source><target state="final">Contact us</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">59</context></context-group></trans-unit><trans-unit id="infoMenuListBranchInfoButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="infoMenuListBranchInfoButton" datatype="html">
         <source>Branch info</source><target state="final">Branch info</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="infoMenuListAgreementsButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">11</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="infoMenuListAgreementsButton" datatype="html">
         <source>Policies</source><target state="final">Policies</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
         <source>Rent agreement</source><target state="final">Rent agreement</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
@@ -1656,7 +1656,7 @@
       </trans-unit><trans-unit id="infoMenuListPoliciesButton" datatype="html">
         <source>Policies</source><target state="final">Policies</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="contactInfoTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="contactInfoTitle" datatype="html">
         <source>Here is how you can contact us</source><target state="final">Here is how you can contact us</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/contact-info/contact-info.component.ts</context>
@@ -1821,23 +1821,21 @@
         </context-group>
       </trans-unit><trans-unit id="infoMenuListAboutUsButton" datatype="html">
         <source>About us</source><target state="final">About us</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoMenuListForCompaniesButton" datatype="html">
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="infoMenuListForCompaniesButton" datatype="html">
         <source>For companies</source><target state="final">For companies</target>
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">59</context></context-group></trans-unit><trans-unit id="infoMenuListForPupilsButton" datatype="html">
+        <source>For pupils</source><target state="final">For pupils</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit></body>
   </file>

@@ -2064,41 +2064,41 @@
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="infoMenuListContactUsButton" datatype="html">
-        <source>Contact us</source>
+      <trans-unit id="infoMenuListForPupilsButton" datatype="html">
+        <source>For pupils</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="infoMenuListBranchInfoButton" datatype="html">
-        <source>Branch info</source>
+      <trans-unit id="infoMenuListContactUsButton" datatype="html">
+        <source>Contact us</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="infoMenuListAboutUsButton" datatype="html">
-        <source>About us</source>
+      <trans-unit id="infoMenuListBranchInfoButton" datatype="html">
+        <source>Branch info</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="infoMenuListForCompaniesButton" datatype="html">
-        <source>For companies</source>
+      <trans-unit id="infoMenuListAboutUsButton" datatype="html">
+        <source>About us</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -2108,11 +2108,22 @@
           <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="infoMenuListForCompaniesButton" datatype="html">
+        <source>For companies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="infoMenuListAgreementsButton" datatype="html">
         <source>Policies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="infoRentAgreementTitle" datatype="html">
@@ -2147,7 +2158,7 @@
         <source>Policies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contactInfoTitle" datatype="html">
