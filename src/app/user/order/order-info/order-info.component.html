@@ -13,7 +13,7 @@
 
 				<div class="row mt-4 justify-content-between">
 					<div class="col-lg-6 col-md-6 col-sm-12 col-12">
-						<app-order-delivery-info [order]="order"></app-order-delivery-info>
+						<app-order-delivery-info [order]="order" *ngIf="showDelivery"></app-order-delivery-info>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-md-0 mt-sm-4 mt-4">
 						<app-order-payment-info [order]="order"></app-order-payment-info>

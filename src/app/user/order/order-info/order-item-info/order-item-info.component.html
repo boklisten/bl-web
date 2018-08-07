@@ -39,7 +39,7 @@
 		</div>
 	</div>
 
-	<div routerLink="/u/items" class="col-auto text-info bl-link-black" *ngIf="customerItem && customerItem.handout && !customerItem.returned">
+	<div routerLink="/u/items" class="col-auto text-info bl-link-black" *ngIf="customerItem && customerItem.handout && !customerItem.returned && !customerItem.buyout">
 		<fa-icon [icon]="'arrow-alt-circle-up'" class="mr-2"></fa-icon>
 		<span i18n="@@orderItemInfoYouHaveItem">You have this item</span>
 	</div>
