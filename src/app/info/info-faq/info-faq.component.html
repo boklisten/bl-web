@@ -7,131 +7,13 @@
 </div>
 
 <ngb-accordion [closeOthers]="true" activeIds="">
-	<ngb-panel>
+	<ngb-panel *ngFor="let faq of faqs">
 		<ng-template ngbPanelTitle>
-			<span i18n="@@faqHowToRentBooksAsPrivateCandidateQuestion">How do I rent books as a private candidate?</span>
+			<span>{{faq.title}}</span>
 		</ng-template>
 		<ng-template ngbPanelContent>
-			<p i18n="@@faqHowtoRentBooksAsPrivateCandidateAnswer">
-				You can either order some books in the webstore and then get it at a branch, or you could just meet up at our branch at our opening times.
-				The opening times will be added at the webpage in good time for the semester end.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqHowLongToGetTheItemsQuestion">How long does it take to get the items?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqHowLongToGetTheItemsAnswer">
-				If you order by mail it will take up to 14 days to send the delivery to you. If you want to get the items at a branch you can get them at once.
-				(It can take longer if we don't have that item in store, as we need to order some more)
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqCanIBuyItemsQuestion">Can I buy items at Boklisten.no?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqCanIBuyItemsAnswer">
-				Yes, but we really want you to consider to rent instead, it's cheaper and it's more environmental friendly. You don't need the items after you have passed the exams, do you?
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqDoIHaveToOrderOnlineQuestion">Do I have to order online?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqDoIHaveToOrderOnlineAnswer">
-				As a regular student you need to order online. As a private candidate you can choose to either order online or come to one of our branches to order there.
-				We strongly suggest that you order online as it will take you shorter time to get the items once you are at the branch.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqWhereToDeliverQuestion">Where do I deliver the items?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqWhereToDeliverAnswer">
-				As a regular student you deliver them at the same time as the rest of your class.
-				As a private candidate you deliver the items at the branch you ordered them from. If you can't deliver them at our opening times you can
-				deliver them by mail.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqCanSomeoneElseDeliverQuestion">Can someone else deliver for me?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqCanSomeoneElseDeliverAnswer">
-				Yes, you can have someone else deliver the items for you. But you the one who deliver should bring your id.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqWhatToDoWhenImNotSatisfiedWithItemQuestion">What do I do if i'm not satisfied with one of the items?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqWhatToDoWhenImNotSatisfiedWithItemAnswer">
-				If you deliver it back to us you can get a new one. If you want your money back or just want to return the item please read our complaint and cancellation page.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqCanIKeepItemsQuestion">Can I keep the items?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqCanIKeepItemsAnswer">
-				Yes, but if you don't deliver the books in set time you will get a replacement invoice.
-				This invoice is the items full price + 10% + 90 kr in fee. This will become expensive and we recomend you to deliver in time!
-				If you are a private candidate you can buyout the item in the webstore under the page "Your items" (before the deadline of course)
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqCanIExtendTheDeadlineQuestion">Can I extend the deadline?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqCanIExtendTheDeadlineAnswer">
-				If you are a private candidate you can extend the deadline up to one semester each. Beware however, you need to do this before the old deadline!
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqWhatDoIDoIfDeadlineIsExpiredQuestion">What do I do if the deadline is expired?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqWhatDoIDoIdDeadlineIsExpiredAnswer">
-				You will get notified about what to do, either by email, sms or both. The general rule is that you will receive an invoice which you have to pay.
-				You can read more about this in our rent agreement.
-			</p>
-		</ng-template>
-	</ngb-panel>
-
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@faqCanIMarkQuestion">Can I mark in the books?</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<p i18n="@@faqCanIMarkAnswer">
-				Yes, but we recommend you not to mark with pen or marker, only with pencils.
+			<p *ngFor="let textBlock of faq.textBlocks">
+				{{textBlock}}
 			</p>
 		</ng-template>
 	</ngb-panel>

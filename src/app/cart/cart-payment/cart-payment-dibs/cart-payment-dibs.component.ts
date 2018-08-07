@@ -9,6 +9,7 @@ import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs/internal/Subscription";
+import {environment} from "../../../../environments/environment";
 
 
 declare var Dibs: any;
@@ -92,10 +93,9 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		this.createDibsElement();
 
 		this.dibsCheckoutOptions = {
-			checkoutKey: 'test-checkout-key-5d1531c5046e43f9ba5f44a40327d317',
+			checkoutKey: environment.dibs.checkoutKey,
 			paymentId: this.payment.info['paymentId'],
-			// containerId: 'dibs-complete-checkout',
-			language: 'nb-NO'
+			language: environment.dibs.language
 		};
 
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
