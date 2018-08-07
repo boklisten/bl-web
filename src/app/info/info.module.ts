@@ -13,6 +13,7 @@ import {BranchModule} from "../branch/branch.module";
 import { InfoMenuListComponent } from './info-menu-list/info-menu-list.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { InfoAgreementTermsComponent } from './info-agreement/info-agreement-terms/info-agreement-terms.component';
+import { InfoGeneralComponent } from './info-general/info-general.component';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,8 @@ import { InfoAgreementTermsComponent } from './info-agreement/info-agreement-ter
 		InfoFaqComponent,
 		InfoMenuListComponent,
 		ContactInfoComponent,
-		InfoAgreementTermsComponent
+		InfoAgreementTermsComponent,
+		InfoGeneralComponent
 	],
 	exports: [
 		InfoAgreementRentComponent,

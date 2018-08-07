@@ -10,7 +10,7 @@ export class InfoComponent implements OnInit {
 	public selectedMenuButton: string;
 
 	constructor() {
-		this.selectedMenuButton = 'faq';
+		this.selectedMenuButton = 'general';
 	}
 
 	ngOnInit() {

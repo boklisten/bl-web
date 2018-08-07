@@ -4,6 +4,7 @@
         <div class="col-12 ">
             <button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
                 <span *ngIf="selectedMenuButton === 'how'" i18n="@@infoMenuListHowDoesItWorkButton">How does it work?</span>
+				<span *ngIf="selectedMenuButton === 'general'" i18n="@@infoMenuListGeneralButton">General</span>
                 <span *ngIf="selectedMenuButton === 'faq'" i18n="@@infoMenuListFaqButton">FAQ</span>
                 <span *ngIf="selectedMenuButton === 'contact'" i18n="@@infoMenuListContactUsButton">Contact us</span>
                 <span *ngIf="selectedMenuButton === 'branch'" i18n="@@infoMenuListBranchInfoButton">Branch info</span>
@@ -25,6 +26,9 @@
     <div class="row">
         <div class="col-12" *ngIf="selectedMenuButton === 'faq'">
             <app-info-faq></app-info-faq>
+        </div>
+		<div class="col-12" *ngIf="selectedMenuButton === 'general'">
+			<app-info-general></app-info-general>
         </div>
         <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
             <app-branch-info></app-branch-info>
