@@ -25,7 +25,7 @@ import {
 	faCircleNotch, faTruck, faWarehouse, faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog,
 	faUserCircle, faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
 	faBan, faArrowAltCircleUp,
-	faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey
+	faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey, faPhone, faAddressCard, faBirthdayCake
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
@@ -44,7 +44,7 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 	faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog, faUserCircle,
 	faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
 	faBan, faArrowAltCircleUp, faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey,
-	faFacebookSquare, faGoogle);
+	faFacebookSquare, faGoogle, faPhone, faAddressCard, faBirthdayCake);
 
 @NgModule({
 	declarations: [

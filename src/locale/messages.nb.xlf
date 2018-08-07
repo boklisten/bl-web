@@ -361,7 +361,7 @@
       </trans-unit>
 
       <trans-unit id="branchOpeningHoursTitle" datatype="html">
-        <source>Opening hours</source><target state="final">Opening hours</target>
+        <source>Opening hours</source><target state="final">Åpningstider</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
           <context context-type="linenumber">3</context>
@@ -1356,7 +1356,7 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit><trans-unit id="forgotPasswordSuccessMsg" datatype="html">
-        <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">En e-post med instruksjoner for hvordan du kan nullstille passordet ditt er blitt sendt til deg.</target>
+        <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">En e-post med instruksjoner for hvordan du kan endre passordet ditt er blitt sendt til deg.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
           <context context-type="linenumber">30</context>
@@ -1403,7 +1403,7 @@
         </context-group>
         <note priority="1" from="description">should be at least 6 characters long </note>
       </trans-unit><trans-unit id="passwordResetSuccessMsg" datatype="html">
-        <source>Your password was reset!</source><target state="final">Passordet ditt ble nullstilt!</target>
+        <source>Your password was reset!</source><target state="final">Passordet ditt ble endret!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
           <context context-type="linenumber">29</context>
@@ -1811,7 +1811,7 @@
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListGeneralButton" datatype="html">
-        <source>General</source><target state="new">General</target>
+        <source>General</source><target state="final">Generell informasjon</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -1821,15 +1821,15 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListAboutUsButton" datatype="html">
-        <source>About us</source><target state="new">About us</target>
+        <source>About us</source><target state="final">Om oss</target>
         
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="infoMenuListForCompaniesButton" datatype="html">
-        <source>For companies</source><target state="new">For companies</target>
+        <source>For companies</source><target state="final">For skolekunder</target>
         
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">59</context></context-group></trans-unit><trans-unit id="infoMenuListForPupilsButton" datatype="html">
-        <source>For pupils</source><target state="new">For pupils</target>
+        <source>For pupils</source><target state="final">For VGS-elever</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">9</context>
