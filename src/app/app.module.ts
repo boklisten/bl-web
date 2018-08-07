@@ -20,11 +20,12 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 
 import {
 	faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright, faGraduationCap, faSignOutAlt,
-	faClipboard, faCartArrowDown, faSquare, faCheckSquare, faSync, faExclamationTriangle, faClock, faCheckCircle,
+	faClipboard, faCartArrowDown, faCheckSquare, faSync, faExclamationTriangle, faClock, faCheckCircle,
 	faTimes, faCreditCard, faMoneyBillAlt, faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faList,
 	faCircleNotch, faTruck, faWarehouse, faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog,
 	faUserCircle, faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
-	faBan, faArrowAltCircleUp
+	faBan, faArrowAltCircleUp,
+	faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
 import {BranchGuardService} from "./branch/branch-guard-service/branch-guard.service";
@@ -33,6 +34,8 @@ import { HeaderUserDetailAlertComponent } from './header-alert/header-user-detai
 import {HeaderAlertModule} from "./header-alert/header-alert.module";
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
+import {faFacebookSquare, faGoogle} from "@fortawesome/free-brands-svg-icons";
+import {faSquare} from "@fortawesome/free-regular-svg-icons/faSquare";
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -40,7 +43,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 	faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faCircleNotch, faTruck, faWarehouse,
 	faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog, faUserCircle,
 	faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
-	faBan, faArrowAltCircleUp);
+	faBan, faArrowAltCircleUp, faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey,
+	faFacebookSquare, faGoogle);
 
 @NgModule({
 	declarations: [
