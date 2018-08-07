@@ -15,6 +15,7 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { InfoAgreementTermsComponent } from './info-agreement/info-agreement-terms/info-agreement-terms.component';
 import { InfoGeneralComponent } from './info-general/info-general.component';
 import { InfoAboutComponent } from './info-about/info-about.component';
+import { InfoForCompaniesComponent } from './info-for-companies/info-for-companies.component';
 
 @NgModule({
 	imports: [
@@ -35,7 +36,8 @@ import { InfoAboutComponent } from './info-about/info-about.component';
 		ContactInfoComponent,
 		InfoAgreementTermsComponent,
 		InfoGeneralComponent,
-		InfoAboutComponent
+		InfoAboutComponent,
+		InfoForCompaniesComponent
 	],
 	exports: [
 		InfoAgreementRentComponent,
