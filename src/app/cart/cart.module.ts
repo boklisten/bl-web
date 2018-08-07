@@ -23,6 +23,7 @@ import {BlCommonModule} from "../bl-common/bl-common.module";
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartAgreementComponent } from './cart-agreement/cart-agreement.component';
 import {InfoModule} from "../info/info.module";
+import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
 
 @NgModule({
 	imports: [
@@ -43,7 +44,8 @@ import {InfoModule} from "../info/info.module";
 		CartCheckoutComponent,
 		CartEmptyComponent,
 		CartSummaryComponent,
-		CartAgreementComponent
+		CartAgreementComponent,
+		CartConfirmComponent
 	],
 	providers: [
 		CartService,

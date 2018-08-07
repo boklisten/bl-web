@@ -30,17 +30,23 @@ export class CartCheckoutService {
 	}
 
 
-	public placeOrder(): Promise<boolean> {
+	public placeOrder(orderId?: string): Promise<boolean> {
 		if (!this._userService.loggedIn()) {
 			this._router.navigateByUrl('auth/menu');
 			return Promise.reject(new Error('the user is not logged in when trying to place order'));
 		}
 
-		const order = this._cartOrderService.getOrder();
+		let updateOrderId = '';
+
+		if (orderId) {
+			updateOrderId = orderId;
+		} else {
+			const order = this._cartOrderService.getOrder();
+			updateOrderId = order.id;
+		}
 
 		return new Promise((resolve, reject) => {
-
-			this._orderService.update(order.id, {placed: true}).then((placedOrder: Order) => {
+			this._orderService.update(updateOrderId, {placed: true}).then((placedOrder: Order) => {
 				// we need to clear everything after order is placed
 				this._cartService.clearCart();
 				this._cartOrderService.clearOrder();

@@ -10,6 +10,7 @@ import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs/internal/Subscription";
 import {environment} from "../../../../environments/environment";
+import {StorageService} from "@wizardcoder/bl-connect";
 
 
 declare var Dibs: any;
@@ -33,7 +34,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	private paymentChange$: Subscription;
 
 
-	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router) {
+	constructor(private _cartPaymentService: CartPaymentService, private _cartCheckoutService: CartCheckoutService, private _router: Router, private _storageService: StorageService) {
 		this.alert = false;
 	}
 
@@ -102,6 +103,10 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 
 		const cartCheckoutService = this._cartCheckoutService;
 		const router = this._router;
+		const removeStoredIds = this.removeIds;
+
+
+		this.storeIds(); // must store the ids in case the payment fails
 
 		checkout.on('payment-initialized', function (response) {
 			checkout.send('payment-order-finalized', true);
@@ -109,10 +114,25 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 
 		checkout.on('payment-completed', function (response) {
 			cartCheckoutService.placeOrder().then(() => {
+				removeStoredIds();
 				router.navigateByUrl('u/order');
 			}).catch(() => {
 				console.log('cartPaymentService: could not place order after payment was completed');
 			});
 		});
+	}
+
+	private storeIds() {
+		this._storageService.add('bl-payment-id', this.payment.info['paymentId']);
+		this._storageService.add('bl-order-id', this.payment.order);
+	}
+
+	private removeIds() {
+		try {
+			localStorage.removeItem('bl-payment-id');
+			localStorage.removeItem('bl-order-id');
+		} catch (e) {
+			console.log('cartPayment: could not remove stored ids');
+		}
 	}
 }
