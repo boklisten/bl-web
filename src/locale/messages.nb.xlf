@@ -447,19 +447,19 @@
       <trans-unit id="itemTypeSelectBuyoutButton" datatype="html">
         <source>buyout</source><target state="final">kjøp ut</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">29</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">30</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoRent" datatype="html">
         <source>rent</source><target state="final">leie til</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">37</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoExtend" datatype="html">
         <source>extend</source><target state="final">forleng</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">43</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">44</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoBuy" datatype="html">
         <source>buy</source><target state="final">kjøp</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">49</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit>
       <trans-unit id="itemDisplayCategoryWarningNoItems" datatype="html">
         <source>There are currently no items for this branch</source><target state="final">Det er for øyeblikket ingen bøker på denne filialen</target>
 
@@ -1619,18 +1619,18 @@
         <source>FAQ</source><target state="final">Spørsmål og svar</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">7</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="infoMenuListContactUsButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="infoMenuListContactUsButton" datatype="html">
         <source>Contact us</source><target state="final">Kontakt oss</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">8</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="infoMenuListBranchInfoButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">59</context></context-group></trans-unit><trans-unit id="infoMenuListBranchInfoButton" datatype="html">
         <source>Branch info</source><target state="final">Skoler og åpningstider</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">9</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="infoMenuListAgreementsButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="infoMenuListAgreementsButton" datatype="html">
         <source>Policies</source><target state="final">Avtaler og betingelser</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
         <source>Rent agreement</source><target state="final">Leiebetingelser</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
@@ -1654,205 +1654,10 @@
           <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
-      </trans-unit><trans-unit id="faqHowToRentBooksAsPrivateCandidateQuestion" datatype="html">
-        <source>How do I rent books as a private candidate?</source><target state="new">How do I rent books as a private candidate?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqHowtoRentBooksAsPrivateCandidateAnswer" datatype="html">
-        <source>
-				You can either order some books in the webstore and then get it at a branch, or you could just meet up at our branch at our opening times.
-				The opening times will be added at the webpage in good time for the semester end.
-			</source><target state="new">
-				You can either order some books in the webstore and then get it at a branch, or you could just meet up at our branch at our opening times.
-				The opening times will be added at the webpage in good time for the semester end.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqHowLongToGetTheItemsQuestion" datatype="html">
-        <source>How long does it take to get the items?</source><target state="new">How long does it take to get the items?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqHowLongToGetTheItemsAnswer" datatype="html">
-        <source>
-				If you order by mail it will take up to 14 days to send the delivery to you. If you want to get the items at a branch you can get them at once.
-				(It can take longer if we don't have that item in store, as we need to order some more)
-			</source><target state="new">
-				If you order by mail it will take up to 14 days to send the delivery to you. If you want to get the items at a branch you can get them at once.
-				(It can take longer if we don't have that item in store, as we need to order some more)
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIBuyItemsQuestion" datatype="html">
-        <source>Can I buy items at Boklisten.no?</source><target state="new">Can I buy items at Boklisten.no?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIBuyItemsAnswer" datatype="html">
-        <source>
-				Yes, but we really want you to consider to rent instead, it's cheaper and it's more environmental friendly. You don't need the items after you have passed the exams, do you?
-			</source><target state="new">
-				Yes, but we really want you to consider to rent instead, it's cheaper and it's more environmental friendly. You don't need the items after you have passed the exams, do you?
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqDoIHaveToOrderOnlineQuestion" datatype="html">
-        <source>Do I have to order online?</source><target state="new">Do I have to order online?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqDoIHaveToOrderOnlineAnswer" datatype="html">
-        <source>
-				As a regular student you need to order online. As a private candidate you can choose to either order online or come to one of our branches to order there.
-				We strongly suggest that you order online as it will take you shorter time to get the items once you are at the branch.
-			</source><target state="new">
-				As a regular student you need to order online. As a private candidate you can choose to either order online or come to one of our branches to order there.
-				We strongly suggest that you order online as it will take you shorter time to get the items once you are at the branch.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhereToDeliverQuestion" datatype="html">
-        <source>Where do I deliver the items?</source><target state="new">Where do I deliver the items?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhereToDeliverAnswer" datatype="html">
-        <source>
-				As a regular student you deliver them at the same time as the rest of your class.
-				As a private candidate you deliver the items at the branch you ordered them from. If you can't deliver them at our opening times you can
-				deliver them by mail.
-			</source><target state="new">
-				As a regular student you deliver them at the same time as the rest of your class.
-				As a private candidate you deliver the items at the branch you ordered them from. If you can't deliver them at our opening times you can
-				deliver them by mail.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanSomeoneElseDeliverQuestion" datatype="html">
-        <source>Can someone else deliver for me?</source><target state="new">Can someone else deliver for me?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanSomeoneElseDeliverAnswer" datatype="html">
-        <source>
-				Yes, you can have someone else deliver the items for you. But you the one who deliver should bring your id.
-			</source><target state="new">
-				Yes, you can have someone else deliver the items for you. But you the one who deliver should bring your id.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhatToDoWhenImNotSatisfiedWithItemQuestion" datatype="html">
-        <source>What do I do if i'm not satisfied with one of the items?</source><target state="new">What do I do if i'm not satisfied with one of the items?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">83</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhatToDoWhenImNotSatisfiedWithItemAnswer" datatype="html">
-        <source>
-				If you deliver it back to us you can get a new one. If you want your money back or just want to return the item please read our complaint and cancellation page.
-			</source><target state="new">
-				If you deliver it back to us you can get a new one. If you want your money back or just want to return the item please read our complaint and cancellation page.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">86</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIKeepItemsQuestion" datatype="html">
-        <source>Can I keep the items?</source><target state="new">Can I keep the items?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">94</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIKeepItemsAnswer" datatype="html">
-        <source>
-				Yes, but if you don't deliver the books in set time you will get a replacement invoice.
-				This invoice is the items full price + 10% + 90 kr in fee. This will become expensive and we recomend you to deliver in time!
-				If you are a private candidate you can buyout the item in the webstore under the page "Your items" (before the deadline of course)
-			</source><target state="new">
-				Yes, but if you don't deliver the books in set time you will get a replacement invoice.
-				This invoice is the items full price + 10% + 90 kr in fee. This will become expensive and we recomend you to deliver in time!
-				If you are a private candidate you can buyout the item in the webstore under the page "Your items" (before the deadline of course)
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">97</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIExtendTheDeadlineQuestion" datatype="html">
-        <source>Can I extend the deadline?</source><target state="new">Can I extend the deadline?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">107</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIExtendTheDeadlineAnswer" datatype="html">
-        <source>
-				If you are a private candidate you can extend the deadline up to one semester each. Beware however, you need to do this before the old deadline!
-			</source><target state="new">
-				If you are a private candidate you can extend the deadline up to one semester each. Beware however, you need to do this before the old deadline!
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">110</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhatDoIDoIfDeadlineIsExpiredQuestion" datatype="html">
-        <source>What do I do if the deadline is expired?</source><target state="new">What do I do if the deadline is expired?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">118</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqWhatDoIDoIdDeadlineIsExpiredAnswer" datatype="html">
-        <source>
-				You will get notified about what to do, either by email, sms or both. The general rule is that you will receive an invoice which you have to pay.
-				You can read more about this in our rent agreement.
-			</source><target state="new">
-				You will get notified about what to do, either by email, sms or both. The general rule is that you will receive an invoice which you have to pay.
-				You can read more about this in our rent agreement.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">121</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIMarkQuestion" datatype="html">
-        <source>Can I mark in the books?</source><target state="new">Can I mark in the books?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">130</context>
-        </context-group>
-      </trans-unit><trans-unit id="faqCanIMarkAnswer" datatype="html">
-        <source>
-				Yes, but we recommend you not to mark with pen or marker, only with pencils.
-			</source><target state="new">
-				Yes, but we recommend you not to mark with pen or marker, only with pencils.
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context>
-          <context context-type="linenumber">133</context>
-        </context-group>
       </trans-unit><trans-unit id="infoMenuListPoliciesButton" datatype="html">
         <source>Policies</source><target state="final">Avtaler og betingelser</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit><trans-unit id="contactInfoTitle" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="contactInfoTitle" datatype="html">
         <source>Here is how you can contact us</source><target state="final">Vår kontaktinformasjon</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/contact-info/contact-info.component.ts</context>
@@ -1962,11 +1767,8 @@
         </context-group>
       </trans-unit><trans-unit id="itemTypeSelectInfoBuyout" datatype="html">
         <source>buyout this item</source><target state="final">kjøp ut denne boken</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
-          <context context-type="linenumber">54</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartCheckoutPay" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">55</context></context-group></trans-unit><trans-unit id="cartCheckoutPay" datatype="html">
         <source>Pay</source><target state="final">Betal</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
@@ -2007,6 +1809,36 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
           <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit><trans-unit id="infoMenuListGeneralButton" datatype="html">
+        <source>General</source><target state="new">General</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit><trans-unit id="infoMenuListAboutUsButton" datatype="html">
+        <source>About us</source><target state="new">About us</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit><trans-unit id="infoMenuListForCompaniesButton" datatype="html">
+        <source>For companies</source><target state="new">For companies</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit></body>
   </file>

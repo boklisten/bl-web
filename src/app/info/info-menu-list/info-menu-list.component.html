@@ -24,6 +24,13 @@
                     <span i18n="@@infoMenuListFaqButton">FAQ</span>
                 </a>
             </li>
+			<li class="nav-item">
+                <a class="nav-link"
+                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'pupils'}"
+                    (click)="onSelectMenuButton('pupils')">
+                    <span i18n="@@infoMenuListForPupilsButton">For pupils</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link"
                    [ngClass]="{'bl-info-selected': selectedMenuButton === 'branch'}"

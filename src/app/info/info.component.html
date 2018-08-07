@@ -6,6 +6,7 @@
                 <span *ngIf="selectedMenuButton === 'how'" i18n="@@infoMenuListHowDoesItWorkButton">How does it work?</span>
 				<span *ngIf="selectedMenuButton === 'general'" i18n="@@infoMenuListGeneralButton">General</span>
                 <span *ngIf="selectedMenuButton === 'faq'" i18n="@@infoMenuListFaqButton">FAQ</span>
+				<span *ngIf="selectedMenuButton === 'pupils'" i18n="@@infoMenuListForPupilsButton">For pupils</span>
                 <span *ngIf="selectedMenuButton === 'contact'" i18n="@@infoMenuListContactUsButton">Contact us</span>
                 <span *ngIf="selectedMenuButton === 'branch'" i18n="@@infoMenuListBranchInfoButton">Branch info</span>
 				<span *ngIf="selectedMenuButton === 'about'" i18n="@@infoMenuListAboutUsButton">About us</span>
@@ -31,6 +32,9 @@
         </div>
 		<div class="col-12" *ngIf="selectedMenuButton === 'general'">
 			<app-info-general></app-info-general>
+        </div>
+		<div class="col-12" *ngIf="selectedMenuButton === 'pupils'">
+			<app-info-for-pupils></app-info-for-pupils>
         </div>
         <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
             <app-branch-info></app-branch-info>
