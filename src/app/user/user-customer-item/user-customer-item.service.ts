@@ -77,22 +77,21 @@ export class UserCustomerItemService {
 		return false;
 	}
 
-	public isExtendValid(branchItem: BranchItem, customerItem: CustomerItem): Promise<boolean> {
-		if (!branchItem.rent || this._dateService.isDeadlineExpired(customerItem.deadline.toString()) || customerItem.returned) {
-			return Promise.reject('userCustomerItemService: customerItem can not be extended');
+	public isExtendValid(customerItem: CustomerItem): boolean {
+		if (this._dateService.isDeadlineExpired(customerItem.deadline.toString()) || customerItem.returned) {
+			return false;
 		}
 
-		return this._branchService.getById(branchItem.branch).then((branch: Branch) => {
-			return (this.isExtendPeriodValid(customerItem.deadline, 'semester', branch) && this.isExtendPeriodValidOnCustomerItem('semester', customerItem));
-		}).catch((getBranchError) => {
-			return Promise.reject('userCustomerItemService: could not get branch');
-		});
+		const branch = this._branchStoreService.getBranch();
+		return this.isExtendPeriodValid(customerItem.deadline, 'semester', branch) && this.isExtendPeriodValidOnCustomerItem('semester', customerItem);
 	}
 
-	public isBuyoutValid(branchItem: BranchItem, customerItem: CustomerItem): boolean {
+	public isBuyoutValid(customerItem: CustomerItem): boolean {
+		/* buyout should be its own flag in the future
 		if (!branchItem.buy) {
 			return false;
 		}
+		*/
 
 		if (this._dateService.isDeadlineExpired(customerItem.deadline.toString()) || customerItem.returned) {
 			return false;

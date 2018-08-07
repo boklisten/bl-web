@@ -5,6 +5,7 @@ import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
 
 @Component({
 	selector: 'app-item-type-select',
@@ -33,6 +34,7 @@ export class ItemTypeSelectComponent implements OnInit {
 	constructor(private _dateService: DateService,
 				private _cartService: CartService,
 				private _priceService: PriceService,
+				private _userCustomerItemService: UserCustomerItemService,
 				private _branchStoreService: BranchStoreService) {
 		this.typeChange = new EventEmitter<string>();
 		this.typeSelect = 'semester';
@@ -90,17 +92,15 @@ export class ItemTypeSelectComponent implements OnInit {
 		} else if (action === 'buy' && this.branchItem && this.branchItem.buy) {
 			return true;
 		} else if (action === 'extend' && this.isCustomerItem()) {
-			return true;
+			return this._userCustomerItemService.isExtendValid(this.customerItem);
 		} else if (action === 'buyout' && this.isCustomerItem()) {
-			return true;
+			return this._userCustomerItemService.isBuyoutValid(this.customerItem);
 		}
+
+		return false;
 	}
 
-	private calculateOptions(item: Item) {
-		if (this.customerItem) {
-			return;
-		}
-
+	private calculateOptions() {
 		if (this.isActionValid('semester')) {
 			this.rentSemesterOption = true;
 		}
@@ -117,6 +117,9 @@ export class ItemTypeSelectComponent implements OnInit {
 			this.extendOption = true;
 		}
 
+		if (this.isActionValid('buyout')) {
+			this.buyoutOption = true;
+		}
 
 	}
 
@@ -133,7 +136,7 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private displaySelectedPeriodType() {
-		this.calculateOptions(this.item);
+		this.calculateOptions();
 
 		if (this._cartService.contains(this.item.id)) {
 			this.updateTypeBasedOnCart(this._cartService.get(this.item.id));

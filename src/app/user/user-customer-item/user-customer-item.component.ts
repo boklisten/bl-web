@@ -74,15 +74,8 @@ export class UserCustomerItemComponent implements OnInit {
 		if (this._userCustomerItemService.isOnValidBranch(this.customerItem, branchItem)) {
 			this.correctBranch = true;
 
-			if (branchItem) {
-				this._userCustomerItemService.isExtendValid(branchItem, this.customerItem).then((canExtend) => {
-					this.canExtend = canExtend;
-				}).catch(() => {
-					this.canExtend = false;
-				});
-
-				this.canBuyout = this._userCustomerItemService.isBuyoutValid(branchItem, this.customerItem);
-			}
+			this.canExtend = this._userCustomerItemService.isExtendValid(this.customerItem);
+			this.canBuyout = this._userCustomerItemService.isBuyoutValid(this.customerItem);
 		} else {
 			this.correctBranch = false;
 		}

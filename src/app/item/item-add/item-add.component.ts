@@ -26,7 +26,7 @@ export class ItemAddComponent implements OnInit {
 	}
 
 	onDelete() {
-		if (this.item && this.branchItem && this.type) {
+		if (this.item) {
 			this._cartService.remove(this.item.id);
 		}
 	}

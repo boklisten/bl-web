@@ -20,11 +20,12 @@
 
 	<div class="col-auto" *ngIf="isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-secondary">
+            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="extendOption">
                 <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectExtendButton">extend</span>
             </label>
-            <label ngbButtonLabel class="btn-outline-secondary">
+
+            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyoutOption">
                 <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyoutButton">buyout</span>
             </label>
