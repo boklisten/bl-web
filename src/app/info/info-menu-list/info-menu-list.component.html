@@ -38,6 +38,13 @@
                     <span i18n="@@infoMenuListPoliciesButton">Policies</span>
                 </a>
             </li>
+			<li class="nav-item">
+                <a class="nav-link"
+                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'about'}"
+                    (click)="onSelectMenuButton('about')">
+                    <span i18n="@@infoMenuListAboutUsButton">About us</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link"
                    [ngClass]="{'bl-info-selected': selectedMenuButton === 'contact'}"

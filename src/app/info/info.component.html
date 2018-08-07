@@ -8,6 +8,7 @@
                 <span *ngIf="selectedMenuButton === 'faq'" i18n="@@infoMenuListFaqButton">FAQ</span>
                 <span *ngIf="selectedMenuButton === 'contact'" i18n="@@infoMenuListContactUsButton">Contact us</span>
                 <span *ngIf="selectedMenuButton === 'branch'" i18n="@@infoMenuListBranchInfoButton">Branch info</span>
+				<span *ngIf="selectedMenuButton === 'about'" i18n="@@infoMenuListAboutUsButton">About us</span>
                 <span *ngIf="selectedMenuButton === 'policies'" i18n="@@infoMenuListAgreementsButton">Policies</span>
                 <fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
             </button>
@@ -33,11 +34,14 @@
         <div class="col-12" *ngIf="selectedMenuButton === 'branch'">
             <app-branch-info></app-branch-info>
         </div>
-        <div class="col-12" *ngIf="selectedMenuButton === 'contact'">
-            <app-contact-info></app-contact-info>
-        </div>
         <div class="col-12" *ngIf="selectedMenuButton === 'policies'">
             <app-info-agreement></app-info-agreement>
+        </div>
+		<div class="col-12" *ngIf="selectedMenuButton === 'about'">
+			<app-info-about></app-info-about>
+        </div>
+        <div class="col-12" *ngIf="selectedMenuButton === 'contact'">
+            <app-contact-info></app-contact-info>
         </div>
     </div>
 </div>

@@ -1,0 +1,40 @@
+<div class="container bg-white pt-3 pt-sm-3 pt-md-0 p-md-5 p-lg-5 p-xl-5">
+    <div class="row">
+        <div class="col">
+            <h4>{{aboutUsTitle}}</h4>
+        </div>
+    </div>
+
+	<div class="row">
+		<div class="col">
+			<p>
+				{{aboutUsDesc}}
+			</p>
+		</div>
+	</div>
+
+	<div class="row" *ngFor="let aboutUsText of aboutUsTexts">
+		<div class="col-12">
+			<h5>{{aboutUsText.title}}</h5>
+		</div>
+		<div class="col-12">
+			<p *ngFor="let textBlock of aboutUsText.textBlocks">
+				{{textBlock}}
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<h5>{{aboutUsList.title}}</h5>
+		</div>
+		<div class="col-12">
+			<ul>
+				<li *ngFor="let listItem of aboutUsList.listItems">
+					{{listItem}}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
