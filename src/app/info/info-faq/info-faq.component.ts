@@ -69,6 +69,91 @@ export class InfoFaqComponent implements OnInit {
 					'Adresse for innsending av bøker (vi godtar ingen bøker som er sendt etter fristen)',
 					'Boklisten.no AS, Postboks 8, 1316 Eiksmarka'
 				]
+			},
+			{
+				title: 'Hvor skal jeg levere tilbake bøkene?',
+				textBlocks: [
+					'Vi kommer til skolen for å samle inn bøker. Du vil også ha andre muligheter til å levere og du kan sende bøkene i posten til oss. Informasjon om levering kommer på våre nettsider ca 1 måned før innleveringsfristen som er 1. juli for vårsemester og 20. desember for høstsemester.'
+				]
+			},
+			{
+				title: 'Kan noen andre levere bøkene for meg?',
+				textBlocks: [
+					'Ja - du kan få noen andre til å levere bøkene for deg. Legg imidlertid merke til at vi kun får registrert innleveringen dersom den som leverer kan oppgi ditt navn og/eller telefonnummer - slik at vi får registrert boken på riktig person. Vi tar ikke ansvar for bøker som har blitt levert uten identifikasjon.'
+				]
+			},
+			{
+				title: 'Kan jeg beholde bøkene?',
+				textBlocks: [
+					'Ja, men hvis du ikke leverer bøkene innen fristen vil du få erstatningsfaktura fra oss. Denne er på bokens nypris + 10% + 90 kroner i gebyr. Dette er dyrt og anbefales ikke! Hvis du som privatist vil beholde bøkene, kan du enten forlenge eller kjøpe dem ut. Priser for forlengelse og utkjøp finner du ved å logge deg inn og sjekke dine bøker. Utkjøp koster 50% av nypris for privatist, og 100% av nypris for videregående-elever. For å unngå erstatningsfaktura, må utkjøpet gjøres innen innleveringsfristens utløp – som er 1.juli for vårsemester og 20.desember for høstsemester.'
+				]
+			},
+			{
+				title: 'Kan jeg forlenge leien?',
+				textBlocks: [
+					'Det er mulig å forlenge leien av bøkene dine med ett semester. Dette kan du gjøre både på stand og på nett, og det koster for tiden 100 kroner per bok for privatister. For å unngå erstatningsfaktura, må forlengelse gjøres innen innleveringsfristens utløp. Bøkene kan ikke forlenges mer enn én gang. Når du har forlenget leien av bøkene, må du levere dem innen neste frist. Hvis du allikevel ønsker å beholde bøkene etter dette, kan du kjøpe ut boken som beskrevet i forrige spørsmål, eller vente på erstatningsfaktura.l'
+				]
+			},
+			{
+				title: 'Hvor mye koster bøkene?',
+				textBlocks: [
+					'Du kan finne alle våre priser ved å sjekke boklistene for hver skole. Dersom du ønsker å kjøpe bøker som kun står til utleie på nettsiden, får du prisen av våre ansatte på stand. De tilsvarer forlagenes listepris/nypris.'
+				]
+			},
+			{
+				title: 'Hvordan betaler jeg?',
+				textBlocks: [
+					'I nettbutikken kan du bare betale med kort. Hvis du velger å betale på stand, kan du betale med både kort, kontant og Vipps. Vi sender ikke ut faktura for bøker som leies, med unntak av erstatningsfaktura hvis du mot formodning ikke leverer i tide.'
+				]
+			},
+			{
+				title: 'Reklamasjon og angrerett',
+				textBlocks: [
+					'Vi følger vanlige regler for reklamasjon, selv om dette ikke er noe krav ved utleie. Det vil si at du kan levere tilbake boken innen 14 dager fra du fikk boken utlevert og få tilbake pengene. Boken må være i samme stand som når du fikk den. Dette gjelder uansett om du kjøper boken på nett eller på skolen når vi er der.'
+				]
+
+			},
+			{
+				title: 'Hva er en ødelagt bok?',
+				textBlocks: [
+					'Det er en bok som etter vår vurdering ikke lenger kan brukes av en elev. Et eksempel er en bok med sterk lukt, våte/krøllete sider, misfarging eller manglende for- eller bakside. Vi deler aldri ut en bok uten forside eller bakside. Hvis du ødelegger en bok må du erstatte denne. Da anbefales det å kjøpe ut før fristen, ettersom det er billigere enn erstatningsfaktura. Se forøvrig leiebetingelsene når du bestiller.'
+				]
+			},
+			{
+				title: 'Kan jeg streke i bøkene?',
+				textBlocks: [
+					'Ja, men husk at boken skal brukes av noen etter deg. Hvis du har streket så mye at den er ubrukelig må du erstatte boken. Bruk blyant hvis du streker svært mye i bøkene!'
+				]
+			},
+			{
+				title: 'Må jeg sette bind på bøkene?',
+				textBlocks: [
+					'Nei, men vi foretrekker at du gjør det og det er mindre sjanse for at boken blir ødelagt hvis du har satt på bind. Det er derfor en forsikring for deg selv.'
+				]
+			},
+			{
+				title: 'Hva skal jeg gjøre hvis jeg ikke er fornøyd med boken jeg fikk?',
+				textBlocks: [
+					'Hvis du likevel ikke vil ha en bok kan du levere tilbake denne. Se reklamasjon og angrerett. Hvis du vil bytte en bok ordner vi det oftest ved at du leverer inn en bok og får tilbake en annen. Hvis du har fått en brukt bok som du ikke er fornøyd med bytter vi alltid uten spørsmål - vi vil at du skal lykkes og da må du ha en god bok!'
+				]
+			},
+			{
+				title: 'Hvordan får jeg bøkene mine når jeg er elev på en videregående skole?',
+				textBlocks: [
+					'Du kommer med en underskrevet kontrakt og identifikasjon til skolen din på utleveringsdagen - der får du utlevert bøker.'
+				]
+			},
+			{
+				title: 'Hva gjør jeg om jeg gikk glipp av utdeling av bøker på videregående skole?',
+				textBlocks: [
+					'Ta kontakt med kontaktelevene på din skole. Kontaktinformasjon til kontaktelevene kan du finne på informasjonssidene våre.'
+				]
+			},
+			{
+				title: 'Andre spørsmål?',
+				textBlocks: [
+					'Har du andre spørsmål? Send oss en mail! Vi svarer vanligvis i løpet av én dag.'
+				]
 			}
 		];
 	}
