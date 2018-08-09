@@ -22,56 +22,67 @@ export class CartDeliveryComponent implements OnInit {
 
 	public deliveryMethod: DeliveryMethod;
 	public currentDelivery: Delivery;
+	public mailOption: boolean;
+	public branchOption: boolean;
+	public deliveryError: boolean;
 
 	public toPostalCode: string;
 	public toName: string;
 	public toAddress: string;
 	public toPostalCity: string;
-
-	public postalCodeFailure: boolean;
 	public failureText: string;
-	public branch: Branch;
-
 	public bringInputWarning: string;
+	public branch: Branch;
+	public showConfirmShipmentButton: boolean;
 
 	constructor(private _dateService: DateService, private _cartDeliveryService: CartDeliveryService, private _userService: UserService,
 				private _branchStoreService: BranchStoreService) {
 
-		this.deliveryMethod = 'branch';
 		this.delivery = new EventEmitter();
-		this.postalCodeFailure = true;
-		this.toPostalCode = '';
 		this.bringInputWarning = '';
-
 		this.failureText = null;
-		this.currentDelivery = this._cartDeliveryService.getDelivery();
-
-		this.onDeliveryFailure();
-
-		if (this.currentDelivery) {
-			this.deliveryMethod = this.currentDelivery.method;
-		}
-
 	}
 
 	ngOnInit() {
-		this.bringInputWarning = '';
+		this.branch = this._branchStoreService.getBranch();
+		this.deliveryMethod = this._cartDeliveryService.getDefaultDeliveryMethod();
+		this.setDeliveryOptions();
+		this.setDefaultDeliveryMethod();
+
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		this.setDeliveryDetails();
-
-		if (this.currentDelivery) {
-			this.deliveryMethod = this.currentDelivery.method;
-		}
+		this.onDeliveryFailure();
+		console.log('the delivery method should be ', this.deliveryMethod);
+		this.onSetDelivery(this.deliveryMethod);
 
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
+			console.log('the delivery changed', delivery);
 			this.failureText = null;
 			this.bringInputWarning = '';
 			this.currentDelivery = this._cartDeliveryService.getDelivery();
 			this.deliveryMethod = this.currentDelivery.method;
 		});
+	}
 
+	private setDeliveryOptions() {
+		if (this.branch.deliveryMethods) {
+			this.branchOption = (this.branch.deliveryMethods.branch);
+			this.mailOption = (this.branch.deliveryMethods.byMail);
+		} else {
+			this.branchOption = true;
+			this.mailOption = true;
+		}
 
-		this.branch = this._branchStoreService.getBranch();
+	}
+
+	public setDefaultDeliveryMethod() {
+		if (this.branchOption) {
+			this.deliveryMethod = 'branch';
+		} else if (this.mailOption) {
+			this.deliveryMethod = 'bring';
+		} else {
+			this.deliveryMethod = 'branch';
+		}
 	}
 
 	private setDeliveryDetails() {
@@ -81,41 +92,49 @@ export class CartDeliveryComponent implements OnInit {
 			this.toPostalCity = (userDetail.postCity) ? userDetail.postCity : '';
 			this.toPostalCode = (userDetail.postCode) ? userDetail.postCode : '';
 			this.validateDeliveryMethodBring();
+			this.onSetDelivery(this.deliveryMethod);
 		}).catch((getUserDetailError) => {
 			console.log('cartDeliveryService: could not get user detail');
 		});
 	}
 
 
-	onPostalCodeChange() {
+	onInputEnterClick() {
 		if (this.validateDeliveryMethodBring()) {
-			this.setDeliveryBring();
+			this.onSetDelivery(this.deliveryMethod);
 		}
+	}
+
+	public validateInput() {
+		if (!this.validateDeliveryMethodBring()) {
+			this._cartDeliveryService.setDeliveryFailure();
+			this.showConfirmShipmentButton = true;
+			return false;
+		}
+		return true;
 	}
 
 	validateDeliveryMethodBring(): boolean {
 		this.bringInputWarning = '';
+		this.deliveryError = false;
+
 		if (!this.toName || this.toName.length <= 0) {
 			this.bringInputWarning = 'invalid-name';
-			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toAddress || this.toAddress.length <= 0) {
 			this.bringInputWarning = 'invalid-address';
-			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toPostalCity || this.toPostalCity.length <= 0) {
 			this.bringInputWarning = 'invalid-postal-city';
-			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
 		if (!this.toPostalCode || this.toPostalCode.length < 4) {
 			this.bringInputWarning = 'invalid-postal-code';
-			this._cartDeliveryService.setDeliveryFailure();
 			return false;
 		}
 
@@ -125,8 +144,9 @@ export class CartDeliveryComponent implements OnInit {
 
 	onSetDelivery(deliveryMethod: DeliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
+		this.showConfirmShipmentButton = false;
 
-		switch (deliveryMethod) {
+		switch (this.deliveryMethod) {
 			case "bring":
 				this.setDeliveryBring();
 				break;
@@ -138,7 +158,11 @@ export class CartDeliveryComponent implements OnInit {
 
 	private onDeliveryFailure() {
 		this._cartDeliveryService.onDeliveryFailure().subscribe((err) => {
-			this.bringInputWarning = (this.bringInputWarning) ? this.bringInputWarning : 'invalid-postal-code';
+			if (this.deliveryMethod === 'bring' && !this.validateDeliveryMethodBring()) {
+				this.deliveryError = false;
+			} else {
+				this.deliveryError = true;
+			}
 		});
 	}
 
@@ -149,13 +173,8 @@ export class CartDeliveryComponent implements OnInit {
 	private setDeliveryBring() {
 		if (this.validateDeliveryMethodBring()) {
 			this._cartDeliveryService.setBringDelivery(this.toName, this.toAddress, this.toPostalCity, this.toPostalCode);
+		} else {
+			this._cartDeliveryService.setDeliveryFailure();
 		}
-	}
-
-	public getEstimatedDelivery(): string {
-		if (!this.currentDelivery) {
-			return '';
-		}
-		return this._dateService.daysUntil(this.currentDelivery.info['estimatedDelivery']);
 	}
 }

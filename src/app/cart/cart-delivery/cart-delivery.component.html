@@ -1,20 +1,41 @@
 
-<div class="row" *ngIf="branch">
+<div class="row">
 	<div class="col-12">
 		<div class="card">
 
 			<div class="card-header">
 				<span i18n="@@cartDeliveryTitle">Delivery method</span>
 			</div>
-			<div class="card-body">
+			<div class="card-body" *ngIf="branchOption && mailOption">
 				<ul class="nav nav-pills nav-fill">
-					<li class="nav-item" (click)="onSetDelivery('branch')">
+					<li class="nav-item" (click)="onSetDelivery('branch')" *ngIf="branchOption">
 						<span class="nav-link" [ngClass]="{'bl-nav-btn-active': deliveryMethod === 'branch'}" i18n="@@cartDeliveryOptionBranchButton">At branch</span>
 					</li>
-					<li class="nav-item" (click)="onSetDelivery('bring')">
+					<li class="nav-item" (click)="onSetDelivery('bring')" *ngIf="mailOption">
 						<span class="nav-link" [ngClass]="{'bl-nav-btn-active': deliveryMethod === 'bring'}" i18n="@@cartDeliveryOptionBringButton">By mail</span>
 					</li>
 				</ul>
+			</div>
+
+			<div class="card-body" *ngIf="deliveryError">
+				<div class="alert alert-warning">
+					<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+					<span i18n="@@cartDeliveryError">The delivery could not be created</span>
+					<span i18n="@@cartDeliveryBringError" *ngIf="deliveryMethod === 'bring'" class="ml-2 font-weight-bold">Are you sure you have the correct shipment address?</span>
+				</div>
+			</div>
+			<div class="card-body" *ngIf="bringInputWarning">
+				<div class="row mt-2">
+					<div class="col-12">
+						<div class="alert alert-warning">
+							<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+							<span *ngIf="bringInputWarning === 'invalid-name'" i18n="@@cartDeliveryOptionBranchInvalidName">please provide a valid name</span>
+							<span *ngIf="bringInputWarning === 'invalid-address'" i18n="@@cartDeliveryOptionBranchInvalidAddress">please provide a valid address</span>
+							<span *ngIf="bringInputWarning === 'invalid-postal-code'" i18n="@@cartDeliveryOptionBranchInvalidPostalCode">please provide a valid postal code</span>
+							<span *ngIf="bringInputWarning === 'invalid-postal-city'" i18n="@@cartDeliveryOptionBranchInvalidPostalCity">please provide a valid postal city</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="card-body" *ngIf="deliveryMethod === 'branch'">
@@ -36,17 +57,6 @@
                         <p i18n="@@cartDeliveryOptionBringDescription">Get the items sent to you with Bring from one of our storage facilities</p>
                     </div>
                 </div>
-				<div class="row mt-2" *ngIf="bringInputWarning">
-					<div class="col-12">
-						<div class="alert alert-warning">
-							<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-							<span *ngIf="bringInputWarning === 'invalid-name'" i18n="@@cartDeliveryOptionBranchInvalidName">please provide a valid name</span>
-							<span *ngIf="bringInputWarning === 'invalid-address'" i18n="@@cartDeliveryOptionBranchInvalidAddress">please provide a valid address</span>
-							<span *ngIf="bringInputWarning === 'invalid-postal-code'" i18n="@@cartDeliveryOptionBranchInvalidPostalCode">please provide a valid postal code</span>
-							<span *ngIf="bringInputWarning === 'invalid-postal-city'" i18n="@@cartDeliveryOptionBranchInvalidPostalCity">please provide a valid postal city</span>
-						</div>
-					</div>
-				</div>
 				<div class="row mt-5" *ngIf="deliveryMethod === 'bring'">
                     <div class="col-12">
                         <h5 i18n="@@cartDeliveryShipmentAddressTitle">Shipment address</h5>
@@ -64,8 +74,9 @@
                                 class="form-control"
 								i18n-placeholder="@@cartDeliveryShipmentNamePlaceholder"
                                 placeholder="Full Name"
-								(change)="validateDeliveryMethodBring()"
-								(keydown.enter)="onSetDelivery('bring')"
+								(change)="validateInput()"
+								(keyup)="validateInput()"
+								(keyup.enter)="onInputEnterClick()"
                                 [(ngModel)]="toName">
                         </div>
                     </div>
@@ -82,8 +93,9 @@
                                 class="form-control"
 								i18n-placeholder="@@cartDeliveryShipmentAddressPlaceholder"
                                 placeholder="Address"
-								(change)="validateDeliveryMethodBring()"
-								(keydown.enter)="onSetDelivery('bring')"
+								(change)="validateInput()"
+								(keyup)="validateInput()"
+								(keyup.enter)="onInputEnterClick()"
                                 [(ngModel)]="toAddress">
                         </div>
                     </div>
@@ -99,30 +111,32 @@
                                 type="text"
                                 maxlength="4"
                                 class="form-control"
-								(change)="onPostalCodeChange() && validateDeliveryMethodBring()"
-								(keydown.enter)="onSetDelivery('bring')"
+								(change)="validateInput()"
+								(keyup)="validateInput()"
 								i18n-placeholder="@@cartDeliveryShipmentPostalCodePlaceholder"
                                 placeholder="Postal code"
-                                [(ngModel)]="toPostalCode">
+								(keyup.enter)="onInputEnterClick()"
+								[(ngModel)]="toPostalCode">
 
                             <input
                                 type="text"
                                 class="form-control"
-								(change)="validateDeliveryMethodBring()"
+								(change)="validateInput()"
+								(keyup)="validateInput()"
 								i18n-placeholder="@@cartDeliveryShipmentPostalCityPlaceholder"
                                 placeholder="city"
-								(keydown.enter)="onSetDelivery('bring')"
+								(keyup.enter)="onInputEnterClick()"
 								[(ngModel)]="toPostalCity">
                         </div>
                     </div>
-					<div class="col-12 mt-2">
-						<button class="btn btn-outline-success btn-block" (click)="onSetDelivery('bring')">
+					<div class="col-12 mt-2" *ngIf="showConfirmShipmentButton">
+						<button class="btn btn-success btn-block" (click)="onSetDelivery('bring')" [disabled]="!validateDeliveryMethodBring()">
 							<span i18n="@@cartDeliveryConfirmShippingAddressButton">Confirm shipping address</span>
 						</button>
 					</div>
                 </div>
 			</div>
-            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && !failureText">
+            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && !failureText && !showConfirmShipmentButton && !deliveryError">
 				<div class="row justify-content-between">
 					<div class="col-auto text-secondary">
 						<span i18n="@@cartDeliveryEstimatedDeliveryDate">Estimated delivery date</span>

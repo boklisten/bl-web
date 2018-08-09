@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {DeliveryService} from '@wizardcoder/bl-connect';
-import {Delivery, Order, DeliveryMethod} from '@wizardcoder/bl-model';
+import {Delivery, Order, DeliveryMethod, Branch} from '@wizardcoder/bl-model';
 import {Subject, Observable} from "rxjs";
 import {CartService} from "../cart.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
+import {BranchStoreService} from "../../branch/branch-store.service";
 
 @Injectable()
 export class CartDeliveryService {
@@ -21,10 +22,10 @@ export class CartDeliveryService {
 	private _toPostalCode: string;
 	private _deliveryReady: boolean;
 
-	constructor(private _deliveryService: DeliveryService, private _cartService: CartService, private _cartOrderService: CartOrderService) {
+	constructor(private _deliveryService: DeliveryService, private _cartService: CartService, private _cartOrderService: CartOrderService, private _branchStoreService: BranchStoreService) {
 		this._deliveryChange$ = new Subject();
-		this._deliveryMethod = 'branch';
 
+		this._deliveryMethod = this.getDefaultDeliveryMethod();
 		this._fromPostalCode = '1316';
 		this._fromPostalCity = 'OSLO';
 		this._fromAddress = 'Postboks 8, 1316 Eiksmarka';
@@ -32,15 +33,26 @@ export class CartDeliveryService {
 		this._deliveryReady = false;
 		this._deliveryFailure$ = new Subject<boolean>();
 
-		const initialOrder = this._cartOrderService.getOrder();
-
-		if (initialOrder) {
-			this.addDelivery(initialOrder);
-		}
-
 		this.onOrderChange();
 		this.onOrderClear();
 	}
+
+	public getDefaultDeliveryMethod(): "branch" | "bring" {
+		const branch: Branch = this._branchStoreService.getBranch();
+
+		if (branch.deliveryMethods) {
+			if (branch.deliveryMethods.branch) {
+				return 'branch';
+			} else if (branch.deliveryMethods.byMail) {
+				return 'bring';
+			} else {
+				return 'branch';
+			}
+		}
+
+		return 'branch';
+	}
+
 
 	public setBranchDelivery() {
 		this._deliveryMethod = 'branch';
@@ -53,7 +65,6 @@ export class CartDeliveryService {
 		this._toAddress = toAddress;
 		this._toPostalCity = toPostalCity;
 		this._toPostalCode = toPostalCode;
-
 		this._cartOrderService.reloadOrder();
 	}
 
@@ -73,11 +84,42 @@ export class CartDeliveryService {
 		this._deliveryFailure$.next(true);
 	}
 
+	public validateDeliveryMethodBring(): boolean {
+
+		if (!this._toName || this._toName.length <= 0) {
+			return false;
+		}
+
+		if (!this._toAddress || this._toAddress.length <= 0) {
+			return false;
+		}
+
+		if (!this._toPostalCity || this._toPostalCity.length <= 0) {
+			return false;
+		}
+
+		if (!this._toPostalCode || this._toPostalCode.length < 4) {
+			return false;
+		}
+
+		return true;
+	}
+
 	private onOrderChange() { // each time the order changes, should create a new delivery
 		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
 			this._deliveryReady = false;
-			this.addDelivery(order);
+			if (this.validateDeliveryDetails()) {
+				this.addDelivery(order);
+			}
 		});
+	}
+
+	private validateDeliveryDetails() {
+		if (this._deliveryMethod === 'bring') {
+			return this.validateDeliveryMethodBring();
+		} else {
+			return true;
+		}
 	}
 
 	private addDelivery(order: Order) {
