@@ -8,6 +8,7 @@ import {DateService} from "../date/date.service";
 import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
 import {AuthLoginService} from "@wizardcoder/bl-login";
 import {Observable} from "rxjs/internal/Observable";
+import {StorageService} from "@wizardcoder/bl-connect";
 
 
 export interface CartItem {
@@ -21,16 +22,42 @@ export interface CartItem {
 @Injectable()
 export class CartService {
 
-private _cart: CartItem[];
+	private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
+	private _cartStorageName: string;
 
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
 				private _priceService: PriceService, private _dateService: DateService,
-				private _authLoginService: AuthLoginService) {
+				private _authLoginService: AuthLoginService, private _storageService: StorageService) {
 		this._cart = [];
+		this._cartStorageName = 'bl-shopping-cart';
 		this.cartChange$ = new Subject();
+
+		this.getCartFromStorage();
+
 		this.onBranchChange();
 		this.onLogout();
+		this.handleStorageOnCartChange();
+	}
+
+	private getCartFromStorage() {
+		try {
+			const storedCartString = this._storageService.get(this._cartStorageName);
+			this._cart = JSON.parse(storedCartString) as CartItem[];
+		} catch (e) {
+			console.log('could not get cart from storage');
+		}
+	}
+
+	private handleStorageOnCartChange() {
+		this.onCartChange().subscribe(() => {
+			try {
+				const cartString = JSON.stringify(this._cart);
+				this._storageService.add(this._cartStorageName, cartString);
+			} catch (e) {
+				console.log('could not add cart to storage', e);
+			}
+		});
 	}
 
 	private onLogout() {
