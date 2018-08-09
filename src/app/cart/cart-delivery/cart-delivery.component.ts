@@ -64,8 +64,13 @@ export class CartDeliveryComponent implements OnInit {
 
 	private setDeliveryOptions() {
 		if (this.branch.deliveryMethods) {
-			this.branchOption = (this.branch.deliveryMethods.branch);
-			this.mailOption = (this.branch.deliveryMethods.byMail);
+			this.branchOption = this.branch.deliveryMethods.branch;
+			this.mailOption = this.branch.deliveryMethods.byMail;
+
+			if (this.branchOption === undefined || this.mailOption === undefined) {
+				this.branchOption = true;
+				this.mailOption = true;
+			}
 		} else {
 			this.branchOption = true;
 			this.mailOption = true;

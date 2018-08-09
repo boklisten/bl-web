@@ -65,9 +65,9 @@ export class CartCheckoutComponent implements OnInit {
 		}
 
 		if (this.branch && this.branch.paymentInfo) { // if the branch has a pay later option
-			if (!(this.branch.paymentInfo.payLater)) {
-				this.payLaterOption = this.branch.paymentInfo.payLater;
-			} else {
+			this.payLaterOption = this.branch.paymentInfo.payLater;
+
+			if (this.payLaterOption === undefined) {
 				this.payLaterOption = true;
 			}
 		}
