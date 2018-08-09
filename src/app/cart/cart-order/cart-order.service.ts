@@ -10,7 +10,7 @@ import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-i
 @Injectable()
 export class CartOrderService {
 
-	private _currentOrder: Order;
+	private _currentOrder: Order; // the order from api
 	private _orderChange$: Subject<Order>;
 	private _orderClear$: Subject<boolean>;
 	private _orderError$: Subject<string>;

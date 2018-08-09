@@ -55,6 +55,10 @@ export class CartDeliveryService {
 
 
 	public setBranchDelivery() {
+		if (this._deliveryMethod === 'branch') {
+			return;
+		}
+
 		this._deliveryMethod = 'branch';
 		this._cartOrderService.reloadOrder(); // this will make a new order to be created, then updates delivery and payment
 	}
@@ -125,7 +129,7 @@ export class CartDeliveryService {
 	private addDelivery(order: Order) {
 		this._deliveryService.add(this.createDelivery(order)).then((addedDelivery: Delivery) => {
 			this.setDelivery(addedDelivery);
-		}).catch((addDeliveryError) => {
+		}).catch(() => {
 			this._deliveryFailure$.next(true);
 		});
 	}

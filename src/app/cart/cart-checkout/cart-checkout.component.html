@@ -55,7 +55,7 @@
 
     <div class="row mt-4" *ngIf="!showUserMustLogin && ((order && agreementConfirmed) || !needToConfirmAgreement()) && !userEmailNotConfirmed">
         <div class="col-12">
-            <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems()">
+            <div class="row justify-content-center" *ngIf="showPaymentDecision && !isOnlyCustomerItems() && payLaterOption">
                 <div class="col-lg-6 col-md-8 col-sm-12 col-12 bl-checkout-bar">
                     <ul class="nav nav-pills flex-row nav-justified">
                         <li class="nav-item" (click)="onPaymentDecicionChange('now')">

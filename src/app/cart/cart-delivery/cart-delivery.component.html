@@ -24,7 +24,7 @@
 					<span i18n="@@cartDeliveryBringError" *ngIf="deliveryMethod === 'bring'" class="ml-2 font-weight-bold">Are you sure you have the correct shipment address?</span>
 				</div>
 			</div>
-			<div class="card-body" *ngIf="bringInputWarning">
+			<div class="card-body" *ngIf="bringInputWarning && deliveryMethod === 'bring'">
 				<div class="row mt-2">
 					<div class="col-12">
 						<div class="alert alert-warning">

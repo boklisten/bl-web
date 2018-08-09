@@ -52,11 +52,9 @@ export class CartDeliveryComponent implements OnInit {
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		this.setDeliveryDetails();
 		this.onDeliveryFailure();
-		console.log('the delivery method should be ', this.deliveryMethod);
 		this.onSetDelivery(this.deliveryMethod);
 
 		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
-			console.log('the delivery changed', delivery);
 			this.failureText = null;
 			this.bringInputWarning = '';
 			this.currentDelivery = this._cartDeliveryService.getDelivery();

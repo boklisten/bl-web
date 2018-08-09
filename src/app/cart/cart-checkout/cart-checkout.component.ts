@@ -29,6 +29,8 @@ export class CartCheckoutComponent implements OnInit {
 	public agreementConfirmed: boolean;
 	public branch: Branch;
 
+	public payLaterOption: boolean;
+
 	constructor(private _cartCheckoutService: CartCheckoutService, private _cartOrderService: CartOrderService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService,
 				private _cartPaymentService: CartPaymentService, private _router: Router, private _userService: UserService,
@@ -62,6 +64,14 @@ export class CartCheckoutComponent implements OnInit {
 			this.showPaymentDecision = true;
 		}
 
+		if (this.branch && this.branch.paymentInfo) { // if the branch has a pay later option
+			if (!(this.branch.paymentInfo.payLater)) {
+				this.payLaterOption = this.branch.paymentInfo.payLater;
+			} else {
+				this.payLaterOption = true;
+			}
+		}
+
 		this._userService.getUserDetail().then((userDetail: UserDetail) => {
 			if (!userDetail.emailConfirmed) {
 				this.userEmailNotConfirmed = true;
@@ -84,6 +94,7 @@ export class CartCheckoutComponent implements OnInit {
 			this.order = order;
 		});
 	}
+
 
 	public onConfirmAgreement(agreed: boolean) {
 		this._cartCheckoutService.agreementConfirmed = agreed;
