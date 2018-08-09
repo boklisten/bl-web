@@ -1,6 +1,5 @@
-
     <div class="row" *ngIf="orderPlacedFailure">
-        <div class="col-12">
+        <div class="col-md-5 col-12">
             <ngb-alert [type]="'danger'">
                 <fa-icon [icon]="'exclamation-triangle'"></fa-icon>
                 <span i18n="@@cartCheckoutOrderPlacedError">The order could not be placed, try again shortly</span>
@@ -8,8 +7,8 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="userEmailNotConfirmed">
-        <div class="col-12">
+    <div class="row justify-content-center mt-3" *ngIf="userEmailNotConfirmed">
+        <div class="col-md-6 col-12">
             <div class="alert alert-warning">
                 <fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
                 <span i18n="@@cartCheckoutEmailConfirmationError">To rent or buy items you need to confirm your email. You should have gotten an email with a confirmation link.</span>
