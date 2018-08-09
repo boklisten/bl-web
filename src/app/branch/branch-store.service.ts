@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
 import {BlApiError, Branch, BranchItem, UserDetail} from "@wizardcoder/bl-model";
-import {BranchItemService, BranchService, TokenService, UserDetailService} from "@wizardcoder/bl-connect";
+import {
+	BranchItemService,
+	BranchService,
+	StorageService,
+	TokenService,
+	UserDetailService
+} from "@wizardcoder/bl-connect";
 import {UserService} from "../user/user.service";
 import {Subject, Observable} from "rxjs";
 
@@ -10,11 +16,46 @@ export class BranchStoreService {
 	private _currentBranch: Branch;
 	private _branchItems: BranchItem[];
 	private _branchChange$: Subject<boolean>;
+	private _branchStorageName: string;
 
-	constructor(private _userService: UserService, private _branchService: BranchService, private _branchItemService: BranchItemService) {
+	constructor(private _userService: UserService,
+				private _branchService: BranchService,
+				private _storageService: StorageService,
+				private _branchItemService: BranchItemService) {
 		this._branchItems = [];
 		this._branchChange$ = new Subject<boolean>();
+		this._branchStorageName = 'bl-current-branch-id';
+		this.handleStorageOnBranchChange();
+		this.getBranchIdFromStorage();
 	}
+
+	private handleStorageOnBranchChange() {
+		this.onBranchChange().subscribe(() => {
+			try {
+				const branchIdString = this._currentBranch.id;
+				this._storageService.add(this._branchStorageName, branchIdString);
+			} catch (e) {
+				console.log('could not store branch id', e);
+			}
+		});
+	}
+
+	private getBranchIdFromStorage() {
+		let storedBranchId = '';
+		try {
+			storedBranchId = this._storageService.get(this._branchStorageName);
+		} catch (e) {
+			console.log('could not get the stored branch id', e);
+		}
+
+		this._branchService.getById(storedBranchId).then((branch: Branch) => {
+			console.log('setting the current branch from storage');
+			this.setCurrentBranch(branch);
+		}).catch(() => {
+			console.log('could not get branch');
+		});
+	}
+
 
 
 	public getBranch(): Branch {
@@ -73,6 +114,7 @@ export class BranchStoreService {
 		if (this._currentBranch === branch) {
 			return;
 		}
+
 
 		this._currentBranch = branch;
 		this._userService.updateUserDetail({branch: branch.id});

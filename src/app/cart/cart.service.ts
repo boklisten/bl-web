@@ -25,13 +25,16 @@ export class CartService {
 	private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 	private _cartStorageName: string;
+	private _branch: Branch;
 
 	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
 				private _priceService: PriceService, private _dateService: DateService,
 				private _authLoginService: AuthLoginService, private _storageService: StorageService) {
 		this._cart = [];
+
 		this._cartStorageName = 'bl-shopping-cart';
 		this.cartChange$ = new Subject();
+		this._branch = this._branchStoreService.getBranch();
 
 		this.getCartFromStorage();
 
@@ -68,7 +71,11 @@ export class CartService {
 
 	private onBranchChange() {
 		this._branchStoreService.onBranchChange().subscribe(() => {
-			this.clearCart();
+			if (!this._branch) { // dont clear cart on first branch change
+				this._branch = this._branchStoreService.getBranch();
+			} else {
+				this.clearCart();
+			}
 		});
 	}
 

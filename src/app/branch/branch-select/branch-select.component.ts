@@ -26,6 +26,8 @@ export class BranchSelectComponent implements OnInit {
 		this.loading = true;
 		this.couldNotGetBranchesError = false;
 
+		this.onBranchChange();
+
 		this._branchService.get().then((branches: Branch[]) => {
 			this.branches = branches;
 			this.loading = false;
@@ -35,10 +37,20 @@ export class BranchSelectComponent implements OnInit {
 		});
 	}
 
+	private onBranchChange() {
+		this._branchStoreService.onBranchChange().subscribe(() => {
+			this.redirectToUrl();
+		});
+	}
+
 	onBranchSelect(branch: Branch) {
 		this._branchStoreService.setCurrentBranch(branch);
 		this.selectedBranch = branch;
 
+		this.redirectToUrl();
+	}
+
+	private redirectToUrl() {
 		if (this._branchStoreService.redirectUrl) {
 			this._router.navigateByUrl(this._branchStoreService.redirectUrl);
 			this._branchStoreService.redirectUrl = null;
