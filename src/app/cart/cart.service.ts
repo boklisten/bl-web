@@ -37,11 +37,11 @@ export class CartService {
 		this._branch = this._branchStoreService.getBranch();
 
 		this.getCartFromStorage();
-
 		this.onBranchChange();
 		this.onLogout();
 		this.handleStorageOnCartChange();
 	}
+
 
 	private getCartFromStorage() {
 		try {

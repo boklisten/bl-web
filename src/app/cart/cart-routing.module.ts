@@ -9,12 +9,12 @@ const routes: Routes = [
 	{
 		path: 'cart',
 		component: CartComponent,
-		canActivate: [BranchGuardService]
+		canActivate: [BranchGuardService],
 	},
 	{
 		path: 'cart/confirm',
 		component: CartConfirmComponent,
-		canActivate: [UserGuardService]
+		canActivate: [BranchGuardService]
 	}
 ];
 

@@ -40,6 +40,10 @@ export class CartDeliveryService {
 	public getDefaultDeliveryMethod(): "branch" | "bring" {
 		const branch: Branch = this._branchStoreService.getBranch();
 
+		if (!branch) {
+			return 'branch';
+		}
+
 		if (branch.deliveryMethods) {
 			if (branch.deliveryMethods.branch) {
 				return 'branch';

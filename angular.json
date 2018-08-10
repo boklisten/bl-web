@@ -77,7 +77,7 @@
 						},
 						"local-nb": {
 							"optimization": false,
-							"outputPath": "dist/bl-web-nb",
+							"outputPath": "dist/",
 							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
 							"i18nFormat": "xlf",

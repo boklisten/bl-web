@@ -13,5 +13,7 @@ export class AppComponent {
 		_router.events.subscribe(() =>  {
 			window.scroll(0, 0);
 		});
+
+
 	}
 }

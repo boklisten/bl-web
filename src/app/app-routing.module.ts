@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginModule} from '@wizardcoder/bl-login';
 import {WelcomeComponent} from "./welcome/welcome.component";
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 
 const routes: Routes = [
@@ -18,7 +19,10 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(routes, {useHash: true})
+		RouterModule.forRoot(routes)
+	],
+	providers: [
+		//{provide: LocationStrategy, useClass: PathLocationStrategy}
 	],
 	exports: [RouterModule]
 })

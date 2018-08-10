@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {StorageService} from "@wizardcoder/bl-connect";
 
 declare var Dibs: any;
@@ -19,18 +19,27 @@ export class CartConfirmComponent implements OnInit {
 		language: string
 	};
 
-	constructor(private _cartCheckoutService: CartCheckoutService, private _router: Router, private _storageService: StorageService) {
+	constructor(private _cartCheckoutService: CartCheckoutService, private _router: Router, private _storageService: StorageService, private _route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
-		let paymentId = '';
+		let paymentId = null;
 		let orderId = '';
 
+		this._route.queryParams.subscribe((params) => {
+			if (params['paymentId']) {
+				paymentId = params['paymentId'];
+			}
+		});
+
 		try {
-			paymentId = this._storageService.get('bl-payment-id');
+			if (!paymentId) {
+				paymentId = this._storageService.get('bl-payment-id');
+			}
 			orderId = this._storageService.get('bl-order-id');
+
 		} catch (e) {
-			this._router.navigateByUrl('/cart');
+			this._router.navigateByUrl('/');
 			return;
 		}
 
