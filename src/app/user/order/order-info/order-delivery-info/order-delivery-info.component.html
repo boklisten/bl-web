@@ -81,9 +81,16 @@
 				</span>
 			</div>
 			<div class="col-auto">
-				<span routerLink="{{'/b/info/' + delivery.info['branch']}}" class="bl-link-black">
+				<span class="bl-link-black">
 					{{delivery.info['branch'].toString() | blcBranch | async}}
 				</span>
+			</div>
+		</div>
+		<div class="row mt-2 justify-content-md-end justify-content-center">
+			<div class="col-auto">
+				<button class="btn btn-outline-secondary" (click)="onBranchInfoClick()">
+					<span i18n="@@orderDeliveryInfoOpeningHours">Våre åpningstider</span>
+				</button>
 			</div>
 		</div>
 	</div>

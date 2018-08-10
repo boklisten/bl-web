@@ -35,4 +35,16 @@ export class WelcomeComponent implements OnInit {
 		this._router.navigate(['/u/items']);
 	}
 
+	onBranchInfoClick() {
+		this._router.navigateByUrl('/info?tab=branch');
+	}
+
+	onForCompaniesClick() {
+		this._router.navigateByUrl('/info?tab=companies');
+	}
+
+	onFaqClick() {
+		this._router.navigateByUrl('/info?tab=faq');
+	}
+
 }

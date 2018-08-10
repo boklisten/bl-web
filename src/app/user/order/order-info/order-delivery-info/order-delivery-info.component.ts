@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Delivery, Order} from "@wizardcoder/bl-model";
 import {DeliveryService} from "@wizardcoder/bl-connect";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-order-delivery-info',
@@ -11,7 +12,7 @@ export class OrderDeliveryInfoComponent implements OnInit {
 	@Input() order: Order;
 	public delivery: Delivery;
 
-	constructor(private _deliveryService: DeliveryService) {
+	constructor(private _deliveryService: DeliveryService, private _router: Router) {
 	}
 
 	ngOnInit() {
@@ -22,6 +23,10 @@ export class OrderDeliveryInfoComponent implements OnInit {
 				console.log('orderDeliveryInfoComponent: could not get delivery', getDeliveryError);
 			});
 		}
+	}
+
+	private onBranchInfoClick() {
+		this._router.navigateByUrl('/info?tab=branch');
 	}
 
 }
