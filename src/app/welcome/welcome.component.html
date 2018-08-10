@@ -1,19 +1,40 @@
 
 
 <div class="container">
-	<div class="row bg-white p-md-3 p-1">
+	<div class="row justify-content-center mt-2 mb-lg-5 mb-xl-5 mb-md-5 mb-0" *ngIf="!isLoggedIn()">
 		<div class="col-12">
-			<h3>Lyst til å leie skolebøker?</h3>
-		</div>
-		<div class="col-12">
-			<p>Boklisten.no gjør det enkelt for deg å leie de skolebøkene du trenger til semesteret.</p>
-		</div>
-	</div>
-	<div class="row mt-5">
-		<div class="col-12">
-			<div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="bl-frontpage-title">Lyst til å leie skolebøker?</h2>
+                    <p>Boklisten.no gjør det enkelt for deg å leie de skolebøkene du trenger til semesteret.</p>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-6 col-12">
+					<div class="row">
+
+                        <div class="col-md-6 col-12">
+                            <button class="btn btn-info btn-block" (click)="onRegisterClick()">
+                                Registrer deg
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-12 mt-md-0 mt-2">
+                            <button class="btn btn-outline-success btn-block" (click)="onLoginClick()">
+                                Logg inn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	<div class="row mt-5 justify-content-center">
+		<div class="col-md-6 col-12">
+			<div class="card bl-timeline-header">
 				<div class="card-body text-center">
-					<h3>Slik funker det</h3>
+					<h3 class="bl-timeline-title">Slik funker det</h3>
 				</div>
 			</div>
 		</div>
@@ -145,29 +166,44 @@
 		</div>
 	</div>
 
-	<div class="row mt-5 bg-white p-md-5 p-2">
-		<div class="col-12">
-			<div class="row">
-                <div class="col-12 font-weight-bold">
-                    Hva venter du på?
-                </div>
-				<div class="col-12 mt-2">
-					<p>Lag deg en bruker eller logg inn, og du kan leie bøker så lett som bare det!</p>
-				</div>
-            </div>
+	<div class="row justify-content-center">
+		<div class="col-auto bl-timeline-border">
+		</div>
+	</div>
 
-			<div class="row mt-2">
-                <div class="col-md-6 col-12">
-                    <button class="btn btn-outline-info btn-block" (click)="onRegisterClick()">
-                        Registrer deg
-                    </button>
-                </div>
-                <div class="col-md-6 col-12 mt-md-0 mt-2">
-                    <button class="btn btn-outline-success btn-block" (click)="onLoginClick()">
-                        Logg inn
-                    </button>
-                </div>
-            </div>
-        </div>
+	<div class="row justify-content-center">
+		<div class=" col-md-6 col-12">
+			<div class="card bl-timeline-header">
+				<div class="card-body text-center">
+					<h5 class="bl-timeline-title">Hva venter du på?</h5>
+
+					<div class="row mt-5" *ngIf="!isLoggedIn()">
+                        <div class="col-12">
+                            <button class="btn btn-info btn-block" (click)="onRegisterClick()">
+                                Registrer deg
+                            </button>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button class="btn btn-outline-success btn-block" (click)="onLoginClick()">
+                                Logg inn
+                            </button>
+                        </div>
+                    </div>
+
+					<div class="row mt-5" *ngIf="isLoggedIn()">
+                        <div class="col-12">
+                            <button class="btn btn-outline-info btn-block" (click)="onGoToItemsClick()">
+                                Bestill bøker
+                            </button>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <button class="btn btn-outline-info btn-block" (click)="onGoToYourItemsClick()">
+                                Se mine bøker
+                            </button>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
