@@ -6,7 +6,7 @@
 			</div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let orderItem of order.orderItems">
+                    <li class="list-group-item" [ngClass]="{'bl-order-item-moved': orderItem.movedToOrder}" *ngFor="let orderItem of order.orderItems">
 						<app-order-item-info [orderItem]="orderItem"></app-order-item-info>
 					</li>
                 </ul>
