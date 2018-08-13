@@ -49,7 +49,6 @@ export class BranchStoreService {
 		}
 
 		this._branchService.getById(storedBranchId).then((branch: Branch) => {
-			console.log('setting the current branch from storage');
 			this.setCurrentBranch(branch);
 		}).catch(() => {
 			console.log('could not get branch');

@@ -38,7 +38,7 @@ export class UserMenuComponent implements OnInit {
 			this._router.navigateByUrl('/u/home');
 		} else if (menuItem === 'logout') {
 			this._userService.logout().then(() => {
-				this._router.navigateByUrl('welcome');
+				this._router.navigateByUrl('logout');
 			});
 		} else if (menuItem === 'login') {
 			this._router.navigateByUrl('/auth/login');

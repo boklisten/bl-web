@@ -36,6 +36,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {faFacebookSquare, faGoogle} from "@fortawesome/free-brands-svg-icons";
 import {faSquare} from "@fortawesome/free-regular-svg-icons/faSquare";
+import { LogoutComponent } from './logout/logout.component';
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
@@ -51,7 +52,8 @@ library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyr
 		AppComponent,
 		HeaderComponent,
 		HeaderCartComponent,
-		FooterComponent
+		FooterComponent,
+		LogoutComponent
 	],
 	imports: [
 		BrowserModule,
@@ -83,7 +85,7 @@ export class AppModule {
 			userAgreementUrl: '/info/agreement/rent',
 			registerSuccessPath: '/i/select',
 			permissionDeniedPath: '',
-			permissions: ['customer', 'employee', 'admin', 'super'],
+			permissions: ['customer', 'employee', "manager", 'admin', 'super'],
 			logoutPath: '/logout'});
 	}
 }

@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginModule} from '@wizardcoder/bl-login';
 import {WelcomeComponent} from "./welcome/welcome.component";
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import {LogoutComponent} from "./logout/logout.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
 	{
 		path: 'welcome',
 		component: WelcomeComponent
+	},
+	{
+		path: 'logout',
+		component: LogoutComponent
 	}
 ];
 
