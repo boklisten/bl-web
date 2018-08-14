@@ -44,7 +44,7 @@ export class CartService {
 
 	public shouldPay() {
 		for (const cartItem of this._cart) {
-			if (cartItem.orderItem.type === 'buyout') {
+			if (cartItem.orderItem.type === 'buyout' || cartItem.orderItem.type === 'extend') {
 				return true;
 			}
 		}
