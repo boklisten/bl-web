@@ -42,6 +42,14 @@ export class CartService {
 		this.handleStorageOnCartChange();
 	}
 
+	public shouldPay() {
+		for (const cartItem of this._cart) {
+			if (cartItem.orderItem.type === 'buyout') {
+				return true;
+			}
+		}
+	}
+
 
 	private getCartFromStorage() {
 		try {

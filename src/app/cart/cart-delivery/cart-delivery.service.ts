@@ -14,7 +14,6 @@ export class CartDeliveryService {
 	private _fromPostalCity: string;
 	private _fromAddress: string;
 	private _deliveryFailure$: Subject<boolean>;
-
 	private _deliveryMethod: DeliveryMethod;
 	private _toName: string;
 	private _toAddress: string;
@@ -164,7 +163,7 @@ export class CartDeliveryService {
 		return {
 			method: "bring",
 			info: {
-				from: this._fromPostalCode,
+				from: '1316',
 				to: this._toPostalCode,
 				shipmentAddress: {
 					name: this._toName,
@@ -174,7 +173,7 @@ export class CartDeliveryService {
 				},
 				facilityAddress: {
 					address: this._fromAddress,
-					postalCode: this._fromPostalCode,
+					postalCode: '1316',
 					postalCity: this._fromPostalCity
 				}
 			},

@@ -5,7 +5,7 @@ import {Subject} from "rxjs";
 import {CartOrderService} from "../cart-order/cart-order.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {Observable} from "rxjs/internal/Observable";
+import {CartService} from "../cart.service";
 
 @Injectable()
 export class CartPaymentService {
@@ -17,13 +17,14 @@ export class CartPaymentService {
 	private _currentDelivery: Delivery;
 
 	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService,
+				private _cartService: CartService,
 				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService) {
 		this.paymentChange$ = new Subject();
 
 		const branch = this._branchStoreService.getBranch();
 
 		if (branch) {
-			if (branch.paymentInfo.responsible) { // no need to add payment if branch is responsible
+			if (branch.paymentInfo.responsible && !this._cartService.shouldPay()) { // no need to add payment if branch is responsible
 				return;
 			} else {
 				this._paymentMethod = 'dibs';

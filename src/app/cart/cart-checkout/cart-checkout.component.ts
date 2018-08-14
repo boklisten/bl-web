@@ -48,7 +48,7 @@ export class CartCheckoutComponent implements OnInit {
 		this.branch = this._branchStoreService.getBranch();
 		this.agreementConfirmed = this._cartCheckoutService.agreementConfirmed;
 
-		this._cartPaymentService.orderShouldHavePayment = !(this.branch && this.branch.paymentInfo.responsible);
+		this._cartPaymentService.orderShouldHavePayment = !(this.branch && this.branch.paymentInfo.responsible && !this._cartService.shouldPay());
 
 		if (!this._userService.loggedIn()) {
 			this.showUserMustLogin = true;
@@ -57,7 +57,7 @@ export class CartCheckoutComponent implements OnInit {
 
 		this.branch = this._branchStoreService.getBranch();
 
-		if (this.branch && this.branch.paymentInfo.responsible) {
+		if (this.branch && this.branch.paymentInfo.responsible && !this._cartService.shouldPay()) {
 			this.showPaymentDecision = false;
 		} else {
 			this.paymentDecision = this._cartCheckoutService.paymentDecision;
