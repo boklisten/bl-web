@@ -19,6 +19,12 @@ export class OrderInfoComponent implements OnInit {
 	}
 
 	shouldShowDelivery() {
+		console.log('order handoutByDelivery', this.order.handoutByDelivery);
+
+		if (this.order.handoutByDelivery) {
+			return true;
+		}
+
 		for (const orderItem of this.order.orderItems) {
 			if (orderItem.type !== 'buyout' && orderItem.type !== 'return' && orderItem.type !== 'extend') {
 				return true;
