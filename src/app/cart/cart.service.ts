@@ -42,12 +42,14 @@ export class CartService {
 		this.handleStorageOnCartChange();
 	}
 
-	public shouldPay() {
+	public shouldPay(): boolean {
 		for (const cartItem of this._cart) {
 			if (cartItem.orderItem.type === 'buyout' || cartItem.orderItem.type === 'extend') {
 				return true;
 			}
 		}
+
+		return false;
 	}
 
 
