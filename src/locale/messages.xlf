@@ -633,33 +633,51 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="localRegisterUserAlreadyExistsError" datatype="html">
+        <source>
+				The user already exists
+			</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="localRegisterClickHereForLogin" datatype="html">
+        <source>
+				Click here if you intended to login
+			</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="localRegisterEmail" datatype="html">
         <source>Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="localRegisterPassword" datatype="html">
         <source>Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="localRegisterButton" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
@@ -828,46 +846,53 @@
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="emailValidationNoConnection" datatype="html">
+        <source>Could not connect to the server</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="emailValidationConfirmError" datatype="html">
         <source>Email could not be confirmed.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
         <source>The link may be expired.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailValidationClickForNewLink" datatype="html">
         <source>Click here to send a new confirmation link</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailValidationNotLoggedInError" datatype="html">
         <source>You must login to send a new confirmation link</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailValidationClickToLogin" datatype="html">
         <source>Click her to login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="emailValidationNewLinkSent" datatype="html">
         <source>A new confirmation link has been sent to your email.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="socialLoginFailureErrorMsg" datatype="html">
@@ -882,6 +907,31 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
           <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authTokenComponentWeAreLoggingYouIn" datatype="html">
+        <source>We are logging you in, please wait</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authTokenFailedToLoginError" datatype="html">
+        <source>
+				Failed to log you in.
+			</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authTokenTryToLoginAgain" datatype="html">
+        <source>
+				Click here to try again
+			</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loginPermissionFailureTitle" datatype="html">
@@ -910,6 +960,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userDetailDobDateFormatMustBe" datatype="html">
+        <source>Date must be on the format &quot;dd.mm.yyyy&quot;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="localLoginUserOrPasswordError" datatype="html">
@@ -1262,6 +1319,13 @@
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
+        <source>This item is moved to another order</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="yourItemsHeadline" datatype="html">
         <source>Your Items</source>
         <context-group purpose="location">
@@ -1518,9 +1582,16 @@
 				</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">89</context>
         </context-group>
         <note priority="1" from="description">get the item at branch x </note>
+      </trans-unit>
+      <trans-unit id="orderDeliveryInfoOpeningHours" datatype="html">
+        <source>Våre åpningstider</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="branchOpeningHoursTitle" datatype="html">
         <source>Opening hours</source>

@@ -32,7 +32,8 @@ export class InfoFaqComponent implements OnInit {
 			{
 				title: 'Hvordan bestiller jeg bøker som elev på videregående?',
 				textBlocks: [
-					'Du bruker nettbutikken som en vanlig nettbutikk. Når du har fullført din bestilling vil du få en kontrakt på e-post. Denne må underskrives av deg, og en av dine foresatte dersom du er under 18 år. Ta med underskrevet kontrakt når du kommer på skolen på utleveringsdagen. Du må ta med legitimasjon når du skal hente bøkene. Bøkene blir utlevert til deg, og du leverer dem inn igjen til Boklisten.no eller den Boklisten.no har oppnevnt når skoleåret er over.'
+					'Du bruker nettbutikken som en vanlig nettbutikk. Når du har fullført din bestilling vil du få en kontrakt på e-post. Denne må underskrives av deg, og en av dine foresatte dersom du er under 18 år. Ta med underskrevet kontrakt når du kommer på skolen på utleveringsdagen. Du må ta med legitimasjon når du skal hente bøkene. Bøkene blir utlevert til deg, og du leverer dem inn igjen til Boklisten.no eller den Boklisten.no har oppnevnt når skoleåret er over.',
+					'Du skal ikke betale for bøkene når du får dem, bare dersom du mister eller ødelegger bøkene.'
 				]
 			},
 			{

@@ -354,12 +354,9 @@
 				</source><target state="final">
 					Get it at
 				</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
+        
         <note priority="1" from="description">get the item at branch x </note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context><context context-type="linenumber">89</context></context-group></trans-unit>
       
       <trans-unit id="branchOpeningHoursTitle" datatype="html">
         <source>Opening hours</source><target state="final">Opening hours</target>
@@ -1260,31 +1257,16 @@
         </context-group>
       </trans-unit><trans-unit id="localRegisterEmail" datatype="html">
         <source>Email</source><target state="final">Email</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit><trans-unit id="localRegisterPassword" datatype="html">
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">32</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="localRegisterPassword" datatype="html">
         <source>Password</source><target state="final">Password</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-      </trans-unit><trans-unit id="localRegisterButton" datatype="html">
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">56</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="localRegisterButton" datatype="html">
         <source>Register</source><target state="final">Register</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-      </trans-unit><trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
         <source>
 			I have read and understood the user-agreement
 		</source><target state="final">
@@ -1433,41 +1415,23 @@
         </context-group>
       </trans-unit><trans-unit id="emailValidationConfirmError" datatype="html">
         <source>Email could not be confirmed.</source><target state="final">Email could not be confirmed.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit><trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
         <source>The link may be expired.</source><target state="final">The link may be expired.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit><trans-unit id="emailValidationClickForNewLink" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="emailValidationClickForNewLink" datatype="html">
         <source>Click here to send a new confirmation link</source><target state="final">Click here to send a new confirmation link</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-      </trans-unit><trans-unit id="emailValidationNotLoggedInError" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="emailValidationNotLoggedInError" datatype="html">
         <source>You must login to send a new confirmation link</source><target state="final">You must login to send a new confirmation link</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit><trans-unit id="emailValidationClickToLogin" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="emailValidationClickToLogin" datatype="html">
         <source>Click her to login</source><target state="final">Click her to login</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit><trans-unit id="emailValidationNewLinkSent" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">56</context></context-group></trans-unit><trans-unit id="emailValidationNewLinkSent" datatype="html">
         <source>A new confirmation link has been sent to your email.</source><target state="final">A new confirmation link has been sent to your email.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
-          <context context-type="linenumber">57</context>
-        </context-group>
-      </trans-unit><trans-unit id="socialLoginFailureErrorMsg" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="socialLoginFailureErrorMsg" datatype="html">
         <source>Failed to log you in, please try again soon.</source><target state="final">Failed to log you in, please try again soon.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
@@ -1842,6 +1806,76 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
           <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterUserAlreadyExistsError" datatype="html">
+        <source>
+				The user already exists
+			</source><target state="final">
+				The user already exists
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="localRegisterClickHereForLogin" datatype="html">
+        <source>
+				Click here if you intended to login
+			</source><target state="final">
+				Click here if you intended to login
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="emailValidationNoConnection" datatype="html">
+        <source>Could not connect to the server</source><target state="final">Could not connect to the server</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit><trans-unit id="authTokenComponentWeAreLoggingYouIn" datatype="html">
+        <source>We are logging you in, please wait</source><target state="final">We are logging you in, please wait</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit><trans-unit id="authTokenFailedToLoginError" datatype="html">
+        <source>
+				Failed to log you in.
+			</source><target state="final">
+				Failed to log you in.
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit><trans-unit id="authTokenTryToLoginAgain" datatype="html">
+        <source>
+				Click here to try again
+			</source><target state="final">
+				Click here to try again
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit><trans-unit id="userDetailDobDateFormatMustBe" datatype="html">
+        <source>Date must be on the format "dd.mm.yyyy"</source><target state="final">Date must be on the format "dd.mm.yyyy"</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/wizardcoder-bl-login.d.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit><trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
+        <source>This item is moved to another order</source><target state="final">This item is moved to another order</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit><trans-unit id="orderDeliveryInfoOpeningHours" datatype="html">
+        <source>Våre åpningstider</source><target state="final">Våre åpningstider</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context>
+          <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit></body>
   </file>
