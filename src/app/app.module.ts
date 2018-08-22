@@ -80,10 +80,10 @@ export class AppModule {
 	constructor(private blConnectConfigService: BlConnectConfigService) {
 		blConnectConfigService.setConfig({basePath: environment.apiPath});
 		LoginModule.withConfig({
-			successPath: '/i/select',
+			successPath: '/u/edit',
 			apiPath: environment.apiPath,
 			userAgreementUrl: '/info/agreement/rent',
-			registerSuccessPath: '/i/select',
+			registerSuccessPath: '/u/edit',
 			permissionDeniedPath: '',
 			permissions: ['customer', 'employee', "manager", 'admin', 'super'],
 			logoutPath: '/logout'});
