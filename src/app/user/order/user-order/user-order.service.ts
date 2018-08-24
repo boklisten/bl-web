@@ -29,8 +29,8 @@ export class UserOrderService {
 		for (const order of orders) {
 			for (const orderItem of order.orderItems) {
 				if (orderItem.item === itemId) {
-					if (!orderItem.delivered && !orderItem.info.customerItem) {
-						if (orderItem.type !== 'buyout' && orderItem.type !== 'extend') {
+					if (!orderItem.delivered && !orderItem.info.customerItem && !orderItem.movedToOrder) {
+						if (orderItem.type !== 'buyout' && orderItem.type !== 'extend' && orderItem.type !== 'cancel') {
 							return true;
 						}
 					}
