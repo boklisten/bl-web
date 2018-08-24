@@ -8,11 +8,16 @@ import {DateService} from "../date/date.service";
 import {UserService} from "../user/user.service";
 import {Subject} from "rxjs/internal/Subject";
 import {AuthLoginService} from "@wizardcoder/bl-login";
+import {StorageService} from "@wizardcoder/bl-connect";
 
 @Injectable()
 class BranchStoreStubService {
 	onBranchChange() {
 		return new Subject();
+	}
+
+	getBranch() {
+
 	}
 }
 
@@ -38,6 +43,11 @@ class AuthLoginStubService {
 	}
 }
 
+@Injectable()
+class StorageStubService {
+
+}
+
 
 describe('CartService', () => {
 	beforeEach(() => {
@@ -48,7 +58,8 @@ describe('CartService', () => {
 				{provide: UserService, useValue: new UserStubService()},
 				{provide: PriceService, useValue: new PriceStubService()},
 				{provide: DateService, useValue: new DateStubService()},
-				{provide: AuthLoginService, useClass: AuthLoginStubService}
+				{provide: AuthLoginService, useClass: AuthLoginStubService},
+				{provide: StorageService, useClass: StorageStubService}
 			]
 		});
 	});

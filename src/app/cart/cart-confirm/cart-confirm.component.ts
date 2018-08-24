@@ -19,7 +19,10 @@ export class CartConfirmComponent implements OnInit {
 		language: string
 	};
 
-	constructor(private _cartCheckoutService: CartCheckoutService, private _router: Router, private _storageService: StorageService, private _route: ActivatedRoute) {
+	constructor(private _cartCheckoutService: CartCheckoutService,
+				private _router: Router,
+				private _storageService: StorageService,
+				private _route: ActivatedRoute) {
 	}
 
 	ngOnInit() {

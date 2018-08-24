@@ -96,6 +96,10 @@ class CartStubService {
 	getCart() {
 		return [];
 	}
+
+	shouldPay() {
+		return true;
+	}
 }
 
 

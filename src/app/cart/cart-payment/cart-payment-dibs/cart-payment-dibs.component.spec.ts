@@ -6,6 +6,7 @@ import {CartPaymentService} from "../cart-payment.service";
 import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
+import {StorageService} from "@wizardcoder/bl-connect";
 
 
 @Component({selector: 'fa-icon', template: ''})
@@ -34,6 +35,11 @@ class RouterStub {
 
 }
 
+@Injectable()
+class StorageStubService {
+
+}
+
 describe('CartPaymentDibsComponent', () => {
 	let component: CartPaymentDibsComponent;
 	let fixture: ComponentFixture<CartPaymentDibsComponent>;
@@ -47,7 +53,8 @@ describe('CartPaymentDibsComponent', () => {
 			providers: [
 				{provide: CartPaymentService, useValue: new CartPaymentStubService()},
 				{provide: CartCheckoutService, useValue: new CartCheckoutStubService()},
-				{provide: Router, useValue: new RouterStub()}
+				{provide: Router, useValue: new RouterStub()},
+				{provide: StorageService, useClass: StorageStubService}
 			]
 		})
 			.compileComponents();

@@ -37,7 +37,7 @@ describe('OrderItemInfoComponent', () => {
 				BlcPriceStubPipe
 			],
 			providers: [
-				{provide: CustomerItemService, useValue: new CustomerItemStubService()}
+				{provide: CustomerItemService, useClass: CustomerItemStubService}
 			]
 		})
 			.compileComponents();

@@ -7,6 +7,7 @@ import {CartService} from "../../cart/cart.service";
 import {PriceService} from "../../price/price.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {FormsModule} from "@angular/forms";
+import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
 
 @Injectable()
 class DateStubService {
@@ -42,6 +43,11 @@ class BlcDateStubPipe {
 
 }
 
+@Injectable()
+class UserCustomerItemStubService {
+
+}
+
 describe('ItemTypeSelectComponent', () => {
 	let component: ItemTypeSelectComponent;
 	let fixture: ComponentFixture<ItemTypeSelectComponent>;
@@ -57,7 +63,8 @@ describe('ItemTypeSelectComponent', () => {
 				{provide: DateService, useValue: new DateStubService()},
 				{provide: CartService, useValue: new CartStubService()},
 				{provide: PriceService, useValue: new PriceStubService()},
-				{provide: BranchStoreService, useValue: new BranchStoreStubService()}
+				{provide: BranchStoreService, useValue: new BranchStoreStubService()},
+				{provide: UserCustomerItemService, useClass: UserCustomerItemStubService}
 			],
 			imports: [
 				FormsModule

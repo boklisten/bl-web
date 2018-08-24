@@ -16,9 +16,11 @@ export class CartPaymentService {
 	private _currentOrder: Order;
 	private _currentDelivery: Delivery;
 
-	constructor(private _paymentService: PaymentService, private _cartOrderService: CartOrderService,
+	constructor(private _paymentService: PaymentService,
+				private _cartOrderService: CartOrderService,
 				private _cartService: CartService,
-				private _branchStoreService: BranchStoreService, private _cartDeliveryService: CartDeliveryService) {
+				private _branchStoreService: BranchStoreService,
+				private _cartDeliveryService: CartDeliveryService) {
 		this.paymentChange$ = new Subject();
 
 		const branch = this._branchStoreService.getBranch();

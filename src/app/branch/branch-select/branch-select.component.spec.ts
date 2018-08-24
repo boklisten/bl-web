@@ -5,6 +5,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {Component, Injectable, Input} from "@angular/core";
 import {BranchService} from "@wizardcoder/bl-connect";
 import {BranchStoreService} from "../branch-store.service";
+import {Subject} from "rxjs/internal/Subject";
 
 
 @Component({selector: 'fa-icon', template: ''})
@@ -34,6 +35,10 @@ class BranchStoreStubService {
 
 	}
 
+	onBranchChange() {
+		return new Subject().asObservable();
+	}
+
 	getBranch() {
 
 	}
@@ -42,10 +47,6 @@ class BranchStoreStubService {
 describe('BranchSelectComponent', () => {
 	let component: BranchSelectComponent;
 	let fixture: ComponentFixture<BranchSelectComponent>;
-
-
-	const branchStoreStubService = new BranchStoreStubService();
-	const branchStubService = new BranchStubService();
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -58,8 +59,8 @@ describe('BranchSelectComponent', () => {
 				RouterTestingModule,
 			],
 			providers: [
-				{provide: BranchService, useValue: branchStubService},
-				{provide: BranchStoreService, useValue: branchStoreStubService}
+				{provide: BranchService, useClass: BranchStubService},
+				{provide: BranchStoreService, useClass: BranchStoreStubService}
 			]
 		})
 			.compileComponents();

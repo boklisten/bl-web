@@ -9,6 +9,7 @@ import {CartDeliveryService} from "./cart-delivery.service";
 import {UserService} from "../../user/user.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {Subject} from "rxjs";
+import {Branch} from "@wizardcoder/bl-model";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {
@@ -33,6 +34,14 @@ class CartDeliveryStubService {
 	onDeliveryChange() {
 		return new Subject();
 	}
+
+	getDefaultDeliveryMethod() {
+
+	}
+
+	setBranchDelivery() {
+
+	}
 }
 
 @Injectable()
@@ -48,7 +57,7 @@ class UserStubService {
 @Injectable()
 class BranchStoreStubService {
 	getBranch() {
-
+		return {} as Branch;
 	}
 
 }

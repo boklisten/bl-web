@@ -17,7 +17,9 @@ export class BranchSelectComponent implements OnInit {
 	public loading: boolean;
 	public couldNotGetBranchesError: boolean;
 
-	constructor(private _branchService: BranchService, private _branchStoreService: BranchStoreService, private _router: Router) {
+	constructor(private _branchService: BranchService,
+				private _branchStoreService: BranchStoreService,
+				private _router: Router) {
 		this.branchSelect = new EventEmitter<Branch>();
 	}
 
