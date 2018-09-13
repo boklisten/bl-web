@@ -15,9 +15,9 @@ export class InfoGeneralComponent implements OnInit {
 		this.generalInfoDesc = 'Velkommen til vår nye nettside! Her kan du leie bøker akkurat som på den gamle – bare mye enklere.';
 		this.generalInfos = [
 			{
-				title: 'Allerede bestilt fra den gamle nettsiden?',
+				title: 'Har du leid bøker med den gamle nettsiden?',
 				textBlocks: [
-					'Dersom du har bestilt bøker via den gamle nettsiden vil du få informasjon om hvordan du skal forholde deg til utlevering av bøker. Bøkene dine vil etterhvert bli overført til ny nettside.'
+					'Innsamling foregår på vanlig måte som for alle andre – husk bare å nevne for de ansatte at du har bruker i gammelt system, slik at de kan finne bøkene dine der.'
 				]
 			},
 			{

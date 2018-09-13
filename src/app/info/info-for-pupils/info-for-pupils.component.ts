@@ -25,7 +25,8 @@ export class InfoForPupilsComponent implements OnInit {
 			{
 				title: 'Otto Treider',
 				textBlocks: [
-					'Ida Christine Lysne – 95032816 – lysneidachristine@gmail.com'
+					'Ida Christine Lysne – 95032816 – lysneidachristine@gmail.com',
+					'Camilla Hansen Andersen – 47950219 - camillahansenandersen@yahoo.no'
 				]
 			},
 			{
