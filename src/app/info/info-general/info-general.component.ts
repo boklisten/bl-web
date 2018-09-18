@@ -21,6 +21,13 @@ export class InfoGeneralComponent implements OnInit {
 				]
 			},
 			{
+				title: 'Spesielt for Akademiet Drammen',
+				textBlocks: [
+					'På Akademiet Drammen vil du kunne leie bøker utenfor våre faste åpningstider. Ta kontakt med vår kontaktperson i Drammen for å gjøre dette:',
+					'Sofia Bjurulf - 47684681 - s.bjurulf@altiboxmail.no'
+				]
+			},
+			{
 				title: 'Bytte- og returrett',
 				textBlocks: [
 					'Vi har 14 dagers bytte- og returrett. Dersom du ønsker å benytte deg av denne retten, er det enkleste å komme innom en av våre stands. Alle åpningstider finner du i fanen «Skoler og åpningstider».'
@@ -36,12 +43,6 @@ export class InfoGeneralComponent implements OnInit {
 				title: 'Innlevering og utlevering',
 				textBlocks: [
 					'Du vil finne alle åpningstider for inn- og utlevering under «Skoler og åpningstider» så fort de er offentliggjort.'
-				]
-			},
-			{
-				title: 'Spesielt for Akademiet Drammen',
-				textBlocks: [
-					'På Akademiet Drammen vil du ofte kunne leie bøker også utenfor våre faste åpningstider. På denne siden vil du finne kontaktinformasjon til den som leier ut bøker for oss på Akademiet Drammen, når det blir mulig.'
 				]
 			}
 		];
