@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {BlApiError, Branch, OpeningHour} from "@wizardcoder/bl-model";
 import {OpeningHourService} from "@wizardcoder/bl-connect";
+import { DateService } from '../../date/date.service';
 
 @Injectable()
 export class BranchOpeningHoursService {
 	
-	constructor(private _openingHourService: OpeningHourService) {
+	constructor(private _openingHourService: OpeningHourService, private _dateService: DateService) {
 	
 	}
 	
@@ -19,7 +20,7 @@ export class BranchOpeningHoursService {
 			}
 			
 			Promise.all(openingHourProms).then((openingHours: OpeningHour[]) => {
-				resolve(openingHours);
+				resolve(this._dateService.sortOpeningHours(openingHours));
 			}).catch((blApiError: BlApiError) => {
 				reject(blApiError);
 			});

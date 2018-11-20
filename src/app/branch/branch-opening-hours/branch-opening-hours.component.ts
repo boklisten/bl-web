@@ -31,16 +31,29 @@ export class BranchOpeningHoursComponent implements OnInit, OnChanges {
 		this.loading = true;
 
 		this._branchOpeningHoursService.getOpeningHours(this.branch).then((openingHours: OpeningHour[]) => {
-			this.openingHours = openingHours;
+			this.openingHours = this.removeInactiveOpeningHours(openingHours);
+
 			this.loading = false;
 		}).catch(() => {
 			console.log('there was an error getting opening hours');
 			this.loading = false;
 		});
-	}
+  }
 
-	isTodayAfter(date): boolean {
-		return this._dateService.isTodayAfter(date);
+  private removeInactiveOpeningHours(openingHours: OpeningHour[]): OpeningHour[] {
+    const ohs: OpeningHour[] = [];
+
+    for (let oh of openingHours) {
+      if (this.isDateStillActive(oh.to)) {
+        ohs.push(oh);
+      }
+    }
+
+    return ohs;
+  }
+
+	isDateStillActive(date: Date): boolean {
+		return this._dateService.isDateStillActive(date);
 	}
 
 

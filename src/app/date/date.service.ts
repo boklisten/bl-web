@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Branch, CustomerItem, Item} from "@wizardcoder/bl-model";
+import {Branch, CustomerItem, Item, OpeningHour} from "@wizardcoder/bl-model";
 import * as moment from 'moment';
 import {BranchStoreService} from "../branch/branch-store.service";
 
@@ -31,9 +31,32 @@ export class DateService {
 	}
 
 	public isTodayAfter(date: Date) {
-		return moment(date).isBefore(new Date());
-	}
+		return moment(date).isBefore(moment());
+  }
 
+  public isDateStillActive(date: Date) {
+    return moment().isSameOrBefore(moment(date));
+  }
+
+  public sortOpeningHours(openingHours: OpeningHour[]): OpeningHour[] {
+
+    const sortedOpeningHours: OpeningHour[] = openingHours.slice();
+    sortedOpeningHours.sort(this.sortOpeningHour);
+    return sortedOpeningHours;
+  }
+
+  private sortOpeningHour(a: OpeningHour, b: OpeningHour) {
+    const aMoment = moment(a.from);
+    const bMoment = moment(b.from);
+
+    if (aMoment.isBefore(bMoment)) {
+      return -1;
+    } else if (aMoment.isAfter(bMoment)) {
+      return 1;
+    }
+
+    return 0;
+  }
 
 	public getExtendDate(periodType: 'semester' | 'year'): Date {
 		const branch = this._branchStoreService.getBranch();
