@@ -5,12 +5,16 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "node server.js",
+		"serve:local": "npm run build:local && node server.js",
 		"serve:dev": "npm run build:dev && node server.js",
+		"serve:prod": "npm run build:prod && node server.js",
 		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
 		"watch": "ng serve",
 		"watch-nb": "ng serve --configuration=nb",
 		"build": "ng build --configuration=${ANGULAR_ENV}",
 		"build:local": "ng build --configuration=local-nb",
+		"build:dev": "ng build --configuration=dev-nb",
+		"build:prod": "ng build --configuration=production-nb",
 		"postinstall": "npm run build",
 		"test": "ng test",
 		"test:coverage": "ng test --code-coverage",
@@ -21,6 +25,9 @@
 	"engines": {
 		"node": "8.11.3",
 		"npm": "6.1.0"
+	},
+	"resolutions": {
+		"uglify-es": "npm:terser"
 	},
 	"private": true,
 	"dependencies": {
@@ -55,7 +62,7 @@
 		"zone.js": "~0.8.26"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "^0.6.8",
+		"@angular-devkit/build-angular": "^0.10.6",
 		"@angular/language-service": "6.0.6",
 		"@types/jasmine": "~2.8.3",
 		"@types/jasminewd2": "~2.0.2",
@@ -72,6 +79,7 @@
 		"karma-phantomjs-launcher": "^1.0.4",
 		"ngx-i18nsupport": "^0.16.2",
 		"protractor": "^5.4.0",
+		"terser": "^3.10.11",
 		"ts-node": "~4.1.0",
 		"tslint": "~5.9.1",
 		"typescript": "2.7.2"

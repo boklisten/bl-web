@@ -17,7 +17,7 @@
 						"main": "src/main.ts",
 						"tsConfig": "src/tsconfig.app.json",
 						"polyfills": "src/polyfills.ts",
-						"assets": [
+             "assets": [
 							"src/assets",
 							"src/favicon.ico",
 							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt"
@@ -43,14 +43,10 @@
 							"extractLicenses": true,
 							"vendorChunk": false,
 							"buildOptimizer": true,
-							"fileReplacements": [
+              "fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.prod.ts"
-								},
-								{
-									"replace": "src/assets/dibs/dibs-checkout.js",
-									"with": "src/assets/dibs/dibs-checkout-live.js"
 								}
 							]
 						},
@@ -72,7 +68,6 @@
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.dev.ts"
 								}
-
 							]
 						},
 						"local-nb": {
@@ -89,47 +84,6 @@
 								}
 							]
 						},
-						"dev": {
-							"optimization": true,
-							"outputHashing": "all",
-							"sourceMap": true,
-							"extractCss": true,
-							"namedChunks": false,
-							"aot": true,
-							"extractLicenses": true,
-							"vendorChunk": false,
-							"buildOptimizer": true,
-							"i18nFile": "src/locale/messages.nb.xlf",
-							"i18nLocale": "nb",
-							"i18nFormat": "xlf",
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.dev.ts"
-								}
-							]
-						},
-						"production": {
-							"optimization": true,
-							"outputHashing": "all",
-							"sourceMap": false,
-							"extractCss": true,
-							"namedChunks": false,
-							"aot": true,
-							"extractLicenses": true,
-							"vendorChunk": false,
-							"buildOptimizer": true,
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.prod.ts"
-								},
-								{
-									"replace": "src/assets/dibs/dibs-checkout.js",
-									"with": "src/assets/dibs/dibs-checkout-live.js"
-								}
-							]
-						},
 						"local": {
 							"fileReplacements": [
 								{
@@ -143,7 +97,7 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"options": {
-                        "browserTarget": "bl-web:build:local"
+            "browserTarget": "bl-web:build:local"
 					},
 					"configurations": {
 						"nb": {
