@@ -73,6 +73,7 @@
 						"local-nb": {
 							"optimization": false,
 							"outputPath": "dist/",
+              "sourceMap": true,
 							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
 							"i18nFormat": "xlf",
