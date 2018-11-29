@@ -79,6 +79,7 @@
 		"karma-phantomjs-launcher": "^1.0.4",
 		"ngx-i18nsupport": "^0.16.2",
 		"protractor": "^5.4.0",
+		"puppeteer": "^1.10.0",
 		"terser": "^3.10.11",
 		"ts-node": "~4.1.0",
 		"tslint": "~5.9.1",
