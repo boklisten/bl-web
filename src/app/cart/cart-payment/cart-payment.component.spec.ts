@@ -1,11 +1,11 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartPaymentComponent} from './cart-payment.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {CartPaymentService} from "./cart-payment.service";
-import {CartOrderService} from "../cart-order/cart-order.service";
-import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {Subject} from "rxjs";
+import { CartPaymentComponent } from "./cart-payment.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { CartPaymentService } from "./cart-payment.service";
+import { CartOrderService } from "../cart-order/cart-order.service";
+import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
+import { Subject } from "rxjs";
 
 @Injectable()
 class CartPaymentStubService {
@@ -13,15 +13,17 @@ class CartPaymentStubService {
 		return new Subject();
 	}
 
-	getPayment() {
+	getPayment() {}
 
+	createPayment() {
+		return new Promise(() => {});
 	}
+
+	clear() {}
 }
 
 @Injectable()
-class CartOrderStubService {
-
-}
+class CartOrderStubService {}
 
 @Injectable()
 class CartDeliveryStubService {
@@ -30,19 +32,20 @@ class CartDeliveryStubService {
 	}
 }
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 	@Input() spin: any;
 	@Input() size: any;
 }
 
-@Component({selector: 'app-cart-payment-dibs', template: ''})
+@Component({ selector: "app-cart-summary", template: "" })
+class CartSummaryStubComponent {}
+
+@Component({ selector: "app-cart-payment-dibs", template: "" })
 class CartPaymentDibsStubComponent {}
 
-
-
-describe('CartPaymentComponent', () => {
+describe("CartPaymentComponent", () => {
 	let component: CartPaymentComponent;
 	let fixture: ComponentFixture<CartPaymentComponent>;
 
@@ -51,15 +54,24 @@ describe('CartPaymentComponent', () => {
 			declarations: [
 				CartPaymentComponent,
 				FaIconStubComponent,
-				CartPaymentDibsStubComponent
+				CartPaymentDibsStubComponent,
+				CartSummaryStubComponent
 			],
 			providers: [
-				{provide: CartPaymentService, useValue: new CartPaymentStubService()},
-				{provide: CartOrderService, useValue: new CartOrderStubService()},
-				{provide: CartDeliveryService, useValue: new CartDeliveryStubService()}
+				{
+					provide: CartPaymentService,
+					useClass: CartPaymentStubService
+				},
+				{
+					provide: CartOrderService,
+					useValue: new CartOrderStubService()
+				},
+				{
+					provide: CartDeliveryService,
+					useValue: new CartDeliveryStubService()
+				}
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -68,7 +80,7 @@ describe('CartPaymentComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

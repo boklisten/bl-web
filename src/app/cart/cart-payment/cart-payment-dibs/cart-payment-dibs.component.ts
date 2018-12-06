@@ -41,37 +41,29 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	ngOnInit() {
 		this.payment = this._cartPaymentService.getPayment();
 
-		if (this.payment && this.payment.method === 'dibs') {
-			if (!this.payment.info) {
-				this.alert = true;
-			} else {
-				this.createDibsPayment();
-			}
-		}
+    if (this.payment && this.payment.method === 'dibs') {
+      if (!this.payment.info) {
+        this.alert = true;
+      } else {
+        
 
-		this.paymentChange$ = this._cartPaymentService.onPaymentChange().subscribe(() => {
-			this.alert = false;
-			this.payment = this._cartPaymentService.getPayment();
-			if (this.payment.method === 'dibs') {
-				if (!this.payment.info) {
-					this.alert = true;
-				} else {
-					const child = document.getElementById('dibs-checkout-content');
+        setTimeout(() => {
+          this.createDibsPayment();
+        });
+      }
+    }
+  }
 
-					if (child) {
-						child.remove();
-					}
-
-					setTimeout(() => {
-						this.createDibsPayment();
-					});
-				}
-			}
-		});
-	}
+  private removeDibsElement() {
+    const dibsElement = document.getElementById('dibs-checkout-content');
+    if (dibsElement) {
+      dibsElement.remove();
+    }
+  }
 
 	private createDibsElement() {
 		const dibsWrapper = document.getElementById('bl-dibs-wrapper');
+
 		if (dibsWrapper) {
 			const dibsElement = document.createElement('div');
 			dibsElement.setAttribute('id', 'dibs-checkout-content');
@@ -80,17 +72,14 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	ngOnDestroy() {
-		this.paymentChange$.unsubscribe();
 	}
 
 	ngAfterViewInit() {
 
 	}
 
-
-
-
-	createDibsPayment() {
+	private createDibsPayment() {
+    this.removeDibsElement();
 		this.createDibsElement();
 
 		this.dibsCheckoutOptions = {
@@ -100,7 +89,6 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		};
 
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
-
 		const cartCheckoutService = this._cartCheckoutService;
 		const router = this._router;
 		const removeStoredIds = this.removeIds;
@@ -109,6 +97,7 @@ export class CartPaymentDibsComponent implements OnInit, OnDestroy, AfterViewIni
 		this.storeIds(); // must store the ids in case the payment fails
 
 		checkout.on('payment-initialized', function (response) {
+      console.log("hi hello!");
 			checkout.send('payment-order-finalized', true);
 		});
 

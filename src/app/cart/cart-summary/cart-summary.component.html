@@ -1,5 +1,4 @@
-
-<div class="row" *ngIf="!order || !delivery">
+<div class="row" *ngIf="!order">
 	<div class="col-12">
 		<div class="alert alert-secondary" i18n="@@cartSummaryError">
 			Summary could not be provided
@@ -7,49 +6,87 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="order && delivery">
+<div class="row  justify-content-center">
 	<div class="col-12">
-		<div class="card">
-			<div class="card-header" i18n="@@cartSummaryTitle">
-				Payment summary
-			</div>
+		<div class="row">
+			<table class="table table-sm">
+				<thead>
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Action</th>
+						<th scope="col">Price</th>
+					</tr>
+				</thead>
+				<tbody *ngIf="order">
+					<tr *ngFor="let orderItem of order.orderItems">
+						<td>{{ orderItem.title }}</td>
 
-			<div class="card-body">
-				<div class="row justify-content-between">
-					<div class="col-auto text-secondary" i18n="@@cartSummarySumItems">
-						Sum items
-					</div>
-					<div class="col-auto">
-						{{order.amount | blcPrice:'international'}}
-					</div>
-				</div>
-				<div class="row justify-content-between" *ngIf="delivery.method !== 'branch'">
-					<div class="col-auto text-secondary" i18n="@@cartSummaryShipment">
-						Shipment
-					</div>
-					<div class="col-auto">
-						{{delivery.amount | blcPrice:'international'}}
-					</div>
-				</div>
-				<div class="row justify-content-between">
-					<div class="col-auto text-secondary">
-						<small i18n="@@cartSummaryTaxAmount">Tax amount</small>
-					</div>
-					<div class="col-auto">
-						<small>{{0 | blcPrice:'international'}}</small>
-					</div>
-				</div>
-			</div>
-			<div class="card-footer">
-				<div class="row justify-content-between">
-					<div class="col-auto text-secondary" i18n="@@cartSummaryTotal">
-						Total
-					</div>
-					<div class="col-auto font-weight-bold">
-						{{totalAmount() | blcPrice:'international'}}
-					</div>
-				</div>
-			</div>
+						<td *ngIf="orderItem.type === 'rent'">
+							<span i18n="@@cartSummaryRentTo">rent to</span>
+							<span>
+								{{ orderItem.info.to | blcDate: "date" }}</span
+							>
+						</td>
+
+						<td *ngIf="orderItem.type === 'extend'">
+							<span i18n="@@cartSummaryExtendTo">extend to</span>
+							<span>
+								{{ orderItem.info.to | blcDate: "date" }}</span
+							>
+						</td>
+
+						<td *ngIf="orderItem.type === 'buy'">
+							<span i18n="@@cartSummaryBuy">buy</span>
+						</td>
+
+						<td *ngIf="orderItem.type === 'buyout'">
+							<span i18n="@@cartSummaryBuyout">buyout</span>
+						</td>
+
+						<td>
+							{{
+								orderItem.unitPrice | blcPrice: "international"
+							}}
+						</td>
+					</tr>
+					<tr *ngIf="delivery && delivery.method !== 'branch'">
+						<td
+							i18n="@@cartSummaryShipment"
+							colspan="2"
+							class="table-info"
+						>
+							Shipment
+						</td>
+						<td class="table-info">
+							{{ delivery.amount | blcPrice: "international" }}
+						</td>
+					</tr>
+					<tr *ngIf="payment">
+						<th
+							i18n="@@cartSummaryTotal"
+							colspan="2"
+							class="table-secondary"
+						>
+							Total
+						</th>
+						<th class="table-secondary">
+							{{ payment.amount | blcPrice: "international" }}
+						</th>
+					</tr>
+					<tr *ngIf="payment">
+						<td colspan="2">
+							<small i18n="@@cartSummaryTaxAmount"
+								>Tax amount</small
+							>
+						</td>
+						<td>
+							<small>{{
+								payment.taxAmount | blcPrice: "international"
+							}}</small>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

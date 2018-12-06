@@ -1,7 +1,8 @@
+<app-cart-summary></app-cart-summary>
 
-<div class="row justify-content-center" *ngIf="!currentPayment">
+<div class="row justify-content-center" *ngIf="wait">
 	<div class="col-auto text-info">
-		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'3x'"></fa-icon>
+		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'2x'"></fa-icon>
 	</div>
 </div>
 
@@ -9,17 +10,11 @@
 	<div class="col-12">
 		<div class="alert alert-secondary" role="alert">
 			<fa-icon [icon]="'exclamation-circle'" class="mr-2"></fa-icon>
-			<span i18n="@@cartPaymentWaitingForDeliveryError">Waiting for a valid delivery</span>
+			<span i18n="@@cartPaymentWaitingForDeliveryError"
+				>Waiting for a valid delivery</span
+			>
 		</div>
 	</div>
 </div>
 
-<div class="row" *ngIf="currentPayment && showDibsPayment && !failure">
-	<div class="col-12">
-		<app-cart-payment-dibs></app-cart-payment-dibs>
-	</div>
-</div>
-
-
-
-
+<app-cart-payment-dibs *ngIf="!wait"></app-cart-payment-dibs>

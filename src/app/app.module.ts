@@ -24,7 +24,7 @@ import {
 	faTimes, faCreditCard, faMoneyBillAlt, faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faList,
 	faCircleNotch, faTruck, faWarehouse, faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog,
 	faUserCircle, faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
-	faBan, faArrowAltCircleUp,
+  faBan, faArrowAltCircleUp, faArrowLeft, faStore,
 	faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey, faPhone, faAddressCard, faBirthdayCake
 } from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../environments/environment";
@@ -39,13 +39,14 @@ import {faSquare} from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from './logout/logout.component';
 
 library.add(faList, faUser, faShoppingCart, faCartPlus, faCheck, faBook, faCopyright,
+  faStore,
 	faGraduationCap, faSignOutAlt, faClipboard, faCartArrowDown, faSquare, faCheckSquare,
 	faSync, faExclamationTriangle, faClock, faCheckCircle, faTimes, faCreditCard, faMoneyBillAlt,
 	faCalendarPlus, faCalendar, faCalendarAlt, faReceipt, faCircleNotch, faTruck, faWarehouse,
 	faArrowAltCircleDown, faBookOpen, faMoneyBillWave, faInfoCircle, faUserCog, faUserCircle,
 	faBars, faExclamationCircle, faCoffee, faHeart, faCaretDown, faAngleDoubleDown, faAngleDoubleUp,
 	faBan, faArrowAltCircleUp, faArrowRight, faUserPlus, faSignInAlt, faChevronLeft, faAt, faKey,
-	faFacebookSquare, faGoogle, faPhone, faAddressCard, faBirthdayCake);
+	faFacebookSquare, faGoogle, faPhone, faAddressCard, faBirthdayCake, faArrowLeft);
 
 @NgModule({
 	declarations: [

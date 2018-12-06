@@ -6,6 +6,8 @@ $alert-color: #e63946;
 $success-color: #53dd6c;
 $warning-color: #ee8434;
 
+$grid-gutter-width: 0px !important;
+
 
 .bl-text-xs {
 	font-size: 10px;
@@ -50,7 +52,7 @@ a:visited {
 }
 
 .bl-nav-btn-active {
-	border-bottom: solid 3px #26768f;
+	border-bottom: solid 5px rgb(23, 162, 184);
 	border-radius: 0;
 }
 
@@ -166,6 +168,10 @@ a:visited {
 // NG-BOOTSTRAP SPECIFIC
 .modal-content {
 	margin-top: 80px;
+}
+
+.progress {
+  border-radius: 0 !important;
 }
 
 // ng2-datepicker specific

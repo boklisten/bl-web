@@ -1,17 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {CartItem, CartService} from "./cart.service";
-import {CartOrderService} from "./cart-order/cart-order.service";
+import { Component, OnInit } from "@angular/core";
+import { CartItem, CartService } from "./cart.service";
+import { CartOrderService } from "./cart-order/cart-order.service";
 
 @Component({
-	selector: 'app-cart',
-	templateUrl: './cart.component.html',
-	styleUrls: ['./cart.component.scss']
+	selector: "app-cart",
+	templateUrl: "./cart.component.html",
+	styleUrls: ["./cart.component.scss"]
 })
 export class CartComponent implements OnInit {
-
-
-	constructor(private _cartService: CartService) {
-	}
+	constructor(private _cartService: CartService) {}
 
 	ngOnInit() {
 		if (this._cartService.isEmpty()) {
@@ -20,7 +17,7 @@ export class CartComponent implements OnInit {
 	}
 
 	public showCart(): boolean {
-		return (this.getCart().length > 0);
+		return this.getCart().length > 0;
 	}
 
 	public getCart(): CartItem[] {
