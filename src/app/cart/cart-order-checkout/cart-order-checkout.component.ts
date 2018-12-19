@@ -30,9 +30,9 @@ export class CartOrderCheckoutComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		//this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
+		this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
 		//this.onStepsChange();
-		//this.watchTotalAmount();
+		this.watchTotalAmount();
 	}
 
 	public watchTotalAmount() {
