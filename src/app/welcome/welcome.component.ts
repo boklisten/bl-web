@@ -8,7 +8,7 @@ import {UserService} from "../user/user.service";
 	styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
-
+  
 	constructor(private _router: Router, private _route: ActivatedRoute, private _userService: UserService) {
 	}
 
