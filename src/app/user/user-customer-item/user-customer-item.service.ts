@@ -1,31 +1,47 @@
-import {Injectable} from '@angular/core';
-import {Branch, BranchItem, CustomerItem, UserDetail} from "@wizardcoder/bl-model";
-import {BranchService, CustomerItemService} from "@wizardcoder/bl-connect";
-import {Period} from "@wizardcoder/bl-model/dist/period/period";
-import {DateService} from "../../date/date.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
-import {UserService} from "../user.service";
+import { Injectable } from "@angular/core";
+import {
+	Branch,
+	BranchItem,
+	CustomerItem,
+	UserDetail
+} from "@wizardcoder/bl-model";
+import { BranchService, CustomerItemService } from "@wizardcoder/bl-connect";
+import { Period } from "@wizardcoder/bl-model/dist/period/period";
+import { DateService } from "../../date/date.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
+import { UserService } from "../user.service";
 
 @Injectable()
 export class UserCustomerItemService {
 	private customerItems: CustomerItem[];
+	private _maxDeadline: string; //TODO: should not be this way
 
-	constructor(private _branchService: BranchService,
-				private _dateService: DateService,
-				private _userService: UserService,
-				private _customerItemService: CustomerItemService,
-				private _branchStoreService: BranchStoreService) {
+	constructor(
+		private _branchService: BranchService,
+		private _dateService: DateService,
+		private _userService: UserService,
+		private _customerItemService: CustomerItemService,
+		private _branchStoreService: BranchStoreService
+	) {
+		this._maxDeadline = "2018-12-31";
 	}
 
-	public isOnValidBranch(customerItem: CustomerItem, branchItem?: BranchItem) {
+	public isOnValidBranch(
+		customerItem: CustomerItem,
+		branchItem?: BranchItem
+	) {
 		const branch = this._branchStoreService.getBranch();
 
-		if (customerItem.handoutInfo && customerItem.handoutInfo.handoutBy === 'branch' && customerItem.handoutInfo.handoutById === branch.id) {
+		if (
+			customerItem.handoutInfo &&
+			customerItem.handoutInfo.handoutBy === "branch" &&
+			customerItem.handoutInfo.handoutById === branch.id
+		) {
 			return true;
 		}
 
 		if (branchItem) {
-			return (branchItem.branch === branch.id);
+			return branchItem.branch === branch.id;
 		}
 
 		return false;
@@ -33,15 +49,24 @@ export class UserCustomerItemService {
 
 	public alreadyHaveItem(itemId: string): Promise<boolean> {
 		return new Promise((resolve, reject) => {
-			this._userService.getUserDetail().then((userDetail: UserDetail) => {
-				this.fetchCustomerItems(userDetail).then(() => {
-					resolve(this.checkIfItemIsInCustomerItems(itemId));
-				}).catch(() => {
-					console.log('UserCustomerItemService: could not fetch customer items');
+			this._userService
+				.getUserDetail()
+				.then((userDetail: UserDetail) => {
+					this.fetchCustomerItems(userDetail)
+						.then(() => {
+							resolve(this.checkIfItemIsInCustomerItems(itemId));
+						})
+						.catch(() => {
+							console.log(
+								"UserCustomerItemService: could not fetch customer items"
+							);
+						});
+				})
+				.catch(() => {
+					console.log(
+						"UserCustomerItemService: could not get user detail"
+					);
 				});
-			}).catch(() => {
-				console.log('UserCustomerItemService: could not get user detail');
-			});
 		});
 	}
 
@@ -51,7 +76,11 @@ export class UserCustomerItemService {
 		}
 
 		for (const customerItem of this.customerItems) {
-			if (!customerItem.returned && !customerItem.buyout && customerItem.handout) {
+			if (
+				!customerItem.returned &&
+				!customerItem.buyout &&
+				customerItem.handout
+			) {
 				if (customerItem.item === itemId) {
 					return true;
 				}
@@ -62,28 +91,52 @@ export class UserCustomerItemService {
 	}
 
 	private fetchCustomerItems(userDetail: UserDetail): Promise<boolean> {
-		return this._customerItemService.getManyByIds(userDetail.customerItems).then((customerItems: CustomerItem[]) => {
-			this.customerItems = customerItems;
-			return true;
-		}).catch((getCustomerItemsError) => {
-			throw new Error('UserOrderService: could not get customer items: ' + getCustomerItemsError);
-		});
+		return this._customerItemService
+			.getManyByIds(userDetail.customerItems)
+			.then((customerItems: CustomerItem[]) => {
+				this.customerItems = customerItems;
+				return true;
+			})
+			.catch(getCustomerItemsError => {
+				throw new Error(
+					"UserOrderService: could not get customer items: " +
+						getCustomerItemsError
+				);
+			});
 	}
 
 	public isNotReturnedBeforeDeadline(customerItem: CustomerItem): boolean {
 		if (customerItem.handout && !customerItem.returned) {
-			return this._dateService.isDeadlineExpired(customerItem.deadline.toString());
+			return this._dateService.isDeadlineExpired(
+				customerItem.deadline.toString(),
+				this._maxDeadline
+			);
 		}
+
+		console.log("is valid");
 		return false;
 	}
 
 	public isExtendValid(customerItem: CustomerItem): boolean {
-		if (this._dateService.isDeadlineExpired(customerItem.deadline.toString()) || customerItem.returned) {
+		if (
+			this._dateService.isDeadlineExpired(
+				customerItem.deadline.toString(),
+				this._maxDeadline
+			) ||
+			customerItem.returned
+		) {
 			return false;
 		}
 
 		const branch = this._branchStoreService.getBranch();
-		return this.isExtendPeriodValid(customerItem.deadline, 'semester', branch) && this.isExtendPeriodValidOnCustomerItem('semester', customerItem);
+		return (
+			this.isExtendPeriodValid(
+				customerItem.deadline,
+				"semester",
+				branch
+			) &&
+			this.isExtendPeriodValidOnCustomerItem("semester", customerItem)
+		);
 	}
 
 	public isBuyoutValid(customerItem: CustomerItem): boolean {
@@ -93,14 +146,23 @@ export class UserCustomerItemService {
 		}
 		*/
 
-		if (this._dateService.isDeadlineExpired(customerItem.deadline.toString()) || customerItem.returned) {
+		if (
+			this._dateService.isDeadlineExpired(
+				customerItem.deadline.toString(),
+				this._maxDeadline
+			) ||
+			customerItem.returned
+		) {
 			return false;
 		}
 
 		return true;
 	}
 
-	private isExtendPeriodValidOnCustomerItem(period: Period, customerItem: CustomerItem): boolean {
+	private isExtendPeriodValidOnCustomerItem(
+		period: Period,
+		customerItem: CustomerItem
+	): boolean {
 		for (const extendPeriod of customerItem.periodExtends) {
 			if (extendPeriod.periodType === period) {
 				return false;
@@ -109,15 +171,25 @@ export class UserCustomerItemService {
 		return true;
 	}
 
-	private isExtendPeriodValid(originalDeadline: Date, period: Period, branch: Branch): boolean {
-		if (branch.paymentInfo && branch.paymentInfo.extendPeriods && branch.paymentInfo.extendPeriods.length > 0) {
+	private isExtendPeriodValid(
+		originalDeadline: Date,
+		period: Period,
+		branch: Branch
+	): boolean {
+		if (
+			branch.paymentInfo &&
+			branch.paymentInfo.extendPeriods &&
+			branch.paymentInfo.extendPeriods.length > 0
+		) {
 			for (const extendPeriod of branch.paymentInfo.extendPeriods) {
-				if (period === extendPeriod.type && originalDeadline !== extendPeriod.date) {
+				if (
+					period === extendPeriod.type &&
+					originalDeadline !== extendPeriod.date
+				) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-
 }
