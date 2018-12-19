@@ -23,6 +23,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 	public order: Order;
 	public init: boolean;
 	public totalAmount: number;
+	public cartError: any;
 
 	constructor(
 		private cartOrderCheckoutService: CartOrderCheckoutService,
@@ -30,6 +31,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.cartError = null;
 		this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
 		//this.onStepsChange();
 		this.watchTotalAmount();
@@ -41,6 +43,10 @@ export class CartOrderCheckoutComponent implements OnInit {
 			.subscribe((amount: number) => {
 				this.totalAmount = amount;
 			});
+	}
+
+	public onPaymentError(error: Error) {
+		this.cartError = { payment: true };
 	}
 
 	public onOpenCheckout(content) {

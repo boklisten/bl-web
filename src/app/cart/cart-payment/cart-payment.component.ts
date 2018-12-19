@@ -21,6 +21,7 @@ import { Subscription } from "rxjs/internal/Subscription";
 	styleUrls: ["./cart-payment.component.scss"]
 })
 export class CartPaymentComponent implements OnInit, OnDestroy {
+	@Output() error: EventEmitter<Error>;
 	public showDibsPayment: boolean;
 	public paymentMethod: "later" | "dibs";
 	public currentPayment: Payment;
@@ -35,6 +36,7 @@ export class CartPaymentComponent implements OnInit, OnDestroy {
 	) {
 		this.paymentMethod = "dibs";
 		this.failure = false;
+		this.error = new EventEmitter<Error>();
 	}
 
 	ngOnInit() {
@@ -49,6 +51,7 @@ export class CartPaymentComponent implements OnInit, OnDestroy {
 			})
 			.catch(createPaymentError => {
 				this.wait = false;
+				this.error.emit(createPaymentError);
 			});
 	}
 

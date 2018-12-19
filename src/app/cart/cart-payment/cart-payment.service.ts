@@ -58,10 +58,16 @@ export class CartPaymentService {
 
 	public createPayment(): Promise<Payment> {
 		return new Promise((resolve, reject) => {
-			let payment = this.createDibsPayment(
-				this._cartOrderService.getOrder(),
-				this._cartDeliveryService.getDelivery()
-			);
+			let payment = null;
+
+			try {
+				payment = this.createDibsPayment(
+					this._cartOrderService.getOrder(),
+					this._cartDeliveryService.getDelivery()
+				);
+			} catch (e) {
+				reject(e);
+			}
 
 			this._paymentService
 				.add(payment)

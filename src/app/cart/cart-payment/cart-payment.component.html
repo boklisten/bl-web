@@ -1,11 +1,14 @@
 <app-cart-summary></app-cart-summary>
 
-<div class="row justify-content-center" *ngIf="wait">
-	<div class="col-auto text-info">
-		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'2x'"></fa-icon>
+<div class="row justify-content-center mt-2" *ngIf="wait">
+	<div class="col-auto text-secondary">
+		<fa-icon [icon]="'circle-notch'" [spin]="true"></fa-icon>
+		<span class="ml-2" i18n="@@cartPaymentContactingDibs"
+			>contacting DIBS</span
+		>
 	</div>
 </div>
-
+<!--
 <div class="row" *ngIf="failure">
 	<div class="col-12">
 		<div class="alert alert-secondary" role="alert">
@@ -16,5 +19,6 @@
 		</div>
 	</div>
 </div>
+-->
 
 <app-cart-payment-dibs *ngIf="!wait"></app-cart-payment-dibs>

@@ -37,6 +37,21 @@
 					</div>
 				</div>
 
+				<div class="card-body" *ngIf="cartError">
+					<div class="row">
+						<div class="col-12">
+							<div
+								class="alert alert-danger"
+								*ngIf="cartError.payment"
+							>
+								<p>
+									There was a error with creating the payment
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<ngb-progressbar
 					[type]="progressColor"
 					[height]="'2px'"
@@ -65,6 +80,7 @@
 
 					<app-cart-payment
 						*ngIf="cartStep.type === 'payment'"
+						(error)="onPaymentError($event)"
 					></app-cart-payment>
 				</div>
 			</div>
