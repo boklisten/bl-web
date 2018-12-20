@@ -1,7 +1,14 @@
-
-<button class="btn btn-outline-secondary btn-block btn-sm" (click)="onAdd()" *ngIf="!isAdded()">
-    <fa-icon [icon]="['fa', 'cart-plus']"></fa-icon>
+<button
+	class="btn btn-outline-secondary btn-block btn-sm"
+	(click)="onAdd()"
+	*ngIf="!isAdded()"
+>
+	<fa-icon [icon]="['fa', 'cart-plus']"></fa-icon>
 </button>
-<button class="btn btn-success btn-block btn-sm" (click)="onDelete()" *ngIf="isAdded()">
-    <fa-icon [icon]="['fa', 'check']"></fa-icon>
+<button
+	class="btn btn-success btn-block btn-sm"
+	(click)="onDelete()"
+	*ngIf="isAdded()"
+>
+	<fa-icon [icon]="['fa', 'check']"></fa-icon>
 </button>

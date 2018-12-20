@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+
 import { Order, Delivery } from "@wizardcoder/bl-model";
 import { CartOrderService } from "../cart-order/cart-order.service";
 import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
@@ -17,6 +19,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 	private cartStep: CartStep;
 	private steps: CartStep[];
 	public stepCount: number;
+	public showProgressbar: boolean;
 	private progressParts: number;
 	public progressWidth: number;
 	public progressColor: "warning" | "info" | "success" | "danger";
@@ -24,17 +27,36 @@ export class CartOrderCheckoutComponent implements OnInit {
 	public init: boolean;
 	public totalAmount: number;
 	public cartError: any;
+	public wait: boolean;
 
 	constructor(
 		private cartOrderCheckoutService: CartOrderCheckoutService,
-		private modalService: NgbModal
+		private router: Router,
+		private cartService: CartService
 	) {}
 
 	ngOnInit() {
+		if (this.cartService.getSize() <= 0) {
+			this.router.navigateByUrl("cart");
+		}
+
 		this.cartError = null;
+		this.wait = true;
+		this.showProgressbar = false;
+
 		this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
-		//this.onStepsChange();
 		this.watchTotalAmount();
+
+		this.cartOrderCheckoutService
+			.onStartCheckout()
+			.then(() => {
+				this.initSteps();
+				this.wait = false;
+			})
+			.catch(err => {
+				this.cartError = err;
+				this.wait = false;
+			});
 	}
 
 	public watchTotalAmount() {
@@ -54,10 +76,11 @@ export class CartOrderCheckoutComponent implements OnInit {
 			.onStartCheckout()
 			.then(() => {
 				this.initSteps();
-				this.modalService.open(content, { size: "lg" });
+				//	this.modalService.open(content, { size: "lg" });
 			})
 			.catch(err => {
 				console.log("COULD NOT START CHECKOUT", err);
+				this.cartError = err;
 			});
 	}
 
@@ -72,6 +95,11 @@ export class CartOrderCheckoutComponent implements OnInit {
 		this.steps = this.cartOrderCheckoutService.getCartSteps();
 		this.cartStep = this.steps[this.stepCount];
 		this.progressParts = 100 / (this.steps.length + 1);
+
+		if (this.steps.length > 2) {
+			this.showProgressbar = true;
+		}
+
 		this.setProgress();
 	}
 
@@ -93,7 +121,11 @@ export class CartOrderCheckoutComponent implements OnInit {
 	}
 
 	public previousStep() {
-		this.cartStep = this.steps[--this.stepCount];
+		--this.stepCount;
+		if (this.stepCount < 0) {
+			this.router.navigateByUrl("/cart");
+		}
+		this.cartStep = this.steps[this.stepCount];
 		window.scroll(0, 0);
 		this.setProgress();
 	}

@@ -16,7 +16,12 @@ if (environment.production) {
 	document.write(
 		'<script src="https://checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
 	);
+} else {
+	document.write(
+		'<script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
+	);
 }
+
 if (environment.hmr) {
 	const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 
@@ -27,14 +32,7 @@ if (environment.hmr) {
 		console.log("Maybe you have not set the --hmr flag in ng serve");
 	}
 } else {
-	// in development mode
-
-	// DIBS test checkout script
-	document.write(
-		'<script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
-	);
+	platformBrowserDynamic()
+		.bootstrapModule(AppModule)
+		.catch(err => console.log(err));
 }
-
-platformBrowserDynamic()
-	.bootstrapModule(AppModule)
-	.catch(err => console.log(err));

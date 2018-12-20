@@ -8,6 +8,11 @@ $warning-color: #ee8434;
 
 $grid-gutter-width: 0px !important;
 
+.slow-spin {
+	-webkit-animation: fa-spin 6s infinite linear;
+	animation: fa-spin 6s infinite linear;
+}
+
 .bl-text-xs {
 	font-size: 10px;
 }
@@ -165,6 +170,11 @@ a:visited {
 
 .progress {
 	border-radius: 0 !important;
+}
+
+.container-fluid {
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 .modal {
