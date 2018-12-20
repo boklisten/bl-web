@@ -16,8 +16,8 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 	styleUrls: ["./cart-order-checkout.component.scss"]
 })
 export class CartOrderCheckoutComponent implements OnInit {
-	private cartStep: CartStep;
-	private steps: CartStep[];
+	public cartStep: CartStep;
+	public steps: CartStep[];
 	public stepCount: number;
 	public showProgressbar: boolean;
 	private progressParts: number;
