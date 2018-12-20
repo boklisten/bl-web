@@ -1,7 +1,11 @@
 import { NgModuleRef, ApplicationRef } from "@angular/core";
 import { createNewHosts } from "@angularclass/hmr";
+
 /*
  * A function for makeing Hot Module Reloading (HMR) possible
+ * please read these for more info:
+ * https://medium.com/@beeman/tutorial-enable-hmr-in-angular-cli-apps-1b0d13b80130f
+ * https://www.npmjs.com/package/@angularclass/hmr*
  */
 export const hmrBootstrap = (
 	module: any,
