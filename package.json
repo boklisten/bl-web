@@ -9,7 +9,7 @@
 		"serve:dev": "npm run build:dev && node server.js",
 		"serve:prod": "npm run build:prod && node server.js",
 		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
-		"watch": "ng serve  --host 0.0.0.0",
+		"watch": "ng serve  --host 0.0.0.0 --hmr",
 		"watch-nb": "ng serve  --host 0.0.0.0 --configuration=nb",
 		"build": "ng build --configuration=${ANGULAR_ENV}",
 		"build:local": "ng build --configuration=local-nb",
@@ -64,6 +64,7 @@
 	"devDependencies": {
 		"@angular-devkit/build-angular": "^0.10.6",
 		"@angular/language-service": "6.0.6",
+		"@angularclass/hmr": "^2.1.3",
 		"@types/jasmine": "~2.8.3",
 		"@types/jasminewd2": "~2.0.2",
 		"@types/node": "~6.0.60",
