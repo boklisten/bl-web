@@ -68,7 +68,9 @@ export class CartDeliveryComponent implements OnInit {
 		this.onDeliveryFailure();
 
 		if (!this.currentDelivery) {
-			this.onSetDelivery(this.deliveryMethod);
+			this.onSetDelivery(this.deliveryMethod)
+				.then(() => {})
+				.catch(() => {});
 		}
 
 		this.failureText = null;
@@ -158,7 +160,9 @@ export class CartDeliveryComponent implements OnInit {
 
 	public onInputEnterClick() {
 		if (this.validateDeliveryMethodBring()) {
-			this.onSetDelivery(this.deliveryMethod);
+			this.onSetDelivery(this.deliveryMethod)
+				.then(() => {})
+				.catch(() => {});
 		}
 	}
 

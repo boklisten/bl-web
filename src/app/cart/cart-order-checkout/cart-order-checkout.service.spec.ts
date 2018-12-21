@@ -27,7 +27,9 @@ describe("CartOrderCheckoutService", () => {
 		);
 		const cartServiceJasmineSpy = jasmine.createSpyObj("CartService", [
 			"isOnlyCustomerItems",
-			"shouldPay"
+			"shouldPay",
+			"onCartChange",
+			"getSize"
 		]);
 		const cartDeliveryServiceJasmineSpy = jasmine.createSpyObj(
 			"CartDeliveryService",
@@ -66,6 +68,8 @@ describe("CartOrderCheckoutService", () => {
 		cartOrderServiceSpy.onOrderChange.and.returnValue(
 			new Subject().asObservable().subscribe
 		);
+
+		cartServiceSpy.getSize.and.returnValue(1);
 	});
 
 	it("should be created", inject(

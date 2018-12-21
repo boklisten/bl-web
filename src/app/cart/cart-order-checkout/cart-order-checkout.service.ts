@@ -31,7 +31,7 @@ export class CartOrderCheckoutService {
 		this.deliveryAmount = 0;
 
 		//this.onOrderChange();
-		this.watchTotalAmount();
+		//this.watchTotalAmount();
 	}
 
 	public onOrderAmountChange(): Observable<number> {

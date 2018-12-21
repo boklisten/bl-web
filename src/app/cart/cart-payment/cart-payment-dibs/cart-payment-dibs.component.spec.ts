@@ -1,17 +1,17 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartPaymentDibsComponent} from './cart-payment-dibs.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {CartPaymentService} from "../cart-payment.service";
-import {CartCheckoutService} from "../../cart-checkout/cart-checkout.service";
-import {Router} from "@angular/router";
-import {Subject} from "rxjs";
-import {StorageService} from "@wizardcoder/bl-connect";
+import { CartPaymentDibsComponent } from "./cart-payment-dibs.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { CartPaymentService } from "../cart-payment.service";
+import { CartCheckoutService } from "../../cart-checkout/cart-checkout.service";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
+import { StorageService } from "@wizardcoder/bl-connect";
 
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
+	@Input() spin: any;
 }
 
 @Injectable()
@@ -20,44 +20,38 @@ class CartPaymentStubService {
 		return new Subject();
 	}
 
-	getPayment() {
-
-	}
+	getPayment() {}
 }
 
 @Injectable()
-class CartCheckoutStubService {
-
-}
+class CartCheckoutStubService {}
 
 @Injectable()
-class RouterStub {
-
-}
+class RouterStub {}
 
 @Injectable()
-class StorageStubService {
+class StorageStubService {}
 
-}
-
-describe('CartPaymentDibsComponent', () => {
+describe("CartPaymentDibsComponent", () => {
 	let component: CartPaymentDibsComponent;
 	let fixture: ComponentFixture<CartPaymentDibsComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				CartPaymentDibsComponent,
-				FaIconStubComponent
-			],
+			declarations: [CartPaymentDibsComponent, FaIconStubComponent],
 			providers: [
-				{provide: CartPaymentService, useValue: new CartPaymentStubService()},
-				{provide: CartCheckoutService, useValue: new CartCheckoutStubService()},
-				{provide: Router, useValue: new RouterStub()},
-				{provide: StorageService, useClass: StorageStubService}
+				{
+					provide: CartPaymentService,
+					useValue: new CartPaymentStubService()
+				},
+				{
+					provide: CartCheckoutService,
+					useValue: new CartCheckoutStubService()
+				},
+				{ provide: Router, useValue: new RouterStub() },
+				{ provide: StorageService, useClass: StorageStubService }
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -66,7 +60,7 @@ describe('CartPaymentDibsComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

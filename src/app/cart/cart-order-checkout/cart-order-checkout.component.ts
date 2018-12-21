@@ -36,7 +36,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		if (this.cartService.getSize() <= 0) {
+		if (this.cartService.getCart().length <= 0) {
 			this.router.navigateByUrl("cart");
 		}
 
@@ -44,8 +44,8 @@ export class CartOrderCheckoutComponent implements OnInit {
 		this.wait = true;
 		this.showProgressbar = false;
 
-		this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
-		this.watchTotalAmount();
+		//this.totalAmount = this.cartOrderCheckoutService.getTotalAmount();
+		//this.watchTotalAmount();
 
 		this.cartOrderCheckoutService
 			.onStartCheckout()

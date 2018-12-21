@@ -16,7 +16,7 @@
 		"build:dev": "ng build --configuration=dev-nb",
 		"build:prod": "ng build --configuration=production-nb",
 		"postinstall": "npm run build",
-		"test": "ng test",
+		"test": "ng test --sourceMap=false",
 		"test:coverage": "ng test --code-coverage",
 		"test-ci": "ng test --karma-config=karma.ci.conf.js",
 		"lint": "ng lint",
