@@ -56,16 +56,10 @@ export class CartPaymentDibsComponent
 
 	private checkWaitingForDibs() {
 		this.waitingForDibsInterval = setInterval(() => {
-			let dibsElementIframe = document.getElementById(
-				"dibs-checkout-iframe"
-			);
-
-			if (dibsElementIframe) {
+			if (document.getElementById("dibs-checkout-iframe")) {
 				this.waitingForDibs = false;
-			} else {
-				this.waitingForDibs = true;
 			}
-		}, 100);
+		}, 200);
 	}
 
 	private removeDibsElement() {
@@ -107,7 +101,6 @@ export class CartPaymentDibsComponent
 		this.storeIds(); // must store the ids in case the payment fails
 
 		checkout.on("payment-initialized", function(response) {
-			console.log("hi hello!");
 			checkout.send("payment-order-finalized", true);
 		});
 

@@ -30,7 +30,7 @@
 </div>
 
 <div class="row justify-content-center" *ngIf="cartStep && !wait">
-	<div class="col-lg-6 col-md-12 no-gutters">
+	<div class="col-xl-6 col-lg-8 col-md-12 no-gutters">
 		<div class="card">
 			<div class="card-header">
 				<div class="row justify-content-between align-items-center">
@@ -59,11 +59,12 @@
 							></fa-icon>
 						</button>
 					</div>
-					<div class="col-auto">
-						<div class="order-amount">
-							{{ totalAmount | blcPrice: "international" }}
-						</div>
-					</div>
+
+					<!--<div class="col-auto">-->
+					<!--<div class="order-amount">-->
+					<!--{{ totalAmount | blcPrice: "international" }}-->
+					<!--</div>-->
+					<!--</div>-->
 				</div>
 			</div>
 
@@ -111,6 +112,7 @@
 			></ngb-progressbar>
 
 			<app-cart-agreement
+				class="card-body"
 				*ngIf="cartStep.type === 'agreement'"
 				[confirmed]="
 					cartStep.type === 'agreement' && cartStep.confirmed
@@ -125,6 +127,7 @@
 			</app-cart-checkout>
 
 			<app-cart-delivery
+				class="card-body"
 				*ngIf="cartStep.type === 'delivery'"
 				(confirmDelivery)="onConfirmStep('delivery')"
 			></app-cart-delivery>

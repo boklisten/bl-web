@@ -6,11 +6,12 @@
 			>You have agreed to our rent agreement</span
 		>
 	</div>
+</div>
 
+<app-info-agreement-rent></app-info-agreement-rent>
+
+<div class="row justify-content-center">
 	<div class="col-12">
-		<app-info-agreement-rent></app-info-agreement-rent>
-	</div>
-	<div class="col-12" *ngIf="!confirmed">
 		<button
 			class="btn btn-block btn-outline-success"
 			(click)="onConfirmClick()"
