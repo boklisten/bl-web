@@ -103,10 +103,14 @@ export class CartOrderCheckoutComponent implements OnInit {
 		this.setProgress();
 	}
 
-	public onConfirmStep(stepType) {
+	public onConfirmStep(stepType, value?: boolean) {
 		if (this.cartStep.type === stepType) {
-			this.cartStep.confirmed = true;
-			this.nextStep();
+			if (value !== undefined && !value) {
+				this.cartStep.confirmed = false;
+			} else {
+				this.cartStep.confirmed = true;
+				this.nextStep();
+			}
 		}
 	}
 

@@ -129,7 +129,7 @@
 			<app-cart-delivery
 				class="card-body"
 				*ngIf="cartStep.type === 'delivery'"
-				(confirmDelivery)="onConfirmStep('delivery')"
+				(confirmDelivery)="onConfirmStep('delivery', $event)"
 			></app-cart-delivery>
 
 			<app-cart-payment

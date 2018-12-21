@@ -68,9 +68,15 @@ export class CartDeliveryComponent implements OnInit {
 		this.onDeliveryFailure();
 
 		if (!this.currentDelivery) {
+			this.wait = true;
+
 			this.onSetDelivery(this.deliveryMethod)
-				.then(() => {})
-				.catch(() => {});
+				.then(() => {
+					this.wait = false;
+				})
+				.catch(() => {
+					this.wait = false;
+				});
 		}
 
 		this.failureText = null;
@@ -168,8 +174,8 @@ export class CartDeliveryComponent implements OnInit {
 
 	public validateInput() {
 		if (!this.validateDeliveryMethodBring()) {
-			this._cartDeliveryService.setDeliveryFailure();
 			this.showConfirmShipmentButton = true;
+			this.confirmDelivery.emit(false);
 			return false;
 		}
 		return true;
