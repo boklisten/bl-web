@@ -57,13 +57,23 @@ export class CartService {
 		for (const cartItem of this._cart) {
 			if (
 				cartItem.orderItem.type === "buyout" ||
-				cartItem.orderItem.type === "extend"
+				cartItem.orderItem.type === "extend" ||
+				cartItem.orderItem.type === "buy"
 			) {
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	public isOnlyCustomerItems(): boolean {
+		for (const cartItem of this.getCart()) {
+			if (!cartItem.customerItem) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private getCartFromStorage() {

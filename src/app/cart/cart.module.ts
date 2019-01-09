@@ -5,7 +5,7 @@ import {CartRoutingModule} from './cart-routing.module';
 import {CartComponent} from "./cart.component";
 import {CartService} from "./cart.service";
 import {FormsModule} from "@angular/forms";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule, NgbModalModule, NgbProgressbarModule} from "@ng-bootstrap/ng-bootstrap";
 import {DateService} from "../date/date.service";
 import {PriceService} from "../price/price.service";
 import {ItemModule} from "../item/item.module";
@@ -24,6 +24,7 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartAgreementComponent } from './cart-agreement/cart-agreement.component';
 import {InfoModule} from "../info/info.module";
 import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
+import { CartOrderCheckoutComponent } from './cart-order-checkout/cart-order-checkout.component';
 
 @NgModule({
 	imports: [
@@ -33,8 +34,10 @@ import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
 		CartRoutingModule,
 		ItemModule,
 		FontAwesomeModule,
-		BlCommonModule,
-		InfoModule
+    BlCommonModule,
+    NgbProgressbarModule,
+    InfoModule,
+    NgbModalModule
 	],
 	declarations: [
 		CartComponent,
@@ -45,7 +48,8 @@ import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
 		CartEmptyComponent,
 		CartSummaryComponent,
 		CartAgreementComponent,
-		CartConfirmComponent
+		CartConfirmComponent,
+		CartOrderCheckoutComponent
 	],
 	providers: [
 		CartService,

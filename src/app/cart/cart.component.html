@@ -32,4 +32,13 @@
 	</div>
 </div>
 
-<app-cart-checkout *ngIf="showCart()"></app-cart-checkout>
+<div class="row justify-content-center mt-5" *ngIf="showCart()">
+	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<button class="btn btn-success btn-block p-3" routerLink="checkout">
+			<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
+			<span i18n="@@cartCheckoutButton">Checkout</span>
+		</button>
+	</div>
+</div>
+
+<!--<app-cart-checkout *ngIf="showCart()"></app-cart-checkout>-->

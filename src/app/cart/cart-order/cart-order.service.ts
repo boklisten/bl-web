@@ -25,19 +25,49 @@ export class CartOrderService {
 			this.createOrder();
 		}
 
-		this.onCartChange();
 		this.onLogin();
-	}
+  }
+
+  public onStartCheckout(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (this._cartService.getSize() <= 0) {
+        reject(new Error("could not start checkout: cart is empty"));
+      }
+
+      this.createOrder().then((createdOrder: Order) => {
+        this._currentOrder = createdOrder;
+        resolve(true);
+      }).catch((createOrderError) => {
+        reject(new Error("could not start checkout: failed to add order" + createOrderError));
+      });
+    })
+  }
 
 	public onLogin() {
-		this._authLoginService.onLogin().subscribe(() => {
-			this.reloadOrder();
-		});
+    this._authLoginService.onLogin().subscribe(() => {
+      this.clearOrder();
+    });
 
-		this._authLoginService.onLogout().subscribe(() => {
-			this.clearOrder();
-		});
-	}
+    this._authLoginService.onLogout().subscribe(() => {
+      this.clearOrder();
+    });
+  }
+
+  public doesOrderIncludeRent() {
+    return this.doesOrderIncludeType('rent');
+  }
+
+  public doesOrderIncludeExtend() {
+    return this.doesOrderIncludeType('extend');
+  }
+
+  public doesOrderIncludeBuy() {
+    return this.doesOrderIncludeType('buy');
+  }
+
+  public doesOrderIncludeBuyout() {
+    return this.doesOrderIncludeType('buyout');
+  }
 
 	public doesOrderIncludeType(orderItemType: OrderItemType) {
 		if (!this._currentOrder) {
@@ -50,15 +80,22 @@ export class CartOrderService {
 			}
 		}
 		return false;
-	}
+  }
+
+  public patchDelivery(deliveryId: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this._orderService.update(this._currentOrder.id, {delivery: deliveryId}).then((updatedOrder) => {
+        this._currentOrder = updatedOrder;
+        resolve(true);
+      }).catch((err) => {
+        reject(err);
+      })
+    });
+  }
 
 	public setOrder(order: Order) {
 		this._currentOrder = order;
 		this._orderChange$.next(this._currentOrder);
-	}
-
-	public reloadOrder() {
-		this.createOrder();
 	}
 
 	public getOrder(): Order {
@@ -78,21 +115,8 @@ export class CartOrderService {
 		return this._orderChange$;
 	}
 
-	private onCartChange() {
-		this._cartService.onCartChange().subscribe(() => {
-			if (this._cartService.getSize() > 0) {
-				this.createOrder();
-			}
-		});
-	}
-
-	private createOrder() {
+  private createOrder(): Promise<Order> {
 		const order = this._cartService.createOrder();
-
-		this._orderService.add(order).then((addedOrder: Order) => {
-			this.setOrder(addedOrder);
-		}).catch((blApiErr: BlApiError) => {
-			this._orderError$.next('cartOrderService: could not add order: ' + blApiErr);
-		});
-	}
+		return this._orderService.add(order);
+  }
 }

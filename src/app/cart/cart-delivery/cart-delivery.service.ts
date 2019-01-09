@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {DeliveryService} from '@wizardcoder/bl-connect';
-import {Delivery, Order, DeliveryMethod, Branch} from '@wizardcoder/bl-model';
-import {Subject, Observable} from "rxjs";
-import {CartService} from "../cart.service";
-import {CartOrderService} from "../cart-order/cart-order.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
+import { Injectable } from "@angular/core";
+import { DeliveryService } from "@wizardcoder/bl-connect";
+import { Delivery, Order, DeliveryMethod, Branch } from "@wizardcoder/bl-model";
+import { Subject, Observable } from "rxjs";
+import { CartService } from "../cart.service";
+import { CartOrderService } from "../cart-order/cart-order.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
 
 @Injectable()
 export class CartDeliveryService {
@@ -21,58 +21,67 @@ export class CartDeliveryService {
 	private _toPostalCode: string;
 	private _deliveryReady: boolean;
 
-	constructor(private _deliveryService: DeliveryService, private _cartService: CartService, private _cartOrderService: CartOrderService, private _branchStoreService: BranchStoreService) {
+	constructor(
+		private _deliveryService: DeliveryService,
+		private _cartService: CartService,
+		private _cartOrderService: CartOrderService,
+		private _branchStoreService: BranchStoreService
+	) {
 		this._deliveryChange$ = new Subject();
 
 		this._deliveryMethod = this.getDefaultDeliveryMethod();
-		this._fromPostalCode = '1316';
-		this._fromPostalCity = 'OSLO';
-		this._fromAddress = 'Postboks 8, 1316 Eiksmarka';
+		this._fromPostalCode = "1316";
+		this._fromPostalCity = "OSLO";
+		this._fromAddress = "Postboks 8, 1316 Eiksmarka";
 
-		this._deliveryReady = false;
 		this._deliveryFailure$ = new Subject<boolean>();
 
-		this.onOrderChange();
 		this.onOrderClear();
+	}
+
+	public getDeliveryAmount(): number {
+		return this._currentDelivery ? this._currentDelivery.amount : 0;
+	}
+
+	public setBranchDelivery(): Promise<Delivery> {
+		this._deliveryMethod = "branch";
+
+		return this.createDelivery(this._cartOrderService.getOrder());
+	}
+
+	public setBringDelivery(
+		toName: string,
+		toAddress: string,
+		toPostalCity: string,
+		toPostalCode: string
+	): Promise<Delivery> {
+		this._deliveryMethod = "bring";
+		this._toName = toName;
+		this._toAddress = toAddress;
+		this._toPostalCity = toPostalCity;
+		this._toPostalCode = toPostalCode;
+
+		return this.createDelivery(this._cartOrderService.getOrder());
 	}
 
 	public getDefaultDeliveryMethod(): "branch" | "bring" {
 		const branch: Branch = this._branchStoreService.getBranch();
 
 		if (!branch) {
-			return 'branch';
+			return "branch";
 		}
 
 		if (branch.deliveryMethods) {
 			if (branch.deliveryMethods.branch) {
-				return 'branch';
+				return "branch";
 			} else if (branch.deliveryMethods.byMail) {
-				return 'bring';
+				return "bring";
 			} else {
-				return 'branch';
+				return "branch";
 			}
 		}
 
-		return 'branch';
-	}
-
-
-	public setBranchDelivery() {
-		if (this._deliveryMethod === 'branch') {
-			return;
-		}
-
-		this._deliveryMethod = 'branch';
-		this._cartOrderService.reloadOrder(); // this will make a new order to be created, then updates delivery and payment
-	}
-
-	public setBringDelivery(toName: string, toAddress: string, toPostalCity: string, toPostalCode: string) {
-		this._deliveryMethod = 'bring';
-		this._toName = toName;
-		this._toAddress = toAddress;
-		this._toPostalCity = toPostalCity;
-		this._toPostalCode = toPostalCode;
-		this._cartOrderService.reloadOrder();
+		return "branch";
 	}
 
 	public onDeliveryChange(): Subject<Delivery> {
@@ -92,7 +101,6 @@ export class CartDeliveryService {
 	}
 
 	public validateDeliveryMethodBring(): boolean {
-
 		if (!this._toName || this._toName.length <= 0) {
 			return false;
 		}
@@ -112,58 +120,47 @@ export class CartDeliveryService {
 		return true;
 	}
 
-	private onOrderChange() { // each time the order changes, should create a new delivery
-		this._cartOrderService.onOrderChange().subscribe((order: Order) => {
-			this._deliveryReady = false;
-			if (this.validateDeliveryDetails()) {
-				this.addDelivery(order);
-			}
-		});
-	}
-
 	private validateDeliveryDetails() {
-		if (this._deliveryMethod === 'bring') {
+		if (this._deliveryMethod === "bring") {
 			return this.validateDeliveryMethodBring();
 		} else {
 			return true;
 		}
 	}
 
-	private addDelivery(order: Order) {
-		this._deliveryService.add(this.createDelivery(order)).then((addedDelivery: Delivery) => {
-			this.setDelivery(addedDelivery);
-		}).catch(() => {
-			this._deliveryFailure$.next(true);
-		});
-	}
+	private async createDelivery(order: Order): Promise<Delivery> {
+		let delivery: Delivery;
 
-	private createDelivery(order: Order): Delivery {
-		if (this._deliveryMethod === 'bring') {
-			return this.createBringDelivery(order);
-		} else if (this._deliveryMethod === 'branch') {
-			return this.createBranchDelivery(order);
+		if (this._deliveryMethod === "bring") {
+			delivery = this.createBringDelivery(order);
+		} else if (this._deliveryMethod === "branch") {
+			delivery = this.createBranchDelivery(order);
 		}
+
+		if (!delivery) {
+			return Promise.reject(new Error("could not create delivery"));
+		}
+
+		const addedDelivery = await this._deliveryService.add(delivery);
+		await this._cartOrderService.patchDelivery(addedDelivery.id);
+		this._currentDelivery = addedDelivery;
+		this._deliveryChange$.next(this._currentDelivery);
+		return addedDelivery;
 	}
 
 	private onOrderClear() {
 		this._cartOrderService.onClearOrder().subscribe(() => {
 			this._currentDelivery = null;
-			this._fromPostalCode = '';
-			this._deliveryMethod = 'branch';
+			this._fromPostalCode = "";
+			this._deliveryMethod = "branch";
 		});
-	}
-
-	private setDelivery(delivery: Delivery) {
-		this._currentDelivery = delivery;
-		this._deliveryReady = true;
-		this._deliveryChange$.next(this._currentDelivery);
 	}
 
 	private createBringDelivery(order: Order): Delivery {
 		return {
 			method: "bring",
 			info: {
-				from: '1316',
+				from: "1316",
 				to: this._toPostalCode,
 				shipmentAddress: {
 					name: this._toName,
@@ -173,7 +170,7 @@ export class CartDeliveryService {
 				},
 				facilityAddress: {
 					address: this._fromAddress,
-					postalCode: '1316',
+					postalCode: "1316",
 					postalCity: this._fromPostalCity
 				}
 			},
@@ -184,7 +181,7 @@ export class CartDeliveryService {
 
 	private createBranchDelivery(order: Order): Delivery {
 		return {
-			method: 'branch',
+			method: "branch",
 			info: {
 				branch: order.branch
 			},

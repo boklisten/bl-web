@@ -1,8 +1,10 @@
-<div class="alert alert-danger" *ngIf="alert">
-	<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-	<span i18n="@@cartPaymentDibsError">
-		Could not create a payment for this order, try again soon or click "pay later" to pay this order at branch
-	</span>
+<div class="row justify-content-center mt-2 mb-2" *ngIf="waitingForDibs">
+	<div class="col-auto text-secondary">
+		<fa-icon [icon]="'circle-notch'" [spin]="true"></fa-icon>
+		<span class="ml-2" i18n="@@cartPaymentRetrievingInfoFromDibs"
+			>retrieving info from DIBS, please wait.</span
+		>
+	</div>
 </div>
 
 <div id="bl-dibs-wrapper"></div>

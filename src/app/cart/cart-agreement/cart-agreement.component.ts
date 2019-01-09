@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
-	selector: 'app-cart-agreement',
-	templateUrl: './cart-agreement.component.html',
-	styleUrls: ['./cart-agreement.component.scss']
+	selector: "app-cart-agreement",
+	templateUrl: "./cart-agreement.component.html",
+	styleUrls: ["./cart-agreement.component.scss"]
 })
 export class CartAgreementComponent implements OnInit {
 	@Input() confirmed: boolean;
@@ -15,8 +15,7 @@ export class CartAgreementComponent implements OnInit {
 		this.showAgreement = false;
 	}
 
-	ngOnInit() {
-	}
+	ngOnInit() {}
 
 	onConfirmClick() {
 		window.scroll(0, 0);
@@ -27,5 +26,4 @@ export class CartAgreementComponent implements OnInit {
 	onShowAgreement() {
 		this.showAgreement = !this.showAgreement;
 	}
-
 }

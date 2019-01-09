@@ -1,25 +1,12 @@
+<app-cart-summary></app-cart-summary>
 
-<div class="row justify-content-center" *ngIf="!currentPayment">
-	<div class="col-auto text-info">
-		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'3x'"></fa-icon>
+<div class="row justify-content-center mt-2 mb-2" *ngIf="wait">
+	<div class="col-auto text-secondary">
+		<fa-icon [icon]="'circle-notch'" [spin]="true"></fa-icon>
+		<span class="ml-2" i18n="@@cartPaymentContactingDibs"
+			>contacting DIBS, please wait.</span
+		>
 	</div>
 </div>
 
-<div class="row" *ngIf="failure">
-	<div class="col-12">
-		<div class="alert alert-secondary" role="alert">
-			<fa-icon [icon]="'exclamation-circle'" class="mr-2"></fa-icon>
-			<span i18n="@@cartPaymentWaitingForDeliveryError">Waiting for a valid delivery</span>
-		</div>
-	</div>
-</div>
-
-<div class="row" *ngIf="currentPayment && showDibsPayment && !failure">
-	<div class="col-12">
-		<app-cart-payment-dibs></app-cart-payment-dibs>
-	</div>
-</div>
-
-
-
-
+<app-cart-payment-dibs *ngIf="!wait"></app-cart-payment-dibs>

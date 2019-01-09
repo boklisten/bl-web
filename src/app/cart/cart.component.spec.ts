@@ -30,6 +30,10 @@ class ItemDisplayStubComponent {
 class CartCheckoutStubComponent {
 }
 
+@Component({selector: 'app-cart-order-checkout', template: ''})
+class CartOrderCheckoutStubComponent {
+}
+
 @Component({selector: 'app-cart-empty', template: ''})
 class CartEmpytStubComponent {
 }
@@ -53,7 +57,8 @@ describe('CartComponent', () => {
 				ItemDisplayStubComponent,
 				FaIconStubComponent,
 				CartCheckoutStubComponent,
-				CartEmpytStubComponent
+        CartEmpytStubComponent,
+        CartOrderCheckoutStubComponent
 			],
 			providers: [
 				{provide: CartService, useValue: new CartStubService()}

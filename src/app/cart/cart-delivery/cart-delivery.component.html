@@ -1,168 +1,251 @@
-
 <div class="row">
 	<div class="col-12">
-		<div class="card">
-
-			<div class="card-header">
-				<span i18n="@@cartDeliveryTitle">Delivery method</span>
-			</div>
-			<div class="card-body" *ngIf="branchOption && mailOption">
-				<ul class="nav nav-pills nav-fill">
-					<li class="nav-item" (click)="onSetDelivery('branch')" *ngIf="branchOption">
-						<span class="nav-link" [ngClass]="{'bl-nav-btn-active': deliveryMethod === 'branch'}" i18n="@@cartDeliveryOptionBranchButton">At branch</span>
-					</li>
-					<li class="nav-item" (click)="onSetDelivery('bring')" *ngIf="mailOption">
-						<span class="nav-link" [ngClass]="{'bl-nav-btn-active': deliveryMethod === 'bring'}" i18n="@@cartDeliveryOptionBringButton">By mail</span>
-					</li>
-				</ul>
-			</div>
-
-			<div class="card-body" *ngIf="deliveryError">
-				<div class="alert alert-warning">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-					<span i18n="@@cartDeliveryError">The delivery could not be created</span>
-					<span i18n="@@cartDeliveryBringError" *ngIf="deliveryMethod === 'bring'" class="ml-2 font-weight-bold">Are you sure you have the correct shipment address?</span>
+		<ul class="nav nav-pills nav-fill">
+			<li
+				class="nav-item text-secondary bl-pointer"
+				[ngClass]="{ 'text-info': deliveryMethod === 'branch' }"
+				(click)="onSetDelivery('branch')"
+				*ngIf="branchOption"
+			>
+				<div>
+					<fa-icon
+						[icon]="'store'"
+						*ngIf="!(wait && deliveryMethod === 'branch')"
+						size="2x"
+						class="mr-2"
+					></fa-icon>
+					<fa-icon
+						[icon]="'circle-notch'"
+						[spin]="true"
+						size="2x"
+						*ngIf="wait && deliveryMethod === 'branch'"
+					></fa-icon>
 				</div>
-			</div>
-			<div class="card-body" *ngIf="bringInputWarning && deliveryMethod === 'bring'">
-				<div class="row mt-2">
-					<div class="col-12">
-						<div class="alert alert-warning">
-							<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-							<span *ngIf="bringInputWarning === 'invalid-name'" i18n="@@cartDeliveryOptionBranchInvalidName">please provide a valid name</span>
-							<span *ngIf="bringInputWarning === 'invalid-address'" i18n="@@cartDeliveryOptionBranchInvalidAddress">please provide a valid address</span>
-							<span *ngIf="bringInputWarning === 'invalid-postal-code'" i18n="@@cartDeliveryOptionBranchInvalidPostalCode">please provide a valid postal code</span>
-							<span *ngIf="bringInputWarning === 'invalid-postal-city'" i18n="@@cartDeliveryOptionBranchInvalidPostalCity">please provide a valid postal city</span>
-						</div>
-					</div>
+				<span
+					class="nav-link text-center "
+					[ngClass]="{
+						'bl-nav-btn-active': deliveryMethod === 'branch'
+					}"
+				>
+					<span
+						i18n="@@cartDeliveryOptionBranchButton"
+						class="text-center"
+						>At branch</span
+					>
+				</span>
+			</li>
+
+			<li
+				class="nav-item text-secondary bl-pointer"
+				[ngClass]="{ 'text-info': deliveryMethod === 'bring' }"
+				(click)="onSetDelivery('bring')"
+				*ngIf="mailOption"
+			>
+				<div>
+					<fa-icon
+						[icon]="'truck'"
+						*ngIf="!(wait && deliveryMethod === 'bring')"
+						size="2x"
+						class="mr-2"
+					></fa-icon>
+					<fa-icon
+						[icon]="'circle-notch'"
+						[spin]="true"
+						size="2x"
+						*ngIf="wait && deliveryMethod === 'bring'"
+					></fa-icon>
 				</div>
-			</div>
+				<span
+					class="nav-link text-center"
+					[ngClass]="{
+						'bl-nav-btn-active': deliveryMethod === 'bring'
+					}"
+					i18n="@@cartDeliveryOptionBringButton"
+					>By mail</span
+				>
+			</li>
+		</ul>
+	</div>
+</div>
 
-			<div class="card-body" *ngIf="deliveryMethod === 'branch'">
-				<div class="row">
-                    <div class="col-12">
-                        <h5 i18n="@@cartDeliveryOptionBranchTitle">Get items at branch</h5>
-						<p>
-							<span i18n="@@cartDeliveryOptionBranchDescription">Retrieve the items yourself at</span>
-							<b> {{branch.name}}</b>
-						</p>
-                    </div>
-                </div>
-			</div>
-
-			<div class="card-body" *ngIf="deliveryMethod === 'bring'">
-				<div class="row">
-                    <div class="col-12">
-                        <h5 i18n="@@cartDeliveryOptionBringTitle">Delivery by mail</h5>
-                        <p i18n="@@cartDeliveryOptionBringDescription">Get the items sent to you with Bring from one of our storage facilities</p>
-                    </div>
-                </div>
-				<div class="row mt-5" *ngIf="deliveryMethod === 'bring'">
-                    <div class="col-12">
-                        <h5 i18n="@@cartDeliveryShipmentAddressTitle">Shipment address</h5>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group mb-3 input-group-md">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <fa-icon [icon]="'user'"></fa-icon>
-                                </span>
-                            </div>
-
-                            <input
-                                type="text"
-                                class="form-control"
-								i18n-placeholder="@@cartDeliveryShipmentNamePlaceholder"
-                                placeholder="Full Name"
-								(change)="validateInput()"
-								(keyup)="validateInput()"
-								(keyup.enter)="onInputEnterClick()"
-                                [(ngModel)]="toName">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group mb-3 input-group-md">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-									<fa-icon [icon]="'address-card'"></fa-icon>
-                                </span>
-                            </div>
-
-                            <input
-                                type="text"
-                                class="form-control"
-								i18n-placeholder="@@cartDeliveryShipmentAddressPlaceholder"
-                                placeholder="Address"
-								(change)="validateInput()"
-								(keyup)="validateInput()"
-								(keyup.enter)="onInputEnterClick()"
-                                [(ngModel)]="toAddress">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group mb-3 input-group-md">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <fa-icon [icon]="'address-card'"></fa-icon>
-                                </span>
-                            </div>
-
-                            <input
-                                type="text"
-                                maxlength="4"
-                                class="form-control"
-								(change)="validateInput()"
-								(keyup)="validateInput()"
-								i18n-placeholder="@@cartDeliveryShipmentPostalCodePlaceholder"
-                                placeholder="Postal code"
-								(keyup.enter)="onInputEnterClick()"
-								[(ngModel)]="toPostalCode">
-
-                            <input
-                                type="text"
-                                class="form-control"
-								(change)="validateInput()"
-								(keyup)="validateInput()"
-								i18n-placeholder="@@cartDeliveryShipmentPostalCityPlaceholder"
-                                placeholder="city"
-								(keyup.enter)="onInputEnterClick()"
-								[(ngModel)]="toPostalCity">
-                        </div>
-                    </div>
-					<div class="col-12 mt-2" *ngIf="showConfirmShipmentButton">
-						<button class="btn btn-success btn-block" (click)="onSetDelivery('bring')" [disabled]="!validateDeliveryMethodBring()">
-							<span i18n="@@cartDeliveryConfirmShippingAddressButton">Confirm shipping address</span>
-						</button>
-					</div>
-                </div>
-			</div>
-            <div class="card-footer" *ngIf="deliveryMethod === 'bring' && currentDelivery && !failureText && !showConfirmShipmentButton && !deliveryError">
-				<div class="row justify-content-between">
-					<div class="col-auto text-secondary">
-						<span i18n="@@cartDeliveryEstimatedDeliveryDate">Estimated delivery date</span>
-					</div>
-					<div class="col-auto">
-						<div class="row justify-content-end">
-							<div class="col-auto">
-								{{currentDelivery.info['estimatedDelivery'] | blcDate:'until'}}
-							</div>
-						</div>
-						<div class="row justify-content-end">
-							<div class="col-auto text-secondary">
-								<small>{{currentDelivery.info['estimatedDelivery'] | blcDate}}</small>
-							</div>
-						</div>
-					</div>
-				</div>
-                <div class="row justify-content-between mt-2">
-					<div class="col-auto text-secondary">
-						<span i18n="@@cardDeliveryInfoDeliveryCost">Delivery cost</span>
-					</div>
-					<div class="col-auto font-weight-bold">
-						{{currentDelivery.amount | blcPrice}}
-					</div>
-				</div>
-            </div>
+<div class="row" *ngIf="!wait">
+	<div class="col-12 mt-4" *ngIf="failureText">
+		<div class="alert alert-warning">
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span i18n="@@cartDeliveryError"
+				>The delivery could not be created</span
+			>
+			<span
+				i18n="@@cartDeliveryBringError"
+				*ngIf="deliveryMethod === 'bring'"
+				class="ml-2 font-weight-bold"
+				>Are you sure you have the correct shipment address?</span
+			>
 		</div>
+	</div>
+
+	<div
+		class="col-12 mt-4"
+		*ngIf="bringInputWarning && deliveryMethod === 'bring'"
+	>
+		<div class="alert alert-warning">
+			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+			<span
+				*ngIf="bringInputWarning === 'invalid-name'"
+				i18n="@@cartDeliveryOptionBranchInvalidName"
+				>please provide a valid name</span
+			>
+			<span
+				*ngIf="bringInputWarning === 'invalid-address'"
+				i18n="@@cartDeliveryOptionBranchInvalidAddress"
+				>please provide a valid address</span
+			>
+			<span
+				*ngIf="bringInputWarning === 'invalid-postal-code'"
+				i18n="@@cartDeliveryOptionBranchInvalidPostalCode"
+				>please provide a valid postal code</span
+			>
+			<span
+				*ngIf="bringInputWarning === 'invalid-postal-city'"
+				i18n="@@cartDeliveryOptionBranchInvalidPostalCity"
+				>please provide a valid postal city</span
+			>
+		</div>
+	</div>
+
+	<div class="col-12 mt-4 text-center " *ngIf="deliveryMethod === 'branch'">
+		<span i18n="@@cartDeliveryOptionBranchDescription"
+			>Retrieve the items yourself at</span
+		>
+		<h3>{{ branch.name }}</h3>
+	</div>
+
+	<div class="col-12 mt-4" *ngIf="deliveryMethod === 'bring'">
+		<div class="row">
+			<div class="col-12">
+				<h5 i18n="@@cartDeliveryShipmentAddressTitle">
+					Shipment address
+				</h5>
+			</div>
+			<div class="col-12">
+				<div class="input-group mb-3 input-group-md">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'user'"></fa-icon>
+						</span>
+					</div>
+					<input
+						type="text"
+						class="form-control"
+						i18n-placeholder="@@cartDeliveryShipmentNamePlaceholder"
+						placeholder="Full Name"
+						(change)="validateInput()"
+						(keyup)="validateInput()"
+						(keyup.enter)="onInputEnterClick()"
+						[(ngModel)]="toName"
+					/>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="input-group mb-3 input-group-md">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'address-card'"></fa-icon>
+						</span>
+					</div>
+
+					<input
+						type="text"
+						class="form-control"
+						i18n-placeholder="@@cartDeliveryShipmentAddressPlaceholder"
+						placeholder="Address"
+						(change)="validateInput()"
+						(keyup)="validateInput()"
+						(keyup.enter)="onInputEnterClick()"
+						[(ngModel)]="toAddress"
+					/>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="input-group mb-3 input-group-md">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<fa-icon [icon]="'address-card'"></fa-icon>
+						</span>
+					</div>
+
+					<input
+						type="text"
+						maxlength="4"
+						class="form-control"
+						(change)="validateInput()"
+						(keyup)="validateInput()"
+						i18n-placeholder="@@cartDeliveryShipmentPostalCodePlaceholder"
+						placeholder="Postal code"
+						(keyup.enter)="onInputEnterClick()"
+						[(ngModel)]="toPostalCode"
+					/>
+
+					<input
+						type="text"
+						class="form-control"
+						(change)="validateInput()"
+						(keyup)="validateInput()"
+						i18n-placeholder="@@cartDeliveryShipmentPostalCityPlaceholder"
+						placeholder="city"
+						(keyup.enter)="onInputEnterClick()"
+						[(ngModel)]="toPostalCity"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-between mt-2">
+			<div class="col-auto text-secondary">
+				<span i18n="@@cardDeliveryInfoDeliveryCost">Delivery cost</span>
+			</div>
+			<div class="col-auto font-weight-bold">
+				{{ currentDelivery.amount | blcPrice }}
+			</div>
+		</div>
+
+		<div
+			class="row justify-content-between"
+			*ngIf="deliveryMethod === 'bring' && currentDelivery"
+		>
+			<div class="col-auto text-secondary">
+				<span i18n="@@cartDeliveryEstimatedDeliveryDate"
+					>Estimated delivery date</span
+				>
+			</div>
+			<div class="col-auto">
+				<div class="row justify-content-end">
+					<div class="col-auto">
+						{{
+							currentDelivery.info["estimatedDelivery"]
+								| blcDate: "until"
+						}}
+					</div>
+				</div>
+				<div class="row justify-content-end">
+					<div class="col-auto text-secondary">
+						<small>{{
+							currentDelivery.info["estimatedDelivery"] | blcDate
+						}}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-12 mt-4">
+		<button
+			class="btn btn-outline-success btn-block"
+			(click)="onConfirmDelivery()"
+		>
+			<span i18n="@@cartDeliveryConfirmButton">Confirm</span>
+		</button>
 	</div>
 </div>
