@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {PaymentService} from "@wizardcoder/bl-connect";
-import {Order, Payment} from "@wizardcoder/bl-model";
+import { Component, Input, OnInit } from "@angular/core";
+import { PaymentService } from "@wizardcoder/bl-connect";
+import { Order, Payment } from "@wizardcoder/bl-model";
 
 @Component({
-	selector: 'app-order-payment-info',
-	templateUrl: './order-payment-info.component.html',
-	styleUrls: ['./order-payment-info.component.scss']
+	selector: "app-order-payment-info",
+	templateUrl: "./order-payment-info.component.html",
+	styleUrls: ["./order-payment-info.component.scss"]
 })
 export class OrderPaymentInfoComponent implements OnInit {
 	@Input() order: Order;
@@ -25,14 +25,16 @@ export class OrderPaymentInfoComponent implements OnInit {
 				}
 			}
 
-
-			this._paymentService.getManyByIds(this.order.payments).then((payments: Payment[]) => {
-				this.payments = payments;
-			}).catch((getPaymentsError) => {
-				console.log('orderPaymentInfoComponent: could not get payments from branch');
-			});
+			this._paymentService
+				.getManyByIds(this.order.payments as string[])
+				.then((payments: Payment[]) => {
+					this.payments = payments;
+				})
+				.catch(getPaymentsError => {
+					console.log(
+						"orderPaymentInfoComponent: could not get payments from branch"
+					);
+				});
 		}
-
 	}
-
 }

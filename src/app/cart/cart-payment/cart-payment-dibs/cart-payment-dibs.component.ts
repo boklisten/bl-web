@@ -124,7 +124,7 @@ export class CartPaymentDibsComponent
 			"bl-payment-id",
 			this.payment.info["paymentId"]
 		);
-		this._storageService.add("bl-order-id", this.payment.order);
+		this._storageService.add("bl-order-id", this.payment.order as string);
 	}
 
 	private removeIds() {

@@ -1,19 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BlApiError, Branch, BranchItem, CustomerItem, Item} from "@wizardcoder/bl-model";
-import {BranchService, CustomerItemService, ItemService} from "@wizardcoder/bl-connect";
-import {Router} from "@angular/router";
-import {CartService} from "../../cart/cart.service";
-import {DateService} from "../../date/date.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
-import {UserCustomerItemService} from "./user-customer-item.service";
+import { Component, Input, OnInit } from "@angular/core";
+import {
+	BlApiError,
+	Branch,
+	BranchItem,
+	CustomerItem,
+	Item
+} from "@wizardcoder/bl-model";
+import {
+	BranchService,
+	CustomerItemService,
+	ItemService
+} from "@wizardcoder/bl-connect";
+import { Router } from "@angular/router";
+import { CartService } from "../../cart/cart.service";
+import { DateService } from "../../date/date.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
+import { UserCustomerItemService } from "./user-customer-item.service";
 
 @Component({
-	selector: 'app-user-customer-item',
-	templateUrl: './user-customer-item.component.html',
-	styleUrls: ['./user-customer-item.component.scss']
+	selector: "app-user-customer-item",
+	templateUrl: "./user-customer-item.component.html",
+	styleUrls: ["./user-customer-item.component.scss"]
 })
 export class UserCustomerItemComponent implements OnInit {
-
 	@Input() customerItem: CustomerItem;
 	public item: Item;
 	public branch: Branch;
@@ -26,14 +35,15 @@ export class UserCustomerItemComponent implements OnInit {
 	public notReturnedBeforeDeadline: boolean;
 	public returned: boolean;
 
-	constructor(private _itemService: ItemService,
-				private _router: Router,
-				private _branchService: BranchService,
-				private _cartService: CartService,
-				private _dateService: DateService,
-				private _branchStoreService: BranchStoreService,
-				private _userCustomerItemService: UserCustomerItemService) {
-
+	constructor(
+		private _itemService: ItemService,
+		private _router: Router,
+		private _branchService: BranchService,
+		private _cartService: CartService,
+		private _dateService: DateService,
+		private _branchStoreService: BranchStoreService,
+		private _userCustomerItemService: UserCustomerItemService
+	) {
 		this.extend = false;
 		this.buyout = false;
 		this.correctBranch = false;
@@ -46,22 +56,29 @@ export class UserCustomerItemComponent implements OnInit {
 	ngOnInit() {
 		if (this.customerItem) {
 			if (!this.item) {
-				this._itemService.getById(this.customerItem.item).then((item: Item) => {
-					this.item = item;
-					this.initByCart();
-					this.setValidOptions();
-				}).catch((itemBlApiErr: BlApiError) => {
-					console.log('userCustomerItemComponent: could not get item', itemBlApiErr);
-				});
+				this._itemService
+					.getById(this.customerItem.item as string)
+					.then((item: Item) => {
+						this.item = item;
+						this.initByCart();
+						this.setValidOptions();
+					})
+					.catch((itemBlApiErr: BlApiError) => {
+						console.log(
+							"userCustomerItemComponent: could not get item",
+							itemBlApiErr
+						);
+					});
 			} else {
 				this.setValidOptions();
 			}
 
 			this.branch = this._branchStoreService.getBranch();
 
-			this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(this.customerItem);
+			this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(
+				this.customerItem
+			);
 			this.returned = this.customerItem.returned;
-
 		}
 	}
 
@@ -71,11 +88,20 @@ export class UserCustomerItemComponent implements OnInit {
 			branchItem = this._branchStoreService.getBranchItem(this.item.id);
 		}
 
-		if (this._userCustomerItemService.isOnValidBranch(this.customerItem, branchItem)) {
+		if (
+			this._userCustomerItemService.isOnValidBranch(
+				this.customerItem,
+				branchItem
+			)
+		) {
 			this.correctBranch = true;
 
-			this.canExtend = this._userCustomerItemService.isExtendValid(this.customerItem);
-			this.canBuyout = this._userCustomerItemService.isBuyoutValid(this.customerItem);
+			this.canExtend = this._userCustomerItemService.isExtendValid(
+				this.customerItem
+			);
+			this.canBuyout = this._userCustomerItemService.isBuyoutValid(
+				this.customerItem
+			);
 		} else {
 			this.correctBranch = false;
 		}
@@ -103,7 +129,12 @@ export class UserCustomerItemComponent implements OnInit {
 		}
 
 		this.extend = true;
-		this._cartService.addCustomerItemExtend(this.customerItem, this.item, this._branchItem, this.branch);
+		this._cartService.addCustomerItemExtend(
+			this.customerItem,
+			this.item,
+			this._branchItem,
+			this.branch
+		);
 	}
 
 	onBuyoutClick() {
@@ -116,7 +147,12 @@ export class UserCustomerItemComponent implements OnInit {
 		}
 
 		this.buyout = true;
-		this._cartService.addCustomerItemBuyout(this.customerItem, this._branchItem, this.item, this.branch);
+		this._cartService.addCustomerItemBuyout(
+			this.customerItem,
+			this._branchItem,
+			this.item,
+			this.branch
+		);
 	}
 
 	removeCustomerItem() {
@@ -125,7 +161,4 @@ export class UserCustomerItemComponent implements OnInit {
 			return;
 		}
 	}
-
-
-
 }

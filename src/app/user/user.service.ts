@@ -193,7 +193,9 @@ export class UserService {
 				if (!this._userDetail) {
 					this.getUserDetail()
 						.then((userDetail: UserDetail) => {
-							this.fetchCustomerItems(userDetail.customerItems)
+							this.fetchCustomerItems(
+								userDetail.customerItems as string[]
+							)
 								.then((customerItems: CustomerItem[]) => {
 									this._customerItems = customerItems;
 									resolve(customerItems);
@@ -206,7 +208,8 @@ export class UserService {
 							reject(blApiErr);
 						});
 				} else {
-					this.fetchCustomerItems(this._userDetail.customerItems)
+					this.fetchCustomerItems(this._userDetail
+						.customerItems as string[])
 						.then((customerItems: CustomerItem[]) => {
 							this._customerItems = customerItems;
 							resolve(customerItems);
