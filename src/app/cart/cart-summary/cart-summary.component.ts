@@ -58,7 +58,7 @@ export class CartSummaryComponent implements OnInit {
 		let periodTotals = {};
 
 		for (const orderItem of order.orderItems) {
-			if (orderItem.type === "partly-payment") {
+			if (orderItem.type === "partly-payment" && orderItem.amount > 0) {
 				if (periods.indexOf(orderItem.info.periodType) < 0) {
 					// not found
 					periods.push(orderItem.info.periodType);

@@ -91,7 +91,8 @@
 										*ngIf="
 											orderItemAction &&
 											orderItemAction.action ===
-												'partly-payment'
+												'partly-payment' &&
+											getPrice() !== 0
 										"
 									>
 										<span
