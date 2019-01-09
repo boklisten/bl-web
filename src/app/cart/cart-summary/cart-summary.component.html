@@ -1,4 +1,3 @@
-{{ order | json }}
 <div class="row" *ngIf="!order">
 	<div class="col-12">
 		<div class="alert alert-secondary" i18n="@@cartSummaryError">
@@ -18,11 +17,21 @@
 				</tr>
 			</thead>
 			<tbody *ngIf="order">
-				<tr *ngFor="let orderItem of order.orderItems">
+				<tr
+					*ngFor="let orderItem of order.orderItems"
+					class="font-weight-light"
+				>
 					<td>{{ orderItem.title }}</td>
 
 					<td *ngIf="orderItem.type === 'rent'">
 						<span i18n="@@cartSummaryRentTo">rent to</span>
+						<span> {{ orderItem.info.to | blcDate: "date" }}</span>
+					</td>
+
+					<td *ngIf="orderItem.type === 'partly-payment'">
+						<span i18n="@@cartSummaryPartlyPayment"
+							>partly payment</span
+						>
 						<span> {{ orderItem.info.to | blcDate: "date" }}</span>
 					</td>
 
@@ -43,6 +52,7 @@
 						{{ orderItem.unitPrice | blcPrice: "international" }}
 					</td>
 				</tr>
+
 				<tr *ngIf="delivery && delivery.method !== 'branch'">
 					<td
 						i18n="@@cartSummaryShipment"
@@ -67,14 +77,35 @@
 						{{ payment.amount | blcPrice: "international" }}
 					</th>
 				</tr>
+
 				<tr *ngIf="payment">
 					<td colspan="2">
-						<small i18n="@@cartSummaryTaxAmount">Tax amount</small>
+						<span
+							i18n="@@cartSummaryTaxAmount"
+							class="font-weight-light"
+							>Tax amount</span
+						>
 					</td>
 					<td>
 						<small>{{
 							payment.taxAmount | blcPrice: "international"
 						}}</small>
+					</td>
+				</tr>
+
+				<tr *ngFor="let partlyPaymentTotal of partlyPaymentTotals">
+					<td
+						i18n="@@cartSummaryPartlyPaymentPayLater"
+						colspan="2"
+						class="table-warning font-weight-light bl-text-sm"
+					>
+						rest amount to pay before
+						{{ partlyPaymentTotal.date | blcDate }}
+					</td>
+					<td class="table-warning font-italic bl-text-sm">
+						{{
+							partlyPaymentTotal.total | blcPrice: "international"
+						}}
 					</td>
 				</tr>
 			</tbody>
