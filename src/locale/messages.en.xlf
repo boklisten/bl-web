@@ -25,7 +25,7 @@
 					</target>
         
         <note priority="1" from="description">displayed when the item in cart is your item </note>
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display/item-display.component.ts</context><context context-type="linenumber">18</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display/item-display.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit>
       <trans-unit id="cartGoToBarButton" datatype="html">
         <source>Go to Cart</source><target state="final">Go to Cart</target>
         <context-group purpose="location">
@@ -35,18 +35,12 @@
       </trans-unit>
       <trans-unit id="headerBoklistenLogoAlt" datatype="html">
         <source>Boklisten.no logo</source><target state="final">Boklisten.no logo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/header/header.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit>
       <trans-unit id="headerCompanyName" datatype="html">
         <source>Boklisten.no</source><target state="final">Boklisten.no</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/header/header.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/header/header.component.ts</context><context context-type="linenumber">24</context></context-group></trans-unit>
       <trans-unit id="headerMenuGeneralInfo" datatype="html">
         <source>General info</source><target state="final">General info</target>
         
@@ -90,15 +84,15 @@
       <trans-unit id="footerInfoEmailTitle" datatype="html">
         <source>Email:</source><target state="final">Email:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">11</context></context-group></trans-unit>
       <trans-unit id="footerInfoAddressTitle" datatype="html">
         <source>Address:</source><target state="final">Address:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">28</context></context-group></trans-unit>
       <trans-unit id="footerInfoOrganizationNumberTitle" datatype="html">
         <source>Organization number:</source><target state="final">Organization number:</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit>
       
       
       
@@ -124,15 +118,15 @@
       <trans-unit id="orderItemInfoTypeRent" datatype="html">
         <source>Rent</source><target state="final">Rent</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">15</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">24</context></context-group></trans-unit>
       <trans-unit id="orderItemInfoTypeExtend" datatype="html">
         <source>Extend</source><target state="final">Extend</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">21</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">30</context></context-group></trans-unit>
       <trans-unit id="orderItemInfoTypeBuy" datatype="html">
         <source>Buy</source><target state="final">Buy</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">28</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">37</context></context-group></trans-unit>
       <trans-unit id="yourItemsHeadline" datatype="html">
         <source>Your Items</source><target state="final">Your Items</target>
         <context-group purpose="location">
@@ -155,7 +149,7 @@
 					</target>
         
         <note priority="1" from="description">customer item handed out at time </note>
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">39</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit>
       <trans-unit id="customerItemDeadline" datatype="html">
         <source>
 						Deadline
@@ -164,7 +158,7 @@
 					</target>
         
         <note priority="1" from="description">customer item deadline </note>
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">47</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">71</context></context-group></trans-unit>
       <trans-unit id="customerItemDeliverTo" datatype="html">
         <source>
 						Deliver to
@@ -173,15 +167,15 @@
 					</target>
         
         <note priority="1" from="description">deliver customerItem to</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">72</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">116</context></context-group></trans-unit>
       <trans-unit id="customerItemExtendButton" datatype="html">
         <source>Extend</source><target state="final">Extend</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">101</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">193</context></context-group></trans-unit>
       <trans-unit id="customerItemBuyoutButton" datatype="html">
         <source>Buyout</source><target state="final">Buyout</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">127</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">248</context></context-group></trans-unit>
       <trans-unit id="orderPaymentInfoTitle" datatype="html">
         <source>
 		Payment details
@@ -417,193 +411,118 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="itemTypeSelectSemesterButton" datatype="html">
-        <source>semester</source><target state="final">semester</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="itemTypeSelectYearButton" datatype="html">
-        <source>year</source><target state="final">year</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
+      
+      
       <trans-unit id="itemTypeSelectBuyButton" datatype="html">
         <source>buy</source><target state="final">buy</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">59</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectExtendButton" datatype="html">
         <source>extend</source><target state="final">extend</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">25</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">71</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectBuyoutButton" datatype="html">
         <source>buyout</source><target state="final">buyout</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">30</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">65</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoRent" datatype="html">
         <source>rent</source><target state="final">rent</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">92</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoExtend" datatype="html">
         <source>extend</source><target state="final">extend</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">44</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">100</context></context-group></trans-unit>
       <trans-unit id="itemTypeSelectInfoBuy" datatype="html">
         <source>buy</source><target state="final">buy</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">107</context></context-group></trans-unit>
       <trans-unit id="itemDisplayCategoryWarningNoItems" datatype="html">
         <source>There are currently no items for this branch</source><target state="final">There are currently no items for this branch</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display-category/item-display-category.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display-category/item-display-category.component.ts</context><context context-type="linenumber">53</context></context-group></trans-unit>
       <trans-unit id="cartTitle" datatype="html">
         <source>Cart</source><target state="final">Cart</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit>
-      <trans-unit id="cartPaymentWaitingForDeliveryError" datatype="html">
-        <source>Waiting for a valid delivery</source><target state="final">Waiting for a valid delivery</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-payment/cart-payment.component.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cartDeliveryTitle" datatype="html">
-        <source>Delivery method</source><target state="final">Delivery method</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">7</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart.component.ts</context><context context-type="linenumber">12</context></context-group></trans-unit>
+      
+      
       <trans-unit id="cartDeliveryOptionBranchButton" datatype="html">
         <source>At branch</source><target state="final">At branch</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">12</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">33</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryOptionBringButton" datatype="html">
         <source>By mail</source><target state="final">By mail</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">15</context></context-group></trans-unit>
-      <trans-unit id="cartDeliveryOptionBranchTitle" datatype="html">
-        <source>Get items at branch</source><target state="final">Get items at branch</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">44</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">64</context></context-group></trans-unit>
+      
       <trans-unit id="cartDeliveryOptionBranchDescription" datatype="html">
         <source>Retrieve the items yourself at</source><target state="final">Retrieve the items yourself at</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">46</context></context-group></trans-unit>
-      <trans-unit id="cartDeliveryOptionBringTitle" datatype="html">
-        <source>Delivery by mail</source><target state="final">Delivery by mail</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">56</context></context-group></trans-unit>
-      <trans-unit id="cartDeliveryOptionBringDescription" datatype="html">
-        <source>Get the items sent to you with Bring from one of our storage facilities</source><target state="final">Get the items sent to you with Bring from one of our storage facilities</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">118</context></context-group></trans-unit>
+      
+      
       <trans-unit id="cartDeliveryOptionBranchInvalidName" datatype="html">
         <source>please provide a valid name</source><target state="final">please provide a valid name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">32</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">96</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryOptionBranchInvalidAddress" datatype="html">
         <source>please provide a valid address</source><target state="final">please provide a valid address</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">33</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">101</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryOptionBranchInvalidPostalCode" datatype="html">
         <source>please provide a valid postal code</source><target state="final">please provide a valid postal code</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">34</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">106</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryOptionBranchInvalidPostalCity" datatype="html">
         <source>please provide a valid postal city</source><target state="final">please provide a valid postal city</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">35</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">111</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentAddressTitle" datatype="html">
-        <source>Shipment address</source><target state="final">Shipment address</target>
+        <source>
+					Shipment address
+				</source><target state="final">
+					Shipment address
+				</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">62</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">126</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentNamePlaceholder" datatype="html">
         <source>Full Name</source><target state="final">Full Name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">141</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentAddressPlaceholder" datatype="html">
         <source>Address</source><target state="final">Address</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">95</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">162</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentPostalCodePlaceholder" datatype="html">
         <source>Postal code</source><target state="final">Postal code</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">117</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">186</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentPostalCityPlaceholder" datatype="html">
         <source>city</source><target state="final">city</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">127</context></context-group></trans-unit>
-      <trans-unit id="cartDeliveryConfirmShippingAddressButton" datatype="html">
-        <source>Confirm shipping address</source><target state="final">Confirm shipping address</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">134</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">197</context></context-group></trans-unit>
+      
       <trans-unit id="cartDeliveryEstimatedDeliveryDate" datatype="html">
         <source>Estimated delivery date</source><target state="final">Estimated delivery date</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">142</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">220</context></context-group></trans-unit>
       <trans-unit id="cardDeliveryInfoDeliveryCost" datatype="html">
         <source>Delivery cost</source><target state="final">Delivery cost</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">159</context></context-group></trans-unit>
-      <trans-unit id="cartPaymentDibsError" datatype="html">
-        <source>
-		Could not create a payment for this order, try again soon or click "pay later" to pay this order at branch
-	</source><target state="final">
-		Could not create a payment for this order, try again soon or click "pay later" to pay this order at branch
-	</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-payment/cart-payment-dibs/cart-payment-dibs.component.ts</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cartCheckoutOrderPlacedError" datatype="html">
-        <source>The order could not be placed, try again shortly</source><target state="final">The order could not be placed, try again shortly</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">5</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutMustLoginError" datatype="html">
-        <source>You must login or register to place a order</source><target state="final">You must login or register to place a order</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">30</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutLoginButton" datatype="html">
-        <source>Login</source><target state="final">Login</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">37</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutRegisterButton" datatype="html">
-        <source>Register</source><target state="final">Register</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">40</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutOptionPayNow" datatype="html">
-        <source>Pay now</source><target state="final">Pay now</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">63</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutOptionPayLater" datatype="html">
-        <source>Pay later</source><target state="final">Pay later</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">68</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">207</context></context-group></trans-unit>
       
-      <trans-unit id="cartCheckoutConfirmOrderButton" datatype="html">
-        <source>
-                                Confirm order
-                            </source><target state="final">
-                                Confirm order
-                            </target>
-        
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">120</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">134</context></context-group></trans-unit>
-      <trans-unit id="cartCheckoutRetrieveItemsAtBranch" datatype="html">
-        <source>Retrieve the items at</source><target state="final">Retrieve the items at</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">130</context></context-group></trans-unit>
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <trans-unit id="cartEmptyTitle" datatype="html">
-        <source>
-			Cart is empty
-		</source><target state="final">
-			Cart is empty
-		</target>
+        <source>Cart is empty</source><target state="final">Cart is empty</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-empty/cart-empty.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -611,87 +530,50 @@
       </trans-unit>
       <trans-unit id="cartEmptyRentSomeItemsButton" datatype="html">
         <source>rent or buy some items</source><target state="final">rent or buy some items</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-empty/cart-empty.component.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-empty/cart-empty.component.ts</context><context context-type="linenumber">16</context></context-group></trans-unit>
       <trans-unit id="cartSummaryError" datatype="html">
         <source>
 			Summary could not be provided
 		</source><target state="final">
 			Summary could not be provided
 		</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cartSummaryTitle" datatype="html">
-        <source>
-				Payment summary
-			</source><target state="final">
-				Payment summary
-			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cartSummarySumItems" datatype="html">
-        <source>
-						Sum items
-					</source><target state="final">
-						Sum items
-					</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">3</context></context-group></trans-unit>
+      
+      
       <trans-unit id="cartSummaryShipment" datatype="html">
         <source>
 						Shipment
 					</source><target state="final">
 						Shipment
 					</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit>
       <trans-unit id="cartSummaryTaxAmount" datatype="html">
         <source>Tax amount</source><target state="final">Tax amount</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit>
       <trans-unit id="cartSummaryTotal" datatype="html">
         <source>
 						Total
 					</source><target state="final">
 						Total
 					</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">73</context></context-group></trans-unit>
     <trans-unit id="userCustomerItemNotReturnedError" datatype="html">
-        <source>This item has not been returned before the deadline, you will receive information about what to do next.</source><target state="final">This item has not been returned before the deadline, you will receive information about what to do next.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit><trans-unit id="userCustomerItemReturnedMessage" datatype="html">
+        <source>This item has not been returned before the
+							deadline, you will receive information about what to
+							do next.</source><target state="final">This item has not been returned before the
+							deadline, you will receive information about what to
+							do next.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">20</context></context-group></trans-unit><trans-unit id="userCustomerItemReturnedMessage" datatype="html">
         <source>This item has been returned, thanks!</source><target state="final">This item has been returned, thanks!</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
+        
         <note priority="1" from="description">a happy message that tells the customer they have returned the item </note>
-      </trans-unit><trans-unit id="customerItemReturned" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">33</context></context-group></trans-unit><trans-unit id="customerItemReturned" datatype="html">
         <source>
 						Returned
 					</source><target state="final">
@@ -700,14 +582,15 @@
         
         
         <note priority="1" from="description">customer item deadline </note>
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">56</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">64</context></context-group></trans-unit><trans-unit id="userCustomerItemNotOnCorrectBranch" datatype="html">
-        <source>This item is not from the current set branch. You can not do actions on this item unless you have the correct branch set.</source><target state="final">This item is not from the current set branch. You can not do actions on this item unless you have the correct branch set.</target>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">83</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="userCustomerItemNotOnCorrectBranch" datatype="html">
+        <source>This item is not from the current set branch. You
+							can not do actions on this item unless you have the
+							correct branch set.</source><target state="final">This item is not from the current set branch. You
+							can not do actions on this item unless you have the
+							correct branch set.</target>
         
         <note priority="1" from="description">if the user has set another branch than the item was rented on</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit><trans-unit id="cartCheckoutOrderError" datatype="html">
-        <source>We have problems creating the order for you, please try again soon</source><target state="final">We have problems creating the order for you, please try again soon</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="ngb.alert.close" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">152</context></context-group></trans-unit><trans-unit id="ngb.alert.close" datatype="html">
         <source>Close</source><target state="final">Close</target>
         <context-group purpose="location">
           <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
@@ -1522,38 +1405,23 @@
         
       <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-info/branch-info.component.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="itemDisplayAlreadyHaveThisItem" datatype="html">
         <source>You already have this item</source><target state="final">You already have this item</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-display/item-display.component.ts</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-      </trans-unit><trans-unit id="itemDisplayAlreadyOrderedItem" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display/item-display.component.ts</context><context context-type="linenumber">143</context></context-group></trans-unit><trans-unit id="itemDisplayAlreadyOrderedItem" datatype="html">
         <source>You have already ordered this item</source><target state="final">You have already ordered this item</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/item/item-display/item-display.component.ts</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerInfoEmailValue" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-display/item-display.component.ts</context><context context-type="linenumber">148</context></context-group></trans-unit><trans-unit id="footerInfoEmailValue" datatype="html">
         <source>info@boklisten.no</source><target state="final">info@boklisten.no</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerInfoAddressValue" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="footerInfoAddressValue" datatype="html">
         <source>Postboks 8, 1316 Eiksmarka, Norway</source><target state="final">Postboks 8, 1316 Eiksmarka, Norway</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerInfoOrganizationNumberValue" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit><trans-unit id="footerInfoOrganizationNumberValue" datatype="html">
         <source>912047385 MVA</source><target state="final">912047385 MVA</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerCompanyName" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="footerCompanyName" datatype="html">
         <source>Boklisten.no AS</source><target state="final">Boklisten.no AS</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="branchOpeningHoursNotFound" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="branchOpeningHoursNotFound" datatype="html">
         <source>No opening hours found</source><target state="final">No opening hours found</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="itemSelectChooseAnotherSchoolButton" datatype="html">
@@ -1562,20 +1430,7 @@
           <context context-type="sourcefile">app/item/item-select/item-select.component.ts</context>
           <context context-type="linenumber">24</context>
         </context-group>
-      </trans-unit><trans-unit id="cartCheckoutEmailConfirmationError" datatype="html">
-        <source>To rent or buy items you need to confirm your email. You should have gotten an email with a confirmation link.</source><target state="final">To rent or buy items you need to confirm your email. You should have gotten an email with a confirmation link.</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="cartCheckoutNeedUserInformation" datatype="html">
-        <source>
-                            We need some user details before you can place the order
-                        </source><target state="final">
-                            We need some user details before you can place the order
-                        </target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">100</context></context-group></trans-unit><trans-unit id="cartCheckoutEditUserDetailButton" datatype="html">
-        <source>Edit your details</source><target state="final">Edit your details</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">105</context></context-group></trans-unit><trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">
+      </trans-unit><trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">
         <source>How does it work?</source><target state="final">How does it work?</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="infoMenuListFaqButton" datatype="html">
@@ -1682,92 +1537,38 @@
         </context-group>
       </trans-unit><trans-unit id="footerRentAgreementLink" datatype="html">
         <source>Rent agreement</source><target state="final">Rent agreement</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
         <source>Terms of service</source><target state="final">Terms of service</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerPrivacyPolicyLink" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit><trans-unit id="footerPrivacyPolicyLink" datatype="html">
         <source>Privacy policy</source><target state="final">Privacy policy</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/footer/footer.component.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderItemInfoTypeBuyout" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">64</context></context-group></trans-unit><trans-unit id="orderItemInfoTypeBuyout" datatype="html">
         <source>Buyout</source><target state="final">Buyout</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderItemInfoTypeCancel" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">42</context></context-group></trans-unit><trans-unit id="orderItemInfoTypeCancel" datatype="html">
         <source>Cancel</source><target state="final">Cancel</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderItemInfoYouHaveItem" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="orderItemInfoYouHaveItem" datatype="html">
         <source>You have this item</source><target state="final">You have this item</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderItemInfoReturned" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">70</context></context-group></trans-unit><trans-unit id="orderItemInfoReturned" datatype="html">
         <source>returned</source><target state="final">returned</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit><trans-unit id="userCustomerItemBuyoutMessage" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">79</context></context-group></trans-unit><trans-unit id="userCustomerItemBuyoutMessage" datatype="html">
         <source>You have bought this item</source><target state="final">You have bought this item</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit><trans-unit id="itemTypeSelectInfoBuyout" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">46</context></context-group></trans-unit><trans-unit id="itemTypeSelectInfoBuyout" datatype="html">
         <source>buyout this item</source><target state="final">buyout this item</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">55</context></context-group></trans-unit><trans-unit id="cartCheckoutPay" datatype="html">
-        <source>Pay</source><target state="final">Pay</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="cartCheckoutLaterAt" datatype="html">
-        <source>later at</source><target state="final">later at</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context><context context-type="linenumber">116</context></context-group></trans-unit><trans-unit id="cartAgreementYouMustAgree" datatype="html">
-        <source>You must agree to the rent agreement to order</source><target state="final">You must agree to the rent agreement to order</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartAgreementAgreeButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context><context context-type="linenumber">120</context></context-group></trans-unit><trans-unit id="cartAgreementAgreeButton" datatype="html">
         <source>Agree</source><target state="final">Agree</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartAgreementYouHaveAgreed" datatype="html">
-        <source>You have agreed to our rent agreement</source><target state="final">You have agreed to our rent agreement</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartAgreementShow" datatype="html">
-        <source>Show</source><target state="final">Show</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartAgreementHide" datatype="html">
-        <source>Hide</source><target state="final">Hide</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoMenuListGeneralButton" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="cartAgreementYouHaveAgreed" datatype="html">
+        <source>You have agreed to our agreement</source><target state="final">You have agreed to our agreement</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="infoMenuListGeneralButton" datatype="html">
         <source>General</source><target state="final">General</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
@@ -1797,17 +1598,11 @@
         </context-group>
       </trans-unit><trans-unit id="cartDeliveryError" datatype="html">
         <source>The delivery could not be created</source><target state="final">The delivery could not be created</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartDeliveryBringError" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit><trans-unit id="cartDeliveryBringError" datatype="html">
         <source>Are you sure you have the correct shipment address?</source><target state="final">Are you sure you have the correct shipment address?</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit><trans-unit id="localRegisterUserAlreadyExistsError" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">82</context></context-group></trans-unit><trans-unit id="localRegisterUserAlreadyExistsError" datatype="html">
         <source>
 				The user already exists
 			</source><target state="final">
@@ -1866,16 +1661,401 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit><trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
-        <source>This item is moved to another order</source><target state="final">This item is moved to another order</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderDeliveryInfoOpeningHours" datatype="html">
+        <source>
+		This item is moved to another order
+	</source><target state="final">
+		This item is moved to another order
+	</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">90</context></context-group></trans-unit><trans-unit id="orderDeliveryInfoOpeningHours" datatype="html">
         <source>Våre åpningstider</source><target state="final">Våre åpningstider</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order-info/order-delivery-info/order-delivery-info.component.ts</context>
           <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemDisplayPartlyPaymentAmountLeftToPay" datatype="html">
+        <source>pay later</source><target state="final">pay later</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-display/item-display.component.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit><trans-unit id="footerInfoPhoneTitle" datatype="html">
+        <source>Telefon:</source><target state="final">Telefon:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="footerInfoPhoneValue" datatype="html">
+        <source>91002211</source><target state="final">91002211</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeDoYouNeedBooks" datatype="html">
+        <source>
+						Trenger du skolebøker?
+					</source><target state="final">
+						Trenger du skolebøker?
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWhatWeDo" datatype="html">
+        <source>
+						Vi skaffer deg de bøkene du trenger til din skole.
+					</source><target state="final">
+						Vi skaffer deg de bøkene du trenger til din skole.
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeRegister" datatype="html">
+        <source>
+								Registrer deg
+							</source><target state="final">
+								Registrer deg
+							</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeLogIn" datatype="html">
+        <source>
+								Logg inn
+							</source><target state="final">
+								Logg inn
+							</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeOurOpeningHours" datatype="html">
+        <source>Våre åpningstider</source><target state="final">Våre åpningstider</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeFrequentlyAskedQuestions" datatype="html">
+        <source>Ofte stilte spørsmål</source><target state="final">Ofte stilte spørsmål</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeThisIsHowItWorks" datatype="html">
+        <source>
+						Slik funker det
+					</source><target state="final">
+						Slik funker det
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeChooseHeader" datatype="html">
+        <source>VELG</source><target state="final">VELG</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWhatToDoOnChoose" datatype="html">
+        <source>
+										Lag deg en bruker og velg den skolen du
+										går på. Deretter er det bare å velge de
+										bøkene du trenger til de fagene du tar.
+									</source><target state="final">
+										Lag deg en bruker og velg den skolen du
+										går på. Deretter er det bare å velge de
+										bøkene du trenger til de fagene du tar.
+									</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeGetHeader" datatype="html">
+        <source>HENT</source><target state="final">HENT</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWhatToDoOnGet" datatype="html">
+        <source>
+										Etter at du har bestilt så er det bare å
+										hente bøkene. Dette kan du gjøre når vi
+										har stand på din skole.
+									</source><target state="final">
+										Etter at du har bestilt så er det bare å
+										hente bøkene. Dette kan du gjøre når vi
+										har stand på din skole.
+									</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeReadHeader" datatype="html">
+        <source>LES</source><target state="final">LES</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">174</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWhatToDoOnRead" datatype="html">
+        <source>
+										Nå er det bare å sette seg ned for å
+										studere.
+									</source><target state="final">
+										Nå er det bare å sette seg ned for å
+										studere.
+									</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">177</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeReturnHeader" datatype="html">
+        <source>LEVER</source><target state="final">LEVER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">209</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWhatToDoOnReturn" datatype="html">
+        <source>
+										Når du har lest deg ferdig og fristen
+										begynner å nærme seg må elever levere
+										tilbake bøkene. Vi har stands på slutten
+										av semesteret på de fleste skoler.
+									</source><target state="final">
+										Når du har lest deg ferdig og fristen
+										begynner å nærme seg må elever levere
+										tilbake bøkene. Vi har stands på slutten
+										av semesteret på de fleste skoler.
+									</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">212</context>
+        </context-group>
+      </trans-unit><trans-unit id="4558863347894ae1f29c4026bec321b2e5b2b5f0" datatype="html">
+        <source>
+						Hva venter du på?
+					</source><target state="final">
+						Hva venter du på?
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">248</context>
+        </context-group>
+        <note priority="1" from="description">@welcomeWhatAreYouWaitingFor</note>
+      </trans-unit><trans-unit id="welcomeRentBooksButton" datatype="html">
+        <source>
+								Bestill bøker
+							</source><target state="final">
+								Bestill bøker
+							</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">277</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeSeeMyBooksButton" datatype="html">
+        <source>
+								Se mine bøker
+							</source><target state="final">
+								Se mine bøker
+							</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">286</context>
+        </context-group>
+      </trans-unit><trans-unit id="orderItemInfoLeftToPay" datatype="html">
+        <source>left to pay</source><target state="final">left to pay</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="orderItemInfoTypePartlyPayment" datatype="html">
+        <source>Partly payment</source><target state="final">Partly payment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemTypeSelectPartlyPaymentSemesterButton" datatype="html">
+        <source>semester</source><target state="final">semester</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemTypeSelectPartlyPaymentYearButton" datatype="html">
+        <source>year</source><target state="final">year</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemTypeSelectRentSemesterButton" datatype="html">
+        <source>semester</source><target state="final">semester</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemTypeSelectRentYearButton" datatype="html">
+        <source>year</source><target state="final">year</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit><trans-unit id="itemTypeSelectInfoPartlyPayment" datatype="html">
+        <source>partly payment</source><target state="final">partly payment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/item/item-type-select/item-type-select.component.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartCheckoutButton" datatype="html">
+        <source>Checkout</source><target state="final">Checkout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentContactingDibs" datatype="html">
+        <source>contacting DIBS, please wait.</source><target state="final">contacting DIBS, please wait.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment/cart-payment.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartDeliveryConfirmButton" datatype="html">
+        <source>Confirm</source><target state="final">Confirm</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
+          <context context-type="linenumber">248</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentRetrievingInfoFromDibs" datatype="html">
+        <source>retrieving info from DIBS, please wait.</source><target state="final">retrieving info from DIBS, please wait.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment/cart-payment-dibs/cart-payment-dibs.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="14e25f62d7b071fdc476d617ed07ae633bc58426" datatype="html">
+        <source>
+					Could not place the order, please try again later.
+				</source><target state="final">
+					Could not place the order, please try again later.
+				</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">@cartCheckoutCouldNotPlaceOrder</note>
+      </trans-unit><trans-unit id="cartCheckoutConfirmButton" datatype="html">
+        <source>
+				Confirm
+			</source><target state="final">
+				Confirm
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-checkout/cart-checkout.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryRentTo" datatype="html">
+        <source>rent to</source><target state="final">rent to</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryPartlyPayment" datatype="html">
+        <source>partly payment</source><target state="final">partly payment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryExtendTo" datatype="html">
+        <source>extend to</source><target state="final">extend to</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryBuy" datatype="html">
+        <source>buy</source><target state="final">buy</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryBuyout" datatype="html">
+        <source>buyout</source><target state="final">buyout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryPartlyPaymentPayLater" datatype="html">
+        <source>
+						rest amount to pay before
+						<x id="INTERPOLATION" equiv-text="{{ partlyPaymentTotal.date | blcDate }}"/>
+					</source><target state="final">
+						rest amount to pay before
+						<x id="INTERPOLATION" equiv-text="{{ partlyPaymentTotal.date | blcDate }}"/>
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartOrderCheckoutErrorLooksLikeSomethingWrong" datatype="html">
+        <source>
+				Looks like something went wrong
+			</source><target state="final">
+				Looks like something went wrong
+			</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartOrderCheckoutErrorClickToTryAgain" datatype="html">
+        <source>You can try again by clicking here.</source><target state="final">You can try again by clicking here.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartOrderCheckoutCreatingOrderForYou" datatype="html">
+        <source>Creating the order for you. Please wait.</source><target state="final">Creating the order for you. Please wait.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartOrderCheckoutErrorSorrySomethingWrong" datatype="html">
+        <source>Sorry, but something went wrong</source><target state="final">Sorry, but something went wrong</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartOderCheckoutErrorTroubleCreatingPayment" datatype="html">
+        <source>We had some trouble creating the payment
+									for you.</source><target state="final">We had some trouble creating the payment
+									for you.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentOptionNowWithCardButton" datatype="html">
+        <source>Pay now with card</source><target state="final">Pay now with card</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentOptionLaterAtBranchButton" datatype="html">
+        <source>Pay later at branch</source><target state="final">Pay later at branch</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentOptionPayLaterAtBranch" datatype="html">
+        <source>Pay when you retrieve the items at</source><target state="final">Pay when you retrieve the items at</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit><trans-unit id="paymentOptionConfirmButton" datatype="html">
+        <source>Confirm</source><target state="final">Confirm</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit></body>
   </file>
