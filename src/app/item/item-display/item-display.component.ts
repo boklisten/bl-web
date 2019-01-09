@@ -159,6 +159,13 @@ export class ItemDisplayComponent implements OnInit {
 		return !!this.customerItem;
 	}
 
+	public getAmountLeftToPay(): number {
+		return this._priceService.calculatePartlyPaymentAmountLeftToPay(
+			this.item.price,
+			this.orderItemAction.period
+		);
+	}
+
 	public getPrice(): number {
 		if (!this.orderItemAction) {
 			return -1;

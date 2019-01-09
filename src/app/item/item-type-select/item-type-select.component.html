@@ -1,4 +1,7 @@
-<div class="row justify-content-center" *ngIf="branchItem || isCustomerItem()">
+<div
+	class="row justify-content-sm-end justify-content-center"
+	*ngIf="branchItem || isCustomerItem()"
+>
 	<div class="col-auto">
 		<div
 			class="btn-group btn-group-toggle btn-group-sm"
@@ -72,7 +75,7 @@
 	</div>
 
 	<div
-		class="col-12 mt-1 text-secondary text-center bl-text-xs"
+		class="col-12 mt-1 text-secondary text-sm-right text-center bl-text-xs"
 		*ngIf="selectedAction"
 	>
 		<span *ngIf="selectedAction.action === 'rent'" class="bl-text-xs">
