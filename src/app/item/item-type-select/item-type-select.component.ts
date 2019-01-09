@@ -17,16 +17,17 @@ export class ItemTypeSelectComponent implements OnInit {
 	@Input() item: Item;
 	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
-	@Input() type: OrderItemType | 'semester' | 'year';
+	@Input() type: OrderItemType;
 	@Output() typeChange: EventEmitter<string>;
 
-	public typeSelect: OrderItemType | 'semester' | 'year';
+	public typeSelect: OrderItemType;
 	public desc: string;
 	public date: string;
 
 	public rentSemesterOption: boolean;
 	public rentYearOption: boolean;
 	public buyOption: boolean;
+  public partlyPaymentOption: boolean;
 	public extendOption: boolean;
 	public buyoutOption: boolean;
 	private branch: Branch;
@@ -37,10 +38,9 @@ export class ItemTypeSelectComponent implements OnInit {
 				private _userCustomerItemService: UserCustomerItemService,
 				private _branchStoreService: BranchStoreService) {
 		this.typeChange = new EventEmitter<string>();
-		this.typeSelect = 'semester';
+		this.typeSelect = 'partly-payment';
 		this.desc = '';
 	}
-
 
 	ngOnInit() {
 		this.branch = this._branchStoreService.getBranch();
@@ -54,7 +54,7 @@ export class ItemTypeSelectComponent implements OnInit {
 		return !(!this.customerItem);
 	}
 
-	public onTypeUpdate(type: 'extend' | 'buyout' | 'semester' | 'year') {
+	public onTypeUpdate(type: OrderItemType) {
 		this.typeSelect = type;
 		this._cartService.addOrUpdate(this.item, this.branchItem, this.typeSelect);
 		this.typeChange.emit(this.typeSelect);
@@ -66,28 +66,40 @@ export class ItemTypeSelectComponent implements OnInit {
 
 	private preselectPeriodType() {
 		if (this.customerItem) {
-			this.typeSelect = 'extend';
-		} else if (this.branchItem && this.branchItem.rent) {
+      this.typeSelect = 'extend';
+    } else if (this.branchItem && this.branchItem.partlyPayment) {
+      if (this.branch.paymentInfo.partlyPaymentPeriods && this.branch.paymentInfo.partlyPaymentPeriods.length > 0) {
+        this.typeSelect = 'partly-payment';
+			}
+    } else if (this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
-				this.typeSelect = this.branch.paymentInfo.rentPeriods[0].type;
+        this.typeSelect = 'rent';
 			}
 		} else if (this.branchItem && this.branchItem.buy) {
 			this.typeSelect = 'buy';
-		}
+    }
 	}
 
-	private isActionValid(action: OrderItemType | 'semester' | 'year') {
-
-		if ((action === 'semester' || action === 'year') && this.branchItem && this.branchItem.rent) {
+	private isActionValid(action: OrderItemType, period?: Period) {
+    if (action === 'partly-payment' && this.branchItem && this.branchItem.partlyPayment) {
+      if (this.branch.paymentInfo.partlyPaymentPeriods && this.branch.paymentInfo.partlyPaymentPeriods.length > 0) {
+        if (!period) { // if no period selected partly payment should be allowed
+          return true;
+        }
+        for (let partlyPaymentPeriod of this.branch.paymentInfo.partlyPaymentPeriods) {
+          
+          if (partlyPaymentPeriod.type === period) {
+            return true;
+          }
+        }
+      }
+    } else if (action === 'rent' && this.branchItem && this.branchItem.rent) {
 			if (this.branch.paymentInfo.rentPeriods && this.branch.paymentInfo.rentPeriods.length > 0) {
-
-				for (const period of this.branch.paymentInfo.rentPeriods) {
-					if (period.type === 'semester' && action === 'semester') {
-						return true;
-					} else if (action === 'year' && period.type === 'year') {
-						return true;
-					}
-				}
+        for (let rentPeriod of this.branch.paymentInfo.rentPeriods) {
+          if (rentPeriod.type === period) {
+            return true;
+          }
+        }
 			}
 		} else if (action === 'buy' && this.branchItem && this.branchItem.buy) {
 			return true;
@@ -107,7 +119,11 @@ export class ItemTypeSelectComponent implements OnInit {
 
 		if (this.isActionValid('year')) {
 			this.rentYearOption = true;
-		}
+    }
+
+    if (this.isActionValid('partly-payment') {
+      this.partlyPaymentOption = true;
+    }
 
 		if (this.isActionValid('buy')) {
 			this.buyOption = true;
@@ -124,7 +140,7 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private updateTypeBasedOnCart(orderItem: OrderItem) {
-		if (orderItem.type === "rent") {
+    if (orderItem.type === "rent") {
 			if (orderItem.info.periodType === "semester") {
 				this.typeSelect = "semester";
 			} else if (orderItem.info.periodType === "year") {

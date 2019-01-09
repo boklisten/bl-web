@@ -1,5 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Branch, CustomerItem, Item, OpeningHour } from "@wizardcoder/bl-model";
+import {
+	Branch,
+	CustomerItem,
+	Item,
+	OpeningHour,
+	Period
+} from "@wizardcoder/bl-model";
 import * as moment from "moment";
 import { BranchStoreService } from "../branch/branch-store.service";
 
@@ -60,7 +66,7 @@ export class DateService {
 		return 0;
 	}
 
-	public getExtendDate(periodType: "semester" | "year"): Date {
+	public getExtendDate(periodType: Period): Date {
 		const branch = this._branchStoreService.getBranch();
 
 		if (branch.paymentInfo.extendPeriods) {
@@ -72,12 +78,23 @@ export class DateService {
 		}
 	}
 
-	public getPeriodDate(periodType: "semester" | "year") {
+	public getPeriodDate(period: Period) {
 		const branch = this._branchStoreService.getBranch();
 
-		for (const period of branch.paymentInfo.rentPeriods) {
-			if (period.type === periodType) {
-				return period.date;
+		for (const rentPeriod of branch.paymentInfo.rentPeriods) {
+			if (rentPeriod.type === period) {
+				return rentPeriod.date;
+			}
+		}
+	}
+
+	public getPartlyPaymentPeriodDate(period: Period) {
+		const branch = this._branchStoreService.getBranch();
+
+		for (const partlyPaymentPeriod of branch.paymentInfo
+			.partlyPaymentPeriods) {
+			if (partlyPaymentPeriod.type === period) {
+				return partlyPaymentPeriod.date;
 			}
 		}
 	}

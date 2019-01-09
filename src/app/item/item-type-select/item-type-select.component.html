@@ -2,6 +2,7 @@
 <div class="row justify-content-center" *ngIf="branchItem || isCustomerItem()">
     <div class="col-auto" *ngIf="!isCustomerItem()">
         <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
+
             <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
                 <input ngbButton type="radio" value="semester" (click)="onTypeUpdate('semester')">
 				<span class="ml-2 mr-2 bl-text-sm" i18n="@@itemTypeSelectSemesterButton">semester</span>
@@ -15,6 +16,10 @@
 				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyButton">buy</span>
             </label>
 
+			<label ngbButtonLabel class="btn-outline-secondary" *ngIf="partlyPaymentOption">
+				<input ngbButton type="radio" value="partly-payment" (click)="onTypeUpdate('partly-payment')">
+				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectPartlyPaymentButton">partly payment</span>
+            </label>
         </div>
     </div>
 
@@ -49,7 +54,10 @@
 			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoBuy">buy</span>
 		</span>
-
+    <span *ngIf="typeSelect === 'partly-payment'">
+      <fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
+      <span i18n="@@itemTypeSelectInfoPartlyPayment">partly payment</span>
+    </span>
 		<span *ngIf="typeSelect === 'buyout'">
 			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoBuyout">buyout this item</span>

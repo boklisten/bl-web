@@ -1,15 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Branch, BranchItem, CustomerItem, Item, Order, OrderItem} from "@wizardcoder/bl-model";
-import {BranchStoreService} from "../branch/branch-store.service";
-import {UserService} from "../user/user.service";
-import {PriceService} from "../price/price.service";
-import {Subject} from "rxjs";
-import {DateService} from "../date/date.service";
-import {OrderItemType} from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
-import {AuthLoginService} from "@wizardcoder/bl-login";
-import {Observable} from "rxjs/internal/Observable";
-import {StorageService} from "@wizardcoder/bl-connect";
-
+import { Injectable } from "@angular/core";
+import {
+	Branch,
+	BranchItem,
+	CustomerItem,
+	Item,
+	Order,
+	OrderItem,
+	Period
+} from "@wizardcoder/bl-model";
+import { BranchStoreService } from "../branch/branch-store.service";
+import { UserService } from "../user/user.service";
+import { PriceService } from "../price/price.service";
+import { Subject } from "rxjs";
+import { DateService } from "../date/date.service";
+import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import { AuthLoginService } from "@wizardcoder/bl-login";
+import { Observable } from "rxjs/internal/Observable";
+import { StorageService } from "@wizardcoder/bl-connect";
 
 export interface CartItem {
 	item: Item;
@@ -21,18 +28,22 @@ export interface CartItem {
 
 @Injectable()
 export class CartService {
-
 	private _cart: CartItem[];
 	private cartChange$: Subject<boolean>;
 	private _cartStorageName: string;
 	private _branch: Branch;
 
-	constructor(private _branchStoreService: BranchStoreService, private _userService: UserService,
-				private _priceService: PriceService, private _dateService: DateService,
-				private _authLoginService: AuthLoginService, private _storageService: StorageService) {
+	constructor(
+		private _branchStoreService: BranchStoreService,
+		private _userService: UserService,
+		private _priceService: PriceService,
+		private _dateService: DateService,
+		private _authLoginService: AuthLoginService,
+		private _storageService: StorageService
+	) {
 		this._cart = [];
 
-		this._cartStorageName = 'bl-shopping-cart';
+		this._cartStorageName = "bl-shopping-cart";
 		this.cartChange$ = new Subject();
 		this._branch = this._branchStoreService.getBranch();
 
@@ -44,7 +55,10 @@ export class CartService {
 
 	public shouldPay(): boolean {
 		for (const cartItem of this._cart) {
-			if (cartItem.orderItem.type === 'buyout' || cartItem.orderItem.type === 'extend') {
+			if (
+				cartItem.orderItem.type === "buyout" ||
+				cartItem.orderItem.type === "extend"
+			) {
 				return true;
 			}
 		}
@@ -52,13 +66,14 @@ export class CartService {
 		return false;
 	}
 
-
 	private getCartFromStorage() {
 		try {
-			const storedCartString = this._storageService.get(this._cartStorageName);
+			const storedCartString = this._storageService.get(
+				this._cartStorageName
+			);
 			this._cart = JSON.parse(storedCartString) as CartItem[];
 		} catch (e) {
-			console.log('could not get cart from storage');
+			console.log("could not get cart from storage");
 		}
 	}
 
@@ -68,7 +83,7 @@ export class CartService {
 				const cartString = JSON.stringify(this._cart);
 				this._storageService.add(this._cartStorageName, cartString);
 			} catch (e) {
-				console.log('could not add cart to storage', e);
+				console.log("could not add cart to storage", e);
 			}
 		});
 	}
@@ -81,7 +96,8 @@ export class CartService {
 
 	private onBranchChange() {
 		this._branchStoreService.onBranchChange().subscribe(() => {
-			if (!this._branch) { // dont clear cart on first branch change
+			if (!this._branch) {
+				// dont clear cart on first branch change
 				this._branch = this._branchStoreService.getBranch();
 			} else {
 				this.clearCart();
@@ -93,20 +109,29 @@ export class CartService {
 		return this.cartChange$.asObservable();
 	}
 
-	public addOrUpdate(item: Item, branchItem: BranchItem, orderItemType: OrderItemType | 'semester' | 'year') {
+	public addOrUpdate(
+		item: Item,
+		branchItem: BranchItem,
+		orderItemType: OrderItemType,
+		period?: Period
+	) {
 		if (this.contains(item.id)) {
-			this.updateType(item.id, orderItemType);
+			this.updateType(item.id, orderItemType, period);
 		} else {
-			this.add(item, branchItem, orderItemType);
+			this.add(item, branchItem, orderItemType, period);
 		}
 	}
 
-
-	public add(item: Item, branchItem: BranchItem, orderItemType: OrderItemType | "semester" | "year") {
+	public add(
+		item: Item,
+		branchItem: BranchItem,
+		orderItemType: OrderItemType,
+		period?: Period
+	) {
 		const orderItem: OrderItem = {
 			item: item.id,
 			title: item.title,
-			type: null,
+			type: orderItemType,
 			amount: 0,
 			unitPrice: 0,
 			taxRate: 0,
@@ -114,43 +139,47 @@ export class CartService {
 			info: null
 		} as OrderItem;
 
-
-
-		if (orderItemType === "semester") {
-			orderItem.type = "rent";
+		if (orderItemType === "rent") {
 			orderItem.info = {
 				from: new Date(),
-				to: this._dateService.getPeriodDate('semester'),
+				to: this._dateService.getPeriodDate(period),
 				numberOfPeriods: 1,
-				periodType: "semester"
+				periodType: period
 			};
-		} else if (orderItemType === "year") {
-			orderItem.type = "rent";
+		} else if (orderItemType === "partly-payment") {
 			orderItem.info = {
 				from: new Date(),
-				to: this._dateService.getPeriodDate('year'),
-				numberOfPeriods: 1,
-				periodType: 'year'
+				to: this._dateService.getPartlyPaymentPeriodDate(period),
+				amountLeftToPay: 0,
+				periodType: period
 			};
-		} else if (orderItemType === "buy") {
-			orderItem.type = "buy";
 		}
 
-		this.setPricesOnOrderItem(orderItem, item);
-		this.addToCart(item, branchItem, orderItem, this._branchStoreService.getBranch());
+		this.setPricesOnOrderItem(orderItem, item, period);
+
+		this.addToCart(
+			item,
+			branchItem,
+			orderItem,
+			this._branchStoreService.getBranch()
+		);
 	}
 
-	private setPricesOnOrderItem(orderItem: OrderItem, item: Item) {
-		let orderItemType: 'buy' | 'semester' | 'year';
+	private setPricesOnOrderItem(
+		orderItem: OrderItem,
+		item: Item,
+		period?: Period
+	) {
+		const unitPrice = this._priceService.calculateItemUnitPrice(
+			item,
+			this._branchStoreService.getBranch(),
+			orderItem.type
+		);
 
-		if (orderItem.type === 'buy') {
-			orderItemType = 'buy';
-		} else if (orderItem.type === 'rent') {
-			orderItemType = orderItem.info.periodType;
-		}
-
-		const unitPrice = this._priceService.calculateItemUnitPrice(item, this._branchStoreService.getBranch(), orderItemType);
-		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
+		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(
+			unitPrice,
+			item.taxRate
+		);
 
 		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
 		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
@@ -158,9 +187,22 @@ export class CartService {
 		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
-	private setPricesOnOrderItemByCustomerItem(customerItem: CustomerItem, item: Item, branch: Branch, orderItem: OrderItem) {
-		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(customerItem, item, branch, orderItem.type);
-		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(unitPrice, item.taxRate);
+	private setPricesOnOrderItemByCustomerItem(
+		customerItem: CustomerItem,
+		item: Item,
+		branch: Branch,
+		orderItem: OrderItem
+	) {
+		const unitPrice = this._priceService.calculateCustomerItemUnitPrice(
+			customerItem,
+			item,
+			branch,
+			orderItem.type
+		);
+		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(
+			unitPrice,
+			item.taxRate
+		);
 
 		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
 		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
@@ -168,19 +210,27 @@ export class CartService {
 		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
-
-	public addCustomerItemExtend(customerItem: CustomerItem, item: Item, branchItem: BranchItem, branch: Branch) {
-
+	public addCustomerItemExtend(
+		customerItem: CustomerItem,
+		item: Item,
+		branchItem: BranchItem,
+		branch: Branch
+	) {
 		const orderItem: OrderItem = {} as OrderItem;
 		orderItem.type = "extend";
 
-		this.setPricesOnOrderItemByCustomerItem(customerItem, item, branch, orderItem);
+		this.setPricesOnOrderItemByCustomerItem(
+			customerItem,
+			item,
+			branch,
+			orderItem
+		);
 
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.info = {
 			from: new Date(),
-			to: this._dateService.getExtendDate('semester'),
+			to: this._dateService.getExtendDate("semester"),
 			numberOfPeriods: 1,
 			periodType: "semester",
 			customerItem: customerItem.id
@@ -189,11 +239,21 @@ export class CartService {
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
 	}
 
-	public addCustomerItemBuyout(customerItem: CustomerItem, branchItem: BranchItem, item: Item, branch: Branch) {
+	public addCustomerItemBuyout(
+		customerItem: CustomerItem,
+		branchItem: BranchItem,
+		item: Item,
+		branch: Branch
+	) {
 		const orderItem: OrderItem = {} as OrderItem;
 		orderItem.type = "buyout";
 
-		this.setPricesOnOrderItemByCustomerItem(customerItem, item, branch, orderItem);
+		this.setPricesOnOrderItemByCustomerItem(
+			customerItem,
+			item,
+			branch,
+			orderItem
+		);
 		orderItem.item = customerItem.item;
 		orderItem.title = item.title;
 		orderItem.customerItem = customerItem.id;
@@ -201,8 +261,20 @@ export class CartService {
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
 	}
 
-	private addToCart(item: Item, branchItem: BranchItem, orderItem: OrderItem, branch: Branch, customerItem?: CustomerItem) {
-		this._cart.push({item: item, branchItem: branchItem, orderItem: orderItem, customerItem: customerItem, branch: branch});
+	private addToCart(
+		item: Item,
+		branchItem: BranchItem,
+		orderItem: OrderItem,
+		branch: Branch,
+		customerItem?: CustomerItem
+	) {
+		this._cart.push({
+			item: item,
+			branchItem: branchItem,
+			orderItem: orderItem,
+			customerItem: customerItem,
+			branch: branch
+		});
 		this.cartChange$.next(true);
 	}
 
@@ -263,7 +335,7 @@ export class CartService {
 
 	public createOrder(): Order {
 		if (this._cart.length <= 0) {
-			throw new Error('order can not be created, cart is empty');
+			throw new Error("order can not be created, cart is empty");
 		}
 
 		const order: Order = {} as Order;
@@ -274,7 +346,6 @@ export class CartService {
 		order.orderItems = this.getOrderItems();
 		order.byCustomer = true;
 		order.payments = [];
-
 
 		return order;
 	}
@@ -298,16 +369,15 @@ export class CartService {
 		return false;
 	}
 
-	public updateType(itemId: string, type: OrderItemType | 'semester' | 'year') {
+	public updateType(itemId: string, type: OrderItemType, period?: Period) {
 		for (const cartItem of this._cart) {
 			if (cartItem.item.id === itemId) {
+				cartItem.orderItem.type = type;
 				switch (type) {
-					case "semester":
-						this.updateTypeOneSemester(cartItem);
-						break;
-					case "year":
-						this.updateTypeTwoSemesters(cartItem);
-						break;
+					case "rent":
+						this.updateTypeRent(cartItem, period);
+					case "partly-payment":
+						this.updateType;
 					case "buy":
 						this.updateTypeBuy(cartItem);
 						break;
@@ -326,48 +396,52 @@ export class CartService {
 
 	private updateTypeBuyout(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
-		cartItem.orderItem.type = "buyout";
 
-		this.setPricesOnOrderItemByCustomerItem(cartItem.customerItem, cartItem.item, cartItem.branch, cartItem.orderItem);
+		this.setPricesOnOrderItemByCustomerItem(
+			cartItem.customerItem,
+			cartItem.item,
+			cartItem.branch,
+			cartItem.orderItem
+		);
 	}
 
 	private updateTypeExtend(cartItem: CartItem) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: this._dateService.getExtendDate('semester'),
+			to: this._dateService.getExtendDate("semester"),
 			numberOfPeriods: 1,
 			periodType: "semester",
 			customerItem: cartItem.customerItem.id
 		};
-		cartItem.orderItem.type = "extend";
-		this.setPricesOnOrderItemByCustomerItem(cartItem.customerItem, cartItem.item, cartItem.branch, cartItem.orderItem);
+		this.setPricesOnOrderItemByCustomerItem(
+			cartItem.customerItem,
+			cartItem.item,
+			cartItem.branch,
+			cartItem.orderItem
+		);
 	}
 
 	private updateTypeBuy(cartItem: CartItem) {
 		cartItem.orderItem.info = null;
-		cartItem.orderItem.type = "buy";
 		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
-	private updateTypeOneSemester(cartItem: CartItem) {
+	private updateTypeRent(cartItem: CartItem, period: Period) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: this._dateService.getPeriodDate('semester'),
+			to: this._dateService.getPeriodDate(period),
 			numberOfPeriods: 1,
-			periodType: "semester"
+			periodType: period
 		};
-		cartItem.orderItem.type = "rent";
-		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 
-	private updateTypeTwoSemesters(cartItem: CartItem) {
+	private updateTypePartlyPayment(cartItem: CartItem, period: Period) {
 		cartItem.orderItem.info = {
 			from: new Date(),
-			to: this._dateService.getPeriodDate('year'),
+			to: this._dateService.getPartlyPaymentPeriodDate(period),
 			numberOfPeriods: 1,
-			periodType: "year"
+			periodType: period,
+			amountLeftToPay: 0
 		};
-		cartItem.orderItem.type = "rent";
-		this.setPricesOnOrderItem(cartItem.orderItem, cartItem.item);
 	}
 }
