@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Branch, BranchItem, CustomerItem, Item } from "@wizardcoder/bl-model";
+import {
+	Branch,
+	BranchItem,
+	CustomerItem,
+	Item,
+	Period
+} from "@wizardcoder/bl-model";
 import { CartService } from "../../cart/cart.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PriceService } from "../../price/price.service";
@@ -29,8 +35,9 @@ export class ItemDisplayComponent implements OnInit {
 	public alreadyHaveItem: boolean;
 	public alreadyOrdered: boolean;
 
-	public orderItemType: OrderItemType | "semester" | "year";
+	public orderItemAction: { action: OrderItemType; period: Period };
 	public showAdd: boolean;
+	public period: Period;
 
 	constructor(
 		private _router: Router,
@@ -45,6 +52,7 @@ export class ItemDisplayComponent implements OnInit {
 		this.view = false;
 		this.showAdd = false;
 		this.alreadyHaveItem = false;
+		this.period = "semester";
 	}
 
 	ngOnInit() {
@@ -121,11 +129,14 @@ export class ItemDisplayComponent implements OnInit {
 			});
 	}
 
-	public onOrderItemTypeChange(type: OrderItemType) {
+	public onOrderItemActionChange(action: {
+		action: OrderItemType;
+		period: Period;
+	}) {
 		setTimeout(() => {
 			// UUUgly, Expression changed after view init
 			this.showAdd = true;
-			this.orderItemType = type;
+			this.orderItemAction = action;
 		}, 0);
 	}
 
@@ -149,29 +160,31 @@ export class ItemDisplayComponent implements OnInit {
 	}
 
 	public getPrice(): number {
-		switch (this.orderItemType) {
-			case "buy":
-				return this._priceService.calculateItemUnitPrice(
-					this.item,
-					this.branch,
-					"buy"
-				);
+		if (!this.orderItemAction) {
+			return -1;
+		}
+		switch (this.orderItemAction.action) {
 			case "buyout":
 				return this._priceService.calculateCustomerItemUnitPrice(
 					this.customerItem,
 					this.item,
 					this.branch,
-					"buyout"
+					this.orderItemAction.action
 				);
 			case "extend":
 				return this._priceService.calculateCustomerItemUnitPrice(
 					this.customerItem,
 					this.item,
 					this.branch,
-					"extend"
+					this.orderItemAction.action
 				);
 			default:
-				return -1;
+				return this._priceService.calculateItemUnitPrice(
+					this.item,
+					this.branch,
+					this.orderItemAction.action,
+					this.orderItemAction.period
+				);
 		}
 	}
 }

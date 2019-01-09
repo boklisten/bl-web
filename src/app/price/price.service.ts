@@ -18,16 +18,16 @@ export class PriceService {
 		item: Item,
 		branch: Branch
 	): number {
-		if (orderItem.type === "rent") {
-			return this.calculateItemUnitPrice(
-				item,
-				branch,
-				orderItem.type,
-				orderItem.info.periodType
-			);
-		} else if (orderItem.type === "buy") {
-			return this.calculateItemUnitPrice(item, branch, "buy");
-		}
+		let period =
+			orderItem.info && orderItem.info.periodType
+				? orderItem.info.periodType
+				: null;
+		return this.calculateItemUnitPrice(
+			item,
+			branch,
+			orderItem.type,
+			period
+		);
 	}
 
 	public calculateItemUnitPrice(
@@ -36,7 +36,7 @@ export class PriceService {
 		type: OrderItemType,
 		period?: Period
 	): number {
-		if (type === "rent") {
+		if (type === "rent" || type === "partly-payment") {
 			return this.sanitize(
 				this.calculatePriceBasedOnPeriodType(item, branch, type, period)
 			);

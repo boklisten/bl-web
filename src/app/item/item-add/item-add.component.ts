@@ -15,9 +15,7 @@ export class ItemAddComponent implements OnInit {
 
 	constructor(private _cartService: CartService) {}
 
-	ngOnInit() {
-		this.period = "semester";
-	}
+	ngOnInit() {}
 
 	onAdd() {
 		if (this.item && this.branchItem && this.type) {

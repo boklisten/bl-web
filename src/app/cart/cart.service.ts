@@ -183,7 +183,8 @@ export class CartService {
 		const unitPrice = this._priceService.calculateItemUnitPrice(
 			item,
 			this._branchStoreService.getBranch(),
-			orderItem.type
+			orderItem.type,
+			period
 		);
 
 		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(
@@ -386,8 +387,10 @@ export class CartService {
 				switch (type) {
 					case "rent":
 						this.updateTypeRent(cartItem, period);
+						break;
 					case "partly-payment":
-						this.updateType;
+						this.updateTypePartlyPayment(cartItem, period);
+						break;
 					case "buy":
 						this.updateTypeBuy(cartItem);
 						break;

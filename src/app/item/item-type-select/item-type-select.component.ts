@@ -24,19 +24,17 @@ export class ItemTypeSelectComponent implements OnInit {
 	@Input() branchItem: BranchItem;
 	@Input() customerItem: CustomerItem;
 	@Input() type: OrderItemType;
-	@Output() typeChange: EventEmitter<string>;
+	@Output() typeChange: EventEmitter<{
+		action: OrderItemType;
+		period?: Period;
+	}>;
 
-	public typeSelect: OrderItemType;
+	public typeSelect: string;
 	public desc: string;
 	public date: string;
-
-	public rentSemesterOption: boolean;
-	public rentYearOption: boolean;
-	public buyOption: boolean;
-	public partlyPaymentOption: boolean;
-	public extendOption: boolean;
-	public buyoutOption: boolean;
+	public allowedActions: { action: OrderItemType; period: Period }[];
 	private branch: Branch;
+	public selectedAction: { action: OrderItemType; period: Period };
 
 	constructor(
 		private _dateService: DateService,
@@ -45,9 +43,10 @@ export class ItemTypeSelectComponent implements OnInit {
 		private _userCustomerItemService: UserCustomerItemService,
 		private _branchStoreService: BranchStoreService
 	) {
-		this.typeChange = new EventEmitter<string>();
+		this.typeChange = new EventEmitter();
 		this.typeSelect = "partly-payment";
 		this.desc = "";
+		this.allowedActions = [];
 	}
 
 	ngOnInit() {
@@ -58,18 +57,14 @@ export class ItemTypeSelectComponent implements OnInit {
 		}
 	}
 
-	isCustomerItem(): boolean {
+	public isCustomerItem(): boolean {
 		return !!this.customerItem;
 	}
 
-	public onTypeUpdate(type: OrderItemType) {
-		this.typeSelect = type;
-		this._cartService.addOrUpdate(
-			this.item,
-			this.branchItem,
-			this.typeSelect
-		);
-		this.typeChange.emit(this.typeSelect);
+	public onTypeUpdate(type: OrderItemType, period?: Period) {
+		this._cartService.addOrUpdate(this.item, this.branchItem, type, period);
+		this.selectedAction = { action: type, period: period };
+		this.typeChange.emit({ action: type, period: period });
 	}
 
 	public getDate(type): Date {
@@ -77,25 +72,33 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private preselectPeriodType() {
+		let action: OrderItemType;
+		let period: Period;
+
 		if (this.customerItem) {
-			this.typeSelect = "extend";
+			action = "extend";
 		} else if (this.branchItem && this.branchItem.partlyPayment) {
 			if (
 				this.branch.paymentInfo.partlyPaymentPeriods &&
 				this.branch.paymentInfo.partlyPaymentPeriods.length > 0
 			) {
-				this.typeSelect = "partly-payment";
+				action = "partly-payment";
+				period = this.branch.paymentInfo.partlyPaymentPeriods[0].type;
 			}
 		} else if (this.branchItem && this.branchItem.rent) {
 			if (
 				this.branch.paymentInfo.rentPeriods &&
 				this.branch.paymentInfo.rentPeriods.length > 0
 			) {
-				this.typeSelect = "rent";
+				action = "rent";
+				period = this.branch.paymentInfo.rentPeriods[0].type;
 			}
 		} else if (this.branchItem && this.branchItem.buy) {
-			this.typeSelect = "buy";
+			action = "buy";
 		}
+
+		this.selectedAction = { action: action, period: period };
+		this.typeSelect = action + period;
 	}
 
 	private isActionValid(action: OrderItemType, period?: Period) {
@@ -108,10 +111,6 @@ export class ItemTypeSelectComponent implements OnInit {
 				this.branch.paymentInfo.partlyPaymentPeriods &&
 				this.branch.paymentInfo.partlyPaymentPeriods.length > 0
 			) {
-				if (!period) {
-					// if no period selected partly payment should be allowed
-					return true;
-				}
 				for (let partlyPaymentPeriod of this.branch.paymentInfo
 					.partlyPaymentPeriods) {
 					if (partlyPaymentPeriod.type === period) {
@@ -150,35 +149,36 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private calculateOptions() {
-		/*
-		if (this.isActionValid()) {
-			this.rentSemesterOption = true;
-		}
+		let actions: { action: OrderItemType; period?: Period }[] = [
+			{ action: "partly-payment", period: "semester" },
+			{ action: "partly-payment", period: "year" },
+			{ action: "rent", period: "semester" },
+			{ action: "rent", period: "year" },
+			{ action: "buy" },
+			{ action: "extend" },
+			{ action: "buyout" }
+		];
 
-		if (this.isActionValid("year")) {
-			this.rentYearOption = true;
-    }
-     */
-
-		if (this.isActionValid("partly-payment")) {
-			this.partlyPaymentOption = true;
-		}
-
-		if (this.isActionValid("buy")) {
-			this.buyOption = true;
-		}
-
-		if (this.isActionValid("extend")) {
-			this.extendOption = true;
-		}
-
-		if (this.isActionValid("buyout")) {
-			this.buyoutOption = true;
-		}
+		actions.forEach(action => {
+			if (this.isActionValid(action.action, action.period)) {
+				this.allowedActions.push({
+					action: action.action,
+					period: action.period
+				});
+			}
+		});
 	}
 
 	private updateTypeBasedOnCart(orderItem: OrderItem) {
-		this.typeSelect = orderItem.type;
+		let period =
+			orderItem.info && orderItem.info.periodType
+				? orderItem.info.periodType
+				: "";
+		this.typeSelect = orderItem.type + period;
+		this.selectedAction = {
+			action: orderItem.type,
+			period: period as Period
+		};
 	}
 
 	private displaySelectedPeriodType() {
@@ -190,6 +190,6 @@ export class ItemTypeSelectComponent implements OnInit {
 			this.preselectPeriodType();
 		}
 
-		this.typeChange.emit(this.typeSelect);
+		this.typeChange.emit(this.selectedAction);
 	}
 }

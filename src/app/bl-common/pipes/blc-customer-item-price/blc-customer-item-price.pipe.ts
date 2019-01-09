@@ -1,5 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { Branch, CustomerItem, Item } from "@wizardcoder/bl-model";
+import {
+	Branch,
+	CustomerItem,
+	Item,
+	OrderItemType
+} from "@wizardcoder/bl-model";
 import { BranchStoreService } from "../../../branch/branch-store.service";
 import { PriceService } from "../../../price/price.service";
 import { ItemService } from "@wizardcoder/bl-connect";
@@ -16,7 +21,7 @@ export class BlcCustomerItemPricePipe implements PipeTransform {
 
 	transform(
 		customerItem: CustomerItem,
-		type: "extend" | "buyout"
+		type: OrderItemType
 	): Promise<number> {
 		return this._branchStoreService
 			.getActiveBranch()
