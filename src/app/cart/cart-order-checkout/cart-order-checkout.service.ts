@@ -100,6 +100,10 @@ export class CartOrderCheckoutService {
 			});
 		}
 
+		if (this.showPaymentOption()) {
+			steps.push({ type: "payment-option", confirmed: false });
+		}
+
 		if (this.showDeliveryOption()) {
 			steps.push({
 				type: "delivery",
@@ -130,18 +134,32 @@ export class CartOrderCheckoutService {
 			return false;
 		}
 
-		if (!this.cartOrderService.doesOrderIncludeRent()) {
-			return false;
+		if (
+			this.cartOrderService.doesOrderIncludeRent() ||
+			this.cartOrderService.doesOrderIncludePartlyPayment()
+		) {
+			return true;
 		}
 
 		return true;
+	}
+
+	public showPaymentOption(): boolean {
+		if (this.needToPay()) {
+			const branch = this.branchStoreService.getBranch();
+			if (branch.paymentInfo.payLater) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private showDeliveryOption(): boolean {
 		if (this.needToPay()) {
 			if (
 				this.cartOrderService.doesOrderIncludeRent() ||
-				this.cartOrderService.doesOrderIncludeBuy()
+				this.cartOrderService.doesOrderIncludeBuy() ||
+				this.cartOrderService.doesOrderIncludePartlyPayment()
 			) {
 				return true;
 			}

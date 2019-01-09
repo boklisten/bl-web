@@ -28,6 +28,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 	public totalAmount: number;
 	public cartError: any;
 	public wait: boolean;
+	public paymentOption: "now" | "at-branch";
 
 	constructor(
 		private cartOrderCheckoutService: CartOrderCheckoutService,
@@ -76,10 +77,8 @@ export class CartOrderCheckoutComponent implements OnInit {
 			.onStartCheckout()
 			.then(() => {
 				this.initSteps();
-				//	this.modalService.open(content, { size: "lg" });
 			})
 			.catch(err => {
-				console.log("COULD NOT START CHECKOUT", err);
 				this.cartError = err;
 			});
 	}
@@ -109,9 +108,21 @@ export class CartOrderCheckoutComponent implements OnInit {
 				this.cartStep.confirmed = false;
 			} else {
 				this.cartStep.confirmed = true;
+				if (
+					this.paymentOption === "at-branch" &&
+					stepType === "payment-option"
+				) {
+					this.cartStep = { type: "checkout", confirmed: false };
+					return;
+				}
+
 				this.nextStep();
 			}
 		}
+	}
+
+	public onPaymentOptionChange(paymentOption: "now" | "at-branch") {
+		this.paymentOption = paymentOption;
 	}
 
 	public isNextStepPossible() {

@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-12">
+		<ul class="nav nav-pills nav-fill">
+			<li
+				class="nav-item text-secondary bl-pointer text-center"
+				[ngClass]="{ 'text-info': selectedPaymentOption === 'now' }"
+				(click)="onSetPaymentOption('now')"
+			>
+				<div><fa-icon [icon]="'credit-card'" size="2x"></fa-icon></div>
+				<span
+					class="nav-link"
+					[ngClass]="{
+						'bl-nav-btn-active': selectedPaymentOption === 'now'
+					}"
+				>
+					<span i18n="@@cartPaymentOptionNowWithCardButton"
+						>Pay now with card</span
+					>
+				</span>
+			</li>
+
+			<li
+				class="nav-item text-secondary text-center bl-pointer"
+				[ngClass]="{
+					'text-info': selectedPaymentOption === 'at-branch'
+				}"
+				(click)="onSetPaymentOption('at-branch')"
+			>
+				<div><fa-icon [icon]="'store'" size="2x"></fa-icon></div>
+				<span
+					class="nav-link"
+					[ngClass]="{
+						'bl-nav-btn-active':
+							selectedPaymentOption === 'at-branch'
+					}"
+				>
+					<span i18n="@@cartPaymentOptionLaterAtBranchButton"
+						>Pay later at branch</span
+					>
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row mt-3">
+	<div
+		class="col-12 text-center"
+		*ngIf="selectedPaymentOption === 'at-branch'"
+	>
+		<span i18n="@@cartPaymentOptionPayLaterAtBranch"
+			>Pay when you retrieve the items at</span
+		>
+		<h3>{{ branch.name }}</h3>
+	</div>
+
+	<div class="col-12 mt-4">
+		<button
+			class="btn btn-outline-success btn-block"
+			(click)="onConfirmPaymentOption()"
+		>
+			<span i18n="@@paymentOptionConfirmButton">Confirm</span>
+		</button>
+	</div>
+</div>

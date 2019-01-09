@@ -25,6 +25,7 @@ import { CartAgreementComponent } from './cart-agreement/cart-agreement.componen
 import {InfoModule} from "../info/info.module";
 import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
 import { CartOrderCheckoutComponent } from './cart-order-checkout/cart-order-checkout.component';
+import { CartPaymentOptionComponent } from './cart-payment-option/cart-payment-option.component';
 
 @NgModule({
 	imports: [
@@ -49,7 +50,8 @@ import { CartOrderCheckoutComponent } from './cart-order-checkout/cart-order-che
 		CartSummaryComponent,
 		CartAgreementComponent,
 		CartConfirmComponent,
-		CartOrderCheckoutComponent
+		CartOrderCheckoutComponent,
+		CartPaymentOptionComponent
 	],
 	providers: [
 		CartService,

@@ -1,5 +1,31 @@
 <app-cart-summary></app-cart-summary>
+<div class="card-body">
+	<div class="row">
+		<div class="col-12" *ngIf="placeOrderError">
+			<div class="alert alert-danger">
+				<b><fa-icon icon="exclamation-triangle"></fa-icon></b>
+				<span i18n="@cartCheckoutCouldNotPlaceOrder">
+					Could not place the order, please try again later.
+				</span>
+			</div>
+		</div>
 
-<div class="row">
-	<div class="col-12"><button class="btn btn-success">Confirm</button></div>
+		<div class="col-12 text-center">
+			<button
+				(click)="onConfirmCheckout()"
+				class="btn btn-outline-success btn-block"
+				*ngIf="!wait"
+				i18n="@@cartCheckoutConfirmButton"
+			>
+				Confirm
+			</button>
+			<fa-icon
+				icon="circle-notch"
+				[spin]="wait"
+				[size]="'2x'"
+				class="mb-3"
+				*ngIf="wait"
+			></fa-icon>
+		</div>
+	</div>
 </div>

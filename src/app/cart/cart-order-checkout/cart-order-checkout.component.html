@@ -120,6 +120,13 @@
 				(confirmedChange)="onConfirmStep('agreement')"
 			></app-cart-agreement>
 
+			<app-cart-payment-option
+				class="card-body"
+				*ngIf="cartStep.type === 'payment-option'"
+				(paymentOptionConfirmed)="onConfirmStep('payment-option')"
+				(paymentOption)="onPaymentOptionChange($event)"
+			></app-cart-payment-option>
+
 			<app-cart-checkout
 				(confirmSummary)="onConfirmStep('checkout')"
 				*ngIf="cartStep.type === 'checkout'"
