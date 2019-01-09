@@ -95,6 +95,28 @@ export class PriceService {
 		return this.sanitize(unitPrice + taxAmount);
 	}
 
+	public calculatePartlyPaymentAmountLeftToPay(
+		itemPrice: number,
+		period: Period
+	) {
+		const branch = this._branchStoreService.getBranch();
+
+		if (!branch.paymentInfo.partlyPaymentPeriods) {
+			return -1;
+		}
+
+		for (let partlyPaymentPeriod of branch.paymentInfo
+			.partlyPaymentPeriods) {
+			if (partlyPaymentPeriod.type === period) {
+				return this.sanitize(
+					this.roundDown(
+						itemPrice * partlyPaymentPeriod.percentageBuyout
+					)
+				);
+			}
+		}
+	}
+
 	private sanitize(sanitizeNumber: number): number {
 		return +sanitizeNumber.toFixed(2);
 	}

@@ -160,7 +160,10 @@ export class CartService {
 			orderItem.info = {
 				from: new Date(),
 				to: this._dateService.getPartlyPaymentPeriodDate(period),
-				amountLeftToPay: 0,
+				amountLeftToPay: this._priceService.calculatePartlyPaymentAmountLeftToPay(
+					item.price,
+					period
+				),
 				periodType: period
 			};
 		}
@@ -454,7 +457,10 @@ export class CartService {
 			to: this._dateService.getPartlyPaymentPeriodDate(period),
 			numberOfPeriods: 1,
 			periodType: period,
-			amountLeftToPay: 0
+			amountLeftToPay: this._priceService.calculatePartlyPaymentAmountLeftToPay(
+				cartItem.item.price,
+				period
+			)
 		};
 	}
 }
