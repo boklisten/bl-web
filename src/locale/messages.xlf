@@ -1969,11 +1969,39 @@
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="cartYouMustUpdateInfo" datatype="html">
+        <source>You must update your info to order.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartClickHereToEdit" datatype="html">
+        <source>Click here to edit.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartYouMustLogin" datatype="html">
+        <source>You must login to order.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartClickHereToLoginOrRegister" datatype="html">
+        <source>Click here to login or register.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="cartCheckoutButton" datatype="html">
         <source>Checkout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartPaymentContactingDibs" datatype="html">
@@ -2151,6 +2179,27 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
           <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartSummaryItemTitle" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartSummaryItemAction" datatype="html">
+        <source>Action</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartSummaryItemPrice" datatype="html">
+        <source>Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartSummaryRentTo" datatype="html">

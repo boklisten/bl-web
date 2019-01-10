@@ -1901,11 +1901,8 @@
         </context-group>
       </trans-unit><trans-unit id="cartCheckoutButton" datatype="html">
         <source>Checkout</source><target state="final">Gå til kassen</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart.component.ts</context>
-          <context context-type="linenumber">39</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartPaymentContactingDibs" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart.component.ts</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="cartPaymentContactingDibs" datatype="html">
         <source>contacting DIBS, please wait.</source><target state="final">kontakter DIBS, vennligst vent.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-payment/cart-payment.component.ts</context>
@@ -2048,6 +2045,48 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
           <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartYouMustUpdateInfo" datatype="html">
+        <source>You must update your info to order.</source><target state="final">Du må oppdatere dine brukerdetaljer før du lager en ordre.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartClickHereToEdit" datatype="html">
+        <source>Click here to edit.</source><target state="final">Klikk for å redigere.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartYouMustLogin" datatype="html">
+        <source>You must login to order.</source><target state="final">Du må være logget inn for å lage en ordre.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartClickHereToLoginOrRegister" datatype="html">
+        <source>Click here to login or register.</source><target state="final">Klikk her for å logge inn eller registrer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryItemTitle" datatype="html">
+        <source>Title</source><target state="final">Tittel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryItemAction" datatype="html">
+        <source>Action</source><target state="final">Handling</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryItemPrice" datatype="html">
+        <source>Price</source><target state="final">Pris</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit></body>
   </file>
