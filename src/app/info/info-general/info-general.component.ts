@@ -13,23 +13,8 @@ export class InfoGeneralComponent implements OnInit {
 	constructor() {
 		this.generalInfoTitle = "Velkommen til Boklisten.no";
 		this.generalInfoDesc =
-			"Velkommen til vår nye nettside! Her kan du leie bøker akkurat som på den gamle – bare mye enklere.";
+			"Velkommen til vår nye nettside! Her kan du låne og kjøpe bøker akkurat som på den gamle – bare mye enklere.";
 		this.generalInfos = [
-			{
-				title: "Har du leid bøker med den gamle nettsiden?",
-				textBlocks: [
-					"Innsamling foregår på vanlig måte som for alle andre – husk bare å nevne for de ansatte at du har bruker i gammelt system, slik at de kan finne bøkene dine der."
-				]
-			},
-			/*
-			{
-				title: 'Spesielt for Akademiet Drammen',
-				textBlocks: [
-					'På Akademiet Drammen vil du kunne leie bøker utenfor våre faste åpningstider. Ta kontakt med vår kontaktperson i Drammen for å gjøre dette:',
-					'Sofia Bjurulf - 47684681 - s.bjurulf@altiboxmail.no'
-				]
-      },
-       */
 			{
 				title: "Bytte- og returrett",
 				textBlocks: [
