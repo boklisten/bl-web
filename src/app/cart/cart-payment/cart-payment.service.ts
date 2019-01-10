@@ -1,11 +1,17 @@
-import {Injectable} from '@angular/core';
-import {PaymentService} from "@wizardcoder/bl-connect";
-import {BlApiError, Order, Payment, PaymentMethod, Delivery} from "@wizardcoder/bl-model";
-import {Subject} from "rxjs";
-import {CartOrderService} from "../cart-order/cart-order.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
-import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {CartService} from "../cart.service";
+import { Injectable } from "@angular/core";
+import { PaymentService } from "@wizardcoder/bl-connect";
+import {
+	BlApiError,
+	Order,
+	Payment,
+	PaymentMethod,
+	Delivery
+} from "@wizardcoder/bl-model";
+import { Subject } from "rxjs";
+import { CartOrderService } from "../cart-order/cart-order.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
+import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
+import { CartService } from "../cart.service";
 
 @Injectable()
 export class CartPaymentService {
@@ -16,39 +22,14 @@ export class CartPaymentService {
 	private _currentOrder: Order;
 	private _currentDelivery: Delivery;
 
-	constructor(private _paymentService: PaymentService,
-				private _cartOrderService: CartOrderService,
-				private _cartService: CartService,
-				private _branchStoreService: BranchStoreService,
-				private _cartDeliveryService: CartDeliveryService) {
+	constructor(
+		private _paymentService: PaymentService,
+		private _cartOrderService: CartOrderService,
+		private _cartService: CartService,
+		private _branchStoreService: BranchStoreService,
+		private _cartDeliveryService: CartDeliveryService
+	) {
 		this.paymentChange$ = new Subject();
-
-		const branch = this._branchStoreService.getBranch();
-
-		if (branch) {
-			if (branch.paymentInfo.responsible && !this._cartService.shouldPay()) { // no need to add payment if branch is responsible
-				return;
-			} else {
-				this._paymentMethod = 'dibs';
-			}
-		}
-
-		this._cartOrderService.onClearOrder().subscribe(() => {
-			this._currentPayment = null;
-		});
-
-		if (this._cartDeliveryService.getDelivery()) {
-			this.createPayment();
-		}
-
-		this._cartDeliveryService.onDeliveryChange().subscribe((delivery: Delivery) => {
-			this._currentOrder = this._cartOrderService.getOrder();
-			this._currentDelivery = delivery;
-
-			if (this.orderShouldHavePayment) {
-				this.createPayment();
-			}
-		});
 	}
 
 	public onPaymentChange() {
@@ -61,22 +42,43 @@ export class CartPaymentService {
 		this._currentDelivery = null;
 	}
 
+	private onDeliveryChange() {
+		this._cartDeliveryService
+			.onDeliveryChange()
+			.subscribe((delivery: Delivery) => {
+				this._currentOrder = this._cartOrderService.getOrder();
+				this._currentDelivery = delivery;
+				this.createPayment()
+					.then(payment => {
+						this.setPayment(payment);
+					})
+					.catch(() => {});
+			});
+	}
 
-	private createPayment() {
-		let payment: Payment;
+	public createPayment(): Promise<Payment> {
+		return new Promise((resolve, reject) => {
+			let payment = null;
 
-		if (this._paymentMethod === 'dibs') {
-			payment = this.createDibsPayment(this._cartOrderService.getOrder(), this._cartDeliveryService.getDelivery());
-		} else {
-			return;
-		}
+			try {
+				payment = this.createDibsPayment(
+					this._cartOrderService.getOrder(),
+					this._cartDeliveryService.getDelivery()
+				);
+			} catch (e) {
+				reject(e);
+			}
 
-		this._paymentService.add(payment).then((addedPayment: Payment) => {
-			this.setPayment(addedPayment);
-		}).catch((blApiErr: BlApiError) => {
-			console.log('paymentService: could not add payment');
+			this._paymentService
+				.add(payment)
+				.then((addedPayment: Payment) => {
+					this.setPayment(addedPayment);
+					resolve(addedPayment);
+				})
+				.catch((blApiErr: BlApiError) => {
+					reject(blApiErr);
+				});
 		});
-
 	}
 
 	private setPayment(payment: Payment) {
@@ -90,7 +92,7 @@ export class CartPaymentService {
 
 	private createDibsPayment(order: Order, delivery?: Delivery): Payment {
 		return {
-			method: 'dibs',
+			method: "dibs",
 			order: order.id,
 			amount: this.calculatePaymentAmount(order, delivery),
 			info: {},

@@ -1,44 +1,22 @@
-<div class="card" *ngIf="!confirmed">
-	<div class="card-header">
-		<span class="text-secondary" i18n="@@cartAgreementYouMustAgree">You must agree to the rent agreement to order</span>
-	</div>
-	<div class="card-body">
-		<app-info-agreement-rent></app-info-agreement-rent>
-	</div>
-	<div class="card-footer">
-		<div class="row justify-content-center">
-			<div class="col-6">
-				<button class="btn btn-block btn-outline-success" (click)="onConfirmClick()">
-					<span i18n="@@cartAgreementAgreeButton">Agree</span>
-				</button>
-			</div>
-		</div>
+<div class="row justify-content-center">
+	<div class="col-auto" *ngIf="confirmed">
+		<fa-icon [icon]="'check'" class="mr-2 text-success"></fa-icon>
+
+		<span i18n="@@cartAgreementYouHaveAgreed"
+			>You have agreed to our agreement</span
+		>
 	</div>
 </div>
-<div class="card" *ngIf="confirmed">
-	<div class="card-body">
-		<div class="row justify-content-between">
-			<div class="col-auto">
-				<fa-icon [icon]="'check'" class="mr-2 text-success"></fa-icon>
-				<span i18n="@@cartAgreementYouHaveAgreed">You have agreed to our rent agreement</span>
-			</div>
-			<div class="col-md-auto col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2 text-secondary text-center bl-pointer" (click)="onShowAgreement()">
-				<span *ngIf="!showAgreement">
-                    <fa-icon [icon]="'angle-double-down'" class="mr-2"></fa-icon>
-                    <span i18n="@@cartAgreementShow">Show</span>
-				</span>
-				<span *ngIf="showAgreement">
-                	<fa-icon [icon]="'angle-double-up'" class="mr-2"></fa-icon>
-                	<span i18n="@@cartAgreementHide">Hide</span>
-				</span>
-			</div>
-		</div>
-	</div>
-	<div class="card-body" *ngIf="showAgreement">
-		<div class="row">
-			<div class="col-12">
-				<app-info-agreement-rent></app-info-agreement-rent>
-			</div>
-		</div>
+
+<app-info-agreement-rent></app-info-agreement-rent>
+
+<div class="row justify-content-center">
+	<div class="col-12">
+		<button
+			class="btn btn-block btn-outline-success"
+			(click)="onConfirmClick()"
+		>
+			<span i18n="@@cartAgreementAgreeButton">Agree</span>
+		</button>
 	</div>
 </div>

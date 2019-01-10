@@ -1,34 +1,56 @@
-
 <div class="row" *ngIf="!noItemsWarning && branchItemCategoryNames.length > 0">
-    <div class="col-12">
-        <app-branch-item-category-filter [branchItemCategories]="branchItemCategoryNames" (branchItemCategoriesSelect)="onBranchItemCategoryFilterChange($event)"></app-branch-item-category-filter>
-    </div>
+	<div class="col-12">
+		<app-branch-item-category-filter
+			[branchItemCategories]="branchItemCategoryNames"
+			(branchItemCategoriesSelect)="
+				onBranchItemCategoryFilterChange($event)
+			"
+		></app-branch-item-category-filter>
+	</div>
 </div>
 
 <app-blc-spinner [loading]="loading"></app-blc-spinner>
 
 <div *ngIf="branchItemCategoryNames.length > 0">
-    <div class="row justify-content-center" *ngFor="let branchItemCategory of selectedBranchItemCategories">
-        <div class="col-12">
-            <div class="row mt-1" *ngIf="branchItemCategory.name && branchItemCategory.name.length > 0">
-                <div class="col-12 font-weight-bold text-secondary">
-                    <span class="bl-text-sm">{{branchItemCategory.name}}</span>
-                    <hr>
-                </div>
-            </div>
-            <div class="row mb-xl-3 mb-lg-3 mb-md-2 mb-sm-1 mb-1" *ngFor="let branchItem of branchItemCategory.branchItems">
-                <div class="col-12" *ngIf="branch">
-                    <app-item-display [branch]="branch" [compact]="true" [branchItem]="branchItem"></app-item-display>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div
+		class="row justify-content-center"
+		*ngFor="let branchItemCategory of selectedBranchItemCategories"
+	>
+		<div class="col-12">
+			<div
+				class="row mt-1"
+				*ngIf="
+					branchItemCategory.name &&
+					branchItemCategory.name.length > 0
+				"
+			>
+				<div class="col-12 font-weight-bold text-secondary">
+					<span class="bl-text-sm">{{
+						branchItemCategory.name
+					}}</span>
+					<hr />
+				</div>
+			</div>
+			<div
+				class="row mb-xl-3 mb-lg-3 mb-md-2 mb-sm-1 mb-2"
+				*ngFor="let branchItem of branchItemCategory.branchItems"
+			>
+				<div class="col-12" *ngIf="branch">
+					<app-item-display
+						[branch]="branch"
+						[compact]="true"
+						[branchItem]="branchItem"
+					></app-item-display>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
 
 <div class="row" *ngIf="noItemsWarning">
-    <div class="col-12">
-        <ngb-alert [type]="'warning'" i18n="@@itemDisplayCategoryWarningNoItems">There are currently no items for this branch</ngb-alert>
-    </div>
+	<div class="col-12">
+		<ngb-alert [type]="'warning'" i18n="@@itemDisplayCategoryWarningNoItems"
+			>There are currently no items for this branch</ngb-alert
+		>
+	</div>
 </div>
-

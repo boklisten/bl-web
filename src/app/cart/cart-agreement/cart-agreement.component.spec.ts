@@ -1,19 +1,18 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartAgreementComponent} from './cart-agreement.component';
-import {Component, Input} from "@angular/core";
+import { CartAgreementComponent } from "./cart-agreement.component";
 
-@Component({selector: 'app-info-agreement-rent', template: ''})
-class InfoAgreementStubComponent {
+import { Component, Input } from "@angular/core";
 
-}
+@Component({ selector: "app-info-agreement-rent", template: "" })
+class InfoAgreementStubComponent {}
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-describe('CartAgreementComponent', () => {
+describe("CartAgreementComponent", () => {
 	let component: CartAgreementComponent;
 	let fixture: ComponentFixture<CartAgreementComponent>;
 
@@ -24,8 +23,7 @@ describe('CartAgreementComponent', () => {
 				InfoAgreementStubComponent,
 				FaIconStubComponent
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -34,7 +32,7 @@ describe('CartAgreementComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

@@ -1,58 +1,123 @@
+<div
+	class="row justify-content-sm-end justify-content-center"
+	*ngIf="branchItem || isCustomerItem()"
+>
+	<div class="col-auto">
+		<div
+			class="btn-group btn-group-toggle btn-group-sm"
+			ngbRadioGroup
+			name="typeSelect"
+			[(ngModel)]="typeSelect"
+		>
+			<label
+				ngbButtonLabel
+				class="btn-outline-secondary"
+				*ngFor="let action of allowedActions"
+			>
+				<input
+					ngbButton
+					type="radio"
+					[value]="action.action + action.period"
+					(click)="onTypeUpdate(action.action, action.period)"
+				/>
+				<span
+					*ngIf="
+						action.action === 'partly-payment' &&
+						action.period === 'semester'
+					"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectPartlyPaymentSemesterButton"
+					>semester</span
+				>
+				<span
+					*ngIf="
+						action.action === 'partly-payment' &&
+						action.period === 'year'
+					"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectPartlyPaymentYearButton"
+					>year</span
+				>
+				<span
+					*ngIf="
+						action.action === 'rent' && action.period === 'semester'
+					"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectRentSemesterButton"
+					>semester</span
+				>
+				<span
+					*ngIf="action.action === 'rent' && action.period === 'year'"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectRentYearButton"
+					>year</span
+				>
+				<span
+					*ngIf="action.action === 'buy'"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectBuyButton"
+					>buy</span
+				>
+				<span
+					*ngIf="action.action === 'buyout'"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectBuyoutButton"
+					>buyout</span
+				>
+				<span
+					*ngIf="action.action === 'extend'"
+					class="mr-2 ml-2 bl-text-sm"
+					i18n="@@itemTypeSelectExtendButton"
+					>extend</span
+				>
+			</label>
+		</div>
+	</div>
 
-<div class="row justify-content-center" *ngIf="branchItem || isCustomerItem()">
-    <div class="col-auto" *ngIf="!isCustomerItem()">
-        <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentSemesterOption">
-                <input ngbButton type="radio" value="semester" (click)="onTypeUpdate('semester')">
-				<span class="ml-2 mr-2 bl-text-sm" i18n="@@itemTypeSelectSemesterButton">semester</span>
-            </label>
-            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="rentYearOption">
-                <input ngbButton type="radio" value="year" (click)="onTypeUpdate('year')">
-				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectYearButton">year</span>
-            </label>
-			<label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyOption">
-				<input ngbButton type="radio" value="buy" (click)="onTypeUpdate('buy')">
-				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyButton">buy</span>
-            </label>
-
-        </div>
-    </div>
-
-	<div class="col-auto" *ngIf="isCustomerItem()">
-        <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="typeSelect" [(ngModel)]="typeSelect">
-            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="extendOption">
-                <input ngbButton type="radio" value="extend" (click)="onTypeUpdate('extend')">
-				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectExtendButton">extend</span>
-            </label>
-
-            <label ngbButtonLabel class="btn-outline-secondary" *ngIf="buyoutOption">
-                <input ngbButton type="radio" value="buyout" (click)="onTypeUpdate('buyout')">
-				<span class="mr-2 ml-2 bl-text-sm" i18n="@@itemTypeSelectBuyoutButton">buyout</span>
-            </label>
-        </div>
-    </div>
-
-	<div class="col-12 mt-1 text-secondary text-center bl-text-xs">
-		<span *ngIf="typeSelect === 'semester' || typeSelect === 'year'" class="bl-text-xs">
-			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
+	<div
+		class="col-12 mt-1 text-secondary text-sm-right text-center bl-text-xs"
+		*ngIf="selectedAction"
+	>
+		<span *ngIf="selectedAction.action === 'rent'" class="bl-text-xs">
+			<fa-icon
+				[icon]="'calendar-alt'"
+				class="mr-1"
+				*ngIf="selectedAction.period === 'semester'"
+			></fa-icon>
+			<fa-icon
+				[icon]="'calendar'"
+				class="mr-1"
+				*ngIf="selectedAction.period === 'year'"
+			></fa-icon>
 			<span i18n="@@itemTypeSelectInfoRent">rent</span>
-			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
-			{{getDate(typeSelect) | blcDate}}
+			<fa-icon [icon]="'arrow-right'" class="mr-1 ml-1"></fa-icon>
+			<fa-icon [icon]="'clock'" class="mr-1 ml-1"></fa-icon>
+			{{ getDate(selectedAction.period) | blcDate }}
 		</span>
-		<span *ngIf="typeSelect === 'extend'">
+
+		<span *ngIf="selectedAction.action === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoExtend">extend</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
-			{{getDate(typeSelect) | blcDate}}
+			{{ getDate(selectedAction.period) | blcDate }}
 		</span>
-		<span *ngIf="typeSelect === 'buy'">
-			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
+
+		<span *ngIf="selectedAction.action === 'buy'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoBuy">buy</span>
 		</span>
 
+		<span *ngIf="selectedAction.action === 'partly-payment'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-1"></fa-icon>
+			<span i18n="@@itemTypeSelectInfoPartlyPayment">partly payment</span>
+			<fa-icon [icon]="'arrow-right'" class="mr-1 ml-1"></fa-icon>
+			<fa-icon [icon]="'clock'" class="mr-1 ml-1"></fa-icon>
+			{{ getDate(selectedAction.period) | blcDate }}
+		</span>
+
 		<span *ngIf="typeSelect === 'buyout'">
-			<fa-icon [icon]="'money-bill-wave'" class="mr-2"></fa-icon>
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoBuyout">buyout this item</span>
 		</span>
-    </div>
+	</div>
 </div>

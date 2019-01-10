@@ -1,12 +1,21 @@
 <div class="row justify-content-between" *ngIf="orderItem">
 	<div class="col-auto">
-		<h5>{{orderItem.title}}</h5>
+		<h5>{{ orderItem.title }}</h5>
 	</div>
-	<div class="col-auto" *ngIf="orderItem.amount !== 0">
-		{{orderItem.amount | blcPrice}}
+	<div
+		class="col-auto text-right font-weight-bold"
+		*ngIf="orderItem.amount !== 0"
+	>
+		<div>{{ orderItem.amount | blcPrice }}</div>
+		<div
+			class="font-weight-light font-italic"
+			*ngIf="orderItem.type === 'partly-payment'"
+		>
+			<span i18n="@@orderItemInfoLeftToPay">left to pay</span>
+			<span>: {{ orderItem.info.amountLeftToPay | blcPrice }}</span>
+		</div>
 	</div>
 </div>
-
 
 <div class="row justify-content-between" *ngIf="orderItem">
 	<div class="col-auto text-secondary">
@@ -14,13 +23,13 @@
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
 			<span i18n="@@orderItemInfoTypeRent">Rent</span>
 			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
-			<b>{{orderItem.info.to | blcDate}}</b>
+			<b>{{ orderItem.info.to | blcDate }}</b>
 		</div>
 		<div *ngIf="orderItem.type === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
 			<span i18n="@@orderItemInfoTypeExtend">Extend</span>
 			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
-			<b>{{orderItem.info.to | blcDate}}</b>
+			<b>{{ orderItem.info.to | blcDate }}</b>
 		</div>
 
 		<div *ngIf="orderItem.type === 'buy'">
@@ -37,20 +46,48 @@
 			<fa-icon [icon]="'ban'" class="mr-2"></fa-icon>
 			<span i18n="@@orderItemInfoTypeCancel">Cancel</span>
 		</div>
+
+		<div *ngIf="orderItem.type === 'partly-payment'">
+			<fa-icon [icon]="'money-bill-alt'" class="mr-2"></fa-icon>
+			<span i18n="@@orderItemInfoTypePartlyPayment">Partly payment</span>
+			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
+			<fa-icon [icon]="'clock'" class="mr-2"></fa-icon>
+			<b>{{ orderItem.info.to | blcDate }}</b>
+		</div>
 	</div>
 
-	<div routerLink="/u/items" class="col-auto text-info bl-link-black" *ngIf="customerItem && customerItem.handout && !customerItem.returned && !customerItem.buyout">
+	<div
+		routerLink="/u/items"
+		class="col-auto text-info bl-link-black"
+		*ngIf="
+			customerItem &&
+			customerItem.handout &&
+			!customerItem.returned &&
+			!customerItem.buyout
+		"
+	>
 		<fa-icon [icon]="'arrow-alt-circle-up'" class="mr-2"></fa-icon>
 		<span i18n="@@orderItemInfoYouHaveItem">You have this item</span>
 	</div>
 
-	<div routerLink="/u/items" class="col-auto text-success bl-link-black" *ngIf="customerItem && customerItem.handout && customerItem.returned">
+	<div
+		routerLink="/u/items"
+		class="col-auto text-success bl-link-black"
+		*ngIf="customerItem && customerItem.handout && customerItem.returned"
+	>
 		<fa-icon [icon]="'arrow-alt-circle-down'" class="mr-2"></fa-icon>
 		<span i18n="@@orderItemInfoReturned">returned</span>
 	</div>
-
 </div>
 
-<div class="row justify-content-md-end justify-content-center" *ngIf="orderItem && orderItem.movedToOrder">
-	<div class="col-auto text-secondary font-italic bl-text-sm" i18n="@@orderItemInfoMovedToAnotherOrder">This item is moved to another order</div>
+<div
+	class="row justify-content-md-end justify-content-center"
+	*ngIf="orderItem && orderItem.movedToOrder"
+>
+	<div
+		class="col-auto text-secondary font-italic bl-text-sm"
+		i18n="@@orderItemInfoMovedToAnotherOrder"
+	>
+		This item is moved to another order
+	</div>
 </div>

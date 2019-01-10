@@ -1,31 +1,28 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartDeliveryComponent} from './cart-delivery.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {BlCommonModule} from "../../bl-common/bl-common.module";
-import {DateService} from "../../date/date.service";
-import {CartDeliveryService} from "./cart-delivery.service";
-import {UserService} from "../../user/user.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
-import {Subject} from "rxjs";
-import {Branch} from "@wizardcoder/bl-model";
+import { CartDeliveryComponent } from "./cart-delivery.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { BlCommonModule } from "../../bl-common/bl-common.module";
+import { DateService } from "../../date/date.service";
+import { CartDeliveryService } from "./cart-delivery.service";
+import { UserService } from "../../user/user.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
+import { Subject } from "rxjs";
+import { Branch } from "@wizardcoder/bl-model";
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
+	@Input() spin: any;
 }
 
 @Injectable()
-class DateStubService {
-
-}
+class DateStubService {}
 
 @Injectable()
 class CartDeliveryStubService {
-	getDelivery() {
-
-	}
+	getDelivery() {}
 
 	onDeliveryFailure() {
 		return new Subject();
@@ -35,23 +32,16 @@ class CartDeliveryStubService {
 		return new Subject();
 	}
 
-	getDefaultDeliveryMethod() {
+	getDefaultDeliveryMethod() {}
 
-	}
-
-	setBranchDelivery() {
-
-	}
+	setBranchDelivery() {}
 }
 
 @Injectable()
 class UserStubService {
 	getUserDetail() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
-
 }
 
 @Injectable()
@@ -59,31 +49,29 @@ class BranchStoreStubService {
 	getBranch() {
 		return {} as Branch;
 	}
-
 }
 
-describe('CartDeliveryComponent', () => {
+describe("CartDeliveryComponent", () => {
 	let component: CartDeliveryComponent;
 	let fixture: ComponentFixture<CartDeliveryComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				CartDeliveryComponent,
-				FaIconStubComponent
-			],
-			imports: [
-				FormsModule,
-				BlCommonModule
-			],
+			declarations: [CartDeliveryComponent, FaIconStubComponent],
+			imports: [FormsModule, BlCommonModule],
 			providers: [
-				{provide: DateService, useValue: new DateStubService()},
-				{provide: CartDeliveryService, useValue: new CartDeliveryStubService()},
-				{provide: UserService, useValue: new UserStubService()},
-				{provide: BranchStoreService, useValue: new BranchStoreStubService()}
+				{ provide: DateService, useValue: new DateStubService() },
+				{
+					provide: CartDeliveryService,
+					useValue: new CartDeliveryStubService()
+				},
+				{ provide: UserService, useValue: new UserStubService() },
+				{
+					provide: BranchStoreService,
+					useValue: new BranchStoreStubService()
+				}
 			]
-		})
-			.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -92,7 +80,7 @@ describe('CartDeliveryComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

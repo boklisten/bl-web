@@ -92,7 +92,7 @@ export class UserCustomerItemService {
 
 	private fetchCustomerItems(userDetail: UserDetail): Promise<boolean> {
 		return this._customerItemService
-			.getManyByIds(userDetail.customerItems)
+			.getManyByIds(userDetail.customerItems as string[])
 			.then((customerItems: CustomerItem[]) => {
 				this.customerItems = customerItems;
 				return true;
