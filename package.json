@@ -10,7 +10,7 @@
 		"serve:prod": "npm run build:prod && node server.js",
 		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
 		"watch": "ng serve  --host 0.0.0.0 --hmr",
-		"watch-nb": "ng serve  --host 0.0.0.0 --configuration=nb",
+		"watch-nb": "ng serve  --host 0.0.0.0 --hmr --configuration=nb",
 		"build": "ng build --configuration=${ANGULAR_ENV}",
 		"build:local": "ng build --configuration=local-nb",
 		"build:dev": "ng build --configuration=dev-nb",

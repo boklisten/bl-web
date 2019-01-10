@@ -14,6 +14,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="row mt-2 justify-content-center">
 	<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
 		<div class="row justify-content-center" *ngIf="showCart()">
@@ -32,6 +33,32 @@
 	</div>
 </div>
 
+<div class="row justify-content-center" *ngIf="!isUserValid && isUserLoggedIn">
+	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<div class="alert alert-warning">
+			<span class="mr-2" i18n="@@cartYouMustUpdateInfo"
+				>You must update your info to order.</span
+			>
+			<a routerLink="/u/edit" i18n="@@cartClickHereToEdit"
+				>Click here to edit.</a
+			>
+		</div>
+	</div>
+</div>
+
+<div class="row justify-content-center" *ngIf="!isUserLoggedIn">
+	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<div class="alert alert-warning">
+			<span class="mr-2" i18n="@@cartYouMustLogin"
+				>You must login to order.</span
+			>
+			<a routerLink="/auth/menu" i18n="@@cartClickHereToLoginOrRegister"
+				>Click here to login or register.</a
+			>
+		</div>
+	</div>
+</div>
+
 <div class="row justify-content-center mt-5" *ngIf="showCart()">
 	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 		<button class="btn btn-success btn-block p-3" routerLink="checkout">
@@ -40,5 +67,3 @@
 		</button>
 	</div>
 </div>
-
-<!--<app-cart-checkout *ngIf="showCart()"></app-cart-checkout>-->

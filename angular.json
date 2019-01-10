@@ -17,7 +17,7 @@
 						"main": "src/main.ts",
 						"tsConfig": "src/tsconfig.app.json",
 						"polyfills": "src/polyfills.ts",
-             "assets": [
+						"assets": [
 							"src/assets",
 							"src/favicon.ico",
 							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt"
@@ -43,7 +43,7 @@
 							"extractLicenses": true,
 							"vendorChunk": false,
 							"buildOptimizer": true,
-              "fileReplacements": [
+							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.prod.ts"
@@ -71,10 +71,6 @@
 							]
 						},
 						"local-nb": {
-							"optimization": false,
-							"outputPath": "dist/",
-              "sourceMap": true,
-							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
 							"i18nFormat": "xlf",
 							"i18nLocale": "nb",
@@ -83,10 +79,10 @@
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.local.ts"
 								},
-                {
-                  "replace": "src/main.ts",
-                  "with": "src/main.local.ts"
-                }
+								{
+									"replace": "src/main.ts",
+									"with": "src/main.local.ts"
+								}
 							]
 						},
 						"local": {
@@ -95,10 +91,10 @@
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.local.ts"
 								},
-                {
-                  "replace": "src/main.ts",
-                  "with": "src/main.local.ts"
-                }
+								{
+									"replace": "src/main.ts",
+									"with": "src/main.local.ts"
+								}
 							]
 						}
 					}
@@ -106,11 +102,11 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"options": {
-            "browserTarget": "bl-web:build:local"
+						"browserTarget": "bl-web:build:local"
 					},
 					"configurations": {
 						"nb": {
-							"browserTarget":"bl-web:build:local-nb"
+							"browserTarget": "bl-web:build:local-nb"
 						}
 					}
 				},
@@ -149,9 +145,7 @@
 							"src/tsconfig.app.json",
 							"src/tsconfig.spec.json"
 						],
-						"exclude": [
-							"**/node_modules/**"
-						]
+						"exclude": ["**/node_modules/**"]
 					}
 				}
 			}
