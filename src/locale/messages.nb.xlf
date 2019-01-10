@@ -134,7 +134,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="noItems" datatype="html">
-        <source>You currently have no items <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source><target state="final">Du har for øyeblikket ingen bøker <x id="START_BOLD_TEXT" ctype="x-b"/><x id="START_LINK" ctype="x-a"/>klikk her for å leie noen<x id="CLOSE_LINK" ctype="x-a"/><x id="CLOSE_BOLD_TEXT" ctype="x-b"/></target>
+        <source>You currently have no items <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/></source><target state="final">Du har for øyeblikket ingen bøker <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>klikk her for å finne noen<x id="CLOSE_LINK" ctype="x-a"/><x id="CLOSE_BOLD_TEXT" ctype="x-b"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-item/user-item.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -375,7 +375,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="branchSetDescription" datatype="html">
-        <source>To rent or buy items we need you to select the school you attend.</source><target state="final">For å leie eller kjøpe bøker må du velge en skole</target>
+        <source>To rent or buy items we need you to select the school you attend.</source><target state="final">For å kjøpe eller låne bøker må du velge en skole</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/branch/branch-set/branch-set.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -528,7 +528,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cartEmptyRentSomeItemsButton" datatype="html">
-        <source>rent or buy some items</source><target state="final">lei eller kjøp noen bøker</target>
+        <source>rent or buy some items</source><target state="final">Klikk her for å finne bøker</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-empty/cart-empty.component.ts</context><context context-type="linenumber">16</context></context-group></trans-unit>
       <trans-unit id="cartSummaryError" datatype="html">
@@ -1444,7 +1444,7 @@
         <source>Policies</source><target state="final">Avtaler og betingelser</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
-        <source>Rent agreement</source><target state="final">Leiebetingelser</target>
+        <source>Rent agreement</source><target state="final">Betingelser</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -1531,7 +1531,7 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit><trans-unit id="footerRentAgreementLink" datatype="html">
-        <source>Rent agreement</source><target state="final">Leieavtale</target>
+        <source>Rent agreement</source><target state="final">Betingelser</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
         <source>Terms of service</source><target state="final">Vilkår</target>
@@ -1561,7 +1561,7 @@
         <source>Agree</source><target state="final">Godta</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="cartAgreementYouHaveAgreed" datatype="html">
-        <source>You have agreed to our agreement</source><target state="translated">Du har godtatt leiebetingelsene</target>
+        <source>You have agreed to our agreement</source><target state="final">Du har godtatt betingelsene</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-agreement/cart-agreement.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="infoMenuListGeneralButton" datatype="html">
         <source>General</source><target state="final">Generell informasjon</target>
