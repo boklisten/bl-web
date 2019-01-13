@@ -3,6 +3,7 @@ export type CartStep = {
 		| "agreement"
 		| "delivery"
 		| "checkout"
+		| "partly-payment-info"
 		| "payment-option"
 		| "payment"
 		| "confirm";

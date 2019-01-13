@@ -120,6 +120,12 @@
 				(confirmedChange)="onConfirmStep('agreement')"
 			></app-cart-agreement>
 
+			<app-cart-partly-payment-info
+				class="card-body"
+				*ngIf="cartStep.type === 'partly-payment-info'"
+				(confirm)="onConfirmStep('partly-payment-info')"
+			></app-cart-partly-payment-info>
+
 			<app-cart-payment-option
 				class="card-body"
 				*ngIf="cartStep.type === 'payment-option'"

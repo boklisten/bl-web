@@ -29,9 +29,6 @@ export class CartOrderCheckoutService {
 		this.oldCartSteps = [];
 		this.cartAmount = 0;
 		this.deliveryAmount = 0;
-
-		//this.onOrderChange();
-		//this.watchTotalAmount();
 	}
 
 	public onOrderAmountChange(): Observable<number> {
@@ -99,6 +96,14 @@ export class CartOrderCheckoutService {
 				confirmed: false
 			});
 		}
+		/*
+		if (this.showPartlyPaymentInfo()) {
+			steps.push({
+				type: "partly-payment-info",
+				confirmed: false
+			});
+		}
+    */
 
 		if (this.showPaymentOption()) {
 			steps.push({ type: "payment-option", confirmed: false });
@@ -144,7 +149,7 @@ export class CartOrderCheckoutService {
 		return true;
 	}
 
-	public showPaymentOption(): boolean {
+	private showPaymentOption(): boolean {
 		if (this.needToPay()) {
 			const branch = this.branchStoreService.getBranch();
 			if (branch.paymentInfo.payLater) {
@@ -152,6 +157,10 @@ export class CartOrderCheckoutService {
 			}
 		}
 		return false;
+	}
+
+	private showPartlyPaymentInfo(): boolean {
+		return this.cartOrderService.doesOrderIncludePartlyPayment();
 	}
 
 	private showDeliveryOption(): boolean {
