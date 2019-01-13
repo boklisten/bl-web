@@ -21,8 +21,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
-  faUser,
-  faFlagCheckered,
+	faUser,
+	faFlagCheckered,
 	faShoppingCart,
 	faCartPlus,
 	faCheck,
@@ -141,8 +141,8 @@ library.add(
 	faPhone,
 	faAddressCard,
 	faBirthdayCake,
-  faArrowLeft,
-  faFlagCheckered
+	faArrowLeft,
+	faFlagCheckered
 );
 
 @NgModule({
@@ -176,9 +176,10 @@ export class AppModule {
 	constructor(private blConnectConfigService: BlConnectConfigService) {
 		blConnectConfigService.setConfig({ basePath: environment.apiPath });
 		LoginModule.withConfig({
-			successPath: "/u/edit",
+			successPath: "/i/select",
 			apiPath: environment.apiPath,
 			userAgreementUrl: "/info/agreement/rent",
+			userDetailNotValidPath: "/u/edit",
 			registerSuccessPath: "/u/edit",
 			permissionDeniedPath: "",
 			permissions: ["customer", "employee", "manager", "admin", "super"],

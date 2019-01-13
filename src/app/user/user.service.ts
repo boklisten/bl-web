@@ -45,20 +45,28 @@ export class UserService {
 		}
 	}
 
-	public updateUserDetail(data: any) {
-		if (this.loggedIn()) {
+	public updateUserDetail(data: any): Promise<boolean> {
+		if (!this.loggedIn()) {
+			return Promise.reject(
+				new Error("could not update userDetail, user not logged in")
+			);
+		}
+
+		return new Promise((resolve, reject) => {
 			this._userDetailService
 				.update(this._userDetail.id, data)
 				.then((updatedUserDetail: UserDetail) => {
 					this.setUserDetail(updatedUserDetail);
+					resolve(true);
 				})
 				.catch((updateUserDetailError: BlApiError) => {
 					console.log(
 						"userService: could not update userDetail",
 						updateUserDetailError
 					);
+					reject(new Error("could not update userDetail"));
 				});
-		}
+		});
 	}
 
 	public setUserDetail(userDetail: UserDetail) {
