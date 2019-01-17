@@ -67,9 +67,7 @@ export class CartDeliveryComponent implements OnInit {
 		this.setDeliveryDetails();
 		this.onDeliveryFailure();
 
-		if (!this.currentDelivery) {
-			this.wait = true;
-
+		setTimeout(() => {
 			this.onSetDelivery(this.deliveryMethod)
 				.then(() => {
 					this.wait = false;
@@ -77,7 +75,7 @@ export class CartDeliveryComponent implements OnInit {
 				.catch(() => {
 					this.wait = false;
 				});
-		}
+		}, 200);
 
 		this.failureText = null;
 		this.bringInputWarning = "";
@@ -245,7 +243,6 @@ export class CartDeliveryComponent implements OnInit {
 					resolve(true);
 				})
 				.catch(err => {
-					console.log("could not set delivery method to branch", err);
 					this.wait = false;
 					reject(err);
 				});
@@ -268,10 +265,6 @@ export class CartDeliveryComponent implements OnInit {
 						resolve(true);
 					})
 					.catch(err => {
-						console.log(
-							"could not set delivery method to bring",
-							err
-						);
 						this.wait = false;
 						reject(err);
 					});

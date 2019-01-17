@@ -202,7 +202,7 @@
 			</div>
 		</div>
 
-		<div class="row justify-content-between mt-2">
+		<div class="row justify-content-between mt-2" *ngIf="currentDelivery">
 			<div class="col-auto text-secondary">
 				<span i18n="@@cardDeliveryInfoDeliveryCost">Delivery cost</span>
 			</div>
@@ -240,7 +240,7 @@
 		</div>
 	</div>
 
-	<div class="col-12 mt-4">
+	<div class="col-12 mt-4" *ngIf="currentDelivery">
 		<button
 			class="btn btn-outline-success btn-block"
 			(click)="onConfirmDelivery()"
