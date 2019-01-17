@@ -86,9 +86,18 @@ export class CartDeliveryComponent implements OnInit {
 			if (!this.validateDeliveryMethodBring()) {
 				return;
 			}
+			this.wait = true;
+			this.onSetDelivery(this.deliveryMethod)
+				.then(() => {
+					this.wait = false;
+					this.confirmDelivery.emit(true);
+				})
+				.catch(() => {
+					this.wait = false;
+				});
+		} else {
+			this.confirmDelivery.emit(true);
 		}
-
-		this.confirmDelivery.emit(true);
 	}
 
 	private setDeliveryOptions() {
