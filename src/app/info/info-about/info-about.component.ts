@@ -29,7 +29,6 @@ export class InfoAboutComponent implements OnInit {
 			title: "Vi tilbyr",
 			listItems: [
 				"Administrasjon av utlånsordning for skolebøker til videregående skoler",
-				//'Salg og utleie av brukte og nye bøker til privatister',
 				"Salg av brukte og nye bøker til videregående skoler",
 				"Henting av av bøker som skal resirkuleres på skoler"
 			]
