@@ -15,6 +15,7 @@ export class CartSummaryComponent implements OnInit {
 	public delivery: Delivery;
 	public payment: Payment;
 	public partlyPaymentTotals: { date: Date; total: number }[];
+	public showPartlyPayments: boolean;
 	@Output() confirmSummary: EventEmitter<boolean>;
 
 	constructor(
@@ -32,6 +33,7 @@ export class CartSummaryComponent implements OnInit {
 		this.delivery = this._cartDeliveryService.getDelivery();
 		this.payment = this._cartPaymentService.getPayment();
 		this.partlyPaymentTotals = this.getPartlyPaymentTotals(this.order);
+		this.showPartlyPayments = this.cartIncludesPartlyPayments();
 
 		this._cartOrderService.onOrderChange().subscribe(() => {
 			this.order = this._cartOrderService.getOrder();
@@ -88,5 +90,28 @@ export class CartSummaryComponent implements OnInit {
 			return this.delivery.amount + this.order.amount;
 		}
 		return this.order.amount;
+	}
+
+	public cartIncludesPartlyPayments(): boolean {
+		for (let orderItem of this.order.orderItems) {
+			if (orderItem.type == "partly-payment") {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	totalAmountIncludingPartlyPayments(): number {
+		let partlyPaymentTotal = 0;
+
+		this.order.orderItems.forEach(orderItem => {
+			if (orderItem.type == "partly-payment") {
+				partlyPaymentTotal += orderItem.info["amountLeftToPay"];
+			}
+		});
+
+		partlyPaymentTotal += this.totalAmount();
+
+		return partlyPaymentTotal;
 	}
 }

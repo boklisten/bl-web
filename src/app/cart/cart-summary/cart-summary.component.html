@@ -79,17 +79,15 @@
 				</tr>
 
 				<tr *ngIf="payment">
-					<td colspan="2">
-						<span
-							i18n="@@cartSummaryTaxAmount"
-							class="font-weight-light"
-							>Tax amount</span
-						>
+					<td
+						colspan="2"
+						i18n="@@cartSummaryTaxAmount"
+						class="bl-text-sm"
+					>
+						Tax amount
 					</td>
-					<td>
-						<small>{{
-							payment.taxAmount | blcPrice: "international"
-						}}</small>
+					<td class="bl-text-sm">
+						{{ payment.taxAmount | blcPrice: "international" }}
 					</td>
 				</tr>
 
@@ -97,15 +95,30 @@
 					<td
 						i18n="@@cartSummaryPartlyPaymentPayLater"
 						colspan="2"
-						class="table-warning font-weight-light bl-text-sm"
+						class="table-ligth font-weight-light bl-text-sm"
 					>
-						rest amount to pay before
+						Rest amount to pay before
 						{{ partlyPaymentTotal.date | blcDate }}
 					</td>
-					<td class="table-warning font-italic bl-text-sm">
+					<td class="table-light font-italic bl-text-sm">
 						{{
 							partlyPaymentTotal.total | blcPrice: "international"
 						}}
+					</td>
+				</tr>
+				<tr *ngIf="showPartlyPayments">
+					<td
+						colspan="2"
+						class="table-warning font-weight-light bl-text-sm"
+						i18n="@@cartSummaryTotalIncludingPartlyPayments"
+					>
+						Total amount including partly payments
+					</td>
+					<td class="table-warning bl-text-sm">
+						<span>{{
+							totalAmountIncludingPartlyPayments()
+								| blcPrice: "international"
+						}}</span>
 					</td>
 				</tr>
 			</tbody>
