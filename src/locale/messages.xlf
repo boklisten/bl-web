@@ -2256,7 +2256,9 @@
         </context-group>
       </trans-unit>
       <trans-unit id="cartSummaryTaxAmount" datatype="html">
-        <source>Tax amount</source>
+        <source>
+						Tax amount
+					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
           <context context-type="linenumber">86</context>
@@ -2264,12 +2266,21 @@
       </trans-unit>
       <trans-unit id="cartSummaryPartlyPaymentPayLater" datatype="html">
         <source>
-						rest amount to pay before
+						Rest amount to pay before
 						<x id="INTERPOLATION" equiv-text="{{ partlyPaymentTotal.date | blcDate }}"/>
 					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartSummaryTotalIncludingPartlyPayments" datatype="html">
+        <source>
+						Total amount including partly payments
+					</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartAgreementYouHaveAgreed" datatype="html">
@@ -2369,7 +2380,7 @@
 		</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">

@@ -550,7 +550,9 @@
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit>
       <trans-unit id="cartSummaryTaxAmount" datatype="html">
-        <source>Tax amount</source><target state="final">Sum merverdiavgift</target>
+        <source>
+						Tax amount
+					</source><target state="translated">Sum merverdiavgift</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit>
       <trans-unit id="cartSummaryTotal" datatype="html">
@@ -1952,17 +1954,14 @@
         </context-group>
       </trans-unit><trans-unit id="cartSummaryPartlyPaymentPayLater" datatype="html">
         <source>
-						rest amount to pay before
+						Rest amount to pay before
 						<x id="INTERPOLATION" equiv-text="{{ partlyPaymentTotal.date | blcDate }}"/>
-					</source><target state="final">
+					</source><target state="translated">
 						totalt igjen å betale før
 						<x id="INTERPOLATION"/>
 					</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
-          <context context-type="linenumber">101</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartOrderCheckoutErrorLooksLikeSomethingWrong" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">99</context></context-group></trans-unit><trans-unit id="cartOrderCheckoutErrorLooksLikeSomethingWrong" datatype="html">
         <source>
 				Looks like something went wrong
 			</source><target state="final">
@@ -2085,15 +2084,22 @@
 		</source><target state="final">
 			Bekreft
 		</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoConditionsAgreementTitle" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="infoConditionsAgreementTitle" datatype="html">
         <source>Conditions</source><target state="final">Betingelser</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
           <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartSummaryTotalIncludingPartlyPayments" datatype="html">
+        <source>
+						Total amount including partly payments
+					</source><target state="final">
+						Totalsum inkludert delbetalinger
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit></body>
   </file>
