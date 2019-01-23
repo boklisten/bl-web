@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {InfoComponent} from "./info.component";
 import {InfoAgreementPrivacyComponent} from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
-import {InfoAgreementRentComponent} from "./info-agreement/info-agreement-rent/info-agreement-rent.component";
 import {InfoAgreementTermsComponent} from "./info-agreement/info-agreement-terms/info-agreement-terms.component";
+import {InfoAgreementConditionsComponent} from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
 
 const routes: Routes = [
 	{
@@ -15,8 +15,8 @@ const routes: Routes = [
 		component: InfoAgreementPrivacyComponent
 	},
 	{
-		path: 'info/policies/rent',
-		component: InfoAgreementRentComponent
+		path: 'info/policies/conditions',
+		component: InfoAgreementConditionsComponent
 	},
 	{
 		path: 'info/policies/terms',

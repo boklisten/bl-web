@@ -5,7 +5,7 @@ import {InfoRoutingModule} from './info-routing.module';
 import {InfoComponent} from "./info.component";
 import { InfoAgreementComponent } from './info-agreement/info-agreement.component';
 import { InfoAgreementPrivacyComponent } from './info-agreement/info-agreement-privacy/info-agreement-privacy.component';
-import { InfoAgreementRentComponent } from './info-agreement/info-agreement-rent/info-agreement-rent.component';
+import { InfoAgreementConditionsComponent } from './info-agreement/info-agreement-conditions/info-agreement-conditions.component';
 import { InfoFaqComponent } from './info-faq/info-faq.component';
 import {NgbAccordionModule, NgbTabsetModule} from "@ng-bootstrap/ng-bootstrap";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
@@ -31,7 +31,6 @@ import { InfoForPupilsComponent } from './info-for-pupils/info-for-pupils.compon
 		InfoComponent,
 		InfoAgreementComponent,
 		InfoAgreementPrivacyComponent,
-		InfoAgreementRentComponent,
 		InfoFaqComponent,
 		InfoMenuListComponent,
 		ContactInfoComponent,
@@ -39,12 +38,13 @@ import { InfoForPupilsComponent } from './info-for-pupils/info-for-pupils.compon
 		InfoGeneralComponent,
 		InfoAboutComponent,
 		InfoForCompaniesComponent,
-		InfoForPupilsComponent
+    InfoForPupilsComponent,
+    InfoAgreementConditionsComponent
 	],
 	exports: [
-		InfoAgreementRentComponent,
 		InfoAgreementPrivacyComponent,
-		InfoAgreementTermsComponent
+    InfoAgreementTermsComponent,
+    InfoAgreementConditionsComponent
 	]
 })
 export class InfoModule {
