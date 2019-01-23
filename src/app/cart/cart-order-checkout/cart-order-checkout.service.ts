@@ -96,14 +96,13 @@ export class CartOrderCheckoutService {
 				confirmed: false
 			});
 		}
-		/*
+
 		if (this.showPartlyPaymentInfo()) {
 			steps.push({
 				type: "partly-payment-info",
 				confirmed: false
 			});
 		}
-    */
 
 		if (this.showPaymentOption()) {
 			steps.push({ type: "payment-option", confirmed: false });
