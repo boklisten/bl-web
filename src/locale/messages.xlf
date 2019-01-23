@@ -1245,8 +1245,8 @@
           <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="footerRentAgreementLink" datatype="html">
-        <source>Rent agreement</source>
+      <trans-unit id="footerConditionsLink" datatype="html">
+        <source>Conditions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/footer/footer.component.ts</context>
           <context context-type="linenumber">50</context>
@@ -1410,7 +1410,7 @@
 					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">248</context>
+          <context context-type="linenumber">246</context>
         </context-group>
         <note priority="1" from="description">@welcomeWhatAreYouWaitingFor</note>
       </trans-unit>
@@ -1420,7 +1420,7 @@
 							</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">277</context>
+          <context context-type="linenumber">275</context>
         </context-group>
       </trans-unit>
       <trans-unit id="welcomeSeeMyBooksButton" datatype="html">
@@ -1429,7 +1429,7 @@
 							</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">286</context>
+          <context context-type="linenumber">284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="orderHistoryTitle" datatype="html">
@@ -2101,35 +2101,35 @@
         <source>Postal code</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">186</context>
+          <context context-type="linenumber">185</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartDeliveryShipmentPostalCityPlaceholder" datatype="html">
         <source>city</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">197</context>
+          <context context-type="linenumber">196</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cardDeliveryInfoDeliveryCost" datatype="html">
         <source>Delivery cost</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">207</context>
+          <context context-type="linenumber">206</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartDeliveryEstimatedDeliveryDate" datatype="html">
         <source>Estimated delivery date</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">220</context>
+          <context context-type="linenumber">219</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartDeliveryConfirmButton" datatype="html">
         <source>Confirm</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">248</context>
+          <context context-type="linenumber">247</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartPaymentRetrievingInfoFromDibs" datatype="html">
@@ -2356,6 +2356,22 @@
           <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="cartPartlyPaymentInfoTitle" datatype="html">
+        <source>About partly payments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cartPartlyPaymentInfoConfirmButton" datatype="html">
+        <source>
+			Confirm
+		</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">
         <source>How does it work?</source>
         <context-group purpose="location">
@@ -2447,8 +2463,8 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="infoRentAgreementTitle" datatype="html">
-        <source>Rent agreement</source>
+      <trans-unit id="infoConditionsAgreementTitle" datatype="html">
+        <source>Conditions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
           <context context-type="linenumber">4</context>

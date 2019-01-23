@@ -494,20 +494,20 @@
       <trans-unit id="cartDeliveryShipmentPostalCodePlaceholder" datatype="html">
         <source>Postal code</source><target state="final">Postnummer</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">186</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">185</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentPostalCityPlaceholder" datatype="html">
         <source>city</source><target state="final">By</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">197</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">196</context></context-group></trans-unit>
       
       <trans-unit id="cartDeliveryEstimatedDeliveryDate" datatype="html">
         <source>Estimated delivery date</source><target state="final">Forventet leveringsdato</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">220</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">219</context></context-group></trans-unit>
       <trans-unit id="cardDeliveryInfoDeliveryCost" datatype="html">
         <source>Delivery cost</source><target state="final">Pris for postsending</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">207</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">206</context></context-group></trans-unit>
       
       
       
@@ -1443,13 +1443,7 @@
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">11</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/info/info-menu-list/info-menu-list.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="infoMenuListAgreementsButton" datatype="html">
         <source>Policies</source><target state="final">Avtaler og betingelser</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="infoRentAgreementTitle" datatype="html">
-        <source>Rent agreement</source><target state="final">Betingelser</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoPrivacyAgreementTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="infoPrivacyAgreementTitle" datatype="html">
         <source>Privacy policy</source><target state="final">Personvernavtale</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
@@ -1530,10 +1524,7 @@
           <context context-type="sourcefile">app/header-alert/header-email-not-confirmed-alert/header-email-not-confirmed-alert.component.ts</context>
           <context context-type="linenumber">5</context>
         </context-group>
-      </trans-unit><trans-unit id="footerRentAgreementLink" datatype="html">
-        <source>Rent agreement</source><target state="final">Betingelser</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
+      </trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
         <source>Terms of service</source><target state="final">Vilkår</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit><trans-unit id="footerPrivacyPolicyLink" datatype="html">
@@ -1832,32 +1823,23 @@
 					</source><target state="final">
 						Hva venter du på?
 					</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">248</context>
-        </context-group>
+        
         <note priority="1" from="description">@welcomeWhatAreYouWaitingFor</note>
-      </trans-unit><trans-unit id="welcomeRentBooksButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">246</context></context-group></trans-unit><trans-unit id="welcomeRentBooksButton" datatype="html">
         <source>
 								Bestill bøker
 							</source><target state="final">
 								Bestill bøker
 							</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">277</context>
-        </context-group>
-      </trans-unit><trans-unit id="welcomeSeeMyBooksButton" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">275</context></context-group></trans-unit><trans-unit id="welcomeSeeMyBooksButton" datatype="html">
         <source>
 								Se mine bøker
 							</source><target state="final">
 								Se mine bøker
 							</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">286</context>
-        </context-group>
-      </trans-unit><trans-unit id="orderItemInfoLeftToPay" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">284</context></context-group></trans-unit><trans-unit id="orderItemInfoLeftToPay" datatype="html">
         <source>left to pay</source><target state="final">betal senere</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
@@ -1910,11 +1892,8 @@
         </context-group>
       </trans-unit><trans-unit id="cartDeliveryConfirmButton" datatype="html">
         <source>Confirm</source><target state="final">Bekreft</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context>
-          <context context-type="linenumber">248</context>
-        </context-group>
-      </trans-unit><trans-unit id="cartPaymentRetrievingInfoFromDibs" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">247</context></context-group></trans-unit><trans-unit id="cartPaymentRetrievingInfoFromDibs" datatype="html">
         <source>retrieving info from DIBS, please wait.</source><target state="final">henter info fra DIBS, vennligst vent.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-payment/cart-payment-dibs/cart-payment-dibs.component.ts</context>
@@ -2087,6 +2066,34 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
           <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit><trans-unit id="footerConditionsLink" datatype="html">
+        <source>Conditions</source><target state="final">Betingelser</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPartlyPaymentInfoTitle" datatype="html">
+        <source>About partly payments</source><target state="final">Om delbetaling</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPartlyPaymentInfoConfirmButton" datatype="html">
+        <source>
+			Confirm
+		</source><target state="final">
+			Bekreft
+		</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-partly-payment-info/cart-partly-payment-info.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit><trans-unit id="infoConditionsAgreementTitle" datatype="html">
+        <source>Conditions</source><target state="final">Betingelser</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/info/info-agreement/info-agreement.component.ts</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit></body>
   </file>
