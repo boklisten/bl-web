@@ -354,11 +354,8 @@
       
       <trans-unit id="branchOpeningHoursTitle" datatype="html">
         <source>Opening hours</source><target state="final">Opening hours</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit>
       
       <trans-unit id="branchContactInfoAddress" datatype="html">
         <source>Address:</source><target state="final">Address:</target>
@@ -1426,9 +1423,11 @@
         <source>Boklisten.no AS</source><target state="final">Boklisten.no AS</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="branchOpeningHoursNotFound" datatype="html">
-        <source>No opening hours found</source><target state="final">No opening hours found</target>
+        <source>The season is over - or the opening hours is not ready
+				yet.</source><target state="final">The season is over - or the opening hours is not ready
+				yet.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="itemSelectChooseAnotherSchoolButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="itemSelectChooseAnotherSchoolButton" datatype="html">
         <source>Choose another school</source><target state="final">Choose another school</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-select/item-select.component.ts</context>
@@ -2110,6 +2109,12 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context>
           <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit><trans-unit id="branchopeningHoursContactUs" datatype="html">
+        <source>Contact us at info@boklisten.no or order by mail!</source><target state="final">Contact us at info@boklisten.no or order by mail!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit></body>
   </file>

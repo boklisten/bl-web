@@ -1797,14 +1797,22 @@
         <source>Opening hours</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="branchOpeningHoursNotFound" datatype="html">
-        <source>No opening hours found</source>
+        <source>The season is over - or the opening hours is not ready
+				yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="branchopeningHoursContactUs" datatype="html">
+        <source>Contact us at info@boklisten.no or order by mail!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="branchContactInfoAddress" datatype="html">

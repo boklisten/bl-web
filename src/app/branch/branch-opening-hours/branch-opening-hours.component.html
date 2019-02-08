@@ -1,27 +1,48 @@
 <div class="card" *ngIf="branch">
 	<div class="card-header">
-		<span class="font-weight-bold text-secondary" i18n="@@branchOpeningHoursTitle">Opening hours</span>
+		<span
+			class="font-weight-bold text-secondary"
+			i18n="@@branchOpeningHoursTitle"
+			>Opening hours</span
+		>
 	</div>
 
 	<app-blc-spinner [loading]="loading"></app-blc-spinner>
 
-	<div class="card-body" *ngIf="(!openingHours || openingHours.length <= 0) && !loading">
-        <div class="alert alert-secondary" >
-            <span i18n="@@branchOpeningHoursNotFound">No opening hours found</span>
-        </div>
+	<div
+		class="card-body"
+		*ngIf="(!openingHours || openingHours.length <= 0) && !loading"
+	>
+		<div class="alert alert-secondary">
+			<span i18n="@@branchOpeningHoursNotFound"
+				>The season is over - or the opening hours is not ready
+				yet.</span
+			>
+			<span class="ml-1" i18n="@@branchopeningHoursContactUs"
+				>Contact us at info@boklisten.no or order by mail!</span
+			>
+		</div>
 	</div>
 
-
-	<ul class="list-group list-group-flush" *ngIf="openingHours && openingHours.length > 0">
-    <li class="list-group-item" *ngFor="let openingHour of openingHours">
+	<ul
+		class="list-group list-group-flush"
+		*ngIf="openingHours && openingHours.length > 0"
+	>
+		<li class="list-group-item" *ngFor="let openingHour of openingHours">
 			<div class="row justify-content-between">
 				<div class="col-auto">
-					<span class="mr-2 text-secondary font-weight-bold">{{openingHour.from | blcDate:'day'}} {{openingHour.from | blcDate:'date'}}</span>
+					<span class="mr-2 text-secondary font-weight-bold"
+						>{{ openingHour.from | blcDate: "day" }}
+						{{ openingHour.from | blcDate: "date" }}</span
+					>
 				</div>
 				<div class="col-auto">
-                    <span>{{openingHour.from | blcDate:'hour'}}</span>
-                    <fa-icon [icon]="'arrow-right'" class="mr-2 ml-2 text-secondary"></fa-icon>
-                    <span>{{openingHour.to | blcDate:'hour'}}</span>
+					<span>{{ openingHour.from | blcDate: "hour" }}</span>
+					<fa-icon
+						[icon]="'arrow-right'"
+						class="mr-2 ml-2 text-secondary"
+					></fa-icon>
+					<span>{{ openingHour.to | blcDate: "hour" }}</span>
 				</div>
 			</div>
 		</li>
