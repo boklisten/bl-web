@@ -76,6 +76,39 @@
 						{{ customerItem.deadline | blcDate }}
 					</div>
 				</div>
+        <div class="row justify-content-between" *ngIf="customerItem.type == 'partly-payment' && !customerItem.returned && !customerItem.buyout">
+					<div
+						class="col-auto text-secondary font-weight-bold"
+						i18n="@@customerItemAlreadyPayed"
+					>
+            Already payed
+					</div>
+					<div class="col-auto text-secondary">
+						{{ customerItem.totalAmount | blcPrice }}
+					</div>
+				</div>
+        <div class="row justify-content-between" *ngIf="customerItem.type == 'partly-payment' && !customerItem.returned && !customerItem.buyout">
+					<div
+						class="col-auto text-secondary font-weight-bold"
+						i18n="@@customerItemAmountLeftToPay"
+					>
+            Amount left to pay
+					</div>
+					<div class="col-auto text-secondary">
+						{{ customerItem.amountLeftToPay | blcPrice }}
+					</div>
+				</div>
+        <div class="row justify-content-between" *ngIf="customerItem.type == 'partly-payment' && !customerItem.returned && !customerItem.buyout">
+					<div
+						class="col-auto text-secondary font-weight-bold"
+						i18n="@@customerItemTotal"
+					>
+            Total
+					</div>
+					<div class="col-auto text-secondary">
+						{{ customerItem.amountLeftToPay + customerItem.totalAmount | blcPrice }}
+					</div>
+				</div>
 				<div class="row justify-content-between" *ngIf="returned">
 					<div
 						class="col-auto text-secondary font-weight-bold"
