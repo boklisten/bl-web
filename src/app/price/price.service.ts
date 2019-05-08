@@ -126,6 +126,10 @@ export class PriceService {
 		item: Item,
 		branch: Branch
 	): number {
+    if (customerItem.type === 'partly-payment') {
+      return customerItem.amountLeftToPay;
+    }
+
 		return this.roundDown(
 			item.price * branch.paymentInfo.buyout.percentage
 		);

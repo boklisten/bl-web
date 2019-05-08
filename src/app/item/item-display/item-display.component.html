@@ -11,9 +11,9 @@
 					<div
 						class="col-md-auto col-sm-auto text-white font-weight-bold bl-text-sm"
 					>
-						<span *ngIf="customerItem">{{
+          <span *ngIf="customerItem && orderItemAction">{{
 							customerItem
-								| blcCustomerItemPrice: orderItemType
+								| blcCustomerItemPrice: orderItemAction.action
 								| async
 								| blcPrice
 						}}</span>
@@ -104,10 +104,10 @@
 										}}</span>
 									</span>
 
-									<span *ngIf="customerItem">{{
+									<span *ngIf="customerItem && orderItemAction">{{
 										customerItem
 											| blcCustomerItemPrice
-												: orderItemType
+												: orderItemAction.action
 											| async
 											| blcPrice
 									}}</span>
