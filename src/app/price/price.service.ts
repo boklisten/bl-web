@@ -13,6 +13,10 @@ import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order
 export class PriceService {
 	constructor(private _branchStoreService: BranchStoreService) {}
 
+	public calculateBuybackPrice(item: Item) {
+		return this.sanitize(item.price * 0.33);
+	}
+
 	public calculateOrderItemUnitPrice(
 		orderItem: OrderItem,
 		item: Item,
@@ -118,7 +122,7 @@ export class PriceService {
 	}
 
 	private sanitize(sanitizeNumber: number): number {
-		return +sanitizeNumber.toFixed(2);
+		return +sanitizeNumber.toFixed(0);
 	}
 
 	private calculateBuyoutPrice(
@@ -126,9 +130,9 @@ export class PriceService {
 		item: Item,
 		branch: Branch
 	): number {
-    if (customerItem.type === 'partly-payment') {
-      return customerItem.amountLeftToPay;
-    }
+		if (customerItem.type === "partly-payment") {
+			return customerItem.amountLeftToPay;
+		}
 
 		return this.roundDown(
 			item.price * branch.paymentInfo.buyout.percentage

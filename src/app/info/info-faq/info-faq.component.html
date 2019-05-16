@@ -1,20 +1,18 @@
-
-
 <div class="row">
 	<div class="col-12">
-		<h6 class="text-secondary" i18n="@@faqTitle">Frequently asked questions</h6>
+		<h6 class="text-secondary" i18n="@@faqTitle">
+			Frequently asked questions
+		</h6>
 	</div>
 </div>
 
 <ngb-accordion [closeOthers]="true" activeIds="">
 	<ngb-panel *ngFor="let faq of faqs">
 		<ng-template ngbPanelTitle>
-			<span>{{faq.title}}</span>
+			<span>{{ faq.title }}</span>
 		</ng-template>
 		<ng-template ngbPanelContent>
-			<p *ngFor="let textBlock of faq.textBlocks">
-				{{textBlock}}
-			</p>
+			<p *ngFor="let textBlock of faq.textBlocks">{{ textBlock }}</p>
 		</ng-template>
 	</ngb-panel>
 </ngb-accordion>

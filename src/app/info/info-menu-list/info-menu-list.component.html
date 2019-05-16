@@ -11,61 +11,109 @@
             </li>
             -->
 			<li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'general'}"
-                    (click)="onSelectMenuButton('general')">
-                    <span i18n="@@infoMenuListGeneralButton">General</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'faq'}"
-                    (click)="onSelectMenuButton('faq')">
-                    <span i18n="@@infoMenuListFaqButton">FAQ</span>
-                </a>
-            </li>
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'general'
+					}"
+					(click)="onSelectMenuButton('general')"
+				>
+					<span i18n="@@infoMenuListGeneralButton">General</span>
+				</a>
+			</li>
 			<li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'pupils'}"
-                    (click)="onSelectMenuButton('pupils')">
-                    <span i18n="@@infoMenuListForPupilsButton">For pupils</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'branch'}"
-                    (click)="onSelectMenuButton('branch')">
-                    <span i18n="@@infoMenuListBranchInfoButton">Branch info</span>
-                </a>
-            </li>
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'faq'
+					}"
+					(click)="onSelectMenuButton('faq')"
+				>
+					<span i18n="@@infoMenuListFaqButton">FAQ</span>
+				</a>
+			</li>
 			<li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'policies'}"
-                    (click)="onSelectMenuButton('policies')">
-                    <span i18n="@@infoMenuListPoliciesButton">Policies</span>
-                </a>
-            </li>
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'pupils'
+					}"
+					(click)="onSelectMenuButton('pupils')"
+				>
+					<span i18n="@@infoMenuListForPupilsButton">For pupils</span>
+				</a>
+			</li>
 			<li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'about'}"
-                    (click)="onSelectMenuButton('about')">
-                    <span i18n="@@infoMenuListAboutUsButton">About us</span>
-                </a>
-            </li>
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'branch'
+					}"
+					(click)="onSelectMenuButton('branch')"
+				>
+					<span i18n="@@infoMenuListBranchInfoButton"
+						>Branch info</span
+					>
+				</a>
+			</li>
 			<li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'companies'}"
-                    (click)="onSelectMenuButton('companies')">
-                    <span i18n="@@infoMenuListForCompaniesButton">For companies</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   [ngClass]="{'bl-info-selected': selectedMenuButton === 'contact'}"
-                    (click)="onSelectMenuButton('contact')">
-                    <span i18n="@@infoMenuListContactUsButton">Contact us</span>
-                </a>
-            </li>
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'policies'
+					}"
+					(click)="onSelectMenuButton('policies')"
+				>
+					<span i18n="@@infoMenuListPoliciesButton">Policies</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'about'
+					}"
+					(click)="onSelectMenuButton('about')"
+				>
+					<span i18n="@@infoMenuListAboutUsButton">About us</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'companies'
+					}"
+					(click)="onSelectMenuButton('companies')"
+				>
+					<span i18n="@@infoMenuListForCompaniesButton"
+						>For companies</span
+					>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'buyback'
+					}"
+					(click)="onSelectMenuButton('buyback')"
+				>
+					<span i18n="@@infoMenuListBuybackButton">Buyback</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						'bl-info-selected': selectedMenuButton === 'contact'
+					}"
+					(click)="onSelectMenuButton('contact')"
+				>
+					<span i18n="@@infoMenuListContactUsButton">Contact us</span>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
