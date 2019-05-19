@@ -92,14 +92,18 @@
 			<span i18n="@@itemTypeSelectInfoRent">rent</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-1 ml-1"></fa-icon>
 			<fa-icon [icon]="'clock'" class="mr-1 ml-1"></fa-icon>
-			{{ getDate(selectedAction.period) | blcDate }}
+			{{
+				getDate(selectedAction.action, selectedAction.period) | blcDate
+			}}
 		</span>
 
 		<span *ngIf="selectedAction.action === 'extend'">
 			<fa-icon [icon]="'calendar-plus'" class="mr-2"></fa-icon>
 			<span i18n="@@itemTypeSelectInfoExtend">extend</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-2 ml-2"></fa-icon>
-			{{ getDate(selectedAction.period) | blcDate }}
+			{{
+				getDate(selectedAction.action, selectedAction.period) | blcDate
+			}}
 		</span>
 
 		<span *ngIf="selectedAction.action === 'buy'">
@@ -112,7 +116,9 @@
 			<span i18n="@@itemTypeSelectInfoPartlyPayment">partly payment</span>
 			<fa-icon [icon]="'arrow-right'" class="mr-1 ml-1"></fa-icon>
 			<fa-icon [icon]="'clock'" class="mr-1 ml-1"></fa-icon>
-			{{ getDate(selectedAction.period) | blcDate }}
+			{{
+				getDate(selectedAction.action, selectedAction.period) | blcDate
+			}}
 		</span>
 
 		<span *ngIf="typeSelect === 'buyout'">

@@ -67,8 +67,12 @@ export class ItemTypeSelectComponent implements OnInit {
 		this.typeChange.emit({ action: type, period: period });
 	}
 
-	public getDate(type): Date {
-		return this._dateService.getDate(type);
+	public getDate(action, period): Date {
+		if (action === "partly-payment") {
+			return this._dateService.getPartlyPaymentPeriodDate(period);
+		} else if (action === "semester") {
+			return this._dateService.getPeriodDate(period);
+		}
 	}
 
 	private preselectPeriodType() {
