@@ -2124,7 +2124,7 @@ Allerede betalt
           <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListBuybackButton" datatype="html">
-        <source>Buy in</source><target state="final">Tilbakekjøp</target>
+        <source>Buy in</source><target state="final">Innkjøpsliste</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">43</context>
