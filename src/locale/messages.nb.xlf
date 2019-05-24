@@ -477,7 +477,7 @@
       <trans-unit id="cartDeliveryShipmentAddressTitle" datatype="html">
         <source>
 					Shipment address
-				</source><target state="translated">Leveringsadresse</target>
+				</source><target state="final">Leveringsadresse</target>
 
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-delivery/cart-delivery.component.ts</context><context context-type="linenumber">126</context></context-group></trans-unit>
       <trans-unit id="cartDeliveryShipmentNamePlaceholder" datatype="html">
@@ -516,7 +516,7 @@
       
       
       <trans-unit id="cartEmptyTitle" datatype="html">
-        <source>Cart is empty</source><target state="translated">
+        <source>Cart is empty</source><target state="final">
 			Handlekurven er tom
 		</target>
         <context-group purpose="location">
@@ -549,7 +549,7 @@
       <trans-unit id="cartSummaryTaxAmount" datatype="html">
         <source>
 						Tax amount
-					</source><target state="translated">Sum merverdiavgift</target>
+					</source><target state="final">Sum merverdiavgift</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit>
       <trans-unit id="cartSummaryTotal" datatype="html">
@@ -563,7 +563,7 @@
     <trans-unit id="userCustomerItemNotReturnedError" datatype="html">
         <source>This item has not been returned before the
 							deadline, you will receive information about what to
-							do next.</source><target state="translated">Denne boken har ikke blitt returnert innen fristen, du vil motta informasjon om hva du skal gjøre.</target>
+							do next.</source><target state="final">Denne boken har ikke blitt returnert innen fristen, du vil motta informasjon om hva du skal gjøre.</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">20</context></context-group></trans-unit><trans-unit id="userCustomerItemReturnedMessage" datatype="html">
         <source>This item has been returned, thanks!</source><target state="final">Denne boken har blitt levert - takk!</target>
@@ -581,7 +581,7 @@
       <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">158</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">172</context></context-group></trans-unit><trans-unit id="userCustomerItemNotOnCorrectBranch" datatype="html">
         <source>This item is not from the current set branch. You
 							can not do actions on this item unless you have the
-							correct branch set.</source><target state="translated">Denne boken er ikke fra din nåværende valgte skole. Du kan ikke gjøre endringer uten å velge riktig skole.</target>
+							correct branch set.</source><target state="final">Denne boken er ikke fra din nåværende valgte skole. Du kan ikke gjøre endringer uten å velge riktig skole.</target>
         
         <note priority="1" from="description">if the user has set another branch than the item was rented on</note>
       <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">233</context></context-group></trans-unit>
@@ -1458,7 +1458,7 @@
       </trans-unit><trans-unit id="faqTitle" datatype="html">
         <source>
 			Frequently asked questions
-		</source><target state="translated">Spørsmål og svar</target>
+		</source><target state="final">Spørsmål og svar</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info-faq/info-faq.component.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="infoMenuListPoliciesButton" datatype="html">
         <source>Policies</source><target state="final">Avtaler og betingelser</target>
@@ -1636,7 +1636,7 @@
       </trans-unit><trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
         <source>
 		This item is moved to another order
-	</source><target state="translated">Denne boken er flyttet til en annen ordre</target>
+	</source><target state="final">Denne boken er flyttet til en annen ordre</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context><context context-type="linenumber">90</context></context-group></trans-unit><trans-unit id="orderDeliveryInfoOpeningHours" datatype="html">
         <source>Våre åpningstider</source><target state="final">Våre åpningstider</target>
@@ -1938,7 +1938,7 @@
         <source>
 						Rest amount to pay before
 						<x id="INTERPOLATION" equiv-text="{{ partlyPaymentTotal.date | blcDate }}"/>
-					</source><target state="translated">
+					</source><target state="final">
 						totalt igjen å betale før
 						<x id="INTERPOLATION"/>
 					</target>
@@ -1995,7 +1995,7 @@
           <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit><trans-unit id="cartPaymentOptionPayLaterAtBranch" datatype="html">
-        <source>Pay when you retrieve the items at</source><target state="final">Betal når du kommer å henter bøkene hos</target>
+        <source>Pay when you retrieve the items at</source><target state="final">Betal når du kommer for å hente bøkene hos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.ts</context>
           <context context-type="linenumber">52</context>
@@ -2124,7 +2124,7 @@ Allerede betalt
           <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListBuybackButton" datatype="html">
-        <source>Buy in</source><target state="translated">Tilbakekjøp</target>
+        <source>Buy in</source><target state="final">Tilbakekjøp</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -2137,7 +2137,7 @@ Allerede betalt
         <source>
 			List of items that we buy in. Be aware that this list can be changed
 			at any time and may include errors.
-		</source><target state="translated">En liste over bøker vi kjøper tilbake. Vær oppmerksom på at denne listen kan endre seg når som helst.
+		</source><target state="final">Liste over bøkene vi kjøper inn. Vær oppmerksom på at denne listen kan endre seg fortløpende. Vi tar forbehold for eventuelle feil i innkjøpslisten!
 		</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
