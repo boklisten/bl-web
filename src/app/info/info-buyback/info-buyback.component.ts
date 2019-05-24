@@ -16,16 +16,14 @@ export class InfoBuybackComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		/*
 		this.itemService
-			.get()
+			.get("?buyback=true&og=title&og=price&og=info.isbn")
 			.then(items => {
 				this.items = items;
 			})
 			.catch(() => {
 				console.log("could not get items");
 			});
-     */
 		this.items = [];
 	}
 
