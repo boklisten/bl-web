@@ -26,8 +26,4 @@ export class InfoBuybackComponent implements OnInit {
 			});
 		this.items = [];
 	}
-
-	public getPrice(item: Item) {
-		return this.priceService.calculateBuybackPrice(item);
-	}
 }

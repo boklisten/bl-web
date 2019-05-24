@@ -2124,7 +2124,7 @@ Allerede betalt
           <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListBuybackButton" datatype="html">
-        <source>Buyback</source><target state="final">Tilbakekjøp</target>
+        <source>Buy in</source><target state="translated">Tilbakekjøp</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -2135,9 +2135,9 @@ Allerede betalt
         </context-group>
       </trans-unit><trans-unit id="buybackTitle" datatype="html">
         <source>
-			List of items that we buy back. Be aware that this list can be
-			changed at any time.
-		</source><target state="final">En liste over bøker vi kjøper tilbake. Vær oppmerksom på at denne listen kan endre seg når som helst.
+			List of items that we buy in. Be aware that this list can be changed
+			at any time and may include errors.
+		</source><target state="translated">En liste over bøker vi kjøper tilbake. Vær oppmerksom på at denne listen kan endre seg når som helst.
 		</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
@@ -2150,14 +2150,6 @@ Allerede betalt
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
           <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoBuybackAddAndRemove" datatype="html">
-        <source>
-			More items may be added and some items may be removed from the list.
-		</source><target state="final">Flere bøker kan bli lagt til og noen kan bli slettet fra listen.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
-          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit></body>
   </file>

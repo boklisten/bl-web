@@ -2139,7 +2139,7 @@
           <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit><trans-unit id="infoMenuListBuybackButton" datatype="html">
-        <source>Buyback</source><target state="final">Buyback</target>
+        <source>Buy in</source><target state="final">Buy in</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -2150,11 +2150,11 @@
         </context-group>
       </trans-unit><trans-unit id="buybackTitle" datatype="html">
         <source>
-			List of items that we buy back. Be aware that this list can be
-			changed at any time.
+			List of items that we buy in. Be aware that this list can be changed
+			at any time and may include errors.
 		</source><target state="final">
-			List of items that we buy back. Be aware that this list can be
-			changed at any time.
+			List of items that we buy in. Be aware that this list can be changed
+			at any time and may include errors.
 		</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
@@ -2169,16 +2169,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
           <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit><trans-unit id="infoBuybackAddAndRemove" datatype="html">
-        <source>
-			More items may be added and some items may be removed from the list.
-		</source><target state="final">
-			More items may be added and some items may be removed from the list.
-		</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/info/info-buyback/info-buyback.component.ts</context>
-          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit></body>
   </file>

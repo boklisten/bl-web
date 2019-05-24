@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-12">
 		<h6 class="text-secondary" i18n="@@buybackTitle">
-			List of items that we buy back. Be aware that this list can be
-			changed at any time.
+			List of items that we buy in. Be aware that this list can be changed
+			at any time and may include errors.
 		</h6>
 	</div>
 </div>
@@ -29,19 +29,8 @@
 							item.info.isbn
 						}}</small>
 					</div>
-					<span class="font-weight-bold"
-						>{{ getPrice(item) | blcPrice: "international" }}
-					</span>
 				</div>
 			</li>
 		</ul>
-
-		<div
-			class="alert alert-secondary mt-5"
-			*ngIf="items.length > 0"
-			i18n="@@infoBuybackAddAndRemove"
-		>
-			More items may be added and some items may be removed from the list.
-		</div>
 	</div>
 </div>
