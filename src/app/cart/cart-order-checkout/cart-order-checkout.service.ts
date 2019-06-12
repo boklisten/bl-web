@@ -151,7 +151,10 @@ export class CartOrderCheckoutService {
 	private showPaymentOption(): boolean {
 		if (this.needToPay()) {
 			const branch = this.branchStoreService.getBranch();
-			if (branch.paymentInfo.payLater) {
+			if (
+				branch.paymentInfo.payLater &&
+				!this.cartOrderService.doesOrderIncludeBuyout()
+			) {
 				return true;
 			}
 		}
