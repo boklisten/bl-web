@@ -70,7 +70,7 @@ export class ItemTypeSelectComponent implements OnInit {
 	public getDate(action, period): Date {
 		if (action === "partly-payment") {
 			return this._dateService.getPartlyPaymentPeriodDate(period);
-		} else if (action === "semester" || action === "year") {
+		} else {
 			return this._dateService.getPeriodDate(period);
 		}
 	}
