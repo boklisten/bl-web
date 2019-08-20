@@ -17,7 +17,7 @@ export class InfoBuybackComponent implements OnInit {
 
 	ngOnInit() {
 		this.itemService
-			.get("?buyback=true&og=title&og=price&og=info.isbn")
+			.get({ query: "?buyback=true&og=title&og=price&og=info.isbn" })
 			.then(items => {
 				this.items = items;
 			})
