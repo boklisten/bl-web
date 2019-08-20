@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Order } from "@wizardcoder/bl-model";
 import { PrintPdfService, OrderPdfService } from "@wizardcoder/bl-connect";
 import moment from "moment-es6";
+import { saveAs } from "file-saver";
 
 @Component({
 	selector: "app-order-info",
@@ -11,7 +12,10 @@ import moment from "moment-es6";
 export class OrderInfoComponent implements OnInit {
 	@Input() order: Order;
 
-	showDelivery: boolean;
+	public receiptUrl: string;
+	public agreementUrl: string;
+	public showDelivery: boolean;
+	public showAgreementPrintOut: boolean;
 
 	constructor(
 		private pdfPrintService: PrintPdfService,
@@ -20,9 +24,10 @@ export class OrderInfoComponent implements OnInit {
 
 	ngOnInit() {
 		this.showDelivery = this.shouldShowDelivery();
+		this.showAgreementPrintOut = this.shouldAgreementBeVisisble();
 	}
 
-	shouldShowDelivery() {
+	public shouldShowDelivery() {
 		if (this.order && this.order.handoutByDelivery) {
 			return true;
 		}
@@ -37,39 +42,62 @@ export class OrderInfoComponent implements OnInit {
 				}
 			}
 		}
-
 		return false;
 	}
 
-	printReceipt() {
+	public getReceipt() {
 		this.orderPdfService
 			.getOrderReceiptPdf(this.order.id)
-			.then(pdfContent => {
-				const fileName =
-					"ordredetaljer_" +
-					moment(this.order.creationTime).format("DDMMYYYY") +
-					".pdf";
-				this.pdfPrintService.printPdf(pdfContent, fileName);
+			.then((pdfContent: any) => {
+				this.receiptUrl = this.generateBlobUrl(pdfContent);
+
+				console.log(this.receiptUrl);
 			})
 			.catch(() => {
 				console.log("could not get pdf");
 			});
 	}
 
-	printAgreement() {
+	public getAgreement() {
 		this.orderPdfService
 			.getOrderAgreementPdf(this.order.id)
-			.then(pdfContent => {
-				const fileName =
-					"laaneavtale_" +
-					moment(this.order.creationTime).format("DDMMYYYY") +
-					".pdf";
-				this.pdfPrintService.printPdf(pdfContent, fileName);
+			.then((pdfContent: any) => {
+				this.agreementUrl = this.generateBlobUrl(pdfContent);
+				console.log(this.agreementUrl);
 			})
 			.catch(() => {
 				console.log("could not get pdf");
 			});
 	}
 
-	public printOrderPdf() {}
+	private shouldAgreementBeVisisble() {
+		for (const orderItem of this.order.orderItems) {
+			if (orderItem.type !== "rent" && orderItem.type !== "loan") {
+				return false;
+			}
+		}
+		return this.order.amount === 0;
+	}
+
+	public openAgreementUrl() {
+		window.open(this.agreementUrl);
+	}
+
+	public openReceiptUrl() {
+		window.open(this.receiptUrl);
+	}
+
+	private generateBlobUrl(pdfContent: any): string {
+		const byteCharacters = atob(pdfContent);
+		const byteNumbers = new Array(byteCharacters.length);
+		for (let i = 0; i < byteNumbers.length; i++) {
+			byteNumbers[i] = byteCharacters.charCodeAt(i);
+		}
+
+		const blob = new Blob([new Uint8Array(byteNumbers)], {
+			type: "application/pdf"
+		});
+
+		return URL.createObjectURL(blob);
+	}
 }

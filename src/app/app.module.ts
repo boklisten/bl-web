@@ -21,6 +21,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
+	faExternalLinkAlt,
 	faUser,
 	faFlagCheckered,
 	faShoppingCart,
@@ -87,6 +88,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
 
 library.add(
+	faExternalLinkAlt,
 	faList,
 	faUser,
 	faShoppingCart,
