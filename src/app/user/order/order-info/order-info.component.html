@@ -6,22 +6,77 @@
 					<div class="col-auto mt-2">
 						<button
 							class="btn btn-outline-secondary btn-block btn-sm"
-							(click)="printReceipt()"
+							(click)="getReceipt()"
 						>
 							<span i18n="@@orderDetailPrintReceiptButton"
 								>Skriv ut kvittering</span
 							>
 						</button>
 					</div>
-					<div class="col-auto mt-2">
+					<div class="col-auto mt-2" *ngIf="showAgreementPrintOut">
 						<button
 							class="btn btn-outline-secondary btn-block btn-sm"
-							(click)="printAgreement()"
+							(click)="getAgreement()"
 						>
 							<span i18n="@@orderDetailPrintAgreementButton"
 								>Skriv ut kontrakt</span
 							>
 						</button>
+					</div>
+				</div>
+				<div class="row justify-content-center mt-2 mb-2" *ngIf="wait">
+					<div class="col-auto text-secondary">
+						<fa-icon
+							[icon]="'circle-notch'"
+							[spin]="true"
+							[size]="'2x'"
+						></fa-icon>
+					</div>
+				</div>
+				<div class="row" *ngIf="receiptUrl || agreementUrl">
+					<div class="col-12">
+						<ul class="list-group mb-2 mt-2">
+							<li
+								*ngIf="receiptUrl"
+								class="list-group-item d-flex justify-content-between align-items-center"
+								(click)="openReceiptUrl()"
+								style="cursor: pointer"
+							>
+								<span>
+									<h5>Din kvittering</h5>
+									<p>
+										Kvitteringen er klar, klikk her for å
+										åpne. (Ad-blocker må være avslått)
+									</p>
+								</span>
+								<span>
+									<fa-icon
+										[icon]="'external-link-alt'"
+										[size]="'2x'"
+									></fa-icon>
+								</span>
+							</li>
+							<li
+								*ngIf="agreementUrl"
+								class="list-group-item d-flex justify-content-between align-items-center"
+								(click)="openAgreementUrl()"
+								style="cursor: pointer"
+							>
+								<span>
+									<h5>Din Låneavtale</h5>
+									<p>
+										Låneavtalen er klar, klikk her for å
+										åpne. (Ad-blocker må være avslått)
+									</p>
+								</span>
+								<span>
+									<fa-icon
+										[icon]="'external-link-alt'"
+										[size]="'2x'"
+									></fa-icon>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
