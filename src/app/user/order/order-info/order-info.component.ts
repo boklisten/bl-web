@@ -16,6 +16,7 @@ export class OrderInfoComponent implements OnInit {
 	public agreementUrl: string;
 	public showDelivery: boolean;
 	public showAgreementPrintOut: boolean;
+	public wait: boolean;
 
 	constructor(
 		private pdfPrintService: PrintPdfService,
@@ -46,12 +47,12 @@ export class OrderInfoComponent implements OnInit {
 	}
 
 	public getReceipt() {
+		this.wait = true;
 		this.orderPdfService
 			.getOrderReceiptPdf(this.order.id)
 			.then((pdfContent: any) => {
 				this.receiptUrl = this.generateBlobUrl(pdfContent);
-
-				console.log(this.receiptUrl);
+				this.wait = false;
 			})
 			.catch(() => {
 				console.log("could not get pdf");
@@ -59,11 +60,12 @@ export class OrderInfoComponent implements OnInit {
 	}
 
 	public getAgreement() {
+		this.wait = true;
 		this.orderPdfService
 			.getOrderAgreementPdf(this.order.id)
 			.then((pdfContent: any) => {
 				this.agreementUrl = this.generateBlobUrl(pdfContent);
-				console.log(this.agreementUrl);
+				this.wait = false;
 			})
 			.catch(() => {
 				console.log("could not get pdf");
