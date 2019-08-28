@@ -39,6 +39,10 @@ export class DateService {
 		return this.daysUntil(date);
 	}
 
+	public isCancelValid(date: Date): boolean {
+		return moment().isSameOrBefore(moment(date).add(2, "weeks"));
+	}
+
 	public isTodayAfter(date: Date) {
 		return moment(date).isBefore(moment());
 	}

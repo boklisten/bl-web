@@ -145,16 +145,16 @@ export class UserCustomerItemService {
 		*/
 
 		if (
-			this._dateService.isDeadlineExpired(
-				customerItem.deadline.toString(),
-				this._maxDeadline
-			) ||
-			customerItem.returned
+			!this._dateService.isDeadlineExpired(
+				customerItem.deadline.toString()
+			) &&
+			!this._dateService.isCancelValid(customerItem.creationTime) &&
+			!customerItem.returned
 		) {
-			return false;
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	private isExtendPeriodValidOnCustomerItem(
