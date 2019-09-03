@@ -52,6 +52,14 @@ export class ItemDisplayCategoryComponent implements OnInit {
 						this.branchItems = branchItems;
 
 						for (const branchItem of this.branchItems) {
+							if (
+								!branchItem.buy &&
+								!branchItem.rent &&
+								!branchItem.partlyPayment
+							) {
+								// no action valid in bl-web
+								continue;
+							}
 							this.addBranchItemToCategory(branchItem);
 						}
 
