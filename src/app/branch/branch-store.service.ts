@@ -126,6 +126,38 @@ export class BranchStoreService {
 		return false;
 	}
 
+	public getBranchItemsCategories(): Promise<string[]> {
+		return new Promise((resolve, reject) => {
+			if (this._branchItems && this._branchItems.length > 0) {
+				resolve(this.retrieveBranchItemsCategories(this._branchItems));
+			} else {
+				this.getBranchItems()
+					.then(branchItems => {
+						resolve(
+							this.retrieveBranchItemsCategories(branchItems)
+						);
+					})
+					.catch(err => {
+						reject(err);
+					});
+			}
+		});
+	}
+
+	private retrieveBranchItemsCategories(branchItems: BranchItem[]): string[] {
+		const branchItemCategories: string[] = [];
+
+		for (const branchItem of branchItems) {
+			for (const category of branchItem.categories) {
+				if (!(branchItemCategories.indexOf(category) > -1)) {
+					branchItemCategories.push(category);
+				}
+			}
+		}
+
+		return branchItemCategories.sort();
+	}
+
 	public setCurrentBranch(branch: Branch): void {
 		if (this._currentBranch === branch) {
 			return;
@@ -142,6 +174,20 @@ export class BranchStoreService {
 			.then((branchItems: BranchItem[]) => {
 				this._branchItems = branchItems;
 				return true;
+			})
+			.catch(getBranchItemsError => {
+				throw new Error(
+					"BranchStoreService: could not get branchItems"
+				);
+			});
+	}
+
+	public getBranchItems(): Promise<BranchItem[]> {
+		return this._branchItemService
+			.getManyByIds(this._currentBranch.branchItems as string[])
+			.then((branchItems: BranchItem[]) => {
+				this._branchItems = branchItems;
+				return branchItems;
 			})
 			.catch(getBranchItemsError => {
 				throw new Error(

@@ -2,6 +2,7 @@
 	<div class="col-12">
 		<app-branch-item-category-filter
 			[branchItemCategories]="branchItemCategoryNames"
+			[selectedCategories]="selectedCategories"
 			(branchItemCategoriesSelect)="
 				onBranchItemCategoryFilterChange($event)
 			"

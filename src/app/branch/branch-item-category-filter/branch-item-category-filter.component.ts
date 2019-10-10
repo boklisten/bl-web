@@ -1,26 +1,34 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Branch} from "@wizardcoder/bl-model";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Branch } from "@wizardcoder/bl-model";
 
 @Component({
-	selector: 'app-branch-item-category-filter',
-	templateUrl: './branch-item-category-filter.component.html',
-	styleUrls: ['./branch-item-category-filter.component.scss']
+	selector: "app-branch-item-category-filter",
+	templateUrl: "./branch-item-category-filter.component.html",
+	styleUrls: ["./branch-item-category-filter.component.scss"]
 })
 export class BranchItemCategoryFilterComponent implements OnInit {
-
 	@Input() branchItemCategories: string[];
+	@Input() selectedCategories: string[];
 	@Output() branchItemCategoriesSelect: EventEmitter<string[]>;
 
 	public selectedCategoryNames: string[];
+	public display: boolean;
 
 	constructor() {
 		this.selectedCategoryNames = [];
 		this.branchItemCategoriesSelect = new EventEmitter<string[]>();
 	}
 
-
 	ngOnInit() {
 		this.branchItemCategoriesSelect.emit([]);
+		this.branchItemCategories.sort();
+		this.preselectCategories(this.selectedCategories);
+	}
+
+	private preselectCategories(selectedCategories: string[]) {
+		for (const categoryName of selectedCategories) {
+			this.onSelectCategory(categoryName);
+		}
 	}
 
 	onSelectCategory(categoryName: string) {
@@ -41,7 +49,6 @@ export class BranchItemCategoryFilterComponent implements OnInit {
 		}
 	}
 
-
 	contains(name: string) {
 		for (const categoryName of this.selectedCategoryNames) {
 			if (categoryName === name) {
@@ -51,5 +58,4 @@ export class BranchItemCategoryFilterComponent implements OnInit {
 
 		return false;
 	}
-
 }

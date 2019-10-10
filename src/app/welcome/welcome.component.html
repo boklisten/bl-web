@@ -1,4 +1,18 @@
 <div class="container">
+	<div class="row"><div class="col-auto"></div></div>
+	<div class="row justify-content-center">
+		<div class="col-auto">
+			<button
+				class="btn btn-lg btn-outline-info"
+				routerLink="/fastbuy/regions"
+				i18n="@@welcomeSelectYourSchool"
+			>
+				Select your school
+			</button>
+		</div>
+	</div>
+</div>
+<div class="container">
 	<div
 		class="row justify-content-center mt-2 mb-lg-5 mb-xl-5 mb-md-5 mb-0"
 		*ngIf="!isLoggedIn()"

@@ -13,6 +13,7 @@ import { HeaderCartComponent } from "./header/header-cart/header-cart.component"
 import { FooterComponent } from "./footer/footer.component";
 import { InfoModule } from "./info/info.module";
 import { CartModule } from "./cart/cart.module";
+import { FastbuyModule } from "./fastbuy/fastbuy.module";
 import {
 	BlConnectConfigService,
 	BlConnectModule
@@ -23,6 +24,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
 	faExternalLinkAlt,
 	faUser,
+	faChevronRight,
 	faFlagCheckered,
 	faShoppingCart,
 	faCartPlus,
@@ -89,6 +91,7 @@ import { LogoutComponent } from "./logout/logout.component";
 
 library.add(
 	faExternalLinkAlt,
+	faChevronRight,
 	faList,
 	faUser,
 	faShoppingCart,
@@ -169,7 +172,8 @@ library.add(
 		FontAwesomeModule,
 		WelcomeModule,
 		HeaderAlertModule,
-		NgbDropdownModule
+		NgbDropdownModule,
+		FastbuyModule
 	],
 	providers: [BranchGuardService],
 	bootstrap: [AppComponent]

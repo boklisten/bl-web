@@ -1,24 +1,55 @@
-
 <div class="card">
 	<div class="card-header">
-        <div class="row justify-content-center" *ngIf="branchItemCategories && branchItemCategories.length > 0">
-            <div class="col-auto bl-text-sm" i18n="@@branchItemCategoryFilterTitle">
-                Choose your subjects
-            </div>
-        </div>
+		<div
+			class="row justify-content-center"
+			*ngIf="branchItemCategories && branchItemCategories.length > 0"
+		>
+			<div
+				class="col-auto bl-text-sm"
+				i18n="@@branchItemCategoryFilterTitle"
+			>
+				Choose your subjects
+			</div>
+		</div>
 	</div>
-	<div class="card-body">
 
-        <div class="row justify-content-center">
-            <div class="col-auto mb-2" *ngFor="let categoryName of branchItemCategories">
+	<div class="card-body" *ngIf="display">
+		<div class="row justify-content-center">
+			<div
+				class="col-auto mb-2"
+				*ngFor="let categoryName of branchItemCategories"
+			>
+				<button
+					type="button"
+					class="btn btn-sm"
+					[ngClass]="{
+						'btn-outline-secondary': !contains(categoryName),
+						'btn-info': contains(categoryName)
+					}"
+					(click)="onSelectCategory(categoryName)"
+				>
+					<fa-icon
+						[icon]="'check'"
+						*ngIf="contains(categoryName)"
+					></fa-icon>
+					{{ categoryName }}
+				</button>
+			</div>
+		</div>
+	</div>
 
-                <button
-                    type="button" class="btn btn-sm"
-                    [ngClass]="{'btn-outline-secondary': !contains(categoryName), 'btn-info': contains(categoryName)}"
-                    (click)="onSelectCategory(categoryName)">
-                        <fa-icon [icon]="'check'" *ngIf="contains(categoryName)"></fa-icon> {{categoryName}}
-                </button>
-            </div>
-        </div>
-    </div>
+	<div class="card-footer">
+		<button
+			class="btn btn-outline-secondary btn-sm btn-block"
+			(click)="display = !display"
+		>
+			<span *ngIf="!display" i18n="@@branchItemCategoryFilterShowFilter"
+				>Show filter</span
+			>
+
+			<span *ngIf="display" i18n="@@branchItemCategoryFilterHideFilter"
+				>Hide filter</span
+			>
+		</button>
+	</div>
 </div>

@@ -1,0 +1,27 @@
+.course-button-selected {
+	background-color: #89028c;
+	color: white;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.course-button {
+	border: 1px solid #89028c;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.course-button-selected:hover {
+	cursor: pointer;
+	background-color: #45028c;
+}
+
+.course-button:hover {
+	cursor: pointer;
+	background-color: #89028c;
+	color: white;
+}
+
+.course-button-body {
+}
