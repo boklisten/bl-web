@@ -168,6 +168,29 @@ export class BranchStoreService {
 		this._branchChange$.next(true);
 	}
 
+	public setBranch(branch: Branch): Promise<Branch> {
+		return new Promise((resolve, reject) => {
+			if (this._currentBranch === branch) {
+				resolve(branch);
+			}
+			this._currentBranch = branch;
+			if (this._userService.loggedIn()) {
+				this._userService
+					.updateUserDetail({ branch: branch.id })
+					.then(() => {
+						this._branchChange$.next(true);
+						resolve(branch);
+					})
+					.catch(err => {
+						reject(err);
+					});
+			} else {
+				this._branchChange$.next(true);
+				resolve(branch);
+			}
+		});
+	}
+
 	public fetchBranchItems(): Promise<boolean> {
 		return this._branchItemService
 			.getManyByIds(this._currentBranch.branchItems as string[])

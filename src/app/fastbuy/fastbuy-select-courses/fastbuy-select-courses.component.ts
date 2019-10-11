@@ -27,15 +27,19 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		this.branchService
 			.getById(this.branchId)
 			.then(branch => {
-				this.branchStoreService.setCurrentBranch(branch);
 				this.branchStoreService
-					.getBranchItemsCategories()
-					.then(categories => {
-						for (const category of categories) {
-							courseNames.push({ name: category });
-						}
-						this.courses = courseNames;
-					});
+					.setBranch(branch)
+					.then(() => {
+						this.branchStoreService
+							.getBranchItemsCategories()
+							.then(categories => {
+								for (const category of categories) {
+									courseNames.push({ name: category });
+								}
+								this.courses = courseNames;
+							});
+					})
+					.catch(() => {});
 			})
 			.catch(() => {});
 	}
