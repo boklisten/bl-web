@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService } from "@wizardcoder/bl-connect";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
 	selector: "app-fastbuy-select-courses",
@@ -17,11 +18,15 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		private branchStoreService: BranchStoreService,
 		private branchService: BranchService,
 		private route: ActivatedRoute,
-		private router: Router
+		private router: Router,
+		private location: Location
 	) {}
 
 	ngOnInit() {
 		this.branchId = this.route.snapshot.queryParamMap.get("branch");
+		const queryCategories = this.route.snapshot.queryParamMap.getAll(
+			"category"
+		);
 		const courseNames = [];
 
 		this.branchService
@@ -37,6 +42,10 @@ export class FastbuySelectCoursesComponent implements OnInit {
 									courseNames.push({ name: category });
 								}
 								this.courses = courseNames;
+
+								for (const cat of queryCategories) {
+									this.select(cat);
+								}
 							});
 					})
 					.catch(() => {});
@@ -57,9 +66,21 @@ export class FastbuySelectCoursesComponent implements OnInit {
 	}
 
 	public goToItemList() {
-		this.router.navigate(["/i/select"], {
-			queryParams: { category: this.getSelectedCategories() }
-		});
+		this.router
+			.navigate([], {
+				relativeTo: this.route,
+
+				queryParams: {
+					category: this.getSelectedCategories(),
+					branch: this.branchId
+				}
+			})
+			.then(() => {
+				this.router.navigate(["/i/select"], {
+					queryParams: { category: this.getSelectedCategories() }
+				});
+			})
+			.catch(() => {});
 	}
 
 	private getSelectedCategories() {

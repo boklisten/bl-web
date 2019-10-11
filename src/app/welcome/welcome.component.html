@@ -1,21 +1,23 @@
 <div class="row justify-content-center welcome-display">
 	<div class="col-12 mt-5 mb-5">
 		<div class="row justify-content-center">
-			<div class="col text-center p-2"><h3>Alt innen lærebøker!</h3></div>
+			<div class="col text-center p-2">
+				<h3 i18n="@@welcomeSlogan">Alt innen lærebøker!</h3>
+			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col p-3 text-center">
-				<p>
+				<p i18n="@@welcomeWeAtBoklisten">
 					Vi i Boklisten.no er veldig opptatt av lærebøker, derfor vil
 					vi gjøre det så enkelt som mulig for deg å få tak i dem.
 				</p>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-2">
+		<div class="row justify-content-center mt-2 mb-5">
 			<div class="col-auto">
 				<button
 					class="btn btn-lg btn-success"
-					i18n="@@welcomeWelcomeButton"
+					i18n="@@welcomeBeginHereButton"
 					routerLink="/fastbuy/regions"
 				>
 					Start her
@@ -24,8 +26,31 @@
 		</div>
 	</div>
 </div>
+<div class="row mt-3 justify-content-center">
+	<div class="col-auto">
+		<button
+			class="btn btn-outline-secondary"
+			i18n="@@welcomeOurOpeningHours"
+		>
+			Opening hours
+		</button>
+		<button
+			class="btn btn-outline-secondary ml-3"
+			i18n="@@welcomeFrequentlyAskedQuestions"
+		>
+			FAQ
+		</button>
+		<button
+			class="btn btn-outline-secondary ml-3"
+			i18n="@@welcomGeneralInfo"
+		>
+			General info
+		</button>
+	</div>
+</div>
+<hr />
 <div class="container">
-	<div class="row mt-5 justify-content-center">
+	<div class="row mt-2 justify-content-center">
 		<div class="col-md-6 col-12">
 			<div class="card bl-timeline-header">
 				<div class="card-body text-center">
