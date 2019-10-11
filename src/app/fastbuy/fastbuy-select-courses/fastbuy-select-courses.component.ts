@@ -52,6 +52,10 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		this.selectedCourses[courseName] = !this.selectedCourses[courseName];
 	}
 
+	public haveSelected(): boolean {
+		return this.getSelectedCategories().length > 0;
+	}
+
 	public goToItemList() {
 		this.router.navigate(["/i/select"], {
 			queryParams: { category: this.getSelectedCategories() }

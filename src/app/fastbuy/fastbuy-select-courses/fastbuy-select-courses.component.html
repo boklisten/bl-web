@@ -1,25 +1,16 @@
-<div class="row mb-3">
+<div class="row mb-3 mt-5">
 	<div class="col text-center">
 		<h3 i18n="@@fastbuySelectCoursesWhatCourses">
 			What courses do you take?
 		</h3>
-	</div>
-</div>
-<div class="row justify-content-center">
-	<div class="col-6-sm">
-		<button
-			class="btn btn-outline-success"
-			(click)="goToItemList()"
-			i18n="@@fastbuySelectCoursesGoToItemList"
-		>
-			Check your booklist
-		</button>
+
+		<hr />
 	</div>
 </div>
 <div class="row justify-content-center">
 	<div class="col-sm-6">
 		<button
-			class="m-2 ml-btn-outline btn btn-block"
+			class="mb-2 ml-btn-outline btn btn-block"
 			[ngClass]="{ 'ml-btn-selected': isSelected(course.name) }"
 			(click)="select(course.name)"
 			*ngFor="let course of courses"
@@ -31,5 +22,19 @@
 				></span>
 			</div>
 		</button>
+	</div>
+
+	<div class="fastbuy-confirm-footer" *ngIf="haveSelected()">
+		<div class="row justify-content-end">
+			<div class="col-sm-12 col-md-4">
+				<button
+					class="btn btn-success btn-block"
+					(click)="goToItemList()"
+					i18n="@@fastbuySelectCoursesGoToItemList"
+				>
+					Generate your booklist
+				</button>
+			</div>
+		</div>
 	</div>
 </div>
