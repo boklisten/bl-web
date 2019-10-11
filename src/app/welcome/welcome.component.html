@@ -1,80 +1,30 @@
-<div class="container">
-	<div class="row"><div class="col-auto"></div></div>
-	<div class="row justify-content-center">
-		<div class="col-auto">
-			<button
-				class="btn btn-lg btn-outline-info"
-				routerLink="/fastbuy/regions"
-				i18n="@@welcomeSelectYourSchool"
-			>
-				Select your school
-			</button>
+<div class="row justify-content-center welcome-display">
+	<div class="col-12 mt-5 mb-5">
+		<div class="row justify-content-center">
+			<div class="col text-center p-2"><h3>Alt innen lærebøker!</h3></div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col p-3 text-center">
+				<p>
+					Vi i Boklisten.no er veldig opptatt av lærebøker, derfor vil
+					vi gjøre det så enkelt som mulig for deg å få tak i dem.
+				</p>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-2">
+			<div class="col-auto">
+				<button
+					class="btn btn-lg btn-success"
+					i18n="@@welcomeWelcomeButton"
+					routerLink="/fastbuy/regions"
+				>
+					Start her
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
 <div class="container">
-	<div
-		class="row justify-content-center mt-2 mb-lg-5 mb-xl-5 mb-md-5 mb-0"
-		*ngIf="!isLoggedIn()"
-	>
-		<div class="col-12">
-			<div class="row">
-				<div class="col-12">
-					<h2
-						class="bl-frontpage-title"
-						i18n="@@welcomeDoYouNeedBooks"
-					>
-						Trenger du skolebøker?
-					</h2>
-					<p i18n="@@welcomeWhatWeDo">
-						Vi skaffer deg de bøkene du trenger til din skole.
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-12">
-					<div class="row">
-						<div class="col-md-6 col-12">
-							<button
-								class="btn btn-info btn-block"
-								(click)="onRegisterClick()"
-								i18n="@@welcomeRegister"
-							>
-								Registrer deg
-							</button>
-						</div>
-						<div class="col-md-6 col-12 mt-md-0 mt-2">
-							<button
-								class="btn btn-outline-success btn-block"
-								(click)="onLoginClick()"
-								i18n="@@welcomeLogIn"
-							>
-								Logg inn
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-3">
-				<div class="col-12 text-secondary">
-					<span
-						class="mr-2 bl-link badge badge-pill badge-secondary p-2"
-						(click)="onBranchInfoClick()"
-						i18n="@@welcomeOurOpeningHours"
-						>Våre åpningstider</span
-					>
-					|
-					<span
-						class="mr-2 ml-2 bl-link"
-						(click)="onFaqClick()"
-						i18n="@@welcomeFrequentlyAskedQuestions"
-						>Ofte stilte spørsmål</span
-					>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="row mt-5 justify-content-center">
 		<div class="col-md-6 col-12">
 			<div class="card bl-timeline-header">
@@ -314,6 +264,68 @@
 			<span class="mr-2 ml-2 bl-link" (click)="onFaqClick()"
 				>Ofte stilte spørsmål</span
 			>
+		</div>
+	</div>
+
+	<div
+		class="row justify-content-center mt-2 mb-lg-5 mb-xl-5 mb-md-5 mb-0"
+		*ngIf="!isLoggedIn()"
+	>
+		<div class="col-12">
+			<div class="row">
+				<div class="col-12">
+					<h2
+						class="bl-frontpage-title"
+						i18n="@@welcomeDoYouNeedBooks"
+					>
+						Trenger du skolebøker?
+					</h2>
+					<p i18n="@@welcomeWhatWeDo">
+						Vi skaffer deg de bøkene du trenger til din skole.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-12">
+					<div class="row">
+						<div class="col-md-6 col-12">
+							<button
+								class="btn btn-info btn-block"
+								(click)="onRegisterClick()"
+								i18n="@@welcomeRegister"
+							>
+								Registrer deg
+							</button>
+						</div>
+						<div class="col-md-6 col-12 mt-md-0 mt-2">
+							<button
+								class="btn btn-outline-success btn-block"
+								(click)="onLoginClick()"
+								i18n="@@welcomeLogIn"
+							>
+								Logg inn
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-12 text-secondary">
+					<span
+						class="mr-2 bl-link badge badge-pill badge-secondary p-2"
+						(click)="onBranchInfoClick()"
+						i18n="@@welcomeOurOpeningHours"
+						>Våre åpningstider</span
+					>
+					|
+					<span
+						class="mr-2 ml-2 bl-link"
+						(click)="onFaqClick()"
+						i18n="@@welcomeFrequentlyAskedQuestions"
+						>Ofte stilte spørsmål</span
+					>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

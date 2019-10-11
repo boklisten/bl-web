@@ -55,6 +55,42 @@ a:visited {
 	color: inherit;
 }
 
+.ml-btn {
+	background-color: #12607a;
+	padding: 1rem !important;
+	font-size: 1rem !important;
+	color: white;
+	font-weight: bold !important;
+}
+
+.ml-btn-selected {
+	@extend .ml-btn;
+	background-color: #12607a !important;
+	color: white !important;
+}
+
+.ml-btn-outline {
+	@extend .ml-btn;
+	background-color: transparent;
+	color: black;
+	border: 1px solid #12607a !important;
+}
+
+@media (hover: hover) {
+	.ml-btn:hover {
+		background-color: #064a61;
+
+		padding-right: 0.8rem !important;
+		//padding-left: 1.2rem !important;
+		cursor: pointer;
+	}
+
+	.ml-btn-outline:hover {
+		@extend .ml-btn:hover;
+		color: white !important;
+	}
+}
+
 .bl-nav-btn-active {
 	border-bottom: solid 5px rgb(23, 162, 184);
 	border-radius: 0;
