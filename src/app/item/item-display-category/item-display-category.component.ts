@@ -100,6 +100,17 @@ export class ItemDisplayCategoryComponent implements OnInit {
 		}
 
 		this.selectedBranchItemCategories = selectedCategories;
+
+		this.selectedBranchItemCategories.sort((a: any, b: any) => {
+			const nameA = a.name.toUpperCase();
+			const nameB = b.name.toUpperCase();
+			if (nameA < nameB) {
+				return -1;
+			} else if (nameA > nameB) {
+				return 1;
+			}
+			return 0;
+		});
 	}
 
 	private addBranchItemToCategory(branchItem: BranchItem) {
