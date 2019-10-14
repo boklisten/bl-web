@@ -1,30 +1,38 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-auto text-secondary">
-            <fa-icon [icon]="'graduation-cap'" [size]="'2x'"></fa-icon>
-        </div>
-    </div>
+	<div class="row justify-content-center">
+		<div class="col-auto text-secondary">
+			<fa-icon [icon]="'graduation-cap'" [size]="'2x'"></fa-icon>
+		</div>
+	</div>
 
-    <div class="row justify-content-center mt-2 mb-4">
-        <div class="col-auto text-secondary">
-            <h4 i18n="@@branchSelectTitle">Select your school</h4>
-        </div>
-    </div>
+	<div class="row justify-content-center mt-2 mb-4">
+		<div class="col-auto text-secondary">
+			<h4 i18n="@@branchSelectTitle">Select your school</h4>
+		</div>
+	</div>
 
 	<app-blc-spinner [loading]="loading"></app-blc-spinner>
 
-    <div class="row justify-content-center">
-        <div class="col-auto" *ngFor="let branch of branches">
-            <button
-				class="btn mr-2 ml-2 mt-2"
-				[ngClass]="{'btn-outline-secondary': !selectedBranch || selectedBranch.id !== branch.id, 'btn-secondary': selectedBranch && selectedBranch.id === branch.id}"
+	<div class="row justify-content-center">
+		<div class="col-12" *ngFor="let branch of branches">
+			<button
+				class="ml-btn-outline btn btn-block mb-2"
+				[ngClass]="{
+					'ml-btn-selected':
+						selectedBranch && selectedBranch.id === branch.id
+				}"
 				(click)="onBranchSelect(branch)"
-				>
-                <fa-icon *ngIf="selectedBranch && selectedBranch.id === branch.id" [icon]="'check'" class="mr-2"></fa-icon>
-				{{branch.name}}
-            </button>
-        </div>
-    </div>
-
-
+			>
+				<div class="d-flex justify-content-between align-items-center">
+					<span> {{ branch.name }} </span>
+					<span
+						*ngIf="
+							selectedBranch && selectedBranch.id === branch.id
+						"
+						><fa-icon icon="check"></fa-icon
+					></span>
+				</div>
+			</button>
+		</div>
+	</div>
 </div>
