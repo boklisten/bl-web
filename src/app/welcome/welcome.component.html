@@ -31,18 +31,24 @@
 		<button
 			class="btn btn-outline-secondary"
 			i18n="@@welcomeOurOpeningHours"
+			routerLink="/info"
+			[queryParams]="{ tab: 'branch' }"
 		>
 			Opening hours
 		</button>
 		<button
 			class="btn btn-outline-secondary ml-3"
 			i18n="@@welcomeFrequentlyAskedQuestions"
+			routerLink="/info"
+			[queryParams]="{ tab: 'faq' }"
 		>
 			FAQ
 		</button>
 		<button
 			class="btn btn-outline-secondary ml-3"
 			i18n="@@welcomGeneralInfo"
+			routerLink="/info"
+			[queryParams]="{ tab: 'info' }"
 		>
 			General info
 		</button>
