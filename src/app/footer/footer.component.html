@@ -1,48 +1,86 @@
 <div class="container-fluid bl-footer-container">
-	<div class="row justify-content-center">
+	<div class="row justify-content-md-center">
+		<div class="col-md-auto col-sm-12 text-center text-md-left">
+			<div>
+				<span
+					class="font-weight-bold mr-2"
+					i18n="@@footerInfoEmailTitle"
+					>Email</span
+				>
+				<span i18n="@@footerInfoEmailValue">info@boklisten.no</span>
+			</div>
+			<div>
+				<span
+					class="font-weight-bold mr-2"
+					i18n="@@footerInfoPhoneTitle"
+					>Phone</span
+				>
+				<span i18n="@@footerInfoPhoneValue">91002211</span>
+			</div>
+			<div>
+				<span
+					class="font-weight-bold mr-2"
+					i18n="@@footerInfoAddressTitle"
+					>Address</span
+				>
+				<span i18n="@@footerInfoAddressValue"
+					>Postboks 8, 1316 Eiksmarka, Norway</span
+				>
+			</div>
+			<div>
+				<span
+					class="font-weight-bold mr-2"
+					i18n="@@footerInfoOrganizationNumberTitle"
+					>Organization number</span
+				>
+				<span i18n="@@footerInfoOrganizationNumberValue"
+					>912047385 MVA</span
+				>
+			</div>
+		</div>
+		<div
+			class="col-md-auto col-sm-12 mt-md-0 mt-3 text-center text-md-left"
+		>
+			<div>
+				<span
+					routerLink="/info/faq"
+					class="bl-link"
+					i18n="@@footerFaqLink"
+					>FAQ</span
+				>
+			</div>
+			<div>
+				<span
+					routerLink="/info/branch"
+					class="bl-link"
+					i18n="@@footerOpeningHoursLink"
+					>Opening hours</span
+				>
+			</div>
+
+			<div>
+				<span
+					routerLink="/info/general"
+					class="bl-link"
+					i18n="@@footerGeneralInfoLink"
+					>General info</span
+				>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center mt-2">
 		<div
 			class="col-lg-6 col-md-12 col-sm-12 col-12 bl-footer-text text-center"
 		>
 			<div class="row">
-				<div class="col-12">
-					<span
-						class="font-weight-bold mr-2"
-						i18n="@@footerInfoEmailTitle"
-						>Email:</span
-					>
-					<span i18n="@@footerInfoEmailValue">info@boklisten.no</span>
+				<div class="col-12 mt-5" (click)="goToDibs()">
+					<img
+						src="../../assets/dibs/img/DIBS_shop_vertical_EN_10.png"
+						alt="DIBS - Payments made easy"
+						width="200"
+					/>
 				</div>
-				<div class="col-12">
-					<span
-						class="font-weight-bold mr-2"
-						i18n="@@footerInfoPhoneTitle"
-						>Telefon:</span
-					>
-					<span i18n="@@footerInfoPhoneValue">91002211</span>
-				</div>
-
-				<div class="col-12">
-					<span
-						class="font-weight-bold mr-2"
-						i18n="@@footerInfoAddressTitle"
-						>Address:</span
-					>
-					<span i18n="@@footerInfoAddressValue"
-						>Postboks 8, 1316 Eiksmarka, Norway</span
-					>
-				</div>
-				<div class="col-12">
-					<span
-						class="font-weight-bold mr-2"
-						i18n="@@footerInfoOrganizationNumberTitle"
-						>Organization number:</span
-					>
-					<span i18n="@@footerInfoOrganizationNumberValue"
-						>912047385 MVA</span
-					>
-				</div>
-
-				<div class="col-12 mt-2">
+				<div class="col-12 mt-5">
 					<span
 						routerLink="/info/policies/conditions"
 						class="bl-link"
@@ -71,13 +109,6 @@
 						class="mr-2 ml-2"
 					></fa-icon>
 					<span>{{ getCurrentYear() }}</span>
-				</div>
-				<div class="col-12 mt-4" (click)="goToDibs()">
-					<img
-						src="../../assets/dibs/img/DIBS_shop_vertical_EN_10.png"
-						alt="DIBS - Payments made easy"
-						width="200"
-					/>
 				</div>
 
 				<div class="col-12 mt-5 mb-2">
