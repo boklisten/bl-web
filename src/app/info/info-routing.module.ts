@@ -18,6 +18,7 @@ const routes: Routes = [
 		path: "info",
 		component: InfoComponent,
 		children: [
+			{ path: "", redirectTo: "general", pathMatch: "full" },
 			{ path: "general", component: InfoGeneralComponent },
 			{ path: "faq", component: InfoFaqComponent },
 			{ path: "pupils", component: InfoForPupilsComponent },

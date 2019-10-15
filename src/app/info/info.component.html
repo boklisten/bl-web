@@ -1,4 +1,4 @@
-<div class="container-fluid m-2">
+<div class="container bg-white mt-3 mb-2">
 	<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
 		<div class="col-12">
 			<button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
@@ -55,7 +55,7 @@
 				<fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
 			</button>
 		</div>
-		<div class="col-12 mt-2" *ngIf="showInfoMenu">
+		<div class="col-12" *ngIf="showInfoMenu">
 			<app-info-menu-list
 				[selectedMenuButton]="selectedMenuButton"
 				(selected)="onSelectMenuButton($event)"
@@ -63,15 +63,11 @@
 		</div>
 	</div>
 
-	<div class="row d-xl-inline d-lg-inline d-md-inline d-sm-none d-none">
-		<div class="col-12">
-			<app-info-menu-list
-				[selectedMenuButton]="selectedMenuButton"
-				(selected)="onSelectMenuButton($event)"
-			></app-info-menu-list>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-12"><router-outlet></router-outlet></div>
-	</div>
+	<app-info-menu-list
+		class="d-xl-inline d-lg-inline d-md-inline d-sm-none d-none"
+		[selectedMenuButton]="selectedMenuButton"
+		(selected)="onSelectMenuButton($event)"
+	></app-info-menu-list>
 </div>
+
+<div class="container bg-white p-4"><router-outlet></router-outlet></div>
