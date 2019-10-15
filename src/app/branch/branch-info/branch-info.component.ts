@@ -26,6 +26,7 @@ export class BranchInfoComponent implements OnInit {
 
 	ngOnInit() {
 		this.selectedBranch = this._branchStoreService.getBranch();
+		console.log("selectedBranch", this.selectedBranch);
 		this.loading = true;
 
 		this._branchService
