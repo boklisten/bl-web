@@ -1,33 +1,54 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {InfoComponent} from "./info.component";
-import {InfoAgreementPrivacyComponent} from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
-import {InfoAgreementTermsComponent} from "./info-agreement/info-agreement-terms/info-agreement-terms.component";
-import {InfoAgreementConditionsComponent} from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { InfoComponent } from "./info.component";
+import { InfoAgreementPrivacyComponent } from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
+import { InfoAgreementTermsComponent } from "./info-agreement/info-agreement-terms/info-agreement-terms.component";
+import { InfoAgreementConditionsComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
+import { InfoAboutComponent } from "./info-about/info-about.component";
+import { InfoFaqComponent } from "./info-faq/info-faq.component";
+import { InfoForPupilsComponent } from "./info-for-pupils/info-for-pupils.component";
+import { BranchInfoComponent } from "../branch/branch-info/branch-info.component";
+import { InfoForCompaniesComponent } from "./info-for-companies/info-for-companies.component";
+import { InfoGeneralComponent } from "./info-general/info-general.component";
+import { ContactInfoComponent } from "./contact-info/contact-info.component";
+import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 
 const routes: Routes = [
 	{
-		path: 'info',
+		path: "info",
 		component: InfoComponent,
-	},
-	{
-		path: 'info/policies/privacy',
-		component: InfoAgreementPrivacyComponent
-	},
-	{
-		path: 'info/policies/conditions',
-		component: InfoAgreementConditionsComponent
-	},
-	{
-		path: 'info/policies/terms',
-		component: InfoAgreementTermsComponent
+		children: [
+			{ path: "general", component: InfoGeneralComponent },
+			{ path: "faq", component: InfoFaqComponent },
+			{ path: "pupils", component: InfoForPupilsComponent },
+			{ path: "branch", component: BranchInfoComponent },
+			{ path: "about", component: InfoAboutComponent },
+			{ path: "companies", component: InfoForCompaniesComponent },
+			{ path: "buyback", component: InfoBuybackComponent },
+			{ path: "contact", component: ContactInfoComponent },
+			{
+				path: "policies",
+				children: [
+					{
+						path: "privacy",
+						component: InfoAgreementPrivacyComponent
+					},
+					{
+						path: "conditions",
+						component: InfoAgreementConditionsComponent
+					},
+					{
+						path: "terms",
+						component: InfoAgreementTermsComponent
+					}
+				]
+			}
+		]
 	}
-
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class InfoRoutingModule {
-}
+export class InfoRoutingModule {}

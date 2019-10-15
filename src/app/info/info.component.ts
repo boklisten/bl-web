@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
 	selector: "app-info",
@@ -10,13 +11,17 @@ export class InfoComponent implements OnInit {
 	public showInfoMenu: boolean;
 	public selectedMenuButton: string;
 
-	constructor(private route: ActivatedRoute) {
+	constructor(
+		private route: ActivatedRoute,
+		private router: Router,
+		private location: Location
+	) {
 		this.selectedMenuButton = "general";
 	}
 
 	ngOnInit() {
 		this.route.queryParams.subscribe(params => {
-			this.selectTab(params["tab"]);
+			this.selectTab(this.route.snapshot.firstChild.url[0].path);
 		});
 	}
 
@@ -61,5 +66,6 @@ export class InfoComponent implements OnInit {
 	onSelectMenuButton(menuButton: string) {
 		this.selectedMenuButton = menuButton;
 		this.showInfoMenu = false;
+		this.router.navigate(["info/" + this.selectedMenuButton]);
 	}
 }

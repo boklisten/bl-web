@@ -1,6 +1,6 @@
-<div class="container m-2">
+<div class="container-fluid m-2">
 	<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
-		<div class="col-12 ">
+		<div class="col-12">
 			<button class="btn btn-block btn-info" (click)="onShowInfoMenu()">
 				<span
 					*ngIf="selectedMenuButton === 'how'"
@@ -71,34 +71,7 @@
 			></app-info-menu-list>
 		</div>
 	</div>
-
 	<div class="row">
-		<div class="col-12" *ngIf="selectedMenuButton === 'faq'">
-			<app-info-faq></app-info-faq>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'general'">
-			<app-info-general></app-info-general>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'pupils'">
-			<app-info-for-pupils></app-info-for-pupils>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'branch'">
-			<app-branch-info></app-branch-info>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'policies'">
-			<app-info-agreement></app-info-agreement>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'about'">
-			<app-info-about></app-info-about>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'companies'">
-			<app-info-for-companies></app-info-for-companies>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'contact'">
-			<app-contact-info></app-contact-info>
-		</div>
-		<div class="col-12" *ngIf="selectedMenuButton === 'buyback'">
-			<app-info-buyback></app-info-buyback>
-		</div>
+		<div class="col-12"><router-outlet></router-outlet></div>
 	</div>
 </div>
