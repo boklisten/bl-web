@@ -1,28 +1,108 @@
-<ngb-accordion [closeOthers]="true">
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@infoConditionsAgreementTitle">Conditions</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-info-agreement-conditions></app-info-agreement-conditions>
-		</ng-template>
-	</ngb-panel>
+<div class="row">
+	<div class="col-md-4 col-sm-12">
+		<ul
+			class="nav nav-pills flex-column d-xl-inline d-lg-inline d-md-inline d-sm-none d-none"
+		>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						active: 'conditions' === selectedTab
+					}"
+					(click)="selectedTab = 'conditions'"
+					routerLink="/info/policies/conditions"
+					i18n="infoConditionsAgreementTitle"
+					>Conditions</a
+				>
+			</li>
 
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@infoPrivacyAgreementTitle">Privacy policy</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-info-agreement-privacy></app-info-agreement-privacy>
-		</ng-template>
-	</ngb-panel>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						active: 'privacy' === selectedTab
+					}"
+					(click)="selectedTab = 'privacy'"
+					routerLink="/info/policies/privacy"
+					i18n="infoPrivacyAgreementTitle"
+					>Privacy policy</a
+				>
+			</li>
 
-	<ngb-panel>
-		<ng-template ngbPanelTitle>
-			<span i18n="@@infoTermsOfServiceTitle">Terms of service</span>
-		</ng-template>
-		<ng-template ngbPanelContent>
-			<app-info-agreement-terms></app-info-agreement-terms>
-		</ng-template>
-	</ngb-panel>
-</ngb-accordion>
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					[ngClass]="{
+						active: 'terms' === selectedTab
+					}"
+					(click)="selectedTab = 'terms'"
+					routerLink="/info/policies/terms"
+					i18n="infoTermsOfServiceTitle"
+					>Terms of service</a
+				>
+			</li>
+		</ul>
+
+		<div class="row d-xl-none d-lg-none d-md-none d-sm-inline d-inline">
+			<div class="col-12">
+				<button
+					class="btn btn-block btn-outline-secondary"
+					(click)="showPolicyMenu = !showPolicyMenu"
+				>
+					<span i18n="@@infoPolicySelectOtherAgreement"
+						>Select another policy</span
+					>
+					<fa-icon [icon]="'caret-down'" class="ml-3"></fa-icon>
+				</button>
+			</div>
+			<div class="col-12 mt-2" *ngIf="showPolicyMenu">
+				<div class="card">
+					<div class="card-body">
+						<ul class="nav nav-pills flex-column">
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									[ngClass]="{
+										active: 'conditions' === selectedTab
+									}"
+									(click)="selectTab('conditions')"
+									routerLink="/info/policies/conditions"
+									i18n="infoConditionsAgreementTitle"
+									>Conditions</a
+								>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									[ngClass]="{
+										active: 'privacy' === selectedTab
+									}"
+									(click)="selectTab('privacy')"
+									routerLink="/info/policies/privacy"
+									i18n="infoPrivacyAgreementTitle"
+									>Privacy policy</a
+								>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									[ngClass]="{
+										active: 'terms' === selectedTab
+									}"
+									(click)="selectTab('terms')"
+									routerLink="/info/policies/terms"
+									i18n="infoTermsOfServiceTitle"
+									>Terms of service</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-8 col-sm-12"><router-outlet></router-outlet></div>
+</div>

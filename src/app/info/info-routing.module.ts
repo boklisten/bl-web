@@ -11,6 +11,7 @@ import { BranchInfoComponent } from "../branch/branch-info/branch-info.component
 import { InfoForCompaniesComponent } from "./info-for-companies/info-for-companies.component";
 import { InfoGeneralComponent } from "./info-general/info-general.component";
 import { ContactInfoComponent } from "./contact-info/contact-info.component";
+import { InfoAgreementComponent } from "./info-agreement/info-agreement.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 
 const routes: Routes = [
@@ -29,7 +30,13 @@ const routes: Routes = [
 			{ path: "contact", component: ContactInfoComponent },
 			{
 				path: "policies",
+				component: InfoAgreementComponent,
 				children: [
+					{
+						path: "",
+						redirectTo: "conditions",
+						pathMatch: "full"
+					},
 					{
 						path: "privacy",
 						component: InfoAgreementPrivacyComponent

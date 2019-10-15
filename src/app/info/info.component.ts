@@ -20,9 +20,7 @@ export class InfoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.route.queryParams.subscribe(params => {
-			this.selectTab(this.route.snapshot.firstChild.url[0].path);
-		});
+		this.selectTab(this.route.snapshot.firstChild.url[0].path);
 	}
 
 	private selectTab(tabName: string) {
