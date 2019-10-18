@@ -8,6 +8,16 @@ $warning-color: #ee8434;
 
 $grid-gutter-width: 0px !important;
 
+$info: $primary-color;
+
+$theme-colors: (
+	"info": $primary-color
+);
+
+* {
+	font-family: "Montserrat", sans-serif;
+}
+
 .slow-spin {
 	-webkit-animation: fa-spin 6s infinite linear;
 	animation: fa-spin 6s infinite linear;
@@ -227,3 +237,5 @@ a:visited {
 		width: auto !important;
 	}
 }
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

@@ -23,9 +23,9 @@
 							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt"
 						],
 						"styles": [
-							"src/styles.scss",
 							"node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
+							"node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+							"src/styles.scss"
 						],
 						"scripts": []
 					},
