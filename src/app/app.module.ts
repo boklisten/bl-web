@@ -22,6 +22,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
+	faFilter,
 	faExternalLinkAlt,
 	faUser,
 	faChevronRight,
@@ -90,6 +91,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
 
 library.add(
+	faFilter,
 	faExternalLinkAlt,
 	faChevronRight,
 	faList,

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import {
 	BlApiError,
 	BlApiNotFoundError,
@@ -27,7 +28,8 @@ export class ItemDisplayCategoryComponent implements OnInit {
 
 	constructor(
 		private _itemService: ItemService,
-		private _branchItemService: BranchItemService
+		private _branchItemService: BranchItemService,
+		private _router: Router
 	) {
 		this.selectedBranchItemCategories = [];
 		this.items = [];
@@ -66,6 +68,8 @@ export class ItemDisplayCategoryComponent implements OnInit {
 
 						this.loading = false;
 
+						this.preselectCategories(this.selectedCategories);
+
 						if (this.branchItemCategoryNames.length <= 0) {
 							this.noItemsWarning = true;
 						}
@@ -81,7 +85,7 @@ export class ItemDisplayCategoryComponent implements OnInit {
 		}
 	}
 
-	onBranchItemCategoryFilterChange(branchItemCategoryFilter: string[]) {
+	public preselectCategories(branchItemCategoryFilter: string[]) {
 		let selectedCategories: {
 			name: string;
 			branchItems: BranchItem[];
@@ -110,6 +114,12 @@ export class ItemDisplayCategoryComponent implements OnInit {
 				return 1;
 			}
 			return 0;
+		});
+	}
+
+	public goToBranchSelect() {
+		this._router.navigate(["/fastbuy/courses"], {
+			queryParams: { branch: this.branch.id }
 		});
 	}
 

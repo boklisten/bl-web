@@ -1,12 +1,14 @@
 <div class="row" *ngIf="!noItemsWarning && branchItemCategoryNames.length > 0">
 	<div class="col-12 mb-2">
-		<app-branch-item-category-filter
-			[branchItemCategories]="branchItemCategoryNames"
-			[selectedCategories]="selectedCategories"
-			(branchItemCategoriesSelect)="
-				onBranchItemCategoryFilterChange($event)
-			"
-		></app-branch-item-category-filter>
+		<button
+			class="btn btn-outline-secondary btn-sm btn-block"
+			(click)="goToBranchSelect()"
+		>
+			<span class="mr-2"><fa-icon icon="filter"></fa-icon></span>
+			<span *ngIf="!display" i18n="@@branchItemCategoryFilterShowFilter"
+				>Filter</span
+			>
+		</button>
 	</div>
 </div>
 
