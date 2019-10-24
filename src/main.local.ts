@@ -5,10 +5,6 @@ import { environment } from "./environments/environment";
 
 import { hmrBootstrap } from "./hmr";
 
-document.write(
-	'<script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
-);
-
 if (environment.hmr == true) {
 	if (module["hot"]) {
 		hmrBootstrap(module, () =>

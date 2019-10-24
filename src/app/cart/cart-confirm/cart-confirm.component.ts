@@ -1,48 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
-import {ActivatedRoute, Route, Router} from "@angular/router";
-import {StorageService} from "@wizardcoder/bl-connect";
-
-declare var Dibs: any;
+import { Component, OnInit } from "@angular/core";
+import { environment } from "../../../environments/environment";
+import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
+import { ActivatedRoute, Route, Router } from "@angular/router";
+import { StorageService } from "@wizardcoder/bl-connect";
 
 @Component({
-	selector: 'app-cart-confirm',
-	templateUrl: './cart-confirm.component.html',
-	styleUrls: ['./cart-confirm.component.scss']
+	selector: "app-cart-confirm",
+	templateUrl: "./cart-confirm.component.html",
+	styleUrls: ["./cart-confirm.component.scss"]
 })
 export class CartConfirmComponent implements OnInit {
 	public dibsCheckoutOptions: {
-		checkoutKey: string,
-		paymentId: string,
-		containerId?: string,
-		language: string
+		checkoutKey: string;
+		paymentId: string;
+		containerId?: string;
+		language: string;
 	};
 
-	constructor(private _cartCheckoutService: CartCheckoutService,
-				private _router: Router,
-				private _storageService: StorageService,
-				private _route: ActivatedRoute) {
-	}
+	constructor(
+		private _cartCheckoutService: CartCheckoutService,
+		private _router: Router,
+		private _storageService: StorageService,
+		private _route: ActivatedRoute
+	) {}
 
 	ngOnInit() {
-		let paymentId = null;
-		let orderId = '';
-
-		this._route.queryParams.subscribe((params) => {
-			if (params['paymentId']) {
-				paymentId = params['paymentId'];
-			}
-		});
+		let orderId = "";
+		let paymentId = this._route.snapshot.queryParamMap.get("paymentId");
 
 		try {
 			if (!paymentId) {
-				paymentId = this._storageService.get('bl-payment-id');
+				paymentId = this._storageService.get("bl-payment-id");
 			}
-			orderId = this._storageService.get('bl-order-id');
-
+			orderId = this._storageService.get("bl-order-id");
 		} catch (e) {
-			this._router.navigateByUrl('/');
+			this._router.navigateByUrl("/");
 			return;
 		}
 
@@ -50,16 +42,7 @@ export class CartConfirmComponent implements OnInit {
 		this.createDibsPayment(paymentId, orderId);
 	}
 
-	private createDibsElement() {
-		const dibsWrapper = document.getElementById('bl-dibs-wrapper');
-		if (dibsWrapper) {
-			const dibsElement = document.createElement('div');
-			dibsElement.setAttribute('id', 'dibs-checkout-content');
-			dibsWrapper.appendChild(dibsElement);
-		}
-	}
-
-	createDibsPayment(paymentId: string, orderId: string) {
+	private createDibsPayment(paymentId: string, orderId: string) {
 		this.createDibsElement();
 
 		this.dibsCheckoutOptions = {
@@ -74,26 +57,40 @@ export class CartConfirmComponent implements OnInit {
 		const router = this._router;
 		const removeStoredIds = this.removeIds;
 
-		checkout.on('payment-initialized', function (response) {
-			checkout.send('payment-order-finalized', true);
+		checkout.on("payment-initialized", function(response) {
+			checkout.send("payment-order-finalized", true);
 		});
 
-		checkout.on('payment-completed', function (response) {
-			cartCheckoutService.placeOrder(orderId).then(() => {
-				removeStoredIds();
-				router.navigateByUrl('u/order');
-			}).catch(() => {
-				console.log('cartPaymentService: could not place order after payment was completed');
-			});
+		checkout.on("payment-completed", function(response) {
+			cartCheckoutService
+				.placeOrder(orderId)
+				.then(() => {
+					removeStoredIds();
+					router.navigateByUrl("u/order");
+				})
+				.catch(() => {
+					console.log(
+						"cartPaymentService: could not place order after payment was completed"
+					);
+				});
 		});
+	}
+
+	private createDibsElement() {
+		const dibsWrapper = document.getElementById("bl-dibs-wrapper");
+		if (dibsWrapper) {
+			const dibsElement = document.createElement("div");
+			dibsElement.setAttribute("id", "dibs-checkout-content");
+			dibsWrapper.appendChild(dibsElement);
+		}
 	}
 
 	private removeIds() {
 		try {
-			localStorage.removeItem('bl-payment-id');
-			localStorage.removeItem('bl-order-id');
+			localStorage.removeItem("bl-payment-id");
+			localStorage.removeItem("bl-order-id");
 		} catch (e) {
-			console.log('cartCheckoutService: could not remove stored ids');
+			console.log("cartCheckoutService: could not remove stored ids");
 		}
 	}
 }

@@ -27,7 +27,7 @@
 							"node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
 							"src/styles.scss"
 						],
-						"scripts": []
+						"scripts": ["scripts/dibs/dibs-easy-checkout.js"]
 					},
 					"configurations": {
 						"production-nb": {

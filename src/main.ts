@@ -11,14 +11,6 @@ import { environment } from "./environments/environment";
 
 if (environment.production) {
 	enableProdMode();
-	// DIBS live checkout script
-	document.write(
-		'<script src="https://checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
-	);
-} else {
-	document.write(
-		'<script src="https://test.checkout.dibspayment.eu/v1/checkout.js?v=1"></script>'
-	);
 }
 
 platformBrowserDynamic()
