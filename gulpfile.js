@@ -18,5 +18,6 @@ function downloadDibsProdScript() {
 	}).pipe(gulp.dest(destFolder));
 }
 
-exports.testBuild = downloadDibsTestScript;
-exports.prodBuild = downloadDibsProdScript;
+exports.test = downloadDibsTestScript;
+exports.production = downloadDibsProdScript;
+exports.development = downloadDibsTestScript;
