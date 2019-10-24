@@ -19,8 +19,7 @@ const routes: Routes = [
 	},
 	{
 		path: "cart/confirm",
-		component: CartConfirmComponent,
-		canActivate: [BranchGuardService]
+		component: CartConfirmComponent
 	}
 ];
 
