@@ -353,9 +353,10 @@ export class CartService {
 		}
 
 		const order: Order = {} as Order;
+		const branch = this._branchStoreService.getBranch();
 
 		order.amount = this.getTotalPrice();
-		order.branch = this._branchStoreService.getBranch().id;
+		order.branch = branch ? branch.id : null;
 		order.customer = this._userService.getUserDetailId();
 		order.orderItems = this.getOrderItems();
 		order.byCustomer = true;

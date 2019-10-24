@@ -1,7 +1,10 @@
-<div class="row" *ngIf="!noItemsWarning && branchItemCategoryNames.length > 0">
-	<div class="col-12 mb-2">
+<div
+	class="row justify-content-end"
+	*ngIf="!noItemsWarning && branchItemCategoryNames.length > 0"
+>
+	<div class="col-auto">
 		<button
-			class="btn btn-outline-secondary btn-sm btn-block"
+			class="btn btn-outline-info btn-sm btn-block"
 			(click)="goToBranchSelect()"
 		>
 			<span class="mr-2"><fa-icon icon="filter"></fa-icon></span>

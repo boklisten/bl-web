@@ -164,7 +164,7 @@ export class BranchStoreService {
 		}
 
 		this._currentBranch = branch;
-		this._userService.updateUserDetail({ branch: branch.id });
+		//this._userService.updateUserDetail({ branch: branch.id });
 		this._branchChange$.next(true);
 	}
 

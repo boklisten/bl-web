@@ -28,7 +28,6 @@ export class FastbuySelectCoursesComponent implements OnInit {
 			"category"
 		);
 		const courseNames = [];
-
 		this.branchService
 			.getById(this.branchId)
 			.then(branch => {

@@ -119,8 +119,18 @@ export class ItemDisplayCategoryComponent implements OnInit {
 
 	public goToBranchSelect() {
 		this._router.navigate(["/fastbuy/courses"], {
-			queryParams: { branch: this.branch.id }
+			queryParams: {
+				branch: this.branch.id,
+				category: this.getSelectedCategories()
+			}
 		});
+	}
+	private getSelectedCategories() {
+		const categories = [];
+		for (const category of this.selectedCategories) {
+			categories.push(category);
+		}
+		return categories;
 	}
 
 	private addBranchItemToCategory(branchItem: BranchItem) {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService } from "@wizardcoder/bl-connect";
 import { Branch } from "@wizardcoder/bl-model";
 
@@ -16,7 +15,6 @@ export class FastbuySelectBranchComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private branchStoreService: BranchStoreService,
 		private branchService: BranchService
 	) {}
 
