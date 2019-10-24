@@ -21,6 +21,19 @@ export class CartPaymentDibsComponent
 		paymentId: string;
 		containerId?: string;
 		language: string;
+		theme?: {
+			textColor?: string;
+			linkColor?: string;
+			panelTextColor?: string;
+			panelLinkColor?: string;
+			primaryColor?: string;
+			buttonRadius?: string;
+			buttonTextColor?: string;
+			backgroundColor?: string;
+			panelColor?: string;
+			outlineColor?: string;
+			primaryOutlineColor?: string;
+		};
 	};
 	waitingForDibs: boolean;
 	waitingForDibsInterval: any;
@@ -87,10 +100,24 @@ export class CartPaymentDibsComponent
 		this.removeDibsElement();
 		this.createDibsElement();
 
+		const primaryColor = "#26768f";
+
 		this.dibsCheckoutOptions = {
 			checkoutKey: environment.dibs.checkoutKey,
 			paymentId: this.payment.info["paymentId"],
-			language: environment.dibs.language
+			language: environment.dibs.language,
+			theme: {
+				textColor: "black",
+				linkColor: primaryColor,
+				panelTextColor: "black",
+				panelLinkColor: primaryColor,
+				primaryColor: primaryColor,
+				buttonRadius: "3px",
+				buttonTextColor: "white",
+				panelColor: "white",
+				outlineColor: primaryColor,
+				primaryOutlineColor: primaryColor
+			}
 		};
 
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
