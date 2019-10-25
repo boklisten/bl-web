@@ -7,6 +7,7 @@ import {
 	BranchItem,
 	Item
 } from "@wizardcoder/bl-model";
+import { CartService } from "../../cart/cart.service";
 import { BranchItemService, ItemService } from "@wizardcoder/bl-connect";
 
 @Component({
@@ -25,21 +26,29 @@ export class ItemDisplayCategoryComponent implements OnInit {
 	branchItemCategoryNames: string[];
 	loading: boolean;
 	noItemsWarning: boolean;
+	cartSize: number;
 
 	constructor(
 		private _itemService: ItemService,
 		private _branchItemService: BranchItemService,
-		private _router: Router
+		private _router: Router,
+		private _cartService: CartService
 	) {
 		this.selectedBranchItemCategories = [];
 		this.items = [];
 		this.branchItems = [];
 		this.branchItemCategories = [];
 		this.branchItemCategoryNames = [];
+		this.cartSize = 0;
 	}
 
 	ngOnInit() {
 		this.noItemsWarning = false;
+
+		this.cartSize = this._cartService.getSize();
+		this._cartService.onCartChange().subscribe(() => {
+			this.cartSize = this._cartService.getSize();
+		});
 
 		if (this.branch) {
 			if (
