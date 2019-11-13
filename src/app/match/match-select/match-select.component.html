@@ -1,0 +1,14 @@
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let customerItem of customerItems">
+		{{ customerItem.title }}
+		<div>
+			<button class="btn btn-success mr-2">
+				Try to match (- {{ customerItem.amountLeftToPay | blcPrice }})
+			</button>
+			<button class="btn btn-outline-danger btn-small">
+				Buyout (<b>{{ customerItem.amountLeftToPay | blcPrice }}</b
+				>)
+			</button>
+		</div>
+	</li>
+</ul>

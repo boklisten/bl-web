@@ -20,6 +20,7 @@ import {
 } from "@wizardcoder/bl-connect";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { MatchModule } from "./match/match.module";
 
 import {
 	faFilter,
@@ -175,7 +176,8 @@ library.add(
 		WelcomeModule,
 		HeaderAlertModule,
 		NgbDropdownModule,
-		FastbuyModule
+		FastbuyModule,
+		MatchModule
 	],
 	providers: [BranchGuardService],
 	bootstrap: [AppComponent]
