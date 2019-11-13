@@ -1,20 +1,26 @@
-
-import {Injectable} from "@angular/core";
-import {CanActivate, Router} from "@angular/router";
-import {UserService} from "./user.service";
+import { Injectable } from "@angular/core";
+import {
+	CanActivate,
+	Router,
+	ActivatedRouteSnapshot,
+	RouterStateSnapshot
+} from "@angular/router";
+import { UserService } from "./user.service";
 
 @Injectable()
 export class UserGuardService implements CanActivate {
-	constructor(private _userService: UserService, private _router: Router) {
-	
-	}
-	canActivate(): boolean {
-		
+	constructor(private _userService: UserService, private _router: Router) {}
+	canActivate(
+		route: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot
+	): boolean {
 		if (!this._userService.loggedIn()) {
-			this._router.navigate(['/auth/menu']);
+			this._router.navigate(["/auth/menu"], {
+				queryParams: { redirect: state.url }
+			});
 			return false;
 		}
-		
+
 		return true;
 	}
 }

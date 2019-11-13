@@ -1,12 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "../user.service";
+import { StorageService } from "@wizardcoder/bl-connect";
 
 @Injectable()
 export class UserEditService {
 	private _redirectUrl: string;
 
-	constructor(private router: Router, private userService: UserService) {}
+	constructor(
+		private router: Router,
+		private userService: UserService,
+		private storageService: StorageService
+	) {}
 
 	public updateUserDetail(data: any) {
 		return new Promise((resolve, reject) => {
@@ -28,7 +33,12 @@ export class UserEditService {
 	}
 
 	get redirectUrl(): string {
-		return this._redirectUrl;
+		let redirect: string;
+		try {
+			redirect = this.storageService.get("bl-redirect");
+		} catch (e) {}
+
+		return redirect ? redirect : this._redirectUrl;
 	}
 
 	set redirectUrl(value: string) {
