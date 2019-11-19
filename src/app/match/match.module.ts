@@ -6,9 +6,10 @@ import { MatchSelectComponent } from "./match-select/match-select.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
 import { MatchSelectItemComponent } from "./match-select/match-select-item/match-select-item.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { MatchInfoNextStepComponent } from './match-info-next-step/match-info-next-step.component';
 
 @NgModule({
-	declarations: [MatchSelectComponent, MatchSelectItemComponent],
+	declarations: [MatchSelectComponent, MatchSelectItemComponent, MatchInfoNextStepComponent],
 	imports: [
 		CommonModule,
 		MatchRoutingModule,

@@ -7,10 +7,15 @@ import { UserService } from "../../user/user.service";
 	providedIn: "root"
 })
 export class MatchHelperService {
+	private currentMatch: Match;
 	constructor(
 		private matchService: MatchService,
 		private userService: UserService
 	) {}
+
+	public getCurrentMatch(): Match {
+		return this.currentMatch;
+	}
 
 	public createMatch(
 		items: {
@@ -49,8 +54,9 @@ export class MatchHelperService {
 
 					this.matchService
 						.add(match)
-						.then(() => {
-							resolve(match);
+						.then(addedMatch => {
+							this.currentMatch = addedMatch;
+							resolve(addedMatch);
 						})
 						.catch(matchAddErr => {
 							reject(matchAddErr);

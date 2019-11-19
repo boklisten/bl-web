@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { UserService } from "../../user/user.service";
 import { CustomerItem, Match, Item } from "@wizardcoder/bl-model";
 import { MatchItemChoice } from "../match-item-choice";
@@ -20,7 +21,8 @@ export class MatchSelectComponent implements OnInit {
 
 	constructor(
 		private userService: UserService,
-		private matchHelperService: MatchHelperService
+		private matchHelperService: MatchHelperService,
+		private router: Router
 	) {
 		this.matchChoices = [];
 	}
@@ -51,11 +53,11 @@ export class MatchSelectComponent implements OnInit {
 		this.matchHelperService
 			.createMatch(matchItems)
 			.then(match => {
-				console.log("match was added", match);
 				this.wait = false;
+				this.router.navigate(["/match/next-steps"]);
 			})
 			.catch(err => {
-				console.log("match could not be added", err);
+				this.wait = false;
 			});
 	}
 
