@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../../user/user.service";
 import { CustomerItem, Match, Item } from "@wizardcoder/bl-model";
 import { MatchItemChoice } from "../match-item-choice";
 import { MatchHelperService } from "../match-helper/match-helper.service";
+import { DateService } from "../../date/date.service";
 
 @Component({
 	selector: "app-match-select",
@@ -18,20 +19,54 @@ export class MatchSelectComponent implements OnInit {
 		item: Item;
 		choice: MatchItemChoice;
 	}[] = [];
+	public noDeadlineSpecifiedError: boolean;
+	public noCustomerItemsFoundError: boolean;
 
 	constructor(
 		private userService: UserService,
 		private matchHelperService: MatchHelperService,
-		private router: Router
+		private router: Router,
+		private route: ActivatedRoute,
+		private dateService: DateService
 	) {
 		this.matchChoices = [];
 	}
 
 	ngOnInit() {
+		const deadline = this.route.snapshot.queryParamMap.get("deadline");
+		const deadlineDate = this.dateService.convertFromFormat(
+			deadline,
+			"DDMMYY"
+		);
+
 		this.userService
 			.getCustomerItems()
 			.then(customerItems => {
-				this.customerItems = customerItems;
+				if (deadline) {
+					let validCustomerItems = [];
+					for (let customerItem of customerItems) {
+						try {
+							if (
+								this.dateService.isBetweenDays(
+									deadlineDate,
+									customerItem.deadline,
+									1,
+									1
+								)
+							) {
+								validCustomerItems.push(customerItem);
+							}
+						} catch (e) {
+							console.log("err", e);
+						}
+					}
+					this.customerItems = validCustomerItems;
+					if (this.customerItems.length <= 0) {
+						this.noCustomerItemsFoundError = true;
+					}
+				} else {
+					this.noDeadlineSpecifiedError = true;
+				}
 			})
 			.catch(() => {});
 	}

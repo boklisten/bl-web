@@ -1,4 +1,22 @@
 <ul class="list-group">
+	<li
+		class="list-group-item list-group-item-warning mt-2"
+		*ngIf="noCustomerItemsFoundError"
+	>
+		<fa-icon [icon]="'exclamation-circle'" class="mr-2"></fa-icon>
+		<span i18n="@@matchSelectNoCustomerItemsFound">
+			No CustomerItems found
+		</span>
+	</li>
+	<li
+		class="list-group-item list-group-item-danger mt-2"
+		*ngIf="noDeadlineSpecifiedError"
+	>
+		<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+		<span i18n="@@matchSelectNoDeadlineSpecified">
+			No deadline specified</span
+		>
+	</li>
 	<li class="list-group-item mt-2" *ngFor="let customerItem of customerItems">
 		<app-match-select-item
 			[customerItem]="customerItem"

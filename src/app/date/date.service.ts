@@ -142,4 +142,25 @@ export class DateService {
 		}
 		return false;
 	}
+
+	public isSameOrBefore(aTime: string, bTime: string): boolean {
+		const aMoment = moment(aTime).endOf("day");
+		const bMoment = moment(bTime).endOf("day");
+		return aMoment.isSame(bMoment);
+	}
+
+	public convertFromFormat(date: string, format: string): Date {
+		return moment(date, format).toDate();
+	}
+
+	public isBetweenDays(
+		date: Date,
+		deadline: Date,
+		numberOfDaysBefore: number,
+		numberOfDaysAfter: number
+	): boolean {
+		const before = moment(deadline).subtract("days", numberOfDaysBefore);
+		const after = moment(deadline).add("days", numberOfDaysAfter);
+		return moment(date).isBetween(before, after, "day", "[]");
+	}
 }
