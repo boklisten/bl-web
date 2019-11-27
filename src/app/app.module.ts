@@ -23,6 +23,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { MatchModule } from "./match/match.module";
 
 import {
+	faUserFriends,
 	faFilter,
 	faExternalLinkAlt,
 	faUser,
@@ -150,7 +151,8 @@ library.add(
 	faAddressCard,
 	faBirthdayCake,
 	faArrowLeft,
-	faFlagCheckered
+	faFlagCheckered,
+	faUserFriends
 );
 
 @NgModule({

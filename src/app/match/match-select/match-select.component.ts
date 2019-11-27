@@ -52,7 +52,8 @@ export class MatchSelectComponent implements OnInit {
 									customerItem.deadline,
 									1,
 									1
-								)
+								) &&
+								!customerItem.match
 							) {
 								validCustomerItems.push(customerItem);
 							}

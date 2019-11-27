@@ -40,6 +40,25 @@
 					</div>
 				</div>
 			</div>
+
+			<div
+				class="card-body bg-success text-white"
+				*ngIf="
+					customerItem.match &&
+					!customerItem.buyout &&
+					!customerItem.buyback &&
+					!returned
+				"
+			>
+				<div class="row">
+					<div class="col-auto">
+						<fa-icon [icon]="'user-friends'" class="mr-2"></fa-icon>
+						<span i18n="@@userCustomerItemMatchPendingMessage"
+							>We will try to match this item for you</span
+						>
+					</div>
+				</div>
+			</div>
 			<div
 				class="card-body bg-secondary text-white"
 				*ngIf="customerItem.buyout && !customerItem.buyback"
@@ -81,7 +100,9 @@
 				</div>
 				<div
 					class="row justify-content-between"
-					*ngIf="!returned && !customerItem.buyout"
+					*ngIf="
+						!returned && !customerItem.buyout && !customerItem.match
+					"
 				>
 					<div
 						class="col-auto text-secondary font-weight-bold"
@@ -107,7 +128,8 @@
 					*ngIf="
 						customerItem.type == 'partly-payment' &&
 						!customerItem.returned &&
-						!customerItem.buyout
+						!customerItem.buyout &&
+						!customerItem.match
 					"
 				>
 					<div

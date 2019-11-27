@@ -1,3 +1,12 @@
+<div class="row mt-2">
+	<div class="col">
+		<div class="card">
+			<div class="card-body text-center">
+				<h1>Choose what items we should try to match.</h1>
+			</div>
+		</div>
+	</div>
+</div>
 <ul class="list-group">
 	<li
 		class="list-group-item list-group-item-warning mt-2"
@@ -32,7 +41,7 @@
 			[disabled]="!canConfirm()"
 			[ngClass]="{ 'btn-success': canConfirm() }"
 		>
-			<span *ngIf="!wait">Confirm</span>
+			<span *ngIf="!wait" i18n="@@matchSelectConfirm">Confirm</span>
 			<fa-icon
 				[icon]="'circle-notch'"
 				[spin]="true"

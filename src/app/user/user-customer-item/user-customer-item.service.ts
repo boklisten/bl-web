@@ -149,7 +149,8 @@ export class UserCustomerItemService {
 				customerItem.deadline.toString()
 			) &&
 			!this._dateService.isCancelValid(customerItem.creationTime) &&
-			!customerItem.returned
+			!customerItem.returned &&
+			!customerItem.match
 		) {
 			return true;
 		}
