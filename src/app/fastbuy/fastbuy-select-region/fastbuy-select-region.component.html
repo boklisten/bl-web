@@ -1,4 +1,4 @@
-<div class="row mb-3 mt-5">
+<div class="row mb-3">
 	<div class="col text-center">
 		<h3 i18n="@@fastbuySelectRegionWhereTitle">
 			Where do you go to school?
@@ -8,9 +8,9 @@
 	</div>
 </div>
 <div class="row justify-content-center">
-	<div class="col-sm-6">
+	<div class="col-md-6 col-12">
 		<button
-			class="mb-2 btn btn-block ml-btn"
+			class="mb-2 btn btn-block btn-info"
 			*ngFor="let region of regions"
 			[routerLink]="link"
 			[queryParams]="region.params"

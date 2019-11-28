@@ -13,6 +13,7 @@ export class FastbuySelectCoursesComponent implements OnInit {
 	public courses = [];
 	private branchId: string;
 	private selectedCourses = {};
+	public wait: boolean;
 
 	constructor(
 		private branchStoreService: BranchStoreService,
@@ -28,8 +29,9 @@ export class FastbuySelectCoursesComponent implements OnInit {
 			"category"
 		);
 		const courseNames = [];
+		this.wait = true;
 		this.branchService
-			.getById(this.branchId)
+			.getById(this.branchId, { fresh: true })
 			.then(branch => {
 				this.branchStoreService
 					.setBranch(branch)
@@ -45,11 +47,23 @@ export class FastbuySelectCoursesComponent implements OnInit {
 								for (const cat of queryCategories) {
 									this.select(cat);
 								}
+								if (this.courses.length <= 0) {
+									this.router.navigate(["/i/select"]);
+								}
+							})
+							.catch(() => {
+								// if no categories are found
+								this.router.navigate(["/i/select"]);
 							});
+						this.wait = false;
 					})
-					.catch(() => {});
+					.catch(() => {
+						this.wait = false;
+					});
 			})
-			.catch(() => {});
+			.catch(() => {
+				this.wait = false;
+			});
 	}
 
 	public isSelected(courseName) {

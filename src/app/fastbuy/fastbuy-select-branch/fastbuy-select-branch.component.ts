@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BranchService } from "@wizardcoder/bl-connect";
 import { Branch } from "@wizardcoder/bl-model";
+import { BranchStoreService } from "../../branch/branch-store.service";
 
 @Component({
 	selector: "app-fastbuy-select-branch",
@@ -12,14 +13,18 @@ export class FastbuySelectBranchComponent implements OnInit {
 	private region: string;
 	public branches: { name: string; params: any }[];
 	public link = "/fastbuy/courses";
+	public wait: boolean;
 
 	constructor(
 		private route: ActivatedRoute,
-		private branchService: BranchService
+		private router: Router,
+		private branchService: BranchService,
+		private branchStoreService: BranchStoreService
 	) {}
 
 	ngOnInit() {
 		this.region = this.route.snapshot.queryParamMap.get("region");
+		this.wait = true;
 
 		this.branchService
 			.get()
@@ -41,6 +46,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 
 						branchNames.push({
 							name: name,
+							branch: branch,
 							params: { branch: branch.id }
 						});
 					}
@@ -49,7 +55,27 @@ export class FastbuySelectBranchComponent implements OnInit {
 
 				this.region =
 					this.region.charAt(0).toUpperCase() + this.region.slice(1);
+
+				this.wait = false;
 			})
-			.catch(() => {});
+			.catch(() => {
+				this.wait = false;
+			});
+	}
+
+	public onBranchSelect(branch: Branch) {
+		this.wait = true;
+		this.branchStoreService
+			.setBranch(branch)
+			.then(() => {
+				this.wait = false;
+				this.router.navigate([
+					"fastbuy/courses",
+					{ queryParams: { branch: branch.id } }
+				]);
+			})
+			.catch(() => {
+				this.wait = false;
+			});
 	}
 }

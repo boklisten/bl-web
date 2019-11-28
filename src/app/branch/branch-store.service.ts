@@ -128,19 +128,13 @@ export class BranchStoreService {
 
 	public getBranchItemsCategories(): Promise<string[]> {
 		return new Promise((resolve, reject) => {
-			if (this._branchItems && this._branchItems.length > 0) {
-				resolve(this.retrieveBranchItemsCategories(this._branchItems));
-			} else {
-				this.getBranchItems()
-					.then(branchItems => {
-						resolve(
-							this.retrieveBranchItemsCategories(branchItems)
-						);
-					})
-					.catch(err => {
-						reject(err);
-					});
-			}
+			this.getBranchItems()
+				.then(branchItems => {
+					resolve(this.retrieveBranchItemsCategories(branchItems));
+				})
+				.catch(err => {
+					reject(err);
+				});
 		});
 	}
 

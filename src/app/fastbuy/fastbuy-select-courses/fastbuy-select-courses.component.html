@@ -1,4 +1,4 @@
-<div class="row mb-3 mt-5">
+<div class="row mb-3">
 	<div class="col text-center">
 		<h3 i18n="@@fastbuySelectCoursesWhatCourses">
 			What courses do you take?
@@ -7,11 +7,16 @@
 		<hr />
 	</div>
 </div>
+<div class="row justify-content-center" *ngIf="wait">
+	<div class="col-auto">
+		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'2x'"></fa-icon>
+	</div>
+</div>
 <div class="row justify-content-center">
-	<div class="col-sm-6">
+	<div class="col-md-6 col-12">
 		<button
-			class="mb-2 ml-btn-outline btn btn-block"
-			[ngClass]="{ 'ml-btn-selected': isSelected(course.name) }"
+			class="mb-2 btn btn-outline-info btn-block"
+			[ngClass]="{ 'btn-info text-white': isSelected(course.name) }"
 			(click)="select(course.name)"
 			*ngFor="let course of courses"
 		>
