@@ -57,7 +57,7 @@ export class UserCustomerItemComponent implements OnInit {
 		if (this.customerItem) {
 			if (!this.item) {
 				this._itemService
-					.getById(this.customerItem.item as string)
+					.getById(this.customerItem.item as string, { fresh: true })
 					.then((item: Item) => {
 						this.item = item;
 						this.initByCart();

@@ -23,7 +23,9 @@ export class UserItemComponent implements OnInit {
 			.getUserDetail()
 			.then((userDetail: UserDetail) => {
 				this._customerItemService
-					.getManyByIds(userDetail.customerItems as string[])
+					.getManyByIds(userDetail.customerItems as string[], {
+						fresh: true
+					})
 					.then((customerItems: CustomerItem[]) => {
 						this.customerItems = customerItems;
 					})

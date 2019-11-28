@@ -27,7 +27,7 @@ export class MatchInfoNextStepComponent implements OnInit {
 		if (!this.cartService.isEmpty()) {
 			this.router.navigate(["/cart"]);
 		} else {
-			this.router.navigate(["/info/faq"]);
+			this.router.navigate(["/u/items"]);
 		}
 	}
 }
