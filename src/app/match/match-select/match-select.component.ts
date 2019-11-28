@@ -75,6 +75,7 @@ export class MatchSelectComponent implements OnInit {
 	public onConfirm() {
 		let matchItems = [];
 		this.wait = true;
+
 		for (let matchChoices of this.matchChoices) {
 			if (matchChoices.choice.match) {
 				matchItems.push({
@@ -84,6 +85,11 @@ export class MatchSelectComponent implements OnInit {
 					reciever: null
 				});
 			}
+		}
+
+		if (matchItems.length <= 0) {
+			this.router.navigate(["/u/items"]);
+			return;
 		}
 
 		this.matchHelperService
