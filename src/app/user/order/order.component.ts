@@ -37,10 +37,12 @@ export class OrderComponent implements OnInit {
 	getOrders(): Promise<Order[]> {
 		return new Promise((resolve, reject) => {
 			this._userDetailService
-				.getById(this._userService.getUserDetailId())
+				.getById(this._userService.getUserDetailId(), { fresh: true })
 				.then((userDetail: UserDetail) => {
 					this._orderService
-						.getManyByIds(userDetail.orders as string[])
+						.getManyByIds(userDetail.orders as string[], {
+							fresh: true
+						})
 						.then((orders: Order[]) => {
 							resolve(orders);
 						})

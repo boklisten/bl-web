@@ -35,8 +35,7 @@ export class MatchHelperService {
 			this.userService
 				.getUserDetail()
 				.then(userDetail => {
-					const match: Match = {
-						id: null,
+					const match = {
 						sender: {
 							userId: userDetail.id,
 							name: userDetail.name,
@@ -49,8 +48,8 @@ export class MatchHelperService {
 						state: "created",
 						events: [{ type: "created", time: new Date() }],
 						meetingPoint: null,
-						branch: null
-					};
+						branch: userDetail.branch
+					} as Match;
 
 					this.matchService
 						.add(match)
