@@ -1,11 +1,11 @@
 <div class="row justify-content-between align-items-center">
-	<div class="col-auto" *ngIf="item">
-		<h3>{{ item.title }}</h3>
+	<div class="col-md-auto col-12" *ngIf="item">
+		<h5>{{ item.title }}</h5>
 		<small>{{ item.info["isbn"] }}</small>
 	</div>
-	<div class="col-auto">
+	<div class="col-md-auto col-12 m-md-0 mt-3">
 		<button
-			class="btn btn-outline-success mr-2"
+			class="btn btn-outline-success btn-block mr-2"
 			(click)="onChoice('match')"
 			i18n="@@matchSelectItemBuyoutMatch"
 		>
@@ -17,7 +17,7 @@
 			></fa-icon>
 		</button>
 		<button
-			class="btn btn-link btn-small text-danger"
+			class="btn btn-link btn-small text-danger btn-block"
 			(click)="onChoice('buyout')"
 			i18n="@@matchSelectItemBuyoutButton"
 		>
