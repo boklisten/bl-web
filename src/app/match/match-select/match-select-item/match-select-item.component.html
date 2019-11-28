@@ -7,8 +7,9 @@
 		<button
 			class="btn btn-outline-success mr-2"
 			(click)="onChoice('match')"
+			i18n="@@matchSelectItemBuyoutMatch"
 		>
-			Try to match (- {{ customerItem.amountLeftToPay | blcPrice }})
+			Reuse
 			<fa-icon
 				[icon]="'check'"
 				*ngIf="choice.match"
@@ -18,9 +19,9 @@
 		<button
 			class="btn btn-link btn-small text-danger"
 			(click)="onChoice('buyout')"
+			i18n="@@matchSelectItemBuyoutButton"
 		>
-			Buyout (<b>{{ customerItem.amountLeftToPay | blcPrice }}</b
-			>)
+			Buyout
 
 			<fa-icon
 				[icon]="'check'"
