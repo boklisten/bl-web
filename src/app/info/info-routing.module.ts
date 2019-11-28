@@ -24,6 +24,7 @@ const routes: Routes = [
 			{ path: "faq", component: InfoFaqComponent },
 			{ path: "pupils", component: InfoForPupilsComponent },
 			{ path: "branch", component: BranchInfoComponent },
+			{ path: "branch/:id", component: BranchInfoComponent },
 			{ path: "about", component: InfoAboutComponent },
 			{ path: "companies", component: InfoForCompaniesComponent },
 			{ path: "buyback", component: InfoBuybackComponent },

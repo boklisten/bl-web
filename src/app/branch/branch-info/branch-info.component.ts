@@ -19,13 +19,17 @@ export class BranchInfoComponent implements OnInit {
 
 	constructor(
 		private _branchService: BranchService,
-		private _branchStoreService: BranchStoreService
+		private _branchStoreService: BranchStoreService,
+		private router: Router,
+		private route: ActivatedRoute
 	) {
 		this.branches = [];
 	}
 
 	ngOnInit() {
 		this.selectedBranch = this._branchStoreService.getBranch();
+
+		let branchId = this.route.snapshot.paramMap.get("id");
 		this.loading = true;
 
 		this._branchService
@@ -44,8 +48,12 @@ export class BranchInfoComponent implements OnInit {
 					return 0;
 				});
 
-				if (!this.selectedBranch) {
-					this.selectedBranch = this.branches[0];
+				if (branchId) {
+					this.selectByIdOrName(branchId);
+				} else {
+					if (!this.selectedBranch) {
+						this.selectedBranch = this.branches[0];
+					}
 				}
 
 				this.loading = false;
@@ -59,6 +67,16 @@ export class BranchInfoComponent implements OnInit {
 			});
 	}
 
+	private selectByIdOrName(idOrName: string) {
+		for (let branch of this.branches) {
+			if (branch.name === idOrName || branch.id === idOrName) {
+				this.selectedBranch = branch;
+				return;
+			}
+		}
+		this.selectedBranch = this.branches[0];
+	}
+
 	public onShowBranchMenu() {
 		this.showBranchMenu = !this.showBranchMenu;
 	}
@@ -67,5 +85,6 @@ export class BranchInfoComponent implements OnInit {
 		window.scroll(0, 0);
 		this.selectedBranch = branch;
 		this.showBranchMenu = false;
+		this.router.navigate(["/info/branch/" + branch.id]);
 	}
 }

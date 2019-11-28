@@ -41,6 +41,8 @@ export class OrderDeliveryInfoComponent implements OnInit {
 	}
 
 	private onBranchInfoClick() {
-		this._router.navigateByUrl("/info?tab=branch");
+		this._router.navigateByUrl(
+			"/info/branch/" + this.delivery.info["branch"]
+		);
 	}
 }

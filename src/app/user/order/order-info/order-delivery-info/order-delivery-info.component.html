@@ -4,71 +4,121 @@
 	</div>
 
 	<div class="card-body" *ngIf="delivery.method === 'bring'">
-        <div class="row justify-content-between">
+		<div class="row justify-content-between">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoShipmentMethod">
+				<span
+					class="text-secondary font-weight-bold"
+					i18n="@@orderDeliveryInfoShipmentMethod"
+				>
 					Shipment method
 				</span>
 			</div>
-            <div class="col-md-auto col-sm-12 col-12">
-				<span *ngIf="delivery.method === 'bring'" i18n="@@orderDeliveryInfoMethodBring">
+			<div class="col-md-auto col-sm-12 col-12">
+				<span
+					*ngIf="delivery.method === 'bring'"
+					i18n="@@orderDeliveryInfoMethodBring"
+				>
 					Bring
 				</span>
-				<span *ngIf="delivery.method === 'branch'" i18n="@@orderDeliveryInfoMethodBranch">
+				<span
+					*ngIf="delivery.method === 'branch'"
+					i18n="@@orderDeliveryInfoMethodBranch"
+				>
 					Branch
 				</span>
-            </div>
-        </div>
-		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2" *ngIf="!order.handoutByDelivery">
+			</div>
+		</div>
+		<div
+			class="row justify-content-between mt-md-0 mt-sm-2 mt-2"
+			*ngIf="!order.handoutByDelivery"
+		>
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold" i18n="@@orderDeliveryInfoEstimatedDate">
+				<span
+					class="text-secondary font-weight-bold"
+					i18n="@@orderDeliveryInfoEstimatedDate"
+				>
 					Estimated delivery date
 				</span>
 			</div>
-            <div class="col-md-auto col-sm-12 col-12">
+			<div class="col-md-auto col-sm-12 col-12">
 				<span *ngIf="delivery.info['estimatedDelivery']">
-					{{delivery.info['estimatedDelivery'] | blcDate}}
+					{{ delivery.info["estimatedDelivery"] | blcDate }}
 				</span>
-				<span *ngIf="!delivery.info['estimatedDelivery']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
-					<span i18n="@@orderDeliveryInfoEstimatedDateError">Could not get delivery date info</span>
+				<span
+					*ngIf="!delivery.info['estimatedDelivery']"
+					class="font-italic"
+				>
+					<fa-icon
+						[icon]="'exclamation-triangle'"
+						class="mr-2 text-warning"
+					></fa-icon>
+					<span i18n="@@orderDeliveryInfoEstimatedDateError"
+						>Could not get delivery date info</span
+					>
 				</span>
-            </div>
-        </div>
+			</div>
+		</div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
-			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoShipmentAddress">
+			<div
+				class="col-auto text-secondary font-weight-bold"
+				i18n="@@orderDeliveryInfoShipmentAddress"
+			>
 				Shipment address
 			</div>
 			<div class="col-md-auto col-sm-12 col-12">
 				<span *ngIf="delivery.info && delivery.info['shipmentAddress']">
-					{{delivery.info['shipmentAddress']['address']}}, {{delivery.info['shipmentAddress']['postalCode']}} {{delivery.info['shipmentAddress']['postalCity']}}
+					{{ delivery.info["shipmentAddress"]["address"] }},
+					{{ delivery.info["shipmentAddress"]["postalCode"] }}
+					{{ delivery.info["shipmentAddress"]["postalCity"] }}
 				</span>
 				<span *ngIf="!delivery || !delivery.info['shipmentAddress']">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
-					<span i18n="@@orderDeliveryInfoShipmentAddressError">Could not get address</span>
+					<fa-icon
+						[icon]="'exclamation-triangle'"
+						class="mr-2 text-warning"
+					></fa-icon>
+					<span i18n="@@orderDeliveryInfoShipmentAddressError"
+						>Could not get address</span
+					>
 				</span>
 			</div>
 		</div>
 		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2">
-			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoTrackingNumber">
+			<div
+				class="col-auto text-secondary font-weight-bold"
+				i18n="@@orderDeliveryInfoTrackingNumber"
+			>
 				Tracking number
 			</div>
 			<div class="col-md-auto col-sm-12 col-12">
 				<span *ngIf="delivery.info['trackingNumber']">
-					{{delivery.info['trackingNumber']}}
+					{{ delivery.info["trackingNumber"] }}
 				</span>
-				<span *ngIf="!delivery.info['trackingNumber']" class="font-italic">
-					<fa-icon [icon]="'exclamation-triangle'" class="mr-2 text-warning"></fa-icon>
-					<span i18n="@@orderDeliveryInfoTrackingNumberError">No tracking number yet</span>
+				<span
+					*ngIf="!delivery.info['trackingNumber']"
+					class="font-italic"
+				>
+					<fa-icon
+						[icon]="'exclamation-triangle'"
+						class="mr-2 text-warning"
+					></fa-icon>
+					<span i18n="@@orderDeliveryInfoTrackingNumberError"
+						>No tracking number yet</span
+					>
 				</span>
 			</div>
 		</div>
-		<div class="row justify-content-between mt-md-0 mt-sm-2 mt-2" *ngIf="!order.handoutByDelivery">
-			<div class="col-auto text-secondary font-weight-bold" i18n="@@orderDeliveryInfoPrice">
+		<div
+			class="row justify-content-between mt-md-0 mt-sm-2 mt-2"
+			*ngIf="!order.handoutByDelivery"
+		>
+			<div
+				class="col-auto text-secondary font-weight-bold"
+				i18n="@@orderDeliveryInfoPrice"
+			>
 				Price
 			</div>
 			<div class="col-md-auto col-sm-12 col-12 ">
-				{{delivery.amount | blcPrice:'international'}}
+				{{ delivery.amount | blcPrice: "international" }}
 			</div>
 		</div>
 	</div>
@@ -76,7 +126,10 @@
 	<div class="card-body" *ngIf="delivery.info['trackingNumber']">
 		<div class="row">
 			<div class="col-12">
-				<button class="btn btn-block btn-outline-secondary" (click)="onClickShowDeliveryAtBring()">
+				<button
+					class="btn btn-block btn-outline-secondary"
+					(click)="onClickShowDeliveryAtBring()"
+				>
 					Se leveransen hos Bring
 				</button>
 			</div>
@@ -86,23 +139,30 @@
 	<div class="card-body" *ngIf="delivery.method === 'branch'">
 		<div class="row justify-content-between">
 			<div class="col-auto">
-				<span class="text-secondary font-weight-bold" i18n="get the item at branch x @@orderDeliveryInfoGetItAt">
+				<span
+					class="text-secondary font-weight-bold"
+					i18n="get the item at branch x @@orderDeliveryInfoGetItAt"
+				>
 					Get it at
 				</span>
 			</div>
 			<div class="col-auto">
 				<span class="bl-link-black">
-					{{delivery.info['branch'].toString() | blcBranch | async}}
+					{{ delivery.info["branch"].toString() | blcBranch | async }}
 				</span>
 			</div>
 		</div>
 		<div class="row mt-2 justify-content-md-end justify-content-center">
 			<div class="col-auto">
-				<button class="btn btn-outline-secondary" (click)="onBranchInfoClick()">
-					<span i18n="@@orderDeliveryInfoOpeningHours">Våre åpningstider</span>
+				<button
+					class="btn btn-outline-secondary"
+					(click)="onBranchInfoClick()"
+				>
+					<span i18n="@@orderDeliveryInfoOpeningHours"
+						>Våre åpningstider</span
+					>
 				</button>
 			</div>
 		</div>
 	</div>
-
 </div>
