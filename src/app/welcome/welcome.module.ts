@@ -6,12 +6,16 @@ import { WelcomeComponent } from "./welcome.component";
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import { FastbuyModule } from "../fastbuy/fastbuy.module";
 
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
 @NgModule({
 	imports: [
 		CommonModule,
 		WelcomeRoutingModule,
 		NgbCarouselModule,
-		FastbuyModule
+		FastbuyModule,
+
+		FontAwesomeModule
 	],
 	declarations: [WelcomeComponent]
 })

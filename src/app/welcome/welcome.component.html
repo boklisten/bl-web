@@ -38,6 +38,16 @@
 			Login
 		</button>
 	</div>
+
+	<div class="col-md-auto col-12" *ngIf="isLoggedIn()">
+		<button
+			class="btn btn-outline-secondary btn-sm btn-block"
+			routerLink="/u/items"
+		>
+			<fa-icon [icon]="'book-open'" class="mr-2"></fa-icon>
+			<span i18n="@@welcomeYourItemsButton">Your items</span>
+		</button>
+	</div>
 	<div class="col-md-auto col-12 mt-md-0 mt-2" *ngIf="!isLoggedIn()">
 		<button
 			class="btn btn-info btn-sm btn-block"
