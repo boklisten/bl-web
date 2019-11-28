@@ -1,28 +1,39 @@
-<div class="row bg-white justify-content-center mt-5 p-5">
-	<div class="col-auto"><h2>Thank You!</h2></div>
-</div>
-<div class="row bg-white justify-content-center">
-	<div class="col-12">
-		<p>
-			Thanks for being part of the matching program. We will try our best
-			to find a match for your items. This will save you money, and help
-			the planet by reusing the items.
-		</p>
-	</div>
-	<div class="col-12">
-		We will try to find a match for your selected items
-	</div>
+<div class="row mt-5">
+	<div class="col">
+		<div class="card">
+			<div class="card-header">
+				<h2 i18n="@@matchInfoThankYouTitle">Thank You!</h2>
+			</div>
 
-	<div class="col-12 mt-2 mb-2" *ngIf="match">
-		<ul class="list-group">
-			<li class="list-group-item" *ngFor="let matchItem of match.items">
-				<h5>{{ matchItem.title }}</h5>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="row bg-white justify-content-center mb-5 pb-5">
-	<div class="col-auto">
-		<button class="btn btn-success" (click)="onContinue()">Continue</button>
+			<div class="card-body">
+				<p i18n="@@matchInfoNextStepThanksDescription">
+					Thanks for being part of the matching program. We will try
+					our best to find a match for your items. This will save you
+					money, and help the planet by reusing the items.
+				</p>
+			</div>
+
+			<ul class="list-group list-group-flush">
+				<li
+					class="list-group-item"
+					*ngFor="let matchItem of match.items"
+				>
+					<h5>{{ matchItem.title }}</h5>
+				</li>
+			</ul>
+			<div class="card-footer">
+				<div class="row justify-content-center">
+					<div class="col-md-6 col-12">
+						<button
+							class="btn btn-success btn-block"
+							(click)="onContinue()"
+							i18n="@@matchInfoNextStepContinueButton"
+						>
+							Continue
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
