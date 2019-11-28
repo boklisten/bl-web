@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-info-agreement",
@@ -9,10 +9,14 @@ import { ActivatedRoute } from "@angular/router";
 export class InfoAgreementComponent implements OnInit {
 	public selectedTab = "conditions";
 	public showPolicyMenu = false;
-	constructor(private route: ActivatedRoute) {}
+	constructor(private route: ActivatedRoute, private router: Router) {}
 
 	ngOnInit() {
 		this.selectTab(this.route.snapshot.firstChild.url[0].path);
+
+		this.router.events.subscribe(() => {
+			this.selectTab(this.route.snapshot.firstChild.url[0].path);
+		});
 	}
 
 	public selectTab(tabName: string) {
