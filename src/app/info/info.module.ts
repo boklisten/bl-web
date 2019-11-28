@@ -22,6 +22,7 @@ import { InfoForCompaniesComponent } from "./info-for-companies/info-for-compani
 import { InfoForPupilsComponent } from "./info-for-pupils/info-for-pupils.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
+import { InfoMatchingComponent } from './info-matching/info-matching.component';
 
 @NgModule({
 	imports: [
@@ -46,7 +47,8 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 		InfoForCompaniesComponent,
 		InfoForPupilsComponent,
 		InfoAgreementConditionsComponent,
-		InfoBuybackComponent
+		InfoBuybackComponent,
+		InfoMatchingComponent
 	],
 	exports: [
 		InfoAgreementPrivacyComponent,

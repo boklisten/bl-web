@@ -92,6 +92,17 @@
 		<a
 			class="nav-link"
 			[ngClass]="{
+				'bl-info-selected': selectedMenuButton === 'matching'
+			}"
+			(click)="onSelectMenuButton('matching')"
+		>
+			<span i18n="@@infoMenuListMatchingButton">Matching</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a
+			class="nav-link"
+			[ngClass]="{
 				'bl-info-selected': selectedMenuButton === 'contact'
 			}"
 			(click)="onSelectMenuButton('contact')"

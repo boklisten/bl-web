@@ -52,6 +52,9 @@ export class InfoComponent implements OnInit {
 			case "buyback":
 				this.selectedMenuButton = "buyback";
 				break;
+			case "matching":
+				this.selectedMenuButton = "matching";
+				break;
 			default:
 				this.selectedMenuButton = "general";
 		}
