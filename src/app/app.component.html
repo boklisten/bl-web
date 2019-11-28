@@ -1,6 +1,9 @@
 <app-header></app-header>
 
-<div class="container-fluid bl-content no-gutters">
+<div
+	class="container-fluid bl-content no-gutters"
+	[ngClass]="{ gutter: showGutter }"
+>
 	<app-header-alert></app-header-alert>
 	<router-outlet></router-outlet>
 </div>
