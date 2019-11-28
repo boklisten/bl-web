@@ -15,7 +15,7 @@
 				</h5>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-2 mb-5">
+		<div class="row justify-content-center mt-2 mb-2">
 			<div class="col-auto">
 				<button
 					class="btn btn-lg btn-warning"
@@ -29,31 +29,40 @@
 	</div>
 </div>
 <div class="row mt-3 justify-content-center">
-	<div class="col-auto">
+	<div class="col-md-auto col-12" *ngIf="!isLoggedIn()">
 		<button
-			class="btn btn-outline-secondary btn-sm"
+			class="btn btn-success btn-sm btn-block"
+			i18n="@@welcomeLoginButton"
+			routerLink="/auth/login"
+		>
+			Login
+		</button>
+	</div>
+	<div class="col-md-auto col-12 mt-md-0 mt-2" *ngIf="!isLoggedIn()">
+		<button
+			class="btn btn-info btn-sm btn-block"
+			i18n="@@welcomeRegisterButton"
+			routerLink="/auth/register"
+		>
+			Register
+		</button>
+	</div>
+	<div class="col-md-auto col-12 mt-md-0 mt-2">
+		<button
+			class="btn btn-outline-secondary btn-sm btn-block"
 			i18n="@@welcomeOurOpeningHours"
 			routerLink="/info/branch"
 		>
 			Opening hours
 		</button>
 	</div>
-	<div class="col-auto">
+	<div class="col-md-auto col-auto col-12 mt-md-0 mt-2">
 		<button
-			class="btn btn-outline-secondary btn-sm"
+			class="btn btn-outline-secondary btn-sm btn-block"
 			i18n="@@welcomeFrequentlyAskedQuestions"
 			routerLink="/info/faq"
 		>
 			FAQ
-		</button>
-	</div>
-	<div class="col-auto">
-		<button
-			class="btn btn-outline-secondary btn-sm"
-			i18n="@@welcomGeneralInfo"
-			routerLink="/info/general"
-		>
-			General info
 		</button>
 	</div>
 </div>
