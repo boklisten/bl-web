@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Branch, Item } from "@wizardcoder/bl-model";
 import { Router, ActivatedRoute } from "@angular/router";
 import { BranchStoreService } from "../../branch/branch-store.service";
+import { BranchService } from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: "app-item-select",
@@ -16,19 +17,38 @@ export class ItemSelectComponent implements OnInit {
 	constructor(
 		private _router: Router,
 		private _branchStoreService: BranchStoreService,
+		private _branchService: BranchService,
 		private _route: ActivatedRoute
-	) {}
+	) {
+		this.selectedCategories = [];
+		this.items = [];
+	}
 
 	ngOnInit() {
-		this.branch = this._branchStoreService.getBranch();
+		const branchId = this._route.snapshot.queryParamMap.get("branch");
+		console.log("branch", branchId);
+
+		if (branchId) {
+			this._branchService
+				.getById(branchId)
+				.then(branch => {
+					this.branch = branch;
+
+					console.log("got branch", this.branch);
+				})
+				.catch(() => {
+					this.setBranchFromStore();
+				});
+		} else {
+			this.setBranchFromStore();
+		}
 
 		this.selectedCategories = this._route.snapshot.queryParamMap.getAll(
 			"category"
 		);
 	}
 
-	onBranchSelectClick() {
-		this._branchStoreService.redirectUrl = "/i/select";
-		this._router.navigate(["/b/select"]);
+	private setBranchFromStore() {
+		this.branch = this._branchStoreService.getBranch();
 	}
 }
