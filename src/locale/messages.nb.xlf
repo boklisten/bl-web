@@ -2088,10 +2088,10 @@
       </trans-unit><trans-unit id="matchingInfoHowDoIGetPayedA" datatype="html">
         <source>
 			When reciever confirms that he or she has gotten the items you will
-			get 50 NOK per item sent to you by VIPS. When you select "reuse" you
+			get 50 NOK per item sent to you by VIPPS. When you select "reuse" you
 			sell the item to Boklisten for the same amount as your outstanding
 			payment.
-		</source><target state="final">Når mottaker godkjenner at boken er overlevert får du 50 kr per bok på VIPS. Når du velger «Gjenbruk» selger du boken til Boklisten for samme beløp som andre avdrag på boken. 
+		</source><target state="final">Når mottaker godkjenner at boken er overlevert får du 50 kr per bok på Vipps. Når du velger «Gjenbruk» selger du boken til Boklisten for samme beløp som andre avdrag på boken. 
 		</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/info/info-matching/info-matching.component.ts</context>
@@ -2250,8 +2250,8 @@
         <source>
 					If you choose "reuse" below you will be able to hold the
 					item to january. When the item is deliverd to another
-					customer you will get 50 NOK sent to you with VIPS.
-				</source><target state="final">Hvis du velger «Gjenbruk» nedenfor kan du beholde boken til januar. Da skal boken leveres rett til en annen student på skolen din og du får 50 kr på VIPS.	</target>
+					customer you will get 50 NOK sent to you with Vipps.
+				</source><target state="final">Hvis du velger «Gjenbruk» nedenfor kan du beholde boken til januar. Da skal boken leveres rett til en annen student på skolen din og du får 50 kr på Vipps.	</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/match/match-select/match-select.component.ts</context>
           <context context-type="linenumber">11</context>
