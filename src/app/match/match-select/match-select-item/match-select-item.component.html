@@ -8,6 +8,7 @@
 			class="btn btn-outline-success btn-block mr-2"
 			(click)="onChoice('match')"
 			i18n="@@matchSelectItemBuyoutMatch"
+			*ngIf="item.buyback"
 		>
 			Reuse
 			<fa-icon
