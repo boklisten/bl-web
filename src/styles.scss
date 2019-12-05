@@ -193,14 +193,13 @@ a:visited {
 }
 
 .bl-goto-footer {
-	clear: both;
 	position: fixed;
 	height: 80px;
-	width: 100%;
+	width: 100vw;
 	bottom: 0px;
 	padding: 1rem;
 	z-index: 9999;
-	background-color: #2b697d;
+	background-color: white;
 }
 
 // BOOTSTRAP SPECIFIC

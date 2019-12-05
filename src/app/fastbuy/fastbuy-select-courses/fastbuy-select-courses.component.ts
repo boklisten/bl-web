@@ -47,6 +47,8 @@ export class FastbuySelectCoursesComponent implements OnInit {
 								for (const cat of queryCategories) {
 									this.select(cat);
 								}
+
+								this.wait = false;
 								if (this.courses.length <= 0) {
 									this.router.navigate(["/i/select"]);
 								}
@@ -55,7 +57,6 @@ export class FastbuySelectCoursesComponent implements OnInit {
 								// if no categories are found
 								this.router.navigate(["/i/select"]);
 							});
-						this.wait = false;
 					})
 					.catch(() => {
 						this.wait = false;
@@ -90,7 +91,10 @@ export class FastbuySelectCoursesComponent implements OnInit {
 			})
 			.then(() => {
 				this.router.navigate(["/i/select"], {
-					queryParams: { category: this.getSelectedCategories() }
+					queryParams: {
+						category: this.getSelectedCategories(),
+						branch: this.branchId
+					}
 				});
 			})
 			.catch(() => {});

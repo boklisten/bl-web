@@ -28,295 +28,309 @@
 		</div>
 	</div>
 </div>
-<div class="row mt-3 justify-content-center">
-	<div class="col-md-auto col-12" *ngIf="!isLoggedIn()">
-		<button
-			class="btn btn-success btn-sm btn-block"
-			i18n="@@welcomeLoginButton"
-			routerLink="/auth/login"
-		>
-			Login
-		</button>
-	</div>
-
-	<div class="col-md-auto col-12" *ngIf="isLoggedIn()">
-		<button
-			class="btn btn-outline-secondary btn-sm btn-block"
-			routerLink="/u/items"
-		>
-			<fa-icon [icon]="'book-open'" class="mr-2"></fa-icon>
-			<span i18n="@@welcomeYourItemsButton">Your items</span>
-		</button>
-	</div>
-	<div class="col-md-auto col-12 mt-md-0 mt-2" *ngIf="!isLoggedIn()">
-		<button
-			class="btn btn-info btn-sm btn-block"
-			i18n="@@welcomeRegisterButton"
-			routerLink="/auth/register"
-		>
-			Register
-		</button>
-	</div>
-	<div class="col-md-auto col-12 mt-md-0 mt-2">
-		<button
-			class="btn btn-outline-secondary btn-sm btn-block"
-			i18n="@@welcomeOurOpeningHours"
-			routerLink="/info/branch"
-		>
-			Opening hours
-		</button>
-	</div>
-	<div class="col-md-auto col-auto col-12 mt-md-0 mt-2">
-		<button
-			class="btn btn-outline-secondary btn-sm btn-block"
-			i18n="@@welcomeFrequentlyAskedQuestions"
-			routerLink="/info/faq"
-		>
-			FAQ
-		</button>
-	</div>
-</div>
-<hr />
 <div class="container">
-	<div class="row mt-2 justify-content-center">
-		<div class="col-md-6 col-12">
-			<div class="card bl-timeline-header">
-				<div class="card-body text-center">
-					<h3
-						class="bl-timeline-title"
-						i18n="@@welcomeThisIsHowItWorks"
-					>
-						Slik funker det
-					</h3>
-				</div>
-			</div>
+	<div class="row mt-3 justify-content-center">
+		<div class="col-md-auto col-12" *ngIf="!isLoggedIn()">
+			<button
+				class="btn btn-success btn-sm btn-block"
+				i18n="@@welcomeLoginButton"
+				routerLink="/auth/login"
+			>
+				Login
+			</button>
+		</div>
+
+		<div class="col-md-auto col-12" *ngIf="isLoggedIn()">
+			<button
+				class="btn btn-outline-secondary btn-sm btn-block"
+				routerLink="/u/items"
+			>
+				<fa-icon [icon]="'book-open'" class="mr-2"></fa-icon>
+				<span i18n="@@welcomeYourItemsButton">Your items</span>
+			</button>
+		</div>
+		<div class="col-md-auto col-12 mt-md-0 mt-2" *ngIf="!isLoggedIn()">
+			<button
+				class="btn btn-info btn-sm btn-block"
+				i18n="@@welcomeRegisterButton"
+				routerLink="/auth/register"
+			>
+				Register
+			</button>
+		</div>
+		<div class="col-md-auto col-12 mt-md-0 mt-2">
+			<button
+				class="btn btn-outline-secondary btn-sm btn-block"
+				i18n="@@welcomeOurOpeningHours"
+				routerLink="/info/branch"
+			>
+				Opening hours
+			</button>
+		</div>
+		<div class="col-md-auto col-auto col-12 mt-md-0 mt-2">
+			<button
+				class="btn btn-outline-secondary btn-sm btn-block"
+				i18n="@@welcomeFrequentlyAskedQuestions"
+				routerLink="/info/faq"
+			>
+				FAQ
+			</button>
 		</div>
 	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-auto bl-timeline-border"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-4 col-sm-12 col-12 text-center">
-							<img
-								src="../../assets/img/select_items.png"
-								width="180"
-								height="180"
-							/>
-						</div>
-						<div
-							class="col-md-8 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2"
+	<hr />
+	<div class="container">
+		<div class="row mt-2 justify-content-center">
+			<div class="col-md-6 col-12">
+				<div class="card bl-timeline-header">
+					<div class="card-body text-center">
+						<h3
+							class="bl-timeline-title"
+							i18n="@@welcomeThisIsHowItWorks"
 						>
-							<div class="row">
-								<div
-									class="col-12 text-md-left text-sm-center text-center"
+							Slik funker det
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-auto bl-timeline-border"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-4 col-sm-12 col-12 text-center">
+								<img
+									src="../../assets/img/select_items.png"
+									width="180"
+									height="180"
+								/>
+							</div>
+							<div
+								class="col-md-8 col-sm-12 col-12 mt-md-0 mt-sm-2 mt-2"
+							>
+								<div class="row">
+									<div
+										class="col-12 text-md-left text-sm-center text-center"
+									>
+										<h2 i18n="@@welcomeChooseHeader">
+											VELG
+										</h2>
+									</div>
+									<div class="col-12">
+										<p i18n="@@welcomeWhatToDoOnChoose">
+											Lag deg en bruker og velg den skolen
+											du går på. Deretter er det bare å
+											velge de bøkene du trenger til de
+											fagene du tar.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-auto bl-timeline-border"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-4 col-12 text-center">
+								<img
+									src="../../assets/img/get_items.png"
+									width="180"
+									height="180"
+								/>
+							</div>
+							<div class="col-md-8 col-12 md-0 mt-2">
+								<div class="row">
+									<div
+										class="col-12 text-md-left text-center"
+									>
+										<h2 i18n="@@welcomeGetHeader">HENT</h2>
+									</div>
+									<div class="col-12">
+										<p i18n="@@welcomeWhatToDoOnGet">
+											Etter at du har bestilt så er det
+											bare å hente bøkene. Dette kan du
+											gjøre når vi har stand på din skole.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-auto bl-timeline-border"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-4 col-12 text-center">
+								<img
+									src="../../assets/img/read_items.png"
+									width="180"
+									height="180"
+								/>
+							</div>
+							<div class="col-md-8 col-12 mt-md-0 mt-2">
+								<div class="row">
+									<div
+										class="col-12 text-md-left text-center"
+									>
+										<h2 i18n="@@welcomeReadHeader">LES</h2>
+									</div>
+									<div class="col-12">
+										<p i18n="@@welcomeWhatToDoOnRead">
+											Nå er det bare å sette seg ned for å
+											studere.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-auto bl-timeline-border"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-4 col-12 text-center">
+								<img
+									src="../../assets/img/deliver_items.png"
+									width="180"
+									height="180"
+								/>
+							</div>
+							<div class="col-md-8 col-12 mt-md-0 mt-2">
+								<div class="row">
+									<div
+										class="col-12 text-md-left text-center"
+									>
+										<h2 i18n="@@welcomeReturnHeader">
+											LEVER
+										</h2>
+									</div>
+									<div class="col-12">
+										<p i18n="@@welcomeWhatToDoOnReturn">
+											Når du har lest deg ferdig og
+											fristen begynner å nærme seg må
+											elever levere tilbake bøkene. Vi har
+											stands på slutten av semesteret på
+											de fleste skoler.
+										</p>
+										<p>
+											Vi vil kunne kjøpe tilbake de fleste
+											bøkene dine hvis du er privatist.
+											Hvis vi kjøper boken din slipper du
+											å betale siste avdrag. Levering og
+											salg av bøker med post er mulig om
+											det ikke passer å møte opp.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-auto bl-timeline-border"></div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class=" col-md-6 col-12">
+				<div class="card bl-timeline-header">
+					<div class="card-body text-center">
+						<h5
+							class="bl-timeline-title"
+							i18n="@welcomeWhatAreYouWaitingFor"
+						>
+							Hva venter du på?
+						</h5>
+
+						<div class="row mt-5" *ngIf="!isLoggedIn()">
+							<div class="col-12">
+								<button
+									class="btn btn-info btn-block"
+									(click)="onRegisterClick()"
 								>
-									<h2 i18n="@@welcomeChooseHeader">VELG</h2>
-								</div>
-								<div class="col-12">
-									<p i18n="@@welcomeWhatToDoOnChoose">
-										Lag deg en bruker og velg den skolen du
-										går på. Deretter er det bare å velge de
-										bøkene du trenger til de fagene du tar.
-									</p>
-								</div>
+									Registrer deg
+								</button>
+							</div>
+							<div class="col-12 mt-2">
+								<button
+									class="btn btn-outline-success btn-block"
+									(click)="onLoginClick()"
+								>
+									Logg inn
+								</button>
+							</div>
+						</div>
+
+						<div class="row mt-5" *ngIf="isLoggedIn()">
+							<div class="col-12">
+								<button
+									class="btn btn-outline-info btn-block"
+									(click)="onGoToItemsClick()"
+									i18n="@@welcomeRentBooksButton"
+								>
+									Bestill bøker
+								</button>
+							</div>
+							<div class="col-12 mt-2">
+								<button
+									class="btn btn-outline-info btn-block"
+									(click)="onGoToYourItemsClick()"
+									i18n="@@welcomeSeeMyBooksButton"
+								>
+									Se mine bøker
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row justify-content-center">
-		<div class="col-auto bl-timeline-border"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-4 col-12 text-center">
-							<img
-								src="../../assets/img/get_items.png"
-								width="180"
-								height="180"
-							/>
-						</div>
-						<div class="col-md-8 col-12 md-0 mt-2">
-							<div class="row">
-								<div class="col-12 text-md-left text-center">
-									<h2 i18n="@@welcomeGetHeader">HENT</h2>
-								</div>
-								<div class="col-12">
-									<p i18n="@@welcomeWhatToDoOnGet">
-										Etter at du har bestilt så er det bare å
-										hente bøkene. Dette kan du gjøre når vi
-										har stand på din skole.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="row justify-content-center mt-3 text-center">
+			<div class="col-12 text-secondary bl-text-sm">
+				<span class="mr-2 bl-link" routerLink="/info/branch"
+					>Våre åpningstider</span
+				>
+				|
+				<span class="mr-2 ml-2 bl-link" routerLink="/info/faq"
+					>Ofte stilte spørsmål</span
+				>
 			</div>
-		</div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-auto bl-timeline-border"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-4 col-12 text-center">
-							<img
-								src="../../assets/img/read_items.png"
-								width="180"
-								height="180"
-							/>
-						</div>
-						<div class="col-md-8 col-12 mt-md-0 mt-2">
-							<div class="row">
-								<div class="col-12 text-md-left text-center">
-									<h2 i18n="@@welcomeReadHeader">LES</h2>
-								</div>
-								<div class="col-12">
-									<p i18n="@@welcomeWhatToDoOnRead">
-										Nå er det bare å sette seg ned for å
-										studere.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-auto bl-timeline-border"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-4 col-12 text-center">
-							<img
-								src="../../assets/img/deliver_items.png"
-								width="180"
-								height="180"
-							/>
-						</div>
-						<div class="col-md-8 col-12 mt-md-0 mt-2">
-							<div class="row">
-								<div class="col-12 text-md-left text-center">
-									<h2 i18n="@@welcomeReturnHeader">LEVER</h2>
-								</div>
-								<div class="col-12">
-									<p i18n="@@welcomeWhatToDoOnReturn">
-										Når du har lest deg ferdig og fristen
-										begynner å nærme seg må elever levere
-										tilbake bøkene. Vi har stands på slutten
-										av semesteret på de fleste skoler.
-									</p>
-									<p>
-										Vi vil kunne kjøpe tilbake de fleste
-										bøkene dine hvis du er privatist. Hvis
-										vi kjøper boken din slipper du å betale
-										siste avdrag. Levering og salg av bøker
-										med post er mulig om det ikke passer å
-										møte opp.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-auto bl-timeline-border"></div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class=" col-md-6 col-12">
-			<div class="card bl-timeline-header">
-				<div class="card-body text-center">
-					<h5
-						class="bl-timeline-title"
-						i18n="@welcomeWhatAreYouWaitingFor"
-					>
-						Hva venter du på?
-					</h5>
-
-					<div class="row mt-5" *ngIf="!isLoggedIn()">
-						<div class="col-12">
-							<button
-								class="btn btn-info btn-block"
-								(click)="onRegisterClick()"
-							>
-								Registrer deg
-							</button>
-						</div>
-						<div class="col-12 mt-2">
-							<button
-								class="btn btn-outline-success btn-block"
-								(click)="onLoginClick()"
-							>
-								Logg inn
-							</button>
-						</div>
-					</div>
-
-					<div class="row mt-5" *ngIf="isLoggedIn()">
-						<div class="col-12">
-							<button
-								class="btn btn-outline-info btn-block"
-								(click)="onGoToItemsClick()"
-								i18n="@@welcomeRentBooksButton"
-							>
-								Bestill bøker
-							</button>
-						</div>
-						<div class="col-12 mt-2">
-							<button
-								class="btn btn-outline-info btn-block"
-								(click)="onGoToYourItemsClick()"
-								i18n="@@welcomeSeeMyBooksButton"
-							>
-								Se mine bøker
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row justify-content-center mt-3 text-center">
-		<div class="col-12 text-secondary bl-text-sm">
-			<span class="mr-2 bl-link" routerLink="/info/branch"
-				>Våre åpningstider</span
-			>
-			|
-			<span class="mr-2 ml-2 bl-link" routerLink="/info/faq"
-				>Ofte stilte spørsmål</span
-			>
 		</div>
 	</div>
 </div>

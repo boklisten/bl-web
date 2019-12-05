@@ -1,28 +1,34 @@
-<div class="row mb-3">
-	<div class="col text-center">
-		<h3 i18n="@@fastbuySelectBranchWhatSchool">
-			What school do you go to?
-		</h3>
-		<hr />
+<div class="container">
+	<div class="row mb-3">
+		<div class="col text-center">
+			<h3 i18n="@@fastbuySelectBranchWhatSchool">
+				What school do you go to?
+			</h3>
+			<hr />
+		</div>
 	</div>
-</div>
-<div class="row justify-content-center" *ngIf="wait">
-	<div class="col-auto">
-		<fa-icon [icon]="'circle-notch'" [spin]="true" [size]="'2x'"></fa-icon>
+	<div class="row justify-content-center" *ngIf="wait">
+		<div class="col-auto">
+			<fa-icon
+				[icon]="'circle-notch'"
+				[spin]="true"
+				[size]="'2x'"
+			></fa-icon>
+		</div>
 	</div>
-</div>
-<div class="row justify-content-center">
-	<div class="col-md-6 col-12">
-		<button
-			class="mb-2 btn btn-block btn-info"
-			*ngFor="let branch of branches"
-			[routerLink]="link"
-			[queryParams]="branch.params"
-		>
-			<div class="d-flex justify-content-between align-items-center">
-				<span>{{ branch.name }}</span>
-				<span><fa-icon icon="chevron-right"></fa-icon></span>
-			</div>
-		</button>
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-12">
+			<button
+				class="mb-2 btn btn-block btn-info"
+				*ngFor="let branch of branches"
+				[routerLink]="link"
+				[queryParams]="branch.params"
+			>
+				<div class="d-flex justify-content-between align-items-center">
+					<span>{{ branch.name }}</span>
+					<span><fa-icon icon="chevron-right"></fa-icon></span>
+				</div>
+			</button>
+		</div>
 	</div>
 </div>

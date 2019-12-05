@@ -1,154 +1,159 @@
-<div class="row justify-content-center" *ngIf="!cartStep && !wait">
-	<div class="col-lg-6 col-md-12">
-		<div class="alert alert-danger">
-			<h5 i18n="@@cartOrderCheckoutErrorLooksLikeSomethingWrong">
-				Looks like something went wrong
-			</h5>
-			<a i18n="@@cartOrderCheckoutErrorClickToTryAgain" routerLink="/cart"
-				>You can try again by clicking here.</a
+<div class="container">
+	<div class="row justify-content-center" *ngIf="!cartStep && !wait">
+		<div class="col-lg-6 col-md-12">
+			<div class="alert alert-danger">
+				<h5 i18n="@@cartOrderCheckoutErrorLooksLikeSomethingWrong">
+					Looks like something went wrong
+				</h5>
+				<a
+					i18n="@@cartOrderCheckoutErrorClickToTryAgain"
+					routerLink="/cart"
+					>You can try again by clicking here.</a
+				>
+			</div>
+		</div>
+	</div>
+
+	<div class="row justify-content-center mt-5" *ngIf="wait">
+		<div class="col-12 text-center">
+			<fa-icon
+				icon="book"
+				[spin]="true"
+				size="5x"
+				style="animation-duration: 20s !important"
+				[pulse]="true"
+				class="mr-2 text-black"
+			></fa-icon>
+		</div>
+		<div class="col-auto mt-5">
+			<span i18n="@@cartOrderCheckoutCreatingOrderForYou"
+				>Creating the order for you. Please wait.</span
 			>
 		</div>
 	</div>
-</div>
 
-<div class="row justify-content-center mt-5" *ngIf="wait">
-	<div class="col-12 text-center">
-		<fa-icon
-			icon="book"
-			[spin]="true"
-			size="5x"
-			style="animation-duration: 20s !important"
-			[pulse]="true"
-			class="mr-2 text-black"
-		></fa-icon>
-	</div>
-	<div class="col-auto mt-5">
-		<span i18n="@@cartOrderCheckoutCreatingOrderForYou"
-			>Creating the order for you. Please wait.</span
-		>
-	</div>
-</div>
-
-<div class="row justify-content-center" *ngIf="cartStep && !wait">
-	<div class="col-xl-6 col-lg-8 col-md-12 no-gutters">
-		<div class="card">
-			<div class="card-header">
-				<div class="row justify-content-between align-items-center">
-					<div class="col-auto">
-						<button
-							class="btn btn-outline-secondary btn-sm mr-2"
-							(click)="previousStep()"
-						>
-							<fa-icon
-								[icon]="'arrow-left'"
-								[size]="'2x'"
-								class="pr-2 pl-2"
-							></fa-icon>
-						</button>
-
-						<button
-							*ngIf="showProgressbar"
-							class="btn btn-outline-secondary btn-sm mr-2"
-							(click)="nextStep()"
-							[disabled]="!isNextStepPossible()"
-						>
-							<fa-icon
-								[icon]="'arrow-right'"
-								[size]="'2x'"
-								class="pr-2 pl-2"
-							></fa-icon>
-						</button>
-					</div>
-
-					<!--<div class="col-auto">-->
-					<!--<div class="order-amount">-->
-					<!--{{ totalAmount | blcPrice: "international" }}-->
-					<!--</div>-->
-					<!--</div>-->
-				</div>
-			</div>
-
-			<div class="card-body" *ngIf="cartError">
-				<div class="row">
-					<div class="col-12">
-						<div
-							class="alert alert-danger"
-							*ngIf="cartError.payment"
-						>
-							<h5>
+	<div class="row justify-content-center" *ngIf="cartStep && !wait">
+		<div class="col-xl-6 col-lg-8 col-md-12 no-gutters">
+			<div class="card">
+				<div class="card-header">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-auto">
+							<button
+								class="btn btn-outline-secondary btn-sm mr-2"
+								(click)="previousStep()"
+							>
 								<fa-icon
-									icon="exclamation-triangle"
-									class="mr-2"
+									[icon]="'arrow-left'"
+									[size]="'2x'"
+									class="pr-2 pl-2"
 								></fa-icon>
-								<span
-									i18n="@@cartOrderCheckoutErrorSorrySomethingWrong"
-									>Sorry, but something went wrong</span
-								>
-							</h5>
-							<p>
-								<span
-									i18n="@@cartOderCheckoutErrorTroubleCreatingPayment"
-									>We had some trouble creating the payment
-									for you.</span
-								>
-								<b>
-									<a
-										i18n="@@cartOrderCheckoutErrorClickToTryAgain"
-										routerLink="/cart"
-										>You can try again by clicking here.</a
+							</button>
+
+							<button
+								*ngIf="showProgressbar"
+								class="btn btn-outline-secondary btn-sm mr-2"
+								(click)="nextStep()"
+								[disabled]="!isNextStepPossible()"
+							>
+								<fa-icon
+									[icon]="'arrow-right'"
+									[size]="'2x'"
+									class="pr-2 pl-2"
+								></fa-icon>
+							</button>
+						</div>
+
+						<!--<div class="col-auto">-->
+						<!--<div class="order-amount">-->
+						<!--{{ totalAmount | blcPrice: "international" }}-->
+						<!--</div>-->
+						<!--</div>-->
+					</div>
+				</div>
+
+				<div class="card-body" *ngIf="cartError">
+					<div class="row">
+						<div class="col-12">
+							<div
+								class="alert alert-danger"
+								*ngIf="cartError.payment"
+							>
+								<h5>
+									<fa-icon
+										icon="exclamation-triangle"
+										class="mr-2"
+									></fa-icon>
+									<span
+										i18n="@@cartOrderCheckoutErrorSorrySomethingWrong"
+										>Sorry, but something went wrong</span
 									>
-								</b>
-							</p>
+								</h5>
+								<p>
+									<span
+										i18n="@@cartOderCheckoutErrorTroubleCreatingPayment"
+										>We had some trouble creating the
+										payment for you.</span
+									>
+									<b>
+										<a
+											i18n="@@cartOrderCheckoutErrorClickToTryAgain"
+											routerLink="/cart"
+											>You can try again by clicking
+											here.</a
+										>
+									</b>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
+
+				<ngb-progressbar
+					*ngIf="showProgressbar"
+					[type]="progressColor"
+					[height]="'2px'"
+					[value]="progressWidth"
+				></ngb-progressbar>
+
+				<app-cart-agreement
+					class="card-body"
+					*ngIf="cartStep.type === 'agreement'"
+					[confirmed]="
+						cartStep.type === 'agreement' && cartStep.confirmed
+					"
+					(confirmedChange)="onConfirmStep('agreement')"
+				></app-cart-agreement>
+
+				<app-cart-partly-payment-info
+					class="card-body"
+					*ngIf="cartStep.type === 'partly-payment-info'"
+					(confirm)="onConfirmStep('partly-payment-info')"
+				></app-cart-partly-payment-info>
+
+				<app-cart-payment-option
+					class="card-body"
+					*ngIf="cartStep.type === 'payment-option'"
+					(paymentOptionConfirmed)="onConfirmStep('payment-option')"
+					(paymentOption)="onPaymentOptionChange($event)"
+				></app-cart-payment-option>
+
+				<app-cart-checkout
+					(confirmSummary)="onConfirmStep('checkout')"
+					*ngIf="cartStep.type === 'checkout'"
+				>
+				</app-cart-checkout>
+
+				<app-cart-delivery
+					class="card-body"
+					*ngIf="cartStep.type === 'delivery'"
+					(confirmDelivery)="onConfirmStep('delivery', $event)"
+				></app-cart-delivery>
+
+				<app-cart-payment
+					*ngIf="cartStep.type === 'payment'"
+					(error)="onPaymentError($event)"
+				></app-cart-payment>
 			</div>
-
-			<ngb-progressbar
-				*ngIf="showProgressbar"
-				[type]="progressColor"
-				[height]="'2px'"
-				[value]="progressWidth"
-			></ngb-progressbar>
-
-			<app-cart-agreement
-				class="card-body"
-				*ngIf="cartStep.type === 'agreement'"
-				[confirmed]="
-					cartStep.type === 'agreement' && cartStep.confirmed
-				"
-				(confirmedChange)="onConfirmStep('agreement')"
-			></app-cart-agreement>
-
-			<app-cart-partly-payment-info
-				class="card-body"
-				*ngIf="cartStep.type === 'partly-payment-info'"
-				(confirm)="onConfirmStep('partly-payment-info')"
-			></app-cart-partly-payment-info>
-
-			<app-cart-payment-option
-				class="card-body"
-				*ngIf="cartStep.type === 'payment-option'"
-				(paymentOptionConfirmed)="onConfirmStep('payment-option')"
-				(paymentOption)="onPaymentOptionChange($event)"
-			></app-cart-payment-option>
-
-			<app-cart-checkout
-				(confirmSummary)="onConfirmStep('checkout')"
-				*ngIf="cartStep.type === 'checkout'"
-			>
-			</app-cart-checkout>
-
-			<app-cart-delivery
-				class="card-body"
-				*ngIf="cartStep.type === 'delivery'"
-				(confirmDelivery)="onConfirmStep('delivery', $event)"
-			></app-cart-delivery>
-
-			<app-cart-payment
-				*ngIf="cartStep.type === 'payment'"
-				(error)="onPaymentError($event)"
-			></app-cart-payment>
 		</div>
 	</div>
 </div>

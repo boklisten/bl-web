@@ -1,70 +1,77 @@
-<div class="m-2"></div>
-<app-cart-empty *ngIf="!showCart()"></app-cart-empty>
+<div class="container">
+	<div class="m-2"></div>
+	<app-cart-empty *ngIf="!showCart()"></app-cart-empty>
 
-<div class="row" *ngIf="showCart()">
-	<div class="col-12">
-		<div class="row justify-content-center">
-			<div class="col-auto text-secondary">
-				<fa-icon [icon]="'shopping-cart'" [size]="'2x'"></fa-icon>
+	<div class="row" *ngIf="showCart()">
+		<div class="col-12">
+			<div class="row justify-content-center">
+				<div class="col-auto text-secondary">
+					<fa-icon [icon]="'shopping-cart'" [size]="'2x'"></fa-icon>
+				</div>
 			</div>
-		</div>
-		<div class="row justify-content-center mt-2">
-			<div class="col-auto justify-content-center text-secondary">
-				<h4 i18n="@@cartTitle">Cart</h4>
+			<div class="row justify-content-center mt-2">
+				<div class="col-auto justify-content-center text-secondary">
+					<h4 i18n="@@cartTitle">Cart</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="row mt-2 justify-content-center">
-	<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
-		<div class="row justify-content-center" *ngIf="showCart()">
-			<div class="col-12 mb-1" *ngFor="let cartItem of getCart()">
-				<app-item-display
-					[compact]="true"
-					[inCart]="true"
-					[item]="cartItem.item"
-					[customerItem]="cartItem.customerItem"
-					[branchItem]="cartItem.branchItem"
-					[branch]="cartItem.branch"
+	<div class="row mt-2 justify-content-center">
+		<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+			<div class="row justify-content-center" *ngIf="showCart()">
+				<div class="col-12 mb-1" *ngFor="let cartItem of getCart()">
+					<app-item-display
+						[compact]="true"
+						[inCart]="true"
+						[item]="cartItem.item"
+						[customerItem]="cartItem.customerItem"
+						[branchItem]="cartItem.branchItem"
+						[branch]="cartItem.branch"
+					>
+					</app-item-display>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="row justify-content-center"
+		*ngIf="!isUserValid && isUserLoggedIn"
+	>
+		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+			<div class="alert alert-warning">
+				<span class="mr-2" i18n="@@cartYouMustUpdateInfo"
+					>You must update your info to order.</span
 				>
-				</app-item-display>
+				<a routerLink="/u/edit" i18n="@@cartClickHereToEdit"
+					>Click here to edit.</a
+				>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="row justify-content-center" *ngIf="!isUserValid && isUserLoggedIn">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-		<div class="alert alert-warning">
-			<span class="mr-2" i18n="@@cartYouMustUpdateInfo"
-				>You must update your info to order.</span
-			>
-			<a routerLink="/u/edit" i18n="@@cartClickHereToEdit"
-				>Click here to edit.</a
-			>
+	<div class="row justify-content-center" *ngIf="!isUserLoggedIn">
+		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+			<div class="alert alert-warning">
+				<span class="mr-2" i18n="@@cartYouMustLogin"
+					>You must login to order.</span
+				>
+				<a
+					routerLink="/auth/menu"
+					i18n="@@cartClickHereToLoginOrRegister"
+					>Click here to login or register.</a
+				>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="row justify-content-center" *ngIf="!isUserLoggedIn">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-		<div class="alert alert-warning">
-			<span class="mr-2" i18n="@@cartYouMustLogin"
-				>You must login to order.</span
-			>
-			<a routerLink="/auth/menu" i18n="@@cartClickHereToLoginOrRegister"
-				>Click here to login or register.</a
-			>
+	<div class="row justify-content-center mt-5" *ngIf="showCart()">
+		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+			<button class="btn btn-success btn-block p-3" routerLink="checkout">
+				<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
+				<span i18n="@@cartCheckoutButton">Checkout</span>
+			</button>
 		</div>
-	</div>
-</div>
-
-<div class="row justify-content-center mt-5" *ngIf="showCart()">
-	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-		<button class="btn btn-success btn-block p-3" routerLink="checkout">
-			<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
-			<span i18n="@@cartCheckoutButton">Checkout</span>
-		</button>
 	</div>
 </div>
