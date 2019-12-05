@@ -26,15 +26,12 @@ export class ItemSelectComponent implements OnInit {
 
 	ngOnInit() {
 		const branchId = this._route.snapshot.queryParamMap.get("branch");
-		console.log("branch", branchId);
 
 		if (branchId) {
 			this._branchService
 				.getById(branchId)
 				.then(branch => {
 					this.branch = branch;
-
-					console.log("got branch", this.branch);
 				})
 				.catch(() => {
 					this.setBranchFromStore();

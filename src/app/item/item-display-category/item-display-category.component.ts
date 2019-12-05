@@ -50,14 +50,11 @@ export class ItemDisplayCategoryComponent implements OnInit {
 			this.cartSize = this._cartService.getSize();
 		});
 
-		console.log("branch, whuut?", this.branch);
-
 		if (this.branch) {
 			if (
 				!this.branch.branchItems ||
 				this.branch.branchItems.length <= 0
 			) {
-				console.log("hi");
 				this.noItemsWarning = true;
 			} else {
 				this.loading = true;
