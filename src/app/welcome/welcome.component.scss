@@ -15,17 +15,9 @@
 	font-weight: bold;
 }
 
-//.welcome-display {
-//background-color: #2b697d;
-//color: white;
-//padding-top: 30px;
-//padding-bottom: 60px;
-//border-bottom: 5px solid #283d3b;
-/*}*/
 .welcome-display {
 	padding-top: 2rem;
 	padding-bottom: 4rem;
-	width: 100vw;
 	color: white;
 	background-color: #26768f;
 	background-image: linear-gradient(
@@ -40,21 +32,6 @@
 
 	border-bottom: 5px solid #283d3b;
 }
-
-/*.welcome-display {*/
-//color: white;
-//background-color: Blue;
-//background-image: radial-gradient(circle at center center, black, #ccc),
-//repeating-radial-gradient(
-//circle at center center,
-//black,
-//black,
-//1rem,
-//transparent 2rem,
-//transparent 1rem
-//);
-//background-blend-mode: multiply;
-/*}*/
 
 .welcome-button {
 	background-color: #89028c;
