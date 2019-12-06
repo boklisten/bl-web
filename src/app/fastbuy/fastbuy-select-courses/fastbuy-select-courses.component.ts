@@ -3,6 +3,7 @@ import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService } from "@wizardcoder/bl-connect";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
+import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
 
 @Component({
 	selector: "app-fastbuy-select-courses",
@@ -20,7 +21,8 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		private branchService: BranchService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private location: Location
+		private location: Location,
+		private urlPathEditService: UrlPathEditService
 	) {}
 
 	ngOnInit() {
@@ -104,7 +106,9 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		const selectedCategories = [];
 		for (const key in this.selectedCourses) {
 			if (this.selectedCourses[key]) {
-				selectedCategories.push(key);
+				selectedCategories.push(
+					this.urlPathEditService.sentenceToUrlWords(key)
+				);
 			}
 		}
 		return selectedCategories;

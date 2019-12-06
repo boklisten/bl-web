@@ -3,6 +3,7 @@ import { Branch, Item } from "@wizardcoder/bl-model";
 import { Router, ActivatedRoute } from "@angular/router";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService } from "@wizardcoder/bl-connect";
+import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
 
 @Component({
 	selector: "app-item-select",
@@ -18,7 +19,8 @@ export class ItemSelectComponent implements OnInit {
 		private _router: Router,
 		private _branchStoreService: BranchStoreService,
 		private _branchService: BranchService,
-		private _route: ActivatedRoute
+		private _route: ActivatedRoute,
+		private _urlPathEditService: UrlPathEditService
 	) {
 		this.selectedCategories = [];
 		this.items = [];
@@ -40,8 +42,8 @@ export class ItemSelectComponent implements OnInit {
 			this.setBranchFromStore();
 		}
 
-		this.selectedCategories = this._route.snapshot.queryParamMap.getAll(
-			"category"
+		this.selectedCategories = this._urlPathEditService.urlWordsToSentence(
+			this._route.snapshot.queryParamMap.getAll("category")
 		);
 	}
 
