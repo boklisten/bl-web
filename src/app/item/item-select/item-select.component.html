@@ -35,3 +35,17 @@
 		</div>
 	</div>
 </div>
+
+<div class="bl-goto-footer" *ngIf="cartSize > 0">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-4">
+			<button
+				class="btn btn-success btn-block"
+				routerLink="/cart/checkout"
+			>
+				<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
+				<span i18n="@@itemDisplayCategoryCheckout">Checkout</span>
+			</button>
+		</div>
+	</div>
+</div>
