@@ -1,34 +1,47 @@
 <div class="row">
-	<div class="col">
-		<h4>{{ forPupilsTitle }}</h4>
-	</div>
+	<div class="col"><h2>Videregåendeelever</h2></div>
 </div>
 <div class="row">
 	<div class="col">
-		<p>{{ forPupilsDesc }}</p>
+		<p>
+			Dersom du går på Wang eller Otto Treider og trenger bøker utenom
+			hovedutdelingsdagene, ta kontakt med våre kontaktelever
+		</p>
 	</div>
 </div>
 
-<div class="row" *ngIf="forPupilsList">
-	<div class="col-12">
-		<h5>{{ forPupilsList.title }}</h5>
-	</div>
+<div class="row">
+	<div class="col-12"><h4>Wang</h4></div>
 	<div class="col-12">
 		<ul>
-			<li *ngFor="let listItem of forPupilsList.listItems">
-				{{ listItem }}
-			</li>
+			<li>Victoria Heggelund – 46546406</li>
+			<li>Stine Haakenstad - 41529655</li>
+			<li>Tiril Salvesen - 90896525</li>
+		</ul>
+	</div>
+
+	<div class="col-12"><h4>Otto Treider</h4></div>
+	<div class="col-12">
+		<ul>
+			<li>Ida Christine Lysne – 95032816</li>
+			<li>Camilla Hansen Andersen – 47950219</li>
+			<li>Ida Monsen - 91918101</li>
+			<li>Eline Johnsrud - 94883234</li>
+			<li>Tilde Pileberg - 94985618</li>
 		</ul>
 	</div>
 </div>
 
-<div class="row mt-5" *ngFor="let forPupilsText of forPupilsTexts">
+<div class="row mt-5">
+	<div class="col-12"><h3>Utdeling og innsamling</h3></div>
 	<div class="col-12">
-		<h5>{{ forPupilsText.title }}</h5>
-	</div>
-	<div class="col-12">
-		<p *ngFor="let textBlock of forPupilsText.textBlocks">
-			{{ textBlock }}
+		<p>
+			Spesifiserte tidsplaner for hver klasse på utdelingsdagene sendes ut
+			av skolene, og blir også hengt opp rundt skolen på disse dagene.
+		</p>
+		<p>
+			Har du spørsmål? Sjekk innom siden for ofte stilte spørsmål, eller
+			send oss en mail på info@boklisten.no
 		</p>
 	</div>
 </div>
