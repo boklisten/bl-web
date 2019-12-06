@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Item } from "@wizardcoder/bl-model";
 import { ItemService } from "@wizardcoder/bl-connect";
 import { PriceService } from "../../price/price.service";
+import { BlcSortService } from "../../bl-common/services/blc-sort/blc-sort.service";
 
 @Component({
 	selector: "app-info-buyback",
@@ -12,14 +13,14 @@ export class InfoBuybackComponent implements OnInit {
 	public items: Item[];
 	constructor(
 		private itemService: ItemService,
-		private priceService: PriceService
+		private blcSortService: BlcSortService
 	) {}
 
 	ngOnInit() {
 		this.itemService
 			.get({ query: "?buyback=true&og=title&og=price&og=info.isbn" })
 			.then(items => {
-				this.items = items;
+				this.items = this.blcSortService.sortByField(items, "title");
 			})
 			.catch(() => {
 				console.log("could not get items");
