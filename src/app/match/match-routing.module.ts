@@ -6,6 +6,11 @@ import { MatchInfoNextStepComponent } from "./match-info-next-step/match-info-ne
 
 const routes: Routes = [
 	{
+		path: "m",
+		pathMatch: "full",
+		redirectTo: "match/select"
+	},
+	{
 		path: "match",
 		pathMatch: "full",
 		redirectTo: "match/select"

@@ -33,7 +33,11 @@ export class MatchSelectComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		const deadline = this.route.snapshot.queryParamMap.get("deadline");
+		let deadline = this.route.snapshot.queryParamMap.get("deadline");
+		if (!deadline) {
+			deadline = this.route.snapshot.queryParamMap.get("d");
+		}
+
 		const deadlineDate = this.dateService.convertFromFormat(
 			deadline,
 			"DDMMYY"
