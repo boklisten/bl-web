@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { MatchSelectComponent } from "./match-select/match-select.component";
 import { UserGuardService } from "../user/user-guard.service";
 import { MatchInfoNextStepComponent } from "./match-info-next-step/match-info-next-step.component";
+import { MatchDeliverComponent } from "./match-deliver/match-deliver.component";
 
 const routes: Routes = [
 	{
@@ -23,6 +24,10 @@ const routes: Routes = [
 	{
 		path: "match/next-steps",
 		component: MatchInfoNextStepComponent
+	},
+	{
+		path: "match/deliver",
+		component: MatchDeliverComponent
 	}
 ];
 
