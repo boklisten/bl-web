@@ -4,6 +4,7 @@ import { MatchSelectComponent } from "./match-select/match-select.component";
 import { UserGuardService } from "../user/user-guard.service";
 import { MatchInfoNextStepComponent } from "./match-info-next-step/match-info-next-step.component";
 import { MatchDeliverComponent } from "./match-deliver/match-deliver.component";
+import { MatchDetailComponent } from "./match-detail/match-detail.component";
 
 const routes: Routes = [
 	{
@@ -26,8 +27,14 @@ const routes: Routes = [
 		component: MatchInfoNextStepComponent
 	},
 	{
-		path: "match/deliver",
-		component: MatchDeliverComponent
+		path: "match/:id",
+		component: MatchDetailComponent,
+		children: [
+			{
+				path: "deliver",
+				component: MatchDeliverComponent
+			}
+		]
 	}
 ];
 

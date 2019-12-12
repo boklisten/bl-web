@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row" *ngFor="let match of matches">
+	<div class="row" *ngIf="match">
 		<div class="col-12">
 			<div class="card" *ngFor="let reciever of match.recievers">
 				<div class="card-header text-center"></div>
