@@ -5,6 +5,7 @@ import { UserGuardService } from "../user/user-guard.service";
 import { MatchInfoNextStepComponent } from "./match-info-next-step/match-info-next-step.component";
 import { MatchDeliverComponent } from "./match-deliver/match-deliver.component";
 import { MatchDetailComponent } from "./match-detail/match-detail.component";
+import { MatchRecieveComponent } from "./match-recieve/match-recieve.component";
 
 const routes: Routes = [
 	{
@@ -33,6 +34,10 @@ const routes: Routes = [
 			{
 				path: "deliver",
 				component: MatchDeliverComponent
+			},
+			{
+				path: "recieve",
+				component: MatchRecieveComponent
 			}
 		]
 	}

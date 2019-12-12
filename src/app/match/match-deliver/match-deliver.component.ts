@@ -18,6 +18,7 @@ export class MatchDeliverComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.match = this.matchStoreService.getMatch();
 		this.matchStoreService.onMatchChange().subscribe(() => {
 			this.match = this.matchStoreService.getMatch();
 		});

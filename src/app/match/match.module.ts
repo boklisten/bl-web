@@ -11,6 +11,7 @@ import { MatchDeliverComponent } from "./match-deliver/match-deliver.component";
 import { MatchProfileCardComponent } from "./match-profile-card/match-profile-card.component";
 import { MatchLocationCardComponent } from "./match-location-card/match-location-card.component";
 import { MatchDetailComponent } from "./match-detail/match-detail.component";
+import { MatchRecieveComponent } from "./match-recieve/match-recieve.component";
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { MatchDetailComponent } from "./match-detail/match-detail.component";
 		MatchDeliverComponent,
 		MatchProfileCardComponent,
 		MatchLocationCardComponent,
-		MatchDetailComponent
+		MatchDetailComponent,
+		MatchRecieveComponent
 	],
 	imports: [
 		CommonModule,
