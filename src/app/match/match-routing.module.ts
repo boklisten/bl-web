@@ -6,6 +6,7 @@ import { MatchInfoNextStepComponent } from "./match-info-next-step/match-info-ne
 import { MatchDeliverComponent } from "./match-deliver/match-deliver.component";
 import { MatchDetailComponent } from "./match-detail/match-detail.component";
 import { MatchRecieveComponent } from "./match-recieve/match-recieve.component";
+import { MatchFailureComponent } from "./match-failure/match-failure.component";
 
 const routes: Routes = [
 	{
@@ -26,6 +27,10 @@ const routes: Routes = [
 	{
 		path: "match/next-steps",
 		component: MatchInfoNextStepComponent
+	},
+	{
+		path: "match/failure",
+		component: MatchFailureComponent
 	},
 	{
 		path: "match/:id",

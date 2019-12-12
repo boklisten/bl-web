@@ -1,16 +1,21 @@
 <div class="container">
 	<div class="row" *ngIf="match">
 		<div class="col-12">
+			<p>Reciever: {{ recieverId }}</p>
+		</div>
+		<div class="col-12">
 			<div class="card">
 				<div class="card-header text-center"></div>
 				<div class="card-body">
 					<div class="row justify-content-center">
-						<div class="col-auto"><h5>Disse bøkene</h5></div>
+						<div class="col-auto text-secondary">
+							<h5>Disse bøkene</h5>
+						</div>
 					</div>
 					<ul class="list-group mb-5 mt-2">
 						<li
 							class="list-group-item"
-							*ngFor="let item of match.items"
+							*ngFor="let item of itemsToRecieve"
 						>
 							<h5>{{ item.title }}</h5>
 						</li>
@@ -18,14 +23,18 @@
 
 					<hr />
 					<div class="row justify-content-center">
-						<div class="col-auto"><h5>Skal mottas av</h5></div>
+						<div class="col-auto text-secondary">
+							<h5>Skal mottas av</h5>
+						</div>
 					</div>
 					<app-match-profile-card
 						[profile]="match.sender"
 					></app-match-profile-card>
 					<hr />
 					<div class="row justify-content-center">
-						<div class="col-auto"><h5>Dere møtes ved</h5></div>
+						<div class="col-auto text-secondary">
+							<h5>Dere møtes ved</h5>
+						</div>
 					</div>
 					<app-match-location-card
 						[match]="match"
@@ -33,7 +42,7 @@
 				</div>
 				<div class="card-footer">
 					<div class="row justify-content-center mt-2">
-						<div class="col-6">
+						<div class="col-lg-6 col-md-12">
 							<button class="btn btn-success btn-lg btn-block">
 								<fa-icon
 									[icon]="'flag-checkered'"
@@ -44,7 +53,7 @@
 						</div>
 					</div>
 					<div class="row justify-content-center mt-2">
-						<div class="col-6">
+						<div class="col-lg-6 col-md-12">
 							<button class="btn btn-link btn-block">
 								Jeg har spørsmål
 							</button>
