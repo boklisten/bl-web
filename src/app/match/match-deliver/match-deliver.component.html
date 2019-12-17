@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row" *ngIf="match">
-		<div class="col-12">
-			<div class="card" *ngFor="let reciever of match.recievers">
+		<div class="col-12 mb-2" *ngFor="let reciever of match.recievers">
+			<div class="card">
 				<div class="card-header text-center"></div>
 				<div class="card-body">
 					<div class="row justify-content-center">
 						<div class="col-auto"><h5>Disse bøkene</h5></div>
 					</div>
-					<ul class="list-group mb-5 mt-2">
+					<ul class="list-group mt-2">
 						<li
 							class="list-group-item"
 							*ngFor="
@@ -18,8 +18,7 @@
 						</li>
 					</ul>
 
-					<hr />
-					<div class="row justify-content-center">
+					<div class="row justify-content-center mt-3">
 						<div class="col-auto"><h5>Skal levers til</h5></div>
 					</div>
 					<app-match-profile-card
@@ -35,7 +34,7 @@
 				</div>
 				<div class="card-footer">
 					<div class="row justify-content-center mt-2">
-						<div class="col-6">
+						<div class="col-lg-6 col-md-12">
 							<button class="btn btn-success btn-lg btn-block">
 								<fa-icon
 									[icon]="'flag-checkered'"
@@ -46,7 +45,7 @@
 						</div>
 					</div>
 					<div class="row justify-content-center mt-2">
-						<div class="col-6">
+						<div class="col-lg-6 col-md-12">
 							<button class="btn btn-link btn-block">
 								Jeg har spørsmål
 							</button>

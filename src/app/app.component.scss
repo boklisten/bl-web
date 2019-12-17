@@ -7,14 +7,7 @@
 .bl-content {
 	min-height: 120vh;
 	padding-bottom: 200px;
-
-	@include media-breakpoint-between(sm, xl) {
-		margin-top: 70px;
-	}
-
-	@include media-breakpoint-only(xs) {
-		margin-top: 50px;
-	}
+	margin-top: 55px;
 }
 
 .gutter {

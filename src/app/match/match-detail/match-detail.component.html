@@ -1,13 +1,20 @@
 <div class="container">
 	<div class="row">
-		<div class="col">
+		<div class="col" *ngIf="match">
 			{{ match.id }} |
 			<a routerLink="deliver" class="bl-link">deliver</a> |
 			<a
 				routerLink="recieve"
 				[queryParams]="{ r: '5db2c1cea2c15641fe1cac22' }"
 				class="bl-link"
-				>recieve</a
+				>recieve A</a
+			>
+			|
+			<a
+				routerLink="recieve"
+				[queryParams]="{ r: '5db2cdc6a2c15641fe1cac27' }"
+				class="bl-link"
+				>recieve B</a
 			>
 		</div>
 	</div>

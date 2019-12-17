@@ -1,12 +1,9 @@
 @import "../../styles";
 
+$header-font-size: 20px;
+
 .bl-header {
 	background-color: $primary-color;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	border-bottom: 2px solid $secondary-color;
-	position: fixed;
-	top: 0;
 	overflow: visible;
 	width: 100%;
 	z-index: 999;
@@ -17,22 +14,13 @@
 
 .bl-header-button {
 	color: #283d3b;
-	margin-left: 10px;
-	margin-right: 10px;
+	font-size: $header-font-size;
 	cursor: pointer;
-}
-
-.bl-header-button:hover {
-}
-
-.bl-header-button-alert {
-	@extend .bl-header-button;
-	color: #ffffff;
 }
 
 .bl-logo {
 	text-align: center;
-	font-size: 20px;
+	font-size: $header-font-size;
 	color: #ffffff;
 	cursor: pointer;
 }
@@ -44,11 +32,26 @@
 	font-family: serif;
 }
 
-.bl-logo-text:hover {
-	text-decoration: underline;
+.bl-burger-menu {
+	width: 100%;
+	background-color: $primary-color;
+	z-index: 999;
+	border-bottom: 2px solid $secondary-color;
 }
 
-.bl-header-buttons {
-	text-align: center;
-	color: #283d3b;
+.bl-cart-alert-circle {
+	background-color: $alert-color;
+	border-radius: 50%;
+	height: $header-font-size;
+	width: $header-font-size;
+	font-size: 18px;
+	display: inline-block;
+	padding-bottom: 5px;
+	font-weight: bold;
+	color: #ffffff;
+	margin-left: auto;
+	margin-right: auto;
+	//position: absolute;
+	//top: -21%;
+	//left: 55%;
 }

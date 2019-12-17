@@ -194,7 +194,8 @@ a:visited {
 
 .bl-goto-footer {
 	position: fixed;
-	height: 80px;
+	border-top: 2px solid gray;
+	min-height: 80px;
 	width: 100vw;
 	bottom: 0px;
 	padding: 1rem;
