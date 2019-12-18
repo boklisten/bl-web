@@ -39,6 +39,14 @@
 		<fa-icon *ngIf="showMenu" [icon]="'times'" size="lg"> </fa-icon>
 	</div>
 </nav>
-<div class="bl-burger-menu position-fixed">
-	<app-user-menu [(showMenu)]="showMenu"></app-user-menu>
+<div class="bl-burger-menu position-fixed" *ngIf="showMenu">
+	<div
+		class="row justify-content-md-end justify-content-sm-center no-gutters"
+	>
+		<div
+			class="col-lg-3 col-md-6 col-sm-12 p-2 bl-burger-menu-content bg-info"
+		>
+			<app-user-menu [(showMenu)]="showMenu"></app-user-menu>
+		</div>
+	</div>
 </div>
