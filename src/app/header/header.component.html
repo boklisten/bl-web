@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top bl-header d-flex align-items-center mb-0">
+<nav class="navbar fixed-top bl-header d-flex align-items-center">
 	<div routerLink="/welcome">
 		<img
 			src="../../assets/img/boklisten_logo_v2_icon_white_lg.png"
@@ -6,44 +6,37 @@
 			width="40"
 		/>
 	</div>
-	<div routerLink="/welcome">
-		<b class="bl-logo-text bl-link d-md-inline d-none">Boklisten.no</b>
+	<div routerLink="/welcome" class="mr-auto d-sm-inline d-none">
+		<b class="bl-logo-text bl-link">Boklisten.no</b>
 	</div>
 	<div
-		class="d-sm-inline d-none text-white bl-link ml-auto bl-header-button"
+		class="text-white bl-link ml-auto bl-header-button d-md-inline d-sm-none d-none"
 		routerLink="/info/general"
 	>
-		<fa-icon [icon]="'info-circle'" class="mr-2"></fa-icon>
-
-		<span class="d-md-inline d-sm-none d-none"> Info </span>
+		<span> Info </span>
 	</div>
 
 	<div
-		class="text-white bl-link ml-5 bl-header-button"
+		class="text-white bl-link ml-5 bl-header-button d-md-inline d-sm-none d-none"
 		routerLink="/fastbuy/regions"
 	>
-		<fa-icon [icon]="'book'" class="mr-2"></fa-icon>
-
-		<span class="d-md-inline d-sm-none d-none"> Bestill bøker</span>
-	</div>
-
-	<div class="text-white bl-link ml-5 bl-header-button" routerLink="/cart">
-		<fa-icon [icon]="'shopping-cart'" class="mr-2"></fa-icon>
-
-		<span class="d-md-inline d-sm-none d-none"> Handlekurv</span>
-		<span
-			*ngIf="cartSize > 0"
-			class="ml-1 bl-cart-alert-circle text-center"
-			>{{ cartSize }}</span
-		>
+		<span> Bestill bøker</span>
 	</div>
 
 	<div
-		class="text-white bl-link ml-5 bl-header-button pr-3"
+		class="text-white bl-link ml-auto ml-sm-5 bl-header-button bl-cart-button"
+		routerLink="/cart"
+		*ngIf="cartSize > 0"
+	>
+		<fa-icon [icon]="'shopping-cart'" class="mr-1"></fa-icon>
+	</div>
+
+	<div
+		class="text-white bl-link ml-5 bl-header-button mr-3 bl-burger-button"
 		(click)="onMenuClick()"
 	>
-		<fa-icon *ngIf="!showMenu" [icon]="'bars'"> </fa-icon>
-		<fa-icon *ngIf="showMenu" [icon]="'times'"> </fa-icon>
+		<fa-icon *ngIf="!showMenu" [icon]="'bars'" size="lg"> </fa-icon>
+		<fa-icon *ngIf="showMenu" [icon]="'times'" size="lg"> </fa-icon>
 	</div>
 </nav>
 <div class="bl-burger-menu position-fixed">
