@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { BranchService } from "@wizardcoder/bl-connect";
+import { BranchService, StorageService } from "@wizardcoder/bl-connect";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
@@ -22,15 +22,40 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private location: Location,
-		private urlPathEditService: UrlPathEditService
+		private urlPathEditService: UrlPathEditService,
+		private storageService: StorageService
 	) {}
 
-	ngOnInit() {
-		this.branchId = this.route.snapshot.queryParamMap.get("branch");
-		const queryCategories = this.route.snapshot.queryParamMap.getAll(
+	private getCategories(): string[] {
+		let queryCategories = this.route.snapshot.queryParamMap.getAll(
 			"category"
 		);
+
+		if (!queryCategories) {
+			return [];
+		}
+
+		return queryCategories;
+	}
+
+	private getBranchId(): string {
+		let branchId = this.route.snapshot.queryParamMap.get("branch");
+		if (!branchId) {
+			try {
+				branchId = this.branchStoreService.getBranch().id;
+			} catch (e) {
+				return null;
+			}
+		}
+		return branchId;
+	}
+
+	ngOnInit() {
+		this.branchId = this.getBranchId();
+		let queryCategories = this.getCategories();
+
 		const courseNames = [];
+
 		this.wait = true;
 		this.branchService
 			.getById(this.branchId, { fresh: true })

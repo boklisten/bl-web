@@ -7,20 +7,22 @@
 		/>
 	</div>
 	<div routerLink="/welcome" class="mr-auto d-sm-inline d-none">
-		<b class="bl-logo-text bl-link">Boklisten.no</b>
+		<b class="bl-logo-text bl-link" i18n="@@headerCompanyName"
+			>Boklisten.no</b
+		>
 	</div>
 	<div
 		class="text-white bl-link ml-auto bl-header-button d-md-inline d-sm-none d-none"
 		routerLink="/info/general"
 	>
-		<span> Info </span>
+		<span i18n="@@headerInfo"> Info </span>
 	</div>
 
 	<div
 		class="text-white bl-link ml-5 bl-header-button d-md-inline d-sm-none d-none"
-		routerLink="/fastbuy/regions"
+		(click)="onOrderItemsClick()"
 	>
-		<span> Bestill bøker</span>
+		<span i18n="@@headerOrderItems"> Order items</span>
 	</div>
 
 	<div

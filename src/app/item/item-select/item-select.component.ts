@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Branch, Item } from "@wizardcoder/bl-model";
 import { Router, ActivatedRoute } from "@angular/router";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { BranchService } from "@wizardcoder/bl-connect";
+import { BranchService, StorageService } from "@wizardcoder/bl-connect";
 import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
 import { CartService } from "../../cart/cart.service";
 
@@ -23,7 +23,8 @@ export class ItemSelectComponent implements OnInit {
 		private _branchService: BranchService,
 		private _route: ActivatedRoute,
 		private _urlPathEditService: UrlPathEditService,
-		private _cartService: CartService
+		private _cartService: CartService,
+		private _storageService: StorageService
 	) {
 		this.selectedCategories = [];
 		this.items = [];
@@ -49,9 +50,29 @@ export class ItemSelectComponent implements OnInit {
 			this.setBranchFromStore();
 		}
 
-		this.selectedCategories = this._urlPathEditService.urlWordsToSentence(
+		this.selectedCategories = this.getCategories();
+	}
+
+	private getCategories(): string[] {
+		let queryCategories = this._urlPathEditService.urlWordsToSentence(
 			this._route.snapshot.queryParamMap.getAll("category")
 		);
+
+		if (queryCategories && queryCategories.length > 0) {
+			this._storageService.add(
+				"bl-item-categories",
+				JSON.stringify(queryCategories)
+			);
+		} else {
+			try {
+				queryCategories = JSON.parse(
+					this._storageService.get("bl-item-categories")
+				);
+			} catch (e) {
+				queryCategories = [];
+			}
+		}
+		return queryCategories;
 	}
 
 	private setBranchFromStore() {
