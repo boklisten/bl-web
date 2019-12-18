@@ -9,40 +9,21 @@ import { UserService } from "../user/user.service";
 	styleUrls: ["./cart.component.scss"]
 })
 export class CartComponent implements OnInit {
-	public isUserValid: boolean;
-	public isUserLoggedIn: boolean;
+	public cartSize: number;
 	constructor(
 		private _cartService: CartService,
 		private _userService: UserService
 	) {}
 
 	ngOnInit() {
-		if (this._cartService.isEmpty()) {
-			return;
-		}
-		this.isUserValid = true;
-		this.checkIfUserIsValid();
-		this.isUserLoggedIn = this._userService.loggedIn();
+		this.cartSize = this._cartService.getSize();
+
+		this._cartService.onCartChange().subscribe(() => {
+			this.cartSize = this._cartService.getSize();
+		});
 	}
 
-	private checkIfUserIsValid() {
-		this._userService
-			.isUserDetailValid()
-			.then((valid: boolean) => {
-				this.isUserValid = valid;
-			})
-			.catch(() => {
-				this.isUserValid = false;
-			});
-	}
-
-	public showCart(): boolean {
-		return (
-			this.getCart().length > 0 && this.isUserValid && this.isUserLoggedIn
-		);
-	}
-
-	public getCart(): CartItem[] {
+	getCart() {
 		return this._cartService.getCart();
 	}
 }

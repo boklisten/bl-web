@@ -9,8 +9,8 @@ import { CartOrderCheckoutComponent } from "./cart-order-checkout/cart-order-che
 const routes: Routes = [
 	{
 		path: "cart",
-		component: CartComponent,
-		canActivate: [UserGuardService, BranchGuardService]
+		component: CartComponent
+		//canActivate: [UserGuardService, BranchGuardService]
 	},
 	{
 		path: "cart/checkout",
