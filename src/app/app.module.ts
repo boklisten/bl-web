@@ -21,6 +21,7 @@ import {
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { MatchModule } from "./match/match.module";
+import { ClickOutsideModule } from "ng-click-outside";
 
 import {
 	faUserFriends,
@@ -179,7 +180,8 @@ library.add(
 		HeaderAlertModule,
 		NgbDropdownModule,
 		FastbuyModule,
-		MatchModule
+		MatchModule,
+		ClickOutsideModule
 	],
 	providers: [BranchGuardService],
 	bootstrap: [AppComponent]

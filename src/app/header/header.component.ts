@@ -27,6 +27,7 @@ export type MenuItem =
 export class HeaderComponent implements OnInit {
 	public showMenu: boolean;
 	public cartSize: number;
+	private outsideClick: boolean;
 
 	constructor(
 		private _router: Router,
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
 		private _dropdownConfig: NgbDropdownConfig
 	) {
 		this.showMenu = false;
+		this.outsideClick = false;
 
 		this._dropdownConfig.placement = "bottom";
 		this.cartSize = this._cartService.getSize();
@@ -81,9 +83,25 @@ export class HeaderComponent implements OnInit {
 
 	public onMenuClick() {
 		this.showMenu = !this.showMenu;
+		setTimeout(() => {
+			this.outsideClick = !this.outsideClick;
+		}, 1);
+	}
+
+	public onInsideMenuClick() {
+		setTimeout(() => {
+			this.outsideClick = false;
+		}, 1);
 	}
 
 	public isLoggedIn() {
 		return this._userService.loggedIn();
+	}
+
+	public outsideMenuClick(e) {
+		if (this.outsideClick) {
+			this.showMenu = false;
+		}
+		this.outsideClick = false;
 	}
 }

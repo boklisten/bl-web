@@ -35,7 +35,7 @@ $header-font-size: 20px;
 }
 
 .bl-burger-button {
-	min-widht: 30px;
+	min-width: 30px;
 }
 
 .bl-cart-button {
@@ -50,6 +50,8 @@ $header-font-size: 20px;
 }
 
 .bl-burger-menu-content {
+	background-color: $secondary-color;
+	border-top: 2px solid $secondary-color;
 	height: 100vh;
 }
 

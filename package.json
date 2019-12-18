@@ -58,6 +58,7 @@
 		"file-saver": "^2.0.2",
 		"moment": "^2.22.2",
 		"moment-es6": "^1.0.0",
+		"ng-click-outside": "^5.1.1",
 		"npm": "^6.13.1",
 		"rxjs": "^6.2.1",
 		"zone.js": "~0.8.26"
