@@ -2329,25 +2329,25 @@
 		</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/fastbuy/fastbuy-select-region/fastbuy-select-region.component.ts</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="headerInfo" datatype="html">
-        <source> Info </source><target state="new"> Info </target>
+        <source> Info </source><target state="final"> Info </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
           <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit><trans-unit id="headerOrderItems" datatype="html">
-        <source> Order items</source><target state="new"> Order items</target>
+        <source> Order items</source><target state="final">Bestill bøker</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header/header.component.ts</context>
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit><trans-unit id="headerMenuBranchInfo" datatype="html">
-        <source>Branch info</source><target state="new">Branch info</target>
+        <source>Branch info</source><target state="final">Åpningstider</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit><trans-unit id="headerMenuContact" datatype="html">
-        <source>Contact info</source><target state="new">Contact info</target>
+        <source>Contact info</source><target state="final">Kontaktinformasjon</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
           <context context-type="linenumber">46</context>
@@ -2355,8 +2355,7 @@
       </trans-unit><trans-unit id="ffe035304fd6e940a89e6dec899da8b293c0712e" datatype="html">
         <source>
 							Hva venter du på?
-						</source><target state="new">
-							Hva venter du på?
+						</source><target state="final">Hva venter du på?
 						</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
@@ -2366,8 +2365,7 @@
       </trans-unit><trans-unit id="matchFailureTitle" datatype="html">
         <source>
 				Something went wrong when trying to match
-			</source><target state="new">
-				Something went wrong when trying to match
+			</source><target state="final">Noe gikk galt når vi prøvde å finne en match
 			</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/match/match-failure/match-failure.component.ts</context>
