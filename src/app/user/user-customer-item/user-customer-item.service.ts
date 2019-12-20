@@ -23,7 +23,7 @@ export class UserCustomerItemService {
 		private _customerItemService: CustomerItemService,
 		private _branchStoreService: BranchStoreService
 	) {
-		this._maxDeadline = "2019-07-01";
+		this._maxDeadline = "2019-12-20";
 	}
 
 	public isOnValidBranch(
@@ -146,7 +146,8 @@ export class UserCustomerItemService {
 
 		if (
 			!this._dateService.isDeadlineExpired(
-				customerItem.deadline.toString()
+				customerItem.deadline.toString(),
+				this._maxDeadline
 			) &&
 			!this._dateService.isCancelValid(customerItem.creationTime) &&
 			!customerItem.returned &&
