@@ -1,9 +1,14 @@
-<div class="row" *ngIf="showAlert">
-	<div class="col-12">
-		<div class="alert alert-warning">
-			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="@@headerUserDetailAlertInfo">We need some more information from you before you can retrieve the items.</span>
-			<span class="bl-link font-weight-bold" (click)="onEditClick()" i18n="@@headerUserDetalAlertClickToEditLink"> Click here to edit your user details</span>
-		</div>
-	</div>
+<div class="alert alert-warning" *ngIf="showAlert">
+	<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+	<span i18n="@@headerUserDetailAlertInfo"
+		>We need some more information from you before you can retrieve the
+		items.</span
+	>
+	<span
+		class="bl-link font-weight-bold"
+		(click)="onEditClick()"
+		i18n="@@headerUserDetalAlertClickToEditLink"
+	>
+		Click here to edit your user details</span
+	>
 </div>

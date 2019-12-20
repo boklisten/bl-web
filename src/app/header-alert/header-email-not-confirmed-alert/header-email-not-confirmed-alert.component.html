@@ -1,9 +1,7 @@
-<div class="row" *ngIf="showAlert">
-	<div class="col-12">
-		<div class="alert alert-warning">
-			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="@@headerEmailNotConfirmedAlertInfo">We need you to confirm your email, you should have gotten instructions by email</span>
-		</div>
-	</div>
-
+<div class="alert alert-warning" *ngIf="showAlert">
+	<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+	<span i18n="@@headerEmailNotConfirmedAlertInfo"
+		>We need you to confirm your email, you should have gotten instructions
+		by email</span
+	>
 </div>

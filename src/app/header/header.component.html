@@ -45,13 +45,11 @@
 	<div
 		class="row justify-content-md-end justify-content-sm-center no-gutters"
 	>
-		<div
-			class="col-lg-3 col-md-6 col-sm-12 bl-burger-menu-content"
-			(clickOutside)="outsideMenuClick($event)"
-		>
+		<div class="col-lg-3 col-md-6 col-sm-12 bl-burger-menu-content">
 			<app-user-menu
 				[(showMenu)]="showMenu"
 				(showMenuChange)="onInsideMenuClick()"
+				(clickOutside)="outsideMenuClick($event)"
 			></app-user-menu>
 		</div>
 	</div>

@@ -1,7 +1,9 @@
 <app-header></app-header>
-
+<!--<div class="bl-header-alert"><app-header-alert></app-header-alert></div>-->
 <div class="bl-content" [ngClass]="{ gutter: showGutter }">
-	<app-header-alert></app-header-alert>
+	<div class="bl-header-alert" *ngIf="showAlert">
+		<app-header-alert></app-header-alert>
+	</div>
 	<router-outlet></router-outlet>
 
 	<!--<div class="bl-goto-footer">-->
