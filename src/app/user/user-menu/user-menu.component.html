@@ -4,6 +4,15 @@
 	(click)="onMenuClick()"
 >
 	<a
+		class="list-group-item list-group-item-action list-group-item-warning"
+		routerLink="/fastbuy/regions"
+	>
+		<fa-icon [icon]="'book'" class="mr-2"></fa-icon>
+		<span class="bl-header-menu-name" i18n="@@headerMenuOrderItems"
+			>Order items</span
+		>
+	</a>
+	<a
 		class="list-group-item list-group-item-action"
 		routerLink="/u/items"
 		*ngIf="isLoggedIn()"
@@ -59,7 +68,7 @@
 	</a>
 	<a
 		class="list-group-item list-group-item-action list-group-item-danger"
-		routerLink="/logout"
+		routerLink="/auth/logout"
 		*ngIf="isLoggedIn()"
 	>
 		<fa-icon [icon]="'sign-out-alt'" class="mr-2"></fa-icon>
