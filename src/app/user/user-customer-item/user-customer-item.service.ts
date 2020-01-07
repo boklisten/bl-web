@@ -23,7 +23,7 @@ export class UserCustomerItemService {
 		private _customerItemService: CustomerItemService,
 		private _branchStoreService: BranchStoreService
 	) {
-		this._maxDeadline = "2019-12-20";
+		this._maxDeadline = "2020-01-05";
 	}
 
 	public isOnValidBranch(

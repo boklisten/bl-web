@@ -19,6 +19,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 			{ name: "Bergen", params: { region: "bergen" } },
 			{ name: "Drammen", params: { region: "drammen" } },
 			{ name: "Fredrikstad", params: { region: "fredrikstad" } },
+			{ name: "Lillestrøm", params: { region: "lillestrøm" } },
 			{ name: "Oslo", params: { region: "oslo" } },
 			{ name: "Stavanger", params: { region: "stavanger" } },
 			{ name: "Trondheim", params: { region: "trondheim" } }
