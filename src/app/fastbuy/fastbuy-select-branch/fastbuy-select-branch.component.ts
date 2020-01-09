@@ -14,13 +14,23 @@ export class FastbuySelectBranchComponent implements OnInit {
 	public branches: { name: string; params: any }[];
 	public link = "/fastbuy/courses";
 	public wait: boolean;
+	private publicSchools: string[];
 
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
 		private branchService: BranchService,
 		private branchStoreService: BranchStoreService
-	) {}
+	) {
+		this.publicSchools = [
+			"Otto Treider VG1",
+			"Otto Treider VG2",
+			"Otto Treider VG3",
+			"Wang VG1",
+			"Wang VG2",
+			"Wang VG3"
+		];
+	}
 
 	ngOnInit() {
 		this.region = this.route.snapshot.queryParamMap.get("region");
@@ -38,14 +48,17 @@ export class FastbuySelectBranchComponent implements OnInit {
 							.toString()
 							.indexOf(this.region.toLowerCase()) >= 0
 					) {
-						let name = branch.name
-							.toLowerCase()
-							.replace(this.region, "");
-
-						name = name.charAt(0).toUpperCase() + name.slice(1);
-
 						branchNames.push({
-							name: name,
+							name: this.sanitizeBranchName(branch),
+							branch: branch,
+							params: { branch: branch.id }
+						});
+					} else if (
+						this.region == "oslo" &&
+						this.publicSchools.indexOf(branch.name) >= 0
+					) {
+						branchNames.push({
+							name: this.sanitizeBranchName(branch),
 							branch: branch,
 							params: { branch: branch.id }
 						});
@@ -61,6 +74,11 @@ export class FastbuySelectBranchComponent implements OnInit {
 			.catch(() => {
 				this.wait = false;
 			});
+	}
+
+	private sanitizeBranchName(branch: Branch): string {
+		let name = branch.name.toLowerCase().replace(this.region, "");
+		return name.charAt(0).toUpperCase() + name.slice(1);
 	}
 
 	public onBranchSelect(branch: Branch) {
