@@ -1976,9 +1976,9 @@
         </context-group>
       </trans-unit><trans-unit id="welcomeSlogan" datatype="html">
         <source>
-					Alt innen lærebøker!
+          Alltid riktig bok!
 				</source><target state="final">
-					Alt innen lærebøker!
+          Alltid riktig bok!
 				</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
