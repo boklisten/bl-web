@@ -11,6 +11,12 @@ export class InfoFaqComponent implements OnInit {
 	constructor() {
 		this.faqs = [
 			{
+				title: "Hva betyr det at Boklisten alltid leverer riktig bok?",
+				textBlocks: [
+					"Vi i Boklisten garanterer at du får den boken du trenger til din undervisning av oss. Det vil si at det er den boken som står på din skoles bokliste.  Vi har åpent kjøp i 14 dager og du kan bytte boken eller få pengene tilbake i denne perioden."
+				]
+			},
+			{
 				title: "Hvordan bestiller jeg bøker som privatist?",
 				textBlocks: [
 					"Du bruker nettbutikken som en vanlig nettbutikk. Når du har betalt – enten på forhånd eller på stand - vil bøkene leveres ut på din skole eller per post. Vi har alle bøkene til skolen din tilgjengelig på stand, men noen ganger må vi etterbestille. Da kan det ta opp til ca 1 uke før bøkene er klare. Du må ta med legitimasjon når du skal hente bøkene. Du kan velge å delbetale for både et halvt og et helt år."

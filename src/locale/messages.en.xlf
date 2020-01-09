@@ -1934,12 +1934,15 @@
         </context-group>
       </trans-unit><trans-unit id="welcomeSlogan" datatype="html">
         <source>
-						Alt innen lærebøker!
-					</source><target state="final">
-						Alt innen lærebøker!
-					</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="welcomeWeAtBoklisten" datatype="html">
+          Alltid riktig bok!
+				</source><target state="final">
+          Alltid riktig bok!
+				</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="welcomeWeAtBoklisten" datatype="html">
         <source>
 						Vi i Boklisten.no er veldig opptatt av lærebøker, derfor
 						vil vi gjøre det så enkelt som mulig for deg å få tak i

@@ -1303,8 +1303,8 @@
       </trans-unit>
       <trans-unit id="welcomeSlogan" datatype="html">
         <source>
-						Alt innen lærebøker!
-					</source>
+          Alltid riktig bok!
+				</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
           <context context-type="linenumber">6</context>
