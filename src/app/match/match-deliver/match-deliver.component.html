@@ -2,19 +2,24 @@
 	<div class="row" *ngIf="match">
 		<div class="col-12 mb-2" *ngFor="let reciever of match.recievers">
 			<div class="card">
-				<div class="card-header text-center"></div>
+				<div class="card-header text-right">
+					<button class="btn btn-link">Jeg har spørsmål</button>
+				</div>
 				<div class="card-body">
 					<div class="row justify-content-center">
 						<div class="col-auto"><h5>Disse bøkene</h5></div>
 					</div>
 					<ul class="list-group mt-2">
 						<li
-							class="list-group-item"
+							class="list-group-item d-flex justify-content-between align-items-center"
 							*ngFor="
 								let item of getItemsForReciever(match, reciever)
 							"
 						>
-							<h5>{{ item.title }}</h5>
+							<b>{{ item.title }}</b>
+							<button class="btn btn-outline-success">
+								Levert
+							</button>
 						</li>
 					</ul>
 
@@ -32,26 +37,106 @@
 						[match]="match"
 					></app-match-location-card>
 				</div>
-				<div class="card-footer">
-					<div class="row justify-content-center mt-2">
-						<div class="col-lg-6 col-md-12">
+
+				<div class="card-footer" *ngIf="false === true">
+					<div
+						class="row justify-content-center mt-2 align-items-center"
+					>
+						<div class="col-lg-8 col-md-12">
 							<button class="btn btn-success btn-lg btn-block">
-								<fa-icon
-									[icon]="'flag-checkered'"
-									class="mr-2"
-								></fa-icon>
-								Jeg bekrefter at dette er gjort
+								Jeg bekrefter at jeg kan møte opp
 							</button>
 						</div>
-					</div>
-					<div class="row justify-content-center mt-2">
-						<div class="col-lg-6 col-md-12">
-							<button class="btn btn-link btn-block">
-								Jeg har spørsmål
+
+						<div class="col-lg-4 col-md-12 mt-lg-0 mt-md-2 mt-2">
+							<button
+								class="btn btn-outline-danger btn-block"
+								(click)="open(cantComeContent)"
+							>
+								Jeg kan ikke møte
 							</button>
 						</div>
 					</div>
 				</div>
+
+				<div class="card-footer">
+					<div
+						class="row justify-content-center mt-2 align-items-center"
+					>
+						<div class="col-lg-4 col-md-12">
+							<button
+								class="btn btn-outline-danger btn-block"
+								(click)="open(didNotComeContent)"
+							>
+								Mottaker har ikke møtt opp
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<ng-template #cantComeContent let-d="dismiss">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal-basic-title">
+							Jeg kan ikke møte
+						</h4>
+						<button
+							type="button"
+							class="close"
+							aria-label="Close"
+							(click)="d('Cross click')"
+						>
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-3">
+							Hvis du ikke kan møte opp på det angitte tidspunkt
+							og sted ber vi deg kontakte {{ reciever.name }} for
+							å avtale nytt tidspunkt. helst med en gang.
+						</p>
+
+						<app-match-profile-card
+							[profile]="reciever"
+						></app-match-profile-card>
+					</div>
+
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-outline-success"
+							(click)="d('I can anyway')"
+						>
+							Jeg kan likevel
+						</button>
+					</div>
+				</ng-template>
+
+				<ng-template #didNotComeContent let-d="dismiss">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modal-basic-title">
+							Mottaker møtte ikke opp
+						</h4>
+						<button
+							type="button"
+							class="close"
+							aria-label="Close"
+							(click)="d('Cross click')"
+						>
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-3">
+							Hvis {{ reciever.name }} ikke har møtt opp innen 10
+							minutter etter avtalt tid, kan du gå til vår stand
+							for å levere dine bøker. Vi ber deg derimot å prøve
+							å kontakte {{ reciever.name }} først.
+						</p>
+						<app-match-profile-card
+							[profile]="reciever"
+						></app-match-profile-card>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>

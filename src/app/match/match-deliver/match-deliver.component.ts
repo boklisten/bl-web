@@ -3,6 +3,7 @@ import { MatchService } from "@wizardcoder/bl-connect";
 import { Match, MatchProfile } from "@wizardcoder/bl-model";
 import { UserService } from "../../user/user.service";
 import { MatchStoreService } from "../match-store/match-store.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
 	selector: "app-match-deliver",
@@ -14,7 +15,8 @@ export class MatchDeliverComponent implements OnInit {
 
 	constructor(
 		private matchStoreService: MatchStoreService,
-		private userService: UserService
+		private userService: UserService,
+		private modalService: NgbModal
 	) {}
 
 	ngOnInit() {
@@ -28,5 +30,8 @@ export class MatchDeliverComponent implements OnInit {
 		return match.items.filter(item => {
 			return item.reciever.toString() === reciever.userId.toString();
 		});
+	}
+	open(content) {
+		this.modalService.open(content).result.then(result => {}, reason => {});
 	}
 }
