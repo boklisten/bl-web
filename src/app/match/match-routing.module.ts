@@ -37,11 +37,11 @@ const routes: Routes = [
 		component: MatchDetailComponent,
 		children: [
 			{
-				path: "deliver",
+				path: "d",
 				component: MatchDeliverComponent
 			},
 			{
-				path: "recieve",
+				path: "r",
 				component: MatchRecieveComponent
 			}
 		]
