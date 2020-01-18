@@ -16,6 +16,7 @@ import { MatchFailureComponent } from "./match-failure/match-failure.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatchConfirmLocationComponent } from './match-confirm-location/match-confirm-location.component';
 import { MatchHandoverComponent } from './match-handover/match-handover.component';
+import { MatchQuestionsComponent } from './match-questions/match-questions.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,8 @@ import { MatchHandoverComponent } from './match-handover/match-handover.componen
 		MatchRecieveComponent,
 		MatchFailureComponent,
 		MatchConfirmLocationComponent,
-		MatchHandoverComponent
+		MatchHandoverComponent,
+		MatchQuestionsComponent
 	],
 	imports: [
 		CommonModule,
