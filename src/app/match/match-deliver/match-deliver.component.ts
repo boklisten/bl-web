@@ -12,6 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class MatchDeliverComponent implements OnInit {
 	match: Match;
+	showHandover: boolean;
 
 	constructor(
 		private matchStoreService: MatchStoreService,
@@ -24,6 +25,10 @@ export class MatchDeliverComponent implements OnInit {
 		this.matchStoreService.onMatchChange().subscribe(() => {
 			this.match = this.matchStoreService.getMatch();
 		});
+	}
+
+	bothPartiesConfirmed() {
+		this.showHandover = true;
 	}
 
 	public getItemsForReciever(match: Match, reciever: MatchProfile) {

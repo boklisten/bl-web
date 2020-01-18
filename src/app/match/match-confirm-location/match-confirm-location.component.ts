@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Match, MatchProfile, MatchState } from "@wizardcoder/bl-model";
 import { MatchService } from "@wizardcoder/bl-connect";
@@ -14,6 +14,7 @@ export class MatchConfirmLocationComponent implements OnInit {
 	@Input() match: Match;
 	@Input() customer: MatchProfile;
 	@Input() counterparty: MatchProfile;
+	@Output() bothPartiesConfirmed: EventEmitter<boolean>;
 
 	public customerStatus;
 	public counterpartyStatus;
@@ -21,7 +22,9 @@ export class MatchConfirmLocationComponent implements OnInit {
 	constructor(
 		private modalService: NgbModal,
 		private matchService: MatchService
-	) {}
+	) {
+		this.bothPartiesConfirmed = new EventEmitter();
+	}
 
 	ngOnInit() {
 		this.updateStatus();
@@ -36,6 +39,9 @@ export class MatchConfirmLocationComponent implements OnInit {
 	private updateStatus() {
 		this.counterpartyStatus = this.checkForStatus(this.counterparty.userId);
 		this.customerStatus = this.checkForStatus(this.customer.userId);
+		if (this.counterpartyStatus && this.customerStatus) {
+			this.bothPartiesConfirmed.emit(true);
+		}
 	}
 
 	confirmLocation() {
@@ -57,7 +63,7 @@ export class MatchConfirmLocationComponent implements OnInit {
 	open(content) {
 		this.modalService.open(content).result.then(
 			result => {
-				if (this.getDismissReason(result)) {
+				if (this.getDismissReason(result) === "Confirm location") {
 					this.confirmLocation();
 				}
 			},

@@ -17,7 +17,7 @@
 							class="list-group-item"
 							*ngFor="let item of itemsToRecieve"
 						>
-							<h5>{{ item.title }}</h5>
+							<b>{{ item.title }}</b>
 						</li>
 					</ul>
 
@@ -39,26 +39,23 @@
 					<app-match-location-card
 						[match]="match"
 					></app-match-location-card>
+
+					<div class="mt-3">
+						<app-match-confirm-location
+							[match]="match"
+							[customer]="reciever"
+							[counterparty]="match.sender"
+							(bothPartiesConfirmed)="bothPartiesConfirmed()"
+						></app-match-confirm-location>
+					</div>
 				</div>
-				<div class="card-footer">
-					<div class="row justify-content-center mt-2">
-						<div class="col-lg-6 col-md-12">
-							<button class="btn btn-success btn-lg btn-block">
-								<fa-icon
-									[icon]="'flag-checkered'"
-									class="mr-2"
-								></fa-icon>
-								Jeg bekrefter at dette er gjort
-							</button>
-						</div>
-					</div>
-					<div class="row justify-content-center mt-2">
-						<div class="col-lg-6 col-md-12">
-							<button class="btn btn-link btn-block">
-								Jeg har spørsmål
-							</button>
-						</div>
-					</div>
+				<div class="card-footer" *ngIf="showHandover">
+					<app-match-handover
+						[match]="match"
+						[customer]="customer"
+						[counterparty]="reciever"
+						[sender]="true"
+					></app-match-handover>
 				</div>
 			</div>
 		</div>

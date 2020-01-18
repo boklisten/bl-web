@@ -24,6 +24,7 @@ import { MatchModule } from "./match/match.module";
 import { ClickOutsideModule } from "ng-click-outside";
 
 import {
+	faCircle,
 	faUserFriends,
 	faFilter,
 	faExternalLinkAlt,
@@ -82,6 +83,7 @@ import {
 	faAddressCard,
 	faBirthdayCake
 } from "@fortawesome/free-solid-svg-icons";
+import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons";
 import { environment } from "../environments/environment";
 import { BranchGuardService } from "./branch/branch-guard-service/branch-guard.service";
 import { WelcomeModule } from "./welcome/welcome.module";
@@ -94,6 +96,8 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
 
 library.add(
+	farCircle,
+	faCircle,
 	faFilter,
 	faExternalLinkAlt,
 	faChevronRight,

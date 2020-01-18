@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Match } from "@wizardcoder/bl-model";
+import { Match, MatchProfile } from "@wizardcoder/bl-model";
 import { MatchStoreService } from "../match-store/match-store.service";
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -12,6 +12,8 @@ export class MatchRecieveComponent implements OnInit {
 	public match: Match;
 	public recieverId: string;
 	public itemsToRecieve: any[];
+	public reciever: MatchProfile;
+	public showHandover: boolean;
 
 	constructor(
 		private matchStoreService: MatchStoreService,
@@ -28,11 +30,25 @@ export class MatchRecieveComponent implements OnInit {
 
 		this.match = this.matchStoreService.getMatch();
 		this.setItemsToRecieve();
+		this.getReciever();
 
 		this.matchStoreService.onMatchChange().subscribe(() => {
 			this.match = this.matchStoreService.getMatch();
 			this.setItemsToRecieve();
+			this.getReciever();
 		});
+	}
+
+	bothPartiesConfirmed() {
+		this.showHandover = true;
+	}
+	private getReciever() {
+		for (let reciever of this.match.recievers) {
+			if (reciever.userId === this.recieverId) {
+				this.reciever = reciever;
+				return;
+			}
+		}
 	}
 
 	private setItemsToRecieve() {
