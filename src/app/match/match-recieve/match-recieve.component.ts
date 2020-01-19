@@ -29,8 +29,10 @@ export class MatchRecieveComponent implements OnInit {
 		}
 
 		this.match = this.matchStoreService.getMatch();
-		this.setItemsToRecieve();
-		this.getReciever();
+		if (this.match) {
+			this.setItemsToRecieve();
+			this.getReciever();
+		}
 
 		this.matchStoreService.onMatchChange().subscribe(() => {
 			this.match = this.matchStoreService.getMatch();
