@@ -49,7 +49,7 @@
 		"@fortawesome/free-solid-svg-icons": "^5.2.0",
 		"@ng-bootstrap/ng-bootstrap": "^2.1.2",
 		"@wizardcoder/bl-connect": "^0.14.0",
-		"@wizardcoder/bl-login": "^0.7.11",
+		"@wizardcoder/bl-login": "^0.7.12",
 		"@wizardcoder/bl-model": "^0.22.5",
 		"bootstrap": "^4.4.1",
 		"core-js": "^2.5.3",
