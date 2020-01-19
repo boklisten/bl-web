@@ -11,6 +11,7 @@ import { MatchStoreService } from "../match-store/match-store.service";
 })
 export class MatchDetailComponent implements OnInit {
 	public match: Match;
+	public wait: boolean;
 
 	constructor(
 		private matchStoreService: MatchStoreService,
@@ -18,12 +19,16 @@ export class MatchDetailComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.wait = true;
 		const matchId = this.route.snapshot.paramMap.get("id");
 		this.matchStoreService
 			.setMatch(matchId)
 			.then(match => {
 				this.match = match;
+				this.wait = false;
 			})
-			.catch(() => {});
+			.catch(() => {
+				this.wait = false;
+			});
 	}
 }
