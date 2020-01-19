@@ -34,32 +34,32 @@
       <trans-unit id="headerMenuGeneralInfo" datatype="html">
         <source>General info</source><target state="final">Generell informasjon</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">37</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">46</context></context-group></trans-unit>
       
       <trans-unit id="headerMenuYourItems" datatype="html">
         <source>Your items</source><target state="final">Dine bøker</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">22</context></context-group></trans-unit>
       <trans-unit id="headerMenuOrderHistory" datatype="html">
         <source>Order history</source><target state="final">Ordrehistorikk</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">23</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">32</context></context-group></trans-unit>
       <trans-unit id="headerMenuUserSettings" datatype="html">
         <source>User settings</source><target state="translated">Brukerinnstillinger</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">66</context></context-group></trans-unit>
       <trans-unit id="headerMenuLogout" datatype="html">
         <source>Logout</source><target state="final">Logg ut</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">67</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit>
       <trans-unit id="headerMenuRegister" datatype="html">
         <source>Register</source><target state="final">Registrer</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">77</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit>
       <trans-unit id="headerMenuLogin" datatype="html">
         <source>Login</source><target state="final">Logg inn</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">85</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">94</context></context-group></trans-unit>
       
       
       
@@ -1354,24 +1354,18 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit><trans-unit id="headerUserDetailAlertInfo" datatype="html">
-        <source>We need some more information from you before you can retrieve the items.</source><target state="final">Vi trenger litt mer informasjon om deg før du kan hente bøkene dine.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit><trans-unit id="headerUserDetalAlertClickToEditLink" datatype="html">
-        <source> Click here to edit your user details</source><target state="final"> Klikk her for å redigere din bruker informasjon</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit><trans-unit id="headerEmailNotConfirmedAlertInfo" datatype="html">
-        <source>We need you to confirm your email, you should have gotten instructions by email</source><target state="final">Du må bekrefte e-postadressen din, du skal ha fått en e-post med informasjon om hvordan du kan gjøre dette</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/header-alert/header-email-not-confirmed-alert/header-email-not-confirmed-alert.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
+        <source>We need some more information from you before you can retrieve the
+		items.</source><target state="translated">Vi trenger litt mer informasjon om deg før du kan hente bøkene dine.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="headerUserDetalAlertClickToEditLink" datatype="html">
+        <source>
+		Click here to edit your user details</source><target state="translated"> Klikk her for å redigere din bruker informasjon</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="headerEmailNotConfirmedAlertInfo" datatype="html">
+        <source>We need you to confirm your email, you should have gotten instructions
+		by email</source><target state="translated">Du må bekrefte e-postadressen din, du skal ha fått en e-post med informasjon om hvordan du kan gjøre dette</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/header-alert/header-email-not-confirmed-alert/header-email-not-confirmed-alert.component.ts</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="footerTermsOfServiceLink" datatype="html">
         <source>Terms of service</source><target state="final">Vilkår</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/footer/footer.component.ts</context><context context-type="linenumber">95</context></context-group></trans-unit><trans-unit id="footerPrivacyPolicyLink" datatype="html">
@@ -1903,8 +1897,8 @@
         </context-group>
       </trans-unit><trans-unit id="welcomeSlogan" datatype="html">
         <source>
-					Alltid riktig bok!
-				</source><target state="final">Alltid riktig bok!
+						Alltid riktig bok!
+					</source><target state="translated">Alltid riktig bok!
 				</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="welcomeWeAtBoklisten" datatype="html">
@@ -2342,17 +2336,11 @@
         </context-group>
       </trans-unit><trans-unit id="headerMenuBranchInfo" datatype="html">
         <source>Branch info</source><target state="final">Åpningstider</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit><trans-unit id="headerMenuContact" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="headerMenuContact" datatype="html">
         <source>Contact info</source><target state="final">Kontaktinformasjon</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">46</context>
-        </context-group>
-      </trans-unit><trans-unit id="ffe035304fd6e940a89e6dec899da8b293c0712e" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context><context context-type="linenumber">55</context></context-group></trans-unit><trans-unit id="ffe035304fd6e940a89e6dec899da8b293c0712e" datatype="html">
         <source>
 							Hva venter du på?
 						</source><target state="final">Hva venter du på?
@@ -2370,6 +2358,12 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/match/match-failure/match-failure.component.ts</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit><trans-unit id="headerMenuOrderItems" datatype="html">
+        <source>Order items</source><target state="final">Bestill bøker</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit></body>
   </file>

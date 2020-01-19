@@ -1070,67 +1070,74 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="headerMenuOrderItems" datatype="html">
+        <source>Order items</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="headerMenuYourItems" datatype="html">
         <source>Your items</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuOrderHistory" datatype="html">
         <source>Order history</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuBranchInfo" datatype="html">
         <source>Branch info</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuGeneralInfo" datatype="html">
         <source>General info</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuContact" datatype="html">
         <source>Contact info</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuUserSettings" datatype="html">
         <source>User settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuLogout" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuRegister" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerMenuLogin" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-menu/user-menu.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="branchSelectTitle" datatype="html">
@@ -1303,8 +1310,8 @@
       </trans-unit>
       <trans-unit id="welcomeSlogan" datatype="html">
         <source>
-          Alltid riktig bok!
-				</source>
+						Alltid riktig bok!
+					</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -2906,24 +2913,27 @@
         </context-group>
       </trans-unit>
       <trans-unit id="headerUserDetailAlertInfo" datatype="html">
-        <source>We need some more information from you before you can retrieve the items.</source>
+        <source>We need some more information from you before you can retrieve the
+		items.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerUserDetalAlertClickToEditLink" datatype="html">
-        <source> Click here to edit your user details</source>
+        <source>
+		Click here to edit your user details</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header-alert/header-user-detail-alert/header-user-detail-alert.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="headerEmailNotConfirmedAlertInfo" datatype="html">
-        <source>We need you to confirm your email, you should have gotten instructions by email</source>
+        <source>We need you to confirm your email, you should have gotten instructions
+		by email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/header-alert/header-email-not-confirmed-alert/header-email-not-confirmed-alert.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="matchSelectTitle text-center" datatype="html">
