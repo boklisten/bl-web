@@ -2,7 +2,9 @@
 	<div class="row" *ngIf="match">
 		<div class="col-12">
 			<div class="card">
-				<div class="card-header text-center"></div>
+				<div class="card-header text-right">
+					<app-match-questions></app-match-questions>
+				</div>
 				<div class="card-body">
 					<div class="row justify-content-center">
 						<div class="col-auto text-secondary">
@@ -46,12 +48,11 @@
 						></app-match-confirm-location>
 					</div>
 				</div>
-				<div class="card-footer" *ngIf="showHandover">
+				<div class="card-footer">
 					<app-match-handover
 						[match]="match"
-						[customer]="customer"
-						[counterparty]="reciever"
-						[sender]="true"
+						[customer]="reciever"
+						[counterparty]="match.sender"
 					></app-match-handover>
 				</div>
 			</div>

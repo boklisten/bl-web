@@ -38,15 +38,17 @@
 							[match]="match"
 							[customer]="match.sender"
 							[counterparty]="reciever"
-							(bothPartiesConfirmed)="bothPartiesConfirmed()"
+							(bothPartiesConfirmed)="
+								bothPartiesConfirmed($event)
+							"
 						></app-match-confirm-location>
 					</div>
 				</div>
 
-				<div class="card-footer" *ngIf="showHandover">
+				<div class="card-footer">
 					<app-match-handover
 						[match]="match"
-						[customer]="customer"
+						[customer]="match.sender"
 						[counterparty]="reciever"
 						[sender]="true"
 					></app-match-handover>

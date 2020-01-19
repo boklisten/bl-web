@@ -1,4 +1,7 @@
-<button class="btn btn-success btn-block" (click)="open(handoverContent)">
+<button
+	class="btn btn-outline-success btn-lg btn-block"
+	(click)="open(handoverContent)"
+>
 	Jeg er klar til å {{ sender ? "overrekke" : "motta" }} bøker
 </button>
 
@@ -19,34 +22,21 @@
 			<div class="col-12">
 				<ul class="list-group ">
 					<li
-						class="list-item d-flex justify-content-between align-items-center"
+						class="list-item d-flex justify-content-between align-items-center text-info font-weight-bold"
 						*ngFor="let item of items"
 						(click)="selectItem(item)"
 					>
 						<span>{{ item.title }}</span>
-						<span *ngIf="sender">
+						<span>
 							<fa-icon
 								[icon]="['far', 'circle']"
 								size="2x"
-								*ngIf="!item.sent"
+								*ngIf="!item.selected"
 							></fa-icon>
 							<fa-icon
 								[icon]="'check-circle'"
 								size="2x"
-								*ngIf="item.sent"
-							></fa-icon>
-						</span>
-
-						<span *ngIf="!sender">
-							<fa-icon
-								[icon]="['far', 'circle']"
-								size="2x"
-								*ngIf="!item.recieved"
-							></fa-icon>
-							<fa-icon
-								[icon]="'check-circle'"
-								size="2x"
-								*ngIf="item.recieved"
+								*ngIf="item.selected"
 							></fa-icon>
 						</span>
 					</li>
@@ -58,14 +48,17 @@
 	<div class="modal-footer">
 		<button
 			type="button"
-			class="btn btn-outline-success btn-block"
+			class="btn btn-success btn-block"
 			*ngIf="itemsSelected()"
 			(click)="c('Confirm location')"
 		>
-			Bekreft
+			Jeg bekrefter at bøkene er {{ sender ? "levert" : "mottatt" }}
 		</button>
 		<div *ngIf="!itemsSelected()">
-			Velg de bøkene som skal {{ sender ? "overleveres" : "mottas" }}
+			<i
+				>Velg de bøkene som skal
+				{{ sender ? "overleveres" : "mottas" }}</i
+			>
 		</div>
 	</div>
 </ng-template>

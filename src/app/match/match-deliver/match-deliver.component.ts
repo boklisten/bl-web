@@ -12,7 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class MatchDeliverComponent implements OnInit {
 	match: Match;
-	showHandover: boolean;
+	private bothPartiesConfirmedArr = [];
 
 	constructor(
 		private matchStoreService: MatchStoreService,
@@ -27,8 +27,12 @@ export class MatchDeliverComponent implements OnInit {
 		});
 	}
 
-	bothPartiesConfirmed() {
-		this.showHandover = true;
+	bothPartiesConfirmed(matchId: string) {
+		this.bothPartiesConfirmedArr.push(matchId);
+	}
+
+	showHandover(matchId: string): boolean {
+		return this.bothPartiesConfirmedArr.indexOf(matchId) >= 0;
 	}
 
 	public getItemsForReciever(match: Match, reciever: MatchProfile) {

@@ -38,4 +38,59 @@ export class MatchStoreService {
 				});
 		});
 	}
+
+	public addHandoverItems(
+		customer: string,
+		items: { selected: boolean; item: string; title: string }[],
+		sender?: boolean
+	) {
+		return new Promise((resolve, reject) => {
+			// get latest version of match,
+			// add info about sent/recieved
+
+			let time = new Date();
+			this.matchService
+				.getById(this.currentMatch.id)
+				.then(match => {
+					for (let item of items) {
+						for (let matchItem of match.items) {
+							if (matchItem.item === item.item && item.selected) {
+								if (sender && !matchItem.sent) {
+									matchItem.sent = {
+										time: time,
+										user: customer
+									};
+								} else if (!matchItem.recieved) {
+									matchItem.recieved = {
+										time: time,
+										user: customer
+									};
+								}
+							}
+						}
+					}
+
+					match.events.push({
+						type: sender ? "items-sent" : ("items-recieved" as any),
+						time: time,
+						userId: customer
+					});
+
+					this.matchService
+						.update(match.id, {
+							items: match.items,
+							events: match.events
+						})
+						.then(updatedMatch => {
+							resolve(match);
+						})
+						.catch(e => {
+							reject(e);
+						});
+				})
+				.catch(err => {
+					reject(err);
+				});
+		});
+	}
 }

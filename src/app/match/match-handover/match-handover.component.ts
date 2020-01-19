@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 import { Match, MatchProfile, MatchItem } from "@wizardcoder/bl-model";
 
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { MatchService } from "@wizardcoder/bl-connect";
+import { MatchStoreService } from "../match-store/match-store.service";
 
 @Component({
 	selector: "app-match-handover",
@@ -14,11 +16,17 @@ export class MatchHandoverComponent implements OnInit {
 	@Input() counterparty: MatchProfile;
 	@Input() customer: MatchProfile;
 	@Input() sender: boolean;
-	private items: MatchItem[];
+	private items: {
+		selected: boolean;
+		item: string;
+		title: string;
+	}[];
 
 	constructor(
 		private modalService: NgbModal,
-		private matchService: MatchService
+		private matchService: MatchService,
+		private matchStoreService: MatchStoreService,
+		private router: Router
 	) {
 		this.items = [];
 	}
@@ -27,39 +35,39 @@ export class MatchHandoverComponent implements OnInit {
 		this.extractItems();
 	}
 
-	private confirmSelectedItems() {}
+	private confirmSelectedItems() {
+		this.matchStoreService
+			.addHandoverItems(this.customer.userId, this.items, this.sender)
+			.then(() => {
+				this.router.navigate(["/match/success"]);
+			})
+			.catch(err => {
+				this.router.navigate(["/match/failure"]);
+			});
+	}
 
-	private selectItem(item: MatchItem) {
-		if (this.sender) {
-			if (item.sent) {
-				item.sent = null;
-			} else {
-				item.sent = { time: new Date() };
-			}
-		} else {
-			if (item.recieved) {
-				item.recieved = null;
-			} else {
-				item.recieved = { time: new Date() };
-			}
-		}
+	private selectItem(item) {
+		item.selected = !item.selected;
 	}
 
 	private extractItems() {
 		for (let item of this.match.items) {
-			if (item.reciever === this.counterparty.userId) {
-				this.items.push(item);
+			if (
+				(this.sender && item.reciever === this.counterparty.userId) ||
+				(!this.sender && item.reciever === this.customer.userId)
+			) {
+				this.items.push({
+					item: item.item,
+					selected: false,
+					title: item.title
+				});
 			}
 		}
 	}
 
 	private itemsSelected() {
 		for (let item of this.items) {
-			if (this.sender) {
-				if (item.sent) return true;
-			} else {
-				if (item.reciever) return true;
-			}
+			if (item.selected) return true;
 		}
 		return false;
 	}
@@ -74,6 +82,7 @@ export class MatchHandoverComponent implements OnInit {
 		this.modalService.open(content).result.then(
 			result => {
 				if (this.getDismissReason(result)) {
+					this.confirmSelectedItems();
 				}
 			},
 			reason => {}

@@ -14,7 +14,7 @@ export class MatchConfirmLocationComponent implements OnInit {
 	@Input() match: Match;
 	@Input() customer: MatchProfile;
 	@Input() counterparty: MatchProfile;
-	@Output() bothPartiesConfirmed: EventEmitter<boolean>;
+	@Output() bothPartiesConfirmed: EventEmitter<string>;
 
 	public customerStatus;
 	public counterpartyStatus;
@@ -40,7 +40,7 @@ export class MatchConfirmLocationComponent implements OnInit {
 		this.counterpartyStatus = this.checkForStatus(this.counterparty.userId);
 		this.customerStatus = this.checkForStatus(this.customer.userId);
 		if (this.counterpartyStatus && this.customerStatus) {
-			this.bothPartiesConfirmed.emit(true);
+			this.bothPartiesConfirmed.emit(this.match.id);
 		}
 	}
 
