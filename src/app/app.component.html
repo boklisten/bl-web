@@ -6,22 +6,32 @@
 	</div>
 	<router-outlet></router-outlet>
 
-	<!--<div class="bl-goto-footer">-->
-	<!--<div class="row justify-content-center">-->
-	<!--<div class="col-auto">-->
-	<!--<p i18n="@@cookiesBannerText">-->
-	<!--Vi bruker informasjonskapsler for at du skal kunne bruke-->
-	<!--denne siden.-->
-	<!--<a routerLink="/info/policies/privacy" class="bl-link"-->
-	<!-->Du kan lese mer her.</a-->
-	<!-->-->
-	<!--</p>-->
-	<!--</div>-->
-	<!--<div class="col-auto">-->
-	<!--<button class="btn btn-outline-info">Skjønner!</button>-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--</div>-->
+	<div class="bl-goto-footer" *ngIf="showCookieInfo">
+		<div class="row justify-content-center">
+			<div class="col-12 text-center">
+				<p i18n="@@cookiesBannerText" i18n="@@cookiesAbout">
+					Our pages uses cookies. This is done to ensure that you have
+					the best possible experience.
+				</p>
+			</div>
+			<div class="col-auto">
+				<button
+					class="btn btn-sm btn-outline-secondary mr-3"
+					routerLink="/info/policies/privacy"
+					i18n="@@cookiesReadMore"
+				>
+					Read more
+				</button>
+				<button
+					class="btn btn-secondary"
+					(click)="acceptCookies()"
+					i18n="@@cookiesIUnderstand"
+				>
+					I understand
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <app-footer></app-footer>

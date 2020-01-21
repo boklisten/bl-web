@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { StorageService } from "@wizardcoder/bl-connect";
 
 @Component({
 	selector: "app-root",
@@ -10,12 +11,18 @@ export class AppComponent {
 	title = "app";
 	public showGutter: boolean = true;
 	public showAlert: boolean = false;
+	public showCookieInfo: boolean = true;
 
-	constructor(private _router: Router, private route: ActivatedRoute) {}
+	constructor(
+		private _router: Router,
+		private route: ActivatedRoute,
+		private storageService: StorageService
+	) {}
 
 	ngOnInit() {
 		this.checkToShowGutter();
 		this.checkShowAlert();
+		this.checkIfAcceptedCookies();
 
 		this._router.events.subscribe(() => {
 			this.checkToShowGutter();
@@ -32,6 +39,22 @@ export class AppComponent {
 		) {
 			this.showGutter =
 				this.route.snapshot.firstChild.url[0].path !== "welcome";
+		}
+	}
+
+	public acceptCookies() {
+		this.storageService.add("bl-accept-cookies", JSON.stringify(true));
+		this.checkIfAcceptedCookies();
+	}
+
+	private checkIfAcceptedCookies() {
+		try {
+			const cookiesAcceptet = this.storageService.get(
+				"bl-accept-cookies"
+			);
+			this.showCookieInfo = false;
+		} catch (e) {
+			this.showCookieInfo = true;
 		}
 	}
 
