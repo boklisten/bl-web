@@ -1,28 +1,32 @@
-
-
-<div class="row justify-content-center mt-2">
-	<div class="col-auto text-secondary">
-		<fa-icon [icon]="'book-open'" [size]="'3x'"></fa-icon>
+<div class="container-fluid">
+	<div class="row justify-content-center mt-2">
+		<div class="col-auto text-secondary">
+			<fa-icon [icon]="'book-open'" [size]="'3x'"></fa-icon>
+		</div>
 	</div>
-</div>
 
-
-<div class="row justify-content-center mb-2">
-	<div class="col-auto text-secondary">
-		<h2 i18n="@@yourItemsHeadline">Your Items</h2>
+	<div class="row justify-content-center mb-2">
+		<div class="col-auto text-secondary">
+			<h2 i18n="@@yourItemsHeadline">Your Items</h2>
+		</div>
 	</div>
-</div>
 
-<div class="row" *ngIf="customerItems.length <= 0">
-	<div class="col-12">
-		<div class="alert alert-warning" i18n="@@noItems">You currently have no items <b><a routerLink="/i/select">click here to rent some</a></b></div>
+	<div class="row" *ngIf="customerItems.length <= 0">
+		<div class="col-12">
+			<div class="alert alert-warning" i18n="@@noItems">
+				You currently have no items
+				<b><a routerLink="/i/select">click here to rent some</a></b>
+			</div>
+		</div>
 	</div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12" *ngFor="let customerItem of customerItems">
-            <app-user-customer-item [customerItem]="customerItem"></app-user-customer-item>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12" *ngFor="let customerItem of customerItems">
+				<app-user-customer-item
+					[customerItem]="customerItem"
+				></app-user-customer-item>
+			</div>
+		</div>
+	</div>
 </div>
