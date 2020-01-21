@@ -4,6 +4,7 @@ import { InfoComponent } from "./info.component";
 import { InfoAgreementPrivacyComponent } from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
 import { InfoAgreementTermsComponent } from "./info-agreement/info-agreement-terms/info-agreement-terms.component";
 import { InfoAgreementConditionsComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
+import { InfoAgreementConditionsOldComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component";
 import { InfoAboutComponent } from "./info-about/info-about.component";
 import { InfoFaqComponent } from "./info-faq/info-faq.component";
 import { InfoForPupilsComponent } from "./info-for-pupils/info-for-pupils.component";
@@ -46,7 +47,7 @@ const routes: Routes = [
 					},
 					{
 						path: "conditions",
-						component: InfoAgreementConditionsComponent
+						component: InfoAgreementConditionsOldComponent
 					},
 					{
 						path: "terms",
