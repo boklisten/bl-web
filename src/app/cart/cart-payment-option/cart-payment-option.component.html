@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<ul class="nav nav-pills nav-fill">
 			<li
-				class="nav-item text-secondary bl-pointer text-center"
+				class="nav-item text-secondary bl-pointer text-center mt-2"
 				[ngClass]="{ 'text-info': selectedPaymentOption === 'now' }"
 				(click)="onSetPaymentOption('now')"
 			>
@@ -20,7 +20,7 @@
 			</li>
 
 			<li
-				class="nav-item text-secondary text-center bl-pointer"
+				class="nav-item text-secondary text-center bl-pointer mt-2"
 				[ngClass]="{
 					'text-info': selectedPaymentOption === 'at-branch'
 				}"
