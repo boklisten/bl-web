@@ -47,6 +47,7 @@ export class AppComponent {
 	public acceptCookies() {
 		this.storageService.add("bl-accept-cookies", JSON.stringify(true));
 		this.checkIfAcceptedCookies();
+		this.checkShowAcceptCookies();
 	}
 
 	private checkShowAcceptCookies() {
