@@ -1186,14 +1186,14 @@
         <source>You already have this item</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-display/item-display.component.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">147</context>
         </context-group>
       </trans-unit>
       <trans-unit id="itemDisplayAlreadyOrderedItem" datatype="html">
         <source>You have already ordered this item</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-display/item-display.component.ts</context>
-          <context context-type="linenumber">148</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartGoToBarButton" datatype="html">
@@ -1201,6 +1201,34 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/cart-go-to-bar/cart-go-to-bar.component.ts</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cookiesBannerText" datatype="html">
+        <source>
+					Our pages uses cookies. This is done to ensure that you have
+					the best possible experience.
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cookiesReadMore" datatype="html">
+        <source>
+					Read more
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cookiesIUnderstand" datatype="html">
+        <source>
+					I understand
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footerInfoEmailTitle" datatype="html">
@@ -1306,6 +1334,15 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/footer/footer.component.ts</context>
           <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logoutYouHaveBeenLoggedOut" datatype="html">
+        <source>
+				You have been logged out
+			</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/logout/logout.component.ts</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="welcomeSlogan" datatype="html">
@@ -1497,21 +1534,21 @@
       </trans-unit>
       <trans-unit id="orderHistoryTitle" datatype="html">
         <source>
-		Order history
-	</source>
+			Order history
+		</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">order history title </note>
       </trans-unit>
       <trans-unit id="orderHistoryEmptyWarning" datatype="html">
         <source>
-			You have no Orders yet
-		</source>
+				You have no Orders yet
+			</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">no orders warning </note>
       </trans-unit>
@@ -1605,14 +1642,17 @@
         <source>Your Items</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-item/user-item.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noItems" datatype="html">
-        <source>You currently have no items <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <source>
+				You currently have no items
+				<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>click here to rent some<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
+			</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/user-item/user-item.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="userCustomerItemNotReturnedError" datatype="html">
@@ -1949,7 +1989,7 @@
         <source>Booklist for</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-select/item-select.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <note priority="1" from="description">the booklist for branch x </note>
       </trans-unit>
@@ -1957,7 +1997,7 @@
         <source>Checkout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-select/item-select.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="itemInfoFullprice" datatype="html">
@@ -2069,7 +2109,7 @@
         <source>There are currently no items for this branch</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/item/item-display-category/item-display-category.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cartTitle" datatype="html">
