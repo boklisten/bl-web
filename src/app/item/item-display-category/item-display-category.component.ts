@@ -18,6 +18,7 @@ import { BranchItemService, ItemService } from "@wizardcoder/bl-connect";
 export class ItemDisplayCategoryComponent implements OnInit {
 	@Input() branch: Branch;
 	@Input() selectedCategories: string[];
+	@Input() autoAdd: boolean;
 
 	items: Item[];
 	selectedBranchItemCategories: { name: string; branchItems: BranchItem[] }[];

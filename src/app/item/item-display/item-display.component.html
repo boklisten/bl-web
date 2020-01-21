@@ -11,7 +11,7 @@
 					<div
 						class="col-md-auto col-sm-auto text-white font-weight-bold bl-text-sm"
 					>
-          <span *ngIf="customerItem && orderItemAction">{{
+						<span *ngIf="customerItem && orderItemAction">{{
 							customerItem
 								| blcCustomerItemPrice: orderItemAction.action
 								| async
@@ -104,13 +104,16 @@
 										}}</span>
 									</span>
 
-									<span *ngIf="customerItem && orderItemAction">{{
-										customerItem
-											| blcCustomerItemPrice
-												: orderItemAction.action
-											| async
-											| blcPrice
-									}}</span>
+									<span
+										*ngIf="customerItem && orderItemAction"
+										>{{
+											customerItem
+												| blcCustomerItemPrice
+													: orderItemAction.action
+												| async
+												| blcPrice
+										}}</span
+									>
 								</div>
 							</div>
 
@@ -124,6 +127,7 @@
 									[type]="orderItemAction.action"
 									[branchItem]="branchItem"
 									[period]="orderItemAction.period"
+									[autoAdd]="autoAdd"
 								></app-item-add>
 							</div>
 						</div>

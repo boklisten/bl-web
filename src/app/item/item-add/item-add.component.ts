@@ -12,10 +12,15 @@ export class ItemAddComponent implements OnInit {
 	@Input() type: OrderItemType;
 	@Input() branchItem: BranchItem;
 	@Input() period: Period;
+	@Input() autoAdd: boolean;
 
 	constructor(private _cartService: CartService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		if (this.autoAdd) {
+			this.onAdd();
+		}
+	}
 
 	onAdd() {
 		if (this.item && this.branchItem && this.type) {

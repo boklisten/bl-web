@@ -28,6 +28,7 @@ export class ItemDisplayComponent implements OnInit {
 	@Input() customerItem: CustomerItem;
 	@Input() branch: Branch;
 	@Input() inCart: boolean;
+	@Input() autoAdd: boolean;
 
 	public view: boolean;
 

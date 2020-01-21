@@ -16,6 +16,7 @@ export class ItemSelectComponent implements OnInit {
 	public branch: Branch;
 	public selectedCategories: string[];
 	public cartSize: number;
+	public autoAdd: boolean;
 
 	constructor(
 		private _router: Router,
@@ -28,6 +29,7 @@ export class ItemSelectComponent implements OnInit {
 	) {
 		this.selectedCategories = [];
 		this.items = [];
+		this.autoAdd = false;
 	}
 
 	ngOnInit() {
@@ -51,6 +53,10 @@ export class ItemSelectComponent implements OnInit {
 		}
 
 		this.selectedCategories = this.getCategories();
+
+		if (this.selectedCategories.length > 0) {
+			this.autoAdd = true;
+		}
 	}
 
 	private getCategories(): string[] {

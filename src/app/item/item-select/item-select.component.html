@@ -1,10 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="branch">
 	<div class="row justify-content-center">
 		<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
-			<div
-				class="row justify-content-center align-items-center"
-				*ngIf="branch"
-			>
+			<div class="row justify-content-center align-items-center">
 				<div class="col-auto font-italic">
 					<span
 						class="bl-text-sm"
@@ -23,11 +20,12 @@
 				</div>
 			</div>
 
-			<div class="row justify-content-center" *ngIf="branch">
+			<div class="row justify-content-center">
 				<div class="col-12">
 					<app-item-display-category
 						[branch]="branch"
 						[selectedCategories]="selectedCategories"
+						[autoAdd]="autoAdd"
 						class="bl-container-padding"
 					></app-item-display-category>
 				</div>
