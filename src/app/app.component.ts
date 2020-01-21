@@ -12,6 +12,7 @@ export class AppComponent {
 	public showGutter: boolean = true;
 	public showAlert: boolean = false;
 	public showCookieInfo: boolean = true;
+	private cookiesAccepted: boolean;
 
 	constructor(
 		private _router: Router,
@@ -27,6 +28,7 @@ export class AppComponent {
 		this._router.events.subscribe(() => {
 			this.checkToShowGutter();
 			this.checkShowAlert();
+			this.checkShowAcceptCookies();
 			window.scroll(0, 0);
 		});
 	}
@@ -47,14 +49,27 @@ export class AppComponent {
 		this.checkIfAcceptedCookies();
 	}
 
+	private checkShowAcceptCookies() {
+		if (
+			this.route &&
+			this.route.snapshot &&
+			this.route.snapshot.firstChild
+		) {
+			const path: string = this.route.snapshot.firstChild.url[0].path;
+			this.showCookieInfo =
+				!(path === "i" || path === "fastbuy" || path === "cart") &&
+				!this.cookiesAccepted;
+		}
+	}
+
 	private checkIfAcceptedCookies() {
 		try {
 			const cookiesAcceptet = this.storageService.get(
 				"bl-accept-cookies"
 			);
-			this.showCookieInfo = false;
+			this.cookiesAccepted = true;
 		} catch (e) {
-			this.showCookieInfo = true;
+			this.cookiesAccepted = false;
 		}
 	}
 
