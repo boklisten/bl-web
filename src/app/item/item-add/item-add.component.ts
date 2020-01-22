@@ -17,7 +17,7 @@ export class ItemAddComponent implements OnInit {
 	constructor(private _cartService: CartService) {}
 
 	ngOnInit() {
-		if (this.autoAdd) {
+		if (this.autoAdd && !this.isAdded()) {
 			this.onAdd();
 		}
 	}
