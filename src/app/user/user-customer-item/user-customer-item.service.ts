@@ -26,6 +26,16 @@ export class UserCustomerItemService {
 		this._maxDeadline = "2020-01-05";
 	}
 
+	public isActive(customerItem: CustomerItem): boolean {
+		return (
+			(this.isExtendValid(customerItem) ||
+				this.isBuyoutValid(customerItem) ||
+				!customerItem.returned) &&
+			!this.isNotReturnedBeforeDeadline(customerItem) &&
+			!customerItem.buyout
+		);
+	}
+
 	public isOnValidBranch(
 		customerItem: CustomerItem,
 		branchItem?: BranchItem

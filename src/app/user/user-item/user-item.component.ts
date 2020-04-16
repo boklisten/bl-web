@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { BlApiError, CustomerItem, UserDetail } from "@wizardcoder/bl-model";
 import { CustomerItemService } from "@wizardcoder/bl-connect";
 import { UserService } from "../user.service";
+import { UserCustomerItemService } from "../user-customer-item/user-customer-item.service";
 
 @Component({
 	selector: "app-user-item",
@@ -10,12 +11,17 @@ import { UserService } from "../user.service";
 })
 export class UserItemComponent implements OnInit {
 	public customerItems: CustomerItem[];
+	public activeCustomerItems: CustomerItem[];
+	public inactiveCustomerItems: CustomerItem[];
+	public showInactiveCustomerItem: boolean;
 
 	constructor(
 		private _customerItemService: CustomerItemService,
-		private _userService: UserService
+		private _userService: UserService,
+		private _userCustomerItemService: UserCustomerItemService
 	) {
-		this.customerItems = [];
+		this.activeCustomerItems = [];
+		this.inactiveCustomerItems = [];
 	}
 
 	ngOnInit() {
@@ -27,7 +33,17 @@ export class UserItemComponent implements OnInit {
 						fresh: true
 					})
 					.then((customerItems: CustomerItem[]) => {
-						this.customerItems = customerItems;
+						for (let customerItem of customerItems) {
+							if (
+								this._userCustomerItemService.isActive(
+									customerItem
+								)
+							) {
+								this.activeCustomerItems.push(customerItem);
+							} else {
+								this.inactiveCustomerItems.push(customerItem);
+							}
+						}
 					})
 					.catch((customerItemsError: BlApiError) => {
 						console.log(

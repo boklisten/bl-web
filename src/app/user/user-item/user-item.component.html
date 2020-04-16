@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="row" *ngIf="customerItems.length <= 0">
+	<div class="row" *ngIf="activeCustomerItems.length <= 0">
 		<div class="col-12">
 			<div class="alert alert-warning" i18n="@@noItems">
 				You currently have no items
@@ -22,9 +22,37 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-12" *ngFor="let customerItem of customerItems">
+			<div
+				class="col-12"
+				*ngFor="let activeCustomerItem of activeCustomerItems"
+			>
 				<app-user-customer-item
-					[customerItem]="customerItem"
+					[customerItem]="activeCustomerItem"
+				></app-user-customer-item>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<hr />
+		<div class="row justify-content-center mb-5">
+			<div class="col">
+				<button
+					class="btn btn-outline-secondary btn-block"
+					i18n="@@showInactiveCustomerItemsButton"
+					(click)="showInactiveCustomerItems = !showInactiveCustomerItems"
+				>
+					Show inactive customer items
+				</button>
+			</div>
+		</div>
+		<div class="row" *ngIf="showInactiveCustomerItems">
+			<div
+				class="col-12"
+				*ngFor="let inactiveCustomerItem of inactiveCustomerItems"
+			>
+				<app-user-customer-item
+					[customerItem]="inactiveCustomerItem"
 				></app-user-customer-item>
 			</div>
 		</div>
