@@ -58,3 +58,17 @@
 		</div>
 	</div>
 </div>
+
+<div class="bl-goto-footer" *ngIf="cartActive()">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-4">
+			<button
+				class="btn btn-success btn-block"
+				routerLink="/cart"
+				i18n="@@userItemGoToCart"
+			>
+				Go to cart
+			</button>
+		</div>
+	</div>
+</div>

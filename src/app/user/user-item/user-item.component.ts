@@ -3,6 +3,7 @@ import { BlApiError, CustomerItem, UserDetail } from "@wizardcoder/bl-model";
 import { CustomerItemService } from "@wizardcoder/bl-connect";
 import { UserService } from "../user.service";
 import { UserCustomerItemService } from "../user-customer-item/user-customer-item.service";
+import { CartService } from "../../cart/cart.service";
 
 @Component({
 	selector: "app-user-item",
@@ -18,7 +19,8 @@ export class UserItemComponent implements OnInit {
 	constructor(
 		private _customerItemService: CustomerItemService,
 		private _userService: UserService,
-		private _userCustomerItemService: UserCustomerItemService
+		private _userCustomerItemService: UserCustomerItemService,
+		private _cartService: CartService
 	) {
 		this.activeCustomerItems = [];
 		this.inactiveCustomerItems = [];
@@ -58,5 +60,9 @@ export class UserItemComponent implements OnInit {
 					blApiErr
 				);
 			});
+	}
+
+	public cartActive() {
+		return !this._cartService.isEmpty();
 	}
 }
