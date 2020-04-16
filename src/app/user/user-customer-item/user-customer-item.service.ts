@@ -163,11 +163,13 @@ export class UserCustomerItemService {
 		period: Period,
 		customerItem: CustomerItem
 	): boolean {
+		/*
 		for (const extendPeriod of customerItem.periodExtends) {
 			if (extendPeriod.periodType === period) {
 				return false;
 			}
 		}
+    */
 		return true;
 	}
 

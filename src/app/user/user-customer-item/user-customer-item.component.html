@@ -175,11 +175,8 @@
 						class="col-auto text-secondary"
 						*ngIf="customerItem.returnInfo"
 					>
-						{{
-							customerItem.returnInfo.returnedToId
-								| blcBranch
-								| async
-						}}
+						{{ customerItem.returnInfo.returnedToId | blcBranch |
+						async }}
 					</div>
 				</div>
 				<div
@@ -203,11 +200,8 @@
 									customerItem.handoutInfo.handoutById
 							}}"
 						>
-							{{
-								customerItem.handoutInfo.handoutById
-									| blcBranch
-									| async
-							}}
+							{{ customerItem.handoutInfo.handoutById | blcBranch
+							| async }}
 						</span>
 					</div>
 				</div>
@@ -251,9 +245,6 @@
 							<div class="col-sm-auto col-12">
 								<button
 									class="btn btn-block"
-									*ngIf="
-										customerItem.type !== 'partly-payment'
-									"
 									(click)="onExtendClick()"
 									[ngClass]="{
 										'btn-success': extend,
@@ -282,25 +273,19 @@
 							*ngIf="extend"
 						>
 							<div class="col-auto text-secondary">
-								<fa-icon [icon]="'calendar-plus'"></fa-icon>
+								<fa-icon
+									[icon]="'calendar-plus'"
+									class="mr-2"
+								></fa-icon>
 								<fa-icon [icon]="'arrow-right'"></fa-icon>
-								{{
-									customerItem
-										| blcCustomerItemDate
-											: "extend"
-											: "semester"
-										| blcDate
-								}}
+								{{ customerItem | blcCustomerItemDate : "extend"
+								: "semester" | blcDate }}
 							</div>
 						</div>
 						<div class="row justify-content-center" *ngIf="extend">
 							<div class="col-auto text-secondary">
-								{{
-									customerItem
-										| blcCustomerItemPrice: "extend"
-										| async
-										| blcPrice
-								}}
+								{{ customerItem | blcCustomerItemPrice: "extend"
+								| async | blcPrice }}
 							</div>
 						</div>
 					</div>
@@ -337,12 +322,8 @@
 							*ngIf="buyout"
 						>
 							<div class="col-auto text-secondary">
-								{{
-									customerItem
-										| blcCustomerItemPrice: "buyout"
-										| async
-										| blcPrice
-								}}
+								{{ customerItem | blcCustomerItemPrice: "buyout"
+								| async | blcPrice }}
 							</div>
 						</div>
 					</div>
