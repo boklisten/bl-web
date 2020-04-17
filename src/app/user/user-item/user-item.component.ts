@@ -14,7 +14,7 @@ export class UserItemComponent implements OnInit {
 	public customerItems: CustomerItem[];
 	public activeCustomerItems: CustomerItem[];
 	public inactiveCustomerItems: CustomerItem[];
-	public showInactiveCustomerItem: boolean;
+	public showInactiveCustomerItems: boolean;
 
 	constructor(
 		private _customerItemService: CustomerItemService,
