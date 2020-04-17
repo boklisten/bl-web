@@ -273,17 +273,19 @@
 							*ngIf="extend"
 						>
 							<div class="col-auto text-secondary">
-								<fa-icon
-									[icon]="'calendar-plus'"
+								<span
+									i18n="@@userCustomerItemExtendTo"
 									class="mr-2"
-								></fa-icon>
-								<fa-icon [icon]="'arrow-right'"></fa-icon>
-								{{ customerItem | blcCustomerItemDate : "extend"
-								: "semester" | blcDate }}
+									>extend to</span
+								>
+								<span class="font-weight-bold">
+									{{ customerItem | blcCustomerItemDate :
+									"extend" : "semester" | blcDate }}
+								</span>
 							</div>
-						</div>
-						<div class="row justify-content-center" *ngIf="extend">
-							<div class="col-auto text-secondary">
+							<div
+								class="col-auto text-secondary font-weight-bold"
+							>
 								{{ customerItem | blcCustomerItemPrice: "extend"
 								| async | blcPrice }}
 							</div>
