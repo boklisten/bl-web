@@ -72,6 +72,10 @@ export class BranchStoreService {
 		return this._currentBranch;
 	}
 
+	public getBranchId(): string {
+		return this._currentBranch ? this._currentBranch.id : null;
+	}
+
 	public onBranchChange(): Observable<boolean> {
 		return this._branchChange$;
 	}

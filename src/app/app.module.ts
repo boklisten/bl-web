@@ -22,6 +22,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { MatchModule } from "./match/match.module";
 import { ClickOutsideModule } from "ng-click-outside";
+import { BookingModule } from "./booking/booking.module";
 
 import {
 	faCircle,
@@ -185,7 +186,8 @@ library.add(
 		NgbDropdownModule,
 		FastbuyModule,
 		MatchModule,
-		ClickOutsideModule
+		ClickOutsideModule,
+		BookingModule
 	],
 	providers: [BranchGuardService],
 	bootstrap: [AppComponent]
