@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { BookingSelectComponent } from "./booking-select/booking-select.component";
+import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
 
 const routes: Routes = [
 	{
@@ -14,6 +15,10 @@ const routes: Routes = [
 			{
 				path: "select",
 				component: BookingSelectComponent
+			},
+			{
+				path: ":id/confirm",
+				component: BookingConfirmComponent
 			}
 		]
 	}

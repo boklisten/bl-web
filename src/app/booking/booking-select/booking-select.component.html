@@ -1,10 +1,21 @@
-<p>booking-select works!</p>
 <div class="container">
-	<div class="row">
-		<div class="col">
+	<div class="row justify-content-center">
+		<div class="col-6">
 			<ul class="list-group">
-				<li class="list-group-item" *ngFor="let booking of bookings">
-					{{booking.from }} -- {{booking.to}}
+				<li
+					class="list-group-item d-flex justify-content-between align-items-center"
+					*ngFor="let booking of bookings"
+				>
+					<span class="font-weight-bold"
+						>{{booking.from | blcDate:'hour'}}</span
+					>
+					<button
+						class="btn btn-success"
+						[routerLink]="'/bookings/' + booking.id + '/confirm'"
+					>
+						Book
+						<fa-icon icon="chevron-right" class="ml-2"></fa-icon>
+					</button>
 				</li>
 			</ul>
 		</div>
