@@ -11,10 +11,10 @@ import * as moment from "moment";
 	styleUrls: ["./booking-select.component.scss"]
 })
 export class BookingSelectComponent implements OnInit {
-	private branchId: string;
-	private bookings: Booking[];
-	private wait: boolean;
-	private pickedDate: Date;
+	branchId: string;
+	bookings: Booking[];
+	wait: boolean;
+	pickedDate: Date;
 
 	constructor(
 		private bookingService: BookingService,
