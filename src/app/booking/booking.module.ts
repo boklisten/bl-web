@@ -6,15 +6,21 @@ import { BookingComponent } from "./booking.component";
 import { BookingSelectComponent } from "./booking-select/booking-select.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { BookingConfirmComponent } from './booking-confirm/booking-confirm.component';
+import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
+import { DateModule } from "../date/date.module";
 
 @NgModule({
-	declarations: [BookingComponent, BookingSelectComponent, BookingConfirmComponent],
+	declarations: [
+		BookingComponent,
+		BookingSelectComponent,
+		BookingConfirmComponent
+	],
 	imports: [
 		CommonModule,
 		BookingRoutingModule,
 		BlCommonModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		DateModule
 	]
 })
 export class BookingModule {}

@@ -14,7 +14,7 @@ export class BookingSelectComponent implements OnInit {
 	private branchId: string;
 	private bookings: Booking[];
 	private wait: boolean;
-	private selectedDate: Date;
+	private pickedDate: Date;
 
 	constructor(
 		private bookingService: BookingService,
@@ -22,7 +22,7 @@ export class BookingSelectComponent implements OnInit {
 		private dateService: DateService
 	) {
 		this.wait = false;
-		this.selectedDate = new Date(2020, 5, 2);
+		this.pickedDate = new Date(2020, 5, 2);
 	}
 
 	ngOnInit() {
@@ -35,13 +35,20 @@ export class BookingSelectComponent implements OnInit {
 		});
 	}
 
+	onPickedDate(date: Date) {
+		console.log("picked date", date);
+		this.pickedDate = date;
+		this.getBookings();
+	}
+
 	private async getBookings() {
 		this.wait = true;
 
-		let fromDate = moment(this.selectedDate)
+		this.bookings = [];
+
+		let fromDate = moment(this.pickedDate)
 			.set("hour", 0)
-			.set("minute", 0)
-			.subtract("day", 1);
+			.set("minute", 0);
 
 		const toDate = moment(fromDate).add("day", 1);
 
