@@ -9,13 +9,15 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
 import { DateModule } from "../date/date.module";
 import { BookingEventConfirmedComponent } from './booking-event-confirmed/booking-event-confirmed.component';
+import { BookingYourBookingsComponent } from './booking-your-bookings/booking-your-bookings.component';
 
 @NgModule({
 	declarations: [
 		BookingComponent,
 		BookingSelectComponent,
 		BookingConfirmComponent,
-		BookingEventConfirmedComponent
+		BookingEventConfirmedComponent,
+		BookingYourBookingsComponent
 	],
 	imports: [
 		CommonModule,
