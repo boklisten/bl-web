@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { BookingSelectComponent } from "./booking-select/booking-select.component";
 import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
 import { BookingEventConfirmedComponent } from "./booking-event-confirmed/booking-event-confirmed.component";
+import { UserGuardService } from "../user/user-guard.service";
 import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-your-bookings.component";
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
 			},
 			{
 				path: ":id/confirm",
-				component: BookingConfirmComponent
+				component: BookingConfirmComponent,
+				canActivate: [UserGuardService]
 			},
 			{
 				path: ":id/confirmed",
