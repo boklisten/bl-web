@@ -11,7 +11,7 @@ import { UserService } from "../../user/user.service";
 	styleUrls: ["./booking-confirm.component.scss"]
 })
 export class BookingConfirmComponent implements OnInit {
-	private booking: Booking;
+	public booking: Booking;
 	constructor(
 		private bookingService: BookingService,
 		private route: ActivatedRoute,
