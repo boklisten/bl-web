@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { BookingService } from "@wizardcoder/bl-connect";
 import { Booking } from "@wizardcoder/bl-model";
 import { Observable } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../../user/user.service";
 
 @Component({
@@ -15,7 +15,8 @@ export class BookingConfirmComponent implements OnInit {
 	constructor(
 		private bookingService: BookingService,
 		private route: ActivatedRoute,
-		private userService: UserService
+		private userService: UserService,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -31,11 +32,17 @@ export class BookingConfirmComponent implements OnInit {
 		});
 	}
 
-	public onConfrimBooking() {
-		console.log("CONFIRM", this.booking);
-		this.bookingService.update(this.booking.id, {
-			customer: this.userService.getUserDetailId(),
-			booked: true
-		});
+	public async onConfrimBooking() {
+		try {
+			await this.bookingService.update(this.booking.id, {
+				customer: this.userService.getUserDetailId(),
+				booked: true
+			});
+		} catch (e) {
+			console.log(e);
+			throw new Error("could not confirm booking:" + e);
+		}
+
+		this.router.navigate(["/bookings/" + this.booking.id + "/confirmed"]);
 	}
 }

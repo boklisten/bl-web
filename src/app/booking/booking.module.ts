@@ -8,12 +8,14 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
 import { DateModule } from "../date/date.module";
+import { BookingEventConfirmedComponent } from './booking-event-confirmed/booking-event-confirmed.component';
 
 @NgModule({
 	declarations: [
 		BookingComponent,
 		BookingSelectComponent,
-		BookingConfirmComponent
+		BookingConfirmComponent,
+		BookingEventConfirmedComponent
 	],
 	imports: [
 		CommonModule,
