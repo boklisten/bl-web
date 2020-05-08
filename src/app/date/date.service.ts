@@ -92,6 +92,10 @@ export class DateService {
 		}
 	}
 
+	public onFormat(date: Date, format: string): string {
+		return moment(date).format(format);
+	}
+
 	public getPartlyPaymentPeriodDate(period: Period) {
 		const branch = this._branchStoreService.getBranch();
 

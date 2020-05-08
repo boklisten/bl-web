@@ -7,6 +7,14 @@
 					{{booking.from | blcDate:'day'}} {{booking.from |
 					blcDate:'date'}} {{booking.from | blcDate:'hour'}}
 				</div>
+				<div class="card-footer">
+					<button
+						class="btn btn-success"
+						(click)="onConfrimBooking()"
+					>
+						Confrim booking
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
