@@ -8,9 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 export class DatePickerComponent implements OnInit {
 	@Input() pickedDate: Date;
 	@Output() pickedDateChange: EventEmitter<Date>;
+	public standardDate: Date;
 
 	constructor() {
 		this.pickedDateChange = new EventEmitter<Date>();
+		this.standardDate = new Date();
 	}
 
 	ngOnInit() {}

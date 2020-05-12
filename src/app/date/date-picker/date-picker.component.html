@@ -1,13 +1,18 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<input
-				type="date"
-				value="pickedDate"
-				[(ngModel)]="pickedDate"
-				(ngModelChange)="onPickedDate($event)"
-				class="form-control"
-			/>
+			<div class="input-group">
+				<div class="input-group-prepend input-group-text">
+					<fa-icon icon="calendar-alt" class="mr-2"></fa-icon>
+					<span i18n="@@datePickerPickADate">Pick a date</span>
+				</div>
+				<input
+					type="date"
+					[(ngModel)]="pickedDate"
+					(ngModelChange)="onPickedDate($event)"
+					class="form-control"
+				/>
+			</div>
 		</div>
 	</div>
 </div>
