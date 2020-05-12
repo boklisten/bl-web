@@ -4,6 +4,7 @@ import { BookingService } from "@wizardcoder/bl-connect";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { DateService } from "../../date/date.service";
 import * as moment from "moment";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
 	selector: "app-booking-select",
@@ -19,14 +20,29 @@ export class BookingSelectComponent implements OnInit {
 	constructor(
 		private bookingService: BookingService,
 		private branchStoreService: BranchStoreService,
-		private dateService: DateService
+		private dateService: DateService,
+		private router: Router,
+		private route: ActivatedRoute
 	) {
 		this.wait = false;
-		this.pickedDate = new Date(2020, 5, 2);
+		this.pickedDate = new Date();
 	}
 
 	ngOnInit() {
-		this.branchId = this.branchStoreService.getBranchId();
+		const queryBranchId = this.route.snapshot.queryParamMap.get("branch");
+		const queryDate = this.route.snapshot.queryParamMap.get("date");
+
+		if (queryDate) {
+			this.pickedDate = moment(queryDate, "DDMMYYYYHHMM").toDate();
+		}
+
+		if (queryBranchId) {
+			this.branchId = queryBranchId;
+		} else {
+			this.branchId = this.branchStoreService.getBranchId();
+		}
+
+		this.updatePath();
 		this.getBookings();
 
 		this.branchStoreService.onBranchChange().subscribe(() => {
@@ -36,9 +52,22 @@ export class BookingSelectComponent implements OnInit {
 	}
 
 	onPickedDate(date: Date) {
-		console.log("picked date", date);
 		this.pickedDate = date;
 		this.getBookings();
+		this.updatePath();
+	}
+
+	private updatePath() {
+		this.router.navigate([], {
+			relativeTo: this.route,
+			queryParams: {
+				date: this.dateService.onFormat(
+					this.pickedDate,
+					"DDMMYYYYHHMM"
+				),
+				branch: this.branchId
+			}
+		});
 	}
 
 	private async getBookings() {
