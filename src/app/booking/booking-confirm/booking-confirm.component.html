@@ -1,4 +1,20 @@
 <div class="container">
+	<div class="row" *ngIf="displayError">
+		<div class="col">
+			<div class="alert alert-danger text-center">
+				<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
+				<span i18n="@@bookingConfirmCouldNotBeConfirmedError"
+					>Booking could not be confirmed.</span
+				>
+				<a
+					blcGoBack
+					i18n="@@bookingConfirmTryWithAnotherTime"
+					class="ml-2 font-weight-bold"
+					>Try with another time.</a
+				>
+			</div>
+		</div>
+	</div>
 	<div class="row" *ngIf="booking">
 		<div class="col">
 			<div class="card">
@@ -17,11 +33,21 @@
 				</div>
 				<div class="card-footer d-flex justify-content-end">
 					<button
-						class="btn btn-success btn-block"
+						class="btn btn-success btn-block text-center"
 						(click)="onConfrimBooking()"
-						i18n="@@bookingConfirmComponentConfirmButton"
+						[disabled]="displayError"
 					>
-						Confrim booking
+						<span
+							i18n="@@bookingConfirmComponentConfirmButton"
+							*ngIf="!wait"
+							>Confrim booking</span
+						>
+						<span *ngIf="wait">
+							<fa-icon
+								[icon]="'circle-notch'"
+								[spin]="true"
+							></fa-icon>
+						</span>
 					</button>
 				</div>
 			</div>

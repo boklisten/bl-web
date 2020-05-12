@@ -8,6 +8,7 @@ import { BlcCustomerItemPricePipe } from "./pipes/blc-customer-item-price/blc-cu
 import { BlcCustomerItemDatePipe } from "./pipes/blc-customer-item-date/blc-customer-item-date.pipe";
 import { BlcSpinnerComponent } from "./components/blc-spinner/blc-spinner.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { BlcGoBackDirective } from "./directives/blc-go-back.directive";
 
 @NgModule({
 	imports: [CommonModule, FontAwesomeModule],
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		BlcItemPricePipe,
 		BlcCustomerItemPricePipe,
 		BlcCustomerItemDatePipe,
-		BlcSpinnerComponent
+		BlcSpinnerComponent,
+		BlcGoBackDirective
 	],
 	exports: [
 		BlcPricePipe,
@@ -27,7 +29,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		BlcItemPricePipe,
 		BlcCustomerItemPricePipe,
 		BlcCustomerItemDatePipe,
-		BlcSpinnerComponent
+		BlcSpinnerComponent,
+		BlcGoBackDirective
 	]
 })
 export class BlCommonModule {}

@@ -13,6 +13,8 @@ import { UserService } from "../../user/user.service";
 export class BookingConfirmComponent implements OnInit {
 	public booking: Booking;
 	private branchId: string;
+	public wait: boolean;
+	public displayError: boolean;
 
 	constructor(
 		private bookingService: BookingService,
@@ -22,6 +24,7 @@ export class BookingConfirmComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.wait = true;
 		this.route.params.subscribe(params => {
 			if (params.id) {
 				this.bookingService
@@ -29,13 +32,18 @@ export class BookingConfirmComponent implements OnInit {
 					.then(booking => {
 						this.booking = booking;
 						this.branchId = this.booking.branch;
+						this.wait = false;
 					})
-					.catch(e => {});
+					.catch(e => {
+						this.wait = false;
+					});
 			}
 		});
 	}
 
 	public async onConfrimBooking() {
+		this.displayError = false;
+		this.wait = true;
 		try {
 			await this.bookingService.update(this.booking.id, {
 				customer: this.userService.getUserDetailId(),
@@ -43,8 +51,12 @@ export class BookingConfirmComponent implements OnInit {
 			});
 		} catch (e) {
 			console.log(e);
+			this.wait = false;
+			this.displayError = true;
 			throw new Error("could not confirm booking:" + e);
 		}
+
+		this.wait = false;
 
 		this.router.navigate(["/bookings/" + this.booking.id + "/confirmed"]);
 	}
