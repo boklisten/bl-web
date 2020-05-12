@@ -28,4 +28,8 @@ export class BookingYourBookingsComponent implements OnInit {
 				console.log("could not get bookings", e);
 			});
 	}
+
+	onCancel(booking: Booking) {
+		console.log("should cancel", booking);
+	}
 }

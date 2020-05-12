@@ -2,18 +2,35 @@
 	<div class="row">
 		<div class="col">
 			<ul class="list-group">
-				<li class="list-group-item list-group-item-secondary">
-					Your Bookings
+				<li class="list-group-item list-group-item-info text-center">
+					<fa-icon icon="calendar-alt" class="mr-2"></fa-icon>
+					<span i18n="@@bookingYourBookingsTitle">Your Bookings</span>
 				</li>
-				<li
-					class="list-group-item d-flex justify-content-between align-items-center"
-					*ngFor="let booking of bookings"
-				>
-					<span
-						>{{booking.from | blcDate:'date'}} {{booking.from |
-						blcDate:'hour'}}</span
-					>
-					<button class="btn btn-outline-danger">Cancel</button>
+				<li class="list-group-item" *ngFor="let booking of bookings">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-md-auto col-12">
+							<div class="font-weight-bold">
+								{{booking.from | blcDate:'day'}} {{ booking.from
+								| blcDate: 'date' }} {{ booking.from |
+								blcDate:'hour'}}
+							</div>
+							<small>{{booking.from | blcDate:'until'}}</small>
+							<div class="mt-2">
+								<app-branch-location
+									[branchId]="booking.branch"
+								></app-branch-location>
+							</div>
+						</div>
+						<div class="col-md-auto col-12 mt-md-0 mt-2">
+							<button
+								class="btn btn-outline-danger btn-block"
+								i18n="@@bookingYourBookingsCancelButton"
+								(click)="onCancel(booking)"
+							>
+								Cancel Booking
+							</button>
+						</div>
+					</div>
 				</li>
 			</ul>
 		</div>
