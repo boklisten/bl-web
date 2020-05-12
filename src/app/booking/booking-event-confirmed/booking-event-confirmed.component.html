@@ -1,19 +1,48 @@
 <div class="container">
+	<div class="row" *ngIf="wait">
+		<div class="col">
+			<div class="alert alert-warning text-center">
+				<fa-icon [spin]="true" [icon]="'circle-notch'"></fa-icon>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="bookingConfirmed">
+		<div class="col">
+			<div class="alert alert-success text-center">
+				<fa-icon icon="check-circle" class="mr-2"></fa-icon>
+				<span i18n="@@bookingConfirmedComponentSuccess"
+					>Your Booking was confirmed!</span
+				>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col">
 			<div class="card">
+				<div class="card-header text-secondary">
+					<fa-icon icon="receipt" class="mr-2"></fa-icon>
+					<span i18n="@@bookingConfirmedReceipt">Receipt</span>
+				</div>
 				<div class="card-body">
-					<span>Your booking is confirmed!</span>
+					<app-booking-display
+						[booking]="booking"
+					></app-booking-display>
 				</div>
-				<div class="card-footer">
-					<button
-						routerLink="/bookings/customer/list"
-						class="btn btn-outline-info"
-					>
-						Show your bookings
-					</button>
-				</div>
+				<div class="card-footer"></div>
 			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col">
+			<button
+				routerLink="/bookings/customer/list"
+				class="btn btn-outline-info btn-block"
+			>
+				<fa-icon icon="calendar-alt" class="mr-2"></fa-icon>
+				<span i18n="@@bookingConfirmedShowYourBookings"
+					>Show all your bookings</span
+				>
+			</button>
 		</div>
 	</div>
 </div>

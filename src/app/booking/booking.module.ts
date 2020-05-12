@@ -11,6 +11,7 @@ import { DateModule } from "../date/date.module";
 import { BookingEventConfirmedComponent } from "./booking-event-confirmed/booking-event-confirmed.component";
 import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-your-bookings.component";
 import { BranchModule } from "../branch/branch.module";
+import { BookingDisplayComponent } from './booking-display/booking-display.component';
 
 @NgModule({
 	declarations: [
@@ -18,7 +19,8 @@ import { BranchModule } from "../branch/branch.module";
 		BookingSelectComponent,
 		BookingConfirmComponent,
 		BookingEventConfirmedComponent,
-		BookingYourBookingsComponent
+		BookingYourBookingsComponent,
+		BookingDisplayComponent
 	],
 	imports: [
 		CommonModule,
