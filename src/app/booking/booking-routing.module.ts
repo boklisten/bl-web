@@ -5,6 +5,7 @@ import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.compo
 import { BookingEventConfirmedComponent } from "./booking-event-confirmed/booking-event-confirmed.component";
 import { UserGuardService } from "../user/user-guard.service";
 import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-your-bookings.component";
+import { BookingCancelComponent } from "./booking-cancel/booking-cancel.component";
 
 const routes: Routes = [
 	{
@@ -20,13 +21,22 @@ const routes: Routes = [
 				component: BookingSelectComponent
 			},
 			{
-				path: ":id/confirm",
-				component: BookingConfirmComponent,
-				canActivate: [UserGuardService]
-			},
-			{
-				path: ":id/confirmed",
-				component: BookingEventConfirmedComponent
+				path: ":id",
+				children: [
+					{
+						path: "confirm",
+						component: BookingConfirmComponent,
+						canActivate: [UserGuardService]
+					},
+					{
+						path: "confirmed",
+						component: BookingEventConfirmedComponent
+					},
+					{
+						path: "cancel",
+						component: BookingCancelComponent
+					}
+				]
 			},
 			{
 				path: "customer/list",

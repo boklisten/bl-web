@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="row" *ngIf="wait">
+		<div class="col">
+			<div class="alert alert-warning text-center">
+				<fa-icon icon="circle-notch" [spin]="true"></fa-icon>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="cancelationConfirmed">
+		<div class="col">
+			<div class="alert alert-success text-center">
+				<fa-icon icon="check-circle" class="mr-2"></fa-icon>
+				<span i18n="@@bookingCancelConfirmedAlert"
+					>Booking was cancelled</span
+				>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div
+					class="card-header text-danger font-weight-bold"
+					i18n="@@bookingCancelTitle"
+				>
+					Cancel Booking
+				</div>
+				<div class="card-body">
+					<app-booking-display
+						[booking]="booking"
+					></app-booking-display>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-md-3 col-12 mb-md-0 mb-2">
+							<button
+								class="btn btn-outline-success btn-block"
+								i18n="@@bookingCancelGoBack"
+								blcGoBack
+							>
+								Go back
+							</button>
+						</div>
+						<div class="col-md-9 col-12">
+							<button
+								class="btn btn-danger btn-block"
+								i18n="@@bookingCancelConfirmButton"
+								(click)="onConfirmCancelation()"
+							>
+								Confirm cancelation
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
