@@ -8,8 +8,9 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BookingConfirmComponent } from "./booking-confirm/booking-confirm.component";
 import { DateModule } from "../date/date.module";
-import { BookingEventConfirmedComponent } from './booking-event-confirmed/booking-event-confirmed.component';
-import { BookingYourBookingsComponent } from './booking-your-bookings/booking-your-bookings.component';
+import { BookingEventConfirmedComponent } from "./booking-event-confirmed/booking-event-confirmed.component";
+import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-your-bookings.component";
+import { BranchModule } from "../branch/branch.module";
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { BookingYourBookingsComponent } from './booking-your-bookings/booking-yo
 		BookingRoutingModule,
 		BlCommonModule,
 		FontAwesomeModule,
-		DateModule
+		DateModule,
+		BranchModule
 	]
 })
 export class BookingModule {}

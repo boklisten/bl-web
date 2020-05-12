@@ -12,6 +12,8 @@ import { UserService } from "../../user/user.service";
 })
 export class BookingConfirmComponent implements OnInit {
 	public booking: Booking;
+	private branchId: string;
+
 	constructor(
 		private bookingService: BookingService,
 		private route: ActivatedRoute,
@@ -26,6 +28,7 @@ export class BookingConfirmComponent implements OnInit {
 					.getById(params.id)
 					.then(booking => {
 						this.booking = booking;
+						this.branchId = this.booking.branch;
 					})
 					.catch(e => {});
 			}

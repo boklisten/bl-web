@@ -1,0 +1,9 @@
+<div class="row" *ngIf="branch">
+	<div class="col">{{ branch.name }} {{branch.contactInfo | json}}</div>
+</div>
+
+<div class="row" *ngIf="wait">
+	<div class="col text-center">
+		<fa-icon [icon]="'circle-notch'" [spin]="true"></fa-icon>
+	</div>
+</div>
