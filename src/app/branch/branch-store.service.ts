@@ -157,7 +157,11 @@ export class BranchStoreService {
 	}
 
 	public setCurrentBranch(branch: Branch): void {
-		if (this._currentBranch === branch) {
+		if (
+			this._currentBranch &&
+			branch &&
+			this._currentBranch.id === branch.id
+		) {
 			return;
 		}
 
