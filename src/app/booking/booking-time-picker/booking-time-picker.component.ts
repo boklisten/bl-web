@@ -36,12 +36,16 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 
 	ngOnChanges(changes: SimpleChanges) {
 		if (changes["branch"]) {
-			this.getBookings();
+			if (
+				changes["branch"]["currentValue"] &&
+				!changes["branch"]["firstChange"]
+			) {
+				this.onChangeDate();
+				this.getBookings();
+			}
 		}
 
 		if (changes["prePicked"]) {
-			console.log("changes is prePicked", changes["prePicked"]);
-
 			if (changes["prePicked"]["currentValue"]) {
 				this.selectedDate = changes["prePicked"]["currentValue"];
 				this.getBookings();

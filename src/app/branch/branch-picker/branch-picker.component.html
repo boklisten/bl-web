@@ -16,23 +16,19 @@
 		</ul>
 		<ul class="list-group list-group-horizontal-md" *ngIf="region">
 			<li
-				class="list-group-item list-group-item-info"
+				class="list-group-item list-group-item-info list-group-item-action"
 				(click)="onChangeRegion()"
 			>
 				<fa-icon icon="chevron-left" class="mr-2"></fa-icon>
 				{{ region }}
 			</li>
 			<li
-				class="list-group-item flex-fill d-md-inline d-none"
-				*ngIf="!branch"
-			></li>
-			<li
-				class="list-group-item flex-fill"
+				class="list-group-item list-group-item-info list-group-item-action flex-fill d-flex justify-content-between"
 				*ngIf="branch"
 				(click)="onChangeBranch()"
 			>
-				<fa-icon icon="chevron-down" class="mr-2"></fa-icon>
-				{{branch.name}}
+				<span> {{branch.name}} </span>
+				<fa-icon icon="bars"></fa-icon>
 			</li>
 		</ul>
 	</div>
@@ -53,6 +49,13 @@
 				*ngIf="!wait && branches.length <= 0"
 			>
 				No branches found
+			</li>
+			<li
+				class="list-group-item list-group-item-secondary text-center"
+				i18n="@@branchPickerChooseBranch"
+				*ngIf="!wait && branches.length > 0"
+			>
+				Choose a branch
 			</li>
 			<li
 				class="list-group-item list-group-item-action"

@@ -46,7 +46,7 @@ export class BookingSelectComponent implements OnInit {
 			this.prePickedBranchId = queryBranchId;
 		}
 
-		this.updatePath();
+		//this.updatePath();
 		//this.getBookings();
 
 		//this.branchStoreService.onBranchChange().subscribe(() => {
@@ -63,8 +63,8 @@ export class BookingSelectComponent implements OnInit {
 
 	onBranchPicked(branch: any) {
 		this.branch = branch;
-		this.branchId = branch.id;
 		if (this.branch) {
+			this.branchId = branch.id;
 			this.getBookings();
 		} else {
 			this.bookings = [];
@@ -85,6 +85,9 @@ export class BookingSelectComponent implements OnInit {
 	}
 
 	private async getBookings() {
+		if (!this.branch || !this.pickedDate) {
+			return;
+		}
 		this.wait = true;
 		this.updatePath();
 
