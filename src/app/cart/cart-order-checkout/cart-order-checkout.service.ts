@@ -153,7 +153,8 @@ export class CartOrderCheckoutService {
 			const branch = this.branchStoreService.getBranch();
 			if (
 				branch.paymentInfo.payLater &&
-				!this.cartOrderService.doesOrderIncludeBuyout()
+				!this.cartOrderService.doesOrderIncludeBuyout() &&
+				!this.cartOrderService.doesOrderIncludeExtend()
 			) {
 				return true;
 			}
