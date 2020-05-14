@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	SimpleChanges,
+	EventEmitter,
+	OnChanges
+} from "@angular/core";
 import { Branch } from "@wizardcoder/bl-model";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService } from "@wizardcoder/bl-connect";
@@ -8,8 +16,9 @@ import { BranchService } from "@wizardcoder/bl-connect";
 	templateUrl: "./branch-picker.component.html",
 	styleUrls: ["./branch-picker.component.scss"]
 })
-export class BranchPickerComponent implements OnInit {
+export class BranchPickerComponent implements OnInit, OnChanges {
 	@Input() onlyBookable: boolean;
+	@Input() prePicked: string;
 	@Output() picked: EventEmitter<Branch>;
 
 	public branches: Branch[];
@@ -35,6 +44,24 @@ export class BranchPickerComponent implements OnInit {
 	}
 
 	ngOnInit() {}
+
+	ngOnChanges(changes: SimpleChanges) {
+		if (changes["prePicked"]) {
+			let id = changes["prePicked"]["currentValue"];
+			if (id) {
+				this.branchService
+					.getById(id)
+					.then(branch => {
+						let region = branch.location.region;
+						region =
+							region.charAt(0).toUpperCase() + region.slice(1);
+						this.selectRegion(region);
+						this.pick(branch);
+					})
+					.catch(e => {});
+			}
+		}
+	}
 
 	public pick(branch: Branch) {
 		this.branch = branch;

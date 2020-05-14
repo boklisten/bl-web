@@ -17,6 +17,7 @@ export class BookingSelectComponent implements OnInit {
 	wait: boolean;
 	pickedDate: Date;
 	prePickedDate: Date;
+	prePickedBranchId: string;
 	branch: Branch;
 
 	constructor(
@@ -40,11 +41,10 @@ export class BookingSelectComponent implements OnInit {
 			this.prePickedDate = this.pickedDate;
 		}
 
-		/*if (queryBranchId) {*/
-		//this.branchId = queryBranchId;
-		//} else {
-		//this.branchId = this.branchStoreService.getBranchId();
-		//}
+		if (queryBranchId) {
+			this.branchId = queryBranchId;
+			this.prePickedBranchId = queryBranchId;
+		}
 
 		this.updatePath();
 		//this.getBookings();
@@ -63,6 +63,7 @@ export class BookingSelectComponent implements OnInit {
 
 	onBranchPicked(branch: any) {
 		this.branch = branch;
+		this.branchId = branch.id;
 		if (this.branch) {
 			this.getBookings();
 		} else {
@@ -85,6 +86,7 @@ export class BookingSelectComponent implements OnInit {
 
 	private async getBookings() {
 		this.wait = true;
+		this.updatePath();
 
 		this.bookings = [];
 

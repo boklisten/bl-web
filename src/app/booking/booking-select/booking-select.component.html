@@ -3,6 +3,7 @@
 		<div class="col-12">
 			<app-branch-picker
 				[onlyBookable]="true"
+				[prePicked]="prePickedBranchId"
 				(picked)="onBranchPicked($event)"
 			></app-branch-picker>
 		</div>
