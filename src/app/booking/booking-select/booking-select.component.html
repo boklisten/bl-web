@@ -1,5 +1,13 @@
 <div class="container">
-	<div class="row mt-2">
+	<div class="row">
+		<div class="col-12">
+			<app-branch-picker
+				[onlyBookable]="true"
+				(picked)="onBranchPicked($event)"
+			></app-branch-picker>
+		</div>
+	</div>
+	<div class="row mt-2" *ngIf="branch">
 		<div class="col-md-6 col-12 mb-md-0 mb-3">
 			<app-date-picker
 				[(pickedDate)]="pickedDate"
@@ -7,7 +15,7 @@
 			></app-date-picker>
 		</div>
 
-		<div class="col-md-6 col-12">
+		<div class="col-md-6 col-12" *ngIf="branch">
 			<ul class="list-group">
 				<li
 					class="list-group-item list-group-item-secondary text-center"

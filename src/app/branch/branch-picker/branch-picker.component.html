@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="col">
+		<ul class="list-group list-group-horizontal-md" *ngIf="!region">
+			<li
+				class="list-group-item list-group-item-action flex-fill"
+				*ngFor="let region of regions"
+				(click)="selectRegion(region)"
+			>
+				{{ region }}
+			</li>
+		</ul>
+		<ul class="list-group list-group-horizontal-md" *ngIf="region">
+			<li
+				class="list-group-item list-group-item-info"
+				(click)="onChangeRegion()"
+			>
+				<fa-icon icon="chevron-left" class="mr-2"></fa-icon>
+				{{ region }}
+			</li>
+			<li
+				class="list-group-item flex-fill d-md-inline d-none"
+				*ngIf="!branch"
+			></li>
+			<li
+				class="list-group-item flex-fill"
+				*ngIf="branch"
+				(click)="branch = null"
+			>
+				<fa-icon icon="chevron-down" class="mr-2"></fa-icon>
+				{{branch.name}}
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row mt-2" *ngIf="region && !branch">
+	<div class="col">
+		<ul class="list-group">
+			<li
+				class="list-group-item list-group-item-warning text-center"
+				*ngIf="wait"
+			>
+				<fa-icon icon="circle-notch" [spin]="true"></fa-icon>
+			</li>
+			<li
+				class="list-group-item list-group-item-secondary text-center"
+				i18n="@@branchPickerNoBranchesFound"
+				*ngIf="!wait && branches.length <= 0"
+			>
+				No branches found
+			</li>
+			<li
+				class="list-group-item list-group-item-action"
+				*ngFor="let branch of branches"
+				(click)="pick(branch)"
+			>
+				{{ branch.name }}
+			</li>
+		</ul>
+	</div>
+</div>

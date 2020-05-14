@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Booking } from "@wizardcoder/bl-model";
+import { Booking, Branch } from "@wizardcoder/bl-model";
 import { BookingService } from "@wizardcoder/bl-connect";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { DateService } from "../../date/date.service";
@@ -16,6 +16,7 @@ export class BookingSelectComponent implements OnInit {
 	bookings: Booking[];
 	wait: boolean;
 	pickedDate: Date;
+	branch: Branch;
 
 	constructor(
 		private bookingService: BookingService,
@@ -26,6 +27,7 @@ export class BookingSelectComponent implements OnInit {
 	) {
 		this.wait = false;
 		this.pickedDate = new Date();
+		this.bookings = [];
 	}
 
 	ngOnInit() {
@@ -36,25 +38,32 @@ export class BookingSelectComponent implements OnInit {
 			this.pickedDate = moment(queryDate, "DDMMYYYYHHMM").toDate();
 		}
 
-		if (queryBranchId) {
-			this.branchId = queryBranchId;
-		} else {
-			this.branchId = this.branchStoreService.getBranchId();
-		}
+		/*if (queryBranchId) {*/
+		//this.branchId = queryBranchId;
+		//} else {
+		//this.branchId = this.branchStoreService.getBranchId();
+		//}
 
 		this.updatePath();
-		this.getBookings();
+		//this.getBookings();
 
-		this.branchStoreService.onBranchChange().subscribe(() => {
-			this.branchId = this.branchStoreService.getBranchId();
-			this.getBookings();
-		});
+		//this.branchStoreService.onBranchChange().subscribe(() => {
+		//this.branchId = this.branchStoreService.getBranchId();
+		//this.getBookings();
+		//});
 	}
 
 	onPickedDate(date: Date) {
 		this.pickedDate = date;
 		this.getBookings();
 		this.updatePath();
+	}
+
+	onBranchPicked(branch: any) {
+		this.branch = branch;
+		if (this.branch) {
+			this.getBookings();
+		}
 	}
 
 	private updatePath() {
@@ -86,7 +95,7 @@ export class BookingSelectComponent implements OnInit {
 				fresh: true,
 				query:
 					"?og=from&og=to&branchId=" +
-					this.branchId +
+					this.branch.id +
 					"&booked=false" +
 					"&from=>" +
 					this.dateService.onFormat(

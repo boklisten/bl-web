@@ -15,6 +15,7 @@ import { BranchItemCategoryFilterComponent } from "./branch-item-category-filter
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BlCommonModule } from "../bl-common/bl-common.module";
 import { BranchLocationComponent } from "./branch-location/branch-location.component";
+import { BranchPickerComponent } from "./branch-picker/branch-picker.component";
 
 @NgModule({
 	imports: [
@@ -33,13 +34,15 @@ import { BranchLocationComponent } from "./branch-location/branch-location.compo
 		BranchContactInfoComponent,
 		BranchSetComponent,
 		BranchItemCategoryFilterComponent,
-		BranchLocationComponent
+		BranchLocationComponent,
+		BranchPickerComponent
 	],
 	exports: [
 		BranchSelectComponent,
 		BranchItemCategoryFilterComponent,
 		BranchInfoComponent,
-		BranchLocationComponent
+		BranchLocationComponent,
+		BranchPickerComponent
 	],
 	providers: [BranchStoreService, BranchOpeningHoursService]
 })
