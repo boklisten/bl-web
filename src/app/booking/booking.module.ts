@@ -13,6 +13,7 @@ import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-yo
 import { BranchModule } from "../branch/branch.module";
 import { BookingDisplayComponent } from './booking-display/booking-display.component';
 import { BookingCancelComponent } from './booking-cancel/booking-cancel.component';
+import { BookingTimePickerComponent } from './booking-time-picker/booking-time-picker.component';
 
 @NgModule({
 	declarations: [
@@ -22,7 +23,8 @@ import { BookingCancelComponent } from './booking-cancel/booking-cancel.componen
 		BookingEventConfirmedComponent,
 		BookingYourBookingsComponent,
 		BookingDisplayComponent,
-		BookingCancelComponent
+		BookingCancelComponent,
+		BookingTimePickerComponent
 	],
 	imports: [
 		CommonModule,

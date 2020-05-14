@@ -1,0 +1,41 @@
+<div class="row" *ngIf="branch">
+	<div class="col">
+		<ul class="list-group" *ngIf="selectedDate">
+			<li class="list-group-item" (click)="onChangeDate()">
+				{{ selectedDate | blcDate:'day' }} {{selectedDate |
+				blcDate:'date' }}
+			</li>
+		</ul>
+		<ul class="list-group" *ngIf="!selectedDate">
+			<li
+				class="list-group-item list-group-item-warning text-center"
+				*ngIf="wait"
+			>
+				<fa-icon [spin]="true" icon="circle-notch"></fa-icon>
+			</li>
+			<li
+				class="list-group-item list-group-item-secondary text-center"
+				*ngIf="bookableDates.length > 0 && !wait"
+				i18n="@@bookingTimePickerChooseDate"
+			>
+				Choose a date
+			</li>
+
+			<li
+				class="list-group-item list-group-item-secondary text-center"
+				*ngIf="bookableDates.length <= 0 && !wait"
+				i18n="@@bookingTimePickerNoDatesFound"
+			>
+				No dates found
+			</li>
+			<li
+				class="list-group-item list-group-item-action"
+				(click)="pick(bookableDate)"
+				*ngFor="let bookableDate of bookableDates"
+			>
+				{{bookableDate | blcDate:'day'}} {{ bookableDate |
+				blcDate:'date'}}
+			</li>
+		</ul>
+	</div>
+</div>

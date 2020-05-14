@@ -7,24 +7,19 @@
 			></app-branch-picker>
 		</div>
 	</div>
-	<div class="row mt-2" *ngIf="branch">
-		<div class="col-md-6 col-12 mb-md-0 mb-3">
-			<app-date-picker
-				[(pickedDate)]="pickedDate"
-				(pickedDateChange)="onPickedDate($event)"
-			></app-date-picker>
+	<div class="row mt-2">
+		<div class="col">
+			<app-booking-time-picker
+				[branch]="branch"
+				[prePicked]="prePickedDate"
+				(picked)="onPickedDate($event)"
+			>
+			</app-booking-time-picker>
 		</div>
-
-		<div class="col-md-6 col-12" *ngIf="branch">
+	</div>
+	<div class="row mt-2" *ngIf="branch && pickedDate">
+		<div class="col">
 			<ul class="list-group">
-				<li
-					class="list-group-item list-group-item-secondary text-center"
-				>
-					<span class="font-weight-bold">
-						{{pickedDate | blcDate:'day'}} {{pickedDate |
-						blcDate:'date'}}
-					</span>
-				</li>
 				<li
 					class="list-group-item list-group-item-warning text-center"
 					*ngIf="wait"
@@ -54,11 +49,12 @@
 						>
 						<div>
 							<small>
+								<span class="mr-2">{{branch.name}}</span>
 								<span
 									*ngIf="!booking.booked"
 									class="text-success"
 									i18n="bookingSelectAvailable"
-									>Available</span
+									>• Available</span
 								>
 								<span
 									*ngIf="booking.booked"

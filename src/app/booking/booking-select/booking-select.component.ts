@@ -16,6 +16,7 @@ export class BookingSelectComponent implements OnInit {
 	bookings: Booking[];
 	wait: boolean;
 	pickedDate: Date;
+	prePickedDate: Date;
 	branch: Branch;
 
 	constructor(
@@ -36,6 +37,7 @@ export class BookingSelectComponent implements OnInit {
 
 		if (queryDate) {
 			this.pickedDate = moment(queryDate, "DDMMYYYYHHMM").toDate();
+			this.prePickedDate = this.pickedDate;
 		}
 
 		/*if (queryBranchId) {*/
