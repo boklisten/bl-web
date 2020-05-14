@@ -55,6 +55,11 @@ export class BranchPickerComponent implements OnInit {
 		this.selectRegion(null);
 	}
 
+	public onChangeBranch() {
+		this.branch = null;
+		this.picked.emit(this.branch);
+	}
+
 	getBranchesByRegion(region: string) {
 		this.wait = true;
 		let bookableQuery = this.onlyBookable ? "&location.bookable=true" : "";

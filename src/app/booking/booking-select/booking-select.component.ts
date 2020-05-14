@@ -63,6 +63,8 @@ export class BookingSelectComponent implements OnInit {
 		this.branch = branch;
 		if (this.branch) {
 			this.getBookings();
+		} else {
+			this.bookings = [];
 		}
 	}
 
@@ -105,7 +107,9 @@ export class BookingSelectComponent implements OnInit {
 					"&from=<" +
 					this.dateService.onFormat(toDate.toDate(), "DDMMYYYYHHMM")
 			});
-		} catch (e) {}
+		} catch (e) {
+			this.bookings = [];
+		}
 
 		this.wait = false;
 	}
