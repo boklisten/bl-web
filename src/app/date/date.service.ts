@@ -20,7 +20,8 @@ export class DateService {
 	}
 
 	public dayString(date): string {
-		return moment(date).format("dddd");
+		let day = moment(date).format("dddd");
+		return day.charAt(0).toUpperCase() + day.slice(1);
 	}
 
 	public timestampString(date: Date): string {
