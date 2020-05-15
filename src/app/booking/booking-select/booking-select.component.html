@@ -45,15 +45,15 @@
 								| blcDate:'date'}}</small
 							>
 						</div>
-						<span class="font-weight-bold"
-							>{{booking.from | blcDate:'hour'}}</span
-						>
 						<div>
+							<span class="font-weight-bold"
+								>{{booking.from | blcDate:'hour'}}</span
+							>
+
 							<small>
-								<span class="mr-2">{{branch.name}}</span>
 								<span
 									*ngIf="!booking.booked"
-									class="text-success"
+									class="text-success ml-2"
 									i18n="bookingSelectAvailable"
 									>• Available</span
 								>
@@ -63,6 +63,11 @@
 									i18n="bookingSelectNotAvailable"
 									>Not available</span
 								>
+							</small>
+						</div>
+						<div>
+							<small>
+								<span class="mr-2">{{branch.name}}</span>
 							</small>
 						</div>
 					</div>

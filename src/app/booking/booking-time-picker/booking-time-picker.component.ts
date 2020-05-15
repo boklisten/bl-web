@@ -70,23 +70,31 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 			this.bookableDates = [];
 			return;
 		}
+		this.bookableDates = [];
 		this.wait = true;
 		this.bookingService
 			.get({
 				query:
 					"?og=from&from=>" +
-					this.dateService.onFormat(new Date(), "DDMMYYYYHHMM")
+					this.dateService.onFormat(new Date(), "DDMMYYYYHHMM") +
+					"&branch=" +
+					this.branch.id
 			})
 			.then(bookings => {
 				for (let booking of bookings) {
 					this.addToBookableDates(booking.from);
 				}
+				this.sortDates();
 				this.wait = false;
 			})
 			.catch(e => {
 				console.log("could not get bookings", e);
 				this.wait = false;
 			});
+	}
+
+	private sortDates() {
+		this.bookableDates.sort((a, b) => moment(a).unix() - moment(b).unix());
 	}
 
 	private addToBookableDates(bookingDate: Date) {
