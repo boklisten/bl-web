@@ -6,6 +6,22 @@
 					<fa-icon icon="calendar-alt" class="mr-2"></fa-icon>
 					<span i18n="@@bookingYourBookingsTitle">Your Bookings</span>
 				</li>
+				<li
+					class="list-group-item list-group-item-secondary text-center"
+					*ngIf="!wait && bookings.length <= 0"
+				>
+					<span i18n="@@yourBookingsNoBookingsFound">
+						No bookings found
+					</span>
+					<button
+						[routerLink]="'/bookings/select'"
+						i18n="@@yourBookingsBook"
+						class="btn btn-success ml-2"
+					>
+						Book an hour
+					</button>
+				</li>
+
 				<li class="list-group-item" *ngFor="let booking of bookings">
 					<div class="row justify-content-between align-items-center">
 						<div class="col-md-auto col-12">
