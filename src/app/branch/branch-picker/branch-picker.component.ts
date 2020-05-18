@@ -33,12 +33,12 @@ export class BranchPickerComponent implements OnInit, OnChanges {
 	) {
 		this.picked = new EventEmitter<Branch>();
 		this.regions = [
-			"Bergen",
-			"Drammen",
-			"Fredrikstad",
-			"Lillestrøm",
-			"Oslo",
-			"Stavanger",
+			//"Bergen",
+			//"Drammen",
+			//"Fredrikstad",
+			//"Lillestrøm",
+			//"Oslo",
+			//"Stavanger",
 			"Trondheim"
 		];
 	}
