@@ -9,6 +9,7 @@ import { Booking } from "@wizardcoder/bl-model";
 	styleUrls: ["./booking-your-bookings.component.scss"]
 })
 export class BookingYourBookingsComponent implements OnInit {
+	public wait: boolean;
 	public bookings: Booking[];
 	constructor(
 		private userService: UserService,
@@ -19,12 +20,15 @@ export class BookingYourBookingsComponent implements OnInit {
 
 	ngOnInit() {
 		const userDetailId = this.userService.getUserDetailId();
+		this.wait = true;
 		this.bookingService
 			.get({ query: "?customer=" + userDetailId })
 			.then(bookings => {
 				this.bookings = bookings;
+				this.wait = false;
 			})
 			.catch(e => {
+				this.wait = false;
 				console.log("could not get bookings", e);
 			});
 	}
