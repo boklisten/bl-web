@@ -1517,28 +1517,28 @@
 				Opening hours
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="welcomeFrequentlyAskedQuestions" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">112</context></context-group></trans-unit><trans-unit id="welcomeFrequentlyAskedQuestions" datatype="html">
         <source>
 				FAQ
 			</source><target state="final">
 				FAQ
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">87</context></context-group></trans-unit><trans-unit id="welcomeThisIsHowItWorks" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">121</context></context-group></trans-unit><trans-unit id="welcomeThisIsHowItWorks" datatype="html">
         <source>
 							Slik funker det
 						</source><target state="final">
 							Slik funker det
 						</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">101</context></context-group></trans-unit><trans-unit id="welcomeChooseHeader" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="welcomeChooseHeader" datatype="html">
         <source>
 											VELG
 										</source><target state="final">
 											VELG
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">132</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnChoose" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">166</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnChoose" datatype="html">
         <source>
 											Lag deg en bruker og velg den skolen
 											du går på. Deretter er det bare å
@@ -1551,10 +1551,10 @@
 											fagene du tar.
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">137</context></context-group></trans-unit><trans-unit id="welcomeGetHeader" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">171</context></context-group></trans-unit><trans-unit id="welcomeGetHeader" datatype="html">
         <source>HENT</source><target state="final">HENT</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">173</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnGet" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">207</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnGet" datatype="html">
         <source>
 											Etter at du har bestilt så er det
 											bare å hente bøkene. Dette kan du
@@ -1565,10 +1565,10 @@
 											gjøre når vi har stand på din skole.
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">176</context></context-group></trans-unit><trans-unit id="welcomeReadHeader" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">210</context></context-group></trans-unit><trans-unit id="welcomeReadHeader" datatype="html">
         <source>LES</source><target state="final">LES</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">211</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnRead" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">245</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnRead" datatype="html">
         <source>
 											Nå er det bare å sette seg ned for å
 											studere.
@@ -1577,14 +1577,14 @@
 											studere.
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">214</context></context-group></trans-unit><trans-unit id="welcomeReturnHeader" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">248</context></context-group></trans-unit><trans-unit id="welcomeReturnHeader" datatype="html">
         <source>
 											LEVER
 										</source><target state="final">
 											LEVER
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">248</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnReturn" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">282</context></context-group></trans-unit><trans-unit id="welcomeWhatToDoOnReturn" datatype="html">
         <source>
 											Når du har lest deg ferdig og
 											fristen begynner å nærme seg må
@@ -1599,21 +1599,21 @@
 											de fleste skoler.
 										</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">253</context></context-group></trans-unit><trans-unit id="welcomeRentBooksButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">287</context></context-group></trans-unit><trans-unit id="welcomeRentBooksButton" datatype="html">
         <source>
 									Bestill bøker
 								</source><target state="final">
 									Bestill bøker
 								</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">317</context></context-group></trans-unit><trans-unit id="welcomeSeeMyBooksButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">351</context></context-group></trans-unit><trans-unit id="welcomeSeeMyBooksButton" datatype="html">
         <source>
 									Se mine bøker
 								</source><target state="final">
 									Se mine bøker
 								</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">326</context></context-group></trans-unit><trans-unit id="orderItemInfoLeftToPay" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">360</context></context-group></trans-unit><trans-unit id="orderItemInfoLeftToPay" datatype="html">
         <source>left to pay</source><target state="final">left to pay</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order-info/order-item-info/order-item-info.component.ts</context>
@@ -1946,12 +1946,12 @@
         
       <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="welcomeBeginHereButton" datatype="html">
         <source>
-						Start her
+						Bestill bøker
 					</source><target state="final">
-						Start her
+						Bestill bøker
 					</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="orderDetailPrintReceiptButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="orderDetailPrintReceiptButton" datatype="html">
         <source>Skriv ut kvittering</source><target state="final">Skriv ut kvittering</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/order/order-info/order-info.component.ts</context>
@@ -2395,17 +2395,17 @@
 				Login
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="welcomeYourItemsButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">75</context></context-group></trans-unit><trans-unit id="welcomeYourItemsButton" datatype="html">
         <source>Your items</source><target state="final">Your items</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="welcomeRegisterButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">86</context></context-group></trans-unit><trans-unit id="welcomeRegisterButton" datatype="html">
         <source>
 				Register
 			</source><target state="final">
 				Register
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="fastbuySelectRegionWhereTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="fastbuySelectRegionWhereTitle" datatype="html">
         <source>
 				Where do you go to school?
 			</source><target state="final">
@@ -2438,7 +2438,7 @@
 						</target>
         
         <note priority="1" from="description">@welcomeWhatAreYouWaitingFor</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">288</context></context-group></trans-unit><trans-unit id="matchFailureTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">322</context></context-group></trans-unit><trans-unit id="matchFailureTitle" datatype="html">
         <source>
 				Something went wrong when trying to match
 			</source><target state="final">
@@ -2538,11 +2538,8 @@
 			</source><target state="final">
 				Make an apointement
 			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/welcome/welcome.component.ts</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-      </trans-unit><trans-unit id="showInactiveCustomerItemsButton" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/welcome/welcome.component.ts</context><context context-type="linenumber">103</context></context-group></trans-unit><trans-unit id="showInactiveCustomerItemsButton" datatype="html">
         <source>
 					Show inactive customer items
 				</source><target state="final">
@@ -2658,11 +2655,8 @@
 							</source><target state="final">
 								Cancel Booking
 							</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/booking/booking-your-bookings/booking-your-bookings.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit><trans-unit id="bookingDisplayDate" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/booking/booking-your-bookings/booking-your-bookings.component.ts</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="bookingDisplayDate" datatype="html">
         <source>Date:</source><target state="final">Date:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/booking/booking-display/booking-display.component.ts</context>
@@ -2706,11 +2700,8 @@
 							</source><target state="final">
 								Confirm cancelation
 							</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/booking/booking-cancel/booking-cancel.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit><trans-unit id="bookingTimePickerChooseDate" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/booking/booking-cancel/booking-cancel.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="bookingTimePickerChooseDate" datatype="html">
         <source>
 				Choose a date
 			</source><target state="final">
@@ -2729,6 +2720,26 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/booking/booking-time-picker/booking-time-picker.component.ts</context>
           <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit><trans-unit id="yourBookingsNoBookingsFound" datatype="html">
+        <source>
+						No bookings found
+					</source><target state="final">
+						No bookings found
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/booking/booking-your-bookings/booking-your-bookings.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit><trans-unit id="yourBookingsBook" datatype="html">
+        <source>
+						Book an hour
+					</source><target state="final">
+						Book an hour
+					</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/booking/booking-your-bookings/booking-your-bookings.component.ts</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit></body>
   </file>
