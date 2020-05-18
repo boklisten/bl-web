@@ -39,11 +39,18 @@ export class BookingCancelComponent implements OnInit {
 
 	public onConfirmCancelation() {
 		this.wait = true;
-		console.log("should cancel", this.booking);
-		this.cancelationConfirmed = true;
 
-		setTimeout(() => {
-			this.router.navigate(["/bookings/customer/list"]);
-		}, 2500);
+		this.bookingService
+			.update(this.booking.id, { customer: null, booked: false })
+			.then(() => {
+				this.wait = false;
+				this.cancelationConfirmed = true;
+				setTimeout(() => {
+					this.router.navigate(["/bookings/customer/list"]);
+				}, 2500);
+			})
+			.catch(() => {
+				this.wait = false;
+			});
 	}
 }

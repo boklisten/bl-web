@@ -45,6 +45,7 @@
 							<button
 								class="btn btn-danger btn-block"
 								i18n="@@bookingCancelConfirmButton"
+								[disabled]="cancelationConfirmed"
 								(click)="onConfirmCancelation()"
 							>
 								Confirm cancelation
