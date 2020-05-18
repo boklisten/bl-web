@@ -2418,7 +2418,7 @@
       </trans-unit><trans-unit id="branchPickerChooseBranch" datatype="html">
         <source>
 				Choose a branch
-			</source><target state="final">Velg et filial
+			</source><target state="final">Velg filial
 			</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/branch/branch-picker/branch-picker.component.ts</context>
