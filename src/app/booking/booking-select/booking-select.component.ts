@@ -103,7 +103,7 @@ export class BookingSelectComponent implements OnInit {
 			this.bookings = await this.bookingService.get({
 				fresh: true,
 				query:
-					"?og=from&og=to&branchId=" +
+					"?og=from&og=to&branch=" +
 					this.branch.id +
 					"&booked=false" +
 					"&from=>" +
