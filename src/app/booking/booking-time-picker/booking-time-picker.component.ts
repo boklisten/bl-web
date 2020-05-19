@@ -8,7 +8,7 @@ import {
 	SimpleChanges
 } from "@angular/core";
 import { Booking, Branch } from "@wizardcoder/bl-model";
-import { BookingService } from "@wizardcoder/bl-connect";
+import { BookingService, BranchService } from "@wizardcoder/bl-connect";
 import * as moment from "moment";
 import { DateService } from "../../date/date.service";
 
@@ -28,7 +28,8 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 
 	constructor(
 		private bookingService: BookingService,
-		private dateService: DateService
+		private dateService: DateService,
+		private branchService: BranchService
 	) {
 		this.picked = new EventEmitter<Date>();
 		this.bookableDates = [];
@@ -41,14 +42,14 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 				!changes["branch"]["firstChange"]
 			) {
 				this.onChangeDate();
-				this.getBookings();
+				this.getBookableDates();
 			}
 		}
 
 		if (changes["prePicked"]) {
 			if (changes["prePicked"]["currentValue"]) {
 				this.selectedDate = changes["prePicked"]["currentValue"];
-				this.getBookings();
+				this.getBookableDates();
 			}
 		}
 	}
@@ -65,26 +66,22 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 		this.picked.emit(null);
 	}
 
-	private getBookings() {
+	private getBookableDates() {
 		if (!this.branch) {
 			this.bookableDates = [];
 			return;
 		}
 		this.bookableDates = [];
 		this.wait = true;
-		this.bookingService
-			.get({
-				query:
-					"?og=from&from=>" +
-					this.dateService.onFormat(new Date(), "DDMMYYYYHHMM") +
-					"&branch=" +
-					this.branch.id
-			})
-			.then(bookings => {
-				for (let booking of bookings) {
-					this.addToBookableDates(booking.from);
-				}
+
+		this.branchService
+			.getWithOperation(this.branch.id, "booking-dates")
+			.then((bookingDates: any) => {
+				this.bookableDates = bookingDates.map(bookingDate => {
+					return bookingDate.from;
+				});
 				this.sortDates();
+
 				this.wait = false;
 			})
 			.catch(e => {
@@ -95,14 +92,5 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 
 	private sortDates() {
 		this.bookableDates.sort((a, b) => moment(a).unix() - moment(b).unix());
-	}
-
-	private addToBookableDates(bookingDate: Date) {
-		for (let bookableDate of this.bookableDates) {
-			if (moment(bookableDate).isSame(bookingDate, "day")) {
-				return;
-			}
-		}
-		this.bookableDates.push(bookingDate);
 	}
 }
