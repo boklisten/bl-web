@@ -8,7 +8,7 @@
 				Choose region
 			</li>
 			<li
-				class="list-group-item list-group-item-action flex-fill"
+				class="list-group-item list-group-item-action flex-fill align-items-center"
 				*ngFor="let region of regions"
 				(click)="selectRegion(region)"
 			>
@@ -17,18 +17,21 @@
 		</ul>
 		<ul class="list-group list-group-horizontal-md" *ngIf="region">
 			<li
-				class="list-group-item list-group-item-info list-group-item-action"
+				class="list-group-item list-group-item-info list-group-item-action d-flex align-items-center"
 				(click)="onChangeRegion()"
 			>
 				<fa-icon icon="chevron-left" class="mr-2"></fa-icon>
 				{{ region }}
 			</li>
 			<li
-				class="list-group-item list-group-item-info list-group-item-action flex-fill d-flex justify-content-between"
+				class="list-group-item list-group-item-info list-group-item-action flex-fill d-flex justify-content-between align-items-center"
 				*ngIf="branch"
 				(click)="onChangeBranch()"
 			>
-				<span> {{branch.name}} </span>
+				<span>
+					<div>{{branch.name}}</div>
+					<small>{{branch.location.address}}</small>
+				</span>
 				<fa-icon icon="bars"></fa-icon>
 			</li>
 		</ul>
@@ -63,7 +66,7 @@
 				*ngFor="let branch of branches"
 				(click)="pick(branch)"
 			>
-				{{ branch.name }}
+				{{ branch.name }} - <small>{{branch.location.address}}</small>
 			</li>
 		</ul>
 	</div>
