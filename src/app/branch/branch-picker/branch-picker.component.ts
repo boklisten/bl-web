@@ -38,7 +38,7 @@ export class BranchPickerComponent implements OnInit, OnChanges {
 			//"Fredrikstad",
 			//"Lillestrøm",
 			"Oslo",
-			//"Stavanger",
+			"Stavanger",
 			"Trondheim"
 		];
 	}
