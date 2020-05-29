@@ -40,7 +40,8 @@ const routes: Routes = [
 			},
 			{
 				path: "customer/list",
-				component: BookingYourBookingsComponent
+				component: BookingYourBookingsComponent,
+				canActivate: [UserGuardService]
 			}
 		]
 	}
