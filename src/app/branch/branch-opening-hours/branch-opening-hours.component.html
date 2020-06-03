@@ -11,7 +11,24 @@
 
 	<div
 		class="card-body"
-		*ngIf="(!openingHours || openingHours.length <= 0) && !loading"
+		*ngIf="(!openingHours || openingHours.length <= 0) && !loading && (branch.name == 'Akademiet Oslo' || branch.name == 'Metis Oslo' || branch.name == 'Sonans Oslo')"
+	>
+		<div class="alert alert-secondary text-center align-items-center">
+			<div>
+				Vår innsamling i Oslo er flyttet til et felles punkt. Sjekk ut:
+			</div>
+			<button
+				class="btn btn-success mt-2"
+				routerLink="/info/branch/5ec28bf21ffe48001c194bc7"
+			>
+				Oslo innsamling
+			</button>
+		</div>
+	</div>
+
+	<div
+		class="card-body"
+		*ngIf="(!openingHours || openingHours.length <= 0) && !loading && branch.name !== 'Akademiet Oslo' && branch.name !== 'Metis Oslo' && branch.name !== 'Sonans Oslo'"
 	>
 		<div class="alert alert-secondary">
 			<span i18n="@@branchOpeningHoursNotFound"
@@ -32,8 +49,8 @@
 			<div class="row justify-content-between">
 				<div class="col-auto">
 					<span class="mr-2 text-secondary font-weight-bold"
-						>{{ openingHour.from | blcDate: "day" }}
-						{{ openingHour.from | blcDate: "date" }}</span
+						>{{ openingHour.from | blcDate: "day" }} {{
+						openingHour.from | blcDate: "date" }}</span
 					>
 				</div>
 				<div class="col-auto">

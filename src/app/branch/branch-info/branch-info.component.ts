@@ -28,6 +28,10 @@ export class BranchInfoComponent implements OnInit {
 
 	ngOnInit() {
 		this.selectedBranch = this._branchStoreService.getBranch();
+		this.router.events.subscribe(() => {
+			let branchId = this.route.snapshot.paramMap.get("id");
+			this.selectByIdOrName(branchId);
+		});
 
 		let branchId = this.route.snapshot.paramMap.get("id");
 		this.loading = true;
