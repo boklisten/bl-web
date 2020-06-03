@@ -313,11 +313,11 @@
       <trans-unit id="branchContactInfoAddress" datatype="html">
         <source>Address:</source><target state="final">Adresse:</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-contact-info/branch-contact-info.component.ts</context><context context-type="linenumber">8</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-contact-info/branch-contact-info.component.ts</context><context context-type="linenumber">18</context></context-group></trans-unit>
       <trans-unit id="branchContactInfoEmail" datatype="html">
         <source>Email:</source><target state="final">E-post:</target>
 
-      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-contact-info/branch-contact-info.component.ts</context><context context-type="linenumber">19</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-contact-info/branch-contact-info.component.ts</context><context context-type="linenumber">31</context></context-group></trans-unit>
       <trans-unit id="branchSetTitle" datatype="html">
         <source>Where do you go to school?</source><target state="final">Hvilken skole går du på?</target>
         <context-group purpose="location">
@@ -1279,7 +1279,7 @@
         <source>The season is over - or the opening hours is not ready
 				yet.</source><target state="final">Sesongen er over - eller åpningstidene er ikke klare enda.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">18</context></context-group></trans-unit><trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">35</context></context-group></trans-unit><trans-unit id="infoMenuListHowDoesItWorkButton" datatype="html">
         <source>How does it work?</source><target state="final">Hvordan fungerer det?</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/info/info.component.ts</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="infoMenuListFaqButton" datatype="html">
@@ -1790,11 +1790,8 @@
         </context-group>
       </trans-unit><trans-unit id="branchopeningHoursContactUs" datatype="html">
         <source>Contact us at info@boklisten.no or order by mail!</source><target state="final">Kontakt oss på info@boklisten.no eller bestill bøker i posten!</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit><trans-unit id="userCustomerItemBuybackMessage" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-opening-hours/branch-opening-hours.component.ts</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="userCustomerItemBuybackMessage" datatype="html">
         <source>You have sold this item back to us</source><target state="final">Du har solgt denne boken tilbake til oss</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/user/user-customer-item/user-customer-item.component.ts</context><context context-type="linenumber">83</context></context-group></trans-unit><trans-unit id="customerItemAmountLeftToPay" datatype="html">
@@ -2411,20 +2408,14 @@
 				No branches found
 			</source><target state="final">Ingen filialer funnet
 			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/branch/branch-picker/branch-picker.component.ts</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
-      </trans-unit><trans-unit id="branchPickerChooseBranch" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-picker/branch-picker.component.ts</context><context context-type="linenumber">54</context></context-group></trans-unit><trans-unit id="branchPickerChooseBranch" datatype="html">
         <source>
 				Choose a branch
 			</source><target state="final">Velg filial
 			</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/branch/branch-picker/branch-picker.component.ts</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-      </trans-unit><trans-unit id="welcomeAppointmentButton" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-picker/branch-picker.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="welcomeAppointmentButton" datatype="html">
         <source>
 				Make an apointement
 			</source><target state="final">Book time
@@ -2625,6 +2616,12 @@ Ingen datoer funnet
         <context-group purpose="location">
           <context context-type="sourcefile">app/booking/booking-your-bookings/booking-your-bookings.component.ts</context>
           <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit><trans-unit id="branchContactLocationAddress" datatype="html">
+        <source>Address:</source><target state="final">Adresse:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/branch/branch-contact-info/branch-contact-info.component.ts</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit></body>
   </file>
