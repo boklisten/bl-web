@@ -1,5 +1,15 @@
-
-
+<div class="card" *ngIf="branch && branch.location && branch.location.address">
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<div class="row justify-content-between">
+				<div class="col-auto text-secondary">
+					<span i18n="@@branchContactLocationAddress">Address:</span>
+				</div>
+				<div class="col-auto">{{branch.location.address}}</div>
+			</div>
+		</li>
+	</ul>
+</div>
 <div class="card" *ngIf="branch && branch.contactInfo">
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item">
@@ -8,7 +18,9 @@
 					<span i18n="@@branchContactInfoAddress">Address:</span>
 				</div>
 				<div class="col-auto">
-					{{branch.contactInfo.address}}, {{branch.contactInfo.postCode}} {{branch.contactInfo.postCity}}
+					{{branch.contactInfo.address}},
+					{{branch.contactInfo.postCode}}
+					{{branch.contactInfo.postCity}}
 				</div>
 			</div>
 		</li>
@@ -18,9 +30,7 @@
 				<div class="col-auto text-secondary">
 					<span i18n="@@branchContactInfoEmail">Email:</span>
 				</div>
-				<div class="col-auto">
-					{{branch.contactInfo.email}}
-				</div>
+				<div class="col-auto">{{branch.contactInfo.email}}</div>
 			</div>
 		</li>
 	</ul>
