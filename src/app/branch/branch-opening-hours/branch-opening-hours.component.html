@@ -26,20 +26,20 @@
 		</div>
 	</div>
 
-	<!--<div-->
-	<!--class="card-body"-->
-	<!--*ngIf="(!openingHours || openingHours.length <= 0) && !loading && branch.name !== 'Akademiet Oslo' && branch.name !== 'Metis Oslo' && branch.name !== 'Sonans Oslo'"-->
-	<!-->-->
-	<!--<div class="alert alert-secondary">-->
-	<!--<span i18n="@@branchOpeningHoursNotFound"-->
-	<!-->The season is over - or the opening hours is not ready-->
-	<!--yet.</span-->
-	<!-->-->
-	<!--<span class="ml-1" i18n="@@branchopeningHoursContactUs"-->
-	<!-->Contact us at info@boklisten.no or order by mail!</span-->
-	<!-->-->
-	<!--</div>-->
-	<!--</div>-->
+	<div
+		class="card-body"
+		*ngIf="(!openingHours || openingHours.length <= 0) && !loading && branch.name.indexOf('Oslo') <= -1 && branch.name.indexOf('Wang') <= -1 && branch.name.indexOf('Otto Treider') <= -1"
+	>
+		<div class="alert alert-secondary">
+			<span i18n="@@branchOpeningHoursNotFound"
+				>The season is over - or the opening hours is not ready
+				yet.</span
+			>
+			<span class="ml-1" i18n="@@branchopeningHoursContactUs"
+				>Contact us at info@boklisten.no or order by mail!</span
+			>
+		</div>
+	</div>
 	<div class="card-body" *ngIf="branch.name.indexOf('Wang') >= 0">
 		<p>
 			Innsamling av utlånsbøker vil finne sted på skolen på følgende
