@@ -1,6 +1,6 @@
 {
 	"name": "bl-web",
-	"version": "1.9.9",
+	"version": "1.9.10",
 	"license": "MIT",
 	"scripts": {
 		"ng": "ng",
