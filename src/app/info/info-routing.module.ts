@@ -15,6 +15,7 @@ import { ContactInfoComponent } from "./contact-info/contact-info.component";
 import { InfoAgreementComponent } from "./info-agreement/info-agreement.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { InfoMatchingComponent } from "./info-matching/info-matching.component";
+import { InfoCoronaComponent } from "./info-corona/info-corona.component";
 
 const routes: Routes = [
 	{
@@ -32,6 +33,7 @@ const routes: Routes = [
 			{ path: "buyback", component: InfoBuybackComponent },
 			{ path: "matching", component: InfoMatchingComponent },
 			{ path: "contact", component: ContactInfoComponent },
+			{ path: "covid-19", component: InfoCoronaComponent },
 			{
 				path: "policies",
 				component: InfoAgreementComponent,

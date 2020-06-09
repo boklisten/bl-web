@@ -24,6 +24,7 @@ import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
 import { InfoMatchingComponent } from './info-matching/info-matching.component';
 import { InfoAgreementConditionsOldComponent } from './info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component';
+import { InfoCoronaComponent } from './info-corona/info-corona.component';
 
 @NgModule({
 	imports: [
@@ -50,7 +51,8 @@ import { InfoAgreementConditionsOldComponent } from './info-agreement/info-agree
 		InfoAgreementConditionsComponent,
 		InfoBuybackComponent,
 		InfoMatchingComponent,
-		InfoAgreementConditionsOldComponent
+		InfoAgreementConditionsOldComponent,
+		InfoCoronaComponent
 	],
 	exports: [
 		InfoAgreementPrivacyComponent,

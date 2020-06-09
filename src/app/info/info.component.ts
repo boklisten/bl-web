@@ -55,6 +55,9 @@ export class InfoComponent implements OnInit {
 			case "matching":
 				this.selectedMenuButton = "matching";
 				break;
+			case "covid-19":
+				this.selectedMenuButton = "covid-19";
+				break;
 			default:
 				this.selectedMenuButton = "general";
 		}
