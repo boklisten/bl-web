@@ -3,6 +3,7 @@ import { environment } from "../../../environments/environment";
 import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
 import { ActivatedRoute, Route, Router } from "@angular/router";
 import { StorageService } from "@wizardcoder/bl-connect";
+import { CartConfirmService } from "./cart-confirm.service";
 
 @Component({
 	selector: "app-cart-confirm",
@@ -17,29 +18,45 @@ export class CartConfirmComponent implements OnInit {
 		language: string;
 	};
 
+	public orderNotFoundError: boolean;
+
 	constructor(
 		private _cartCheckoutService: CartCheckoutService,
 		private _router: Router,
 		private _storageService: StorageService,
-		private _route: ActivatedRoute
+		private _route: ActivatedRoute,
+		private _cartConfirmService: CartConfirmService
 	) {}
 
 	ngOnInit() {
-		let orderId = "";
+		this.orderNotFoundError = false;
 		let paymentId = this._route.snapshot.queryParamMap.get("paymentId");
 
-		try {
-			if (!paymentId) {
-				paymentId = this._storageService.get("bl-payment-id");
-			}
-			orderId = this._storageService.get("bl-order-id");
-		} catch (e) {
-			this._router.navigateByUrl("/");
-			return;
+		if (!paymentId) {
+			this.setNotFoundError();
 		}
 
-		this.createDibsElement();
-		this.createDibsPayment(paymentId, orderId);
+		this._cartConfirmService
+			.getOrderIdByPaymentId(paymentId)
+			.then(orderId => {
+				this._cartConfirmService
+					.confirm(orderId)
+					.then(() => {
+						this._router.navigate(["/u/order"]);
+					})
+					.catch(e => {
+						this.createDibsElement();
+						this.createDibsPayment(paymentId, orderId);
+					});
+			})
+			.catch(e => {
+				console.log("failed to get order by paymentId!", e);
+				this.setNotFoundError();
+			});
+	}
+
+	private setNotFoundError() {
+		this.orderNotFoundError = true;
 	}
 
 	private createDibsPayment(paymentId: string, orderId: string) {

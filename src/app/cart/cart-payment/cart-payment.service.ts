@@ -36,6 +36,20 @@ export class CartPaymentService {
 		return this.paymentChange$;
 	}
 
+	public async getOrderIdByPaymentId(paymentId: string): Promise<string> {
+		let payments;
+
+		try {
+			payments = await this._paymentService.get({
+				query: "?info.paymentId=" + paymentId
+			});
+		} catch (e) {
+			console.log("could not get payment by paymentId", paymentId, e);
+		}
+
+		return payments[0].order;
+	}
+
 	public clear() {
 		this._currentPayment = null;
 		this._currentOrder = null;

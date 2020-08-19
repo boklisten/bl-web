@@ -22,11 +22,6 @@ export class CartOrderService {
 		this._orderChange$ = new Subject();
 		this._orderClear$ = new Subject();
 		this._orderError$ = new Subject<string>();
-
-		if (this._cartService.getSize() > 0) {
-			this.createOrder();
-		}
-
 		this.onLogin();
 	}
 

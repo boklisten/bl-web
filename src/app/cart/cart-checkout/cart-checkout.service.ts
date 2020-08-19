@@ -55,19 +55,19 @@ export class CartCheckoutService {
 
 		return new Promise((resolve, reject) => {
 			this._orderService
+				//.updateWithOperation(updateOrderId, {}, "confirm")
 				.update(updateOrderId, { placed: true })
-				.then((placedOrder: Order) => {
-					// we need to clear everything after order is placed
+				.then(() => {
 					this._cartService.clearCart();
 					this._cartOrderService.clearOrder();
 					this._userService.reloadUserDetail();
 
 					resolve(true);
 				})
-				.catch((blApiError: BlApiError) => {
-					reject(
-						new Error("order could not be placed: " + blApiError)
-					);
+				.catch(e => {
+					console.log("could not confirm order", e);
+
+					reject(new Error("order could not be placed: " + e));
 				});
 		});
 	}
