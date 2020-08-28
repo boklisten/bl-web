@@ -20,7 +20,8 @@
 						"assets": [
 							"src/assets",
 							"src/favicon.ico",
-							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt"
+							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt",
+							"src/robots.txt"
 						],
 						"styles": [
 							"node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -67,6 +68,10 @@
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.dev.ts"
+								},
+								{
+									"replace": "src/robots.txt",
+									"with": "src/robots.dev.txt"
 								}
 							]
 						},
