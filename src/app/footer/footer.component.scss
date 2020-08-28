@@ -1,4 +1,4 @@
-
+@import "../../styles.scss";
 
 .bl-footer-container {
 	color: #ffffff;
@@ -20,6 +20,11 @@
 	text-decoration: underline;
 }
 
+.bl-footer-dev {
+	background-color: $dev-color;
+	padding: 5px;
+	color: red;
+}
 
 ul {
 	list-style-type: none;
