@@ -8,5 +8,5 @@ export const environment = {
 		language: "nb-NO"
 	},
 	version: version,
-	versionName: "LOCAL"
+	versionName: "DEV"
 };
