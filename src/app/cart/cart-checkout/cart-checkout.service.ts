@@ -55,8 +55,8 @@ export class CartCheckoutService {
 
 		return new Promise((resolve, reject) => {
 			this._orderService
-				//.updateWithOperation(updateOrderId, {}, "confirm")
-				.update(updateOrderId, { placed: true })
+				.updateWithOperation(updateOrderId, {}, "confirm")
+				//.update(updateOrderId, { placed: true })
 				.then(() => {
 					this._cartService.clearCart();
 					this._cartOrderService.clearOrder();
