@@ -4,6 +4,7 @@ import { BranchStoreService } from "../branch/branch-store.service";
 import { UserService } from "../user/user.service";
 import { NgbDropdownConfig } from "@ng-bootstrap/ng-bootstrap";
 import { CartService } from "../cart/cart.service";
+import { environment } from "../../environments/environment";
 
 export type MenuItem =
 	| "info"
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
 	public showMenu: boolean;
 	public cartSize: number;
 	private outsideClick: boolean;
+	public isDevEnvironment: boolean;
 
 	constructor(
 		private _router: Router,
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit {
 	) {
 		this.showMenu = false;
 		this.outsideClick = false;
+		this.isDevEnvironment = !environment.production;
 
 		this._dropdownConfig.placement = "bottom";
 		this.cartSize = this._cartService.getSize();

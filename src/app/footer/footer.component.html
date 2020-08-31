@@ -111,7 +111,17 @@
 					<span>{{ getCurrentYear() }}</span>
 				</div>
 
-				<div class="col-12 mt-5 mb-2">
+				<div
+					class="col-12 mt-5"
+					[ngClass]="{ 'bl-footer-dev': isDevEnvironment }"
+				>
+					<div class="bl-text-sm" *ngIf="isDevEnvironment">
+						{{ blwebVersionName }}
+					</div>
+					<div class="bl-text-sm">{{ blwebVersion }}</div>
+				</div>
+
+				<div class="col-12 mt-2 mb-2">
 					<span class="bl-text-sm">
 						This site is made with
 						<fa-icon [icon]="'coffee'"></fa-icon> and

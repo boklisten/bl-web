@@ -1,4 +1,7 @@
-<nav class="navbar fixed-top bl-header d-flex align-items-center">
+<nav
+	class="navbar fixed-top bl-header d-flex align-items-center"
+	[ngClass]="{ 'bl-dev-header': isDevEnvironment }"
+>
 	<div routerLink="/welcome">
 		<img
 			src="../../assets/img/boklisten_logo_v2_icon_white_lg.png"
