@@ -69,7 +69,7 @@ export class CartPaymentDibsComponent
 
 	private checkWaitingForDibs() {
 		this.waitingForDibsInterval = setInterval(() => {
-			if (document.getElementById("dibs-checkout-iframe")) {
+			if (document.getElementById("nets-checkout-iframe")) {
 				this.waitingForDibs = false;
 			}
 		}, 200);
