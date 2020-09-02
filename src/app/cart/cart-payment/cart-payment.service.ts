@@ -72,7 +72,7 @@ export class CartPaymentService {
 
 	public createPayment(): Promise<Payment> {
 		return new Promise((resolve, reject) => {
-			let payment = null;
+			let payment: Payment = null;
 
 			try {
 				payment = this.createDibsPayment(
@@ -81,6 +81,10 @@ export class CartPaymentService {
 				);
 			} catch (e) {
 				reject(e);
+			}
+
+			if (!this.isPaymentChanged(payment)) {
+				return resolve(payment);
 			}
 
 			this._paymentService
@@ -93,6 +97,17 @@ export class CartPaymentService {
 					reject(blApiErr);
 				});
 		});
+	}
+
+	private isPaymentChanged(payment: Payment): boolean {
+		if (this._currentPayment) {
+			if (payment.amount == this._currentPayment.amount) {
+				if (payment.order == this._currentPayment.order) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	private setPayment(payment: Payment) {

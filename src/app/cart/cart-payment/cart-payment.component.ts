@@ -41,7 +41,6 @@ export class CartPaymentComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.removeDibsCheckout();
-		this._cartPaymentService.clear();
 		this.wait = true;
 
 		this._cartPaymentService
