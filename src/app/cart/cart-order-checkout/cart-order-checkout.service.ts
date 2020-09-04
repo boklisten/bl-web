@@ -104,15 +104,15 @@ export class CartOrderCheckoutService {
 			});
 		}
 
-		if (this.showPaymentOption()) {
-			steps.push({ type: "payment-option", confirmed: false });
-		}
-
 		if (this.showDeliveryOption()) {
 			steps.push({
 				type: "delivery",
 				confirmed: false
 			});
+		}
+
+		if (this.showPaymentOption()) {
+			steps.push({ type: "payment-option", confirmed: false });
 		}
 
 		if (this.needToPay()) {

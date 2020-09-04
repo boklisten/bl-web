@@ -247,4 +247,13 @@
 			<span i18n="@@cartDeliveryConfirmButton">Confirm</span>
 		</button>
 	</div>
+
+	<div class="col-12 mt-4" *ngIf="!currentDelivery">
+		<div class="alert alert-warning">
+			<span i18n="@@cartDeliveryInfoFailure"
+				>Delivery info could not be processed. Are you sure that the
+				info is correct? Is the postal code valid?</span
+			>
+		</div>
+	</div>
 </div>
