@@ -130,6 +130,12 @@
 					(confirm)="onConfirmStep('partly-payment-info')"
 				></app-cart-partly-payment-info>
 
+				<app-cart-delivery
+					class="card-body"
+					*ngIf="cartStep.type === 'delivery'"
+					(confirmDelivery)="onConfirmStep('delivery', $event)"
+				></app-cart-delivery>
+
 				<app-cart-payment-option
 					class="card-body"
 					*ngIf="cartStep.type === 'payment-option'"
@@ -142,12 +148,6 @@
 					*ngIf="cartStep.type === 'checkout'"
 				>
 				</app-cart-checkout>
-
-				<app-cart-delivery
-					class="card-body"
-					*ngIf="cartStep.type === 'delivery'"
-					(confirmDelivery)="onConfirmStep('delivery', $event)"
-				></app-cart-delivery>
 
 				<app-cart-payment
 					*ngIf="cartStep.type === 'payment'"
