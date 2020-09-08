@@ -54,6 +54,7 @@
 		"bootstrap": "^4.4.1",
 		"core-js": "^2.5.3",
 		"email-validator": "^1.1.1",
+		"express": "^4.17.1",
 		"file-saver": "^2.0.2",
 		"moment": "^2.22.2",
 		"moment-es6": "^1.0.0",
