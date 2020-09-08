@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { Branch } from "@wizardcoder/bl-model";
+import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 
 @Component({
 	selector: "app-cart-payment-option",
@@ -12,8 +13,12 @@ export class CartPaymentOptionComponent implements OnInit {
 	@Output() paymentOption: EventEmitter<"now" | "at-branch">;
 	@Output() paymentOptionConfirmed: EventEmitter<boolean>;
 	branch: Branch;
+	public atBranchOptionValid: boolean;
 
-	constructor(private _branchStoreService: BranchStoreService) {
+	constructor(
+		private _branchStoreService: BranchStoreService,
+		private _cartDeliveryService: CartDeliveryService
+	) {
 		this.paymentOption = new EventEmitter();
 		this.paymentOptionConfirmed = new EventEmitter();
 	}
@@ -22,6 +27,13 @@ export class CartPaymentOptionComponent implements OnInit {
 		this.selectedPaymentOption = "now";
 		this.branch = this._branchStoreService.getBranch();
 		this.paymentOption.emit(this.selectedPaymentOption);
+		const delivery = this._cartDeliveryService.getDelivery();
+
+		if (delivery.method !== "branch") {
+			this.atBranchOptionValid = false;
+		} else {
+			this.atBranchOptionValid = true;
+		}
 	}
 
 	public onSetPaymentOption(option: "now" | "at-branch") {

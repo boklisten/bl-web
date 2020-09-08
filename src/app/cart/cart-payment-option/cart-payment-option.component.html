@@ -21,6 +21,7 @@
 
 			<li
 				class="nav-item text-secondary text-center bl-pointer mt-2"
+				*ngIf="atBranchOptionValid"
 				[ngClass]="{
 					'text-info': selectedPaymentOption === 'at-branch'
 				}"
