@@ -47,52 +47,47 @@ export class ItemDisplayCategoryComponent implements OnInit {
 		this.noItemsWarning = false;
 
 		this.cartSize = this._cartService.getSize();
+
 		this._cartService.onCartChange().subscribe(() => {
 			this.cartSize = this._cartService.getSize();
 		});
 
 		if (this.branch) {
-			if (
-				!this.branch.branchItems ||
-				this.branch.branchItems.length <= 0
-			) {
-				this.noItemsWarning = true;
-			} else {
-				this.loading = true;
-				this._branchItemService
-					.getManyByIds(this.branch.branchItems as string[])
-					.then((branchItems: BranchItem[]) => {
-						this.branchItems = branchItems;
+			this.loading = true;
 
-						for (const branchItem of this.branchItems) {
-							if (
-								!branchItem.buy &&
-								!branchItem.rent &&
-								!branchItem.partlyPayment
-							) {
-								// no action valid in bl-web
-								continue;
-							}
-							this.addBranchItemToCategory(branchItem);
+			this._branchItemService
+				.get({ query: "?branch=" + this.branch.id })
+				.then((branchItems: BranchItem[]) => {
+					this.branchItems = branchItems;
+
+					for (const branchItem of this.branchItems) {
+						if (
+							!branchItem.buy &&
+							!branchItem.rent &&
+							!branchItem.partlyPayment
+						) {
+							// no action valid in bl-web
+							continue;
 						}
+						this.addBranchItemToCategory(branchItem);
+					}
 
-						this.loading = false;
+					this.loading = false;
 
-						this.preselectCategories(this.selectedCategories);
+					this.preselectCategories(this.selectedCategories);
 
-						if (this.branchItemCategoryNames.length <= 0) {
-							this.noItemsWarning = true;
-						}
-					})
-					.catch(getBranchItemError => {
-						console.log(
-							"ItemDisplayCategoryComponent: could not get branch items",
-							getBranchItemError
-						);
-						this.loading = false;
+					if (this.branchItemCategoryNames.length <= 0) {
 						this.noItemsWarning = true;
-					});
-			}
+					}
+				})
+				.catch(getBranchItemError => {
+					console.log(
+						"ItemDisplayCategoryComponent: could not get branch items",
+						getBranchItemError
+					);
+					this.loading = false;
+					this.noItemsWarning = true;
+				});
 		}
 	}
 
@@ -102,9 +97,16 @@ export class ItemDisplayCategoryComponent implements OnInit {
 			branchItems: BranchItem[];
 		}[] = [];
 
-		for (let i = branchItemCategoryFilter.length; i >= 0; i--) {
+		for (let filterCategory of branchItemCategoryFilter) {
 			for (const branchItemCategory of this.branchItemCategories) {
-				if (branchItemCategory.name === branchItemCategoryFilter[i]) {
+				console.log(
+					"bic",
+					branchItemCategory.name,
+					"fc",
+					filterCategory,
+					branchItemCategory.name === filterCategory
+				);
+				if (branchItemCategory.name === filterCategory) {
 					selectedCategories.push(branchItemCategory);
 				}
 			}

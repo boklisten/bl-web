@@ -195,7 +195,7 @@ export class BranchStoreService {
 
 	public fetchBranchItems(): Promise<boolean> {
 		return this._branchItemService
-			.getManyByIds(this._currentBranch.branchItems as string[])
+			.get({ query: "?branch=" + this._currentBranch.id })
 			.then((branchItems: BranchItem[]) => {
 				this._branchItems = branchItems;
 				return true;
@@ -209,7 +209,7 @@ export class BranchStoreService {
 
 	public getBranchItems(): Promise<BranchItem[]> {
 		return this._branchItemService
-			.getManyByIds(this._currentBranch.branchItems as string[])
+			.get({ query: "?branch=" + this._currentBranch.id })
 			.then((branchItems: BranchItem[]) => {
 				this._branchItems = branchItems;
 				return branchItems;
