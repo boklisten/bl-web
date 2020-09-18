@@ -1395,19 +1395,16 @@
 										payment for you.</source><target state="final">We had some trouble creating the
 										payment for you.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.html</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="cartPaymentOptionNowWithCardButton" datatype="html">
-        <source>Pay now with card</source><target state="final">Pay now with card</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="cartPaymentOptionLaterAtBranchButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-order-checkout/cart-order-checkout.component.html</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="cartPaymentOptionLaterAtBranchButton" datatype="html">
         <source>Pay later at branch</source><target state="final">Pay later at branch</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="cartPaymentOptionPayLaterAtBranch" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="cartPaymentOptionPayLaterAtBranch" datatype="html">
         <source>Pay when you retrieve the items at</source><target state="final">Pay when you retrieve the items at</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="paymentOptionConfirmButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="paymentOptionConfirmButton" datatype="html">
         <source>Confirm</source><target state="final">Confirm</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">63</context></context-group></trans-unit><trans-unit id="cartSummaryItemTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="cartSummaryItemTitle" datatype="html">
         <source>Title</source><target state="final">Title</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/cart/cart-summary/cart-summary.component.html</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="cartSummaryItemAction" datatype="html">
@@ -2084,6 +2081,12 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/cart/cart-confirm/cart-confirm.component.html</context>
           <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit><trans-unit id="cartPaymentOptionNow" datatype="html">
+        <source>Pay now</source><target state="final">Pay now</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/cart/cart-payment-option/cart-payment-option.component.html</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit></body>
   </file>
