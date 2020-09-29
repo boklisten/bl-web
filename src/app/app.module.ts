@@ -203,7 +203,13 @@ export class AppModule {
 			registerSuccessPath: "/u/edit",
 			permissionDeniedPath: "",
 			permissions: ["customer", "employee", "manager", "admin", "super"],
-			logoutPath: "/logout"
+			logoutPath: "/logout",
+			providers: {
+				local: true,
+				facebook: true,
+				google: true,
+				feide: false
+			}
 		});
 	}
 }
