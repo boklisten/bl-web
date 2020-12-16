@@ -23,7 +23,7 @@ export class UserCustomerItemService {
 		private _customerItemService: CustomerItemService,
 		private _branchStoreService: BranchStoreService
 	) {
-		this._maxDeadline = "2020-07-03";
+		this._maxDeadline = "2020-12-31";
 	}
 
 	public isActive(customerItem: CustomerItem): boolean {
