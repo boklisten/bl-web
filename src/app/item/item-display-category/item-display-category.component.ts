@@ -99,13 +99,6 @@ export class ItemDisplayCategoryComponent implements OnInit {
 
 		for (let filterCategory of branchItemCategoryFilter) {
 			for (const branchItemCategory of this.branchItemCategories) {
-				console.log(
-					"bic",
-					branchItemCategory.name,
-					"fc",
-					filterCategory,
-					branchItemCategory.name === filterCategory
-				);
 				if (branchItemCategory.name === filterCategory) {
 					selectedCategories.push(branchItemCategory);
 				}
