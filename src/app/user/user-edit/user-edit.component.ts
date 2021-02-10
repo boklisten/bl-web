@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { BlApiError, UserDetail } from "@wizardcoder/bl-model";
+import { BlApiError, UserDetail } from "@boklisten/bl-model";
 import { UserService } from "../user.service";
 import { UserEditService } from "./user-edit.service";
 import * as moment from "moment";

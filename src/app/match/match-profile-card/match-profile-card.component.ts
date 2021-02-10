@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Match, MatchProfile } from "@wizardcoder/bl-model";
+import { Match, MatchProfile } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-match-profile-card",

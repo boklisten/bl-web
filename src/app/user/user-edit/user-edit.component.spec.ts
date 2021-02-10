@@ -3,11 +3,11 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import {UserEditComponent} from './user-edit.component';
 import {Component, EventEmitter, Injectable, Input, Output} from "@angular/core";
 import {UserService} from "../user.service";
-import {UserDetailService} from "@wizardcoder/bl-connect";
+import {UserDetailService} from "@boklisten/bl-connect";
 import Jasmine = jasmine.Jasmine;
 import Spy = jasmine.Spy;
 import {of} from "rxjs/internal/observable/of";
-import {UserDetail} from "@wizardcoder/bl-model";
+import {UserDetail} from "@boklisten/bl-model";
 import {Subject} from "rxjs/internal/Subject";
 import {UserEditService} from "./user-edit.service";
 

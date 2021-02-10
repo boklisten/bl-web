@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Branch, Item } from "@wizardcoder/bl-model";
+import { Branch, Item } from "@boklisten/bl-model";
 import { Router, ActivatedRoute } from "@angular/router";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { BranchService, StorageService } from "@wizardcoder/bl-connect";
+import { BranchService, StorageService } from "@boklisten/bl-connect";
 import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
 import { CartService } from "../../cart/cart.service";
 

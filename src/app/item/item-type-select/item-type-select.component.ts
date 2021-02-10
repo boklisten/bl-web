@@ -6,12 +6,12 @@ import {
 	Item,
 	OrderItem,
 	Period
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { DateService } from "../../date/date.service";
 import { CartService } from "../../cart/cart.service";
 import { PriceService } from "../../price/price.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
 
 @Component({

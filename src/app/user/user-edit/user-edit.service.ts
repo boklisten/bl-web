@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "../user.service";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 @Injectable()
 export class UserEditService {

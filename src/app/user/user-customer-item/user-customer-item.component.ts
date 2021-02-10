@@ -5,12 +5,12 @@ import {
 	BranchItem,
 	CustomerItem,
 	Item
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import {
 	BranchService,
 	CustomerItemService,
 	ItemService
-} from "@wizardcoder/bl-connect";
+} from "@boklisten/bl-connect";
 import { Router } from "@angular/router";
 import { CartService } from "../../cart/cart.service";
 import { DateService } from "../../date/date.service";

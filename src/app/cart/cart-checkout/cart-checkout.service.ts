@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CartService } from "../cart.service";
-import { Order, BlApiError } from "@wizardcoder/bl-model";
-import { OrderService } from "@wizardcoder/bl-connect";
+import { Order, BlApiError } from "@boklisten/bl-model";
+import { OrderService } from "@boklisten/bl-connect";
 import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 import { CartPaymentService } from "../cart-payment/cart-payment.service";
 import { CartOrderService } from "../cart-order/cart-order.service";

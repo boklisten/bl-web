@@ -6,8 +6,8 @@ import {
 	CustomerItemService,
 	TokenService,
 	UserDetailService
-} from "@wizardcoder/bl-connect";
-import { AuthLoginService } from "@wizardcoder/bl-login";
+} from "@boklisten/bl-connect";
+import { AuthLoginService } from "@boklisten/bl-login";
 import { Subject } from "rxjs/internal/Subject";
 
 @Injectable()

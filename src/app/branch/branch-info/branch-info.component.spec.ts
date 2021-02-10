@@ -3,8 +3,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BranchInfoComponent} from './branch-info.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {RouterTestingModule} from "@angular/router/testing";
-import {Branch} from "@wizardcoder/bl-model";
-import {BranchService} from "@wizardcoder/bl-connect";
+import {Branch} from "@boklisten/bl-model";
+import {BranchService} from "@boklisten/bl-connect";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BranchStoreService} from "../branch-store.service";
 

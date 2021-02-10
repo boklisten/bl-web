@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../../user/user.service";
-import { CustomerItem, Match, Item } from "@wizardcoder/bl-model";
+import { CustomerItem, Match, Item } from "@boklisten/bl-model";
 import { MatchItemChoice } from "../match-item-choice";
 import { MatchHelperService } from "../match-helper/match-helper.service";
 import { DateService } from "../../date/date.service";

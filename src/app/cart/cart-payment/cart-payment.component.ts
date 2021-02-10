@@ -9,7 +9,7 @@ import {
 	ViewChild
 } from "@angular/core";
 import { CartPaymentService } from "./cart-payment.service";
-import { Payment } from "@wizardcoder/bl-model";
+import { Payment } from "@boklisten/bl-model";
 import { CartOrderService } from "../cart-order/cart-order.service";
 import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 import { Observable } from "rxjs/internal/Observable";

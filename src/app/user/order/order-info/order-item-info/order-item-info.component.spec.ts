@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderItemInfoComponent} from './order-item-info.component';
 import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {CustomerItemService} from "@wizardcoder/bl-connect";
+import {CustomerItemService} from "@boklisten/bl-connect";
 
 @Injectable()
 class CustomerItemStubService {

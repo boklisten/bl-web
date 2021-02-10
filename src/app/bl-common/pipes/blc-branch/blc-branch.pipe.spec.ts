@@ -1,5 +1,5 @@
 import {BlcBranchPipe} from './blc-branch.pipe';
-import {BranchService} from "@wizardcoder/bl-connect";
+import {BranchService} from "@boklisten/bl-connect";
 
 describe('BlcBranchPipe', () => {
 	it('create an instance', () => {

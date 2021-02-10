@@ -2,7 +2,7 @@ import {TestBed, inject} from '@angular/core/testing';
 
 import {BranchOpeningHoursService} from './branch-opening-hours.service';
 import {Injectable} from "@angular/core";
-import {OpeningHourService} from "@wizardcoder/bl-connect";
+import {OpeningHourService} from "@boklisten/bl-connect";
 import { DateService } from '../../date/date.service';
 
 

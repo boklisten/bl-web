@@ -12,9 +12,9 @@ import {UserService} from "../../user/user.service";
 import {CartService} from "../cart.service";
 import {Router} from "@angular/router";
 import {Subject} from "rxjs";
-import {Branch} from "@wizardcoder/bl-model";
+import {Branch} from "@boklisten/bl-model";
 import {UserEditService} from "../../user/user-edit/user-edit.service";
-import {AuthLoginService} from "@wizardcoder/bl-login";
+import {AuthLoginService} from "@boklisten/bl-login";
 import {calcBindingFlags} from "@angular/core/src/view/util";
 
 @Component({selector: 'fa-icon', template: ''})

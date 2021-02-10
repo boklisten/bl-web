@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Item, CustomerItem } from "@wizardcoder/bl-model";
-import { ItemService } from "@wizardcoder/bl-connect";
+import { Item, CustomerItem } from "@boklisten/bl-model";
+import { ItemService } from "@boklisten/bl-connect";
 
 import { MatchItemChoice } from "../../match-item-choice";
 

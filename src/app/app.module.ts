@@ -4,7 +4,7 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { LoginModule } from "@wizardcoder/bl-login";
+import { LoginModule } from "@boklisten/bl-login";
 import { UserModule } from "./user/user.module";
 import { FormsModule } from "@angular/forms";
 import { BranchModule } from "./branch/branch.module";
@@ -17,7 +17,7 @@ import { FastbuyModule } from "./fastbuy/fastbuy.module";
 import {
 	BlConnectConfigService,
 	BlConnectModule
-} from "@wizardcoder/bl-connect";
+} from "@boklisten/bl-connect";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { MatchModule } from "./match/match.module";

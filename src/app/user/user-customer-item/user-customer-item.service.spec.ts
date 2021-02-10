@@ -2,7 +2,7 @@ import {TestBed, inject} from '@angular/core/testing';
 
 import {UserCustomerItemService} from './user-customer-item.service';
 import {Injectable} from "@angular/core";
-import {BranchService, CustomerItemService} from "@wizardcoder/bl-connect";
+import {BranchService, CustomerItemService} from "@boklisten/bl-connect";
 import {DateService} from "../../date/date.service";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {UserService} from "../user.service";

@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ItemInfoComponent} from './item-info.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {BranchService, ItemService} from "@wizardcoder/bl-connect";
+import {BranchService, ItemService} from "@boklisten/bl-connect";
 import {CartService} from "../../cart/cart.service";
 
 @Injectable()

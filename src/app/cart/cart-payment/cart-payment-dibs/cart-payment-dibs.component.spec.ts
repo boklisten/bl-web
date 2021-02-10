@@ -6,7 +6,7 @@ import { CartPaymentService } from "../cart-payment.service";
 import { CartCheckoutService } from "../../cart-checkout/cart-checkout.service";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 @Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {

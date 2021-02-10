@@ -7,9 +7,9 @@ import {
 	EventEmitter,
 	OnChanges
 } from "@angular/core";
-import { Branch } from "@wizardcoder/bl-model";
+import { Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { BranchService } from "@wizardcoder/bl-connect";
+import { BranchService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "app-branch-picker",

@@ -3,7 +3,7 @@ import {TestBed, inject} from '@angular/core/testing';
 import {DateService} from './date.service';
 import {Injectable} from "@angular/core";
 import {BranchStoreService} from "../branch/branch-store.service";
-import {OpeningHour } from '@wizardcoder/bl-model';
+import {OpeningHour } from '@boklisten/bl-model';
 
 @Injectable()
 class BranchStoreStubService {

@@ -7,9 +7,9 @@ import {
 	DeliveryMethod,
 	UserDetail,
 	Branch
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { DateService } from "../../date/date.service";
-import { DeliveryService } from "@wizardcoder/bl-connect";
+import { DeliveryService } from "@boklisten/bl-connect";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { CartDeliveryService } from "./cart-delivery.service";
 import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";

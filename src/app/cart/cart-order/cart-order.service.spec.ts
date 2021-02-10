@@ -3,9 +3,9 @@ import {TestBed, inject} from '@angular/core/testing';
 import {CartOrderService} from './cart-order.service';
 import {Injectable} from "@angular/core";
 import {CartService} from "../cart.service";
-import {OrderService} from "@wizardcoder/bl-connect";
+import {OrderService} from "@boklisten/bl-connect";
 import {Subject} from "rxjs";
-import {AuthLoginService} from "@wizardcoder/bl-login";
+import {AuthLoginService} from "@boklisten/bl-login";
 
 @Injectable()
 class CartStubService {

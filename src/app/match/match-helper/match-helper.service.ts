@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { MatchService } from "@wizardcoder/bl-connect";
-import { Match, Item, CustomerItem } from "@wizardcoder/bl-model";
+import { MatchService } from "@boklisten/bl-connect";
+import { Match, Item, CustomerItem } from "@boklisten/bl-model";
 import { UserService } from "../../user/user.service";
 
 @Injectable({

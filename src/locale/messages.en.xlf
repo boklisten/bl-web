@@ -679,129 +679,129 @@
         <source>Boklisten.no logo</source><target state="final">Boklisten.no logo</target>
         
         <note priority="1" from="description">the message shown if image is not found </note>
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="userDetailEditCouldNotRetrieveError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="userDetailEditCouldNotRetrieveError" datatype="html">
         <source>Could not retrieve user details</source><target state="final">Could not retrieve user details</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="userDetailEditEmailTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="userDetailEditEmailTitle" datatype="html">
         <source>Email</source><target state="final">Email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="userDetailEditPhoneTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">19</context></context-group></trans-unit><trans-unit id="userDetailEditPhoneTitle" datatype="html">
         <source>Phone</source><target state="final">Phone</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="userDetailEditPhonePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="userDetailEditPhonePlaceholder" datatype="html">
         <source>Phone</source><target state="final">Phone</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">138</context></context-group></trans-unit><trans-unit id="userDetailEditPhoneNumberMustBeValid" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">138</context></context-group></trans-unit><trans-unit id="userDetailEditPhoneNumberMustBeValid" datatype="html">
         <source>Phone number must be a valid number</source><target state="final">Phone number must be a valid number</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">160</context></context-group></trans-unit><trans-unit id="userDetailEditAddressTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">160</context></context-group></trans-unit><trans-unit id="userDetailEditAddressTitle" datatype="html">
         <source>Address</source><target state="final">Address</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">169</context></context-group></trans-unit><trans-unit id="userDetailEditAddressPlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">169</context></context-group></trans-unit><trans-unit id="userDetailEditAddressPlaceholder" datatype="html">
         <source>Address</source><target state="final">Address</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">181</context></context-group></trans-unit><trans-unit id="userDetailEditAddressMustBeValid" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">181</context></context-group></trans-unit><trans-unit id="userDetailEditAddressMustBeValid" datatype="html">
         <source>Address must be valid</source><target state="final">Address must be valid</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">201</context></context-group></trans-unit><trans-unit id="userDetailEditPostalTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">201</context></context-group></trans-unit><trans-unit id="userDetailEditPostalTitle" datatype="html">
         <source>Postal code and city</source><target state="final">Postal code and city</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">210</context></context-group></trans-unit><trans-unit id="userDetailEditPostCodePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">210</context></context-group></trans-unit><trans-unit id="userDetailEditPostCodePlaceholder" datatype="html">
         <source>Post code</source><target state="final">Post code</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">222</context></context-group></trans-unit><trans-unit id="userDetailEditPostCityPlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">222</context></context-group></trans-unit><trans-unit id="userDetailEditPostCityPlaceholder" datatype="html">
         <source>Post city</source><target state="final">Post city</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">235</context></context-group></trans-unit><trans-unit id="userDetailEditPostCityRequired" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">235</context></context-group></trans-unit><trans-unit id="userDetailEditPostCityRequired" datatype="html">
         <source>Post city is required</source><target state="final">Post city is required</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">256</context></context-group></trans-unit><trans-unit id="userDetailEditPostalCodeError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">256</context></context-group></trans-unit><trans-unit id="userDetailEditPostalCodeError" datatype="html">
         <source>Postal code must be 4 numbers</source><target state="final">Postal code must be 4 numbers</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">271</context></context-group></trans-unit><trans-unit id="userDetailEditBirthdayTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">271</context></context-group></trans-unit><trans-unit id="userDetailEditBirthdayTitle" datatype="html">
         <source>Birthday</source><target state="final">Birthday</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">280</context></context-group></trans-unit><trans-unit id="userDetailEditMustProvideDob" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">280</context></context-group></trans-unit><trans-unit id="userDetailEditMustProvideDob" datatype="html">
         <source>You must provide a date of birth</source><target state="final">You must provide a date of birth</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">292</context></context-group></trans-unit><trans-unit id="userDetailEditUnder18Info" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">292</context></context-group></trans-unit><trans-unit id="userDetailEditUnder18Info" datatype="html">
         <source>Since you are under the age of 18 we need information about
 					your guardian.
 				</source><target state="final">Since you are under the age of 18 we need information about
 					your guardian.
 				</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">302</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianName" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">302</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianName" datatype="html">
         <source>Guardian's full name</source><target state="final">Guardian's full name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">311</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianNamePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">311</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianNamePlaceholder" datatype="html">
         <source>Gardian's full name</source><target state="final">Gardian's full name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">323</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianNameError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">323</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianNameError" datatype="html">
         <source>Guardian's full name is required</source><target state="final">Guardian's full name is required</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">342</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">342</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmail" datatype="html">
         <source>Guardian's email</source><target state="final">Guardian's email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">351</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmailPlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">351</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmailPlaceholder" datatype="html">
         <source>Gardian's email</source><target state="final">Gardian's email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">363</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmailError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">363</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianEmailError" datatype="html">
         <source>Must provide a valid email</source><target state="final">Must provide a valid email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">381</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhoneTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">381</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhoneTitle" datatype="html">
         <source>Guardian's phone</source><target state="final">Guardian's phone</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">390</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhonePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">390</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhonePlaceholder" datatype="html">
         <source>Guardian's phone </source><target state="final">Guardian's phone </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">402</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhoneError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">402</context></context-group></trans-unit><trans-unit id="userDetailEditGuardianPhoneError" datatype="html">
         <source>A valid phone number must be provided</source><target state="final">A valid phone number must be provided</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">420</context></context-group></trans-unit><trans-unit id="userDetailEditSaveButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">420</context></context-group></trans-unit><trans-unit id="userDetailEditSaveButton" datatype="html">
         <source>Save</source><target state="final">Save</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">441</context></context-group></trans-unit><trans-unit id="registerDetailTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">441</context></context-group></trans-unit><trans-unit id="registerDetailTitle" datatype="html">
         <source>Register user details</source><target state="final">Register user details</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="registerDetailUpdateDetailsFor" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="registerDetailUpdateDetailsFor" datatype="html">
         <source>Update the details for</source><target state="final">Update the details for</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="registerDetailErrorMsg" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="registerDetailErrorMsg" datatype="html">
         <source>User details could not be updated</source><target state="final">User details could not be updated</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">20</context></context-group></trans-unit><trans-unit id="registerDetailFullName" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">20</context></context-group></trans-unit><trans-unit id="registerDetailFullName" datatype="html">
         <source>Full name</source><target state="final">Full name</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">32</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="registerDetailPhoneNumber" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">32</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="registerDetailPhoneNumber" datatype="html">
         <source>Phone number</source><target state="final">Phone number</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">53</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="registerDetailBirthday" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">53</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="registerDetailBirthday" datatype="html">
         <source>Birthday</source><target state="final">Birthday</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">74</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">83</context></context-group></trans-unit><trans-unit id="registerDetailAddress" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">74</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">83</context></context-group></trans-unit><trans-unit id="registerDetailAddress" datatype="html">
         <source>Address</source><target state="final">Address</target>
         
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">100</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">109</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">120</context></context-group></trans-unit><trans-unit id="registerDetailPostCode" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">100</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">109</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">120</context></context-group></trans-unit><trans-unit id="registerDetailPostCode" datatype="html">
         <source>Post code</source><target state="final">Post code</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">129</context></context-group></trans-unit><trans-unit id="registerDetailPostCity" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">129</context></context-group></trans-unit><trans-unit id="registerDetailPostCity" datatype="html">
         <source>Post city</source><target state="final">Post city</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="registerDetailBranch" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">135</context></context-group></trans-unit><trans-unit id="registerDetailBranch" datatype="html">
         <source>Branch</source><target state="final">Branch</target>
         
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">148</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">160</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">158</context></context-group></trans-unit><trans-unit id="registerDetailGuardianTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">148</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">160</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">158</context></context-group></trans-unit><trans-unit id="registerDetailGuardianTitle" datatype="html">
         <source>Guardian details</source><target state="final">Guardian details</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">173</context></context-group></trans-unit><trans-unit id="registerDetailGuardianUnder18Info" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">173</context></context-group></trans-unit><trans-unit id="registerDetailGuardianUnder18Info" datatype="html">
         <source>
 							Since you are under the age of 18, we need details about your guardian. You can read more about why we need this by
 							visiting our
@@ -810,209 +810,209 @@
 							visiting our
 						</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">177</context></context-group></trans-unit><trans-unit id="registerDetailGuardianUserAgreement" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">177</context></context-group></trans-unit><trans-unit id="registerDetailGuardianUserAgreement" datatype="html">
         <source>user agreement page</source><target state="final">user agreement page</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">182</context></context-group></trans-unit><trans-unit id="registerDetailGuardianFullName" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">182</context></context-group></trans-unit><trans-unit id="registerDetailGuardianFullName" datatype="html">
         <source>Guardian full name</source><target state="final">Guardian full name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">202</context></context-group></trans-unit><trans-unit id="registerDetailGuardianEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">202</context></context-group></trans-unit><trans-unit id="registerDetailGuardianEmail" datatype="html">
         <source>Guardian email</source><target state="final">Guardian email</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">210</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">219</context></context-group></trans-unit><trans-unit id="registerDetailGuardianPhone" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">210</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">219</context></context-group></trans-unit><trans-unit id="registerDetailGuardianPhone" datatype="html">
         <source>Guardian phone</source><target state="final">Guardian phone</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">227</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">236</context></context-group></trans-unit><trans-unit id="registerDetailUpdateDetailButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">227</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">236</context></context-group></trans-unit><trans-unit id="registerDetailUpdateDetailButton" datatype="html">
         <source>Update details</source><target state="final">Update details</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">248</context></context-group></trans-unit><trans-unit id="registerDetailGoBackButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">248</context></context-group></trans-unit><trans-unit id="registerDetailGoBackButton" datatype="html">
         <source>Go back</source><target state="final">Go back</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">253</context></context-group></trans-unit><trans-unit id="registerTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-detail/register-detail.component.d.ts</context><context context-type="linenumber">253</context></context-group></trans-unit><trans-unit id="registerTitle" datatype="html">
         <source>Register new user</source><target state="final">Register new user</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="registerMustAgree" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="registerMustAgree" datatype="html">
         <source>You must agree to our terms to register</source><target state="final">You must agree to our terms to register</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="registerOrUseEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="registerOrUseEmail" datatype="html">
         <source>
 			Or use your email to register
 		</source><target state="final">
 			Or use your email to register
 		</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="registerGoToLoginPage" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="registerGoToLoginPage" datatype="html">
         <source>Go to login page</source><target state="final">Go to login page</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="socialRegisterWithFacebook" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register.component.d.ts</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="socialRegisterWithFacebook" datatype="html">
         <source>Register with Facebook</source><target state="final">Register with Facebook</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/social-register/social-register.component.d.ts</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="socialRegisterWithGoogle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/social-register/social-register.component.d.ts</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="socialRegisterWithGoogle" datatype="html">
         <source>Register with Google</source><target state="final">Register with Google</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/social-register/social-register.component.d.ts</context><context context-type="linenumber">54</context></context-group></trans-unit><trans-unit id="localRegisterErrorMsg" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/social-register/social-register.component.d.ts</context><context context-type="linenumber">54</context></context-group></trans-unit><trans-unit id="localRegisterErrorMsg" datatype="html">
         <source>Could not register</source><target state="final">Could not register</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">5</context></context-group></trans-unit><trans-unit id="localRegisterEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">5</context></context-group></trans-unit><trans-unit id="localRegisterEmail" datatype="html">
         <source>Email</source><target state="final">Email</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="localRegisterPassword" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">35</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="localRegisterPassword" datatype="html">
         <source>Password</source><target state="final">Password</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">62</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">74</context></context-group></trans-unit><trans-unit id="localRegisterButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">62</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">74</context></context-group></trans-unit><trans-unit id="localRegisterButton" datatype="html">
         <source>Register</source><target state="final">Register</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">87</context></context-group></trans-unit><trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">87</context></context-group></trans-unit><trans-unit id="registerAgreementIHaveUnderstood" datatype="html">
         <source>
 				I have read and understood the user-agreement
 			</source><target state="final">
 				I have read and understood the user-agreement
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">28</context></context-group></trans-unit><trans-unit id="registerAgreementTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">28</context></context-group></trans-unit><trans-unit id="registerAgreementTitle" datatype="html">
         <source>
 			User agreement
 		</source><target state="final">
 			User agreement
 		</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="registerDetailIAgree" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="registerDetailIAgree" datatype="html">
         <source>I Agree</source><target state="final">I Agree</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="loginMenuRegisterButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context><context context-type="linenumber">66</context></context-group></trans-unit><trans-unit id="loginMenuRegisterButton" datatype="html">
         <source>Register new user</source><target state="final">Register new user</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-menu/login-menu.component.d.ts</context><context context-type="linenumber">7</context></context-group></trans-unit><trans-unit id="loginMenuLoginButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-menu/login-menu.component.d.ts</context><context context-type="linenumber">7</context></context-group></trans-unit><trans-unit id="loginMenuLoginButton" datatype="html">
         <source>Login</source><target state="final">Login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-menu/login-menu.component.d.ts</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="loginAuthTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-menu/login-menu.component.d.ts</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="loginAuthTitle" datatype="html">
         <source>Login</source><target state="final">Login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="loginAuthOrUseEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="loginAuthOrUseEmail" datatype="html">
         <source>
 			Or use your email to login
 		</source><target state="final">
 			Or use your email to login
 		</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="loginAuthForgotPassword" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="loginAuthForgotPassword" datatype="html">
         <source>Forgot your password?</source><target state="final">Forgot your password?</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="forgotPasswordTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-auth/login-auth.component.d.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="forgotPasswordTitle" datatype="html">
         <source>Forgot password</source><target state="final">Forgot password</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">5</context></context-group></trans-unit><trans-unit id="forgotPasswordEmailError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">5</context></context-group></trans-unit><trans-unit id="forgotPasswordEmailError" datatype="html">
         <source>Please provide a valid email</source><target state="final">Please provide a valid email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="forgotPasswordNoResetLinkError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="forgotPasswordNoResetLinkError" datatype="html">
         <source>Something went wrong, could not send you the reset link. Are you sure you have the correct email?</source><target state="final">Something went wrong, could not send you the reset link. Are you sure you have the correct email?</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="forgotPasswordSuccessMsg" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="forgotPasswordSuccessMsg" datatype="html">
         <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">An email with instructions on how to reset your password is sent to you.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="forgotPasswordHowTo" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="forgotPasswordHowTo" datatype="html">
         <source>
 			Write in your email and we will send you a link about how to reset your password
 		</source><target state="final">
 			Write in your email and we will send you a link about how to reset your password
 		</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="forgotPasswordEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="forgotPasswordEmail" datatype="html">
         <source>Email</source><target state="final">Email</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="forgotPasswordGoBackToLogin" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">49</context></context-group></trans-unit><trans-unit id="forgotPasswordGoBackToLogin" datatype="html">
         <source>Go back to login page</source><target state="final">Go back to login page</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="passwordResetTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/forgot-password/forgot-password.component.d.ts</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="passwordResetTitle" datatype="html">
         <source>Create new password</source><target state="final">Create new password</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="passwordResetError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="passwordResetError" datatype="html">
         <source>Failed to update password</source><target state="final">Failed to update password</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="passwordResetPasswordNotValid" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="passwordResetPasswordNotValid" datatype="html">
         <source>Password not valid. Must at least be 6 characters long</source><target state="final">Password not valid. Must at least be 6 characters long</target>
         
         <note priority="1" from="description">should be at least 6 characters long </note>
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="passwordResetSuccessMsg" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="passwordResetSuccessMsg" datatype="html">
         <source>Your password was reset!</source><target state="final">Your password was reset!</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">29</context></context-group></trans-unit><trans-unit id="passwordResetLoginButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">29</context></context-group></trans-unit><trans-unit id="passwordResetLoginButton" datatype="html">
         <source>Login</source><target state="final">Login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">34</context></context-group></trans-unit><trans-unit id="passwordResetNewPassword" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">34</context></context-group></trans-unit><trans-unit id="passwordResetNewPassword" datatype="html">
         <source>New password</source><target state="final">New password</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="passwordResetGoBackToLogin" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="passwordResetGoBackToLogin" datatype="html">
         <source>Go back to login page</source><target state="final">Go back to login page</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">71</context></context-group></trans-unit><trans-unit id="emailValidationEmailConfirmed" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-password-reset/auth-password-reset.component.d.ts</context><context context-type="linenumber">71</context></context-group></trans-unit><trans-unit id="emailValidationEmailConfirmed" datatype="html">
         <source>Email was confirmed</source><target state="final">Email was confirmed</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="emailValidationConfirmError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="emailValidationConfirmError" datatype="html">
         <source>Email could not be confirmed.</source><target state="final">Email could not be confirmed.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="emailValidationLinkMayBeExpired" datatype="html">
         <source>The link may be expired.</source><target state="final">The link may be expired.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="emailValidationClickForNewLink" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">39</context></context-group></trans-unit><trans-unit id="emailValidationClickForNewLink" datatype="html">
         <source>Click here to send a new confirmation link</source><target state="final">Click here to send a new confirmation link</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="emailValidationNotLoggedInError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">45</context></context-group></trans-unit><trans-unit id="emailValidationNotLoggedInError" datatype="html">
         <source>You must login to send a new confirmation link</source><target state="final">You must login to send a new confirmation link</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="emailValidationClickToLogin" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="emailValidationClickToLogin" datatype="html">
         <source>Click her to login</source><target state="final">Click her to login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">56</context></context-group></trans-unit><trans-unit id="emailValidationNewLinkSent" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">56</context></context-group></trans-unit><trans-unit id="emailValidationNewLinkSent" datatype="html">
         <source>A new confirmation link has been sent to your email.</source><target state="final">A new confirmation link has been sent to your email.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="socialLoginFailureErrorMsg" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="socialLoginFailureErrorMsg" datatype="html">
         <source>Failed to log you in, please try again soon.</source><target state="final">Failed to log you in, please try again soon.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-social-failure/auth-social-failure.component.d.ts</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="socialLoginFailureGoBackButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-social-failure/auth-social-failure.component.d.ts</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="socialLoginFailureGoBackButton" datatype="html">
         <source>Go back</source><target state="final">Go back</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-social-failure/auth-social-failure.component.d.ts</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="loginPermissionFailureTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-social-failure/auth-social-failure.component.d.ts</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="loginPermissionFailureTitle" datatype="html">
         <source>Permission denied</source><target state="final">Permission denied</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="loginPermissionFailureNotRightPermission" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="loginPermissionFailureNotRightPermission" datatype="html">
         <source>You don't have the right permission to access this content. You have been logged out.</source><target state="final">You don't have the right permission to access this content. You have been logged out.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="loginPermissionFailureWhatToDo" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="loginPermissionFailureWhatToDo" datatype="html">
         <source>You can try login with another user or ask an administrator for details.</source><target state="final">You can try login with another user or ask an administrator for details.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="loginPermissionFailureLoginButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="loginPermissionFailureLoginButton" datatype="html">
         <source>Login</source><target state="final">Login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="localLoginUserOrPasswordError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/login-permission-failure/login-permission-failure.component.d.ts</context><context context-type="linenumber">23</context></context-group></trans-unit><trans-unit id="localLoginUserOrPasswordError" datatype="html">
         <source>Username or password is incorrect</source><target state="final">Username or password is incorrect</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="localLoginConnectionError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="localLoginConnectionError" datatype="html">
         <source>Something went wrong with the connection</source><target state="final">Something went wrong with the connection</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="localLoginEmail" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="localLoginEmail" datatype="html">
         <source>Email</source><target state="final">Email</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="localLoginPassword" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="localLoginPassword" datatype="html">
         <source>Password</source><target state="final">Password</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">56</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="localLoginButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">56</context></context-group><context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">68</context></context-group></trans-unit><trans-unit id="localLoginButton" datatype="html">
         <source>Login</source><target state="final">Login</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="socialLoginWithFacebook" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/local-login/local-login.component.d.ts</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="socialLoginWithFacebook" datatype="html">
         <source>Login with Facebook</source><target state="final">Login with Facebook</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/social-login/social-login.component.d.ts</context><context context-type="linenumber">29</context></context-group></trans-unit><trans-unit id="socialLoginWithGoogle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/social-login/social-login.component.d.ts</context><context context-type="linenumber">29</context></context-group></trans-unit><trans-unit id="socialLoginWithGoogle" datatype="html">
         <source>Login with Google</source><target state="final">Login with Google</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/login/social-login/social-login.component.d.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="branchInfoSelectAnotherBranch" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/login/social-login/social-login.component.d.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="branchInfoSelectAnotherBranch" datatype="html">
         <source>Select another branch</source><target state="final">Select another branch</target>
         
       <context-group purpose="location"><context context-type="sourcefile">app/branch/branch-info/branch-info.component.html</context><context context-type="linenumber">27</context></context-group></trans-unit><trans-unit id="itemDisplayAlreadyHaveThisItem" datatype="html">
@@ -1159,37 +1159,37 @@
 				The user already exists </source><target state="final">
 				The user already exists </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="localRegisterClickHereForLogin" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="localRegisterClickHereForLogin" datatype="html">
         <source>
 				Click here if you intended to login
 			</source><target state="final">
 				Click here if you intended to login
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="emailValidationNoConnection" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/local-register/local-register.component.d.ts</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="emailValidationNoConnection" datatype="html">
         <source>Could not connect to the server</source><target state="final">Could not connect to the server</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="authTokenComponentWeAreLoggingYouIn" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-email-validation/auth-email-validation.component.d.ts</context><context context-type="linenumber">26</context></context-group></trans-unit><trans-unit id="authTokenComponentWeAreLoggingYouIn" datatype="html">
         <source>We are logging you in, please wait</source><target state="final">We are logging you in, please wait</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="authTokenFailedToLoginError" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="authTokenFailedToLoginError" datatype="html">
         <source>
 				Failed to log you in.
 			</source><target state="final">
 				Failed to log you in.
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="authTokenTryToLoginAgain" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="authTokenTryToLoginAgain" datatype="html">
         <source>
 				Click here to try again
 			</source><target state="final">
 				Click here to try again
 			</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="userDetailDobDateFormatMustBe" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/auth/auth-token/auth-token.component.d.ts</context><context context-type="linenumber">22</context></context-group></trans-unit><trans-unit id="userDetailDobDateFormatMustBe" datatype="html">
         <source>Date must be on the format "dd.mm.yyyy"</source><target state="final">Date must be on the format "dd.mm.yyyy"</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-dob/user-detail-dob.component.d.ts</context><context context-type="linenumber">1</context></context-group></trans-unit><trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-dob/user-detail-dob.component.d.ts</context><context context-type="linenumber">1</context></context-group></trans-unit><trans-unit id="orderItemInfoMovedToAnotherOrder" datatype="html">
         <source>
 		This item is moved to another order
 	</source><target state="final">
@@ -1479,22 +1479,22 @@
       <context-group purpose="location"><context context-type="sourcefile">app/info/info-buyback/info-buyback.component.html</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="userDetailEditFirstNameTitle" datatype="html">
         <source>First name</source><target state="final">First name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="userDetailEditFirstNamePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">38</context></context-group></trans-unit><trans-unit id="userDetailEditFirstNamePlaceholder" datatype="html">
         <source>First name</source><target state="final">First name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="userDetailEditFirstNameIsRequired" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">50</context></context-group></trans-unit><trans-unit id="userDetailEditFirstNameIsRequired" datatype="html">
         <source>First name is required</source><target state="final">First name is required</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">73</context></context-group></trans-unit><trans-unit id="userDetailEditLastNameTitle" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">73</context></context-group></trans-unit><trans-unit id="userDetailEditLastNameTitle" datatype="html">
         <source>Last name</source><target state="final">Last name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">82</context></context-group></trans-unit><trans-unit id="userDetailEditLastNamePlaceholder" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">82</context></context-group></trans-unit><trans-unit id="userDetailEditLastNamePlaceholder" datatype="html">
         <source>Last name</source><target state="final">Last name</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="userDetailEditLastNameIsRequired" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">94</context></context-group></trans-unit><trans-unit id="userDetailEditLastNameIsRequired" datatype="html">
         <source>Last name is required</source><target state="final">Last name is required</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">117</context></context-group></trans-unit><trans-unit id="branchItemCategoryFilterShowFilter" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/user-detail/user-detail-edit/user-detail-edit.component.d.ts</context><context context-type="linenumber">117</context></context-group></trans-unit><trans-unit id="branchItemCategoryFilterShowFilter" datatype="html">
         <source>Filter</source><target state="final">Filter</target>
         
         
@@ -2105,7 +2105,7 @@
 			Please register with one of our login providers
 		</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register.component.d.ts</context>
+          <context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register.component.d.ts</context>
           <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit><trans-unit id="registerAgreementYouMustAgree" datatype="html">
@@ -2115,7 +2115,7 @@
 				You must agree to our agreement to register.
 			</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">../node_modules/@wizardcoder/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context>
+          <context context-type="sourcefile">../node_modules/@boklisten/bl-login/src/app/register/register-agreement/register-agreement.component.d.ts</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit></body>

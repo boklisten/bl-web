@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Booking } from "@wizardcoder/bl-model";
+import { Booking } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-booking-display",

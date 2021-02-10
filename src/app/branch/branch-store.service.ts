@@ -4,14 +4,14 @@ import {
 	Branch,
 	BranchItem,
 	UserDetail
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import {
 	BranchItemService,
 	BranchService,
 	StorageService,
 	TokenService,
 	UserDetailService
-} from "@wizardcoder/bl-connect";
+} from "@boklisten/bl-connect";
 import { UserService } from "../user/user.service";
 import { Subject, Observable } from "rxjs";
 

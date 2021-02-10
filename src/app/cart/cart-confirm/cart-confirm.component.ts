@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
 import { ActivatedRoute, Route, Router } from "@angular/router";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 import { CartConfirmService } from "./cart-confirm.service";
 
 @Component({

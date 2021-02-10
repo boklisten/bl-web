@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../user/user.service";
-import {AuthLoginService} from "@wizardcoder/bl-login";
-import {UserDetail} from "@wizardcoder/bl-model";
+import {AuthLoginService} from "@boklisten/bl-login";
+import {UserDetail} from "@boklisten/bl-model";
 
 @Component({
 	selector: 'app-header-email-not-confirmed-alert',

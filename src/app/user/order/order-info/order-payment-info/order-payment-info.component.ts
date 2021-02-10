@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { PaymentService } from "@wizardcoder/bl-connect";
-import { Order, Payment } from "@wizardcoder/bl-model";
+import { PaymentService } from "@boklisten/bl-connect";
+import { Order, Payment } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-order-payment-info",

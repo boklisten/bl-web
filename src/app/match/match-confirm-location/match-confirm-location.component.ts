@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Match, MatchProfile, MatchState } from "@wizardcoder/bl-model";
-import { MatchService } from "@wizardcoder/bl-connect";
+import { Match, MatchProfile, MatchState } from "@boklisten/bl-model";
+import { MatchService } from "@boklisten/bl-connect";
 
 type MatchEvent = { type: MatchState; time: Date; userId: string };
 

@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ItemDisplayCategoryComponent} from './item-display-category.component';
 import {Component, Directive, EventEmitter, Injectable, Input, Output} from "@angular/core";
-import {BranchItemService, ItemService} from "@wizardcoder/bl-connect";
+import {BranchItemService, ItemService} from "@boklisten/bl-connect";
 import {RouterModule} from "@angular/router";
 
 @Component({selector: 'app-item-display', template: ''})

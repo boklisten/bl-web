@@ -5,7 +5,7 @@ import {
 	Item,
 	OpeningHour,
 	Period
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import * as moment from "moment";
 import { BranchStoreService } from "../branch/branch-store.service";
 

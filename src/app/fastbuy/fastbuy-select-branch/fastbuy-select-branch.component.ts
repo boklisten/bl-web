@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BranchService } from "@wizardcoder/bl-connect";
-import { Branch } from "@wizardcoder/bl-model";
+import { BranchService } from "@boklisten/bl-connect";
+import { Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../../branch/branch-store.service";
 
 @Component({

@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BranchService} from "@wizardcoder/bl-connect";
-import {Branch} from "@wizardcoder/bl-model";
+import {BranchService} from "@boklisten/bl-connect";
+import {Branch} from "@boklisten/bl-model";
 import {AsyncPipe} from "@angular/common";
 
 @Pipe({

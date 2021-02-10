@@ -7,8 +7,8 @@ import {
 	OnChanges,
 	SimpleChanges
 } from "@angular/core";
-import { Booking, Branch } from "@wizardcoder/bl-model";
-import { BookingService, BranchService } from "@wizardcoder/bl-connect";
+import { Booking, Branch } from "@boklisten/bl-model";
+import { BookingService, BranchService } from "@boklisten/bl-connect";
 import * as moment from "moment";
 import { DateService } from "../../date/date.service";
 

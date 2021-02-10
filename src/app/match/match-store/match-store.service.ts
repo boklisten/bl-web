@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { MatchService } from "@wizardcoder/bl-connect";
-import { Match } from "@wizardcoder/bl-model";
+import { MatchService } from "@boklisten/bl-connect";
+import { Match } from "@boklisten/bl-model";
 import { Subject, Observable } from "rxjs";
 
 @Injectable({

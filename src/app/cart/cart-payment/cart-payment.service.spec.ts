@@ -2,7 +2,7 @@ import {TestBed, inject} from '@angular/core/testing';
 
 import {CartPaymentService} from './cart-payment.service';
 import {Injectable} from "@angular/core";
-import {BranchService, PaymentService, StorageService} from "@wizardcoder/bl-connect";
+import {BranchService, PaymentService, StorageService} from "@boklisten/bl-connect";
 import {BranchStoreService} from "../../branch/branch-store.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
 import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";

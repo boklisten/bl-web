@@ -4,10 +4,10 @@ import {
 	CustomerItem,
 	Item,
 	OrderItemType
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { BranchStoreService } from "../../../branch/branch-store.service";
 import { PriceService } from "../../../price/price.service";
-import { ItemService } from "@wizardcoder/bl-connect";
+import { ItemService } from "@boklisten/bl-connect";
 
 @Pipe({
 	name: "blcCustomerItemPrice"

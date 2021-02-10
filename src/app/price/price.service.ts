@@ -5,9 +5,9 @@ import {
 	Item,
 	OrderItem,
 	Period
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
-import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 
 @Injectable()
 export class PriceService {

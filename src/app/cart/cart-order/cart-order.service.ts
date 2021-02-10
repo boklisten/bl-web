@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Order, BlApiError } from "@wizardcoder/bl-model";
+import { Order, BlApiError } from "@boklisten/bl-model";
 import { Subject, Observable } from "rxjs";
 import { CartService } from "../cart.service";
-import { OrderService } from "@wizardcoder/bl-connect";
+import { OrderService } from "@boklisten/bl-connect";
 import { UserService } from "../../user/user.service";
-import { AuthLoginService } from "@wizardcoder/bl-login";
-import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import { AuthLoginService } from "@boklisten/bl-login";
+import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 
 @Injectable()
 export class CartOrderService {

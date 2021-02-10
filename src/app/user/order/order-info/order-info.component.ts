@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Order } from "@wizardcoder/bl-model";
-import { PrintPdfService, OrderPdfService } from "@wizardcoder/bl-connect";
+import { Order } from "@boklisten/bl-model";
+import { PrintPdfService, OrderPdfService } from "@boklisten/bl-connect";
 import moment from "moment-es6";
 import { saveAs } from "file-saver";
 

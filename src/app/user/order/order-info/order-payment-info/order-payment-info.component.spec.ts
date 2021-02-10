@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderPaymentInfoComponent} from './order-payment-info.component';
 import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {PaymentService} from "@wizardcoder/bl-connect";
+import {PaymentService} from "@boklisten/bl-connect";
 
 @Injectable()
 class PaymentStubService {

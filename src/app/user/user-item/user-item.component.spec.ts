@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserItemComponent} from './user-item.component';
 import {Component, Injectable, Input} from "@angular/core";
-import {CustomerItemService} from "@wizardcoder/bl-connect";
+import {CustomerItemService} from "@boklisten/bl-connect";
 import {UserService} from "../user.service";
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { BookingService } from "@wizardcoder/bl-connect";
-import { Booking } from "@wizardcoder/bl-model";
+import { BookingService } from "@boklisten/bl-connect";
+import { Booking } from "@boklisten/bl-model";
 import { Observable } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../../user/user.service";

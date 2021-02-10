@@ -4,7 +4,7 @@ import {CartConfirmComponent} from './cart-confirm.component';
 import {Injectable} from "@angular/core";
 import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {StorageService} from "@wizardcoder/bl-connect";
+import {StorageService} from "@boklisten/bl-connect";
 import {Subject} from "rxjs/internal/Subject";
 
 

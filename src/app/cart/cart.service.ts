@@ -7,16 +7,16 @@ import {
 	Order,
 	OrderItem,
 	Period
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
 import { UserService } from "../user/user.service";
 import { PriceService } from "../price/price.service";
 import { Subject } from "rxjs";
 import { DateService } from "../date/date.service";
-import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
-import { AuthLoginService } from "@wizardcoder/bl-login";
+import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 export interface CartItem {
 	item: Item;

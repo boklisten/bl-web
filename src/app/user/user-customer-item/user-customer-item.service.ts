@@ -4,9 +4,9 @@ import {
 	BranchItem,
 	CustomerItem,
 	UserDetail
-} from "@wizardcoder/bl-model";
-import { BranchService, CustomerItemService } from "@wizardcoder/bl-connect";
-import { Period } from "@wizardcoder/bl-model/dist/period/period";
+} from "@boklisten/bl-model";
+import { BranchService, CustomerItemService } from "@boklisten/bl-connect";
+import { Period } from "@boklisten/bl-model/dist/period/period";
 import { DateService } from "../../date/date.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { UserService } from "../user.service";

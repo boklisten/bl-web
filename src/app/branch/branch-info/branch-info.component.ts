@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { BranchService } from "@wizardcoder/bl-connect";
-import { BlApiError, BlApiNotFoundError, Branch } from "@wizardcoder/bl-model";
+import { BranchService } from "@boklisten/bl-connect";
+import { BlApiError, BlApiNotFoundError, Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch-store.service";
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { BranchService, StorageService } from "@wizardcoder/bl-connect";
+import { BranchService, StorageService } from "@boklisten/bl-connect";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";

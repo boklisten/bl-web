@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { BlApiError, Branch, OpeningHour } from "@wizardcoder/bl-model";
-import { OpeningHourService } from "@wizardcoder/bl-connect";
+import { BlApiError, Branch, OpeningHour } from "@boklisten/bl-model";
+import { OpeningHourService } from "@boklisten/bl-connect";
 import { DateService } from "../../date/date.service";
 
 @Injectable()

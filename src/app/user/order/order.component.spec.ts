@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {OrderComponent} from './order.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {UserService} from "../user.service";
-import {OrderService, UserDetailService} from "@wizardcoder/bl-connect";
+import {OrderService, UserDetailService} from "@boklisten/bl-connect";
 
 @Injectable()
 class UserStubService {

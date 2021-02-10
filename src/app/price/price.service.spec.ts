@@ -3,7 +3,7 @@ import {TestBed, inject} from '@angular/core/testing';
 import {PriceService} from './price.service';
 import {Injectable} from "@angular/core";
 import {BranchStoreService} from "../branch/branch-store.service";
-import {Branch, Item} from "@wizardcoder/bl-model";
+import {Branch, Item} from "@boklisten/bl-model";
 
 @Injectable()
 class BranchStoreStubService {

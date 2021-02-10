@@ -5,14 +5,14 @@ import {
 	CustomerItem,
 	Item,
 	Period
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PriceService } from "../../price/price.service";
 import { UserService } from "../../user/user.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { ItemService } from "@wizardcoder/bl-connect";
-import { OrderItemType } from "@wizardcoder/bl-model/dist/order/order-item/order-item-type";
+import { ItemService } from "@boklisten/bl-connect";
+import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 import { UserOrderService } from "../../user/order/user-order/user-order.service";
 import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
 

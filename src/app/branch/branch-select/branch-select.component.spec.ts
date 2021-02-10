@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BranchSelectComponent} from './branch-select.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {Component, Injectable, Input} from "@angular/core";
-import {BranchService} from "@wizardcoder/bl-connect";
+import {BranchService} from "@boklisten/bl-connect";
 import {BranchStoreService} from "../branch-store.service";
 import {Subject} from "rxjs/internal/Subject";
 

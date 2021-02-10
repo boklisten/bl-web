@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { BlApiError, Branch } from "@wizardcoder/bl-model";
+import { BlApiError, Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch-store.service";
-import { BranchService } from "@wizardcoder/bl-connect";
+import { BranchService } from "@boklisten/bl-connect";
 import { Router } from "@angular/router";
 
 @Component({

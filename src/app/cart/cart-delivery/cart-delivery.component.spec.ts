@@ -9,7 +9,7 @@ import { CartDeliveryService } from "./cart-delivery.service";
 import { UserService } from "../../user/user.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { Subject } from "rxjs";
-import { Branch } from "@wizardcoder/bl-model";
+import { Branch } from "@boklisten/bl-model";
 
 @Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
-import {AuthLoginService} from "@wizardcoder/bl-login";
+import {AuthLoginService} from "@boklisten/bl-login";
 
 @Component({
 	selector: 'app-header-user-detail-alert',

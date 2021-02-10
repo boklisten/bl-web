@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Match, MatchProfile } from "@wizardcoder/bl-model";
+import { Match, MatchProfile } from "@boklisten/bl-model";
 import { MatchStoreService } from "../match-store/match-store.service";
 import { Router, ActivatedRoute } from "@angular/router";
 

@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderEmailNotConfirmedAlertComponent} from './header-email-not-confirmed-alert.component';
 import {Component, Injectable, Input} from "@angular/core";
 import {UserService} from "../../user/user.service";
-import {AuthLoginService} from "@wizardcoder/bl-login";
+import {AuthLoginService} from "@boklisten/bl-login";
 import {Subject} from "rxjs/internal/Subject";
 
 @Injectable()

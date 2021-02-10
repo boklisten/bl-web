@@ -5,7 +5,7 @@ import {Component, Injectable, Input} from "@angular/core";
 import {Router} from "@angular/router";
 import {UserService} from "../../user/user.service";
 import {Subject} from "rxjs/internal/Subject";
-import {AuthLoginService} from "@wizardcoder/bl-login";
+import {AuthLoginService} from "@boklisten/bl-login";
 
 @Component({selector: 'fa-icon', template: ''})
 class FaIconStubComponent {

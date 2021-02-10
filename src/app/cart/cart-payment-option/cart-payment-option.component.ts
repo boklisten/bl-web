@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { Branch } from "@wizardcoder/bl-model";
+import { Branch } from "@boklisten/bl-model";
 import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 
 @Component({

@@ -3,16 +3,16 @@ import {
 	CustomerItemService,
 	TokenService,
 	UserDetailService
-} from "@wizardcoder/bl-connect";
+} from "@boklisten/bl-connect";
 import {
 	BlApiError,
 	BlError,
 	CustomerItem,
 	UserDetail,
 	UserPermission
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { Subject } from "rxjs";
-import { AuthLoginService } from "@wizardcoder/bl-login";
+import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import { UserOrderService } from "./order/user-order/user-order.service";
 

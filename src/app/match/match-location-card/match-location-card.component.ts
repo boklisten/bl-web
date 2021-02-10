@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Location, Match } from "@wizardcoder/bl-model";
+import { Location, Match } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-match-location-card",

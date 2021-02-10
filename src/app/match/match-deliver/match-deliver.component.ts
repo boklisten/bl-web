@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { MatchService } from "@wizardcoder/bl-connect";
-import { Match, MatchProfile } from "@wizardcoder/bl-model";
+import { MatchService } from "@boklisten/bl-connect";
+import { Match, MatchProfile } from "@boklisten/bl-model";
 import { UserService } from "../../user/user.service";
 import { MatchStoreService } from "../match-store/match-store.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";

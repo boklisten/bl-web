@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {BlApiError, Branch, OpeningHour} from "@wizardcoder/bl-model";
-import {OpeningHourService} from "@wizardcoder/bl-connect";
+import {BlApiError, Branch, OpeningHour} from "@boklisten/bl-model";
+import {OpeningHourService} from "@boklisten/bl-connect";
 import {BranchOpeningHoursService} from "./branch-opening-hours.service";
 import {DateService} from "../../date/date.service";
 

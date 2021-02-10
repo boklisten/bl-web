@@ -6,7 +6,7 @@ import {Router, RouterModule} from "@angular/router";
 import {BlCommonModule} from "../../bl-common/bl-common.module";
 import {PriceService} from "../../price/price.service";
 import {UserService} from "../../user/user.service";
-import {ItemService} from "@wizardcoder/bl-connect";
+import {ItemService} from "@boklisten/bl-connect";
 import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
 import {UserOrderService} from "../../user/order/user-order/user-order.service";
 import {CartService} from "../../cart/cart.service";

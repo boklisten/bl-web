@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
-import { Payment } from "@wizardcoder/bl-model";
+import { Payment } from "@boklisten/bl-model";
 import { CartPaymentService } from "../cart-payment.service";
 import { CartCheckoutService } from "../../cart-checkout/cart-checkout.service";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs/internal/Subscription";
 import { environment } from "../../../../environments/environment";
-import { StorageService } from "@wizardcoder/bl-connect";
+import { StorageService } from "@boklisten/bl-connect";
 
 declare var Dibs: any;
 

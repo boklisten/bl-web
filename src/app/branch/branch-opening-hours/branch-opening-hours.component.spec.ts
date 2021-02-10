@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {BranchOpeningHoursComponent} from './branch-opening-hours.component';
 import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {Branch} from "@wizardcoder/bl-model";
+import {Branch} from "@boklisten/bl-model";
 import {BranchOpeningHoursService} from "./branch-opening-hours.service";
 import {BlCommonModule} from "../../bl-common/bl-common.module";
 import {DateService} from "../../date/date.service";

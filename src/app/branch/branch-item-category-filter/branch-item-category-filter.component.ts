@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Branch } from "@wizardcoder/bl-model";
+import { Branch } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-branch-item-category-filter",

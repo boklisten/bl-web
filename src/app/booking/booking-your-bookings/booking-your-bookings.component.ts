@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../user/user.service";
-import { BookingService } from "@wizardcoder/bl-connect";
-import { Booking } from "@wizardcoder/bl-model";
+import { BookingService } from "@boklisten/bl-connect";
+import { Booking } from "@boklisten/bl-model";
 
 @Component({
 	selector: "app-booking-your-bookings",

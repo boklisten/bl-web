@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { BranchService } from "@wizardcoder/bl-connect";
+import { BranchService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "app-fastbuy-select-region",

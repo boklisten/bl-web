@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {OrderDeliveryInfoComponent} from './order-delivery-info.component';
 import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {DeliveryService} from "@wizardcoder/bl-connect";
+import {DeliveryService} from "@boklisten/bl-connect";
 import {RouterTestingModule} from "@angular/router/testing";
 
 

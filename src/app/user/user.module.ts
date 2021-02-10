@@ -17,7 +17,7 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 import { OrderDeliveryInfoComponent } from "./order/order-info/order-delivery-info/order-delivery-info.component";
 import { UserCustomerItemService } from "./user-customer-item/user-customer-item.service";
 import { UserEditComponent } from "./user-edit/user-edit.component";
-import { LoginModule } from "@wizardcoder/bl-login";
+import { LoginModule } from "@boklisten/bl-login";
 import { UserEditService } from "./user-edit/user-edit.service";
 import { UserOrderService } from "./order/user-order/user-order.service";
 import { UserMenuComponent } from "./user-menu/user-menu.component";

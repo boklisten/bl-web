@@ -6,9 +6,9 @@ import {
 	Branch,
 	BranchItem,
 	Item
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
-import { BranchItemService, ItemService } from "@wizardcoder/bl-connect";
+import { BranchItemService, ItemService } from "@boklisten/bl-connect";
 
 @Component({
 	selector: "app-item-display-category",

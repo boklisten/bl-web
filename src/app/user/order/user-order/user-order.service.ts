@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { UserService } from "../../user.service";
-import { OrderService } from "@wizardcoder/bl-connect";
-import { BlApiError, Order, UserDetail } from "@wizardcoder/bl-model";
+import { OrderService } from "@boklisten/bl-connect";
+import { BlApiError, Order, UserDetail } from "@boklisten/bl-model";
 
 @Injectable()
 export class UserOrderService {

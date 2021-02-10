@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { PriceService } from "../../../price/price.service";
 import { BranchStoreService } from "../../../branch/branch-store.service";
-import { Item, OrderItemType } from "@wizardcoder/bl-model";
+import { Item, OrderItemType } from "@boklisten/bl-model";
 
 @Pipe({
 	name: "blcItemPrice"

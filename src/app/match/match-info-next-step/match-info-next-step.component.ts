@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatchHelperService } from "../match-helper/match-helper.service";
-import { Match } from "@wizardcoder/bl-model";
+import { Match } from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
 import { Router } from "@angular/router";
 

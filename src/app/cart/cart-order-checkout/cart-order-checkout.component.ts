@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { Order, Delivery } from "@wizardcoder/bl-model";
+import { Order, Delivery } from "@boklisten/bl-model";
 import { CartOrderService } from "../cart-order/cart-order.service";
 import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 import { BranchStoreService } from "../../branch/branch-store.service";

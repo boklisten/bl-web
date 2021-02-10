@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { BlApiError, CustomerItem, UserDetail } from "@wizardcoder/bl-model";
-import { CustomerItemService } from "@wizardcoder/bl-connect";
+import { BlApiError, CustomerItem, UserDetail } from "@boklisten/bl-model";
+import { CustomerItemService } from "@boklisten/bl-connect";
 import { UserService } from "../user.service";
 import { UserCustomerItemService } from "../user-customer-item/user-customer-item.service";
 import { CartService } from "../../cart/cart.service";

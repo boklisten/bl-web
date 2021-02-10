@@ -7,8 +7,8 @@ import {PriceService} from "../price/price.service";
 import {DateService} from "../date/date.service";
 import {UserService} from "../user/user.service";
 import {Subject} from "rxjs/internal/Subject";
-import {AuthLoginService} from "@wizardcoder/bl-login";
-import {StorageService} from "@wizardcoder/bl-connect";
+import {AuthLoginService} from "@boklisten/bl-login";
+import {StorageService} from "@boklisten/bl-connect";
 
 @Injectable()
 class BranchStoreStubService {

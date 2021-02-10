@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { PaymentService } from "@wizardcoder/bl-connect";
+import { PaymentService } from "@boklisten/bl-connect";
 import {
 	BlApiError,
 	Order,
 	Payment,
 	PaymentMethod,
 	Delivery
-} from "@wizardcoder/bl-model";
+} from "@boklisten/bl-model";
 import { Subject } from "rxjs";
 import { CartOrderService } from "../cart-order/cart-order.service";
 import { BranchStoreService } from "../../branch/branch-store.service";

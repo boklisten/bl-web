@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { Match, MatchProfile, MatchItem } from "@wizardcoder/bl-model";
+import { Match, MatchProfile, MatchItem } from "@boklisten/bl-model";
 
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { MatchService } from "@wizardcoder/bl-connect";
+import { MatchService } from "@boklisten/bl-connect";
 import { MatchStoreService } from "../match-store/match-store.service";
 
 @Component({

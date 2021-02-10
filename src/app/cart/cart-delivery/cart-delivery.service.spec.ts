@@ -2,7 +2,7 @@ import {TestBed, inject} from '@angular/core/testing';
 
 import {CartDeliveryService} from './cart-delivery.service';
 import {Injectable} from "@angular/core";
-import {DeliveryService} from "@wizardcoder/bl-connect";
+import {DeliveryService} from "@boklisten/bl-connect";
 import {CartService} from "../cart.service";
 import {CartOrderService} from "../cart-order/cart-order.service";
 import {Subject} from "rxjs";
