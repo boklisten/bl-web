@@ -1,25 +1,21 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {OrderPaymentInfoComponent} from './order-payment-info.component';
-import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {PaymentService} from "@boklisten/bl-connect";
+import { OrderPaymentInfoComponent } from "./order-payment-info.component";
+import { Component, Injectable, Input, Pipe } from "@angular/core";
+import { PaymentService } from "@boklisten/bl-connect";
 
 @Injectable()
-class PaymentStubService {
+class PaymentStubService {}
 
-}
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-@Pipe({name: 'blcPrice'})
-class BlcPriceStubPipe {
+@Pipe({ name: "blcPrice" })
+class BlcPriceStubPipe {}
 
-}
-
-describe('OrderPaymentInfoComponent', () => {
+describe("OrderPaymentInfoComponent", () => {
 	let component: OrderPaymentInfoComponent;
 	let fixture: ComponentFixture<OrderPaymentInfoComponent>;
 
@@ -28,13 +24,12 @@ describe('OrderPaymentInfoComponent', () => {
 			declarations: [
 				OrderPaymentInfoComponent,
 				FaIconStubComponent,
-				BlcPriceStubPipe
+				BlcPriceStubPipe,
 			],
 			providers: [
-				{provide: PaymentService, useValue: new PaymentStubService()}
-			]
-		})
-			.compileComponents();
+				{ provide: PaymentService, useValue: new PaymentStubService() },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -43,7 +38,7 @@ describe('OrderPaymentInfoComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

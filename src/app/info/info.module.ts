@@ -7,10 +7,7 @@ import { InfoAgreementComponent } from "./info-agreement/info-agreement.componen
 import { InfoAgreementPrivacyComponent } from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
 import { InfoAgreementConditionsComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
 import { InfoFaqComponent } from "./info-faq/info-faq.component";
-import {
-	NgbAccordionModule,
-	NgbTabsetModule
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbAccordionModule } from "@ng-bootstrap/ng-bootstrap";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BranchModule } from "../branch/branch.module";
 import { InfoMenuListComponent } from "./info-menu-list/info-menu-list.component";
@@ -22,19 +19,18 @@ import { InfoForCompaniesComponent } from "./info-for-companies/info-for-compani
 import { InfoForPupilsComponent } from "./info-for-pupils/info-for-pupils.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
-import { InfoMatchingComponent } from './info-matching/info-matching.component';
-import { InfoAgreementConditionsOldComponent } from './info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component';
-import { InfoCoronaComponent } from './info-corona/info-corona.component';
+import { InfoMatchingComponent } from "./info-matching/info-matching.component";
+import { InfoAgreementConditionsOldComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component";
+import { InfoCoronaComponent } from "./info-corona/info-corona.component";
 
 @NgModule({
 	imports: [
 		CommonModule,
 		InfoRoutingModule,
 		NgbAccordionModule,
-		NgbTabsetModule,
 		FontAwesomeModule,
 		BranchModule,
-		BlCommonModule
+		BlCommonModule,
 	],
 	declarations: [
 		InfoComponent,
@@ -52,12 +48,12 @@ import { InfoCoronaComponent } from './info-corona/info-corona.component';
 		InfoBuybackComponent,
 		InfoMatchingComponent,
 		InfoAgreementConditionsOldComponent,
-		InfoCoronaComponent
+		InfoCoronaComponent,
 	],
 	exports: [
 		InfoAgreementPrivacyComponent,
 		InfoAgreementTermsComponent,
-		InfoAgreementConditionsComponent
-	]
+		InfoAgreementConditionsComponent,
+	],
 })
 export class InfoModule {}

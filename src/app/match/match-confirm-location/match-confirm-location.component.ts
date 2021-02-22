@@ -8,7 +8,7 @@ type MatchEvent = { type: MatchState; time: Date; userId: string };
 @Component({
 	selector: "app-match-confirm-location",
 	templateUrl: "./match-confirm-location.component.html",
-	styleUrls: ["./match-confirm-location.component.scss"]
+	styleUrls: ["./match-confirm-location.component.scss"],
 })
 export class MatchConfirmLocationComponent implements OnInit {
 	@Input() match: Match;
@@ -48,7 +48,7 @@ export class MatchConfirmLocationComponent implements OnInit {
 		const event: MatchEvent = {
 			type: "meeting-point-accepted",
 			time: new Date(),
-			userId: this.customer.userId
+			userId: this.customer.userId,
 		} as any;
 
 		this.match.events.push(event);
@@ -62,12 +62,12 @@ export class MatchConfirmLocationComponent implements OnInit {
 
 	open(content) {
 		this.modalService.open(content).result.then(
-			result => {
+			(result) => {
 				if (this.getDismissReason(result) === "Confirm location") {
 					this.confirmLocation();
 				}
 			},
-			reason => {}
+			(reason) => {}
 		);
 	}
 

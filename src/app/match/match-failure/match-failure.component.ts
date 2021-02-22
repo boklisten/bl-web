@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-match-failure',
-  templateUrl: './match-failure.component.html',
-  styleUrls: ['./match-failure.component.scss']
+	selector: "app-match-failure",
+	templateUrl: "./match-failure.component.html",
+	styleUrls: ["./match-failure.component.scss"],
 })
 export class MatchFailureComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+	ngOnInit() {}
 }

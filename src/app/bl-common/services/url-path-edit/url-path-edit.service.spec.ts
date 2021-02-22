@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { UrlPathEditService } from './url-path-edit.service';
+import { UrlPathEditService } from "./url-path-edit.service";
 
-describe('UrlPathEditService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe("UrlPathEditService", () => {
+	beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: UrlPathEditService = TestBed.get(UrlPathEditService);
-    expect(service).toBeTruthy();
-  });
+	it("should be created", () => {
+		const service: UrlPathEditService = TestBed.inject(UrlPathEditService);
+		expect(service).toBeTruthy();
+	});
 });

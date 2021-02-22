@@ -25,7 +25,7 @@ export class UserOrderService {
 							reject("UserOrderService: could not fetch orders");
 						});
 				})
-				.catch(getUserDetailError => {
+				.catch((getUserDetailError) => {
 					reject(
 						"UserOrderService: could not get user details: " +
 							getUserDetailError

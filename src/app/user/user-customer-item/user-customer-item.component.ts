@@ -4,12 +4,12 @@ import {
 	Branch,
 	BranchItem,
 	CustomerItem,
-	Item
+	Item,
 } from "@boklisten/bl-model";
 import {
 	BranchService,
 	CustomerItemService,
-	ItemService
+	ItemService,
 } from "@boklisten/bl-connect";
 import { Router } from "@angular/router";
 import { CartService } from "../../cart/cart.service";
@@ -20,7 +20,7 @@ import { UserCustomerItemService } from "./user-customer-item.service";
 @Component({
 	selector: "app-user-customer-item",
 	templateUrl: "./user-customer-item.component.html",
-	styleUrls: ["./user-customer-item.component.scss"]
+	styleUrls: ["./user-customer-item.component.scss"],
 })
 export class UserCustomerItemComponent implements OnInit {
 	@Input() customerItem: CustomerItem;

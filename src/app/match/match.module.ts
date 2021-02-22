@@ -14,10 +14,10 @@ import { MatchDetailComponent } from "./match-detail/match-detail.component";
 import { MatchRecieveComponent } from "./match-recieve/match-recieve.component";
 import { MatchFailureComponent } from "./match-failure/match-failure.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { MatchConfirmLocationComponent } from './match-confirm-location/match-confirm-location.component';
-import { MatchHandoverComponent } from './match-handover/match-handover.component';
-import { MatchQuestionsComponent } from './match-questions/match-questions.component';
-import { MatchSuccessComponent } from './match-success/match-success.component';
+import { MatchConfirmLocationComponent } from "./match-confirm-location/match-confirm-location.component";
+import { MatchHandoverComponent } from "./match-handover/match-handover.component";
+import { MatchQuestionsComponent } from "./match-questions/match-questions.component";
+import { MatchSuccessComponent } from "./match-success/match-success.component";
 
 @NgModule({
 	declarations: [
@@ -33,14 +33,14 @@ import { MatchSuccessComponent } from './match-success/match-success.component';
 		MatchConfirmLocationComponent,
 		MatchHandoverComponent,
 		MatchQuestionsComponent,
-		MatchSuccessComponent
+		MatchSuccessComponent,
 	],
 	imports: [
 		CommonModule,
 		MatchRoutingModule,
 		BlCommonModule,
 		FontAwesomeModule,
-		NgbModule
-	]
+		NgbModule,
+	],
 })
 export class MatchModule {}

@@ -8,7 +8,7 @@ import { CartService } from "../../cart/cart.service";
 @Component({
 	selector: "app-user-item",
 	templateUrl: "./user-item.component.html",
-	styleUrls: ["./user-item.component.scss"]
+	styleUrls: ["./user-item.component.scss"],
 })
 export class UserItemComponent implements OnInit {
 	public customerItems: CustomerItem[];
@@ -32,7 +32,7 @@ export class UserItemComponent implements OnInit {
 			.then((userDetail: UserDetail) => {
 				this._customerItemService
 					.getManyByIds(userDetail.customerItems as string[], {
-						fresh: true
+						fresh: true,
 					})
 					.then((customerItems: CustomerItem[]) => {
 						for (let customerItem of customerItems) {

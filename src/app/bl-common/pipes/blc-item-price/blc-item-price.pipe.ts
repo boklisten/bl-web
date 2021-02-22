@@ -4,7 +4,7 @@ import { BranchStoreService } from "../../../branch/branch-store.service";
 import { Item, OrderItemType } from "@boklisten/bl-model";
 
 @Pipe({
-	name: "blcItemPrice"
+	name: "blcItemPrice",
 })
 export class BlcItemPricePipe implements PipeTransform {
 	constructor(

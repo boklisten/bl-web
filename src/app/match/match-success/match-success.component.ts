@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 @Component({
 	selector: "app-match-success",
 	templateUrl: "./match-success.component.html",
-	styleUrls: ["./match-success.component.scss"]
+	styleUrls: ["./match-success.component.scss"],
 })
 export class MatchSuccessComponent implements OnInit {
 	constructor(private router: Router) {}

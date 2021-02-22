@@ -3,14 +3,14 @@ import {
 	BlApiError,
 	Branch,
 	BranchItem,
-	UserDetail
+	UserDetail,
 } from "@boklisten/bl-model";
 import {
 	BranchItemService,
 	BranchService,
 	StorageService,
 	TokenService,
-	UserDetailService
+	UserDetailService,
 } from "@boklisten/bl-connect";
 import { UserService } from "../user/user.service";
 import { Subject, Observable } from "rxjs";
@@ -133,10 +133,10 @@ export class BranchStoreService {
 	public getBranchItemsCategories(): Promise<string[]> {
 		return new Promise((resolve, reject) => {
 			this.getBranchItems()
-				.then(branchItems => {
+				.then((branchItems) => {
 					resolve(this.retrieveBranchItemsCategories(branchItems));
 				})
-				.catch(err => {
+				.catch((err) => {
 					reject(err);
 				});
 		});
@@ -183,7 +183,7 @@ export class BranchStoreService {
 						this._branchChange$.next(true);
 						resolve(branch);
 					})
-					.catch(err => {
+					.catch((err) => {
 						reject(err);
 					});
 			} else {
@@ -200,7 +200,7 @@ export class BranchStoreService {
 				this._branchItems = branchItems;
 				return true;
 			})
-			.catch(getBranchItemsError => {
+			.catch((getBranchItemsError) => {
 				throw new Error(
 					"BranchStoreService: could not get branchItems"
 				);
@@ -214,7 +214,7 @@ export class BranchStoreService {
 				this._branchItems = branchItems;
 				return branchItems;
 			})
-			.catch(getBranchItemsError => {
+			.catch((getBranchItemsError) => {
 				throw new Error(
 					"BranchStoreService: could not get branchItems"
 				);

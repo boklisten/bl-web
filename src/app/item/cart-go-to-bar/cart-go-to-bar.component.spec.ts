@@ -1,9 +1,9 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartGoToBarComponent} from './cart-go-to-bar.component';
-import {Injectable} from "@angular/core";
-import {CartService} from "../../cart/cart.service";
-import {BlCommonModule} from "../../bl-common/bl-common.module";
+import { CartGoToBarComponent } from "./cart-go-to-bar.component";
+import { Injectable } from "@angular/core";
+import { CartService } from "../../cart/cart.service";
+import { BlCommonModule } from "../../bl-common/bl-common.module";
 
 @Injectable()
 class CartStubService {
@@ -11,30 +11,21 @@ class CartStubService {
 		return [];
 	}
 
-	getTotalPrice() {
-
-	}
+	getTotalPrice() {}
 }
 
-
-describe('CartGoToBarComponent', () => {
+describe("CartGoToBarComponent", () => {
 	let component: CartGoToBarComponent;
 	let fixture: ComponentFixture<CartGoToBarComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				CartGoToBarComponent
-			],
+			declarations: [CartGoToBarComponent],
 			providers: [
-				{provide: CartService, useValue: new CartStubService()}
+				{ provide: CartService, useValue: new CartStubService() },
 			],
-			imports: [
-				BlCommonModule
-			]
-
-		})
-			.compileComponents();
+			imports: [BlCommonModule],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -43,7 +34,7 @@ describe('CartGoToBarComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

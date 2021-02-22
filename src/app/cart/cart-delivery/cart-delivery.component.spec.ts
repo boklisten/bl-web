@@ -63,14 +63,14 @@ describe("CartDeliveryComponent", () => {
 				{ provide: DateService, useValue: new DateStubService() },
 				{
 					provide: CartDeliveryService,
-					useValue: new CartDeliveryStubService()
+					useValue: new CartDeliveryStubService(),
 				},
 				{ provide: UserService, useValue: new UserStubService() },
 				{
 					provide: BranchStoreService,
-					useValue: new BranchStoreStubService()
-				}
-			]
+					useValue: new BranchStoreStubService(),
+				},
+			],
 		}).compileComponents();
 	}));
 

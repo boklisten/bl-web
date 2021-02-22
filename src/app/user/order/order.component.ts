@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 @Component({
 	selector: "app-order",
 	templateUrl: "./order.component.html",
-	styleUrls: ["./order.component.scss"]
+	styleUrls: ["./order.component.scss"],
 })
 export class OrderComponent implements OnInit {
 	public orders: Order[];
@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit {
 				.then((userDetail: UserDetail) => {
 					this._orderService
 						.getManyByIds(userDetail.orders as string[], {
-							fresh: true
+							fresh: true,
 						})
 						.then((orders: Order[]) => {
 							resolve(orders);

@@ -5,7 +5,7 @@ import { Order, Payment } from "@boklisten/bl-model";
 @Component({
 	selector: "app-order-payment-info",
 	templateUrl: "./order-payment-info.component.html",
-	styleUrls: ["./order-payment-info.component.scss"]
+	styleUrls: ["./order-payment-info.component.scss"],
 })
 export class OrderPaymentInfoComponent implements OnInit {
 	@Input() order: Order;
@@ -30,7 +30,7 @@ export class OrderPaymentInfoComponent implements OnInit {
 				.then((payments: Payment[]) => {
 					this.payments = payments;
 				})
-				.catch(getPaymentsError => {
+				.catch((getPaymentsError) => {
 					console.log(
 						"orderPaymentInfoComponent: could not get payments from branch"
 					);

@@ -6,7 +6,7 @@ import { Booking } from "@boklisten/bl-model";
 @Component({
 	selector: "app-booking-your-bookings",
 	templateUrl: "./booking-your-bookings.component.html",
-	styleUrls: ["./booking-your-bookings.component.scss"]
+	styleUrls: ["./booking-your-bookings.component.scss"],
 })
 export class BookingYourBookingsComponent implements OnInit {
 	public wait: boolean;
@@ -23,11 +23,11 @@ export class BookingYourBookingsComponent implements OnInit {
 		this.wait = true;
 		this.bookingService
 			.get({ query: "?customer=" + userDetailId })
-			.then(bookings => {
+			.then((bookings) => {
 				this.bookings = bookings;
 				this.wait = false;
 			})
-			.catch(e => {
+			.catch((e) => {
 				this.wait = false;
 				console.log("could not get bookings", e);
 			});

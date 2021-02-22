@@ -8,7 +8,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @Component({
 	selector: "app-match-deliver",
 	templateUrl: "./match-deliver.component.html",
-	styleUrls: ["./match-deliver.component.scss"]
+	styleUrls: ["./match-deliver.component.scss"],
 })
 export class MatchDeliverComponent implements OnInit {
 	match: Match;
@@ -36,11 +36,14 @@ export class MatchDeliverComponent implements OnInit {
 	}
 
 	public getItemsForReciever(match: Match, reciever: MatchProfile) {
-		return match.items.filter(item => {
+		return match.items.filter((item) => {
 			return item.reciever.toString() === reciever.userId.toString();
 		});
 	}
 	open(content) {
-		this.modalService.open(content).result.then(result => {}, reason => {});
+		this.modalService.open(content).result.then(
+			(result) => {},
+			(reason) => {}
+		);
 	}
 }

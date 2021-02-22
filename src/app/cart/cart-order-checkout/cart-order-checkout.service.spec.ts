@@ -22,14 +22,14 @@ describe("CartOrderCheckoutService", () => {
 				"doesOrderIncludeExtend",
 				"doesOrderIncludeRent",
 				"doesOrderIncludeBuyout",
-				"onOrderChange"
+				"onOrderChange",
 			]
 		);
 		const cartServiceJasmineSpy = jasmine.createSpyObj("CartService", [
 			"isOnlyCustomerItems",
 			"shouldPay",
 			"onCartChange",
-			"getSize"
+			"getSize",
 		]);
 		const cartDeliveryServiceJasmineSpy = jasmine.createSpyObj(
 			"CartDeliveryService",
@@ -45,25 +45,25 @@ describe("CartOrderCheckoutService", () => {
 				CartOrderCheckoutService,
 				{
 					provide: CartOrderService,
-					useValue: cartOrderServiceJasmineSpy
+					useValue: cartOrderServiceJasmineSpy,
 				},
 				{ provide: CartService, useValue: cartServiceJasmineSpy },
 				{
 					provide: CartDeliveryService,
-					useValue: cartDeliveryServiceJasmineSpy
+					useValue: cartDeliveryServiceJasmineSpy,
 				},
 				{
 					provide: BranchStoreService,
-					useValue: branchStoreServiceJasmineSpy
-				}
-			]
+					useValue: branchStoreServiceJasmineSpy,
+				},
+			],
 		});
 
-		cartOrderServiceSpy = TestBed.get(CartOrderService);
-		cartServiceSpy = TestBed.get(CartService);
-		cartDeliveryServiceSpy = TestBed.get(CartDeliveryService);
-		branchStoreServiceSpy = TestBed.get(BranchStoreService);
-		service = TestBed.get(CartOrderCheckoutService);
+		cartOrderServiceSpy = TestBed.inject(CartOrderService);
+		cartServiceSpy = TestBed.inject(CartService);
+		cartDeliveryServiceSpy = TestBed.inject(CartDeliveryService);
+		branchStoreServiceSpy = TestBed.inject(BranchStoreService);
+		service = TestBed.inject(CartOrderCheckoutService);
 
 		cartOrderServiceSpy.onOrderChange.and.returnValue(
 			new Subject().asObservable().subscribe
@@ -83,7 +83,7 @@ describe("CartOrderCheckoutService", () => {
 		describe("when branch is responsibe", () => {
 			it('should return "agreement" and "checkout" if no orderItems is of type "buy", "buyout" or "extend"', () => {
 				branchStoreServiceSpy.getBranch.and.returnValue({
-					paymentInfo: { responsible: true }
+					paymentInfo: { responsible: true },
 				});
 				cartOrderServiceSpy.doesOrderIncludeBuy.and.returnValue(false);
 				cartOrderServiceSpy.doesOrderIncludeBuyout.and.returnValue(
@@ -97,19 +97,19 @@ describe("CartOrderCheckoutService", () => {
 				const expectedSteps: CartStep[] = [
 					{
 						type: "agreement",
-						confirmed: false
+						confirmed: false,
 					},
 					{
 						type: "checkout",
-						confirmed: false
-					}
+						confirmed: false,
+					},
 				];
 				expect(service.calculateCartSteps()).toEqual(expectedSteps);
 			});
 
 			it('should return "payment" if all orderItems is of type "buyout" and or "extend"', () => {
 				branchStoreServiceSpy.getBranch.and.returnValue({
-					paymentInfo: { responsible: true }
+					paymentInfo: { responsible: true },
 				});
 
 				cartOrderServiceSpy.doesOrderIncludeBuy.and.returnValue(false);
@@ -124,8 +124,8 @@ describe("CartOrderCheckoutService", () => {
 				const expectedSteps: CartStep[] = [
 					{
 						type: "payment",
-						confirmed: false
-					}
+						confirmed: false,
+					},
 				];
 
 				expect(service.calculateCartSteps()).toEqual(expectedSteps);
@@ -137,21 +137,21 @@ describe("CartOrderCheckoutService", () => {
 				const expectedSteps: CartStep[] = [
 					{
 						type: "agreement",
-						confirmed: false
+						confirmed: false,
 					},
 					{
 						type: "delivery",
-						confirmed: false
+						confirmed: false,
 					},
 					{
 						type: "payment",
-						confirmed: false
-					}
+						confirmed: false,
+					},
 				];
 
 				cartOrderServiceSpy.doesOrderIncludeRent.and.returnValue(true);
 				branchStoreServiceSpy.getBranch.and.returnValue({
-					paymentInfo: { responsible: false }
+					paymentInfo: { responsible: false },
 				});
 
 				expect(service.calculateCartSteps()).toEqual(expectedSteps);
@@ -166,7 +166,7 @@ describe("CartOrderCheckoutService", () => {
 
 				let deliveryCartStep: CartStep = {
 					type: "delivery",
-					confirmed: false
+					confirmed: false,
 				};
 				expect(
 					service.calculateCartSteps().indexOf(deliveryCartStep) >= 0
@@ -179,7 +179,7 @@ describe("CartOrderCheckoutService", () => {
 
 			let agreementCartStep: CartStep = {
 				type: "agreement",
-				confirmed: false
+				confirmed: false,
 			};
 
 			expect(

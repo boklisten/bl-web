@@ -1,17 +1,15 @@
-import {TestBed, inject} from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import {CartOrderService} from './cart-order.service';
-import {Injectable} from "@angular/core";
-import {CartService} from "../cart.service";
-import {OrderService} from "@boklisten/bl-connect";
-import {Subject} from "rxjs";
-import {AuthLoginService} from "@boklisten/bl-login";
+import { CartOrderService } from "./cart-order.service";
+import { Injectable } from "@angular/core";
+import { CartService } from "../cart.service";
+import { OrderService } from "@boklisten/bl-connect";
+import { Subject } from "rxjs";
+import { AuthLoginService } from "@boklisten/bl-login";
 
 @Injectable()
 class CartStubService {
-	getSize() {
-
-	}
+	getSize() {}
 
 	onCartChange() {
 		return new Subject();
@@ -19,9 +17,7 @@ class CartStubService {
 }
 
 @Injectable()
-class OrderStubService {
-
-}
+class OrderStubService {}
 
 @Injectable()
 class AuthLoginStubService {
@@ -34,19 +30,22 @@ class AuthLoginStubService {
 	}
 }
 
-describe('CartOrderService', () => {
+describe("CartOrderService", () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
 				CartOrderService,
-				{provide: CartService, useValue: new CartStubService()},
-				{provide: OrderService, useValue: new OrderStubService()},
-				{provide: AuthLoginService, useClass: AuthLoginStubService}
-			]
+				{ provide: CartService, useValue: new CartStubService() },
+				{ provide: OrderService, useValue: new OrderStubService() },
+				{ provide: AuthLoginService, useClass: AuthLoginStubService },
+			],
 		});
 	});
 
-	it('should be created', inject([CartOrderService], (service: CartOrderService) => {
-		expect(service).toBeTruthy();
-	}));
+	it("should be created", inject(
+		[CartOrderService],
+		(service: CartOrderService) => {
+			expect(service).toBeTruthy();
+		}
+	));
 });

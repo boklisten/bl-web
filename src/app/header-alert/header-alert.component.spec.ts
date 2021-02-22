@@ -1,19 +1,15 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {HeaderAlertComponent} from './header-alert.component';
-import {Component} from "@angular/core";
+import { HeaderAlertComponent } from "./header-alert.component";
+import { Component } from "@angular/core";
 
-@Component({selector: 'app-header-user-detail-alert', template: ''})
-class HeaderUserDetailAlertStubComponent {
+@Component({ selector: "app-header-user-detail-alert", template: "" })
+class HeaderUserDetailAlertStubComponent {}
 
-}
+@Component({ selector: "app-header-email-not-confirmed-alert", template: "" })
+class HeaderEmailNotConfirmedAlertStubComponent {}
 
-@Component({selector: 'app-header-email-not-confirmed-alert', template: ''})
-class HeaderEmailNotConfirmedAlertStubComponent {
-
-}
-
-describe('HeaderAlertComponent', () => {
+describe("HeaderAlertComponent", () => {
 	let component: HeaderAlertComponent;
 	let fixture: ComponentFixture<HeaderAlertComponent>;
 
@@ -22,10 +18,9 @@ describe('HeaderAlertComponent', () => {
 			declarations: [
 				HeaderAlertComponent,
 				HeaderUserDetailAlertStubComponent,
-				HeaderEmailNotConfirmedAlertStubComponent
-			]
-		})
-			.compileComponents();
+				HeaderEmailNotConfirmedAlertStubComponent,
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -34,7 +29,7 @@ describe('HeaderAlertComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

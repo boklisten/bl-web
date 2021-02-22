@@ -5,7 +5,7 @@ import { BranchItem, Item, OrderItemType, Period } from "@boklisten/bl-model";
 @Component({
 	selector: "app-item-add",
 	templateUrl: "./item-add.component.html",
-	styleUrls: ["./item-add.component.scss"]
+	styleUrls: ["./item-add.component.scss"],
 })
 export class ItemAddComponent implements OnInit {
 	@Input() item: Item;

@@ -9,7 +9,7 @@ import { DateService } from "../../date/date.service";
 @Component({
 	selector: "app-match-select",
 	templateUrl: "./match-select.component.html",
-	styleUrls: ["./match-select.component.scss"]
+	styleUrls: ["./match-select.component.scss"],
 })
 export class MatchSelectComponent implements OnInit {
 	public customerItems: CustomerItem[];
@@ -45,7 +45,7 @@ export class MatchSelectComponent implements OnInit {
 
 		this.userService
 			.getCustomerItems()
-			.then(customerItems => {
+			.then((customerItems) => {
 				if (deadline) {
 					let validCustomerItems = [];
 					for (let customerItem of customerItems) {
@@ -86,7 +86,7 @@ export class MatchSelectComponent implements OnInit {
 					item: matchChoices.item.id,
 					customerItem: matchChoices.customerItem.id,
 					title: matchChoices.item.title,
-					reciever: null
+					reciever: null,
 				});
 			}
 		}
@@ -98,11 +98,11 @@ export class MatchSelectComponent implements OnInit {
 
 		this.matchHelperService
 			.createMatch(matchItems)
-			.then(match => {
+			.then((match) => {
 				this.wait = false;
 				this.router.navigate(["/match/next-steps"]);
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.wait = false;
 			});
 	}
@@ -137,7 +137,7 @@ export class MatchSelectComponent implements OnInit {
 		this.matchChoices.push({
 			customerItem: matchChoice.customerItem,
 			item: matchChoice.item,
-			choice: matchChoice.choice
+			choice: matchChoice.choice,
 		});
 	}
 }

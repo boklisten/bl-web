@@ -4,7 +4,7 @@ import { Branch } from "@boklisten/bl-model";
 @Component({
 	selector: "app-branch-item-category-filter",
 	templateUrl: "./branch-item-category-filter.component.html",
-	styleUrls: ["./branch-item-category-filter.component.scss"]
+	styleUrls: ["./branch-item-category-filter.component.scss"],
 })
 export class BranchItemCategoryFilterComponent implements OnInit {
 	@Input() branchItemCategories: string[];

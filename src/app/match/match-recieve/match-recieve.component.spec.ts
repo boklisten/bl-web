@@ -8,7 +8,7 @@ describe("MatchRecieveComponent", () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [MatchRecieveComponent]
+			declarations: [MatchRecieveComponent],
 		}).compileComponents();
 	}));
 

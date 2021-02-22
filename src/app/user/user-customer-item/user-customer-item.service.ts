@@ -3,7 +3,7 @@ import {
 	Branch,
 	BranchItem,
 	CustomerItem,
-	UserDetail
+	UserDetail,
 } from "@boklisten/bl-model";
 import { BranchService, CustomerItemService } from "@boklisten/bl-connect";
 import { Period } from "@boklisten/bl-model/dist/period/period";
@@ -107,7 +107,7 @@ export class UserCustomerItemService {
 				this.customerItems = customerItems;
 				return true;
 			})
-			.catch(getCustomerItemsError => {
+			.catch((getCustomerItemsError) => {
 				throw new Error(
 					"UserOrderService: could not get customer items: " +
 						getCustomerItemsError

@@ -4,7 +4,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @Component({
 	selector: "app-match-questions",
 	templateUrl: "./match-questions.component.html",
-	styleUrls: ["./match-questions.component.scss"]
+	styleUrls: ["./match-questions.component.scss"],
 })
 export class MatchQuestionsComponent implements OnInit {
 	constructor(private modalService: NgbModal) {}
@@ -12,6 +12,9 @@ export class MatchQuestionsComponent implements OnInit {
 	ngOnInit() {}
 
 	open(content) {
-		this.modalService.open(content).result.then(result => {}, reason => {});
+		this.modalService.open(content).result.then(
+			(result) => {},
+			(reason) => {}
+		);
 	}
 }

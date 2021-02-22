@@ -5,7 +5,7 @@ import {
 	Output,
 	EventEmitter,
 	OnChanges,
-	SimpleChanges
+	SimpleChanges,
 } from "@angular/core";
 import { Booking, Branch } from "@boklisten/bl-model";
 import { BookingService, BranchService } from "@boklisten/bl-connect";
@@ -15,7 +15,7 @@ import { DateService } from "../../date/date.service";
 @Component({
 	selector: "app-booking-time-picker",
 	templateUrl: "./booking-time-picker.component.html",
-	styleUrls: ["./booking-time-picker.component.scss"]
+	styleUrls: ["./booking-time-picker.component.scss"],
 })
 export class BookingTimePickerComponent implements OnInit, OnChanges {
 	@Input() branch: Branch;
@@ -77,14 +77,14 @@ export class BookingTimePickerComponent implements OnInit, OnChanges {
 		this.branchService
 			.getWithOperation(this.branch.id, "booking-dates")
 			.then((bookingDates: any) => {
-				this.bookableDates = bookingDates.map(bookingDate => {
+				this.bookableDates = bookingDates.map((bookingDate) => {
 					return bookingDate.from;
 				});
 				this.sortDates();
 
 				this.wait = false;
 			})
-			.catch(e => {
+			.catch((e) => {
 				console.log("could not get bookings", e);
 				this.wait = false;
 			});

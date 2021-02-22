@@ -1,16 +1,15 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {BranchSetComponent} from './branch-set.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import { BranchSetComponent } from "./branch-set.component";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-@Component({selector: 'app-branch-select', template: ''})
+@Component({ selector: "app-branch-select", template: "" })
 class BranchSelectStubComponent {
 	@Output() branchSelect: EventEmitter<any>;
 
@@ -19,7 +18,7 @@ class BranchSelectStubComponent {
 	}
 }
 
-describe('BranchSetComponent', () => {
+describe("BranchSetComponent", () => {
 	let component: BranchSetComponent;
 	let fixture: ComponentFixture<BranchSetComponent>;
 
@@ -28,14 +27,11 @@ describe('BranchSetComponent', () => {
 			declarations: [
 				BranchSetComponent,
 				FaIconStubComponent,
-				BranchSelectStubComponent
+				BranchSelectStubComponent,
 			],
-			imports: [
-				RouterTestingModule
-			],
-			providers: []
-		})
-			.compileComponents();
+			imports: [RouterTestingModule],
+			providers: [],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -44,7 +40,7 @@ describe('BranchSetComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

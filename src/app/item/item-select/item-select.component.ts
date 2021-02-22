@@ -9,7 +9,7 @@ import { CartService } from "../../cart/cart.service";
 @Component({
 	selector: "app-item-select",
 	templateUrl: "./item-select.component.html",
-	styleUrls: ["./item-select.component.scss"]
+	styleUrls: ["./item-select.component.scss"],
 })
 export class ItemSelectComponent implements OnInit {
 	public items: Item[];
@@ -42,7 +42,7 @@ export class ItemSelectComponent implements OnInit {
 		if (branchId) {
 			this._branchService
 				.getById(branchId)
-				.then(branch => {
+				.then((branch) => {
 					this.branch = branch;
 				})
 				.catch(() => {

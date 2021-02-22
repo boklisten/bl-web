@@ -1,15 +1,14 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {BranchItemCategoryFilterComponent} from './branch-item-category-filter.component';
-import {Component, Input} from "@angular/core";
+import { BranchItemCategoryFilterComponent } from "./branch-item-category-filter.component";
+import { Component, Input } from "@angular/core";
 
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-describe('BranchItemCategoryFilterComponent', () => {
+describe("BranchItemCategoryFilterComponent", () => {
 	let component: BranchItemCategoryFilterComponent;
 	let fixture: ComponentFixture<BranchItemCategoryFilterComponent>;
 
@@ -17,10 +16,9 @@ describe('BranchItemCategoryFilterComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				FaIconStubComponent,
-				BranchItemCategoryFilterComponent
-			]
-		})
-			.compileComponents();
+				BranchItemCategoryFilterComponent,
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -29,7 +27,7 @@ describe('BranchItemCategoryFilterComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

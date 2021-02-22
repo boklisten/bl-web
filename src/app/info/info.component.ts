@@ -5,7 +5,7 @@ import { Location } from "@angular/common";
 @Component({
 	selector: "app-info",
 	templateUrl: "./info.component.html",
-	styleUrls: ["./info.component.scss"]
+	styleUrls: ["./info.component.scss"],
 })
 export class InfoComponent implements OnInit {
 	public showInfoMenu: boolean;

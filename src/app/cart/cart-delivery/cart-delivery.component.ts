@@ -6,7 +6,7 @@ import {
 	Order,
 	DeliveryMethod,
 	UserDetail,
-	Branch
+	Branch,
 } from "@boklisten/bl-model";
 import { DateService } from "../../date/date.service";
 import { DeliveryService } from "@boklisten/bl-connect";
@@ -21,7 +21,7 @@ import { UserService } from "../../user/user.service";
 @Component({
 	selector: "app-cart-delivery",
 	templateUrl: "./cart-delivery.component.html",
-	styleUrls: ["./cart-delivery.component.scss"]
+	styleUrls: ["./cart-delivery.component.scss"],
 })
 export class CartDeliveryComponent implements OnInit {
 	@Output() delivery: EventEmitter<Delivery>;
@@ -150,7 +150,7 @@ export class CartDeliveryComponent implements OnInit {
 						: "";
 					this.validateDeliveryMethodBring();
 				})
-				.catch(getUserDetailError => {
+				.catch((getUserDetailError) => {
 					console.log(
 						"cartDeliveryService: could not get user detail"
 					);
@@ -230,7 +230,7 @@ export class CartDeliveryComponent implements OnInit {
 	}
 
 	private onDeliveryFailure() {
-		this._cartDeliveryService.onDeliveryFailure().subscribe(err => {
+		this._cartDeliveryService.onDeliveryFailure().subscribe((err) => {
 			if (
 				this.deliveryMethod === "bring" &&
 				!this.validateDeliveryMethodBring()
@@ -246,12 +246,12 @@ export class CartDeliveryComponent implements OnInit {
 		return new Promise((resolve, reject) => {
 			this._cartDeliveryService
 				.setBranchDelivery()
-				.then(addedDelivery => {
+				.then((addedDelivery) => {
 					this.currentDelivery = addedDelivery;
 					this.wait = false;
 					resolve(true);
 				})
-				.catch(err => {
+				.catch((err) => {
 					this.wait = false;
 					reject(err);
 				});
@@ -268,12 +268,12 @@ export class CartDeliveryComponent implements OnInit {
 						this.toPostalCity,
 						this.toPostalCode
 					)
-					.then(addedDelivery => {
+					.then((addedDelivery) => {
 						this.currentDelivery = addedDelivery;
 						this.wait = false;
 						resolve(true);
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.wait = false;
 						reject(err);
 					});

@@ -1,47 +1,36 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {BranchOpeningHoursComponent} from './branch-opening-hours.component';
-import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {Branch} from "@boklisten/bl-model";
-import {BranchOpeningHoursService} from "./branch-opening-hours.service";
-import {BlCommonModule} from "../../bl-common/bl-common.module";
-import {DateService} from "../../date/date.service";
-
+import { BranchOpeningHoursComponent } from "./branch-opening-hours.component";
+import { Component, Injectable, Input, Pipe } from "@angular/core";
+import { Branch } from "@boklisten/bl-model";
+import { BranchOpeningHoursService } from "./branch-opening-hours.service";
+import { BlCommonModule } from "../../bl-common/bl-common.module";
+import { DateService } from "../../date/date.service";
 
 @Injectable()
 class BranchOpeningHoursServiceStub {
 	getOpeningHours(branch: Branch) {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconComponent {
 	@Input() icon: any;
 }
 
-@Pipe({name: 'blcDate'})
-class BlcDateStubPipe {
-
-}
+@Pipe({ name: "blcDate" })
+class BlcDateStubPipe {}
 
 @Injectable()
-class DateStubService {
+class DateStubService {}
 
-}
-
-@Component({selector: 'app-blc-spinner', template: ''})
+@Component({ selector: "app-blc-spinner", template: "" })
 class BlcSpinnerStubComponent {
 	@Input() loading;
 }
 
-
-
-
-
-describe('BranchOpeningHoursComponent', () => {
+describe("BranchOpeningHoursComponent", () => {
 	let component: BranchOpeningHoursComponent;
 	let fixture: ComponentFixture<BranchOpeningHoursComponent>;
 
@@ -53,15 +42,17 @@ describe('BranchOpeningHoursComponent', () => {
 				BranchOpeningHoursComponent,
 				FaIconComponent,
 				BlcDateStubPipe,
-				BlcSpinnerStubComponent
+				BlcSpinnerStubComponent,
 			],
 			imports: [],
 			providers: [
-				{provide: BranchOpeningHoursService, useValue: branchOpeningHoursServiceStub},
-				{provide: DateService, useClass: DateStubService}
-			]
-		})
-			.compileComponents();
+				{
+					provide: BranchOpeningHoursService,
+					useValue: branchOpeningHoursServiceStub,
+				},
+				{ provide: DateService, useClass: DateStubService },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -70,7 +61,7 @@ describe('BranchOpeningHoursComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

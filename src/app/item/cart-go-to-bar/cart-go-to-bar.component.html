@@ -1,8 +1,18 @@
-<div class="row bl-cart-go-to-bar-container justify-content-center align-items-center mr-1 ml-1" *ngIf="showCartGoToBar()">
+<div
+	class="row bl-cart-go-to-bar-container justify-content-center align-items-center mr-1 ml-1"
+	*ngIf="showCartGoToBar()"
+>
 	<div class="col-lg-3 col-md-3 col-12 text-center">
-		<h3>{{totalPriceOfCart() | blcPrice}}</h3>
+		<h3>{{ totalPriceOfCart() | blcPrice }}</h3>
 	</div>
-    <div class="col-lg-3 col-md-3 col-12">
-        <button type="button" class="btn btn-success btn-block" routerLink="/cart" i18n="@@cartGoToBarButton">Go to Cart</button>
-    </div>
+	<div class="col-lg-3 col-md-3 col-12">
+		<button
+			type="button"
+			class="btn btn-success btn-block"
+			routerLink="/cart"
+			i18n="@@cartGoToBarButton"
+		>
+			Go to Cart
+		</button>
+	</div>
 </div>

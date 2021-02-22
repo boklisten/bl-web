@@ -15,8 +15,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 		NgbCarouselModule,
 		FastbuyModule,
 
-		FontAwesomeModule
+		FontAwesomeModule,
 	],
-	declarations: [WelcomeComponent]
+	declarations: [WelcomeComponent],
 })
 export class WelcomeModule {}

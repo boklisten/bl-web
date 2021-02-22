@@ -1,17 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {UserService} from "../../user/user.service";
-import {AuthLoginService} from "@boklisten/bl-login";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { UserService } from "../../user/user.service";
+import { AuthLoginService } from "@boklisten/bl-login";
 
 @Component({
-	selector: 'app-header-user-detail-alert',
-	templateUrl: './header-user-detail-alert.component.html',
-	styleUrls: ['./header-user-detail-alert.component.scss']
+	selector: "app-header-user-detail-alert",
+	templateUrl: "./header-user-detail-alert.component.html",
+	styleUrls: ["./header-user-detail-alert.component.scss"],
 })
 export class HeaderUserDetailAlertComponent implements OnInit {
 	showAlert: boolean;
 
-	constructor(private _router: Router, private _userService: UserService, private _authService: AuthLoginService) {
+	constructor(
+		private _router: Router,
+		private _userService: UserService,
+		private _authService: AuthLoginService
+	) {
 		this.showAlert = false;
 	}
 
@@ -31,7 +35,6 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 		this._userService.onUserDetailChange().subscribe(() => {
 			this.checkIfUserDetailIsValid();
 		});
-
 	}
 
 	private checkIfUserDetailIsValid() {
@@ -41,19 +44,21 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 		}
 
 		if (this._userService.haveOrders()) {
-			this._userService.isUserDetailValid().then((valid: boolean) => {
-				this.showAlert = !valid;
-			}).catch((isUserDetailValidError) => {
-				console.log('userService: could not check if user detail is not valid', isUserDetailValidError);
-			});
+			this._userService
+				.isUserDetailValid()
+				.then((valid: boolean) => {
+					this.showAlert = !valid;
+				})
+				.catch((isUserDetailValidError) => {
+					console.log(
+						"userService: could not check if user detail is not valid",
+						isUserDetailValidError
+					);
+				});
 		}
-
 	}
 
 	onEditClick() {
-		this._router.navigate(['/u/edit']);
+		this._router.navigate(["/u/edit"]);
 	}
-
-
-
 }

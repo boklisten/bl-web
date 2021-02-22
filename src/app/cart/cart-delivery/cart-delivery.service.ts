@@ -166,16 +166,16 @@ export class CartDeliveryService {
 					name: this._toName,
 					address: this._toAddress,
 					postalCode: this._toPostalCode,
-					postalCity: this._toPostalCity
+					postalCity: this._toPostalCity,
 				},
 				facilityAddress: {
 					address: this._fromAddress,
 					postalCode: "1316",
-					postalCity: this._fromPostalCity
-				}
+					postalCity: this._fromPostalCity,
+				},
 			},
 			order: order.id,
-			amount: 0
+			amount: 0,
 		} as any;
 	}
 
@@ -183,10 +183,10 @@ export class CartDeliveryService {
 		return {
 			method: "branch",
 			info: {
-				branch: order.branch
+				branch: order.branch,
 			},
 			order: order.id,
-			amount: 0
+			amount: 0,
 		} as any;
 	}
 }

@@ -30,7 +30,7 @@ import { UserMenuComponent } from "./user-menu/user-menu.component";
 		ItemModule,
 		FontAwesomeModule,
 		BlCommonModule,
-		LoginModule
+		LoginModule,
 	],
 	declarations: [
 		UserComponent,
@@ -42,15 +42,15 @@ import { UserMenuComponent } from "./user-menu/user-menu.component";
 		OrderPaymentInfoComponent,
 		OrderDeliveryInfoComponent,
 		UserEditComponent,
-		UserMenuComponent
+		UserMenuComponent,
 	],
 	providers: [
 		UserService,
 		UserGuardService,
 		UserCustomerItemService,
 		UserEditService,
-		UserOrderService
+		UserOrderService,
 	],
-	exports: [UserMenuComponent]
+	exports: [UserMenuComponent],
 })
 export class UserModule {}

@@ -13,7 +13,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 @Component({
 	selector: "app-cart-order-checkout",
 	templateUrl: "./cart-order-checkout.component.html",
-	styleUrls: ["./cart-order-checkout.component.scss"]
+	styleUrls: ["./cart-order-checkout.component.scss"],
 })
 export class CartOrderCheckoutComponent implements OnInit {
 	public cartStep: CartStep;
@@ -54,7 +54,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 				this.initSteps();
 				this.wait = false;
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.cartError = err;
 				this.wait = false;
 			});
@@ -78,7 +78,7 @@ export class CartOrderCheckoutComponent implements OnInit {
 			.then(() => {
 				this.initSteps();
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.cartError = err;
 			});
 	}

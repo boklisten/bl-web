@@ -41,28 +41,28 @@ const routes: Routes = [
 					{
 						path: "",
 						redirectTo: "conditions",
-						pathMatch: "full"
+						pathMatch: "full",
 					},
 					{
 						path: "privacy",
-						component: InfoAgreementPrivacyComponent
+						component: InfoAgreementPrivacyComponent,
 					},
 					{
 						path: "conditions",
-						component: InfoAgreementConditionsOldComponent
+						component: InfoAgreementConditionsOldComponent,
 					},
 					{
 						path: "terms",
-						component: InfoAgreementTermsComponent
-					}
-				]
-			}
-		]
-	}
+						component: InfoAgreementTermsComponent,
+					},
+				],
+			},
+		],
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class InfoRoutingModule {}

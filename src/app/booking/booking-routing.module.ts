@@ -14,11 +14,11 @@ const routes: Routes = [
 			{
 				path: "",
 				pathMatch: "full",
-				redirectTo: "select"
+				redirectTo: "select",
 			},
 			{
 				path: "select",
-				component: BookingSelectComponent
+				component: BookingSelectComponent,
 			},
 			{
 				path: ":id",
@@ -26,29 +26,29 @@ const routes: Routes = [
 					{
 						path: "confirm",
 						component: BookingConfirmComponent,
-						canActivate: [UserGuardService]
+						canActivate: [UserGuardService],
 					},
 					{
 						path: "confirmed",
-						component: BookingEventConfirmedComponent
+						component: BookingEventConfirmedComponent,
 					},
 					{
 						path: "cancel",
-						component: BookingCancelComponent
-					}
-				]
+						component: BookingCancelComponent,
+					},
+				],
 			},
 			{
 				path: "customer/list",
 				component: BookingYourBookingsComponent,
-				canActivate: [UserGuardService]
-			}
-		]
-	}
+				canActivate: [UserGuardService],
+			},
+		],
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class BookingRoutingModule {}

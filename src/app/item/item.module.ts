@@ -25,7 +25,7 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 		NgbModule,
 		BranchModule,
 		FontAwesomeModule,
-		BlCommonModule
+		BlCommonModule,
 	],
 	declarations: [
 		ItemComponent,
@@ -35,8 +35,8 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 		ItemAddComponent,
 		ItemTypeSelectComponent,
 		ItemDisplayCategoryComponent,
-		CartGoToBarComponent
+		CartGoToBarComponent,
 	],
-	exports: [ItemDisplayComponent, CartGoToBarComponent]
+	exports: [ItemDisplayComponent, CartGoToBarComponent],
 })
 export class ItemModule {}

@@ -7,12 +7,17 @@
 			<h3 i18n="@@branchSetTitle">Where do you go to school?</h3>
 		</div>
 		<div class="col-12">
-			<p i18n="@@branchSetDescription">To rent or buy items we need you to select the school you attend.</p>
+			<p i18n="@@branchSetDescription">
+				To rent or buy items we need you to select the school you
+				attend.
+			</p>
 		</div>
 	</div>
 	<div class="row justify-content-center mt-3">
 		<div class="col-lg-6 col-md-12 col-12">
-			<app-branch-select (branchSelect)="onBranchSelect()"></app-branch-select>
+			<app-branch-select
+				(branchSelect)="onBranchSelect()"
+			></app-branch-select>
 		</div>
 	</div>
 </div>

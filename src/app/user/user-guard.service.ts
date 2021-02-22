@@ -3,7 +3,7 @@ import {
 	CanActivate,
 	Router,
 	ActivatedRouteSnapshot,
-	RouterStateSnapshot
+	RouterStateSnapshot,
 } from "@angular/router";
 import { UserService } from "./user.service";
 
@@ -16,7 +16,7 @@ export class UserGuardService implements CanActivate {
 	): boolean {
 		if (!this._userService.loggedIn()) {
 			this._router.navigate(["/auth/menu"], {
-				queryParams: { redirect: state.url }
+				queryParams: { redirect: state.url },
 			});
 			return false;
 		}

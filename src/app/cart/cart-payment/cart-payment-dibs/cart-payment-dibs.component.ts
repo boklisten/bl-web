@@ -12,7 +12,7 @@ declare var Dibs: any;
 @Component({
 	selector: "app-cart-payment-dibs",
 	templateUrl: "./cart-payment-dibs.component.html",
-	styleUrls: ["./cart-payment-dibs.component.scss"]
+	styleUrls: ["./cart-payment-dibs.component.scss"],
 })
 export class CartPaymentDibsComponent
 	implements OnInit, OnDestroy, AfterViewInit {
@@ -122,8 +122,8 @@ export class CartPaymentDibsComponent
 				buttonTextColor: "white",
 				panelColor: "white",
 				outlineColor: primaryColor,
-				primaryOutlineColor: primaryColor
-			}
+				primaryOutlineColor: primaryColor,
+			},
 		};
 
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
@@ -133,11 +133,11 @@ export class CartPaymentDibsComponent
 
 		this.storeIds(); // must store the ids in case the payment fails
 
-		checkout.on("payment-initialized", function(response) {
+		checkout.on("payment-initialized", function (response) {
 			checkout.send("payment-order-finalized", true);
 		});
 
-		checkout.on("payment-completed", function(response) {
+		checkout.on("payment-completed", function (response) {
 			cartCheckoutService
 				.placeOrder()
 				.then(() => {

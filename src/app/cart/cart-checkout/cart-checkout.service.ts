@@ -64,7 +64,7 @@ export class CartCheckoutService {
 
 					resolve(true);
 				})
-				.catch(e => {
+				.catch((e) => {
 					console.log("could not confirm order", e);
 
 					reject(new Error("order could not be placed: " + e));

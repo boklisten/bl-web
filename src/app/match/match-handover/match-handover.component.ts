@@ -9,7 +9,7 @@ import { MatchStoreService } from "../match-store/match-store.service";
 @Component({
 	selector: "app-match-handover",
 	templateUrl: "./match-handover.component.html",
-	styleUrls: ["./match-handover.component.scss"]
+	styleUrls: ["./match-handover.component.scss"],
 })
 export class MatchHandoverComponent implements OnInit {
 	@Input() match: Match;
@@ -41,7 +41,7 @@ export class MatchHandoverComponent implements OnInit {
 			.then(() => {
 				this.router.navigate(["/match/success"]);
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.router.navigate(["/match/failure"]);
 			});
 	}
@@ -59,7 +59,7 @@ export class MatchHandoverComponent implements OnInit {
 				this.items.push({
 					item: item.item,
 					selected: false,
-					title: item.title
+					title: item.title,
 				});
 			}
 		}
@@ -80,12 +80,12 @@ export class MatchHandoverComponent implements OnInit {
 
 	open(content) {
 		this.modalService.open(content).result.then(
-			result => {
+			(result) => {
 				if (this.getDismissReason(result)) {
 					this.confirmSelectedItems();
 				}
 			},
-			reason => {}
+			(reason) => {}
 		);
 	}
 }

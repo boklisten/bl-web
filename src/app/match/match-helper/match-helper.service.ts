@@ -4,7 +4,7 @@ import { Match, Item, CustomerItem } from "@boklisten/bl-model";
 import { UserService } from "../../user/user.service";
 
 @Injectable({
-	providedIn: "root"
+	providedIn: "root",
 })
 export class MatchHelperService {
 	private currentMatch: Match;
@@ -34,34 +34,34 @@ export class MatchHelperService {
 		return new Promise((resolve, reject) => {
 			this.userService
 				.getUserDetail()
-				.then(userDetail => {
+				.then((userDetail) => {
 					const match = {
 						sender: {
 							userId: userDetail.id,
 							name: userDetail.name,
 							email: userDetail.email,
 							phone: userDetail.phone,
-							meetingOptions: null
+							meetingOptions: null,
 						},
 						recievers: [],
 						items: items,
 						state: "created",
 						events: [{ type: "created", time: new Date() }],
 						meetingPoint: null,
-						branch: userDetail.branch
+						branch: userDetail.branch,
 					} as Match;
 
 					this.matchService
 						.add(match)
-						.then(addedMatch => {
+						.then((addedMatch) => {
 							this.currentMatch = addedMatch;
 							resolve(addedMatch);
 						})
-						.catch(matchAddErr => {
+						.catch((matchAddErr) => {
 							reject(matchAddErr);
 						});
 				})
-				.catch(err => {
+				.catch((err) => {
 					reject(err);
 				});
 		});

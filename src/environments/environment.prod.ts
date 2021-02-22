@@ -5,8 +5,8 @@ export const environment = {
 	apiPath: "https://api.boklisten.no/",
 	dibs: {
 		checkoutKey: "live-checkout-key-e294063ced7f43b89c58419024a33e79",
-		language: "nb-NO"
+		language: "nb-NO",
 	},
 	version: version,
-	versionName: ""
+	versionName: "",
 };

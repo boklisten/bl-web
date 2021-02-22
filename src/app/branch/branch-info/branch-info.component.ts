@@ -7,7 +7,7 @@ import { BranchStoreService } from "../branch-store.service";
 @Component({
 	selector: "app-branch-info",
 	templateUrl: "./branch-info.component.html",
-	styleUrls: ["./branch-info.component.scss"]
+	styleUrls: ["./branch-info.component.scss"],
 })
 export class BranchInfoComponent implements OnInit {
 	public branch: Branch;
@@ -62,7 +62,7 @@ export class BranchInfoComponent implements OnInit {
 
 				this.loading = false;
 			})
-			.catch(getBranchesError => {
+			.catch((getBranchesError) => {
 				console.log(
 					"BranchInfoComponent: could not get brances",
 					getBranchesError

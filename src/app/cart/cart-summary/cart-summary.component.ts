@@ -8,7 +8,7 @@ import { DateService } from "../../date/date.service";
 @Component({
 	selector: "app-cart-summary",
 	templateUrl: "./cart-summary.component.html",
-	styleUrls: ["./cart-summary.component.scss"]
+	styleUrls: ["./cart-summary.component.scss"],
 })
 export class CartSummaryComponent implements OnInit {
 	public order: Order;
@@ -78,7 +78,7 @@ export class CartSummaryComponent implements OnInit {
 		for (let period of periods) {
 			partlyPaymentTotals.push({
 				date: this._dateService.getPartlyPaymentPeriodDate(period),
-				total: periodTotals[period]
+				total: periodTotals[period],
 			});
 		}
 
@@ -104,7 +104,7 @@ export class CartSummaryComponent implements OnInit {
 	totalAmountIncludingPartlyPayments(): number {
 		let partlyPaymentTotal = 0;
 
-		this.order.orderItems.forEach(orderItem => {
+		this.order.orderItems.forEach((orderItem) => {
 			if (orderItem.type == "partly-payment") {
 				partlyPaymentTotal += orderItem.info["amountLeftToPay"];
 			}

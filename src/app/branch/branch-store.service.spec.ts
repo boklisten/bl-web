@@ -1,60 +1,49 @@
-import {TestBed, inject} from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import {BranchStoreService} from './branch-store.service';
-import {Injectable} from "@angular/core";
-import {UserService} from "../user/user.service";
-import {BranchItemService, BranchService, StorageService} from "@boklisten/bl-connect";
-
+import { BranchStoreService } from "./branch-store.service";
+import { Injectable } from "@angular/core";
+import { UserService } from "../user/user.service";
+import {
+	BranchItemService,
+	BranchService,
+	StorageService,
+} from "@boklisten/bl-connect";
 
 @Injectable()
 class UserStubService {
-	loggedIn() {
-
-	}
+	loggedIn() {}
 
 	getUserDetail() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
 @Injectable()
 class BranchStubService {
 	getById(id: string) {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 
 	get() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
 @Injectable()
 class BranchItemStubService {
 	getManyByIds(ids: string[]) {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
 @Injectable()
 class StorageStubService {
-	add(name: string, data: any) {
+	add(name: string, data: any) {}
 
-	}
-
-	get(name: string) {
-
-	}
+	get(name: string) {}
 }
 
-describe('BranchStoreService', () => {
+describe("BranchStoreService", () => {
 	const userStubService = new UserStubService();
 	const branchStubService = new BranchStubService();
 	const branchItemStubService = new BranchItemStubService();
@@ -63,15 +52,18 @@ describe('BranchStoreService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				BranchStoreService,
-				{provide: UserService, useValue: userStubService},
-				{provide: BranchService, useValue: branchStubService},
-				{provide: BranchItemService, useValue: branchItemStubService},
-				{provide: StorageService, useClass: StorageStubService}
-			]
+				{ provide: UserService, useValue: userStubService },
+				{ provide: BranchService, useValue: branchStubService },
+				{ provide: BranchItemService, useValue: branchItemStubService },
+				{ provide: StorageService, useClass: StorageStubService },
+			],
 		});
 	});
 
-	it('should be created', inject([BranchStoreService], (service: BranchStoreService) => {
-		expect(service).toBeTruthy();
-	}));
+	it("should be created", inject(
+		[BranchStoreService],
+		(service: BranchStoreService) => {
+			expect(service).toBeTruthy();
+		}
+	));
 });

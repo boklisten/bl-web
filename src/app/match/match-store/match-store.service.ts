@@ -4,7 +4,7 @@ import { Match } from "@boklisten/bl-model";
 import { Subject, Observable } from "rxjs";
 
 @Injectable({
-	providedIn: "root"
+	providedIn: "root",
 })
 export class MatchStoreService {
 	private currentMatch: Match;
@@ -26,12 +26,12 @@ export class MatchStoreService {
 		return new Promise((resolve, reject) => {
 			this.matchService
 				.getById(id)
-				.then(match => {
+				.then((match) => {
 					this.currentMatch = match;
 					this.matchChange$.next(true);
 					resolve(match);
 				})
-				.catch(err => {
+				.catch((err) => {
 					this.currentMatch = null;
 					this.matchChange$.next(true);
 					reject(err);
@@ -51,19 +51,19 @@ export class MatchStoreService {
 			let time = new Date();
 			this.matchService
 				.getById(this.currentMatch.id)
-				.then(match => {
+				.then((match) => {
 					for (let item of items) {
 						for (let matchItem of match.items) {
 							if (matchItem.item === item.item && item.selected) {
 								if (sender && !matchItem.sent) {
 									matchItem.sent = {
 										time: time,
-										user: customer
+										user: customer,
 									};
 								} else if (!matchItem.recieved) {
 									matchItem.recieved = {
 										time: time,
-										user: customer
+										user: customer,
 									};
 								}
 							}
@@ -73,22 +73,22 @@ export class MatchStoreService {
 					match.events.push({
 						type: sender ? "items-sent" : ("items-recieved" as any),
 						time: time,
-						userId: customer
+						userId: customer,
 					});
 
 					this.matchService
 						.update(match.id, {
 							items: match.items,
-							events: match.events
+							events: match.events,
 						})
-						.then(updatedMatch => {
+						.then((updatedMatch) => {
 							resolve(match);
 						})
-						.catch(e => {
+						.catch((e) => {
 							reject(e);
 						});
 				})
-				.catch(err => {
+				.catch((err) => {
 					reject(err);
 				});
 		});

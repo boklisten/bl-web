@@ -4,7 +4,7 @@ import {
 	BranchItem,
 	CustomerItem,
 	Item,
-	Period
+	Period,
 } from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -19,7 +19,7 @@ import { UserCustomerItemService } from "../../user/user-customer-item/user-cust
 @Component({
 	selector: "app-item-display",
 	templateUrl: "./item-display.component.html",
-	styleUrls: ["./item-display.component.scss"]
+	styleUrls: ["./item-display.component.scss"],
 })
 export class ItemDisplayComponent implements OnInit {
 	@Input() compact: boolean;
@@ -64,7 +64,7 @@ export class ItemDisplayComponent implements OnInit {
 					this.item = item;
 					this.checkIfAlreadyHaveItem();
 				})
-				.catch(getItemError => {
+				.catch((getItemError) => {
 					console.log(
 						"ItemDisplayComponent: could not get item based on branchItem"
 					);
@@ -103,7 +103,7 @@ export class ItemDisplayComponent implements OnInit {
 					this.checkIfAlreadyOrdered(itemId);
 				}
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(
 					"UserOrderService: could not check if user already have customer item",
 					err
@@ -122,7 +122,7 @@ export class ItemDisplayComponent implements OnInit {
 					this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
 				}
 			})
-			.catch(alreadyOrderedError => {
+			.catch((alreadyOrderedError) => {
 				console.log(
 					"UserOrderService: could not check if user already have item",
 					alreadyOrderedError

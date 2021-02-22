@@ -12,13 +12,13 @@ const routes: Routes = [
 		children: [
 			{ path: "regions", component: FastbuySelectRegionComponent },
 			{ path: "branches", component: FastbuySelectBranchComponent },
-			{ path: "courses", component: FastbuySelectCoursesComponent }
-		]
-	}
+			{ path: "courses", component: FastbuySelectCoursesComponent },
+		],
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class FastbuyRoutingModule {}

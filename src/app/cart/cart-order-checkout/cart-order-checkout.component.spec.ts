@@ -6,7 +6,7 @@ import {
 	Output,
 	Injectable,
 	EventEmitter,
-	Pipe
+	Pipe,
 } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { CartService } from "../cart.service";
@@ -92,22 +92,22 @@ describe("CartOrderCheckoutComponent", () => {
 				CartSummaryStubComponent,
 				CartCheckoutStubComponent,
 				CartPaymentStubComponent,
-				BlcPriceStubPipe
+				BlcPriceStubPipe,
 			],
 			providers: [
 				{
 					provide: CartOrderCheckoutService,
-					useValue: cartOrderCheckoutServiceSpy
+					useValue: cartOrderCheckoutServiceSpy,
 				},
 				{
 					provide: CartService,
-					useClass: CartServiceStub
+					useClass: CartServiceStub,
 				},
 				{
 					provide: Router,
-					useClass: RouterMock
-				}
-			]
+					useClass: RouterMock,
+				},
+			],
 		}).compileComponents();
 	}));
 

@@ -8,7 +8,7 @@ import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-p
 @Component({
 	selector: "app-fastbuy-select-courses",
 	templateUrl: "./fastbuy-select-courses.component.html",
-	styleUrls: ["./fastbuy-select-courses.component.scss"]
+	styleUrls: ["./fastbuy-select-courses.component.scss"],
 })
 export class FastbuySelectCoursesComponent implements OnInit {
 	public courses = [];
@@ -59,13 +59,13 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		this.wait = true;
 		this.branchService
 			.getById(this.branchId, { fresh: true })
-			.then(branch => {
+			.then((branch) => {
 				this.branchStoreService
 					.setBranch(branch)
 					.then(() => {
 						this.branchStoreService
 							.getBranchItemsCategories()
-							.then(categories => {
+							.then((categories) => {
 								for (const category of categories) {
 									courseNames.push({ name: category });
 								}
@@ -113,15 +113,15 @@ export class FastbuySelectCoursesComponent implements OnInit {
 
 				queryParams: {
 					category: this.getSelectedCategories(),
-					branch: this.branchId
-				}
+					branch: this.branchId,
+				},
 			})
 			.then(() => {
 				this.router.navigate(["/i/select"], {
 					queryParams: {
 						category: this.getSelectedCategories(),
-						branch: this.branchId
-					}
+						branch: this.branchId,
+					},
 				});
 			})
 			.catch(() => {});

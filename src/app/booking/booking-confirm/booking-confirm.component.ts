@@ -8,7 +8,7 @@ import { UserService } from "../../user/user.service";
 @Component({
 	selector: "app-booking-confirm",
 	templateUrl: "./booking-confirm.component.html",
-	styleUrls: ["./booking-confirm.component.scss"]
+	styleUrls: ["./booking-confirm.component.scss"],
 })
 export class BookingConfirmComponent implements OnInit {
 	public booking: Booking;
@@ -25,16 +25,16 @@ export class BookingConfirmComponent implements OnInit {
 
 	ngOnInit() {
 		this.wait = true;
-		this.route.params.subscribe(params => {
+		this.route.params.subscribe((params) => {
 			if (params.id) {
 				this.bookingService
 					.getById(params.id)
-					.then(booking => {
+					.then((booking) => {
 						this.booking = booking;
 						this.branchId = this.booking.branch;
 						this.wait = false;
 					})
-					.catch(e => {
+					.catch((e) => {
 						this.wait = false;
 					});
 			}
@@ -47,7 +47,7 @@ export class BookingConfirmComponent implements OnInit {
 		try {
 			await this.bookingService.update(this.booking.id, {
 				customer: this.userService.getUserDetailId(),
-				booked: true
+				booked: true,
 			});
 		} catch (e) {
 			console.log(e);

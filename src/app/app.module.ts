@@ -14,12 +14,11 @@ import { FooterComponent } from "./footer/footer.component";
 import { InfoModule } from "./info/info.module";
 import { CartModule } from "./cart/cart.module";
 import { FastbuyModule } from "./fastbuy/fastbuy.module";
+import { BlConnectConfigService, BlConnectModule } from "@boklisten/bl-connect";
 import {
-	BlConnectConfigService,
-	BlConnectModule
-} from "@boklisten/bl-connect";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
+	FontAwesomeModule,
+	FaIconLibrary,
+} from "@fortawesome/angular-fontawesome";
 import { MatchModule } from "./match/match.module";
 import { ClickOutsideModule } from "ng-click-outside";
 import { BookingModule } from "./booking/booking.module";
@@ -82,7 +81,7 @@ import {
 	faKey,
 	faPhone,
 	faAddressCard,
-	faBirthdayCake
+	faBirthdayCake,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons";
 import { environment } from "../environments/environment";
@@ -96,78 +95,13 @@ import { faFacebookSquare, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
 
-library.add(
-	farCircle,
-	faCircle,
-	faFilter,
-	faExternalLinkAlt,
-	faChevronRight,
-	faList,
-	faUser,
-	faShoppingCart,
-	faCartPlus,
-	faCheck,
-	faBook,
-	faCopyright,
-	faStore,
-	faGraduationCap,
-	faSignOutAlt,
-	faClipboard,
-	faCartArrowDown,
-	faSquare,
-	faCheckSquare,
-	faSync,
-	faExclamationTriangle,
-	faClock,
-	faCheckCircle,
-	faTimes,
-	faCreditCard,
-	faMoneyBillAlt,
-	faCalendarPlus,
-	faCalendar,
-	faCalendarAlt,
-	faReceipt,
-	faCircleNotch,
-	faTruck,
-	faWarehouse,
-	faArrowAltCircleDown,
-	faBookOpen,
-	faMoneyBillWave,
-	faInfoCircle,
-	faUserCog,
-	faUserCircle,
-	faBars,
-	faExclamationCircle,
-	faCoffee,
-	faHeart,
-	faCaretDown,
-	faAngleDoubleDown,
-	faAngleDoubleUp,
-	faBan,
-	faArrowAltCircleUp,
-	faArrowRight,
-	faUserPlus,
-	faSignInAlt,
-	faChevronLeft,
-	faAt,
-	faKey,
-	faFacebookSquare,
-	faGoogle,
-	faPhone,
-	faAddressCard,
-	faBirthdayCake,
-	faArrowLeft,
-	faFlagCheckered,
-	faUserFriends
-);
-
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
 		HeaderCartComponent,
 		FooterComponent,
-		LogoutComponent
+		LogoutComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -187,13 +121,80 @@ library.add(
 		FastbuyModule,
 		MatchModule,
 		ClickOutsideModule,
-		BookingModule
+		BookingModule,
 	],
 	providers: [BranchGuardService],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule {
-	constructor(private blConnectConfigService: BlConnectConfigService) {
+	constructor(
+		private blConnectConfigService: BlConnectConfigService,
+		library: FaIconLibrary
+	) {
+		library.addIcons(
+			farCircle,
+			faCircle,
+			faFilter,
+			faExternalLinkAlt,
+			faChevronRight,
+			faList,
+			faUser,
+			faShoppingCart,
+			faCartPlus,
+			faCheck,
+			faBook,
+			faCopyright,
+			faStore,
+			faGraduationCap,
+			faSignOutAlt,
+			faClipboard,
+			faCartArrowDown,
+			faSquare,
+			faCheckSquare,
+			faSync,
+			faExclamationTriangle,
+			faClock,
+			faCheckCircle,
+			faTimes,
+			faCreditCard,
+			faMoneyBillAlt,
+			faCalendarPlus,
+			faCalendar,
+			faCalendarAlt,
+			faReceipt,
+			faCircleNotch,
+			faTruck,
+			faWarehouse,
+			faArrowAltCircleDown,
+			faBookOpen,
+			faMoneyBillWave,
+			faInfoCircle,
+			faUserCog,
+			faUserCircle,
+			faBars,
+			faExclamationCircle,
+			faCoffee,
+			faHeart,
+			faCaretDown,
+			faAngleDoubleDown,
+			faAngleDoubleUp,
+			faBan,
+			faArrowAltCircleUp,
+			faArrowRight,
+			faUserPlus,
+			faSignInAlt,
+			faChevronLeft,
+			faAt,
+			faKey,
+			faFacebookSquare,
+			faGoogle,
+			faPhone,
+			faAddressCard,
+			faBirthdayCake,
+			faArrowLeft,
+			faFlagCheckered,
+			faUserFriends
+		);
 		blConnectConfigService.setConfig({ basePath: environment.apiPath });
 		LoginModule.withConfig({
 			successPath: "/i/select",
@@ -208,8 +209,8 @@ export class AppModule {
 				local: true,
 				facebook: true,
 				google: true,
-				feide: false
-			}
+				feide: false,
+			},
 		});
 	}
 }

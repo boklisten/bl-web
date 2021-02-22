@@ -22,7 +22,7 @@
 					></fa-icon>
 				</div>
 				<span
-					class="nav-link text-center "
+					class="nav-link text-center"
 					[ngClass]="{
 						'bl-nav-btn-active': deliveryMethod === 'branch'
 					}"
@@ -113,7 +113,7 @@
 		</div>
 	</div>
 
-	<div class="col-12 mt-4 text-center " *ngIf="deliveryMethod === 'branch'">
+	<div class="col-12 mt-4 text-center" *ngIf="deliveryMethod === 'branch'">
 		<span i18n="@@cartDeliveryOptionBranchDescription"
 			>Retrieve the items yourself at</span
 		>
@@ -158,7 +158,8 @@
 					<input
 						type="text"
 						class="form-control"
-						i18n-placeholder="@@cartDeliveryShipmentAddressPlaceholder"
+						i18n-placeholder="
+							@@cartDeliveryShipmentAddressPlaceholder"
 						placeholder="Address"
 						(change)="validateInput()"
 						(keyup)="validateInput()"
@@ -181,7 +182,8 @@
 						maxlength="4"
 						class="form-control"
 						(keyup)="onInputEnterClick()"
-						i18n-placeholder="@@cartDeliveryShipmentPostalCodePlaceholder"
+						i18n-placeholder="
+							@@cartDeliveryShipmentPostalCodePlaceholder"
 						placeholder="Postal code"
 						(keyup.enter)="onInputEnterClick()"
 						[(ngModel)]="toPostalCode"
@@ -192,7 +194,8 @@
 						class="form-control"
 						(change)="validateInput()"
 						(keyup)="validateInput()"
-						i18n-placeholder="@@cartDeliveryShipmentPostalCityPlaceholder"
+						i18n-placeholder="
+							@@cartDeliveryShipmentPostalCityPlaceholder"
 						placeholder="city"
 						(keyup.enter)="onInputEnterClick()"
 						[(ngModel)]="toPostalCity"

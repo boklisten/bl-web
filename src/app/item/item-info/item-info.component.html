@@ -1,16 +1,15 @@
-
 <div class="container bl-item-info-container" *ngIf="item">
 	<div class="row">
-        <div class="col-md-3 col-sm-12 mb-3">
-            <div class="bl-item-info-image">
+		<div class="col-md-3 col-sm-12 mb-3">
+			<div class="bl-item-info-image">
 				<fa-icon [icon]="'book'" size="2x"></fa-icon>
-            </div>
-        </div>
-        <div class="col-md-9 col-sm-12">
+			</div>
+		</div>
+		<div class="col-md-9 col-sm-12">
 			<div class="row mb-3 bl-item-info-main-container">
 				<div class="col-md-10 col-sm-12 col-12">
-                    <h3>{{item.title}}</h3>
-                    <p>{{item.desc}}</p>
+					<h3>{{ item.title }}</h3>
+					<p>{{ item.desc }}</p>
 				</div>
 				<div class="col-md-2 col-sm-12 col-12">
 					<app-item-add [item]="item"></app-item-add>
@@ -19,21 +18,28 @@
 			<div class="row mb-3">
 				<div class="col-md-6 col-sm-12 mb-3">
 					<div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <b i18n="@@itemInfoFullprice">Fullprice:</b> {{item.price}}
-                            </li>
-                            <li class="list-group-item">
-                                <b i18n="@@itemInfoIsbn">ISBN:</b> {{item.info.isbn}}
-                            </li>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<b i18n="@@itemInfoFullprice">Fullprice:</b>
+								{{ item.price }}
+							</li>
+							<li class="list-group-item">
+								<b i18n="@@itemInfoIsbn">ISBN:</b>
+								{{ item.info.isbn }}
+							</li>
 							<li class="list-group-item">
 								<b i18n="@@itemInfoCategories">Categories:</b>
-								<h3 class="badge badge-secondary mr-2" *ngFor="let category of item.categories">{{category}}</h3>
+								<h3
+									class="badge badge-secondary mr-2"
+									*ngFor="let category of item.categories"
+								>
+									{{ category }}
+								</h3>
 							</li>
-                        </ul>
+						</ul>
 					</div>
 				</div>
 			</div>
-        </div>
+		</div>
 	</div>
 </div>

@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
 	selector: "app-booking-select",
 	templateUrl: "./booking-select.component.html",
-	styleUrls: ["./booking-select.component.scss"]
+	styleUrls: ["./booking-select.component.scss"],
 })
 export class BookingSelectComponent implements OnInit {
 	branchId: string;
@@ -79,8 +79,8 @@ export class BookingSelectComponent implements OnInit {
 					this.pickedDate,
 					"DDMMYYYYHHMM"
 				),
-				branch: this.branchId
-			}
+				branch: this.branchId,
+			},
 		});
 	}
 
@@ -93,9 +93,7 @@ export class BookingSelectComponent implements OnInit {
 
 		this.bookings = [];
 
-		let fromDate = moment(this.pickedDate)
-			.set("hour", 0)
-			.set("minute", 0);
+		let fromDate = moment(this.pickedDate).set("hour", 0).set("minute", 0);
 
 		const toDate = moment(fromDate).add("day", 1);
 
@@ -112,7 +110,7 @@ export class BookingSelectComponent implements OnInit {
 						"DDMMYYYYHHMM"
 					) +
 					"&from=<" +
-					this.dateService.onFormat(toDate.toDate(), "DDMMYYYYHHMM")
+					this.dateService.onFormat(toDate.toDate(), "DDMMYYYYHHMM"),
 			});
 		} catch (e) {
 			this.bookings = [];

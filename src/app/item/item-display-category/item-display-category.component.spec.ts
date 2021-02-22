@@ -1,28 +1,35 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemDisplayCategoryComponent} from './item-display-category.component';
-import {Component, Directive, EventEmitter, Injectable, Input, Output} from "@angular/core";
-import {BranchItemService, ItemService} from "@boklisten/bl-connect";
-import {RouterModule} from "@angular/router";
+import { ItemDisplayCategoryComponent } from "./item-display-category.component";
+import {
+	Component,
+	Directive,
+	EventEmitter,
+	Injectable,
+	Input,
+	Output,
+} from "@angular/core";
+import { BranchItemService, ItemService } from "@boklisten/bl-connect";
+import { RouterModule } from "@angular/router";
 
-@Component({selector: 'app-item-display', template: ''})
+@Component({ selector: "app-item-display", template: "" })
 class ItemDisplayStubComponent {
 	@Input() branch;
 	@Input() compact;
 	@Input() branchItem;
 }
 
-@Component({selector: 'app-blc-spinner', template: ''})
+@Component({ selector: "app-blc-spinner", template: "" })
 class BlcSpinnerStubComponent {
 	@Input() loading: boolean;
 }
 
-@Component({selector: 'app-branch-item-category-filter', template: ''})
+@Component({ selector: "app-branch-item-category-filter", template: "" })
 class BranchItemCategoryFilterStubComponent {
 	@Input() branchItemCategories;
 	@Output() branchItemCategoriesSelect;
 
-	constructor () {
+	constructor() {
 		this.branchItemCategoriesSelect = new EventEmitter<any>();
 	}
 }
@@ -41,28 +48,22 @@ export class RouterLinkStubDirective {
 }
 */
 
-
-@Component({selector: 'ngb-alert', template: ''})
+@Component({ selector: "ngb-alert", template: "" })
 class NgbAlertStubComponent {
 	@Input() type: any;
 }
 
 @Injectable()
-class ItemStubService {
-
-}
+class ItemStubService {}
 
 @Injectable()
 class BranchItemStubService {
 	getMandxyByIds() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
-
-describe('ItemDisplayCategoryComponent', () => {
+describe("ItemDisplayCategoryComponent", () => {
 	let component: ItemDisplayCategoryComponent;
 	let fixture: ComponentFixture<ItemDisplayCategoryComponent>;
 
@@ -73,18 +74,17 @@ describe('ItemDisplayCategoryComponent', () => {
 				ItemDisplayStubComponent,
 				BranchItemCategoryFilterStubComponent,
 				NgbAlertStubComponent,
-				BlcSpinnerStubComponent
+				BlcSpinnerStubComponent,
 			],
 			providers: [
-				{provide: ItemService, useValue: new ItemStubService()},
-				{provide: BranchItemService, useValue: new BranchItemStubService()}
+				{ provide: ItemService, useValue: new ItemStubService() },
+				{
+					provide: BranchItemService,
+					useValue: new BranchItemStubService(),
+				},
 			],
-			imports: [
-				RouterModule
-			]
-
-		})
-			.compileComponents();
+			imports: [RouterModule],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -93,7 +93,7 @@ describe('ItemDisplayCategoryComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
 	selector: "app-match-recieve",
 	templateUrl: "./match-recieve.component.html",
-	styleUrls: ["./match-recieve.component.scss"]
+	styleUrls: ["./match-recieve.component.scss"],
 })
 export class MatchRecieveComponent implements OnInit {
 	public match: Match;
@@ -62,7 +62,7 @@ export class MatchRecieveComponent implements OnInit {
 
 	private filterItemsForReciever(match: Match, recieverId: string) {
 		if (!match) return [];
-		return match.items.filter(item => {
+		return match.items.filter((item) => {
 			return item.reciever === recieverId;
 		});
 	}

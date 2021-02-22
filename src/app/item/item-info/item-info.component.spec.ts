@@ -1,51 +1,44 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemInfoComponent} from './item-info.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {BranchService, ItemService} from "@boklisten/bl-connect";
-import {CartService} from "../../cart/cart.service";
+import { ItemInfoComponent } from "./item-info.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { BranchService, ItemService } from "@boklisten/bl-connect";
+import { CartService } from "../../cart/cart.service";
 
 @Injectable()
 class ActivatedRouteStub {
 	snapshot = {
 		paramMap: {
-			get: () => ''
-		}
+			get: () => "",
+		},
 	};
 }
 
 @Injectable()
 class ItemStubService {
 	getById(id: any) {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
 @Injectable()
-class CartStubService {
-
-}
+class CartStubService {}
 
 @Injectable()
-class BranchStubService {
+class BranchStubService {}
 
-}
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-@Component({selector: 'app-item-add', template: ''})
+@Component({ selector: "app-item-add", template: "" })
 class ItemAddStubComponent {
 	@Input() item: any;
 }
 
-
-describe('ItemInfoComponent', () => {
+describe("ItemInfoComponent", () => {
 	let component: ItemInfoComponent;
 	let fixture: ComponentFixture<ItemInfoComponent>;
 
@@ -54,16 +47,15 @@ describe('ItemInfoComponent', () => {
 			declarations: [
 				ItemInfoComponent,
 				FaIconStubComponent,
-				ItemAddStubComponent
+				ItemAddStubComponent,
 			],
 			providers: [
-				{provide: ActivatedRoute, useValue: new ActivatedRouteStub()},
-				{provide: ItemService, useValue: new ItemStubService()},
-				{provide: CartService, useValue: new CartStubService()},
-				{provide: BranchService, useValue: new BranchStubService()}
-			]
-		})
-			.compileComponents();
+				{ provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
+				{ provide: ItemService, useValue: new ItemStubService() },
+				{ provide: CartService, useValue: new CartStubService() },
+				{ provide: BranchService, useValue: new BranchStubService() },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -72,7 +64,7 @@ describe('ItemInfoComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

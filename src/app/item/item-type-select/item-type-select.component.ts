@@ -5,7 +5,7 @@ import {
 	CustomerItem,
 	Item,
 	OrderItem,
-	Period
+	Period,
 } from "@boklisten/bl-model";
 import { DateService } from "../../date/date.service";
 import { CartService } from "../../cart/cart.service";
@@ -17,7 +17,7 @@ import { UserCustomerItemService } from "../../user/user-customer-item/user-cust
 @Component({
 	selector: "app-item-type-select",
 	templateUrl: "./item-type-select.component.html",
-	styleUrls: ["./item-type-select.component.scss"]
+	styleUrls: ["./item-type-select.component.scss"],
 })
 export class ItemTypeSelectComponent implements OnInit {
 	@Input() item: Item;
@@ -160,14 +160,14 @@ export class ItemTypeSelectComponent implements OnInit {
 			{ action: "rent", period: "year" },
 			{ action: "buy" },
 			{ action: "extend" },
-			{ action: "buyout" }
+			{ action: "buyout" },
 		];
 
-		actions.forEach(action => {
+		actions.forEach((action) => {
 			if (this.isActionValid(action.action, action.period)) {
 				this.allowedActions.push({
 					action: action.action,
-					period: action.period
+					period: action.period,
 				});
 			}
 		});
@@ -181,7 +181,7 @@ export class ItemTypeSelectComponent implements OnInit {
 		this.typeSelect = orderItem.type + period;
 		this.selectedAction = {
 			action: orderItem.type,
-			period: period as Period
+			period: period as Period,
 		};
 	}
 

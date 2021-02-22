@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
  * Regular word = Some sentence or word
  */
 @Injectable({
-	providedIn: "root"
+	providedIn: "root",
 })
 export class UrlPathEditService {
 	constructor() {}
@@ -15,7 +15,7 @@ export class UrlPathEditService {
 	}
 
 	public urlWordsToSentence(urlWords: string[]): string[] {
-		return urlWords.map(urlWord => {
+		return urlWords.map((urlWord) => {
 			return this.urlWordToWord(urlWord);
 		});
 	}

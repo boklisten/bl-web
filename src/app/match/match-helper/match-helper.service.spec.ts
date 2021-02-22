@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { MatchHelperService } from './match-helper.service';
+import { MatchHelperService } from "./match-helper.service";
 
-describe('MatchHelperService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe("MatchHelperService", () => {
+	beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: MatchHelperService = TestBed.get(MatchHelperService);
-    expect(service).toBeTruthy();
-  });
+	it("should be created", () => {
+		const service: MatchHelperService = TestBed.inject(MatchHelperService);
+		expect(service).toBeTruthy();
+	});
 });

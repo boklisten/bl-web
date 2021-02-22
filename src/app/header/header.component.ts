@@ -23,7 +23,7 @@ export type MenuItem =
 @Component({
 	selector: "app-header",
 	templateUrl: "./header.component.html",
-	styleUrls: ["./header.component.scss"]
+	styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
 	public showMenu: boolean;

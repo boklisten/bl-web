@@ -42,15 +42,15 @@ describe("CartPaymentDibsComponent", () => {
 			providers: [
 				{
 					provide: CartPaymentService,
-					useValue: new CartPaymentStubService()
+					useValue: new CartPaymentStubService(),
 				},
 				{
 					provide: CartCheckoutService,
-					useValue: new CartCheckoutStubService()
+					useValue: new CartCheckoutStubService(),
 				},
 				{ provide: Router, useValue: new RouterStub() },
-				{ provide: StorageService, useClass: StorageStubService }
-			]
+				{ provide: StorageService, useClass: StorageStubService },
+			],
 		}).compileComponents();
 	}));
 

@@ -7,7 +7,7 @@ import { MatchStoreService } from "../match-store/match-store.service";
 @Component({
 	selector: "app-match-detail",
 	templateUrl: "./match-detail.component.html",
-	styleUrls: ["./match-detail.component.scss"]
+	styleUrls: ["./match-detail.component.scss"],
 })
 export class MatchDetailComponent implements OnInit {
 	public match: Match;
@@ -23,7 +23,7 @@ export class MatchDetailComponent implements OnInit {
 		const matchId = this.route.snapshot.paramMap.get("id");
 		this.matchStoreService
 			.setMatch(matchId)
-			.then(match => {
+			.then((match) => {
 				this.match = match;
 				this.wait = false;
 			})

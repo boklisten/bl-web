@@ -21,8 +21,8 @@ describe("CartAgreementComponent", () => {
 			declarations: [
 				CartAgreementComponent,
 				InfoAgreementStubComponent,
-				FaIconStubComponent
-			]
+				FaIconStubComponent,
+			],
 		}).compileComponents();
 	}));
 

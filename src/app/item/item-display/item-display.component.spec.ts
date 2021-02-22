@@ -1,32 +1,36 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemDisplayComponent} from './item-display.component';
-import {Component, EventEmitter, Injectable, Input, Output, Pipe, PipeTransform} from "@angular/core";
-import {Router, RouterModule} from "@angular/router";
-import {BlCommonModule} from "../../bl-common/bl-common.module";
-import {PriceService} from "../../price/price.service";
-import {UserService} from "../../user/user.service";
-import {ItemService} from "@boklisten/bl-connect";
-import {UserCustomerItemService} from "../../user/user-customer-item/user-customer-item.service";
-import {UserOrderService} from "../../user/order/user-order/user-order.service";
-import {CartService} from "../../cart/cart.service";
+import { ItemDisplayComponent } from "./item-display.component";
+import {
+	Component,
+	EventEmitter,
+	Injectable,
+	Input,
+	Output,
+	Pipe,
+	PipeTransform,
+} from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
+import { BlCommonModule } from "../../bl-common/bl-common.module";
+import { PriceService } from "../../price/price.service";
+import { UserService } from "../../user/user.service";
+import { ItemService } from "@boklisten/bl-connect";
+import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
+import { UserOrderService } from "../../user/order/user-order/user-order.service";
+import { CartService } from "../../cart/cart.service";
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
 @Injectable()
-class UserCustomerItemStubService {
-
-}
+class UserCustomerItemStubService {}
 
 @Injectable()
-class CartStubService {
+class CartStubService {}
 
-}
-
-@Component({selector: 'app-item-type-select', template: ''})
+@Component({ selector: "app-item-type-select", template: "" })
 class ItemTypeSelectStubComponent {
 	@Input() branchItem;
 	@Input() item;
@@ -40,40 +44,31 @@ class ItemTypeSelectStubComponent {
 }
 
 @Injectable()
-class PriceStubService {
-
-}
+class PriceStubService {}
 
 @Injectable()
-class UserStubService {
-}
+class UserStubService {}
 
 @Injectable()
-class UserOrderStubService {
-
-}
+class UserOrderStubService {}
 
 @Injectable()
-class ItemStubService {
-
-}
+class ItemStubService {}
 
 @Injectable()
-class RouterStub {
+class RouterStub {}
 
-}
-
-@Pipe({name: 'blcPrice'})
+@Pipe({ name: "blcPrice" })
 class BlcPriceStubPipe implements PipeTransform {
 	transform() {}
 }
 
-@Pipe({name: 'blcCustomerItemPrice'})
+@Pipe({ name: "blcCustomerItemPrice" })
 class BlcCustomerItemPriceStubPipe implements PipeTransform {
 	transform() {}
 }
 
-@Component({selector: 'app-item-add', template: ''})
+@Component({ selector: "app-item-add", template: "" })
 class ItemAddStubComponent {
 	@Input() branchItem;
 	@Input() item;
@@ -81,7 +76,7 @@ class ItemAddStubComponent {
 	@Input() type;
 }
 
-describe('ItemDisplayComponent', () => {
+describe("ItemDisplayComponent", () => {
 	let component: ItemDisplayComponent;
 	let fixture: ComponentFixture<ItemDisplayComponent>;
 
@@ -93,22 +88,22 @@ describe('ItemDisplayComponent', () => {
 				ItemTypeSelectStubComponent,
 				ItemAddStubComponent,
 				BlcPriceStubPipe,
-				BlcCustomerItemPriceStubPipe
+				BlcCustomerItemPriceStubPipe,
 			],
 			providers: [
-				{provide: Router, useValue: new RouterStub()},
-				{provide: PriceService, useValue: new PriceStubService()},
-				{provide: UserService, useValue: new UserStubService()},
-				{provide: ItemService, useValue: new ItemStubService()},
-				{provide: UserCustomerItemService, useClass: UserCustomerItemStubService},
-				{provide: UserOrderService, useClass: UserOrderStubService},
-				{provide: CartService, useClass: CartStubService}
+				{ provide: Router, useValue: new RouterStub() },
+				{ provide: PriceService, useValue: new PriceStubService() },
+				{ provide: UserService, useValue: new UserStubService() },
+				{ provide: ItemService, useValue: new ItemStubService() },
+				{
+					provide: UserCustomerItemService,
+					useClass: UserCustomerItemStubService,
+				},
+				{ provide: UserOrderService, useClass: UserOrderStubService },
+				{ provide: CartService, useClass: CartStubService },
 			],
-			imports: [
-				RouterModule
-			]
-		})
-			.compileComponents();
+			imports: [RouterModule],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -117,7 +112,7 @@ describe('ItemDisplayComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

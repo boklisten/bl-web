@@ -7,7 +7,7 @@ import { BranchStoreService } from "../../branch/branch-store.service";
 @Component({
 	selector: "app-fastbuy-select-branch",
 	templateUrl: "./fastbuy-select-branch.component.html",
-	styleUrls: ["./fastbuy-select-branch.component.scss"]
+	styleUrls: ["./fastbuy-select-branch.component.scss"],
 })
 export class FastbuySelectBranchComponent implements OnInit {
 	private region: string;
@@ -28,7 +28,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 			"Otto Treider VG3",
 			"Wang VG1",
 			"Wang VG2",
-			"Wang VG3"
+			"Wang VG3",
 		];
 	}
 
@@ -51,7 +51,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 						branchNames.push({
 							name: this.sanitizeBranchName(branch),
 							branch: branch,
-							params: { branch: branch.id }
+							params: { branch: branch.id },
 						});
 					} else if (
 						this.region == "oslo" &&
@@ -60,7 +60,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 						branchNames.push({
 							name: this.sanitizeBranchName(branch),
 							branch: branch,
-							params: { branch: branch.id }
+							params: { branch: branch.id },
 						});
 					}
 				}
@@ -89,7 +89,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 				this.wait = false;
 				this.router.navigate([
 					"fastbuy/courses",
-					{ queryParams: { branch: branch.id } }
+					{ queryParams: { branch: branch.id } },
 				]);
 			})
 			.catch(() => {

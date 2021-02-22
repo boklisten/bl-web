@@ -1,35 +1,31 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LoginModule} from '@boklisten/bl-login';
-import {WelcomeComponent} from "./welcome/welcome.component";
-import {LocationStrategy, PathLocationStrategy} from "@angular/common";
-import {LogoutComponent} from "./logout/logout.component";
-
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { LoginModule } from "@boklisten/bl-login";
+import { WelcomeComponent } from "./welcome/welcome.component";
+import { LocationStrategy, PathLocationStrategy } from "@angular/common";
+import { LogoutComponent } from "./logout/logout.component";
 
 const routes: Routes = [
 	{
-		path: '',
-		redirectTo: 'welcome',
-		pathMatch: 'full'
+		path: "",
+		redirectTo: "welcome",
+		pathMatch: "full",
 	},
 	{
-		path: 'welcome',
-		component: WelcomeComponent
+		path: "welcome",
+		component: WelcomeComponent,
 	},
 	{
-		path: 'logout',
-		component: LogoutComponent
-	}
+		path: "logout",
+		component: LogoutComponent,
+	},
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forRoot(routes)
-	],
+	imports: [RouterModule.forRoot(routes)],
 	providers: [
 		//{provide: LocationStrategy, useClass: PathLocationStrategy}
 	],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

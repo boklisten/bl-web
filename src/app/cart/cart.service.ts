@@ -6,7 +6,7 @@ import {
 	Item,
 	Order,
 	OrderItem,
-	Period
+	Period,
 } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
 import { UserService } from "../user/user.service";
@@ -146,7 +146,7 @@ export class CartService {
 			unitPrice: 0,
 			taxRate: 0,
 			taxAmount: 0,
-			info: null
+			info: null,
 		} as OrderItem;
 
 		if (orderItemType === "rent") {
@@ -154,7 +154,7 @@ export class CartService {
 				from: new Date(),
 				to: this._dateService.getPeriodDate(period),
 				numberOfPeriods: 1,
-				periodType: period
+				periodType: period,
 			};
 		} else if (orderItemType === "partly-payment") {
 			orderItem.info = {
@@ -164,7 +164,7 @@ export class CartService {
 					item.price,
 					period
 				),
-				periodType: period
+				periodType: period,
 			};
 		}
 
@@ -247,7 +247,7 @@ export class CartService {
 			to: this._dateService.getExtendDate("semester"),
 			numberOfPeriods: 1,
 			periodType: "semester",
-			customerItem: customerItem.id
+			customerItem: customerItem.id,
 		};
 
 		this.addToCart(item, branchItem, orderItem, branch, customerItem);
@@ -287,7 +287,7 @@ export class CartService {
 			branchItem: branchItem,
 			orderItem: orderItem,
 			customerItem: customerItem,
-			branch: branch
+			branch: branch,
 		});
 		this.cartChange$.next(true);
 	}
@@ -428,7 +428,7 @@ export class CartService {
 			to: this._dateService.getExtendDate("semester"),
 			numberOfPeriods: 1,
 			periodType: "semester",
-			customerItem: cartItem.customerItem.id
+			customerItem: cartItem.customerItem.id,
 		};
 		this.setPricesOnOrderItemByCustomerItem(
 			cartItem.customerItem,
@@ -448,7 +448,7 @@ export class CartService {
 			from: new Date(),
 			to: this._dateService.getPeriodDate(period),
 			numberOfPeriods: 1,
-			periodType: period
+			periodType: period,
 		};
 	}
 
@@ -461,7 +461,7 @@ export class CartService {
 			amountLeftToPay: this._priceService.calculatePartlyPaymentAmountLeftToPay(
 				cartItem.item.price,
 				period
-			)
+			),
 		};
 	}
 }

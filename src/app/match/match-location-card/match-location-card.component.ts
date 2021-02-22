@@ -4,7 +4,7 @@ import { Location, Match } from "@boklisten/bl-model";
 @Component({
 	selector: "app-match-location-card",
 	templateUrl: "./match-location-card.component.html",
-	styleUrls: ["./match-location-card.component.scss"]
+	styleUrls: ["./match-location-card.component.scss"],
 })
 export class MatchLocationCardComponent implements OnInit {
 	@Input() match: Match;

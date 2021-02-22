@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {InfoAgreementPrivacyComponent} from './info-agreement-privacy.component';
+import { InfoAgreementPrivacyComponent } from "./info-agreement-privacy.component";
 /*
 describe('InfoAgreementPrivacyComponent', () => {
 	let component: InfoAgreementPrivacyComponent;

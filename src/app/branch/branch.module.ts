@@ -24,7 +24,7 @@ import { BranchPickerComponent } from "./branch-picker/branch-picker.component";
 		BranchRoutingModule,
 		NgbModule,
 		FontAwesomeModule,
-		BlCommonModule
+		BlCommonModule,
 	],
 	declarations: [
 		BranchSelectComponent,
@@ -35,15 +35,15 @@ import { BranchPickerComponent } from "./branch-picker/branch-picker.component";
 		BranchSetComponent,
 		BranchItemCategoryFilterComponent,
 		BranchLocationComponent,
-		BranchPickerComponent
+		BranchPickerComponent,
 	],
 	exports: [
 		BranchSelectComponent,
 		BranchItemCategoryFilterComponent,
 		BranchInfoComponent,
 		BranchLocationComponent,
-		BranchPickerComponent
+		BranchPickerComponent,
 	],
-	providers: [BranchStoreService, BranchOpeningHoursService]
+	providers: [BranchStoreService, BranchOpeningHoursService],
 })
 export class BranchModule {}

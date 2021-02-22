@@ -1,27 +1,23 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {BlcSpinnerComponent} from './blc-spinner.component';
-import {Component, Input} from "@angular/core";
+import { BlcSpinnerComponent } from "./blc-spinner.component";
+import { Component, Input } from "@angular/core";
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 	@Input() spin: any;
 	@Input() size: any;
 }
 
-describe('BlcSpinnerComponent', () => {
+describe("BlcSpinnerComponent", () => {
 	let component: BlcSpinnerComponent;
 	let fixture: ComponentFixture<BlcSpinnerComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				BlcSpinnerComponent,
-				FaIconStubComponent
-			]
-		})
-			.compileComponents();
+			declarations: [BlcSpinnerComponent, FaIconStubComponent],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -30,7 +26,7 @@ describe('BlcSpinnerComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

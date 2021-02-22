@@ -6,7 +6,7 @@ import { Booking } from "@boklisten/bl-model";
 @Component({
 	selector: "app-booking-event-confirmed",
 	templateUrl: "./booking-event-confirmed.component.html",
-	styleUrls: ["./booking-event-confirmed.component.scss"]
+	styleUrls: ["./booking-event-confirmed.component.scss"],
 })
 export class BookingEventConfirmedComponent implements OnInit {
 	public booking: Booking;
@@ -21,16 +21,16 @@ export class BookingEventConfirmedComponent implements OnInit {
 
 	ngOnInit() {
 		this.wait = true;
-		this.route.params.subscribe(params => {
+		this.route.params.subscribe((params) => {
 			if (params.id) {
 				this.bookingService
 					.getById(params.id)
-					.then(booking => {
+					.then((booking) => {
 						this.booking = booking;
 						this.wait = false;
 						this.checkIfBookingIsValid();
 					})
-					.catch(e => {
+					.catch((e) => {
 						this.wait = false;
 					});
 			}

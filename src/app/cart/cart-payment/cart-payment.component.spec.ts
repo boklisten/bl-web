@@ -55,22 +55,22 @@ describe("CartPaymentComponent", () => {
 				CartPaymentComponent,
 				FaIconStubComponent,
 				CartPaymentDibsStubComponent,
-				CartSummaryStubComponent
+				CartSummaryStubComponent,
 			],
 			providers: [
 				{
 					provide: CartPaymentService,
-					useClass: CartPaymentStubService
+					useClass: CartPaymentStubService,
 				},
 				{
 					provide: CartOrderService,
-					useValue: new CartOrderStubService()
+					useValue: new CartOrderStubService(),
 				},
 				{
 					provide: CartDeliveryService,
-					useValue: new CartDeliveryStubService()
-				}
-			]
+					useValue: new CartDeliveryStubService(),
+				},
+			],
 		}).compileComponents();
 	}));
 

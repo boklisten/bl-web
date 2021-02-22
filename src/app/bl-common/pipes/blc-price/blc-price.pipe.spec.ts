@@ -1,8 +1,8 @@
-import { BlcPricePipe } from './blc-price.pipe';
+import { BlcPricePipe } from "./blc-price.pipe";
 
-describe('BlcPricePipe', () => {
-  it('create an instance', () => {
-    const pipe = new BlcPricePipe();
-    expect(pipe).toBeTruthy();
-  });
+describe("BlcPricePipe", () => {
+	it("create an instance", () => {
+		const pipe = new BlcPricePipe();
+		expect(pipe).toBeTruthy();
+	});
 });

@@ -5,7 +5,7 @@ import { BranchService } from "@boklisten/bl-connect";
 @Component({
 	selector: "app-branch-location",
 	templateUrl: "./branch-location.component.html",
-	styleUrls: ["./branch-location.component.scss"]
+	styleUrls: ["./branch-location.component.scss"],
 })
 export class BranchLocationComponent implements OnInit {
 	@Input() branchId: string;
@@ -19,11 +19,11 @@ export class BranchLocationComponent implements OnInit {
 		this.wait = true;
 		this.branchService
 			.getById(this.branchId)
-			.then(branch => {
+			.then((branch) => {
 				this.branch = branch;
 				this.wait = false;
 			})
-			.catch(e => {
+			.catch((e) => {
 				this.wait = false;
 			});
 	}

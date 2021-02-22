@@ -7,7 +7,7 @@ import { saveAs } from "file-saver";
 @Component({
 	selector: "app-order-info",
 	templateUrl: "./order-info.component.html",
-	styleUrls: ["./order-info.component.scss"]
+	styleUrls: ["./order-info.component.scss"],
 })
 export class OrderInfoComponent implements OnInit {
 	@Input() order: Order;
@@ -97,7 +97,7 @@ export class OrderInfoComponent implements OnInit {
 		}
 
 		const blob = new Blob([new Uint8Array(byteNumbers)], {
-			type: "application/pdf"
+			type: "application/pdf",
 		});
 
 		return URL.createObjectURL(blob);

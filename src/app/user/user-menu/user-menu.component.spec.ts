@@ -1,41 +1,33 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {UserMenuComponent} from './user-menu.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {Router} from "@angular/router";
-import {UserService} from "../user.service";
-
-@Injectable()
-class RouterStubService {
-
-}
+import { UserMenuComponent } from "./user-menu.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { Router } from "@angular/router";
+import { UserService } from "../user.service";
 
 @Injectable()
-class UserStubService {
+class RouterStubService {}
 
-}
+@Injectable()
+class UserStubService {}
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-describe('UserMenuComponent', () => {
+describe("UserMenuComponent", () => {
 	let component: UserMenuComponent;
 	let fixture: ComponentFixture<UserMenuComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				UserMenuComponent,
-				FaIconStubComponent
-			],
+			declarations: [UserMenuComponent, FaIconStubComponent],
 			providers: [
-				{provide: Router, useClass: RouterStubService},
-				{provide: UserService, useClass: UserStubService}
-			]
-		})
-			.compileComponents();
+				{ provide: Router, useClass: RouterStubService },
+				{ provide: UserService, useClass: UserStubService },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -44,7 +36,7 @@ describe('UserMenuComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

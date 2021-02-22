@@ -2,14 +2,14 @@ import { Injectable } from "@angular/core";
 import {
 	CustomerItemService,
 	TokenService,
-	UserDetailService
+	UserDetailService,
 } from "@boklisten/bl-connect";
 import {
 	BlApiError,
 	BlError,
 	CustomerItem,
 	UserDetail,
-	UserPermission
+	UserPermission,
 } from "@boklisten/bl-model";
 import { Subject } from "rxjs";
 import { AuthLoginService } from "@boklisten/bl-login";
@@ -216,8 +216,9 @@ export class UserService {
 							reject(blApiErr);
 						});
 				} else {
-					this.fetchCustomerItems(this._userDetail
-						.customerItems as string[])
+					this.fetchCustomerItems(
+						this._userDetail.customerItems as string[]
+					)
 						.then((customerItems: CustomerItem[]) => {
 							this._customerItems = customerItems;
 							resolve(customerItems);

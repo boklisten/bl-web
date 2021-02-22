@@ -4,7 +4,7 @@
 // To make chrome headless only run in terminal
 process.env.CHROME_BIN = require("puppeteer").executablePath();
 
-module.exports = function(config) {
+module.exports = function (config) {
 	config.set({
 		basePath: "./src/app/",
 		frameworks: ["jasmine", "@angular-devkit/build-angular"],
@@ -13,19 +13,19 @@ module.exports = function(config) {
 			require("karma-chrome-launcher"),
 			require("karma-jasmine-html-reporter"),
 			require("karma-coverage-istanbul-reporter"),
-			require("@angular-devkit/build-angular/plugins/karma")
+			require("@angular-devkit/build-angular/plugins/karma"),
 		],
 		exclude: ["node_modules/"],
 		client: {
 			clearContext: false, // leave Jasmine Spec Runner output visible in browser
 			jasmine: {
-				random: false
-			}
+				random: false,
+			},
 		},
 		coverageIstanbulReporter: {
 			dir: require("path").join(__dirname, "coverage"),
 			reports: ["html", "lcovonly"],
-			fixWebpackSourcePaths: true
+			fixWebpackSourcePaths: true,
 		},
 		/*
 		customLaunders: {
@@ -46,6 +46,6 @@ module.exports = function(config) {
 		//autoWatch: true,
 		browsers: ["ChromeHeadless"],
 		singleRun: false,
-		browserNoActivityTimeout: 70000
+		browserNoActivityTimeout: 70000,
 	});
 };

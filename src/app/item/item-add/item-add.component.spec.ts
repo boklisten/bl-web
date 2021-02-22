@@ -1,34 +1,28 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemAddComponent} from './item-add.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {CartService} from "../../cart/cart.service";
+import { ItemAddComponent } from "./item-add.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { CartService } from "../../cart/cart.service";
 
 @Injectable()
-class CartStubService {
+class CartStubService {}
 
-}
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-describe('ItemAddComponent', () => {
+describe("ItemAddComponent", () => {
 	let component: ItemAddComponent;
 	let fixture: ComponentFixture<ItemAddComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ItemAddComponent,
-				FaIconStubComponent
-			],
+			declarations: [ItemAddComponent, FaIconStubComponent],
 			providers: [
-				{provide: CartService, useValue: new CartStubService()}
-			]
-		})
-			.compileComponents();
+				{ provide: CartService, useValue: new CartStubService() },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -37,7 +31,7 @@ describe('ItemAddComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

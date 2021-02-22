@@ -32,11 +32,11 @@
 					<div class="row justify-content-between align-items-center">
 						<div class="col-md-auto col-12">
 							<div class="font-weight-bold">
-								{{booking.from | blcDate:'day'}} {{ booking.from
-								| blcDate: 'date' }} {{ booking.from |
-								blcDate:'hour'}}
+								{{ booking.from | blcDate: "day" }}
+								{{ booking.from | blcDate: "date" }}
+								{{ booking.from | blcDate: "hour" }}
 							</div>
-							<small>{{booking.from | blcDate:'until'}}</small>
+							<small>{{ booking.from | blcDate: "until" }}</small>
 							<div class="mt-2">
 								<app-branch-location
 									[branchId]="booking.branch"
@@ -47,7 +47,9 @@
 							<button
 								class="btn btn-outline-danger btn-block"
 								i18n="@@bookingYourBookingsCancelButton"
-								[routerLink]="'/bookings/' + booking.id + '/cancel'"
+								[routerLink]="
+									'/bookings/' + booking.id + '/cancel'
+								"
 							>
 								Cancel Booking
 							</button>

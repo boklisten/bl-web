@@ -6,7 +6,7 @@ import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 @Component({
 	selector: "app-cart-payment-option",
 	templateUrl: "./cart-payment-option.component.html",
-	styleUrls: ["./cart-payment-option.component.scss"]
+	styleUrls: ["./cart-payment-option.component.scss"],
 })
 export class CartPaymentOptionComponent implements OnInit {
 	selectedPaymentOption: "now" | "at-branch";

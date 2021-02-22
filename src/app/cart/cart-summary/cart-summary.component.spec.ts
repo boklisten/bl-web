@@ -51,18 +51,18 @@ describe("CartSummaryComponent", () => {
 			providers: [
 				{
 					provide: CartOrderService,
-					useValue: new CartOrderStubService()
+					useValue: new CartOrderStubService(),
 				},
 				{
 					provide: CartDeliveryService,
-					useValue: new CartDeliveryStubService()
+					useValue: new CartDeliveryStubService(),
 				},
 				{
 					provide: CartPaymentService,
-					useValue: new CartPaymentStubService()
-				}
+					useValue: new CartPaymentStubService(),
+				},
 			],
-			imports: [BlCommonModule]
+			imports: [BlCommonModule],
 		}).compileComponents();
 	}));
 

@@ -4,7 +4,7 @@ import { DateService } from "../../../date/date.service";
 type DateFormat = "date" | "timestamp" | "hour" | "until" | "day";
 
 @Pipe({
-	name: "blcDate"
+	name: "blcDate",
 })
 export class BlcDatePipe implements PipeTransform {
 	constructor(private dateService: DateService) {}

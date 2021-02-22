@@ -1,16 +1,11 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import {
-	Branch,
-	CustomerItem,
-	Item,
-	OrderItemType
-} from "@boklisten/bl-model";
+import { Branch, CustomerItem, Item, OrderItemType } from "@boklisten/bl-model";
 import { BranchStoreService } from "../../../branch/branch-store.service";
 import { PriceService } from "../../../price/price.service";
 import { ItemService } from "@boklisten/bl-connect";
 
 @Pipe({
-	name: "blcCustomerItemPrice"
+	name: "blcCustomerItemPrice",
 })
 export class BlcCustomerItemPricePipe implements PipeTransform {
 	constructor(
@@ -36,14 +31,14 @@ export class BlcCustomerItemPricePipe implements PipeTransform {
 							type
 						);
 					})
-					.catch(getItemError => {
+					.catch((getItemError) => {
 						throw new Error(
 							"BlcCustomerItemPricePipe: could not get item: " +
 								getItemError
 						);
 					});
 			})
-			.catch(getBranchError => {
+			.catch((getBranchError) => {
 				throw new Error(
 					"BlcCustomerItemPricePipe: could not get branch: " +
 						getBranchError

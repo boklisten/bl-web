@@ -7,6 +7,6 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 @NgModule({
 	declarations: [DatePickerComponent],
 	imports: [CommonModule, FormsModule, FontAwesomeModule],
-	exports: [DatePickerComponent]
+	exports: [DatePickerComponent],
 })
 export class DateModule {}

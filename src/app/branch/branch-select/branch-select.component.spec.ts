@@ -1,20 +1,19 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {BranchSelectComponent} from './branch-select.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {Component, Injectable, Input} from "@angular/core";
-import {BranchService} from "@boklisten/bl-connect";
-import {BranchStoreService} from "../branch-store.service";
-import {Subject} from "rxjs/internal/Subject";
+import { BranchSelectComponent } from "./branch-select.component";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Component, Injectable, Input } from "@angular/core";
+import { BranchService } from "@boklisten/bl-connect";
+import { BranchStoreService } from "../branch-store.service";
+import { Subject } from "rxjs/internal/Subject";
 
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 	@Input() size: any;
 }
 
-@Component({selector: 'app-blc-spinner', template: ''})
+@Component({ selector: "app-blc-spinner", template: "" })
 class BlcSpinnerStubComponent {
 	@Input() loading: boolean;
 }
@@ -22,29 +21,23 @@ class BlcSpinnerStubComponent {
 @Injectable()
 class BranchStubService {
 	get() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
 @Injectable()
 class BranchStoreStubService {
-	redirectUrl = '';
-	setCurrentBranch(branch: any) {
-
-	}
+	redirectUrl = "";
+	setCurrentBranch(branch: any) {}
 
 	onBranchChange() {
 		return new Subject().asObservable();
 	}
 
-	getBranch() {
-
-	}
+	getBranch() {}
 }
 
-describe('BranchSelectComponent', () => {
+describe("BranchSelectComponent", () => {
 	let component: BranchSelectComponent;
 	let fixture: ComponentFixture<BranchSelectComponent>;
 
@@ -53,17 +46,17 @@ describe('BranchSelectComponent', () => {
 			declarations: [
 				BranchSelectComponent,
 				FaIconStubComponent,
-				BlcSpinnerStubComponent
+				BlcSpinnerStubComponent,
 			],
-			imports: [
-				RouterTestingModule,
-			],
+			imports: [RouterTestingModule],
 			providers: [
-				{provide: BranchService, useClass: BranchStubService},
-				{provide: BranchStoreService, useClass: BranchStoreStubService}
-			]
-		})
-			.compileComponents();
+				{ provide: BranchService, useClass: BranchStubService },
+				{
+					provide: BranchStoreService,
+					useClass: BranchStoreStubService,
+				},
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -72,7 +65,7 @@ describe('BranchSelectComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

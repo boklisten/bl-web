@@ -4,7 +4,7 @@ import {
 	CustomerItem,
 	Item,
 	OrderItem,
-	Period
+	Period,
 } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
 import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
@@ -83,7 +83,7 @@ export class PriceService {
 			amount: this.calculateOrderItemAmount(unitPrice, taxAmount),
 			unitPrice: this.sanitize(unitPrice),
 			taxRate: taxRate,
-			taxAmount: taxAmount
+			taxAmount: taxAmount,
 		};
 	}
 
@@ -162,9 +162,7 @@ export class PriceService {
 		}
 
 		throw new Error(
-			`could not find extend price for item "${
-				item.id
-			}" for period "${periodType}"`
+			`could not find extend price for item "${item.id}" for period "${periodType}"`
 		);
 	}
 

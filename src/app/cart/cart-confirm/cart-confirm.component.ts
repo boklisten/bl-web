@@ -8,7 +8,7 @@ import { CartConfirmService } from "./cart-confirm.service";
 @Component({
 	selector: "app-cart-confirm",
 	templateUrl: "./cart-confirm.component.html",
-	styleUrls: ["./cart-confirm.component.scss"]
+	styleUrls: ["./cart-confirm.component.scss"],
 })
 export class CartConfirmComponent implements OnInit {
 	public dibsCheckoutOptions: {
@@ -38,18 +38,18 @@ export class CartConfirmComponent implements OnInit {
 
 		this._cartConfirmService
 			.getOrderIdByPaymentId(paymentId)
-			.then(orderId => {
+			.then((orderId) => {
 				this._cartConfirmService
 					.confirm(orderId)
 					.then(() => {
 						this._router.navigate(["/u/order"]);
 					})
-					.catch(e => {
+					.catch((e) => {
 						this.createDibsElement();
 						this.createDibsPayment(paymentId, orderId);
 					});
 			})
-			.catch(e => {
+			.catch((e) => {
 				console.log("failed to get order by paymentId!", e);
 				this.setNotFoundError();
 			});
@@ -65,7 +65,7 @@ export class CartConfirmComponent implements OnInit {
 		this.dibsCheckoutOptions = {
 			checkoutKey: environment.dibs.checkoutKey,
 			paymentId: paymentId,
-			language: environment.dibs.language
+			language: environment.dibs.language,
 		};
 
 		const checkout = new Dibs.Checkout(this.dibsCheckoutOptions);
@@ -74,11 +74,11 @@ export class CartConfirmComponent implements OnInit {
 		const router = this._router;
 		const removeStoredIds = this.removeIds;
 
-		checkout.on("payment-initialized", function(response) {
+		checkout.on("payment-initialized", function (response) {
 			checkout.send("payment-order-finalized", true);
 		});
 
-		checkout.on("payment-completed", function(response) {
+		checkout.on("payment-completed", function (response) {
 			cartCheckoutService
 				.placeOrder(orderId)
 				.then(() => {

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 @Component({
 	selector: "app-info-agreement",
 	templateUrl: "./info-agreement.component.html",
-	styleUrls: ["./info-agreement.component.scss"]
+	styleUrls: ["./info-agreement.component.scss"],
 })
 export class InfoAgreementComponent implements OnInit {
 	public selectedTab = "conditions";

@@ -5,7 +5,7 @@ import {
 	BlApiNotFoundError,
 	Branch,
 	BranchItem,
-	Item
+	Item,
 } from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
 import { BranchItemService, ItemService } from "@boklisten/bl-connect";
@@ -13,7 +13,7 @@ import { BranchItemService, ItemService } from "@boklisten/bl-connect";
 @Component({
 	selector: "app-item-display-category",
 	templateUrl: "./item-display-category.component.html",
-	styleUrls: ["./item-display-category.component.scss"]
+	styleUrls: ["./item-display-category.component.scss"],
 })
 export class ItemDisplayCategoryComponent implements OnInit {
 	@Input() branch: Branch;
@@ -80,7 +80,7 @@ export class ItemDisplayCategoryComponent implements OnInit {
 						this.noItemsWarning = true;
 					}
 				})
-				.catch(getBranchItemError => {
+				.catch((getBranchItemError) => {
 					console.log(
 						"ItemDisplayCategoryComponent: could not get branch items",
 						getBranchItemError
@@ -127,8 +127,8 @@ export class ItemDisplayCategoryComponent implements OnInit {
 		this._router.navigate(["/fastbuy/courses"], {
 			queryParams: {
 				branch: this.branch.id,
-				category: this.getSelectedCategories()
-			}
+				category: this.getSelectedCategories(),
+			},
 		});
 	}
 	private getSelectedCategories() {
@@ -143,7 +143,7 @@ export class ItemDisplayCategoryComponent implements OnInit {
 		if (!branchItem.categories || branchItem.categories.length <= 0) {
 			this.branchItemCategories.push({
 				name: "",
-				branchItems: [branchItem]
+				branchItems: [branchItem],
 			});
 			return;
 		}
@@ -161,7 +161,7 @@ export class ItemDisplayCategoryComponent implements OnInit {
 			if (!foundCategory) {
 				this.branchItemCategories.push({
 					name: category,
-					branchItems: [branchItem]
+					branchItems: [branchItem],
 				});
 				this.branchItemCategoryNames.push(category);
 			}

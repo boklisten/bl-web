@@ -36,7 +36,7 @@ export class CartOrderService {
 					this._currentOrder = createdOrder;
 					resolve(true);
 				})
-				.catch(createOrderError => {
+				.catch((createOrderError) => {
 					reject(
 						new Error(
 							"could not start checkout: failed to add order" +
@@ -94,11 +94,11 @@ export class CartOrderService {
 		return new Promise((resolve, reject) => {
 			this._orderService
 				.update(this._currentOrder.id, { delivery: deliveryId })
-				.then(updatedOrder => {
+				.then((updatedOrder) => {
 					this._currentOrder = updatedOrder;
 					resolve(true);
 				})
-				.catch(err => {
+				.catch((err) => {
 					reject(err);
 				});
 		});

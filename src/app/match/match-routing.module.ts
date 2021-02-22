@@ -13,29 +13,29 @@ const routes: Routes = [
 	{
 		path: "m",
 		pathMatch: "full",
-		redirectTo: "match/select"
+		redirectTo: "match/select",
 	},
 	{
 		path: "match",
 		pathMatch: "full",
-		redirectTo: "match/select"
+		redirectTo: "match/select",
 	},
 	{
 		path: "match/select",
 		component: MatchSelectComponent,
-		canActivate: [UserGuardService]
+		canActivate: [UserGuardService],
 	},
 	{
 		path: "match/next-steps",
-		component: MatchInfoNextStepComponent
+		component: MatchInfoNextStepComponent,
 	},
 	{
 		path: "match/failure",
-		component: MatchFailureComponent
+		component: MatchFailureComponent,
 	},
 	{
 		path: "match/success",
-		component: MatchSuccessComponent
+		component: MatchSuccessComponent,
 	},
 	{
 		path: "match/:id",
@@ -43,18 +43,18 @@ const routes: Routes = [
 		children: [
 			{
 				path: "d",
-				component: MatchDeliverComponent
+				component: MatchDeliverComponent,
 			},
 			{
 				path: "r",
-				component: MatchRecieveComponent
-			}
-		]
-	}
+				component: MatchRecieveComponent,
+			},
+		],
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class MatchRoutingModule {}

@@ -1,26 +1,19 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemComponent} from './item.component';
-import {Component} from "@angular/core";
+import { ItemComponent } from "./item.component";
+import { Component } from "@angular/core";
 
+@Component({ selector: "router-outlet", template: "" })
+class RouterOutletStubComponent {}
 
-@Component({selector: 'router-outlet', template: ''})
-class RouterOutletStubComponent {
-
-}
-
-describe('ItemComponent', () => {
+describe("ItemComponent", () => {
 	let component: ItemComponent;
 	let fixture: ComponentFixture<ItemComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				ItemComponent,
-				RouterOutletStubComponent
-			]
-		})
-			.compileComponents();
+			declarations: [ItemComponent, RouterOutletStubComponent],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -29,7 +22,7 @@ describe('ItemComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

@@ -1,29 +1,22 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {CartConfirmComponent} from './cart-confirm.component';
-import {Injectable} from "@angular/core";
-import {CartCheckoutService} from "../cart-checkout/cart-checkout.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {StorageService} from "@boklisten/bl-connect";
-import {Subject} from "rxjs/internal/Subject";
-
+import { CartConfirmComponent } from "./cart-confirm.component";
+import { Injectable } from "@angular/core";
+import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { StorageService } from "@boklisten/bl-connect";
+import { Subject } from "rxjs/internal/Subject";
 
 @Injectable()
-class CartCheckoutStubService {
-
-}
+class CartCheckoutStubService {}
 
 @Injectable()
 class RouterStub {
-	navigateByUrl(url: string) {
-
-	}
+	navigateByUrl(url: string) {}
 }
 
 @Injectable()
-class StorageStubService {
-
-}
+class StorageStubService {}
 
 @Injectable()
 class ActivatedRouteStub {
@@ -32,10 +25,9 @@ class ActivatedRouteStub {
 	constructor() {
 		this.queryParams = new Subject<any>();
 	}
-
 }
 
-describe('CartConfirmComponent', () => {
+describe("CartConfirmComponent", () => {
 	let component: CartConfirmComponent;
 	let fixture: ComponentFixture<CartConfirmComponent>;
 
@@ -43,13 +35,15 @@ describe('CartConfirmComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [CartConfirmComponent],
 			providers: [
-				{provide: CartCheckoutService, useClass: CartCheckoutStubService},
-				{provide: Router, useClass: RouterStub},
-				{provide: StorageService, useClass: StorageStubService},
-				{provide: ActivatedRoute, useClass: ActivatedRouteStub}
-			]
-		})
-			.compileComponents();
+				{
+					provide: CartCheckoutService,
+					useClass: CartCheckoutStubService,
+				},
+				{ provide: Router, useClass: RouterStub },
+				{ provide: StorageService, useClass: StorageStubService },
+				{ provide: ActivatedRoute, useClass: ActivatedRouteStub },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -58,7 +52,7 @@ describe('CartConfirmComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

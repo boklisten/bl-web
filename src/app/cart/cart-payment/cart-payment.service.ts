@@ -5,7 +5,7 @@ import {
 	Order,
 	Payment,
 	PaymentMethod,
-	Delivery
+	Delivery,
 } from "@boklisten/bl-model";
 import { Subject } from "rxjs";
 import { CartOrderService } from "../cart-order/cart-order.service";
@@ -41,7 +41,7 @@ export class CartPaymentService {
 
 		try {
 			payments = await this._paymentService.get({
-				query: "?info.paymentId=" + paymentId
+				query: "?info.paymentId=" + paymentId,
 			});
 		} catch (e) {
 			console.log("could not get payment by paymentId", paymentId, e);
@@ -63,7 +63,7 @@ export class CartPaymentService {
 				this._currentOrder = this._cartOrderService.getOrder();
 				this._currentDelivery = delivery;
 				this.createPayment()
-					.then(payment => {
+					.then((payment) => {
 						this.setPayment(payment);
 					})
 					.catch(() => {});
@@ -127,7 +127,7 @@ export class CartPaymentService {
 			info: {},
 			taxAmount: this.calculateTaxAmount(order, delivery),
 			customer: order.customer,
-			branch: order.branch
+			branch: order.branch,
 		} as Payment;
 	}
 

@@ -1,32 +1,36 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import {CartRoutingModule} from './cart-routing.module';
-import {CartComponent} from "./cart.component";
-import {CartService} from "./cart.service";
-import {FormsModule} from "@angular/forms";
-import {NgbModule, NgbModalModule, NgbProgressbarModule} from "@ng-bootstrap/ng-bootstrap";
-import {DateService} from "../date/date.service";
-import {PriceService} from "../price/price.service";
-import {ItemModule} from "../item/item.module";
-import { CartPaymentComponent } from './cart-payment/cart-payment.component';
-import {CartPaymentService} from "./cart-payment/cart-payment.service";
-import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
-import { CartPaymentDibsComponent } from './cart-payment/cart-payment-dibs/cart-payment-dibs.component';
-import {CartDeliveryService} from "./cart-delivery/cart-delivery.service";
-import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
-import {CartCheckoutService} from "./cart-checkout/cart-checkout.service";
-import { CartEmptyComponent } from './cart-empty/cart-empty.component';
-import {CartOrderService} from "./cart-order/cart-order.service";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {BlCommonModule} from "../bl-common/bl-common.module";
-import { CartSummaryComponent } from './cart-summary/cart-summary.component';
-import { CartAgreementComponent } from './cart-agreement/cart-agreement.component';
-import {InfoModule} from "../info/info.module";
-import { CartConfirmComponent } from './cart-confirm/cart-confirm.component';
-import { CartOrderCheckoutComponent } from './cart-order-checkout/cart-order-checkout.component';
-import { CartPaymentOptionComponent } from './cart-payment-option/cart-payment-option.component';
-import { CartPartlyPaymentInfoComponent } from './cart-partly-payment-info/cart-partly-payment-info.component';
+import { CartRoutingModule } from "./cart-routing.module";
+import { CartComponent } from "./cart.component";
+import { CartService } from "./cart.service";
+import { FormsModule } from "@angular/forms";
+import {
+	NgbModule,
+	NgbModalModule,
+	NgbProgressbarModule,
+} from "@ng-bootstrap/ng-bootstrap";
+import { DateService } from "../date/date.service";
+import { PriceService } from "../price/price.service";
+import { ItemModule } from "../item/item.module";
+import { CartPaymentComponent } from "./cart-payment/cart-payment.component";
+import { CartPaymentService } from "./cart-payment/cart-payment.service";
+import { CartDeliveryComponent } from "./cart-delivery/cart-delivery.component";
+import { CartPaymentDibsComponent } from "./cart-payment/cart-payment-dibs/cart-payment-dibs.component";
+import { CartDeliveryService } from "./cart-delivery/cart-delivery.service";
+import { CartCheckoutComponent } from "./cart-checkout/cart-checkout.component";
+import { CartCheckoutService } from "./cart-checkout/cart-checkout.service";
+import { CartEmptyComponent } from "./cart-empty/cart-empty.component";
+import { CartOrderService } from "./cart-order/cart-order.service";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { BlCommonModule } from "../bl-common/bl-common.module";
+import { CartSummaryComponent } from "./cart-summary/cart-summary.component";
+import { CartAgreementComponent } from "./cart-agreement/cart-agreement.component";
+import { InfoModule } from "../info/info.module";
+import { CartConfirmComponent } from "./cart-confirm/cart-confirm.component";
+import { CartOrderCheckoutComponent } from "./cart-order-checkout/cart-order-checkout.component";
+import { CartPaymentOptionComponent } from "./cart-payment-option/cart-payment-option.component";
+import { CartPartlyPaymentInfoComponent } from "./cart-partly-payment-info/cart-partly-payment-info.component";
 
 @NgModule({
 	imports: [
@@ -36,10 +40,10 @@ import { CartPartlyPaymentInfoComponent } from './cart-partly-payment-info/cart-
 		CartRoutingModule,
 		ItemModule,
 		FontAwesomeModule,
-    BlCommonModule,
-    NgbProgressbarModule,
-    InfoModule,
-    NgbModalModule
+		BlCommonModule,
+		NgbProgressbarModule,
+		InfoModule,
+		NgbModalModule,
 	],
 	declarations: [
 		CartComponent,
@@ -53,7 +57,7 @@ import { CartPartlyPaymentInfoComponent } from './cart-partly-payment-info/cart-
 		CartConfirmComponent,
 		CartOrderCheckoutComponent,
 		CartPaymentOptionComponent,
-		CartPartlyPaymentInfoComponent
+		CartPartlyPaymentInfoComponent,
 	],
 	providers: [
 		CartService,
@@ -62,8 +66,7 @@ import { CartPartlyPaymentInfoComponent } from './cart-partly-payment-info/cart-
 		PriceService,
 		CartPaymentService,
 		CartDeliveryService,
-		CartCheckoutService
-	]
+		CartCheckoutService,
+	],
 })
-export class CartModule {
-}
+export class CartModule {}

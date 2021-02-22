@@ -15,7 +15,7 @@ describe("CartEmptyComponent", () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [CartEmptyComponent, FaIconStubComponent]
+			declarations: [CartEmptyComponent, FaIconStubComponent],
 		}).compileComponents();
 	}));
 

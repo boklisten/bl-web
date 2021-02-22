@@ -33,8 +33,8 @@ describe("HeaderCartComponent", () => {
 			declarations: [HeaderCartComponent, FaIconStubComponent],
 			providers: [
 				{ provide: CartService, useValue: new CartStubService() },
-				{ provide: Location, useValue: new LocationStub() }
-			]
+				{ provide: Location, useValue: new LocationStub() },
+			],
 		}).compileComponents();
 	}));
 

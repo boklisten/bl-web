@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 @Component({
 	selector: "app-match-info-next-step",
 	templateUrl: "./match-info-next-step.component.html",
-	styleUrls: ["./match-info-next-step.component.scss"]
+	styleUrls: ["./match-info-next-step.component.scss"],
 })
 export class MatchInfoNextStepComponent implements OnInit {
 	public match: Match;

@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 @Component({
 	selector: "app-order-delivery-info",
 	templateUrl: "./order-delivery-info.component.html",
-	styleUrls: ["./order-delivery-info.component.scss"]
+	styleUrls: ["./order-delivery-info.component.scss"],
 })
 export class OrderDeliveryInfoComponent implements OnInit {
 	@Input() order: Order;
@@ -24,7 +24,7 @@ export class OrderDeliveryInfoComponent implements OnInit {
 				.then((delivery: Delivery) => {
 					this.delivery = delivery;
 				})
-				.catch(getDeliveryError => {
+				.catch((getDeliveryError) => {
 					console.log(
 						"orderDeliveryInfoComponent: could not get delivery",
 						getDeliveryError

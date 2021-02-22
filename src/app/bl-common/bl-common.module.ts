@@ -20,7 +20,7 @@ import { BlcGoBackDirective } from "./directives/blc-go-back.directive";
 		BlcCustomerItemPricePipe,
 		BlcCustomerItemDatePipe,
 		BlcSpinnerComponent,
-		BlcGoBackDirective
+		BlcGoBackDirective,
 	],
 	exports: [
 		BlcPricePipe,
@@ -30,7 +30,7 @@ import { BlcGoBackDirective } from "./directives/blc-go-back.directive";
 		BlcCustomerItemPricePipe,
 		BlcCustomerItemDatePipe,
 		BlcSpinnerComponent,
-		BlcGoBackDirective
-	]
+		BlcGoBackDirective,
+	],
 })
 export class BlCommonModule {}

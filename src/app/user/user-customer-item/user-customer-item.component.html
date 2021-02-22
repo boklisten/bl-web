@@ -34,7 +34,10 @@
 					<div class="col-auto">
 						<fa-icon [icon]="'check'" class="mr-2"></fa-icon>
 						<span
-							i18n="a happy message that tells the customer they have returned the item @@userCustomerItemReturnedMessage"
+							i18n="
+								a happy message that tells the customer they
+								have returned the item
+								@@userCustomerItemReturnedMessage"
 							>This item has been returned, thanks!</span
 						>
 					</div>
@@ -90,7 +93,9 @@
 				<div class="row justify-content-between">
 					<div
 						class="col-auto text-secondary font-weight-bold"
-						i18n="customer item handed out at time @@customerItemHandedOut"
+						i18n="
+							customer item handed out at time
+							@@customerItemHandedOut"
 					>
 						Handed out
 					</div>
@@ -175,8 +180,11 @@
 						class="col-auto text-secondary"
 						*ngIf="customerItem.returnInfo"
 					>
-						{{ customerItem.returnInfo.returnedToId | blcBranch |
-						async }}
+						{{
+							customerItem.returnInfo.returnedToId
+								| blcBranch
+								| async
+						}}
 					</div>
 				</div>
 				<div
@@ -200,8 +208,11 @@
 									customerItem.handoutInfo.handoutById
 							}}"
 						>
-							{{ customerItem.handoutInfo.handoutById | blcBranch
-							| async }}
+							{{
+								customerItem.handoutInfo.handoutById
+									| blcBranch
+									| async
+							}}
 						</span>
 					</div>
 				</div>
@@ -222,7 +233,10 @@
 							class="mr-2"
 						></fa-icon>
 						<span
-							i18n="if the user has set another branch than the item was rented on@@userCustomerItemNotOnCorrectBranch"
+							i18n="
+								if the user has set another branch than the item
+								was rented
+								on@@userCustomerItemNotOnCorrectBranch"
 							>This item is not from the current set branch. You
 							can not do actions on this item unless you have the
 							correct branch set.</span
@@ -279,15 +293,24 @@
 									>extend to</span
 								>
 								<span class="font-weight-bold">
-									{{ customerItem | blcCustomerItemDate :
-									"extend" : "semester" | blcDate }}
+									{{
+										customerItem
+											| blcCustomerItemDate
+												: "extend"
+												: "semester"
+											| blcDate
+									}}
 								</span>
 							</div>
 							<div
 								class="col-auto text-secondary font-weight-bold"
 							>
-								{{ customerItem | blcCustomerItemPrice: "extend"
-								| async | blcPrice }}
+								{{
+									customerItem
+										| blcCustomerItemPrice: "extend"
+										| async
+										| blcPrice
+								}}
 							</div>
 						</div>
 					</div>
@@ -324,8 +347,12 @@
 							*ngIf="buyout"
 						>
 							<div class="col-auto text-secondary">
-								{{ customerItem | blcCustomerItemPrice: "buyout"
-								| async | blcPrice }}
+								{{
+									customerItem
+										| blcCustomerItemPrice: "buyout"
+										| async
+										| blcPrice
+								}}
 							</div>
 						</div>
 					</div>

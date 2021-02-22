@@ -41,14 +41,14 @@
 					<div>
 						<div>
 							<small
-								>{{booking.from | blcDate:'day'}} {{booking.from
-								| blcDate:'date'}}</small
+								>{{ booking.from | blcDate: "day" }}
+								{{ booking.from | blcDate: "date" }}</small
 							>
 						</div>
 						<div>
-							<span class="font-weight-bold"
-								>{{booking.from | blcDate:'hour'}}</span
-							>
+							<span class="font-weight-bold">{{
+								booking.from | blcDate: "hour"
+							}}</span>
 
 							<small>
 								<span
@@ -67,7 +67,7 @@
 						</div>
 						<div>
 							<small>
-								<span class="mr-2">{{branch.name}}</span>
+								<span class="mr-2">{{ branch.name }}</span>
 							</small>
 						</div>
 					</div>

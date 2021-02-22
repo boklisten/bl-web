@@ -1,27 +1,23 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {HeaderEmailNotConfirmedAlertComponent} from './header-email-not-confirmed-alert.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {UserService} from "../../user/user.service";
-import {AuthLoginService} from "@boklisten/bl-login";
-import {Subject} from "rxjs/internal/Subject";
+import { HeaderEmailNotConfirmedAlertComponent } from "./header-email-not-confirmed-alert.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { UserService } from "../../user/user.service";
+import { AuthLoginService } from "@boklisten/bl-login";
+import { Subject } from "rxjs/internal/Subject";
 
 @Injectable()
 class UserStubService {
-
 	onUserDetailChange() {
 		return new Subject();
 	}
 
 	getUserDetail() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
-
 }
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
@@ -41,9 +37,7 @@ class AuthLoginStubService {
 	}
 }
 
-
-
-describe('HeaderEmailNotConfirmedAlertComponent', () => {
+describe("HeaderEmailNotConfirmedAlertComponent", () => {
 	let component: HeaderEmailNotConfirmedAlertComponent;
 	let fixture: ComponentFixture<HeaderEmailNotConfirmedAlertComponent>;
 
@@ -51,23 +45,24 @@ describe('HeaderEmailNotConfirmedAlertComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				HeaderEmailNotConfirmedAlertComponent,
-				FaIconStubComponent
+				FaIconStubComponent,
 			],
 			providers: [
-				{provide: UserService, useClass: UserStubService},
-				{provide: AuthLoginService, useClass: AuthLoginStubService}
-			]
-		})
-			.compileComponents();
+				{ provide: UserService, useClass: UserStubService },
+				{ provide: AuthLoginService, useClass: AuthLoginStubService },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(HeaderEmailNotConfirmedAlertComponent);
+		fixture = TestBed.createComponent(
+			HeaderEmailNotConfirmedAlertComponent
+		);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

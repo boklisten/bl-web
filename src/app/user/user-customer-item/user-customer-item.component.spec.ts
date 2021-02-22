@@ -1,87 +1,57 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {UserCustomerItemComponent} from './user-customer-item.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {BranchService, ItemService} from "@boklisten/bl-connect";
-import {Router} from "@angular/router";
-import {CartService} from "../../cart/cart.service";
-import {DateService} from "../../date/date.service";
-import {BranchStoreService} from "../../branch/branch-store.service";
-import {UserCustomerItemService} from "./user-customer-item.service";
-
-@Injectable()
-class ItemStubService {
-
-}
+import { UserCustomerItemComponent } from "./user-customer-item.component";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Component, Injectable, Input, Pipe } from "@angular/core";
+import { BranchService, ItemService } from "@boklisten/bl-connect";
+import { Router } from "@angular/router";
+import { CartService } from "../../cart/cart.service";
+import { DateService } from "../../date/date.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
+import { UserCustomerItemService } from "./user-customer-item.service";
 
 @Injectable()
-class RouterStub {
-
-}
+class ItemStubService {}
 
 @Injectable()
-class BranchStubService {
-
-}
+class RouterStub {}
 
 @Injectable()
-class CartStubService {
-
-}
+class BranchStubService {}
 
 @Injectable()
-class DateStubService {
-
-}
+class CartStubService {}
 
 @Injectable()
-class BranchStoreStubService {
-
-}
+class DateStubService {}
 
 @Injectable()
-class UserCustomerItemStubService {
+class BranchStoreStubService {}
 
-}
+@Injectable()
+class UserCustomerItemStubService {}
 
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon: any;
 }
 
-@Pipe({name: 'blcDate'})
-class BlcDateStubPipe {
+@Pipe({ name: "blcDate" })
+class BlcDateStubPipe {}
 
-}
+@Pipe({ name: "blcPrice" })
+class BlcPriceStubPipe {}
 
-@Pipe({name: 'blcPrice'})
-class BlcPriceStubPipe {
+@Pipe({ name: "blcBranch" })
+class BlcBranchStubPipe {}
 
-}
+@Pipe({ name: "blcCustomerItemDate" })
+class BlcCustomerItemDateStubPipe {}
 
-@Pipe({name: 'blcBranch'})
-class BlcBranchStubPipe {
+@Pipe({ name: "blcCustomerItemPrice" })
+class BlcCustomerItemPriceStubPipe {}
 
-}
-
-
-@Pipe({name: 'blcCustomerItemDate'})
-class BlcCustomerItemDateStubPipe {
-
-}
-
-@Pipe({name: 'blcCustomerItemPrice'})
-class BlcCustomerItemPriceStubPipe {
-
-}
-
-
-
-
-
-
-describe('UserCustomerItemComponent', () => {
+describe("UserCustomerItemComponent", () => {
 	let component: UserCustomerItemComponent;
 	let fixture: ComponentFixture<UserCustomerItemComponent>;
 
@@ -94,22 +64,25 @@ describe('UserCustomerItemComponent', () => {
 				BlcPriceStubPipe,
 				BlcBranchStubPipe,
 				BlcCustomerItemDateStubPipe,
-				BlcCustomerItemPriceStubPipe
+				BlcCustomerItemPriceStubPipe,
 			],
-			imports: [
-				RouterTestingModule
-			],
+			imports: [RouterTestingModule],
 			providers: [
-				{provide: ItemService, useValue: new ItemStubService()},
-				{provide: Router, useValue: RouterStub},
-				{provide: BranchService, useValue: new BranchStubService()},
-				{provide: CartService, useValue: new CartStubService()},
-				{provide: DateService, useValue: new DateStubService()},
-				{provide: BranchStoreService, useValue: new BranchStubService()},
-				{provide: UserCustomerItemService, useValue: new UserCustomerItemStubService()}
-			]
-		})
-			.compileComponents();
+				{ provide: ItemService, useValue: new ItemStubService() },
+				{ provide: Router, useValue: RouterStub },
+				{ provide: BranchService, useValue: new BranchStubService() },
+				{ provide: CartService, useValue: new CartStubService() },
+				{ provide: DateService, useValue: new DateStubService() },
+				{
+					provide: BranchStoreService,
+					useValue: new BranchStubService(),
+				},
+				{
+					provide: UserCustomerItemService,
+					useValue: new UserCustomerItemStubService(),
+				},
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -118,7 +91,7 @@ describe('UserCustomerItemComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

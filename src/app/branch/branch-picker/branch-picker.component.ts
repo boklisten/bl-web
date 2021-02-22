@@ -5,7 +5,7 @@ import {
 	Output,
 	SimpleChanges,
 	EventEmitter,
-	OnChanges
+	OnChanges,
 } from "@angular/core";
 import { Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../../branch/branch-store.service";
@@ -14,7 +14,7 @@ import { BranchService } from "@boklisten/bl-connect";
 @Component({
 	selector: "app-branch-picker",
 	templateUrl: "./branch-picker.component.html",
-	styleUrls: ["./branch-picker.component.scss"]
+	styleUrls: ["./branch-picker.component.scss"],
 })
 export class BranchPickerComponent implements OnInit, OnChanges {
 	@Input() onlyBookable: boolean;
@@ -34,12 +34,12 @@ export class BranchPickerComponent implements OnInit, OnChanges {
 		this.picked = new EventEmitter<Branch>();
 		this.regions = [
 			"Bergen",
-//			"Drammen",
+			//			"Drammen",
 			//"Fredrikstad",
 			//"Lillestrøm",
 			"Oslo",
-//			"Stavanger",
-//			"Trondheim"
+			//			"Stavanger",
+			//			"Trondheim"
 		];
 	}
 
@@ -51,14 +51,14 @@ export class BranchPickerComponent implements OnInit, OnChanges {
 			if (id) {
 				this.branchService
 					.getById(id)
-					.then(branch => {
+					.then((branch) => {
 						let region = branch.location.region;
 						region =
 							region.charAt(0).toUpperCase() + region.slice(1);
 						this.selectRegion(region);
 						this.pick(branch);
 					})
-					.catch(e => {});
+					.catch((e) => {});
 			}
 		}
 	}
@@ -93,13 +93,13 @@ export class BranchPickerComponent implements OnInit, OnChanges {
 		this.branchService
 			.get({
 				query:
-					"?location.region=" + region.toLowerCase() + bookableQuery
+					"?location.region=" + region.toLowerCase() + bookableQuery,
 			})
-			.then(branches => {
+			.then((branches) => {
 				this.branches = branches;
 				this.wait = false;
 			})
-			.catch(e => {
+			.catch((e) => {
 				console.log("could not get branches");
 				this.wait = false;
 			});

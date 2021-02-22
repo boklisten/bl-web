@@ -7,7 +7,7 @@ import { MatchItemChoice } from "../../match-item-choice";
 @Component({
 	selector: "app-match-select-item",
 	templateUrl: "./match-select-item.component.html",
-	styleUrls: ["./match-select-item.component.scss"]
+	styleUrls: ["./match-select-item.component.scss"],
 })
 export class MatchSelectItemComponent implements OnInit {
 	@Input() customerItem: CustomerItem;
@@ -45,7 +45,7 @@ export class MatchSelectItemComponent implements OnInit {
 		this.selectedChoice.emit({
 			customerItem: this.customerItem,
 			item: this.item,
-			choice: this.choice
+			choice: this.choice,
 		});
 	}
 

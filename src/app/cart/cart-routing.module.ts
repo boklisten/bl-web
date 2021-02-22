@@ -9,22 +9,22 @@ import { CartOrderCheckoutComponent } from "./cart-order-checkout/cart-order-che
 const routes: Routes = [
 	{
 		path: "cart",
-		component: CartComponent
+		component: CartComponent,
 		//canActivate: [UserGuardService, BranchGuardService]
 	},
 	{
 		path: "cart/checkout",
 		component: CartOrderCheckoutComponent,
-		canActivate: [UserGuardService, BranchGuardService]
+		canActivate: [UserGuardService, BranchGuardService],
 	},
 	{
 		path: "cart/confirm",
-		component: CartConfirmComponent
-	}
+		component: CartConfirmComponent,
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class CartRoutingModule {}

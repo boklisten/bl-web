@@ -6,7 +6,6 @@ import {
 	OnDestroy,
 	OnInit,
 	Output,
-	ViewChild
 } from "@angular/core";
 import { CartPaymentService } from "./cart-payment.service";
 import { Payment } from "@boklisten/bl-model";
@@ -18,7 +17,7 @@ import { Subscription } from "rxjs/internal/Subscription";
 @Component({
 	selector: "app-cart-payment",
 	templateUrl: "./cart-payment.component.html",
-	styleUrls: ["./cart-payment.component.scss"]
+	styleUrls: ["./cart-payment.component.scss"],
 })
 export class CartPaymentComponent implements OnInit, OnDestroy {
 	@Output() error: EventEmitter<Error>;
@@ -48,7 +47,7 @@ export class CartPaymentComponent implements OnInit, OnDestroy {
 			.then(() => {
 				this.wait = false;
 			})
-			.catch(createPaymentError => {
+			.catch((createPaymentError) => {
 				this.wait = false;
 				this.error.emit(createPaymentError);
 			});

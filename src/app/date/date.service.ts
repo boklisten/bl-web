@@ -4,7 +4,7 @@ import {
 	CustomerItem,
 	Item,
 	OpeningHour,
-	Period
+	Period,
 } from "@boklisten/bl-model";
 import * as moment from "moment";
 import { BranchStoreService } from "../branch/branch-store.service";
@@ -129,9 +129,7 @@ export class DateService {
 	}
 
 	public daysUntil(date: Date): string {
-		return moment(date)
-			.endOf("day")
-			.fromNow();
+		return moment(date).endOf("day").fromNow();
 	}
 
 	public getCurrentYear(): string {

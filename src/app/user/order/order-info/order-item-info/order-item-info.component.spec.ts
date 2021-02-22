@@ -1,30 +1,24 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {OrderItemInfoComponent} from './order-item-info.component';
-import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {CustomerItemService} from "@boklisten/bl-connect";
+import { OrderItemInfoComponent } from "./order-item-info.component";
+import { Component, Injectable, Input, Pipe } from "@angular/core";
+import { CustomerItemService } from "@boklisten/bl-connect";
 
 @Injectable()
-class CustomerItemStubService {
+class CustomerItemStubService {}
 
-}
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon;
 }
 
-@Pipe({name: 'blcDate'})
-class BlcDateStubPipe {
+@Pipe({ name: "blcDate" })
+class BlcDateStubPipe {}
 
-}
+@Pipe({ name: "blcPrice" })
+class BlcPriceStubPipe {}
 
-@Pipe({name: 'blcPrice'})
-class BlcPriceStubPipe {
-
-}
-
-describe('OrderItemInfoComponent', () => {
+describe("OrderItemInfoComponent", () => {
 	let component: OrderItemInfoComponent;
 	let fixture: ComponentFixture<OrderItemInfoComponent>;
 
@@ -34,13 +28,15 @@ describe('OrderItemInfoComponent', () => {
 				OrderItemInfoComponent,
 				FaIconStubComponent,
 				BlcDateStubPipe,
-				BlcPriceStubPipe
+				BlcPriceStubPipe,
 			],
 			providers: [
-				{provide: CustomerItemService, useClass: CustomerItemStubService}
-			]
-		})
-			.compileComponents();
+				{
+					provide: CustomerItemService,
+					useClass: CustomerItemStubService,
+				},
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -49,7 +45,7 @@ describe('OrderItemInfoComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

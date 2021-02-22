@@ -1,16 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-	selector: 'app-header-alert',
-	templateUrl: './header-alert.component.html',
-	styleUrls: ['./header-alert.component.scss']
+	selector: "app-header-alert",
+	templateUrl: "./header-alert.component.html",
+	styleUrls: ["./header-alert.component.scss"],
 })
 export class HeaderAlertComponent implements OnInit {
+	constructor() {}
 
-	constructor() {
-	}
-
-	ngOnInit() {
-	}
-
+	ngOnInit() {}
 }

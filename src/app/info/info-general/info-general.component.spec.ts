@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { InfoGeneralComponent } from './info-general.component';
+import { InfoGeneralComponent } from "./info-general.component";
 
-describe('InfoGeneralComponent', () => {
-  let component: InfoGeneralComponent;
-  let fixture: ComponentFixture<InfoGeneralComponent>;
+describe("InfoGeneralComponent", () => {
+	let component: InfoGeneralComponent;
+	let fixture: ComponentFixture<InfoGeneralComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InfoGeneralComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [InfoGeneralComponent],
+		}).compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(InfoGeneralComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(InfoGeneralComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

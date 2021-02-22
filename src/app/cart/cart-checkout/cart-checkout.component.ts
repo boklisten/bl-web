@@ -5,7 +5,7 @@ import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
 @Component({
 	selector: "app-cart-checkout",
 	templateUrl: "./cart-checkout.component.html",
-	styleUrls: ["./cart-checkout.component.scss"]
+	styleUrls: ["./cart-checkout.component.scss"],
 })
 export class CartCheckoutComponent implements OnInit {
 	public wait: boolean;

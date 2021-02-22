@@ -1,29 +1,25 @@
-import {TestBed, inject} from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 
-import {CartCheckoutService} from './cart-checkout.service';
-import {Injectable, Pipe} from "@angular/core";
-import {CartDeliveryService} from "../cart-delivery/cart-delivery.service";
-import {CartPaymentService} from "../cart-payment/cart-payment.service";
-import {CartOrderService} from "../cart-order/cart-order.service";
-import {OrderService} from "@boklisten/bl-connect";
-import {CartService} from "../cart.service";
-import {UserService} from "../../user/user.service";
-import {Router} from "@angular/router";
-import {Subject} from "rxjs/internal/Subject";
-
-@Injectable()
-class CartDeliveryStubService {
-}
+import { CartCheckoutService } from "./cart-checkout.service";
+import { Injectable, Pipe } from "@angular/core";
+import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
+import { CartPaymentService } from "../cart-payment/cart-payment.service";
+import { CartOrderService } from "../cart-order/cart-order.service";
+import { OrderService } from "@boklisten/bl-connect";
+import { CartService } from "../cart.service";
+import { UserService } from "../../user/user.service";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs/internal/Subject";
 
 @Injectable()
-class CartPaymentStubService {
-}
+class CartDeliveryStubService {}
+
+@Injectable()
+class CartPaymentStubService {}
 
 @Injectable()
 class UserStubService {
-	loggedIn() {
-
-	}
+	loggedIn() {}
 }
 
 @Injectable()
@@ -33,23 +29,18 @@ class CartStubService {
 	}
 }
 
-
 @Injectable()
 class CartOrderStubService {
-	getOrder() {
-	}
+	getOrder() {}
 }
 
 @Injectable()
-class OrderStubService {
-}
+class OrderStubService {}
 
 @Injectable()
-class RouterStub {
+class RouterStub {}
 
-}
-
-describe('CartCheckoutService', () => {
+describe("CartCheckoutService", () => {
 	const cartDeliveryStubService = new CartDeliveryStubService();
 	const cartPaymentStubService = new CartPaymentStubService();
 	const cartOrderStubService = new CartOrderStubService();
@@ -62,19 +53,27 @@ describe('CartCheckoutService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				CartCheckoutService,
-				{provide: CartDeliveryService, useValue: cartDeliveryStubService},
-				{provide: CartPaymentService, useValue: cartPaymentStubService},
-				{provide: CartOrderService, useValue: cartOrderStubService},
-				{provide: OrderService, useValue: orderStubService},
-				{provide: CartService, useValue: cartStubService},
-				{provide: UserService, useValue: userStubService},
-				{provide: Router, useValue: routerStub}
+				{
+					provide: CartDeliveryService,
+					useValue: cartDeliveryStubService,
+				},
+				{
+					provide: CartPaymentService,
+					useValue: cartPaymentStubService,
+				},
+				{ provide: CartOrderService, useValue: cartOrderStubService },
+				{ provide: OrderService, useValue: orderStubService },
+				{ provide: CartService, useValue: cartStubService },
+				{ provide: UserService, useValue: userStubService },
+				{ provide: Router, useValue: routerStub },
 			],
-
 		});
 	});
 
-	it('should be created', inject([CartCheckoutService], (service: CartCheckoutService) => {
-		expect(service).toBeTruthy();
-	}));
+	it("should be created", inject(
+		[CartCheckoutService],
+		(service: CartCheckoutService) => {
+			expect(service).toBeTruthy();
+		}
+	));
 });

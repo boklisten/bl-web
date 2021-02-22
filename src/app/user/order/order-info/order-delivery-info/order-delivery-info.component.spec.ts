@@ -1,37 +1,28 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {OrderDeliveryInfoComponent} from './order-delivery-info.component';
-import {Component, Injectable, Input, Pipe} from "@angular/core";
-import {DeliveryService} from "@boklisten/bl-connect";
-import {RouterTestingModule} from "@angular/router/testing";
-
+import { OrderDeliveryInfoComponent } from "./order-delivery-info.component";
+import { Component, Injectable, Input, Pipe } from "@angular/core";
+import { DeliveryService } from "@boklisten/bl-connect";
+import { RouterTestingModule } from "@angular/router/testing";
 
 @Injectable()
-class DeliveryStubService {
+class DeliveryStubService {}
 
-}
-
-@Component({selector: 'fa-icon', template: ''})
+@Component({ selector: "fa-icon", template: "" })
 class FaIconStubComponent {
 	@Input() icon;
 }
 
-@Pipe({name: 'blcDate'})
-class BlcDateStubPipe {
+@Pipe({ name: "blcDate" })
+class BlcDateStubPipe {}
 
-}
+@Pipe({ name: "blcPrice" })
+class BlcPriceStubPipe {}
 
-@Pipe({name: 'blcPrice'})
-class BlcPriceStubPipe {
+@Pipe({ name: "blcBranch" })
+class BlcBranchStubPipe {}
 
-}
-
-@Pipe({name: 'blcBranch'})
-class BlcBranchStubPipe {
-
-}
-
-describe('OrderDeliveryInfoComponent', () => {
+describe("OrderDeliveryInfoComponent", () => {
 	let component: OrderDeliveryInfoComponent;
 	let fixture: ComponentFixture<OrderDeliveryInfoComponent>;
 
@@ -42,16 +33,16 @@ describe('OrderDeliveryInfoComponent', () => {
 				FaIconStubComponent,
 				BlcDateStubPipe,
 				BlcPriceStubPipe,
-				BlcBranchStubPipe
+				BlcBranchStubPipe,
 			],
 			providers: [
-				{provide: DeliveryService, useValue: new DeliveryStubService()}
+				{
+					provide: DeliveryService,
+					useValue: new DeliveryStubService(),
+				},
 			],
-			imports: [
-				RouterTestingModule
-			]
-		})
-			.compileComponents();
+			imports: [RouterTestingModule],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -60,7 +51,7 @@ describe('OrderDeliveryInfoComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });

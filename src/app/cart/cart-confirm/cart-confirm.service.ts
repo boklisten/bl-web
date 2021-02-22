@@ -5,7 +5,7 @@ import { CartPaymentService } from "../cart-payment/cart-payment.service";
 import { Order } from "@boklisten/bl-model";
 
 @Injectable({
-	providedIn: "root"
+	providedIn: "root",
 })
 export class CartConfirmService {
 	constructor(

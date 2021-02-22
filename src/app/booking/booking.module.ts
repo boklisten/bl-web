@@ -11,9 +11,9 @@ import { DateModule } from "../date/date.module";
 import { BookingEventConfirmedComponent } from "./booking-event-confirmed/booking-event-confirmed.component";
 import { BookingYourBookingsComponent } from "./booking-your-bookings/booking-your-bookings.component";
 import { BranchModule } from "../branch/branch.module";
-import { BookingDisplayComponent } from './booking-display/booking-display.component';
-import { BookingCancelComponent } from './booking-cancel/booking-cancel.component';
-import { BookingTimePickerComponent } from './booking-time-picker/booking-time-picker.component';
+import { BookingDisplayComponent } from "./booking-display/booking-display.component";
+import { BookingCancelComponent } from "./booking-cancel/booking-cancel.component";
+import { BookingTimePickerComponent } from "./booking-time-picker/booking-time-picker.component";
 
 @NgModule({
 	declarations: [
@@ -24,7 +24,7 @@ import { BookingTimePickerComponent } from './booking-time-picker/booking-time-p
 		BookingYourBookingsComponent,
 		BookingDisplayComponent,
 		BookingCancelComponent,
-		BookingTimePickerComponent
+		BookingTimePickerComponent,
 	],
 	imports: [
 		CommonModule,
@@ -32,7 +32,7 @@ import { BookingTimePickerComponent } from './booking-time-picker/booking-time-p
 		BlCommonModule,
 		FontAwesomeModule,
 		DateModule,
-		BranchModule
-	]
+		BranchModule,
+	],
 })
 export class BookingModule {}

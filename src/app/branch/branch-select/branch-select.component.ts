@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 @Component({
 	selector: "app-branch-select",
 	templateUrl: "./branch-select.component.html",
-	styleUrls: ["./branch-select.component.scss"]
+	styleUrls: ["./branch-select.component.scss"],
 })
 export class BranchSelectComponent implements OnInit {
 	@Output() branchSelect: EventEmitter<Branch>;

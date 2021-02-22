@@ -3,7 +3,7 @@ import {
 	ActivatedRouteSnapshot,
 	CanActivate,
 	Router,
-	RouterStateSnapshot
+	RouterStateSnapshot,
 } from "@angular/router";
 import { BranchStoreService } from "../branch-store.service";
 import { UserService } from "../../user/user.service";
@@ -35,7 +35,7 @@ export class BranchGuardService implements CanActivate {
 						return this.onFailure(state);
 					});
 			})
-			.catch(getBranchError => {
+			.catch((getBranchError) => {
 				return this.onFailure(state);
 			});
 	}

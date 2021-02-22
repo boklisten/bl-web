@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import {
 	CustomerItemService,
 	TokenService,
-	UserDetailService
+	UserDetailService,
 } from "@boklisten/bl-connect";
 import { AuthLoginService } from "@boklisten/bl-login";
 import { Subject } from "rxjs/internal/Subject";
@@ -18,7 +18,7 @@ class TokenStubService {
 
 	public getAccessTokenBody() {
 		return {
-			details: {}
+			details: {},
 		};
 	}
 }
@@ -56,14 +56,14 @@ describe("UserService", () => {
 				{ provide: TokenService, useValue: new TokenStubService() },
 				{
 					provide: UserDetailService,
-					useClass: UserDetailStubService
+					useClass: UserDetailStubService,
 				},
 				{
 					provide: CustomerItemService,
-					useValue: new CustomerItemStubService()
+					useValue: new CustomerItemStubService(),
 				},
-				{ provide: AuthLoginService, useClass: AuthLoginStubService }
-			]
+				{ provide: AuthLoginService, useClass: AuthLoginStubService },
+			],
 		});
 	});
 	/*

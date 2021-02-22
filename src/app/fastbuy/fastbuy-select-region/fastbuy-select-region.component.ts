@@ -4,7 +4,7 @@ import { BranchService } from "@boklisten/bl-connect";
 @Component({
 	selector: "app-fastbuy-select-region",
 	templateUrl: "./fastbuy-select-region.component.html",
-	styleUrls: ["./fastbuy-select-region.component.scss"]
+	styleUrls: ["./fastbuy-select-region.component.scss"],
 })
 export class FastbuySelectRegionComponent implements OnInit {
 	public regions: { name: string; params?: any }[];
@@ -14,7 +14,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 		this.regions = [
 			{
 				name: "Nettstudier",
-				params: { region: "nettstudier" }
+				params: { region: "nettstudier" },
 			},
 			{ name: "Bergen", params: { region: "bergen" } },
 			{ name: "Drammen", params: { region: "drammen" } },
@@ -23,7 +23,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 			{ name: "Oslo", params: { region: "oslo" } },
 			{ name: "Romerike", params: { region: "romerike" } },
 			{ name: "Stavanger", params: { region: "stavanger" } },
-			{ name: "Trondheim", params: { region: "trondheim" } }
+			{ name: "Trondheim", params: { region: "trondheim" } },
 		];
 	}
 

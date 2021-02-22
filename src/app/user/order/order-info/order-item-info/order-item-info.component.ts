@@ -5,7 +5,7 @@ import { CustomerItemService } from "@boklisten/bl-connect";
 @Component({
 	selector: "app-order-item-info",
 	templateUrl: "./order-item-info.component.html",
-	styleUrls: ["./order-item-info.component.scss"]
+	styleUrls: ["./order-item-info.component.scss"],
 })
 export class OrderItemInfoComponent implements OnInit {
 	@Input() orderItem: OrderItem;

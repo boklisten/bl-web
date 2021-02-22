@@ -7,7 +7,7 @@ import { BranchStoreService } from "../../branch/branch-store.service";
 import { CartStep } from "./cart-step";
 
 @Injectable({
-	providedIn: "root"
+	providedIn: "root",
 })
 export class CartOrderCheckoutService {
 	private cartSteps: CartStep[];
@@ -66,7 +66,7 @@ export class CartOrderCheckoutService {
 					this.cartSteps = this.calculateCartSteps();
 					resolve(true);
 				})
-				.catch(startCheckoutError => {
+				.catch((startCheckoutError) => {
 					reject(startCheckoutError);
 				});
 		});
@@ -93,21 +93,21 @@ export class CartOrderCheckoutService {
 		if (this.needToConfirmAgreement()) {
 			steps.push({
 				type: "agreement",
-				confirmed: false
+				confirmed: false,
 			});
 		}
 
 		if (this.showPartlyPaymentInfo()) {
 			steps.push({
 				type: "partly-payment-info",
-				confirmed: false
+				confirmed: false,
 			});
 		}
 
 		if (this.showDeliveryOption()) {
 			steps.push({
 				type: "delivery",
-				confirmed: false
+				confirmed: false,
 			});
 		}
 
@@ -118,12 +118,12 @@ export class CartOrderCheckoutService {
 		if (this.needToPay()) {
 			steps.push({
 				type: "payment",
-				confirmed: false
+				confirmed: false,
 			});
 		} else {
 			steps.push({
 				type: "checkout",
-				confirmed: false
+				confirmed: false,
 			});
 		}
 		return steps;

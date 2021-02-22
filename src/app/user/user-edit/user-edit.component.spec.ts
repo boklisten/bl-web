@@ -1,17 +1,29 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+	async,
+	ComponentFixture,
+	fakeAsync,
+	TestBed,
+	tick,
+} from "@angular/core/testing";
 
-import {UserEditComponent} from './user-edit.component';
-import {Component, EventEmitter, Injectable, Input, Output} from "@angular/core";
-import {UserService} from "../user.service";
-import {UserDetailService} from "@boklisten/bl-connect";
+import { UserEditComponent } from "./user-edit.component";
+import {
+	Component,
+	EventEmitter,
+	Injectable,
+	Input,
+	Output,
+} from "@angular/core";
+import { UserService } from "../user.service";
+import { UserDetailService } from "@boklisten/bl-connect";
 import Jasmine = jasmine.Jasmine;
 import Spy = jasmine.Spy;
-import {of} from "rxjs/internal/observable/of";
-import {UserDetail} from "@boklisten/bl-model";
-import {Subject} from "rxjs/internal/Subject";
-import {UserEditService} from "./user-edit.service";
+import { of } from "rxjs/internal/observable/of";
+import { UserDetail } from "@boklisten/bl-model";
+import { Subject } from "rxjs/internal/Subject";
+import { UserEditService } from "./user-edit.service";
 
-@Component({selector: 'bl-user-detail-edit', template: ''})
+@Component({ selector: "bl-user-detail-edit", template: "" })
 class UserDetailEditStubComponent {
 	@Input() userDetail: any;
 	@Output() patchValues: EventEmitter<any>;
@@ -20,7 +32,7 @@ class UserDetailEditStubComponent {
 @Injectable()
 class UserStubService {
 	getUserDetail() {
-		return Promise.resolve({id: 'userDetail1'});
+		return Promise.resolve({ id: "userDetail1" });
 	}
 
 	onUserDetailChange() {
@@ -28,17 +40,15 @@ class UserStubService {
 	}
 }
 
-@Component({selector: 'app-blc-spinner', template: ''})
+@Component({ selector: "app-blc-spinner", template: "" })
 class BlcSpinnerStubComponent {
 	@Input() loading;
 }
 
 @Injectable()
-class UserEditStubService {
+class UserEditStubService {}
 
-}
-
-describe('UserEditComponent', () => {
+describe("UserEditComponent", () => {
 	let component: UserEditComponent;
 	let fixture: ComponentFixture<UserEditComponent>;
 
@@ -47,14 +57,13 @@ describe('UserEditComponent', () => {
 			declarations: [
 				UserEditComponent,
 				UserDetailEditStubComponent,
-				BlcSpinnerStubComponent
+				BlcSpinnerStubComponent,
 			],
 			providers: [
-				{provide: UserService, useClass: UserStubService},
-				{provide: UserEditService, useClass: UserEditStubService}
-			]
-		})
-			.compileComponents();
+				{ provide: UserService, useClass: UserStubService },
+				{ provide: UserEditService, useClass: UserEditStubService },
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -63,9 +72,7 @@ describe('UserEditComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
-
-
 });

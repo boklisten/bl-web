@@ -1,34 +1,29 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import {ItemSelectComponent} from './item-select.component';
-import {Component, Injectable, Input} from "@angular/core";
-import {Router} from "@angular/router";
-import {BranchStoreService} from "../../branch/branch-store.service";
+import { ItemSelectComponent } from "./item-select.component";
+import { Component, Injectable, Input } from "@angular/core";
+import { Router } from "@angular/router";
+import { BranchStoreService } from "../../branch/branch-store.service";
 
 @Injectable()
-class RouterStub {
-
-}
+class RouterStub {}
 
 @Injectable()
 class BranchStoreStubService {
 	getBranch() {
-		return new Promise((resolve, reject) => {
-
-		});
+		return new Promise((resolve, reject) => {});
 	}
 }
 
-@Component({selector: 'app-item-display-category', template: ''})
+@Component({ selector: "app-item-display-category", template: "" })
 class ItemDisplayCategoryStubComponent {
 	@Input() branch;
 }
 
-@Component({selector: 'app-cart-go-to-bar', template: ''})
-class CartGoToBarStubComponent {
-}
+@Component({ selector: "app-cart-go-to-bar", template: "" })
+class CartGoToBarStubComponent {}
 
-describe('ItemSelectComponent', () => {
+describe("ItemSelectComponent", () => {
 	let component: ItemSelectComponent;
 	let fixture: ComponentFixture<ItemSelectComponent>;
 
@@ -37,14 +32,16 @@ describe('ItemSelectComponent', () => {
 			declarations: [
 				ItemSelectComponent,
 				ItemDisplayCategoryStubComponent,
-				CartGoToBarStubComponent
+				CartGoToBarStubComponent,
 			],
 			providers: [
-				{provide: Router, useValue: new RouterStub()},
-				{provide: BranchStoreService, useValue: new BranchStoreStubService()}
-			]
-		})
-			.compileComponents();
+				{ provide: Router, useValue: new RouterStub() },
+				{
+					provide: BranchStoreService,
+					useValue: new BranchStoreStubService(),
+				},
+			],
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {
@@ -53,7 +50,7 @@ describe('ItemSelectComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it("should create", () => {
 		expect(component).toBeTruthy();
 	});
 });
