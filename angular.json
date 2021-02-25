@@ -68,10 +68,6 @@
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.dev.ts"
-								},
-								{
-									"replace": "src/robots.txt",
-									"with": "src/robots.dev.txt"
 								}
 							]
 						},
