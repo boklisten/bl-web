@@ -3,7 +3,7 @@
 `bl-web` is a customer centered application for Boklisten.no. It is basicly a
 online store with some caveats. This README only describes development and
 technical detail. For a deep-dive into the application [please read our
-documentation](https://github.com/holskil/bl-doc/blob/master/bl-web/summary.md).
+documentation](https://github.com/boklisten/bl-doc/blob/master/bl-web/summary.md).
 
 -   [Requirements](#requirements)
 -   [How to run](#how-to-run)
@@ -22,7 +22,7 @@ documentation](https://github.com/holskil/bl-doc/blob/master/bl-web/summary.md).
 
 # How to run
 
-1. Clone this repo to your own computer `git clone https://github.com/holskil/bl-web`
+1. Clone this repo to your own computer `git clone https://github.com/boklisten/bl-web`
 2. Navigate into the newly created `bl-web` folder
 3. Install npm modules `npm i`
 4. Ensure that `bl-api` is running on `http://localhost:1337`

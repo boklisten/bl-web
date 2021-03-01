@@ -90,7 +90,7 @@
 		"tslint": "^6.1.3",
 		"typescript": "4.1"
 	},
-	"description": "`bl-web` is a customer centered application for Boklisten.no. It is basicly a online store with some caveats. This README only describes development and technical detail. For a deep-dive into the application [please read our documentation](https://github.com/holskil/bl-doc/blob/master/bl-web/summary.md).",
+	"description": "`bl-web` is a customer centered application for Boklisten.no. It is basicly a online store with some caveats. This README only describes development and technical detail. For a deep-dive into the application [please read our documentation](https://github.com/boklisten/bl-doc/blob/master/bl-web/summary.md).",
 	"main": "gulpfile.js",
 	"repository": {
 		"type": "git",
