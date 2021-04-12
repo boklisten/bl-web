@@ -3,12 +3,12 @@
 	(click)="onAdd()"
 	*ngIf="!isAdded()"
 >
-	<fa-icon [icon]="['fa', 'cart-plus']"></fa-icon>
+	<fa-icon icon="cart-plus"></fa-icon>
 </button>
 <button
 	class="btn btn-success btn-block btn-sm"
 	(click)="onDelete()"
 	*ngIf="isAdded()"
 >
-	<fa-icon [icon]="['fa', 'check']"></fa-icon>
+	<fa-icon icon="check"></fa-icon>
 </button>

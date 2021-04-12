@@ -9,9 +9,9 @@
 		"experimentalDecorators": true,
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"target": "es6",
+		"target": "ESNext",
 		"typeRoots": ["node_modules/@types"],
-		"lib": ["es6", "dom"],
+		"lib": ["ESNext", "dom"],
 		"types": ["node"]
 	}
 }
