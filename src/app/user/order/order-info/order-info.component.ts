@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Order } from "@boklisten/bl-model";
 import { PrintPdfService, OrderPdfService } from "@boklisten/bl-connect";
-import moment from "moment-es6";
-import { saveAs } from "file-saver";
 
 @Component({
 	selector: "app-order-info",
