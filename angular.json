@@ -38,7 +38,6 @@
 							"namedChunks": false,
 							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
-							"i18nFormat": "xlf",
 							"i18nLocale": "nb",
 							"extractLicenses": true,
 							"vendorChunk": false,
@@ -57,7 +56,6 @@
 							"namedChunks": false,
 							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
-							"i18nFormat": "xlf",
 							"i18nLocale": "nb",
 							"extractLicenses": true,
 							"vendorChunk": false,
@@ -70,8 +68,8 @@
 							]
 						},
 						"local-nb": {
+							"aot": true,
 							"i18nFile": "src/locale/messages.nb.xlf",
-							"i18nFormat": "xlf",
 							"i18nLocale": "nb",
 							"fileReplacements": [
 								{

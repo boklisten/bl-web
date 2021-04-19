@@ -5,7 +5,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "node server.js",
-		"extract-i18n": "ng xi18n && xliffmerge --profile xliffmerge.json en nb",
+		"extract-i18n": "ng extract-i18n --output-path=\"src/locale\" && xliffmerge --profile xliffmerge.json en nb",
 		"serve:local": "npm run build:local && node server.js",
 		"serve:dev": "npm run build:dev && node server.js",
 		"serve:prod": "npm run build:prod && node server.js",
