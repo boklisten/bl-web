@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, ErrorHandler, NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -94,6 +94,8 @@ import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { faFacebookSquare, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
+import { Router } from "@angular/router";
+import * as Sentry from "@sentry/angular";
 
 @NgModule({
 	declarations: [
@@ -123,7 +125,24 @@ import { LogoutComponent } from "./logout/logout.component";
 		ClickOutsideModule,
 		BookingModule,
 	],
-	providers: [BranchGuardService],
+	providers: [BranchGuardService,
+	    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {
