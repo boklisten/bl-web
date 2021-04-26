@@ -125,23 +125,24 @@ import * as Sentry from "@sentry/angular";
 		ClickOutsideModule,
 		BookingModule,
 	],
-	providers: [BranchGuardService,
-	    {
-      provide: ErrorHandler,
-      useValue: Sentry.createErrorHandler({
-        showDialog: true,
-      }),
-    },
-    {
-      provide: Sentry.TraceService,
-      deps: [Router],
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: () => () => {},
-      deps: [Sentry.TraceService],
-      multi: true,
-    },
+	providers: [
+		BranchGuardService,
+		{
+			provide: ErrorHandler,
+			useValue: Sentry.createErrorHandler({
+				showDialog: true,
+			}),
+		},
+		{
+			provide: Sentry.TraceService,
+			deps: [Router],
+		},
+		{
+			provide: APP_INITIALIZER,
+			useFactory: () => () => {},
+			deps: [Sentry.TraceService],
+			multi: true,
+		},
 	],
 	bootstrap: [AppComponent],
 })

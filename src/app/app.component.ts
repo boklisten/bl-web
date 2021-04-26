@@ -21,15 +21,13 @@ export class AppComponent {
 		private route: ActivatedRoute,
 		private storageService: StorageService
 	) {
-      this._router.events.subscribe(event => {
-         if(event instanceof NavigationEnd){
-             gtag('config', 'G-HDF1RP13XH', 
-                   {
-                     'page_path': event.urlAfterRedirects
-                   }
-                  );
-          }
-       }
+		this._router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+				gtag("config", "G-HDF1RP13XH", {
+					page_path: event.urlAfterRedirects,
+				});
+			}
+		});
 	}
 
 	ngOnInit() {
