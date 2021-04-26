@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { StorageService } from "@boklisten/bl-connect";
+
+declare let gtag: Function;
 
 @Component({
 	selector: "app-root",
@@ -18,7 +20,17 @@ export class AppComponent {
 		private _router: Router,
 		private route: ActivatedRoute,
 		private storageService: StorageService
-	) {}
+	) {
+      this._router.events.subscribe(event => {
+         if(event instanceof NavigationEnd){
+             gtag('config', 'G-HDF1RP13XH', 
+                   {
+                     'page_path': event.urlAfterRedirects
+                   }
+                  );
+          }
+       }
+	}
 
 	ngOnInit() {
 		this.checkToShowGutter();
