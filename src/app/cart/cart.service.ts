@@ -17,6 +17,7 @@ import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-i
 import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import { StorageService } from "@boklisten/bl-connect";
+import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
 
 export interface CartItem {
 	item: Item;
@@ -39,7 +40,8 @@ export class CartService {
 		private _priceService: PriceService,
 		private _dateService: DateService,
 		private _authLoginService: AuthLoginService,
-		private _storageService: StorageService
+		private _storageService: StorageService,
+		private _googleAnalyticsService: GoogleAnalyticsService
 	) {
 		this._cart = [];
 
@@ -290,6 +292,10 @@ export class CartService {
 			branch: branch,
 		});
 		this.cartChange$.next(true);
+		this._googleAnalyticsService.eventEmitter(
+			"add_to_cart",
+			"Add item to cart"
+		);
 	}
 
 	public remove(itemId: string) {
@@ -297,6 +303,10 @@ export class CartService {
 			if (this._cart[i].item.id === itemId) {
 				this._cart.splice(i, 1);
 				this.cartChange$.next(true);
+				this._googleAnalyticsService.eventEmitter(
+					"remove_from_cart",
+					"Remove item from cart"
+				);
 				return;
 			}
 		}

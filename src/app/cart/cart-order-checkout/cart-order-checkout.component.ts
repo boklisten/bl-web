@@ -9,6 +9,7 @@ import { CartService } from "../cart.service";
 import { CartStep } from "./cart-step";
 import { CartOrderCheckoutService } from "./cart-order-checkout.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { GoogleAnalyticsService } from "../../GoogleAnalytics/google-analytics.service";
 
 @Component({
 	selector: "app-cart-order-checkout",
@@ -33,7 +34,8 @@ export class CartOrderCheckoutComponent implements OnInit {
 	constructor(
 		private cartOrderCheckoutService: CartOrderCheckoutService,
 		private router: Router,
-		private cartService: CartService
+		private cartService: CartService,
+		private _googleAnalyticsService: GoogleAnalyticsService
 	) {}
 
 	ngOnInit() {
@@ -115,7 +117,11 @@ export class CartOrderCheckoutComponent implements OnInit {
 					this.cartStep = { type: "checkout", confirmed: false };
 					return;
 				}
-
+				this._googleAnalyticsService.eventEmitter(
+					"checkout_progress",
+					stepType,
+					"completed_checkout_steps"
+				);
 				this.nextStep();
 			}
 		}

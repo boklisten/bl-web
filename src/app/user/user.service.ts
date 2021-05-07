@@ -15,6 +15,7 @@ import { Subject } from "rxjs";
 import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import { UserOrderService } from "./order/user-order/user-order.service";
+import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
 
 @Injectable()
 export class UserService {
@@ -27,17 +28,26 @@ export class UserService {
 		private _tokenService: TokenService,
 		private _userDetailService: UserDetailService,
 		private _customerItemService: CustomerItemService,
-		private _authService: AuthLoginService
+		private _authService: AuthLoginService,
+		private _googleAnalyticsService: GoogleAnalyticsService
 	) {
 		this._customerItems = [];
 		this.userDetail$ = new Subject<UserDetail>();
 
 		this._authService.onLogin().subscribe(() => {
 			this.fetchUserDetail();
+			this._googleAnalyticsService.eventEmitter(
+				"login",
+				"User logged in"
+			);
 		});
 
 		this._authService.onLogout().subscribe(() => {
 			this._userDetail = null;
+			this._googleAnalyticsService.eventEmitter(
+				"logout",
+				"User logged out"
+			);
 		});
 
 		if (this._authService.isLoggedIn()) {

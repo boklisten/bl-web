@@ -7,6 +7,7 @@ import { CartPaymentService } from "../cart-payment/cart-payment.service";
 import { CartOrderService } from "../cart-order/cart-order.service";
 import { UserService } from "../../user/user.service";
 import { Router } from "@angular/router";
+import { GoogleAnalyticsService } from "../../GoogleAnalytics/google-analytics.service";
 
 @Injectable()
 export class CartCheckoutService {
@@ -20,7 +21,8 @@ export class CartCheckoutService {
 		private _orderService: OrderService,
 		private _cartService: CartService,
 		private _router: Router,
-		private _userService: UserService
+		private _userService: UserService,
+		private _googleAnalyticsService: GoogleAnalyticsService
 	) {
 		this.agreementConfirmed = false;
 
@@ -58,6 +60,13 @@ export class CartCheckoutService {
 				.updateWithOperation(updateOrderId, {}, "confirm")
 				//.update(updateOrderId, { placed: true })
 				.then(() => {
+					this._googleAnalyticsService.eventEmitter(
+						"purchase",
+						"Purchase complete",
+						"ecommerce",
+						"(not set)",
+						this._cartService.getTotalPrice()
+					);
 					this._cartService.clearCart();
 					this._cartOrderService.clearOrder();
 					this._userService.reloadUserDetail();

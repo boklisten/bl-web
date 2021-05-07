@@ -96,6 +96,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
 import { LogoutComponent } from "./logout/logout.component";
 import { Router } from "@angular/router";
 import * as Sentry from "@sentry/angular";
+import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.service";
 
 @NgModule({
 	declarations: [
@@ -143,6 +144,7 @@ import * as Sentry from "@sentry/angular";
 			deps: [Sentry.TraceService],
 			multi: true,
 		},
+		GoogleAnalyticsService,
 	],
 	bootstrap: [AppComponent],
 })

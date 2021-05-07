@@ -5,6 +5,7 @@ import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
 import { CartService } from "../cart.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { CartStep } from "./cart-step";
+import { GoogleAnalyticsService } from "../../GoogleAnalytics/google-analytics.service";
 
 @Injectable({
 	providedIn: "root",
@@ -21,7 +22,8 @@ export class CartOrderCheckoutService {
 		private cartOrderService: CartOrderService,
 		private cartDeliveryService: CartDeliveryService,
 		private cartService: CartService,
-		private branchStoreService: BranchStoreService
+		private branchStoreService: BranchStoreService,
+		private _googleAnalyticsService: GoogleAnalyticsService
 	) {
 		this.cartSteps = [];
 		this.cartStepsChange$ = new Subject();
@@ -63,6 +65,10 @@ export class CartOrderCheckoutService {
 			this.cartOrderService
 				.onStartCheckout()
 				.then(() => {
+					this._googleAnalyticsService.eventEmitter(
+						"begin_checkout",
+						"Go to checkout"
+					);
 					this.cartSteps = this.calculateCartSteps();
 					resolve(true);
 				})
