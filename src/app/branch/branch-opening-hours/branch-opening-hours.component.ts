@@ -21,7 +21,9 @@ export class BranchOpeningHoursComponent implements OnInit, OnChanges {
 		this.openingHours = [];
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		console.log(this.branch);
+	}
 
 	ngOnChanges() {
 		this.openingHours = [];

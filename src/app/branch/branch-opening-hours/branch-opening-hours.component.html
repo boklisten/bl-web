@@ -13,7 +13,14 @@
 		class="card-body"
 		*ngIf="(!openingHours || openingHours.length <= 0) && !loading"
 	>
-		<div class="alert alert-secondary">
+		<!--TEMPORARY-->
+		<div *ngIf="branch.name.includes('Oslo')" class="alert alert-secondary">
+			<p>Se åpningstider for Oslo innsamling.</p>
+		</div>
+		<div
+			*ngIf="!branch.name.includes('Oslo')"
+			class="alert alert-secondary"
+		>
 			<span i18n="@@branchOpeningHoursNotFound"
 				>The season is over - or the opening hours is not ready
 				yet.</span
