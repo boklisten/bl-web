@@ -1,6 +1,6 @@
 {
 	"name": "@boklisten/bl-web",
-	"version": "1.11.9",
+	"version": "1.11.10",
 	"license": "MIT",
 	"scripts": {
 		"ng": "ng",
