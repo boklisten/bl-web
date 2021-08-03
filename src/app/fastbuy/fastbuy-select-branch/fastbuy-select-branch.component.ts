@@ -77,7 +77,10 @@ export class FastbuySelectBranchComponent implements OnInit {
 	}
 
 	private sanitizeBranchName(branch: Branch): string {
-		let name = branch.name.toLowerCase().replace(this.region, "");
+		let name = branch.name
+			.toLowerCase()
+			.replace(this.region, "")
+			.replace("nav", "NAV");
 		return name.charAt(0).toUpperCase() + name.slice(1);
 	}
 
