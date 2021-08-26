@@ -39,7 +39,7 @@
 		"@angular/platform-browser-dynamic": "^11.2.3",
 		"@angular/router": "^11.2.11",
 		"@boklisten/bl-connect": "^0.19.0",
-		"@boklisten/bl-login": "^1.1.7",
+		"@boklisten/bl-login": "^1.1.9",
 		"@boklisten/bl-model": "^0.25.0",
 		"@fortawesome/angular-fontawesome": "^0.8.2",
 		"@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -64,7 +64,7 @@
 	},
 	"devDependencies": {
 		"@angular-devkit/build-angular": "^0.1102.2",
-		"@angular/language-service": "^11.2.3",
+		"@angular/language-service": "^12.2.3",
 		"@angularclass/hmr": "^3.0.0",
 		"@types/jasmine": "^3.6.4",
 		"@types/node": "^14.14.31",
