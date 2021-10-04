@@ -64,7 +64,9 @@ export class FastbuySelectBranchComponent implements OnInit {
 						});
 					}
 				}
-				this.branches = branchNames as any;
+				this.branches = branchNames.sort((a, b) =>
+					a.name > b.name ? 1 : -1
+				) as any;
 
 				this.region =
 					this.region.charAt(0).toUpperCase() + this.region.slice(1);
