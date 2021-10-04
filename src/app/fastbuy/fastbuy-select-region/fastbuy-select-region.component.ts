@@ -27,7 +27,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 			{ name: "Ski", params: { region: "ski" } },
 			{ name: "Sandvika", params: { region: "sandvika" } },
 			{ name: "Ålesund", params: { region: "ålesund" } },
-		];
+		].sort((a, b) => (a.name > b.name ? 1 : -1));
 	}
 
 	ngOnInit() {}
