@@ -7,7 +7,10 @@ import { InfoAgreementComponent } from "./info-agreement/info-agreement.componen
 import { InfoAgreementPrivacyComponent } from "./info-agreement/info-agreement-privacy/info-agreement-privacy.component";
 import { InfoAgreementConditionsComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions.component";
 import { InfoFaqComponent } from "./info-faq/info-faq.component";
-import { NgbAccordionModule } from "@ng-bootstrap/ng-bootstrap";
+import {
+	NgbAccordionModule,
+	NgbCollapseModule,
+} from "@ng-bootstrap/ng-bootstrap";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BranchModule } from "../branch/branch.module";
 import { InfoMenuListComponent } from "./info-menu-list/info-menu-list.component";
@@ -28,6 +31,7 @@ import { InfoCoronaComponent } from "./info-corona/info-corona.component";
 		CommonModule,
 		InfoRoutingModule,
 		NgbAccordionModule,
+		NgbCollapseModule,
 		FontAwesomeModule,
 		BranchModule,
 		BlCommonModule,

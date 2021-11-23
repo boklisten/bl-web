@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { CartOrderService } from "../cart-order/cart-order.service";
 
 @Component({
 	selector: "app-cart-agreement",
@@ -9,13 +10,16 @@ export class CartAgreementComponent implements OnInit {
 	@Input() confirmed: boolean;
 	@Output() confirmedChange: EventEmitter<boolean>;
 	showAgreement: boolean;
+	showPartlyPaymentInfo = false;
 
-	constructor() {
+	constructor(private _cartOrderService: CartOrderService) {
 		this.confirmedChange = new EventEmitter<boolean>();
 		this.showAgreement = false;
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.showPartlyPaymentInfo = this._cartOrderService.doesOrderIncludePartlyPayment();
+	}
 
 	onConfirmClick() {
 		window.scroll(0, 0);

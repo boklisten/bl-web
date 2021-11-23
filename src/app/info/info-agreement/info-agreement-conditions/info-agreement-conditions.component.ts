@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
 	selector: "app-info-agreement-conditions",
@@ -6,7 +6,11 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./info-agreement-conditions.component.scss"],
 })
 export class InfoAgreementConditionsComponent implements OnInit {
+	@Input() collapsable = false;
+	public isCollapsed: boolean;
 	constructor() {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.isCollapsed = this.collapsable;
+	}
 }
