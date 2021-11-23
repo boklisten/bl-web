@@ -13,7 +13,6 @@ export class CartDeliveryService {
 	private _fromPostalCode: string;
 	private _fromPostalCity: string;
 	private _fromAddress: string;
-	private _deliveryFailure$: Subject<boolean>;
 	private _deliveryMethod: DeliveryMethod;
 	private _toName: string;
 	private _toAddress: string;
@@ -33,8 +32,6 @@ export class CartDeliveryService {
 		this._fromPostalCode = "1316";
 		this._fromPostalCity = "OSLO";
 		this._fromAddress = "Postboks 8, 1316 Eiksmarka";
-
-		this._deliveryFailure$ = new Subject<boolean>();
 
 		this.onOrderClear();
 	}
@@ -92,14 +89,6 @@ export class CartDeliveryService {
 		return this._currentDelivery;
 	}
 
-	public onDeliveryFailure(): Observable<boolean> {
-		return this._deliveryFailure$;
-	}
-
-	public setDeliveryFailure() {
-		this._deliveryFailure$.next(true);
-	}
-
 	public validateDeliveryMethodBring(): boolean {
 		if (!this._toName || this._toName.length <= 0) {
 			return false;
@@ -146,6 +135,14 @@ export class CartDeliveryService {
 		this._currentDelivery = addedDelivery;
 		this._deliveryChange$.next(this._currentDelivery);
 		return addedDelivery;
+	}
+
+	private onOrderChange() {
+		this._cartOrderService.onOrderChange().subscribe(() => {
+			this._currentDelivery = null;
+			this._fromPostalCode = "";
+			this._deliveryMethod = "branch";
+		});
 	}
 
 	private onOrderClear() {

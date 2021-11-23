@@ -127,6 +127,7 @@ export class CartOrderService {
 	}
 
 	private createOrder(): Promise<Order> {
+		this._orderClear$.next(true);
 		const order = this._cartService.createOrder();
 		return this._orderService.add(order);
 	}

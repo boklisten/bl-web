@@ -68,22 +68,7 @@
 	</div>
 </div>
 
-<div class="row" *ngIf="!wait">
-	<div class="col-12 mt-4" *ngIf="failureText">
-		<div class="alert alert-warning">
-			<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-			<span i18n="@@cartDeliveryError"
-				>The delivery could not be created</span
-			>
-			<span
-				i18n="@@cartDeliveryBringError"
-				*ngIf="deliveryMethod === 'bring'"
-				class="ml-2 font-weight-bold"
-				>Are you sure you have the correct shipment address?</span
-			>
-		</div>
-	</div>
-
+<div class="row">
 	<div
 		class="col-12 mt-4"
 		*ngIf="bringInputWarning && deliveryMethod === 'bring'"
@@ -139,9 +124,9 @@
 						class="form-control"
 						i18n-placeholder="@@cartDeliveryShipmentNamePlaceholder"
 						placeholder="Full Name"
-						(change)="validateInput()"
-						(keyup)="validateInput()"
-						(keyup.enter)="onInputEnterClick()"
+						(change)="validateAndSave()"
+						(keyup)="validateAndSave()"
+						(keyup.enter)="validateAndSave()"
 						[(ngModel)]="toName"
 					/>
 				</div>
@@ -161,9 +146,9 @@
 						i18n-placeholder="
 							@@cartDeliveryShipmentAddressPlaceholder"
 						placeholder="Address"
-						(change)="validateInput()"
-						(keyup)="validateInput()"
-						(keyup.enter)="onInputEnterClick()"
+						(change)="validateAndSave()"
+						(keyup)="validateAndSave()"
+						(keyup.enter)="validateAndSave()"
 						[(ngModel)]="toAddress"
 					/>
 				</div>
@@ -181,23 +166,24 @@
 						type="text"
 						maxlength="4"
 						class="form-control"
-						(keyup)="onInputEnterClick()"
+						(change)="validateAndSave()"
+						(keyup)="validateAndSave()"
+						(keyup.enter)="validateAndSave()"
 						i18n-placeholder="
 							@@cartDeliveryShipmentPostalCodePlaceholder"
 						placeholder="Postal code"
-						(keyup.enter)="onInputEnterClick()"
 						[(ngModel)]="toPostalCode"
 					/>
 
 					<input
 						type="text"
 						class="form-control"
-						(change)="validateInput()"
-						(keyup)="validateInput()"
+						(change)="validateAndSave()"
+						(keyup)="validateAndSave()"
 						i18n-placeholder="
 							@@cartDeliveryShipmentPostalCityPlaceholder"
 						placeholder="city"
-						(keyup.enter)="onInputEnterClick()"
+						(keyup.enter)="validateInput()"
 						[(ngModel)]="toPostalCity"
 					/>
 				</div>
@@ -209,7 +195,14 @@
 				<span i18n="@@cardDeliveryInfoDeliveryCost">Delivery cost</span>
 			</div>
 			<div class="col-auto font-weight-bold">
-				{{ currentDelivery.amount | blcPrice }}
+				<fa-icon
+					[icon]="'circle-notch'"
+					[spin]="true"
+					*ngIf="waitForPrice && deliveryMethod === 'bring'"
+				></fa-icon>
+				<span *ngIf="!waitForPrice">
+					{{ currentDelivery.amount | blcPrice }}
+				</span>
 			</div>
 		</div>
 
@@ -225,15 +218,27 @@
 			<div class="col-auto">
 				<div class="row justify-content-end">
 					<div class="col-auto">
-						{{
-							currentDelivery.info["estimatedDelivery"]
-								| blcDate: "until"
-						}}
+						<fa-icon
+							[icon]="'circle-notch'"
+							[spin]="true"
+							*ngIf="waitForPrice && deliveryMethod === 'bring'"
+						></fa-icon>
+						<span *ngIf="!waitForPrice">
+							{{
+								currentDelivery.info["estimatedDelivery"]
+									| blcDate: "until"
+							}}
+						</span>
 					</div>
 				</div>
 				<div class="row justify-content-end">
 					<div class="col-auto text-secondary">
-						<small>{{
+						<fa-icon
+							[icon]="'circle-notch'"
+							[spin]="true"
+							*ngIf="waitForPrice && deliveryMethod === 'bring'"
+						></fa-icon>
+						<small *ngIf="!waitForPrice">{{
 							currentDelivery.info["estimatedDelivery"] | blcDate
 						}}</small>
 					</div>
@@ -242,21 +247,22 @@
 		</div>
 	</div>
 
-	<div class="col-12 mt-4" *ngIf="currentDelivery">
-		<button
-			class="btn btn-outline-success btn-block"
-			(click)="onConfirmDelivery()"
-		>
-			<span i18n="@@cartDeliveryConfirmButton">Confirm</span>
-		</button>
-	</div>
-
-	<div class="col-12 mt-4" *ngIf="!currentDelivery">
+	<div class="col-12 mt-4" *ngIf="!wait && !currentDelivery">
 		<div class="alert alert-warning">
 			<span i18n="@@cartDeliveryInfoFailure"
 				>Delivery info could not be processed. Are you sure that the
 				info is correct? Is the postal code valid?</span
 			>
 		</div>
+	</div>
+
+	<div class="col-12 mt-4">
+		<button
+			class="btn btn-outline-success btn-block"
+			(click)="onConfirmDelivery()"
+			[disabled]="wait || bringInputWarning.length > 0"
+		>
+			<span i18n="@@cartDeliveryConfirmButton">Confirm</span>
+		</button>
 	</div>
 </div>
