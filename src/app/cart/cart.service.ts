@@ -55,6 +55,12 @@ export class CartService {
 		this.handleStorageOnCartChange();
 	}
 
+	public hasPartlyPaymentItems(): boolean {
+		return this.getCart().some(
+			(cartItem) => cartItem.orderItem.type === "partly-payment"
+		);
+	}
+
 	public shouldPay(): boolean {
 		for (const cartItem of this._cart) {
 			if (

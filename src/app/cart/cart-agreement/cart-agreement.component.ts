@@ -10,16 +10,13 @@ export class CartAgreementComponent implements OnInit {
 	@Input() confirmed: boolean;
 	@Output() confirmedChange: EventEmitter<boolean>;
 	showAgreement: boolean;
-	showPartlyPaymentInfo = false;
 
 	constructor(private _cartOrderService: CartOrderService) {
 		this.confirmedChange = new EventEmitter<boolean>();
 		this.showAgreement = false;
 	}
 
-	ngOnInit() {
-		this.showPartlyPaymentInfo = this._cartOrderService.doesOrderIncludePartlyPayment();
-	}
+	ngOnInit() {}
 
 	onConfirmClick() {
 		window.scroll(0, 0);

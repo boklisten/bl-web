@@ -10,6 +10,8 @@ import { UserService } from "../user/user.service";
 })
 export class CartComponent implements OnInit {
 	public cartSize: number;
+	public showPartlyPaymentInfo = false;
+
 	constructor(
 		private _cartService: CartService,
 		private _userService: UserService
@@ -21,6 +23,8 @@ export class CartComponent implements OnInit {
 		this._cartService.onCartChange().subscribe(() => {
 			this.cartSize = this._cartService.getSize();
 		});
+
+		this.showPartlyPaymentInfo = this._cartService.hasPartlyPaymentItems();
 	}
 
 	getCart() {

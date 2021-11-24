@@ -17,6 +17,7 @@ export class ItemSelectComponent implements OnInit {
 	public selectedCategories: string[];
 	public cartSize: number;
 	public autoAdd: boolean;
+	public showPartlyPaymentInfo = false;
 
 	constructor(
 		private _router: Router,
@@ -44,6 +45,8 @@ export class ItemSelectComponent implements OnInit {
 				.getById(branchId)
 				.then((branch) => {
 					this.branch = branch;
+					this.showPartlyPaymentInfo =
+						this.branch.paymentInfo.partlyPaymentPeriods.length > 0;
 				})
 				.catch(() => {
 					this.setBranchFromStore();
