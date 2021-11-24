@@ -90,11 +90,6 @@
 				i18n="@@cartDeliveryOptionBranchInvalidPostalCode"
 				>please provide a valid postal code</span
 			>
-			<span
-				*ngIf="bringInputWarning === 'invalid-postal-city'"
-				i18n="@@cartDeliveryOptionBranchInvalidPostalCity"
-				>please provide a valid postal city</span
-			>
 		</div>
 	</div>
 
@@ -121,6 +116,7 @@
 					</div>
 					<input
 						type="text"
+						required
 						class="form-control"
 						i18n-placeholder="@@cartDeliveryShipmentNamePlaceholder"
 						placeholder="Full Name"
@@ -142,6 +138,7 @@
 
 					<input
 						type="text"
+						required
 						class="form-control"
 						i18n-placeholder="
 							@@cartDeliveryShipmentAddressPlaceholder"
@@ -164,6 +161,7 @@
 
 					<input
 						type="text"
+						required
 						maxlength="4"
 						class="form-control"
 						(change)="validateAndSave()"
@@ -177,13 +175,13 @@
 
 					<input
 						type="text"
+						readonly
+						required
+						disabled
 						class="form-control"
-						(change)="validateAndSave()"
-						(keyup)="validateAndSave()"
 						i18n-placeholder="
 							@@cartDeliveryShipmentPostalCityPlaceholder"
 						placeholder="city"
-						(keyup.enter)="validateInput()"
 						[(ngModel)]="toPostalCity"
 					/>
 				</div>

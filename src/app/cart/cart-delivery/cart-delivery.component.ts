@@ -77,7 +77,6 @@ export class CartDeliveryComponent implements OnInit {
 				const userDetail = await this._userService.getUserDetail();
 				this.toName = userDetail.name ?? "";
 				this.toAddress = userDetail.address ?? "";
-				this.toPostalCity = userDetail.postCity ?? "";
 				this.toPostalCode = userDetail.postCode ?? "";
 			} catch (getUserDetailError) {
 				console.log("cartDeliveryService: could not get user detail");
@@ -120,11 +119,6 @@ export class CartDeliveryComponent implements OnInit {
 			return false;
 		}
 
-		if (!this.toPostalCity || this.toPostalCity.length <= 0) {
-			this.displayError("invalid-postal-city");
-			return false;
-		}
-
 		this.bringInputWarning = "";
 		return true;
 	}
@@ -154,6 +148,7 @@ export class CartDeliveryComponent implements OnInit {
 
 		if (error === "invalid-postal-code") {
 			this.currentDelivery = null;
+			this.toPostalCity = "";
 		}
 	}
 
@@ -167,7 +162,6 @@ export class CartDeliveryComponent implements OnInit {
 		const shipmentAddress = this.currentDelivery?.info["shipmentAddress"];
 		return (
 			shipmentAddress?.postalCode === this.toPostalCode &&
-			shipmentAddress?.postalCity === this.toPostalCity &&
 			shipmentAddress?.address === this.toAddress &&
 			shipmentAddress?.name === this.toName
 		);
@@ -185,8 +179,12 @@ export class CartDeliveryComponent implements OnInit {
 				this.toPostalCity,
 				this.toPostalCode
 			);
+			this.toPostalCity = this.currentDelivery.info[
+				"shipmentAddress"
+			].postalCity;
 		} catch (err) {
 			this.displayError("invalid-postal-code");
+			this.toPostalCity = "";
 		}
 		this.waitForPrice = false;
 	}

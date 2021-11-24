@@ -29,9 +29,9 @@ export class CartDeliveryService {
 		this._deliveryChange$ = new Subject();
 
 		this._deliveryMethod = this.getDefaultDeliveryMethod();
-		this._fromPostalCode = "1316";
-		this._fromPostalCity = "OSLO";
-		this._fromAddress = "Postboks 8, 1316 Eiksmarka";
+		this._fromPostalCode = "1364";
+		this._fromPostalCity = "FORNEBU";
+		this._fromAddress = "Martin Lingesvei 25";
 
 		this.onOrderClear();
 	}
@@ -140,7 +140,6 @@ export class CartDeliveryService {
 	private onOrderChange() {
 		this._cartOrderService.onOrderChange().subscribe(() => {
 			this._currentDelivery = null;
-			this._fromPostalCode = "";
 			this._deliveryMethod = "branch";
 		});
 	}
@@ -148,7 +147,6 @@ export class CartDeliveryService {
 	private onOrderClear() {
 		this._cartOrderService.onClearOrder().subscribe(() => {
 			this._currentDelivery = null;
-			this._fromPostalCode = "";
 			this._deliveryMethod = "branch";
 		});
 	}
@@ -157,7 +155,7 @@ export class CartDeliveryService {
 		return {
 			method: "bring",
 			info: {
-				from: "1316",
+				from: this._fromPostalCode,
 				to: this._toPostalCode,
 				shipmentAddress: {
 					name: this._toName,
@@ -167,7 +165,7 @@ export class CartDeliveryService {
 				},
 				facilityAddress: {
 					address: this._fromAddress,
-					postalCode: "1316",
+					postalCode: this._fromPostalCode,
 					postalCity: this._fromPostalCity,
 				},
 			},
