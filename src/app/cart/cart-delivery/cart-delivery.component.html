@@ -204,6 +204,22 @@
 			</div>
 		</div>
 
+		<div class="row justify-content-between" *ngIf="currentDelivery">
+			<div class="col-auto text-secondary">
+				<span>Pakketype</span>
+			</div>
+			<div class="col-auto">
+				<fa-icon
+					[icon]="'circle-notch'"
+					[spin]="true"
+					*ngIf="waitForPrice && deliveryMethod === 'bring'"
+				></fa-icon>
+				<span *ngIf="!waitForPrice">
+					{{ product }}
+				</span>
+			</div>
+		</div>
+
 		<div
 			class="row justify-content-between"
 			*ngIf="deliveryMethod === 'bring' && currentDelivery"

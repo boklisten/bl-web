@@ -38,6 +38,7 @@ export class CartDeliveryComponent implements OnInit {
 	public toName: string;
 	public toAddress: string;
 	public toPostalCity: string;
+	public product: string;
 	public branch: Branch;
 	public bringInputWarning = "";
 	private totalCartPrice: number;
@@ -71,6 +72,12 @@ export class CartDeliveryComponent implements OnInit {
 		this.confirmDelivery.emit(true);
 	}
 
+	private toReadableProduct(productId: string) {
+		return productId === "3584"
+			? "pakke i postkassen"
+			: "pakke til hentested";
+	}
+
 	private async setDeliveryDetails() {
 		if (!this.currentDelivery) {
 			try {
@@ -78,6 +85,7 @@ export class CartDeliveryComponent implements OnInit {
 				this.toName = userDetail.name ?? "";
 				this.toAddress = userDetail.address ?? "";
 				this.toPostalCode = userDetail.postCode ?? "";
+				this.product = "";
 			} catch (getUserDetailError) {
 				console.log("cartDeliveryService: could not get user detail");
 			}
@@ -92,6 +100,9 @@ export class CartDeliveryComponent implements OnInit {
 			this.toAddress = shipmentAddress.address;
 			this.toPostalCode = shipmentAddress.postalCode;
 			this.toPostalCity = shipmentAddress.postalCity;
+			this.product = this.toReadableProduct(
+				this.currentDelivery.info["product"]
+			);
 		}
 	}
 
@@ -182,9 +193,13 @@ export class CartDeliveryComponent implements OnInit {
 			this.toPostalCity = this.currentDelivery.info[
 				"shipmentAddress"
 			].postalCity;
+			this.product = this.toReadableProduct(
+				this.currentDelivery.info["product"]
+			);
 		} catch (err) {
 			this.displayError("invalid-postal-code");
 			this.toPostalCity = "";
+			this.product = "";
 		}
 		this.waitForPrice = false;
 	}
