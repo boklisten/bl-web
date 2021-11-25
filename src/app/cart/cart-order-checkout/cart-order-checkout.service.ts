@@ -179,20 +179,13 @@ export class CartOrderCheckoutService {
 	}
 
 	private needToPay(): boolean {
-		if (
+		const branchIsResponsible = this.branchStoreService.getBranch()
+			?.paymentInfo.responsible;
+
+		return (
 			this.cartOrderService.doesOrderIncludeBuy() ||
-			this.cartOrderService.doesOrderIncludeExtend() ||
-			this.cartOrderService.doesOrderIncludeBuyout()
-		) {
-			return true;
-		}
-
-		let branch = this.branchStoreService.getBranch();
-
-		if (branch && branch.paymentInfo.responsible) {
-			return false;
-		}
-
-		return true;
+			this.cartOrderService.doesOrderIncludeBuyout() ||
+			!branchIsResponsible
+		);
 	}
 }
