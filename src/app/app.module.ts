@@ -221,7 +221,7 @@ export class AppModule {
 		LoginModule.withConfig({
 			successPath: "/i/select",
 			apiPath: environment.apiPath,
-			userAgreementUrl: "/info/agreement/rent",
+			userAgreementUrl: "/info/policies/conditions",
 			userDetailNotValidPath: "/u/edit",
 			registerSuccessPath: "/u/edit",
 			permissionDeniedPath: "",
