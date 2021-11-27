@@ -11,6 +11,26 @@
 		</div>
 	</div>
 
+	<div
+		class="d-flex flex-column align-items-center mb-4"
+		*ngIf="activeCustomerItems.length > 0 || wait"
+	>
+		<h4>Valgt skole</h4>
+
+		<select
+			(change)="onBranchSelect($event.target.value)"
+			class="form-select p-1"
+		>
+			<option
+				*ngFor="let branch of allBranches"
+				[value]="branch.id"
+				[selected]="branch.id === selectedBranch.id"
+			>
+				{{ branch.name }}
+			</option>
+		</select>
+	</div>
+
 	<div class="row" *ngIf="activeCustomerItems.length <= 0">
 		<div class="col-12">
 			<div class="alert alert-warning" i18n="@@noItems">

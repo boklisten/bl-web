@@ -24,6 +24,7 @@ import { UserCustomerItemService } from "./user-customer-item.service";
 })
 export class UserCustomerItemComponent implements OnInit {
 	@Input() customerItem: CustomerItem;
+	@Input() selectedBranchId: string;
 	public item: Item;
 	public branch: Branch;
 	public extend: boolean;
@@ -34,6 +35,7 @@ export class UserCustomerItemComponent implements OnInit {
 	public correctBranch: boolean;
 	public notReturnedBeforeDeadline: boolean;
 	public returned: boolean;
+	public handoutBranch: Branch;
 
 	constructor(
 		private _itemService: ItemService,
@@ -53,27 +55,25 @@ export class UserCustomerItemComponent implements OnInit {
 		this.returned = false;
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 		if (this.customerItem) {
 			if (!this.item) {
-				this._itemService
-					.getById(this.customerItem.item as string, { fresh: true })
-					.then((item: Item) => {
-						this.item = item;
-						this.initByCart();
-						this.setValidOptions();
-					})
-					.catch((itemBlApiErr: BlApiError) => {
-						console.log(
-							"userCustomerItemComponent: could not get item",
-							itemBlApiErr
-						);
-					});
+				try {
+					this.item = await this._itemService.getById(
+						this.customerItem.item as string,
+						{ fresh: true }
+					);
+					this.initByCart();
+					await this.setValidOptions();
+				} catch (itemBlApiErr: unknown) {
+					console.log(
+						"userCustomerItemComponent: could not get item",
+						itemBlApiErr
+					);
+				}
 			} else {
-				this.setValidOptions();
+				await this.setValidOptions();
 			}
-
-			this.branch = this._branchStoreService.getBranch();
 
 			this.notReturnedBeforeDeadline = this._userCustomerItemService.isNotReturnedBeforeDeadline(
 				this.customerItem
@@ -82,7 +82,7 @@ export class UserCustomerItemComponent implements OnInit {
 		}
 	}
 
-	setValidOptions() {
+	async setValidOptions() {
 		let branchItem: BranchItem;
 		if (this._branchStoreService.haveBranchItem(this.item.id)) {
 			branchItem = this._branchStoreService.getBranchItem(this.item.id);
@@ -104,6 +104,11 @@ export class UserCustomerItemComponent implements OnInit {
 			);
 		} else {
 			this.correctBranch = false;
+
+			this.branch = this._branchStoreService.getBranch();
+			this.handoutBranch = await this._branchService.getById(
+				this.customerItem.handoutInfo.handoutById
+			);
 		}
 	}
 

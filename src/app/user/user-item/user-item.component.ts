@@ -1,9 +1,15 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { BlApiError, CustomerItem, UserDetail } from "@boklisten/bl-model";
-import { CustomerItemService } from "@boklisten/bl-connect";
+import {
+	BlApiError,
+	CustomerItem,
+	UserDetail,
+	Branch,
+} from "@boklisten/bl-model";
+import { CustomerItemService, BranchService } from "@boklisten/bl-connect";
 import { UserService } from "../user.service";
 import { UserCustomerItemService } from "../user-customer-item/user-customer-item.service";
 import { CartService } from "../../cart/cart.service";
+import { BranchStoreService } from "../../branch/branch-store.service";
 
 @Component({
 	selector: "app-user-item",
@@ -15,18 +21,23 @@ export class UserItemComponent implements OnInit {
 	public activeCustomerItems: CustomerItem[];
 	public inactiveCustomerItems: CustomerItem[];
 	public showInactiveCustomerItems: boolean;
+	public allBranches: Branch[];
+	public selectedBranch: Branch;
+	public wait = false;
 
 	constructor(
 		private _customerItemService: CustomerItemService,
 		private _userService: UserService,
 		private _userCustomerItemService: UserCustomerItemService,
-		private _cartService: CartService
+		private _cartService: CartService,
+		private _branchService: BranchService,
+		private _branchStoreService: BranchStoreService
 	) {
 		this.activeCustomerItems = [];
 		this.inactiveCustomerItems = [];
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 		this._userService
 			.getUserDetail()
 			.then((userDetail: UserDetail) => {
@@ -60,6 +71,26 @@ export class UserItemComponent implements OnInit {
 					blApiErr
 				);
 			});
+		this.selectedBranch = this._branchStoreService.getBranch();
+		this.allBranches = (
+			await this._branchService.get()
+		).sort((a: Branch, b: Branch) => a.name.localeCompare(b.name));
+	}
+
+	public onBranchSelect(branchId: string) {
+		this.wait = true;
+		this._branchStoreService.setBranch(
+			this.allBranches.find((branch) => branch.id === branchId) ??
+				({} as Branch)
+		);
+
+		// Trigger re-render of children
+		const copy = this.activeCustomerItems;
+		this.activeCustomerItems = [];
+		setTimeout(() => {
+			this.activeCustomerItems = copy;
+			this.wait = false;
+		});
 	}
 
 	public cartActive() {
