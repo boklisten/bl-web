@@ -21,7 +21,6 @@ import {
 } from "@fortawesome/angular-fontawesome";
 import { MatchModule } from "./match/match.module";
 import { ClickOutsideModule } from "ng-click-outside";
-import { BookingModule } from "./booking/booking.module";
 
 import {
 	faCircle,
@@ -124,7 +123,6 @@ import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.servi
 		FastbuyModule,
 		MatchModule,
 		ClickOutsideModule,
-		BookingModule,
 	],
 	providers: [
 		BranchGuardService,
