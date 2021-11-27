@@ -1,14 +1,14 @@
 <button
-	class="btn btn-outline-secondary btn-block btn-sm"
+	class="btn text-white btn-block btn-sm"
 	(click)="onAdd()"
 	*ngIf="!isAdded()"
 >
 	<fa-icon icon="cart-plus"></fa-icon>
 </button>
 <button
-	class="btn btn-success btn-block btn-sm"
+	class="btn btn-block btn-sm text-right"
 	(click)="onDelete()"
 	*ngIf="isAdded()"
 >
-	<fa-icon icon="check"></fa-icon>
+	<fa-icon class="text-danger" icon="times"></fa-icon>
 </button>

@@ -3,20 +3,22 @@
 		<div class="card">
 			<div class="card-header bg-info text-white">
 				<div class="row justify-content-between align-items-center">
-					<div class="col-sm-auto col-12 text-center bl-text-sm">
+					<div class="d-flex text-center flex-nowrap ml-4 bl-text-sm">
 						<a routerLink="{{ '/i/' + item.id }}">{{
 							item.title
 						}}</a>
 					</div>
-					<div
-						class="col-md-auto col-sm-auto text-white font-weight-bold bl-text-sm"
-					>
-						<span *ngIf="customerItem && orderItemAction">{{
-							customerItem
-								| blcCustomerItemPrice: orderItemAction.action
-								| async
-								| blcPrice
-						}}</span>
+					<div class="text-white font-weight-bold bl-text-sm">
+						<div class="mr-3">
+							<app-item-add
+								*ngIf="showAdd"
+								[item]="item"
+								[type]="orderItemAction.action"
+								[branchItem]="branchItem"
+								[period]="orderItemAction.period"
+								[autoAdd]="autoAdd"
+							></app-item-add>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,16 +39,42 @@
 			</div>
 
 			<div class="card-body">
-				<div
-					class="row justify-content-sm-between justify-content-center align-items-center"
-				>
-					<div class="col-lg-2 col-md-3 col-sm-3 d-sm-inline d-none">
-						<div class="bl-item-image">
-							<fa-icon icon="book" size="2x"></fa-icon>
-						</div>
+				<div class="d-flex justify-content-between align-items-center">
+					<div
+						*ngIf="
+							isCustomerItem() ||
+							(!alreadyOrdered && !alreadyHaveItem)
+						"
+						class="ml-2 w-5 w-50"
+					>
+						<span
+							class="text-large text-dark font-weight-bold"
+							*ngIf="!customerItem"
+							>{{ getPrice() | blcPrice }}</span
+						>
+						<span
+							class="ml-2 text-secondary bl-text-sm font-italic"
+							*ngIf="
+								orderItemAction &&
+								orderItemAction.action === 'partly-payment' &&
+								getPrice() !== 0
+							"
+						>
+							<span
+								i18n="@@itemDisplayPartlyPaymentAmountLeftToPay"
+								>pay later</span
+							>:
+							<span>{{ getAmountLeftToPay() | blcPrice }}</span>
+						</span>
+
+						<span *ngIf="customerItem && orderItemAction">{{
+							customerItem
+								| blcCustomerItemPrice: orderItemAction.action
+								| async
+								| blcPrice
+						}}</span>
 					</div>
 					<div
-						class="col-sm-auto col-12"
 						*ngIf="
 							isCustomerItem() ||
 							(!alreadyOrdered && !alreadyHaveItem)
@@ -59,78 +87,6 @@
 							[type]="orderItemType"
 							(typeChange)="onOrderItemActionChange($event)"
 						></app-item-type-select>
-					</div>
-				</div>
-			</div>
-
-			<div
-				class="card-footer"
-				*ngIf="
-					isCustomerItem() || (!alreadyOrdered && !alreadyHaveItem)
-				"
-			>
-				<div
-					class="row align-items-xl-center align-items-lg-center align-items-md-start justify-content-md-between justify-content-sm-center justify-content-center"
-				>
-					<div class="col-12">
-						<div
-							class="row justify-content-xl-between justify-content-lg-end justify-content-md-end justify-content-sm-end align-items-center"
-						>
-							<div class="col-6">
-								<div class="text-center">
-									<span
-										class="text-large text-dark font-weight-bold"
-										*ngIf="
-											!customerItem && getPrice() !== 0
-										"
-										>{{ getPrice() | blcPrice }}</span
-									>
-									<span
-										class="ml-2 text-secondary bl-text-sm font-italic"
-										*ngIf="
-											orderItemAction &&
-											orderItemAction.action ===
-												'partly-payment' &&
-											getPrice() !== 0
-										"
-									>
-										<span
-											i18n="
-												@@itemDisplayPartlyPaymentAmountLeftToPay"
-											>pay later</span
-										>:
-										<span>{{
-											getAmountLeftToPay() | blcPrice
-										}}</span>
-									</span>
-
-									<span
-										*ngIf="customerItem && orderItemAction"
-										>{{
-											customerItem
-												| blcCustomerItemPrice
-													: orderItemAction.action
-												| async
-												| blcPrice
-										}}</span
-									>
-								</div>
-							</div>
-
-							<div
-								class="col-md-4 col-sm-6 col-6"
-								[ngClass]="{ 'col-12': getPrice() === 0 }"
-							>
-								<app-item-add
-									*ngIf="showAdd"
-									[item]="item"
-									[type]="orderItemAction.action"
-									[branchItem]="branchItem"
-									[period]="orderItemAction.period"
-									[autoAdd]="autoAdd"
-								></app-item-add>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
