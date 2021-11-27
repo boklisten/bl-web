@@ -30,7 +30,7 @@ export class OrderInfoComponent implements OnInit {
 		if (this.order && this.order.handoutByDelivery) {
 			return true;
 		}
-		if (this.order) {
+		if (this.order?.orderItems) {
 			for (const orderItem of this.order.orderItems) {
 				if (
 					orderItem.type !== "buyout" &&
@@ -71,6 +71,9 @@ export class OrderInfoComponent implements OnInit {
 	}
 
 	private shouldAgreementBeVisisble() {
+		if (!this.order?.orderItems) {
+			return false;
+		}
 		for (const orderItem of this.order.orderItems) {
 			if (orderItem.type !== "rent" && orderItem.type !== "loan") {
 				return false;
