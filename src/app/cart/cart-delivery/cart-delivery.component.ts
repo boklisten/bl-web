@@ -1,21 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
-import {
-	BlApiError,
-	Delivery,
-	Order,
-	DeliveryMethod,
-	UserDetail,
-	Branch,
-} from "@boklisten/bl-model";
-import { DateService } from "../../date/date.service";
-import { DeliveryService } from "@boklisten/bl-connect";
+import { Delivery, DeliveryMethod, Branch } from "@boklisten/bl-model";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { CartDeliveryService } from "./cart-delivery.service";
-import { CartCheckoutService } from "../cart-checkout/cart-checkout.service";
-import { CartService } from "../cart.service";
-import { CartOrderService } from "../cart-order/cart-order.service";
-import { isNumber } from "util";
 import { UserService } from "../../user/user.service";
 
 @Component({
@@ -41,10 +28,8 @@ export class CartDeliveryComponent implements OnInit {
 	public product: string;
 	public branch: Branch;
 	public bringInputWarning = "";
-	private totalCartPrice: number;
 
 	constructor(
-		private _dateService: DateService,
 		private _cartDeliveryService: CartDeliveryService,
 		private _userService: UserService,
 		private _branchStoreService: BranchStoreService
@@ -56,7 +41,9 @@ export class CartDeliveryComponent implements OnInit {
 	async ngOnInit() {
 		this.currentDelivery = this._cartDeliveryService.getDelivery();
 		this.branch = this._branchStoreService.getBranch();
-		this.deliveryMethod = this._cartDeliveryService.getDefaultDeliveryMethod();
+		this.deliveryMethod =
+			this.currentDelivery?.method ??
+			this._cartDeliveryService.getDefaultDeliveryMethod();
 
 		this.branchOption = this.branch.deliveryMethods?.branch ?? true;
 		this.mailOption = this.branch.deliveryMethods?.byMail ?? true;
@@ -79,7 +66,7 @@ export class CartDeliveryComponent implements OnInit {
 	}
 
 	private async setDeliveryDetails() {
-		if (!this.currentDelivery) {
+		if (!this.currentDelivery?.info["shipmentAddress"]) {
 			try {
 				const userDetail = await this._userService.getUserDetail();
 				this.toName = userDetail.name ?? "";
@@ -171,6 +158,10 @@ export class CartDeliveryComponent implements OnInit {
 	}
 	private deliveryInfoUnchanged() {
 		const shipmentAddress = this.currentDelivery?.info["shipmentAddress"];
+		if (!shipmentAddress) {
+			return false;
+		}
+
 		return (
 			shipmentAddress?.postalCode === this.toPostalCode &&
 			shipmentAddress?.address === this.toAddress &&
