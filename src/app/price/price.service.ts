@@ -148,8 +148,8 @@ export class PriceService {
 		branch: Branch,
 		periodType: "semester" | "year"
 	): number {
-		if (branch.paymentInfo.responsible) {
-			return 0;
+		if (!branch?.paymentInfo) {
+			return 50;
 		}
 
 		for (const extendPeriod of branch.paymentInfo.extendPeriods) {

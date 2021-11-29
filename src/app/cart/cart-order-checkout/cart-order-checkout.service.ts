@@ -185,6 +185,7 @@ export class CartOrderCheckoutService {
 		return (
 			this.cartOrderService.doesOrderIncludeBuy() ||
 			this.cartOrderService.doesOrderIncludeBuyout() ||
+			this.cartOrderService.doesOrderIncludeExtend() ||
 			!branchIsResponsible
 		);
 	}
