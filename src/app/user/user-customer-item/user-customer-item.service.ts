@@ -5,25 +5,38 @@ import {
 	CustomerItem,
 	UserDetail,
 } from "@boklisten/bl-model";
-import { BranchService, CustomerItemService } from "@boklisten/bl-connect";
+import { CustomerItemService } from "@boklisten/bl-connect";
 import { Period } from "@boklisten/bl-model/dist/period/period";
 import { DateService } from "../../date/date.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
 import { UserService } from "../user.service";
+import * as moment from "moment";
 
 @Injectable()
 export class UserCustomerItemService {
 	private customerItems: CustomerItem[];
-	private _maxDeadline: string; //TODO: should not be this way
+	private _maxDeadline: string;
 
 	constructor(
-		private _branchService: BranchService,
 		private _dateService: DateService,
 		private _userService: UserService,
 		private _customerItemService: CustomerItemService,
 		private _branchStoreService: BranchStoreService
 	) {
-		this._maxDeadline = "2020-12-31";
+		this._maxDeadline = this.calculateMaxDeadline();
+	}
+
+	private calculateMaxDeadline(): string {
+		const now = moment();
+		const month = now.format("MM");
+		const year = now.format("YYYY");
+
+		if (month === "12") {
+			return `${year}-12-31`;
+		}
+
+		const lastYear = now.subtract(1, "year");
+		return `${lastYear}-12-31`;
 	}
 
 	public isActive(customerItem: CustomerItem): boolean {
