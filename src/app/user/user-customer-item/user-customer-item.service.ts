@@ -28,10 +28,11 @@ export class UserCustomerItemService {
 
 	private calculateMaxDeadline(): string {
 		const now = moment();
+		const day = now.format("DD");
 		const month = now.format("MM");
 		const year = now.format("YYYY");
 
-		if (month === "12") {
+		if (month === "12" && Number(day) > 19) {
 			return `${year}-12-31`;
 		}
 

@@ -139,7 +139,10 @@ export class DateService {
 	public isDeadlineExpired(deadline: string, maxDeadline?: string): boolean {
 		if (moment().isAfter(moment(deadline).endOf("day"))) {
 			if (maxDeadline !== undefined) {
-				return moment().isAfter(moment(maxDeadline).endOf("day"));
+				return (
+					moment().subtract(1, "month").isAfter(moment(deadline)) ||
+					moment().isAfter(moment(maxDeadline).endOf("day"))
+				);
 			}
 			return true;
 		}
@@ -162,8 +165,8 @@ export class DateService {
 		numberOfDaysBefore: number,
 		numberOfDaysAfter: number
 	): boolean {
-		const before = moment(deadline).subtract("days", numberOfDaysBefore);
-		const after = moment(deadline).add("days", numberOfDaysAfter);
+		const before = moment(deadline).subtract(numberOfDaysBefore, "days");
+		const after = moment(deadline).add(numberOfDaysAfter, "days");
 		return moment(date).isBetween(before, after, "day", "[]");
 	}
 }
