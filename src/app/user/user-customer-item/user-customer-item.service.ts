@@ -36,7 +36,7 @@ export class UserCustomerItemService {
 			return `${year}-12-31`;
 		}
 
-		const lastYear = now.subtract(1, "year");
+		const lastYear = now.subtract(1, "year").format("YYYY");
 		return `${lastYear}-12-31`;
 	}
 
