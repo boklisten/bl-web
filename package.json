@@ -40,7 +40,7 @@
 		"@angular/router": "^11.2.14",
 		"@boklisten/bl-connect": "^0.19.0",
 		"@boklisten/bl-login": "^1.2.3",
-		"@boklisten/bl-model": "^0.25.0",
+		"@boklisten/bl-model": "^0.25.7",
 		"@fortawesome/angular-fontawesome": "^0.8.2",
 		"@fortawesome/fontawesome-svg-core": "^1.2.34",
 		"@fortawesome/free-brands-svg-icons": "^5.15.2",
