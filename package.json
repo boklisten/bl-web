@@ -54,7 +54,7 @@
 		"email-validator": "^2.0.4",
 		"express": "^4.17.1",
 		"file-saver": "^2.0.5",
-		"moment": "^2.29.1",
+		"moment": "^2.29.3",
 		"moment-es6": "^1.0.0",
 		"ng-click-outside": "^7.0.1",
 		"rxjs": "^6.6.6",
