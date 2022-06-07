@@ -29,6 +29,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 			"Wang VG1",
 			"Wang VG2",
 			"Wang VG3",
+			"Ullern VGS",
 		];
 	}
 
