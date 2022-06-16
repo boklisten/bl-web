@@ -130,6 +130,9 @@ export class PriceService {
 		item: Item,
 		branch: Branch
 	): number {
+		if (!branch) {
+			return -1;
+		}
 		if (customerItem.type === "partly-payment") {
 			return customerItem.amountLeftToPay;
 		}
