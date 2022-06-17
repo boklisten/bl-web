@@ -87,6 +87,7 @@ export class UserCustomerItemComponent implements OnInit {
 		if (this._branchStoreService.haveBranchItem(this.item.id)) {
 			branchItem = this._branchStoreService.getBranchItem(this.item.id);
 		}
+		this.branch = this._branchStoreService.getBranch();
 
 		if (
 			this._userCustomerItemService.isOnValidBranch(
@@ -105,7 +106,6 @@ export class UserCustomerItemComponent implements OnInit {
 		} else {
 			this.correctBranch = false;
 
-			this.branch = this._branchStoreService.getBranch();
 			this.handoutBranch = await this._branchService.getById(
 				this.customerItem.handoutInfo.handoutById
 			);
