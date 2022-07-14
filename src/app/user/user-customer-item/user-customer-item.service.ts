@@ -187,14 +187,10 @@ export class UserCustomerItemService {
 		period: Period,
 		customerItem: CustomerItem
 	): boolean {
-		/*
-		for (const extendPeriod of customerItem.periodExtends) {
-			if (extendPeriod.periodType === period) {
-				return false;
-			}
-		}
-    */
-		return true;
+		return (
+			!customerItem.periodExtends ||
+			customerItem.periodExtends.length === 0
+		);
 	}
 
 	private isExtendPeriodValid(
