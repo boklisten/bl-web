@@ -47,7 +47,8 @@ export class FastbuySelectBranchComponent implements OnInit {
 						branch.name
 							.toLowerCase()
 							.toString()
-							.indexOf(this.region.toLowerCase()) >= 0
+							.indexOf(this.region.toLowerCase()) >= 0 &&
+						this.region !== "online"
 					) {
 						branchNames.push({
 							name: this.sanitizeBranchName(branch),
@@ -63,16 +64,12 @@ export class FastbuySelectBranchComponent implements OnInit {
 							branch: branch,
 							params: { branch: branch.id },
 						});
-						// Quick fix for Sonans Online
 					} else if (
-						this.region === "nettstudier" &&
-						branch.name.includes("Online")
+						this.region === "online" &&
+						branch?.location?.region === "online"
 					) {
 						branchNames.push({
-							name: this.sanitizeBranchName(branch).replace(
-								"online",
-								""
-							),
+							name: branch.name,
 							branch: branch,
 							params: { branch: branch.id },
 						});

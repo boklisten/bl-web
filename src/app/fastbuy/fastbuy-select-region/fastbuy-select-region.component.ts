@@ -14,7 +14,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 		this.regions = [
 			{
 				name: "Nettstudier",
-				params: { region: "nettstudier" },
+				params: { region: "online" },
 			},
 			{ name: "Bergen", params: { region: "bergen" } },
 			{ name: "Drammen", params: { region: "drammen" } },
