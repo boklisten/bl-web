@@ -13,7 +13,7 @@ export class FastbuySelectRegionComponent implements OnInit {
 	constructor(private branchService: BranchService) {
 		this.regions = [
 			{
-				name: "Nettstudier",
+				name: "Online",
 				params: { region: "online" },
 			},
 			{ name: "Bergen", params: { region: "bergen" } },
