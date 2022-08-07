@@ -21,7 +21,7 @@
 	<div class="col-auto text-secondary">
 		<div *ngIf="orderItem.type === 'rent'">
 			<fa-icon [icon]="'calendar-alt'" class="mr-2"></fa-icon>
-			<span i18n="@@orderItemInfoTypeRent">Rent</span>
+			<span>Lån</span>
 			<fa-icon [icon]="'arrow-right'" class="ml-2 mr-2"></fa-icon>
 			<b>{{ orderItem.info.to | blcDate }}</b>
 		</div>

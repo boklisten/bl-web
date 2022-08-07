@@ -57,7 +57,8 @@ export class FastbuySelectBranchComponent implements OnInit {
 						});
 					} else if (
 						this.region == "oslo" &&
-						this.publicSchools.indexOf(branch.name) >= 0
+						(this.publicSchools.indexOf(branch.name) >= 0 ||
+							branch.name.toLowerCase().includes("ullern"))
 					) {
 						branchNames.push({
 							name: this.sanitizeBranchName(branch),
