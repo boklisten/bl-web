@@ -27,6 +27,8 @@ export class FastbuySelectRegionComponent implements OnInit {
 			{ name: "Ski", params: { region: "ski" } },
 			{ name: "Sandvika", params: { region: "sandvika" } },
 			{ name: "Ålesund", params: { region: "ålesund" } },
+			{ name: "Sandnes", params: { region: "sandnes" } },
+			{ name: "Tønsberg", params: { region: "tønsberg" } },
 		].sort((a, b) => (a.name > b.name ? 1 : -1));
 	}
 
