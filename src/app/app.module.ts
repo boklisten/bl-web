@@ -96,6 +96,8 @@ import { LogoutComponent } from "./logout/logout.component";
 import { Router } from "@angular/router";
 import * as Sentry from "@sentry/angular";
 import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.service";
+import { AgreementComponent } from './agreement/agreement.component';
+import {BlCommonModule} from "./bl-common/bl-common.module";
 
 @NgModule({
 	declarations: [
@@ -104,6 +106,7 @@ import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.servi
 		HeaderCartComponent,
 		FooterComponent,
 		LogoutComponent,
+  AgreementComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -123,6 +126,7 @@ import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.servi
 		FastbuyModule,
 		MatchModule,
 		ClickOutsideModule,
+		BlCommonModule,
 	],
 	providers: [
 		BranchGuardService,
