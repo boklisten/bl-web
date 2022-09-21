@@ -58,19 +58,20 @@ export class UserOrderService {
 	}
 
 	private getOrders(userDetail: UserDetail): Promise<Order[]> {
-		return new Promise((resolve, reject) => {
+		return new Promise(async (resolve, reject) => {
 			if (this.userService.haveOrders()) {
-				this.orderService
-					.getManyByIds(userDetail.orders as string[])
-					.then((orders: Order[]) => {
-						resolve(orders);
-					})
-					.catch((getOrdersError: BlApiError) => {
-						reject(
-							"UserOrderService: could not get orders: " +
-								getOrdersError
+				const orderDetails = [];
+				for (const orderId of userDetail.orders) {
+					try {
+						const orderDetail = await this.orderService.getById(
+							orderId as string
 						);
-					});
+						orderDetails.push(orderDetail);
+					} catch (error) {
+						console.log(error);
+					}
+				}
+				resolve(orderDetails);
 			} else {
 				return resolve([]);
 			}

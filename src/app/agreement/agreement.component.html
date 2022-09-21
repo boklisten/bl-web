@@ -1,5 +1,11 @@
 <h1 style="text-align: center">Din låneavtale fra Boklisten</h1>
 <div style="display: flex; justify-content: center">
 	<app-blc-spinner [loading]="wait" *ngIf="wait"></app-blc-spinner>
-	<button *ngIf="!wait" class="btn btn-block btn-lg btn-primary" (click)="openAgreement()">Åpne låneavtale</button>
+	<button
+		*ngIf="!wait"
+		class="btn btn-block btn-lg btn-primary"
+		(click)="openAgreement()"
+	>
+		Åpne låneavtale
+	</button>
 </div>

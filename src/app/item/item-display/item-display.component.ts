@@ -7,10 +7,9 @@ import {
 	Period,
 } from "@boklisten/bl-model";
 import { CartService } from "../../cart/cart.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { PriceService } from "../../price/price.service";
 import { UserService } from "../../user/user.service";
-import { BranchStoreService } from "../../branch/branch-store.service";
 import { ItemService } from "@boklisten/bl-connect";
 import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 import { UserOrderService } from "../../user/order/user-order/user-order.service";
@@ -40,6 +39,8 @@ export class ItemDisplayComponent implements OnInit {
 	public showAdd: boolean;
 	public period: Period;
 
+	private wait = true;
+
 	constructor(
 		private _router: Router,
 		private _priceService: PriceService,
@@ -56,33 +57,32 @@ export class ItemDisplayComponent implements OnInit {
 		this.period = "semester";
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 		if (this.branchItem && !this.item) {
-			this._itemService
-				.getById(this.branchItem.item as string)
-				.then((item: Item) => {
-					this.item = item;
-					this.checkIfAlreadyHaveItem();
-				})
-				.catch((getItemError) => {
-					console.log(
-						"ItemDisplayComponent: could not get item based on branchItem"
-					);
-				});
+			try {
+				this.item = await this._itemService.getById(
+					this.branchItem.item as string
+				);
+				await this.checkIfAlreadyHaveItem();
+			} catch (getItemError) {
+				console.log(
+					"ItemDisplayComponent: could not get item based on branchItem"
+				);
+			}
 		}
 
-		this.isCustomerItemActive()
-			.then(() => {
-				this.view = true;
-			})
-			.catch(() => {
-				this.view = true;
-			});
+		try {
+			await this.isCustomerItemActive();
+		} catch (error) {
+			console.log(error);
+		} finally {
+			this.view = true;
+		}
 
-		this.checkIfAlreadyHaveItem();
+		await this.checkIfAlreadyHaveItem();
 	}
 
-	private checkIfAlreadyHaveItem() {
+	private async checkIfAlreadyHaveItem() {
 		let itemId = "";
 
 		if (this.item) {
@@ -93,41 +93,44 @@ export class ItemDisplayComponent implements OnInit {
 			return;
 		}
 
-		this._userCustomerItemService
-			.alreadyHaveItem(itemId)
-			.then((haveItem: boolean) => {
-				this.alreadyHaveItem = haveItem;
-				if (haveItem && !this._cartService.isCustomerItem(itemId)) {
-					this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
-				} else {
-					this.checkIfAlreadyOrdered(itemId);
-				}
-			})
-			.catch((err) => {
-				console.log(
-					"UserOrderService: could not check if user already have customer item",
-					err
-				);
-				this.checkIfAlreadyOrdered(itemId);
-			});
+		try {
+			const haveItem = await this._userCustomerItemService.alreadyHaveItem(
+				itemId
+			);
+			this.alreadyHaveItem = haveItem;
+			if (haveItem && !this._cartService.isCustomerItem(itemId)) {
+				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
+				this.wait = false;
+			} else {
+				await this.checkIfAlreadyOrdered(itemId);
+			}
+		} catch (error) {
+			console.log(
+				"UserOrderService: could not check if user already have customer item",
+				error
+			);
+			await this.checkIfAlreadyOrdered(itemId);
+		}
 	}
 
-	private checkIfAlreadyOrdered(itemId: string) {
-		this._userOrderService
-			.alreadyHaveOrderedItem(itemId)
-			.then((haveOrdered: boolean) => {
-				this.alreadyOrdered = haveOrdered;
+	private async checkIfAlreadyOrdered(itemId: string) {
+		try {
+			const haveOrdered = await this._userOrderService.alreadyHaveOrderedItem(
+				itemId
+			);
+			this.alreadyOrdered = haveOrdered;
 
-				if (haveOrdered && !this._cartService.isCustomerItem(itemId)) {
-					this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
-				}
-			})
-			.catch((alreadyOrderedError) => {
-				console.log(
-					"UserOrderService: could not check if user already have item",
-					alreadyOrderedError
-				);
-			});
+			if (haveOrdered && !this._cartService.isCustomerItem(itemId)) {
+				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
+			}
+			this.wait = false;
+		} catch (alreadyOrderedError) {
+			console.log(
+				"UserOrderService: could not check if user already have item",
+				alreadyOrderedError
+			);
+			this.wait = false;
+		}
 	}
 
 	public onOrderItemActionChange(action: {
@@ -141,19 +144,15 @@ export class ItemDisplayComponent implements OnInit {
 		}, 0);
 	}
 
-	public isCustomerItemActive(): Promise<boolean> {
-		return new Promise((resolve, reject) => {
-			this._userService
-				.isCustomerItemActive(this.item.id)
-				.then(() => {
-					this.customerItemActive = true;
-					resolve(true);
-				})
-				.catch(() => {
-					this.customerItemActive = false;
-					reject(false);
-				});
-		});
+	public async isCustomerItemActive(): Promise<boolean> {
+		try {
+			await this._userService.isCustomerItemActive(this.item.id);
+			this.customerItemActive = true;
+			return true;
+		} catch (error) {
+			this.customerItemActive = false;
+		}
+		return false;
 	}
 
 	public isCustomerItem(): boolean {

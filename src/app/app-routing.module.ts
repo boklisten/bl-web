@@ -4,7 +4,7 @@ import { LoginModule } from "@boklisten/bl-login";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { LogoutComponent } from "./logout/logout.component";
-import {AgreementComponent} from "./agreement/agreement.component";
+import { AgreementComponent } from "./agreement/agreement.component";
 
 const routes: Routes = [
 	{
@@ -23,7 +23,7 @@ const routes: Routes = [
 	{
 		path: "agreement",
 		component: AgreementComponent,
-	}
+	},
 ];
 
 @NgModule({

@@ -96,8 +96,8 @@ import { LogoutComponent } from "./logout/logout.component";
 import { Router } from "@angular/router";
 import * as Sentry from "@sentry/angular";
 import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.service";
-import { AgreementComponent } from './agreement/agreement.component';
-import {BlCommonModule} from "./bl-common/bl-common.module";
+import { AgreementComponent } from "./agreement/agreement.component";
+import { BlCommonModule } from "./bl-common/bl-common.module";
 
 @NgModule({
 	declarations: [
@@ -106,7 +106,7 @@ import {BlCommonModule} from "./bl-common/bl-common.module";
 		HeaderCartComponent,
 		FooterComponent,
 		LogoutComponent,
-  AgreementComponent,
+		AgreementComponent,
 	],
 	imports: [
 		BrowserModule,
