@@ -39,7 +39,7 @@ export class ItemDisplayComponent implements OnInit {
 	public showAdd: boolean;
 	public period: Period;
 
-	private wait = true;
+	public wait = true;
 
 	constructor(
 		private _router: Router,
