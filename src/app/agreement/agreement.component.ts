@@ -10,7 +10,7 @@ import { OrderPdfService } from "@boklisten/bl-connect";
 export class AgreementComponent implements OnInit {
 	orderID: string;
 	blobURL: string;
-	wait: boolean = true;
+	public wait: boolean = true;
 
 	constructor(
 		private route: ActivatedRoute,
