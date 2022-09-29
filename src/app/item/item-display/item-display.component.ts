@@ -14,6 +14,7 @@ import { ItemService } from "@boklisten/bl-connect";
 import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
 import { UserOrderService } from "../../user/order/user-order/user-order.service";
 import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
+import { AuthLoginService } from "@boklisten/bl-login";
 
 @Component({
 	selector: "app-item-display",
@@ -48,7 +49,8 @@ export class ItemDisplayComponent implements OnInit {
 		private _userCustomerItemService: UserCustomerItemService,
 		private _userOrderService: UserOrderService,
 		private _itemService: ItemService,
-		private _cartService: CartService
+		private _cartService: CartService,
+		private _authService: AuthLoginService
 	) {
 		this.customerItemActive = false;
 		this.view = false;
@@ -83,6 +85,11 @@ export class ItemDisplayComponent implements OnInit {
 	}
 
 	private async checkIfAlreadyHaveItem() {
+		if (!this._authService.isLoggedIn()) {
+			this.wait = false;
+			return;
+		}
+
 		let itemId = "";
 
 		if (this.item) {
