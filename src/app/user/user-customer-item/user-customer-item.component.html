@@ -90,6 +90,17 @@
 			</div>
 
 			<div class="card-body" *ngIf="customerItem">
+				<div
+					class="row justify-content-between"
+					*ngIf="customerItem.blid"
+				>
+					<div class="col-auto text-secondary font-weight-bold">
+						BL-ID
+					</div>
+					<div class="col-auto text-secondary">
+						{{ customerItem.blid }}
+					</div>
+				</div>
 				<div class="row justify-content-between">
 					<div
 						class="col-auto text-secondary font-weight-bold"
