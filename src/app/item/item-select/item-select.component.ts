@@ -5,6 +5,7 @@ import { BranchStoreService } from "../../branch/branch-store.service";
 import { BranchService, StorageService } from "@boklisten/bl-connect";
 import { UrlPathEditService } from "../../bl-common/services/url-path-edit/url-path-edit.service";
 import { CartService } from "../../cart/cart.service";
+import { UserService } from "../../user/user.service";
 
 @Component({
 	selector: "app-item-select",
@@ -18,6 +19,7 @@ export class ItemSelectComponent implements OnInit {
 	public cartSize: number;
 	public autoAdd: boolean;
 	public showPartlyPaymentInfo = false;
+	public isUserDetailValid = true;
 
 	constructor(
 		private _router: Router,
@@ -26,7 +28,8 @@ export class ItemSelectComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _urlPathEditService: UrlPathEditService,
 		private _cartService: CartService,
-		private _storageService: StorageService
+		private _storageService: StorageService,
+		private _userService: UserService
 	) {
 		this.selectedCategories = [];
 		this.items = [];
@@ -38,6 +41,10 @@ export class ItemSelectComponent implements OnInit {
 
 		this._cartService.onCartChange().subscribe(() => {
 			this.cartSize = this._cartService.getSize();
+		});
+
+		this._userService.isUserDetailValid().then((isValid) => {
+			this.isUserDetailValid = isValid;
 		});
 
 		if (branchId) {
@@ -60,6 +67,10 @@ export class ItemSelectComponent implements OnInit {
 		if (this.selectedCategories.length > 0) {
 			this.autoAdd = true;
 		}
+	}
+
+	public navigateToUserDetails() {
+		this._router.navigate(["/u/edit"]);
 	}
 
 	private getCategories(): string[] {
