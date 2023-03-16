@@ -24,11 +24,11 @@ documentation](https://github.com/boklisten/bl-doc/blob/master/bl-web/summary.md
 
 1. Clone this repo to your own computer `git clone https://github.com/boklisten/bl-web`
 2. Navigate into the newly created `bl-web` folder
-3. Install npm modules `npm i`
+3. Install npm modules `yarn`
 4. Ensure that `bl-api` is running on `http://localhost:1337`
     - No content will be available in `bl-web` if `bl-api` is not running.
     - You will not be able to login if `bl-api` is not running.
-5. Start application locally with `npm run watch`
+5. Start application locally with `yarn watch`
 6. You should now be able to view `bl-web` on `http://localhost:4200`
     - the content will auto-update if you do changes to the code
 
@@ -36,22 +36,22 @@ documentation](https://github.com/boklisten/bl-doc/blob/master/bl-web/summary.md
 
 ## NPM scripts
 
-#### `npm run watch`
+#### `yarn watch`
 
 Runs the application locally. You can view the application on
 [localhost:4200](http://localhost:4200).
 
-#### `npm run build`
+#### `yarn build`
 
 Builds the application with angular `--configuartion` set to the environment
 variable `ANGULAR_ENV`.
 
-#### `npm run extract-i18n`
+#### `yarn extract-i18n`
 
 Extracts all `i18n` tags from all the html files and puts them into three
 differnet `xlf`-file under `./src/locale`.
 
-#### `npm run postinstall`
+#### `yarn postinstall`
 
 This script used by the server on Heroku before hosting it.
 
