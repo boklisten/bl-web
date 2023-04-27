@@ -3,8 +3,8 @@
 	"version": "1.11.13",
 	"license": "MIT",
 	"scripts": {
-		"dev": "gulp test && ng serve --host 0.0.0.0 --hmr --configuration=nb",
-		"build": "gulp production && ng build --configuration=production-nb",
+		"dev": "gulp && ng serve --host 0.0.0.0 --hmr --configuration=nb",
+		"build": "gulp && ng build --configuration=${ANGULAR_ENV}",
 		"serve": "node server.js",
 		"prettier": "prettier --write '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
 		"prettier:check": "prettier --check '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore"
