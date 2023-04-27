@@ -1,24 +1,13 @@
 const gulp = require("gulp");
 const download = require("gulp-download-stream");
 
-const destFolder = "scripts/dibs/";
-const dibsEasyCheckoutName = "dibs-easy-checkout.js";
-
-function downloadDibsTestScript() {
+function downloadDibsScript() {
+	const useTestIntegration =
+		process.env.ANGULAR_ENV !== "production-nb" ? "test." : "";
 	return download({
-		file: dibsEasyCheckoutName,
-		url: "https://test.checkout.dibspayment.eu/v1/checkout.js?v=1",
-	}).pipe(gulp.dest(destFolder));
+		file: "dibs-easy-checkout.js",
+		url: `https://${useTestIntegration}checkout.dibspayment.eu/v1/checkout.js?v=1`,
+	}).pipe(gulp.dest("scripts/dibs/"));
 }
 
-function downloadDibsProdScript() {
-	return download({
-		file: dibsEasyCheckoutName,
-		url: "https://checkout.dibspayment.eu/v1/checkout.js?v=1",
-	}).pipe(gulp.dest(destFolder));
-}
-
-exports.default = downloadDibsTestScript;
-exports.test = downloadDibsTestScript;
-exports.production = downloadDibsProdScript;
-exports.development = downloadDibsTestScript;
+exports.default = downloadDibsScript;
