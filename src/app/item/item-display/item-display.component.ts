@@ -101,11 +101,13 @@ export class ItemDisplayComponent implements OnInit {
 		}
 
 		try {
-			const haveItem = await this._userCustomerItemService.alreadyHaveItem(
-				itemId
-			);
-			this.alreadyHaveItem = haveItem;
-			if (haveItem && !this._cartService.isCustomerItem(itemId)) {
+			this.alreadyHaveItem =
+				(await this._userCustomerItemService.alreadyHaveItem(itemId)) &&
+				!this._userCustomerItemService.isExtendableCustomerItem(itemId);
+			if (
+				this.alreadyHaveItem &&
+				!this._cartService.isCustomerItem(itemId)
+			) {
 				this._cartService.remove(itemId); // should remove itself if it is apart of cart for some reason
 				this.wait = false;
 			} else {

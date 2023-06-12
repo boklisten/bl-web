@@ -55,6 +55,12 @@ export class ItemTypeSelectComponent implements OnInit {
 		if ((this.isCustomerItem() || this.branchItem) && this.item) {
 			this.displaySelectedPeriodType();
 		}
+
+		// When this component initializes, the cart is empty
+		// Therefore, it needs a little nudge to be be updated when the cart is populated
+		this._cartService.onCartChange().subscribe(() => {
+			this.displaySelectedPeriodType();
+		});
 	}
 
 	public isCustomerItem(): boolean {
@@ -106,6 +112,10 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private isActionValid(action: OrderItemType, period?: Period) {
+		const isItemExtendable = this._userCustomerItemService.isExtendableCustomerItem(
+			this.item.id
+		);
+
 		if (
 			action === "partly-payment" &&
 			this.branchItem &&
@@ -125,7 +135,8 @@ export class ItemTypeSelectComponent implements OnInit {
 		} else if (
 			action === "rent" &&
 			this.branchItem &&
-			this.branchItem.rent
+			this.branchItem.rent &&
+			!isItemExtendable
 		) {
 			if (
 				this.branch.paymentInfo.rentPeriods &&
@@ -153,13 +164,14 @@ export class ItemTypeSelectComponent implements OnInit {
 	}
 
 	private calculateOptions() {
+		this.allowedActions = [];
 		let actions: { action: OrderItemType; period?: Period }[] = [
 			{ action: "partly-payment", period: "semester" },
 			{ action: "partly-payment", period: "year" },
 			{ action: "rent", period: "semester" },
 			{ action: "rent", period: "year" },
 			{ action: "buy" },
-			{ action: "extend" },
+			{ action: "extend", period: "semester" },
 			{ action: "buyout" },
 		];
 

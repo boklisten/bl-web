@@ -18,6 +18,7 @@ import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import { StorageService } from "@boklisten/bl-connect";
 import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
+import { UserCustomerItemService } from "../user/user-customer-item/user-customer-item.service";
 
 export interface CartItem {
 	item: Item;
@@ -41,7 +42,8 @@ export class CartService {
 		private _dateService: DateService,
 		private _authLoginService: AuthLoginService,
 		private _storageService: StorageService,
-		private _googleAnalyticsService: GoogleAnalyticsService
+		private _googleAnalyticsService: GoogleAnalyticsService,
+		private _userCustomerItemService: UserCustomerItemService
 	) {
 		this._cart = [];
 
@@ -177,6 +179,28 @@ export class CartService {
 		}
 
 		this.setPricesOnOrderItem(orderItem, item, period);
+
+		if (this._userCustomerItemService.isExtendableCustomerItem(item.id)) {
+			const customerItem = this._userCustomerItemService.getCustomerItemByItemId(
+				item.id
+			);
+			orderItem.info = {
+				from: new Date(),
+				to: this._dateService.getExtendDate("semester"),
+				numberOfPeriods: 1,
+				periodType: "semester",
+				customerItem: customerItem.id,
+			};
+			orderItem.type = "extend";
+			this.addToCart(
+				item,
+				branchItem,
+				orderItem,
+				this._branchStoreService.getBranch(),
+				customerItem
+			);
+			return;
+		}
 
 		this.addToCart(
 			item,

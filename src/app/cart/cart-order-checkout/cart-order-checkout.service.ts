@@ -182,10 +182,13 @@ export class CartOrderCheckoutService {
 		const branchIsResponsible = this.branchStoreService.getBranch()
 			?.paymentInfo.responsible;
 
+		const totalPrice = this.cartService.getTotalPrice();
+
 		return (
 			this.cartOrderService.doesOrderIncludeBuy() ||
 			this.cartOrderService.doesOrderIncludeBuyout() ||
-			this.cartOrderService.doesOrderIncludeExtend() ||
+			(this.cartOrderService.doesOrderIncludeExtend() &&
+				totalPrice > 0) ||
 			!branchIsResponsible
 		);
 	}
