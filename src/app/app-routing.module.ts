@@ -5,6 +5,8 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { LogoutComponent } from "./logout/logout.component";
 import { AgreementComponent } from "./agreement/agreement.component";
+import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-linker.component";
+import { UserGuardService } from "./user/user-guard.service";
 
 const routes: Routes = [
 	{
@@ -23,6 +25,11 @@ const routes: Routes = [
 	{
 		path: "agreement",
 		component: AgreementComponent,
+	},
+	{
+		path: "overleveringer",
+		canActivate: [UserGuardService],
+		component: PeerToPeerLinkerComponent,
 	},
 ];
 
