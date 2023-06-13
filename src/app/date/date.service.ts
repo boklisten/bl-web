@@ -91,6 +91,8 @@ export class DateService {
 				return rentPeriod.date;
 			}
 		}
+		return branch.paymentInfo.extendPeriods.find((p) => p.type === period)
+			?.date;
 	}
 
 	public onFormat(date: Date, format: string): string {
