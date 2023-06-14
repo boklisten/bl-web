@@ -96,13 +96,13 @@ export class UserCustomerItemService {
 
 	public getCustomerItemByItemId(itemId: string): CustomerItem | undefined {
 		return this.customerItems
-			.filter(() => this.checkIfItemIsInCustomerItems(itemId))
+			?.filter(() => this.checkIfItemIsInCustomerItems(itemId))
 			.find((customerItem) => customerItem.item === itemId);
 	}
 
 	public isExtendableCustomerItem(itemId: string): boolean {
 		return this.customerItems
-			.filter(() => this.checkIfItemIsInCustomerItems(itemId))
+			?.filter(() => this.checkIfItemIsInCustomerItems(itemId))
 			.some((customerItem) => this.isExtendValid(customerItem));
 	}
 
