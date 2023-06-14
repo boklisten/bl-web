@@ -13,6 +13,6 @@ export class PeerToPeerLinkerComponent implements OnInit {
 	ngOnInit(): void {
 		const refreshToken = this._tokenService.getRefreshToken();
 		const accessToken = this._tokenService.getAccessToken();
-		window.location.href = `${environment.nextPath}overleveringer?refresh_token=${refreshToken}&access_token=${accessToken}`;
+		window.location.href = `${environment.nextPath}matches?refresh_token=${refreshToken}&access_token=${accessToken}`;
 	}
 }
