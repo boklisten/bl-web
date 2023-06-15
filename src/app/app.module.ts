@@ -98,6 +98,7 @@ import * as Sentry from "@sentry/angular";
 import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.service";
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlCommonModule } from "./bl-common/bl-common.module";
+import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-linker.component";
 
 @NgModule({
 	declarations: [
@@ -107,6 +108,7 @@ import { BlCommonModule } from "./bl-common/bl-common.module";
 		FooterComponent,
 		LogoutComponent,
 		AgreementComponent,
+		PeerToPeerLinkerComponent,
 	],
 	imports: [
 		BrowserModule,
