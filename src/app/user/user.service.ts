@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import {
 	CustomerItemService,
+	StorageService,
 	TokenService,
 	UserDetailService,
 } from "@boklisten/bl-connect";
@@ -29,13 +30,15 @@ export class UserService {
 		private _userDetailService: UserDetailService,
 		private _customerItemService: CustomerItemService,
 		private _authService: AuthLoginService,
-		private _googleAnalyticsService: GoogleAnalyticsService
+		private _googleAnalyticsService: GoogleAnalyticsService,
+		private _storageService: StorageService
 	) {
 		this._customerItems = [];
 		this.userDetail$ = new Subject<UserDetail>();
 
 		this._authService.onLogin().subscribe(() => {
 			this.fetchUserDetail();
+			this._storageService.remove("bl-redirect");
 			this._googleAnalyticsService.eventEmitter(
 				"login",
 				"User logged in"
@@ -44,6 +47,7 @@ export class UserService {
 
 		this._authService.onLogout().subscribe(() => {
 			this._userDetail = null;
+			this._storageService.remove("bl-redirect");
 			this._googleAnalyticsService.eventEmitter(
 				"logout",
 				"User logged out"
