@@ -25,6 +25,7 @@ import { BlCommonModule } from "../bl-common/bl-common.module";
 import { InfoMatchingComponent } from "./info-matching/info-matching.component";
 import { InfoAgreementConditionsOldComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component";
 import { InfoCoronaComponent } from "./info-corona/info-corona.component";
+import { BlNextLinkerModule } from "../bl-next-linker/bl-next-linker.module";
 
 @NgModule({
 	imports: [
@@ -35,6 +36,7 @@ import { InfoCoronaComponent } from "./info-corona/info-corona.component";
 		FontAwesomeModule,
 		BranchModule,
 		BlCommonModule,
+		BlNextLinkerModule,
 	],
 	declarations: [
 		InfoComponent,

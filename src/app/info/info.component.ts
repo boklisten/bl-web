@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
+import { BlNextLinkerService } from "../bl-next-linker/bl-next-linker.service";
 
 @Component({
 	selector: "app-info",
@@ -14,13 +15,22 @@ export class InfoComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
-		private location: Location
+		private location: Location,
+		private blNextLinkerService: BlNextLinkerService
 	) {
 		this.selectedMenuButton = "general";
 	}
 
 	ngOnInit() {
-		this.selectTab(this.route.snapshot.firstChild.url[0].path);
+		let url = this.router.url;
+		let appendTokens = true;
+		if (url.includes("/info/branch")) {
+			appendTokens = false;
+			if (url === "/info/branch") {
+				url += "/select";
+			}
+		}
+		this.blNextLinkerService.redirectToBlNext(url, appendTokens);
 	}
 
 	private selectTab(tabName: string) {
