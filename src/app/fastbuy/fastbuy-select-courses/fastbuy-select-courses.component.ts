@@ -50,48 +50,47 @@ export class FastbuySelectCoursesComponent implements OnInit {
 		return branchId;
 	}
 
+	private async loadCategories() {
+		try {
+			const branch = await this.branchService.getById(this.branchId, {
+				fresh: true,
+			});
+
+			try {
+				await this.branchStoreService.setBranch(branch);
+			} catch (error) {
+				// We want to still display the categories, even though we failed to store the branch info locally
+				console.warn(error);
+			}
+
+			try {
+				const categories = await this.branchStoreService.getBranchItemsCategories();
+				this.courses = categories.map((category) => ({
+					name: category,
+				}));
+
+				for (const selectedCategory of this.getCategories()) {
+					this.select(selectedCategory);
+				}
+
+				if (this.courses.length <= 0) {
+					await this.router.navigate(["/i/select"]);
+				}
+			} catch {
+				// if no categories are found
+				await this.router.navigate(["/i/select"]);
+			}
+		} catch (error) {
+			console.error(error);
+		}
+		this.wait = false;
+	}
+
 	ngOnInit() {
 		this.branchId = this.getBranchId();
-		let queryCategories = this.getCategories();
-
-		const courseNames = [];
 
 		this.wait = true;
-		this.branchService
-			.getById(this.branchId, { fresh: true })
-			.then((branch) => {
-				this.branchStoreService
-					.setBranch(branch)
-					.then(() => {
-						this.branchStoreService
-							.getBranchItemsCategories()
-							.then((categories) => {
-								for (const category of categories) {
-									courseNames.push({ name: category });
-								}
-								this.courses = courseNames;
-
-								for (const cat of queryCategories) {
-									this.select(cat);
-								}
-
-								this.wait = false;
-								if (this.courses.length <= 0) {
-									this.router.navigate(["/i/select"]);
-								}
-							})
-							.catch(() => {
-								// if no categories are found
-								this.router.navigate(["/i/select"]);
-							});
-					})
-					.catch(() => {
-						this.wait = false;
-					});
-			})
-			.catch(() => {
-				this.wait = false;
-			});
+		this.loadCategories();
 	}
 
 	public isSelected(courseName) {
