@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { StorageService } from "@boklisten/bl-connect";
+import { BlNextLinkerService } from "./bl-next-linker/bl-next-linker.service";
 
 declare let gtag: Function;
 
@@ -19,7 +20,8 @@ export class AppComponent {
 	constructor(
 		private _router: Router,
 		private route: ActivatedRoute,
-		private storageService: StorageService
+		private storageService: StorageService,
+		private blNextLinkerService: BlNextLinkerService
 	) {
 		this._router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
@@ -28,6 +30,7 @@ export class AppComponent {
 				});
 			}
 		});
+		this.blNextLinkerService.receiveTokens();
 	}
 
 	ngOnInit() {

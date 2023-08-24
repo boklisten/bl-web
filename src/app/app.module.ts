@@ -99,6 +99,7 @@ import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.servi
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlCommonModule } from "./bl-common/bl-common.module";
 import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-linker.component";
+import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 
 @NgModule({
 	declarations: [
@@ -129,6 +130,7 @@ import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-li
 		MatchModule,
 		ClickOutsideModule,
 		BlCommonModule,
+		BlNextLinkerModule,
 	],
 	providers: [
 		BranchGuardService,
