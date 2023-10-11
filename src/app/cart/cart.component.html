@@ -59,14 +59,18 @@
 		class="alert alert-warning text-center nav-link"
 	>
 		<fa-icon [icon]="'exclamation-triangle'" class="mr-2"></fa-icon>
-		<a (click)="navigateToUserDetails()"
-			>Du må fylle inn detaljer om deg selv før du kan bestille. Trykk her
-			for å gå til brukerinnstillinger.</a
+		Du må fylle inn detaljer om deg selv før du kan bestille.
+		<a class="bl-link font-weight-bold" (click)="navigateToUserDetails()"
+			>Trykk her for å gå til brukerinnstillinger.</a
 		>
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-sm-12 col-md-4">
-			<button class="btn btn-success btn-block" routerLink="checkout">
+			<button
+				class="btn btn-success btn-block"
+				routerLink="checkout"
+				[disabled]="!isUserDetailValid"
+			>
 				<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
 				<span i18n="@@cartCheckoutButton">Checkout</span>
 			</button>
