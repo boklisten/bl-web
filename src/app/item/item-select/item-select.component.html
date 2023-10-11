@@ -66,6 +66,7 @@
 			<button
 				class="btn btn-success btn-block"
 				routerLink="/cart/checkout"
+				[disabled]="!isUserDetailValid"
 			>
 				<fa-icon icon="flag-checkered" class="mr-2"></fa-icon>
 				<span i18n="@@itemDisplayCategoryCheckout">Checkout</span>
