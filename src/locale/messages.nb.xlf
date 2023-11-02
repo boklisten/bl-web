@@ -806,7 +806,7 @@
         <source>Create new password</source><target state="final">Lag nytt passord</target>
 
       <context-group purpose="location"><context context-type="sourcefile">node_modules/src/app/auth/auth-password-reset/auth-password-reset.component.ts</context><context context-type="linenumber">33</context></context-group></trans-unit><trans-unit id="passwordResetError" datatype="html">
-        <source>Failed to update password</source><target state="final">Oppdatering av passord feilet</target>
+        <source>Failed to update password. The reset link might be invalid, expired or already used.</source><target state="final">Oppdatering av passord feilet. Linken kan være ugyldig, utgått eller allerede brukt.</target>
 
       <context-group purpose="location"><context context-type="sourcefile">node_modules/src/app/auth/auth-password-reset/auth-password-reset.component.ts</context><context context-type="linenumber">58</context></context-group></trans-unit><trans-unit id="passwordResetPasswordNotValid" datatype="html">
         <source>Password not valid. Must at least be 6 characters long</source><target state="final">Passordet er ikke gyldig. Det må være på minst seks siffer.</target>
