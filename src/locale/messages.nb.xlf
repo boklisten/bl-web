@@ -789,7 +789,7 @@
         <source>Something went wrong, could not send you the reset link. Are you sure you have the correct email?</source><target state="final">Noe gikk galt, vi kunne ikke sende nullstillingslenke. Er du sikker på at du har skrevet inn korrekt e-postadresse?</target>
 
       <context-group purpose="location"><context context-type="sourcefile">node_modules/src/app/login/forgot-password/forgot-password.component.ts</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="forgotPasswordSuccessMsg" datatype="html">
-        <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">En e-post med instruksjoner for hvordan du kan endre passordet ditt er blitt sendt til deg.</target>
+        <source>An email with instructions on how to reset your password is sent to you.</source><target state="final">Hvis det finnes en bruker med denne e-postaddressen har vi sendt en e-post med instruksjoner for hvordan du kan endre passordet ditt.</target>
 
       <context-group purpose="location"><context context-type="sourcefile">node_modules/src/app/login/forgot-password/forgot-password.component.ts</context><context context-type="linenumber">30</context></context-group></trans-unit><trans-unit id="forgotPasswordHowTo" datatype="html">
         <source> Write in your email and we will send you a link about how to reset your password </source><target state="translated">

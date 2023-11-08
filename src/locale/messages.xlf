@@ -400,7 +400,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="forgotPasswordSuccessMsg" datatype="html">
-        <source>An email with instructions on how to reset your password is sent to you.</source>
+        <source>If a user exists with this email address, we have sent an email with instructions on how to reset your password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">node_modules/src/app/login/forgot-password/forgot-password.component.ts</context>
           <context context-type="linenumber">30,37</context>
