@@ -35,7 +35,7 @@ export class OrderDeliveryInfoComponent implements OnInit {
 
 	public onClickShowDeliveryAtBring() {
 		window.open(
-			"https://sporing.bring.no/sporing.html?q=" +
+			"https://sporing.bring.no/sporing/" +
 				this.delivery.info["trackingNumber"]
 		);
 	}
