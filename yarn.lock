@@ -1134,12 +1134,12 @@
     date-fns "^2.17.0"
     tslib "^2.1.0"
 
-"@boklisten/bl-model@^0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-model/-/bl-model-0.25.0.tgz#20d4b5e7bd5a69f2b38c23afb01b64ee5a5c9774"
-  integrity sha512-gAbfFQu+offRzKpWxoFOIvE3sMvUNkoA0WxjJpFdpIL4UyxDCjwcTI+T9GkMMvlLrrIKa19Cuqvr9D0Bk6RpVw==
+"@boklisten/bl-model@^0.25.26":
+  version "0.25.26"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-model/-/bl-model-0.25.26.tgz#324091873a80deb62b064dde4de2e9bb426b6acb"
+  integrity sha512-KpChYWqWcNob73KEhXucOI0cyQKQ7zI2cwIt4PEAe9VFF/LJwavwn9jwRvcrcN45qX3huCUguf2yABK9zJ62Bg==
   dependencies:
-    typescript "^4.1.4"
+    typescript "^5.2.2"
 
 "@discoveryjs/json-ext@0.5.2":
   version "0.5.2"
@@ -9307,10 +9307,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@4.1, typescript@4.1.5, typescript@^4.1.4:
+typescript@4.1, typescript@4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.5.tgz#123a3b214aaff3be32926f0d8f1f6e704eb89a72"
   integrity sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
+
+typescript@^5.2.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.2.tgz#00d1c7c1c46928c5845c1ee8d0cc2791031d4c43"
+  integrity sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==
 
 ua-parser-js@^0.7.23:
   version "0.7.24"

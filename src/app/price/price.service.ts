@@ -7,7 +7,7 @@ import {
 	Period,
 } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
-import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model";
 
 @Injectable()
 export class PriceService {

@@ -19,7 +19,6 @@ import {
 	FontAwesomeModule,
 	FaIconLibrary,
 } from "@fortawesome/angular-fontawesome";
-import { MatchModule } from "./match/match.module";
 import { ClickOutsideModule } from "ng-click-outside";
 
 import {
@@ -127,7 +126,6 @@ import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 		HeaderAlertModule,
 		NgbDropdownModule,
 		FastbuyModule,
-		MatchModule,
 		ClickOutsideModule,
 		BlCommonModule,
 		BlNextLinkerModule,

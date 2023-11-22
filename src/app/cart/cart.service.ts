@@ -13,7 +13,7 @@ import { UserService } from "../user/user.service";
 import { PriceService } from "../price/price.service";
 import { Subject } from "rxjs";
 import { DateService } from "../date/date.service";
-import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model";
 import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import { StorageService } from "@boklisten/bl-connect";

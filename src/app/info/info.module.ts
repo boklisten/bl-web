@@ -22,7 +22,6 @@ import { InfoForCompaniesComponent } from "./info-for-companies/info-for-compani
 import { InfoForPupilsComponent } from "./info-for-pupils/info-for-pupils.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { BlCommonModule } from "../bl-common/bl-common.module";
-import { InfoMatchingComponent } from "./info-matching/info-matching.component";
 import { InfoAgreementConditionsOldComponent } from "./info-agreement/info-agreement-conditions/info-agreement-conditions-old/info-agreement-conditions-old.component";
 import { InfoCoronaComponent } from "./info-corona/info-corona.component";
 import { BlNextLinkerModule } from "../bl-next-linker/bl-next-linker.module";
@@ -52,7 +51,6 @@ import { BlNextLinkerModule } from "../bl-next-linker/bl-next-linker.module";
 		InfoForPupilsComponent,
 		InfoAgreementConditionsComponent,
 		InfoBuybackComponent,
-		InfoMatchingComponent,
 		InfoAgreementConditionsOldComponent,
 		InfoCoronaComponent,
 	],
