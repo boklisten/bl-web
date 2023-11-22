@@ -105,8 +105,14 @@
 						"browserTarget": "bl-web:build:local"
 					},
 					"configurations": {
-						"nb": {
+						"local-nb": {
 							"browserTarget": "bl-web:build:local-nb"
+						},
+						"dev-nb": {
+							"browserTarget": "bl-web:build:dev-nb"
+						},
+						"production-nb": {
+							"browserTarget": "bl-web:build:production-nb"
 						}
 					}
 				},
