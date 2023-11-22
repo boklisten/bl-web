@@ -3,7 +3,7 @@
 	"version": "1.11.13",
 	"license": "MIT",
 	"scripts": {
-		"dev": "export NODE_OPTIONS=--openssl-legacy-provider; gulp && ng serve --host 0.0.0.0 --hmr --configuration=nb",
+		"dev": "export NODE_OPTIONS=--openssl-legacy-provider; gulp && ng serve --host 0.0.0.0 --hmr --configuration=${ANGULAR_ENV}",
 		"build": "export NODE_OPTIONS=--openssl-legacy-provider; gulp && ng build --configuration=${ANGULAR_ENV}",
 		"serve": "node server.js",
 		"prettier": "prettier --write '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
