@@ -253,7 +253,7 @@
   resolved "https://registry.yarnpkg.com/@angularclass/hmr/-/hmr-3.0.0.tgz#6d0c31a237a46af99085de65082a97975575eda5"
   integrity sha512-4A/DKmSafWUcffv7f536oY6RbpXEAD7f0NCGVLlRj9Gna8dkGc9JOHSr3NCWHd/NRc4ey8x+V0itsBqlPxEJ/A==
 
-"@auth0/angular-jwt@^5.0.2":
+"@auth0/angular-jwt@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-5.0.2.tgz#0a23f240e8c6ed37c5c7a354ad79a755a217936e"
   integrity sha512-rSamC9mu+gUxoR86AXcIo+KD7xRIro+/iu1F2Ld85YAZEVKlpB5vYG+g0yGaEOqjtQWP/i0H6fi6XMGPVHSYYQ==
@@ -1068,6 +1068,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.21.0":
+  version "7.23.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.2.tgz#062b0ac103261d68a966c4c7baf2ae3e62ec3885"
+  integrity sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==
+  dependencies:
+    regenerator-runtime "^0.14.0"
+
 "@babel/template@7.12.7", "@babel/template@^7.12.7", "@babel/template@^7.8.3":
   version "7.12.7"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.12.7.tgz#c817233696018e39fbb6c491d2fb684e05ed43bc"
@@ -1110,20 +1117,20 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@boklisten/bl-connect@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.19.0.tgz#7b404df56babf36732dd773de2995f49714e58ec"
-  integrity sha512-pEBiTLXoB9+VBCvX3+R9GAKKYuI1xjzQdq1mRH3WlFOAAQVtQF06KnDPs1W57A2SCTnBDzIawXMVvTI0dWKVFg==
+"@boklisten/bl-connect@^0.19.10":
+  version "0.19.10"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.19.10.tgz#95939ead7fe5e4c769d299189c81061289668dd7"
+  integrity sha512-3jJo9YtiKgD3a7qoYjDw06zhdNOT9wzMZezWPFgOGqpbaFPOPDy2qsT0ex85CzhLsuC18e99L2eYcscBVYfMtQ==
   dependencies:
     tslib "^2.1.0"
 
-"@boklisten/bl-login@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-login/-/bl-login-1.2.3.tgz#2ba81e065d5b977ffe94f2acf4ac05acdbd84466"
-  integrity sha512-N3R7Q88DvGX5SSo+qiRhLLdIkQUIKR923obXwJ7N7+GaXkSC9BFva91fsvvKUviCmWgeofKYNr/HocipWqxvkQ==
+"@boklisten/bl-login@^1.2.14":
+  version "1.2.14"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-login/-/bl-login-1.2.14.tgz#dc010394c697167a61ec1978782df72941aa99fa"
+  integrity sha512-fuiYlK/es39NxylJygeKoBRz0E3QMk/iACEKwZrSxsRvLDa3v5eYAaUAD29jUUCkLBcN7GDgOjDvXHFOnsi+Rw==
   dependencies:
-    "@auth0/angular-jwt" "^5.0.2"
-    "@boklisten/bl-connect" "^0.19.0"
+    "@auth0/angular-jwt" "5.0.2"
+    "@boklisten/bl-connect" "^0.19.10"
     date-fns "^2.17.0"
     tslib "^2.1.0"
 
@@ -3276,9 +3283,11 @@ dashdash@^1.12.0:
     assert-plus "^1.0.0"
 
 date-fns@^2.17.0:
-  version "2.17.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.17.0.tgz#afa55daea539239db0a64e236ce716ef3d681ba1"
-  integrity sha512-ZEhqxUtEZeGgg9eHNSOAJ8O9xqSgiJdrL0lzSSfMF54x6KXWJiOH/xntSJ9YomJPrYH/p08t6gWjGWq1SDJlSA==
+  version "2.30.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
+  integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
 
 date-format@^2.1.0:
   version "2.1.0"
@@ -7845,6 +7854,11 @@ regenerator-runtime@0.13.7, regenerator-runtime@^0.13.4:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
+regenerator-runtime@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz#5e19d68eb12d486f797e15a3c6a918f7cec5eb45"
+  integrity sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==
+
 regenerator-transform@^0.14.2:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/regenerator-transform/-/regenerator-transform-0.14.5.tgz#c98da154683671c9c4dcb16ece736517e1b7feb4"
@@ -9212,7 +9226,7 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tslib@2.1.0, tslib@^2.0.0, tslib@^2.1.0:
+tslib@2.1.0, tslib@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
@@ -9221,6 +9235,11 @@ tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^2.0.0:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tslint@^6.1.3:
   version "6.1.3"
