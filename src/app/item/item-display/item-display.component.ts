@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 import { PriceService } from "../../price/price.service";
 import { UserService } from "../../user/user.service";
 import { ItemService } from "@boklisten/bl-connect";
-import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model";
 import { UserOrderService } from "../../user/order/user-order/user-order.service";
 import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
 import { AuthLoginService } from "@boklisten/bl-login";

@@ -5,7 +5,7 @@ import { CartService } from "../cart.service";
 import { OrderService } from "@boklisten/bl-connect";
 import { UserService } from "../../user/user.service";
 import { AuthLoginService } from "@boklisten/bl-login";
-import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model";
 
 @Injectable()
 export class CartOrderService {

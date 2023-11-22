@@ -11,7 +11,7 @@ import { DateService } from "../../date/date.service";
 import { CartService } from "../../cart/cart.service";
 import { PriceService } from "../../price/price.service";
 import { BranchStoreService } from "../../branch/branch-store.service";
-import { OrderItemType } from "@boklisten/bl-model/dist/order/order-item/order-item-type";
+import { OrderItemType } from "@boklisten/bl-model";
 import { UserCustomerItemService } from "../../user/user-customer-item/user-customer-item.service";
 
 @Component({
