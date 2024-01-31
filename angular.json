@@ -24,7 +24,8 @@
 							"src/assets",
 							"src/favicon.ico",
 							"src/loaderio-49eef5f6fccde4833cc8bedc827a565d.txt",
-							"src/robots.txt"
+							"src/robots.txt",
+							"src/.well_known/apple-developer-merchantid-domain-association"
 						],
 						"styles": [
 							"node_modules/bootstrap/dist/css/bootstrap.min.css",
