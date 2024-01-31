@@ -25,7 +25,7 @@
 		"@angular/platform-browser-dynamic": "^11.2.14",
 		"@angular/router": "^11.2.14",
 		"@boklisten/bl-connect": "^0.19.13",
-		"@boklisten/bl-login": "^1.2.14",
+		"@boklisten/bl-login": "^1.2.16",
 		"@boklisten/bl-model": "^0.25.30",
 		"@fortawesome/angular-fontawesome": "^0.8.2",
 		"@fortawesome/fontawesome-svg-core": "^1.2.34",
