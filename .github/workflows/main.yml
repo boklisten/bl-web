@@ -33,3 +33,10 @@ jobs:
                   key: ${{ github.sha }}-install
             - name: prettier
               run: yarn prettier:check
+
+    prevent_bl_connect_version_conflict:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Check bl-connect versions
+              run: '[[ $(yarn why @boklisten/bl-connect | grep "=> Found" --count) -eq 1 ]]'
