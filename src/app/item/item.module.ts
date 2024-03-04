@@ -12,7 +12,6 @@ import { ItemTypeSelectComponent } from "./item-type-select/item-type-select.com
 import { FormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ItemDisplayCategoryComponent } from "./item-display-category/item-display-category.component";
-import { CartModule } from "../cart/cart.module";
 import { CartGoToBarComponent } from "./cart-go-to-bar/cart-go-to-bar.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BlCommonModule } from "../bl-common/bl-common.module";

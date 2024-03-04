@@ -12,10 +12,20 @@
 	[collapsable]="true"
 ></app-info-agreement-conditions>
 
+<app-cart-signature
+	*ngIf="isSignatureByCustomerRequired"
+	#signatureComponent
+	(isValid)="onIsSignedChanged($event)"
+	[customerName]="customerName"
+	[signerName]="customerName"
+	[isGuardian]="isUnderage"
+></app-cart-signature>
+
 <div class="row justify-content-center">
 	<div class="col-12">
 		<button
 			class="btn btn-block btn-outline-success"
+			[disabled]="!loaded || (isSignatureByCustomerRequired && !isSigned)"
 			(click)="onConfirmClick()"
 		>
 			<span i18n="@@cartAgreementAgreeButton">Agree</span>

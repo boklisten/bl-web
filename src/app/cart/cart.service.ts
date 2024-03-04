@@ -7,6 +7,7 @@ import {
 	Order,
 	OrderItem,
 	Period,
+	UserDetail,
 } from "@boklisten/bl-model";
 import { BranchStoreService } from "../branch/branch-store.service";
 import { UserService } from "../user/user.service";
@@ -16,7 +17,11 @@ import { DateService } from "../date/date.service";
 import { OrderItemType } from "@boklisten/bl-model";
 import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
-import { StorageService } from "@boklisten/bl-connect";
+import {
+	BranchService,
+	SignatureService,
+	StorageService,
+} from "@boklisten/bl-connect";
 import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
 import { UserCustomerItemService } from "../user/user-customer-item/user-customer-item.service";
 
@@ -43,7 +48,9 @@ export class CartService {
 		private _authLoginService: AuthLoginService,
 		private _storageService: StorageService,
 		private _googleAnalyticsService: GoogleAnalyticsService,
-		private _userCustomerItemService: UserCustomerItemService
+		private _userCustomerItemService: UserCustomerItemService,
+		private _branchService: BranchService,
+		private _signatureService: SignatureService
 	) {
 		this._cart = [];
 
@@ -387,7 +394,7 @@ export class CartService {
 		this.cartChange$.next(true);
 	}
 
-	public createOrder(): Order {
+	public async createOrder(): Promise<Order> {
 		if (this._cart.length <= 0) {
 			throw new Error("order can not be created, cart is empty");
 		}
@@ -401,6 +408,10 @@ export class CartService {
 		order.orderItems = this.getOrderItems();
 		order.byCustomer = true;
 		order.payments = [];
+		order.pendingSignature = await this.isSignatureRequired(
+			await this._userService.getUserDetail(),
+			order
+		);
 
 		return order;
 	}
@@ -422,6 +433,24 @@ export class CartService {
 			}
 		}
 		return false;
+	}
+
+	public async isSignatureRequired(userDetail: UserDetail, order: Order) {
+		const orderItemTypesWhichRequireSignature: OrderItemType[] = [
+			"buy",
+			"rent",
+			"loan",
+		];
+
+		return (
+			order.orderItems.some((orderItem) =>
+				orderItemTypesWhichRequireSignature.includes(orderItem.type)
+			) &&
+			!(await this._signatureService.hasValidSignature(
+				userDetail,
+				new Date()
+			))
+		);
 	}
 
 	public updateType(itemId: string, type: OrderItemType, period?: Period) {

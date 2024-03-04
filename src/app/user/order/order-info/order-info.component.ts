@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Order } from "@boklisten/bl-model";
+import { Order, UserDetail } from "@boklisten/bl-model";
 import { PrintPdfService, OrderPdfService } from "@boklisten/bl-connect";
 
 @Component({
@@ -9,6 +9,7 @@ import { PrintPdfService, OrderPdfService } from "@boklisten/bl-connect";
 })
 export class OrderInfoComponent implements OnInit {
 	@Input() order: Order;
+	@Input() userDetail: UserDetail;
 
 	public receiptUrl: string;
 	public agreementUrl: string;

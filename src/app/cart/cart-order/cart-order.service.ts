@@ -1,11 +1,14 @@
 import { Injectable } from "@angular/core";
-import { Order, BlApiError } from "@boklisten/bl-model";
-import { Subject, Observable } from "rxjs";
+import { Order, OrderItemType, UserDetail } from "@boklisten/bl-model";
+import { Observable, Subject } from "rxjs";
 import { CartService } from "../cart.service";
-import { OrderService } from "@boklisten/bl-connect";
-import { UserService } from "../../user/user.service";
+import {
+	BranchService,
+	OrderService,
+	SignatureService,
+} from "@boklisten/bl-connect";
 import { AuthLoginService } from "@boklisten/bl-login";
-import { OrderItemType } from "@boklisten/bl-model";
+import { UserService } from "../../user/user.service";
 
 @Injectable()
 export class CartOrderService {
@@ -13,11 +16,15 @@ export class CartOrderService {
 	private _orderChange$: Subject<Order>;
 	private _orderClear$: Subject<boolean>;
 	private _orderError$: Subject<string>;
+	private _userDetail?: UserDetail;
 
 	constructor(
 		private _cartService: CartService,
 		private _orderService: OrderService,
-		private _authLoginService: AuthLoginService
+		private _authLoginService: AuthLoginService,
+		private _branchService: BranchService,
+		private _signatureService: SignatureService,
+		private _userService: UserService
 	) {
 		this._orderChange$ = new Subject();
 		this._orderClear$ = new Subject();
@@ -54,6 +61,7 @@ export class CartOrderService {
 
 		this._authLoginService.onLogout().subscribe(() => {
 			this.clearOrder();
+			this._userDetail = null;
 		});
 	}
 
@@ -126,9 +134,9 @@ export class CartOrderService {
 		return this._orderChange$;
 	}
 
-	private createOrder(): Promise<Order> {
+	private async createOrder(): Promise<Order> {
 		this._orderClear$.next(true);
-		const order = this._cartService.createOrder();
-		return this._orderService.add(order);
+		const order = await this._cartService.createOrder();
+		return await this._orderService.add(order);
 	}
 }
