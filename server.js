@@ -1,29 +1,7 @@
-var express = require("express");
-var app = express();
-var path = require("path");
+const express = require("express");
+const app = express();
+const path = require("path");
 
-// If an incoming request uses
-// a protocol other than HTTPS,
-// redirect that request to the
-// same url but with HTTPS
-/*
-app.get('*', function(req, res, next) {
-	if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
-		res.redirect('https://' + req.hostname + req.url);
-	} else {
-		next();
-	}
-});
-*/
-/*
-app.get('*', function(req, res, next) {
-	if (req.headers['x-forwarded-proto'] !== 'https') {
-		res.redirect('https://' + req.hostname + req.url);
-	} else {
-		next();
-	}
-});
-*/
 app.get("*", function (req, res, next) {
 	if (
 		req.headers["x-forwarded-proto"] !== "https" &&
@@ -47,6 +25,21 @@ app.get("*", function (req, res) {
 	) {
 		res.redirect("https://" + req.hostname + req.url);
 	} else {
+		console.log(String(req.path));
+		if (
+			String(req.path).endsWith(
+				"/.well-known/apple-developer-merchantid-domain-association"
+			)
+		) {
+			console.log("sending file");
+			return res.sendFile(
+				path.join(
+					__dirname,
+					"/dist/assets/dibs/apple-developer-merchantid-domain-association.txt"
+				)
+			);
+		}
+
 		res.sendFile(path.join(__dirname + "/dist/index.html"));
 	}
 });
