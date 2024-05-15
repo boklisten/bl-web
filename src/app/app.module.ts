@@ -80,6 +80,7 @@ import {
 	faPhone,
 	faAddressCard,
 	faBirthdayCake,
+	faEraser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons";
 import { environment } from "../environments/environment";
@@ -219,7 +220,8 @@ export class AppModule {
 			faBirthdayCake,
 			faArrowLeft,
 			faFlagCheckered,
-			faUserFriends
+			faUserFriends,
+			faEraser
 		);
 		blConnectConfigService.setConfig({ basePath: environment.apiPath });
 		LoginModule.withConfig({

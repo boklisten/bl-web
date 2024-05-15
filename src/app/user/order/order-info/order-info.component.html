@@ -81,6 +81,18 @@
 				</div>
 			</div>
 			<div class="card-body">
+				<!-- TODO: remove '&& false' to enable -->
+				<div
+					class="card-body bg-warning"
+					*ngIf="order.pendingSignature && false"
+				>
+					<div class="row">
+						<div class="col-auto">
+							Du trenger signatur fra din foresatte før utdeling,
+							be dem sjekke e-post
+						</div>
+					</div>
+				</div>
 				<ul class="list-group">
 					<li
 						class="list-group-item"

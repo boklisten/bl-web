@@ -21,6 +21,7 @@ import { LoginModule } from "@boklisten/bl-login";
 import { UserEditService } from "./user-edit/user-edit.service";
 import { UserOrderService } from "./order/user-order/user-order.service";
 import { UserMenuComponent } from "./user-menu/user-menu.component";
+import { HeaderAlertModule } from "../header-alert/header-alert.module";
 
 @NgModule({
 	imports: [
@@ -31,6 +32,7 @@ import { UserMenuComponent } from "./user-menu/user-menu.component";
 		FontAwesomeModule,
 		BlCommonModule,
 		LoginModule,
+		HeaderAlertModule,
 	],
 	declarations: [
 		UserComponent,

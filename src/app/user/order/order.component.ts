@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { BlApiError, Order, UserDetail } from "@boklisten/bl-model";
 import { UserService } from "../user.service";
 import { OrderService, UserDetailService } from "@boklisten/bl-connect";
-import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-order",
@@ -12,6 +11,7 @@ import { Router } from "@angular/router";
 export class OrderComponent implements OnInit {
 	public orders: Order[];
 	public loading: boolean;
+	public userDetail: UserDetail;
 
 	constructor(
 		private _userService: UserService,
@@ -23,38 +23,36 @@ export class OrderComponent implements OnInit {
 
 	ngOnInit() {
 		this.loading = true;
-		this.getOrders()
-			.then((orders: Order[]) => {
-				this.orders = orders;
-				this.loading = false;
+		this._userDetailService
+			.getById(this._userService.getUserDetailId())
+			.catch((userDetailError: BlApiError) => {
+				console.log("could not get userDetails", userDetailError);
 			})
-			.catch((apiErr: BlApiError) => {
-				// console.log('could not get orders', apiErr);
-				this.loading = false;
+			.then(async (userDetail) => {
+				if (!userDetail) {
+					return;
+				}
+				this.userDetail = userDetail;
+				try {
+					this.orders = await this.getOrders();
+					this.loading = false;
+				} catch (apiErr) {
+					this.loading = false;
+				}
 			});
 	}
 
 	getOrders(): Promise<Order[]> {
 		return new Promise((resolve, reject) => {
-			this._userDetailService
-				.getById(this._userService.getUserDetailId(), { fresh: true })
-				.then((userDetail: UserDetail) => {
-					this._orderService
-						.getManyByIds(userDetail.orders as string[], {
-							fresh: true,
-						})
-						.then((orders: Order[]) => {
-							resolve(orders);
-						})
-						.catch((orderServiceError: BlApiError) => {
-							console.log(
-								"could not get orders",
-								orderServiceError
-							);
-						});
+			this._orderService
+				.getManyByIds(this.userDetail.orders as string[], {
+					fresh: true,
 				})
-				.catch((userDetailError: BlApiError) => {
-					console.log("could not get userDetails", userDetailError);
+				.then((orders: Order[]) => {
+					resolve(orders);
+				})
+				.catch((orderServiceError: BlApiError) => {
+					console.error("could not get orders", orderServiceError);
 				});
 		});
 	}

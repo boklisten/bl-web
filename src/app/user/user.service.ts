@@ -88,15 +88,17 @@ export class UserService {
 		this.userDetail$.next(this._userDetail);
 	}
 
-	public reloadUserDetail() {
-		this._userDetailService
+	public async reloadUserDetail() {
+		const reloadedUserDetail = await this._userDetailService
 			.getById(this._userDetail.id)
-			.then((reloadedUserDetail: UserDetail) => {
-				this.setUserDetail(reloadedUserDetail);
-			})
 			.catch((getUserDetailError: BlApiError) => {
-				//console.log('userService: could not get userDetail', getUserDetailError);
+				console.log(
+					`userService: could not get userDetail with id ${this._userDetail.id}`,
+					getUserDetailError
+				);
+				return this._userDetail;
 			});
+		this.setUserDetail(reloadedUserDetail);
 	}
 
 	public onUserDetailChange(): Observable<UserDetail> {
@@ -142,7 +144,7 @@ export class UserService {
 				this.setUserDetail(userDetail);
 			})
 			.catch((getUserDetailError: BlApiError) => {
-				console.log(
+				console.error(
 					"userService: could not get userDetail",
 					getUserDetailError
 				);

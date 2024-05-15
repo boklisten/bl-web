@@ -1,0 +1,49 @@
+<div class="signature-parent">
+	<div class="signature-intro" *ngIf="!isGuardian">
+		Signer her på at du er {{ customerName }} og godkjenner kontrakten:
+	</div>
+	<div class="signature-intro" *ngIf="isGuardian">
+		Signer her på at du er foresatt til {{ customerName }} og godkjenner
+		kontrakten på hans eller hennes vegne:
+	</div>
+
+	<div class="signature-canvas-parent" (resize)="resizeCanvas()">
+		<canvas
+			width="600"
+			height="200"
+			class="signature-canvas"
+			#signaturePadCanvas
+			(click)="validate()"
+			(touchend)="validate()"
+			(resize)="resizeCanvas()"
+		></canvas>
+		<button
+			class="btn btn-outline-secondary signature-clear-button"
+			(click)="clearSignature()"
+		>
+			<fa-icon [icon]="'eraser'"></fa-icon>
+		</button>
+	</div>
+
+	<div class="signature-signer-name" *ngIf="isGuardian">
+		<div class="input-group mb-3 input-group-md">
+			<div class="input-group-prepend">
+				<span class="input-group-text">
+					<fa-icon [icon]="'user'"></fa-icon>
+				</span>
+			</div>
+			<input
+				type="text"
+				required
+				class="form-control"
+				placeholder="Ditt navn (foresatt)"
+				(ngModelChange)="typedGuardianName = $event; validate()"
+				[(ngModel)]="typedGuardianName"
+			/>
+		</div>
+	</div>
+
+	<p class="signature-signer-name" *ngIf="!isGuardian">
+		{{ signerName }} ({{ isGuardian ? "foresatt" : "elev" }})
+	</p>
+</div>
