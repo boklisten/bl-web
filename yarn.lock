@@ -1117,13 +1117,6 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@boklisten/bl-connect@^0.19.21":
-  version "0.19.21"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.19.21.tgz#03ed3829499813112343d8b6f5b9274575c85fd8"
-  integrity sha512-yGEcrRDpT3jiwiHTjQ0Vimqnsw8zSKQ2husMMDx4Q2OddHo2Qb7+gR+me4aJTckIOung5QbO+6PbiGR0ZYrHtg==
-  dependencies:
-    tslib "^2.1.0"
-
 "@boklisten/bl-connect@^0.20.10":
   version "0.20.10"
   resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.10.tgz#fe0b49f4d38da8a8038719ee487dbede99e409da"
