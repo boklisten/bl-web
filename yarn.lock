@@ -1117,20 +1117,20 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@boklisten/bl-connect@^0.19.10", "@boklisten/bl-connect@^0.19.21":
-  version "0.19.21"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.19.21.tgz#03ed3829499813112343d8b6f5b9274575c85fd8"
-  integrity sha512-yGEcrRDpT3jiwiHTjQ0Vimqnsw8zSKQ2husMMDx4Q2OddHo2Qb7+gR+me4aJTckIOung5QbO+6PbiGR0ZYrHtg==
+"@boklisten/bl-connect@^0.20.10":
+  version "0.20.10"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.10.tgz#fe0b49f4d38da8a8038719ee487dbede99e409da"
+  integrity sha512-BCXLLxISOmB0LZfqPFPE263boAQVhlwMN0JyJ70kC93UEf+6oSgU5wKazWqhimKW2zVchIr5FP4fCn7Hw4Pg8Q==
   dependencies:
     tslib "^2.1.0"
 
-"@boklisten/bl-login@^1.2.17":
-  version "1.2.17"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-login/-/bl-login-1.2.17.tgz#a16089804bec0cb2049fadc57f3ee7b8eaa05dd0"
-  integrity sha512-2qD6YxJ3OdzD5ymxBsixvLW2+J6WgWHEhXupk4g1C0PT+De/TJ7cHY/+CoYy9Fi6JvPk2ZPeg7AidqwJpTtXrQ==
+"@boklisten/bl-login@^1.2.24":
+  version "1.2.24"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-login/-/bl-login-1.2.24.tgz#2fa4a9965e1a5f28f55cf0c11788dbdc966f532e"
+  integrity sha512-QC8NxeKpGDhRA1kYRoCfAYGFXXe1CdcHDjPSzQ5xpN9OMGT1o+Z15xwqgmMSF5YDTjHK7WjaPQ5+6SQsq9Bp+Q==
   dependencies:
     "@auth0/angular-jwt" "5.0.2"
-    "@boklisten/bl-connect" "^0.19.10"
+    "@boklisten/bl-connect" "^0.20.10"
     date-fns "^2.17.0"
     tslib "^2.1.0"
 
@@ -9647,8 +9647,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

@@ -27,7 +27,12 @@ export class BlNextLinkerService {
 
 	public receiveTokens() {
 		this.route.queryParams.forEach((params) => {
-			if (params["access_token"] && params["refresh_token"]) {
+			if (
+				// Do not steal the params from bl-login
+				!this.router.url.includes("auth/token") &&
+				params["access_token"] &&
+				params["refresh_token"]
+			) {
 				this.tokenService.addAccessToken(params["access_token"]);
 				this.tokenService.addRefreshToken(params["refresh_token"]);
 				this.router.navigate([], {
