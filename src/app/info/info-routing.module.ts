@@ -15,11 +15,12 @@ import { ContactInfoComponent } from "./contact-info/contact-info.component";
 import { InfoAgreementComponent } from "./info-agreement/info-agreement.component";
 import { InfoBuybackComponent } from "./info-buyback/info-buyback.component";
 import { InfoCoronaComponent } from "./info-corona/info-corona.component";
+import { BlNextLinkerComponent } from "../bl-next-linker/bl-next-linker.component";
 
 const routes: Routes = [
 	{
 		path: "info",
-		component: InfoComponent,
+		component: BlNextLinkerComponent,
 		children: [
 			{ path: "", redirectTo: "general", pathMatch: "full" },
 			{ path: "general", component: InfoGeneralComponent },

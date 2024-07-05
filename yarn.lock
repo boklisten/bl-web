@@ -1068,13 +1068,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.21.0":
-  version "7.23.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.2.tgz#062b0ac103261d68a966c4c7baf2ae3e62ec3885"
-  integrity sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
 "@babel/template@7.12.7", "@babel/template@^7.12.7", "@babel/template@^7.8.3":
   version "7.12.7"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.12.7.tgz#c817233696018e39fbb6c491d2fb684e05ed43bc"
@@ -1117,21 +1110,12 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@boklisten/bl-connect@^0.20.10":
-  version "0.20.10"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.10.tgz#fe0b49f4d38da8a8038719ee487dbede99e409da"
-  integrity sha512-BCXLLxISOmB0LZfqPFPE263boAQVhlwMN0JyJ70kC93UEf+6oSgU5wKazWqhimKW2zVchIr5FP4fCn7Hw4Pg8Q==
-  dependencies:
-    tslib "^2.1.0"
-
-"@boklisten/bl-login@^1.2.24":
-  version "1.2.24"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-login/-/bl-login-1.2.24.tgz#2fa4a9965e1a5f28f55cf0c11788dbdc966f532e"
-  integrity sha512-QC8NxeKpGDhRA1kYRoCfAYGFXXe1CdcHDjPSzQ5xpN9OMGT1o+Z15xwqgmMSF5YDTjHK7WjaPQ5+6SQsq9Bp+Q==
+"@boklisten/bl-connect@^0.20.15":
+  version "0.20.15"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.15.tgz#28ba2541e2aaed8f19e745f8cbe704c92da64d5b"
+  integrity sha512-DjgT/40G3Ybe9OLwtWyInIiPQqzn2858Wh/koBtcd24XgfA7EPD2DAQOoRo2fNTGDcSLqoAVAGbIngI0Q0ORRg==
   dependencies:
     "@auth0/angular-jwt" "5.0.2"
-    "@boklisten/bl-connect" "^0.20.10"
-    date-fns "^2.17.0"
     tslib "^2.1.0"
 
 "@boklisten/bl-model@^0.25.37":
@@ -3281,13 +3265,6 @@ dashdash@^1.12.0:
   integrity sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g==
   dependencies:
     assert-plus "^1.0.0"
-
-date-fns@^2.17.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
-  integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
 
 date-format@^2.1.0:
   version "2.1.0"
@@ -7853,11 +7830,6 @@ regenerator-runtime@0.13.7, regenerator-runtime@^0.13.4:
   version "0.13.7"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
-
-regenerator-runtime@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz#5e19d68eb12d486f797e15a3c6a918f7cec5eb45"
-  integrity sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==
 
 regenerator-transform@^0.14.2:
   version "0.14.5"

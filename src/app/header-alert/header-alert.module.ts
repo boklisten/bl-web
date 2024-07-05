@@ -3,11 +3,10 @@ import { CommonModule } from "@angular/common";
 import { HeaderAlertComponent } from "./header-alert.component";
 import { HeaderUserDetailAlertComponent } from "./header-user-detail-alert/header-user-detail-alert.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { LoginModule } from "@boklisten/bl-login";
 import { HeaderEmailNotConfirmedAlertComponent } from "./header-email-not-confirmed-alert/header-email-not-confirmed-alert.component";
 
 @NgModule({
-	imports: [CommonModule, FontAwesomeModule, LoginModule],
+	imports: [CommonModule, FontAwesomeModule],
 	declarations: [
 		HeaderAlertComponent,
 		HeaderUserDetailAlertComponent,

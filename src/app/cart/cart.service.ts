@@ -15,7 +15,6 @@ import { PriceService } from "../price/price.service";
 import { Subject } from "rxjs";
 import { DateService } from "../date/date.service";
 import { OrderItemType } from "@boklisten/bl-model";
-import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
 import {
 	BranchService,
@@ -24,6 +23,7 @@ import {
 } from "@boklisten/bl-connect";
 import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
 import { UserCustomerItemService } from "../user/user-customer-item/user-customer-item.service";
+import { BlNextLinkerService } from "../bl-next-linker/bl-next-linker.service";
 
 export interface CartItem {
 	item: Item;
@@ -45,7 +45,7 @@ export class CartService {
 		private _userService: UserService,
 		private _priceService: PriceService,
 		private _dateService: DateService,
-		private _authLoginService: AuthLoginService,
+		private _blNextLinkerService: BlNextLinkerService,
 		private _storageService: StorageService,
 		private _googleAnalyticsService: GoogleAnalyticsService,
 		private _userCustomerItemService: UserCustomerItemService,
@@ -116,7 +116,7 @@ export class CartService {
 	}
 
 	private onLogout() {
-		this._authLoginService.onLogout().subscribe(() => {
+		this._blNextLinkerService.onLogout().subscribe(() => {
 			this.clearCart();
 		});
 	}
