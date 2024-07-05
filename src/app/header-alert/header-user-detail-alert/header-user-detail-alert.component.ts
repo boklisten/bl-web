@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "../../user/user.service";
-import { AuthLoginService } from "@boklisten/bl-login";
+import { BlNextLinkerService } from "../../bl-next-linker/bl-next-linker.service";
 
 @Component({
 	selector: "app-header-user-detail-alert",
@@ -14,21 +14,21 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 	constructor(
 		private _router: Router,
 		private _userService: UserService,
-		private _authService: AuthLoginService
+		private _blNextLinkerService: BlNextLinkerService
 	) {
 		this.showAlert = false;
 	}
 
 	ngOnInit() {
-		if (this._authService.isLoggedIn()) {
+		if (this._blNextLinkerService.isLoggedIn()) {
 			this.checkIfUserDetailIsValid();
 		}
 
-		this._authService.onLogin().subscribe(() => {
+		this._blNextLinkerService.onLogin().subscribe(() => {
 			this.checkIfUserDetailIsValid();
 		});
 
-		this._authService.onLogout().subscribe(() => {
+		this._blNextLinkerService.onLogout().subscribe(() => {
 			this.showAlert = false;
 		});
 
@@ -38,7 +38,7 @@ export class HeaderUserDetailAlertComponent implements OnInit {
 	}
 
 	private checkIfUserDetailIsValid() {
-		if (!this._authService.isLoggedIn()) {
+		if (!this._blNextLinkerService.isLoggedIn()) {
 			this.showAlert = false;
 			return;
 		}
