@@ -16,7 +16,8 @@ export class UserGuardService implements CanActivate {
 	): boolean {
 		if (!this._userService.loggedIn()) {
 			this._router.navigate(["/auth/menu"], {
-				queryParams: { redirect: state.url },
+				queryParams: { redirect: state.url, caller: "bl-web" },
+				replaceUrl: true,
 			});
 			return false;
 		}

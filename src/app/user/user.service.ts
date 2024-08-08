@@ -10,13 +10,11 @@ import {
 	BlError,
 	CustomerItem,
 	UserDetail,
-	UserPermission,
 } from "@boklisten/bl-model";
 import { Subject } from "rxjs";
-import { AuthLoginService } from "@boklisten/bl-login";
 import { Observable } from "rxjs/internal/Observable";
-import { UserOrderService } from "./order/user-order/user-order.service";
 import { GoogleAnalyticsService } from "../GoogleAnalytics/google-analytics.service";
+import { BlNextLinkerService } from "../bl-next-linker/bl-next-linker.service";
 
 @Injectable()
 export class UserService {
@@ -29,14 +27,14 @@ export class UserService {
 		private _tokenService: TokenService,
 		private _userDetailService: UserDetailService,
 		private _customerItemService: CustomerItemService,
-		private _authService: AuthLoginService,
+		private _blNextLinkerService: BlNextLinkerService,
 		private _googleAnalyticsService: GoogleAnalyticsService,
 		private _storageService: StorageService
 	) {
 		this._customerItems = [];
 		this.userDetail$ = new Subject<UserDetail>();
 
-		this._authService.onLogin().subscribe(() => {
+		this._blNextLinkerService.onLogin().subscribe(() => {
 			this.fetchUserDetail();
 			this._storageService.remove("bl-redirect");
 			this._googleAnalyticsService.eventEmitter(
@@ -45,7 +43,7 @@ export class UserService {
 			);
 		});
 
-		this._authService.onLogout().subscribe(() => {
+		this._blNextLinkerService.onLogout().subscribe(() => {
 			this._userDetail = null;
 			this._storageService.remove("bl-redirect");
 			this._googleAnalyticsService.eventEmitter(
@@ -54,7 +52,7 @@ export class UserService {
 			);
 		});
 
-		if (this._authService.isLoggedIn()) {
+		if (this._blNextLinkerService.isLoggedIn()) {
 			this.fetchUserDetail();
 		}
 	}
@@ -106,7 +104,7 @@ export class UserService {
 	}
 
 	public logout(): Promise<boolean> {
-		this._authService.logout("/welcome");
+		this._blNextLinkerService.logout();
 		return Promise.resolve(true);
 	}
 

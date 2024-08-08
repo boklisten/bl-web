@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../user/user.service";
-import { AuthLoginService } from "@boklisten/bl-login";
 import { UserDetail } from "@boklisten/bl-model";
+import { BlNextLinkerService } from "../../bl-next-linker/bl-next-linker.service";
 
 @Component({
 	selector: "app-header-email-not-confirmed-alert",
@@ -13,21 +13,21 @@ export class HeaderEmailNotConfirmedAlertComponent implements OnInit {
 
 	constructor(
 		private _userService: UserService,
-		private _authLoginService: AuthLoginService
+		private _blNextLinkerService: BlNextLinkerService
 	) {
 		this.showAlert = false;
 	}
 
 	ngOnInit() {
-		if (this._authLoginService.isLoggedIn()) {
+		if (this._blNextLinkerService.isLoggedIn()) {
 			this.checkIfEmailIsValidated();
 		}
 
-		this._authLoginService.onLogin().subscribe(() => {
+		this._blNextLinkerService.onLogin().subscribe(() => {
 			this.checkIfEmailIsValidated();
 		});
 
-		this._authLoginService.onLogout().subscribe(() => {
+		this._blNextLinkerService.onLogout().subscribe(() => {
 			this.showAlert = false;
 		});
 
