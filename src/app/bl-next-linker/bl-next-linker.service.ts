@@ -32,14 +32,14 @@ export class BlNextLinkerService {
 			url.searchParams.append("refresh_token", refreshToken);
 			url.searchParams.append("access_token", accessToken);
 		}
-		window.location.href = url.toString();
+		window.location.replace(url.toString());
 	}
 
 	public receiveTokens() {
 		this.route.queryParams.subscribe((params) => {
 			if (params["logout"]) {
 				this.handleLogout();
-				this.router.navigate([]);
+				this.router.navigate([], { replaceUrl: true });
 				this._logout$.next(true);
 				return;
 			}
@@ -52,6 +52,7 @@ export class BlNextLinkerService {
 						refresh_token: null,
 						access_token: null,
 					},
+					replaceUrl: true,
 				});
 				this._login$.next(true);
 			}
