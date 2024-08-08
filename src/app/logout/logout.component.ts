@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
 	ngOnInit() {
 		this._blNextLinkerService.handleLogout();
 		setTimeout(() => {
-			this._router.navigate(["welcome"]);
+			this._router.navigate(["welcome"], { replaceUrl: true });
 		}, 2500);
 	}
 }
