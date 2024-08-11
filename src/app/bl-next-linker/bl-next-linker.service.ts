@@ -25,7 +25,9 @@ export class BlNextLinkerService {
 	}
 
 	public redirectToBlNext(subPath: string) {
-		const url = new URL(`${environment.nextPath}${subPath}`);
+		const url = new URL(
+			`${environment.nextPath}${subPath.replace(/^\//, "")}`
+		);
 		if (this.isLoggedIn()) {
 			const refreshToken = this.tokenService.getRefreshToken();
 			const accessToken = this.tokenService.getAccessToken();
