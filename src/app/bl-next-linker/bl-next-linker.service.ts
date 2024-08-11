@@ -37,12 +37,6 @@ export class BlNextLinkerService {
 
 	public receiveTokens() {
 		this.route.queryParams.subscribe((params) => {
-			if (params["logout"]) {
-				this.handleLogout();
-				this.router.navigate([], { replaceUrl: true });
-				this._logout$.next(true);
-				return;
-			}
 			if (params["access_token"] && params["refresh_token"]) {
 				this.tokenService.addAccessToken(params["access_token"]);
 				this.tokenService.addRefreshToken(params["refresh_token"]);
