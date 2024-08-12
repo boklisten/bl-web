@@ -98,6 +98,7 @@ import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.servi
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlCommonModule } from "./bl-common/bl-common.module";
 import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
+import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 
 @NgModule({
 	declarations: [
@@ -107,6 +108,7 @@ import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 		FooterComponent,
 		LogoutComponent,
 		AgreementComponent,
+		AuthGatewayComponent,
 	],
 	imports: [
 		BrowserModule,

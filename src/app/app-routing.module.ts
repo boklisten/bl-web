@@ -4,6 +4,7 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlNextLinkerComponent } from "./bl-next-linker/bl-next-linker.component";
+import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 
 const routes: Routes = [
 	{
@@ -81,6 +82,10 @@ const routes: Routes = [
 			{
 				path: "permission/denied",
 				component: BlNextLinkerComponent,
+			},
+			{
+				path: "gateway",
+				component: AuthGatewayComponent,
 			},
 		],
 	},
