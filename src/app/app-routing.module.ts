@@ -5,6 +5,7 @@ import { LogoutComponent } from "./logout/logout.component";
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlNextLinkerComponent } from "./bl-next-linker/bl-next-linker.component";
 import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
+import { GuardianSignatureComponent } from "./guardian-signature/guardian-signature.component";
 
 const routes: Routes = [
 	{
@@ -88,6 +89,10 @@ const routes: Routes = [
 				component: AuthGatewayComponent,
 			},
 		],
+	},
+	{
+		path: "signering",
+		component: GuardianSignatureComponent,
 	},
 ];
 

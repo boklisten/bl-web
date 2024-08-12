@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-xl-6 col-lg-8 col-md-12 no-gutters">
+			<div class="card">
+				<div class="card-header">
+					<app-info-agreement-conditions
+						[collapsable]="true"
+					></app-info-agreement-conditions>
+
+					<app-cart-signature
+						*ngIf="isSignatureByGuardianRequired"
+						#signatureComponent
+						(isValid)="onIsSignedChanged($event)"
+						[customerName]="customerName"
+						[signerName]="guardianName"
+						[isGuardian]="true"
+					></app-cart-signature>
+
+					<div class="row justify-content-center">
+						<div class="col-12">
+							<button
+								class="btn btn-block btn-outline-success"
+								[disabled]="
+									!loaded ||
+									(isSignatureByGuardianRequired && !isSigned)
+								"
+								(click)="onConfirmClick()"
+							>
+								<span>Signer</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

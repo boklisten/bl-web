@@ -99,6 +99,7 @@ import { AgreementComponent } from "./agreement/agreement.component";
 import { BlCommonModule } from "./bl-common/bl-common.module";
 import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
+import { GuardianSignatureComponent } from "./guardian-signature/guardian-signature.component";
 
 @NgModule({
 	declarations: [
@@ -109,6 +110,7 @@ import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 		LogoutComponent,
 		AgreementComponent,
 		AuthGatewayComponent,
+		GuardianSignatureComponent,
 	],
 	imports: [
 		BrowserModule,
