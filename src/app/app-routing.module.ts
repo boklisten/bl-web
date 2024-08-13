@@ -91,7 +91,7 @@ const routes: Routes = [
 		],
 	},
 	{
-		path: "signering",
+		path: "signering/:customerId",
 		component: GuardianSignatureComponent,
 	},
 ];

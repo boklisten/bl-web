@@ -2,17 +2,38 @@
 	<div class="row justify-content-center">
 		<div class="col-xl-6 col-lg-8 col-md-12 no-gutters">
 			<div class="card">
-				<div class="card-header">
+				<div class="card-header" *ngIf="!userFound">
+					<h1 class="text-center mb-4">Signering</h1>
+					<p class="text-center">
+						Lenken du har skrevet inn er ikke gyldig. Ta kontakt for
+						spørsmål.
+					</p>
+				</div>
+				<div class="card-header" *ngIf="signatureInfo.message">
+					<h1 class="text-center mb-4">Signering</h1>
+					<p class="text-center">{{ signatureInfo.message }}</p>
+				</div>
+				<div class="card-header" *ngIf="signingCompleted">
+					<h1 class="text-center">Signering</h1>
+					<p class="text-center">
+						Du har nå signert Boklistens betingelser på vegne av
+						{{ signatureInfo.customerName }}.
+					</p>
+				</div>
+				<div
+					class="card-header bg-white"
+					*ngIf="
+						userFound && !signatureInfo.message && !signingCompleted
+					"
+				>
 					<app-info-agreement-conditions
 						[collapsable]="true"
 					></app-info-agreement-conditions>
 
 					<app-cart-signature
-						*ngIf="isSignatureByGuardianRequired"
 						#signatureComponent
 						(isValid)="onIsSignedChanged($event)"
-						[customerName]="customerName"
-						[signerName]="guardianName"
+						[customerName]="signatureInfo.customerName"
 						[isGuardian]="true"
 					></app-cart-signature>
 
@@ -20,10 +41,7 @@
 						<div class="col-12">
 							<button
 								class="btn btn-block btn-outline-success"
-								[disabled]="
-									!loaded ||
-									(isSignatureByGuardianRequired && !isSigned)
-								"
+								[disabled]="!loaded || !isSigned"
 								(click)="onConfirmClick()"
 							>
 								<span>Signer</span>
