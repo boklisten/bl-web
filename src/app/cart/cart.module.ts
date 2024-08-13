@@ -70,5 +70,6 @@ import { CartSignatureComponent } from "./cart-signature/signature.component";
 		CartDeliveryService,
 		CartCheckoutService,
 	],
+	exports: [CartSignatureComponent],
 })
 export class CartModule {}
