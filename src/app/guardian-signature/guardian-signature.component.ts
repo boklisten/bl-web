@@ -1,18 +1,15 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { CartSignatureComponent } from "../cart/cart-signature/signature.component";
-import { SignatureService, UserDetailService } from "@boklisten/bl-connect";
+import { SignatureService } from "@boklisten/bl-connect";
 import { ActivatedRoute } from "@angular/router";
+import { GuardianSignatureInfo } from "@boklisten/bl-model/signature/serialized-signature";
 
 @Component({
 	selector: "app-guardian-signature",
 	templateUrl: "./guardian-signature.component.html",
 })
 export class GuardianSignatureComponent implements OnInit {
-	public signatureInfo: {
-		message?: string;
-		customerName?: string;
-		guardianSignatureRequired: boolean;
-	};
+	public signatureInfo: GuardianSignatureInfo;
 	public isSigned: boolean = false;
 	public loaded: boolean = false;
 	public userFound: boolean = true;
