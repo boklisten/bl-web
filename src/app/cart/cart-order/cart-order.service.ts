@@ -7,8 +7,8 @@ import {
 	OrderService,
 	SignatureService,
 } from "@boklisten/bl-connect";
-import { AuthLoginService } from "@boklisten/bl-login";
 import { UserService } from "../../user/user.service";
+import { BlNextLinkerService } from "../../bl-next-linker/bl-next-linker.service";
 
 @Injectable()
 export class CartOrderService {
@@ -21,7 +21,7 @@ export class CartOrderService {
 	constructor(
 		private _cartService: CartService,
 		private _orderService: OrderService,
-		private _authLoginService: AuthLoginService,
+		private _blNextLinkerService: BlNextLinkerService,
 		private _branchService: BranchService,
 		private _signatureService: SignatureService,
 		private _userService: UserService
@@ -55,11 +55,11 @@ export class CartOrderService {
 	}
 
 	public onLogin() {
-		this._authLoginService.onLogin().subscribe(() => {
+		this._blNextLinkerService.onLogin().subscribe(() => {
 			this.clearOrder();
 		});
 
-		this._authLoginService.onLogout().subscribe(() => {
+		this._blNextLinkerService.onLogout().subscribe(() => {
 			this.clearOrder();
 			this._userDetail = null;
 		});

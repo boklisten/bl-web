@@ -1,38 +1,45 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { environment } from "../../environments/environment";
-import { TokenService } from "@boklisten/bl-connect";
-import { AuthLoginService } from "@boklisten/bl-login";
+import { TokenService, UserSessionService } from "@boklisten/bl-connect";
+import { Subject } from "rxjs";
+import { Observable } from "rxjs/internal/Observable";
 
 @Injectable({
 	providedIn: "root",
 })
 export class BlNextLinkerService {
+	private readonly _login$: Subject<boolean>;
+	private readonly _logout$: Subject<boolean>;
+
 	constructor(
+		private _tokenService: TokenService,
+		private _userSessionService: UserSessionService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private tokenService: TokenService,
-		private authLoginService: AuthLoginService
-	) {}
+		private tokenService: TokenService
+	) {
+		this._login$ = new Subject<boolean>();
+		this._logout$ = new Subject<boolean>();
+		this.onBlConnectLogout();
+	}
 
-	public redirectToBlNext(subPath: string, appendTokens: boolean) {
-		let href = `${environment.nextPath}${subPath}`;
-		if (appendTokens && this.authLoginService.isLoggedIn()) {
+	public redirectToBlNext(subPath: string) {
+		const url = new URL(
+			`${environment.nextPath}${subPath.replace(/^\//, "")}`
+		);
+		if (this.isLoggedIn()) {
 			const refreshToken = this.tokenService.getRefreshToken();
 			const accessToken = this.tokenService.getAccessToken();
-			href += `?refresh_token=${refreshToken}&access_token=${accessToken}`;
+			url.searchParams.append("refresh_token", refreshToken);
+			url.searchParams.append("access_token", accessToken);
 		}
-		window.location.href = href;
+		window.location.replace(url.toString());
 	}
 
 	public receiveTokens() {
-		this.route.queryParams.forEach((params) => {
-			if (
-				// Do not steal the params from bl-login
-				!this.router.url.includes("auth/token") &&
-				params["access_token"] &&
-				params["refresh_token"]
-			) {
+		this.route.queryParams.subscribe((params) => {
+			if (params["access_token"] && params["refresh_token"]) {
 				this.tokenService.addAccessToken(params["access_token"]);
 				this.tokenService.addRefreshToken(params["refresh_token"]);
 				this.router.navigate([], {
@@ -41,8 +48,39 @@ export class BlNextLinkerService {
 						refresh_token: null,
 						access_token: null,
 					},
+					replaceUrl: true,
 				});
+				this._login$.next(true);
 			}
 		});
+	}
+
+	private onBlConnectLogout() {
+		this._userSessionService.onLogout().subscribe(() => {
+			this.logout();
+		});
+	}
+
+	public onLogin(): Observable<boolean> {
+		return this._login$;
+	}
+
+	public onLogout(): Observable<boolean> {
+		return this._logout$;
+	}
+
+	public isLoggedIn() {
+		return this._tokenService.haveAccessToken();
+	}
+
+	public handleLogout() {
+		this._tokenService.removeTokens();
+		this._logout$.next(true);
+	}
+
+	public logout() {
+		this.handleLogout();
+		// Hand over responsibility to bl-next
+		this.redirectToBlNext("auth/logout");
 	}
 }

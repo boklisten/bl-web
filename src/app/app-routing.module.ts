@@ -1,12 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginModule } from "@boklisten/bl-login";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { LogoutComponent } from "./logout/logout.component";
 import { AgreementComponent } from "./agreement/agreement.component";
-import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-linker.component";
-import { UserGuardService } from "./user/user-guard.service";
+import { BlNextLinkerComponent } from "./bl-next-linker/bl-next-linker.component";
+import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 
 const routes: Routes = [
 	{
@@ -28,8 +26,68 @@ const routes: Routes = [
 	},
 	{
 		path: "overleveringer",
-		canActivate: [UserGuardService],
-		component: PeerToPeerLinkerComponent,
+		component: BlNextLinkerComponent,
+	},
+	{
+		path: "u/edit",
+		component: BlNextLinkerComponent,
+	},
+	{
+		path: "auth",
+		children: [
+			{
+				path: "token",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "menu",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "register",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "login",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "login/forgot",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "reset/:id",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "logout",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "success",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "register/detail",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "social/failure",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "email/confirm/:id",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "permission/denied",
+				component: BlNextLinkerComponent,
+			},
+			{
+				path: "gateway",
+				component: AuthGatewayComponent,
+			},
+		],
 	},
 ];
 

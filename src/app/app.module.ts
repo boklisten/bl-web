@@ -4,7 +4,6 @@ import { APP_INITIALIZER, ErrorHandler, NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { LoginModule } from "@boklisten/bl-login";
 import { UserModule } from "./user/user.module";
 import { FormsModule } from "@angular/forms";
 import { BranchModule } from "./branch/branch.module";
@@ -98,8 +97,8 @@ import * as Sentry from "@sentry/angular";
 import { GoogleAnalyticsService } from "./GoogleAnalytics/google-analytics.service";
 import { AgreementComponent } from "./agreement/agreement.component";
 import { BlCommonModule } from "./bl-common/bl-common.module";
-import { PeerToPeerLinkerComponent } from "./peer-to-peer-linker/peer-to-peer-linker.component";
 import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
+import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 
 @NgModule({
 	declarations: [
@@ -109,13 +108,12 @@ import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 		FooterComponent,
 		LogoutComponent,
 		AgreementComponent,
-		PeerToPeerLinkerComponent,
+		AuthGatewayComponent,
 	],
 	imports: [
 		BrowserModule,
 		BlConnectModule,
 		AppRoutingModule,
-		LoginModule,
 		UserModule,
 		BranchModule,
 		FormsModule,
@@ -224,21 +222,5 @@ export class AppModule {
 			faEraser
 		);
 		blConnectConfigService.setConfig({ basePath: environment.apiPath });
-		LoginModule.withConfig({
-			successPath: "/i/select",
-			apiPath: environment.apiPath,
-			userAgreementUrl: "/info/policies/conditions",
-			userDetailNotValidPath: "/u/edit",
-			registerSuccessPath: "/u/edit",
-			permissionDeniedPath: "",
-			permissions: ["customer", "employee", "manager", "admin", "super"],
-			logoutPath: "/logout",
-			providers: {
-				local: true,
-				facebook: true,
-				google: true,
-				feide: false,
-			},
-		});
 	}
 }
