@@ -46,11 +46,11 @@ export class GuardianSignatureComponent implements OnInit {
 
 	async onConfirmClick() {
 		const signature = this.signatureComponent.getSerializedSignature();
-		await this._signatureService.addGuardianSignature(
-			this.customerId,
-			signature.base64EncodedImage,
-			signature.signingName
-		);
+		await this._signatureService.addGuardianSignature({
+			customerId: this.customerId,
+			base64EncodedImage: signature.base64EncodedImage,
+			signingName: signature.signingName,
+		});
 		this.signingCompleted = true;
 	}
 }
