@@ -94,6 +94,10 @@ const routes: Routes = [
 		path: "signering/:customerId",
 		component: GuardianSignatureComponent,
 	},
+	{
+		path: "admin/hurtigutdeling",
+		component: BlNextLinkerComponent,
+	},
 ];
 
 @NgModule({
