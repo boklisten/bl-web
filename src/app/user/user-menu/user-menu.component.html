@@ -33,6 +33,15 @@
 		>
 	</a>
 
+	<a
+		class="list-group-item list-group-item-action"
+		routerLink="/sjekk"
+		*ngIf="isLoggedIn()"
+	>
+		<fa-icon [icon]="'search'" class="mr-2"></fa-icon>
+		<span class="bl-header-menu-name">Boksøk</span>
+	</a>
+
 	<a class="list-group-item list-group-item-action" routerLink="info/branch">
 		<span class="bl-header-menu-name" i18n="@@headerMenuBranchInfo"
 			>Branch info</span
