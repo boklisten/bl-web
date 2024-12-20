@@ -83,25 +83,14 @@ export class BranchStoreService {
 	public getActiveBranch(): Promise<Branch> {
 		return new Promise((resolve, reject) => {
 			if (this._userService.loggedIn()) {
-				this._userService
-					.getUserDetail()
-					.then((userDetail: UserDetail) => {
-						if (userDetail.branch) {
-							this._branchService
-								.getById(userDetail.branch as string)
-								.then((branch: Branch) => {
-									this.setCurrentBranch(branch);
-									resolve(branch);
-								})
-								.catch((getBranchError: Branch) => {
-									reject(getBranchError);
-								});
-						} else {
-							reject(new Error("userDetail.branch is not set"));
-						}
+				this._branchService
+					.getById(this._storageService.get(this._branchStorageName))
+					.then((branch: Branch) => {
+						this.setCurrentBranch(branch);
+						resolve(branch);
 					})
-					.catch((getUserDetailError: BlApiError) => {
-						reject(getUserDetailError);
+					.catch((getBranchError: Branch) => {
+						reject(getBranchError);
 					});
 			} else {
 				if (!this._currentBranch) {
