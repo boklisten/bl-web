@@ -81,14 +81,13 @@ import {
 	faAddressCard,
 	faBirthdayCake,
 	faEraser,
+	faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons";
 import { environment } from "../environments/environment";
 import { BranchGuardService } from "./branch/branch-guard-service/branch-guard.service";
 import { WelcomeModule } from "./welcome/welcome.module";
-import { HeaderUserDetailAlertComponent } from "./header-alert/header-user-detail-alert/header-user-detail-alert.component";
 import { HeaderAlertModule } from "./header-alert/header-alert.module";
-import { UserEditComponent } from "./user/user-edit/user-edit.component";
 import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { faFacebookSquare, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons/faSquare";
@@ -223,7 +222,8 @@ export class AppModule {
 			faArrowLeft,
 			faFlagCheckered,
 			faUserFriends,
-			faEraser
+			faEraser,
+			faHandshake
 		);
 		blConnectConfigService.setConfig({ basePath: environment.apiPath });
 	}

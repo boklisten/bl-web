@@ -35,6 +35,15 @@
 
 	<a
 		class="list-group-item list-group-item-action"
+		routerLink="/overleveringer"
+		*ngIf="isLoggedIn()"
+	>
+		<fa-icon [icon]="'handshake'" class="mr-2"></fa-icon>
+		<span class="bl-header-menu-name">Dine overleveringer</span>
+	</a>
+
+	<a
+		class="list-group-item list-group-item-action"
 		routerLink="/sjekk"
 		*ngIf="isLoggedIn()"
 	>
