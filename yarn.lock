@@ -1110,10 +1110,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@boklisten/bl-connect@^0.20.21":
-  version "0.20.21"
-  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.21.tgz#028b29b6930305bb8791416db87dc805c46087cf"
-  integrity sha512-vMh0y+V/M3ALNHhn8TLi9kNnMGRc8I3Q85ZYeRk8kqFj/ZmNxYY9pb7tA3qGIhLSLAqDLiiWGO/Cp1kwzGe3Dg==
+"@boklisten/bl-connect@^0.20.24":
+  version "0.20.24"
+  resolved "https://registry.yarnpkg.com/@boklisten/bl-connect/-/bl-connect-0.20.24.tgz#f2334bdb25a56bf8c5c559293c8f2eb06e0a1461"
+  integrity sha512-6CWGmYE7w20ZPJT3PBiuojZzPIhi+IFd482yyqtMJYY3UluXEVy9rXD5XqIIdhnUOj7JIjpDX9bUMhm3WsZxdA==
   dependencies:
     "@auth0/angular-jwt" "5.0.2"
     tslib "^2.1.0"
