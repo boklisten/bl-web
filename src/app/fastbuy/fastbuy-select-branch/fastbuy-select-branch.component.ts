@@ -38,7 +38,7 @@ export class FastbuySelectBranchComponent implements OnInit {
 		this.wait = true;
 
 		this.branchService
-			.get()
+			.get({ query: "?isBranchItemsLive.online=true" })
 			.then((branches: Branch[]) => {
 				const branchNames = [];
 
