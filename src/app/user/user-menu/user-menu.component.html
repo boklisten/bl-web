@@ -24,6 +24,14 @@
 	</a>
 	<a
 		class="list-group-item list-group-item-action"
+		routerLink="/bestillinger"
+		*ngIf="isLoggedIn()"
+	>
+		<fa-icon [icon]="'clipboard'" class="mr-2"></fa-icon>
+		<span class="bl-header-menu-name">Bestillinger</span>
+	</a>
+	<a
+		class="list-group-item list-group-item-action"
 		routerLink="/u/order"
 		*ngIf="isLoggedIn()"
 	>

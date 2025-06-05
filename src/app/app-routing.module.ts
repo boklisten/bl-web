@@ -102,6 +102,10 @@ const routes: Routes = [
 		path: "sjekk",
 		component: BlNextLinkerComponent,
 	},
+	{
+		path: "bestillinger",
+		component: BlNextLinkerComponent,
+	},
 ];
 
 @NgModule({
