@@ -14,16 +14,18 @@ export class UserOrderService {
 		return new Promise((resolve, reject) => {
 			this.userService
 				.getUserDetail()
-				.then((userDetail: UserDetail) => {
-					this.getOrders(userDetail)
-						.then((orders: Order[]) => {
-							resolve(
-								this.checkIfItemIsAlreadyOrdered(itemId, orders)
-							);
-						})
-						.catch(() => {
-							reject("UserOrderService: could not fetch orders");
-						});
+				.then(async (userDetail: UserDetail) => {
+					try {
+						const orders = await this.orderService.getWithOperation(
+							userDetail.id,
+							"get_customer_orders"
+						);
+						resolve(
+							this.checkIfItemIsAlreadyOrdered(itemId, orders)
+						);
+					} catch (error) {
+						reject("UserOrderService: could not fetch orders");
+					}
 				})
 				.catch((getUserDetailError) => {
 					reject(
