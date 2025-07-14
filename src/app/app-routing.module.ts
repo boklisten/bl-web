@@ -106,6 +106,10 @@ const routes: Routes = [
 		path: "bestillinger",
 		component: BlNextLinkerComponent,
 	},
+	{
+		path: "admin",
+		component: BlNextLinkerComponent,
+	},
 ];
 
 @NgModule({
