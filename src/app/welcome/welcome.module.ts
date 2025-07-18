@@ -7,7 +7,6 @@ import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import { FastbuyModule } from "../fastbuy/fastbuy.module";
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { NewsBannerModule } from "./news-banner/news-banner.module";
 
 @NgModule({
 	imports: [
@@ -15,8 +14,6 @@ import { NewsBannerModule } from "./news-banner/news-banner.module";
 		WelcomeRoutingModule,
 		NgbCarouselModule,
 		FastbuyModule,
-		NewsBannerModule,
-
 		FontAwesomeModule,
 	],
 	declarations: [WelcomeComponent],
