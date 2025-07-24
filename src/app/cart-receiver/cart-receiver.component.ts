@@ -80,6 +80,7 @@ export class CartReceiverComponent implements OnInit {
 					}
 				}
 				this.router.navigate([`/cart/checkout`], {
+					replaceUrl: true,
 					queryParams: {
 						caller: params["caller"],
 					},

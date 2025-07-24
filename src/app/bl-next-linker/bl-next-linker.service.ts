@@ -43,6 +43,7 @@ export class BlNextLinkerService {
 				this.tokenService.addAccessToken(params["access_token"]);
 				this.tokenService.addRefreshToken(params["refresh_token"]);
 				this.router.navigate([], {
+					replaceUrl: true,
 					queryParams: {
 						...params,
 						refresh_token: null,
