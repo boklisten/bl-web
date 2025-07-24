@@ -14,21 +14,13 @@
 	</a>
 	<a
 		class="list-group-item list-group-item-action"
-		routerLink="/u/items"
+		routerLink="/items"
 		*ngIf="isLoggedIn()"
 	>
 		<fa-icon [icon]="'book-open'" class="mr-2"></fa-icon>
 		<span class="bl-header-menu-name" i18n="@@headerMenuYourItems"
 			>Your items</span
 		>
-	</a>
-	<a
-		class="list-group-item list-group-item-action"
-		routerLink="/bestillinger"
-		*ngIf="isLoggedIn()"
-	>
-		<fa-icon [icon]="'clipboard'" class="mr-2"></fa-icon>
-		<span class="bl-header-menu-name">Bestillinger</span>
 	</a>
 	<a
 		class="list-group-item list-group-item-action"

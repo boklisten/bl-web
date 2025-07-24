@@ -6,6 +6,7 @@ import { AgreementComponent } from "./agreement/agreement.component";
 import { BlNextLinkerComponent } from "./bl-next-linker/bl-next-linker.component";
 import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 import { GuardianSignatureComponent } from "./guardian-signature/guardian-signature.component";
+import { CartReceiverComponent } from "./cart-receiver/cart-receiver.component";
 
 const routes: Routes = [
 	{
@@ -32,6 +33,10 @@ const routes: Routes = [
 	{
 		path: "u/edit",
 		component: BlNextLinkerComponent,
+	},
+	{
+		path: "cart/receive",
+		component: CartReceiverComponent,
 	},
 	{
 		path: "auth",
@@ -103,11 +108,11 @@ const routes: Routes = [
 		component: BlNextLinkerComponent,
 	},
 	{
-		path: "bestillinger",
+		path: "admin",
 		component: BlNextLinkerComponent,
 	},
 	{
-		path: "admin",
+		path: "items",
 		component: BlNextLinkerComponent,
 	},
 ];

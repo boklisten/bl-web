@@ -33,7 +33,7 @@ export class WelcomeComponent implements OnInit {
 	}
 
 	onGoToYourItemsClick() {
-		this._router.navigate(["/u/items"]);
+		this._router.navigate(["/items"]);
 	}
 
 	onBranchInfoClick() {

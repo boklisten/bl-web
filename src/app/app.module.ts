@@ -100,6 +100,7 @@ import { BlCommonModule } from "./bl-common/bl-common.module";
 import { BlNextLinkerModule } from "./bl-next-linker/bl-next-linker.module";
 import { AuthGatewayComponent } from "./auth-gateway/auth-gateway.component";
 import { GuardianSignatureComponent } from "./guardian-signature/guardian-signature.component";
+import { CartReceiverComponent } from "./cart-receiver/cart-receiver.component";
 
 @NgModule({
 	declarations: [
@@ -111,6 +112,7 @@ import { GuardianSignatureComponent } from "./guardian-signature/guardian-signat
 		AgreementComponent,
 		AuthGatewayComponent,
 		GuardianSignatureComponent,
+		CartReceiverComponent,
 	],
 	imports: [
 		BrowserModule,

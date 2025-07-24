@@ -1,0 +1,15 @@
+<div *ngIf="!cartError">
+	<h1 class="text-center">Vennligst vent mens vi genererer orderen din</h1>
+	<app-blc-spinner [loading]="true"></app-blc-spinner>
+</div>
+
+<div class="m-3" *ngIf="cartError">
+	<div class="alert alert-danger">
+		<b><fa-icon icon="exclamation-triangle"></fa-icon></b>
+		<span>
+			Klarte ikke generere ordre. Vennligst prøv igjen eller ta kontakt
+			hvis problemet vedvarer.</span
+		>
+	</div>
+	<span routerLink="/cart" class="bl-link btn-link">Gå til handlekurven</span>
+</div>
