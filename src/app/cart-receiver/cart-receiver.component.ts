@@ -79,7 +79,11 @@ export class CartReceiverComponent implements OnInit {
 						continue;
 					}
 				}
-				this.router.navigate(["/cart/checkout"]);
+				this.router.navigate([`/cart/checkout`], {
+					queryParams: {
+						caller: params["caller"],
+					},
+				});
 			} catch (error) {
 				console.error(error);
 				this.cartError = true;

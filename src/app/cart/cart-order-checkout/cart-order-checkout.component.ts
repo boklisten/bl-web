@@ -1,14 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import { Order, Delivery } from "@boklisten/bl-model";
-import { CartOrderService } from "../cart-order/cart-order.service";
-import { CartDeliveryService } from "../cart-delivery/cart-delivery.service";
-import { BranchStoreService } from "../../branch/branch-store.service";
+import { Order } from "@boklisten/bl-model";
 import { CartService } from "../cart.service";
 import { CartStep } from "./cart-step";
 import { CartOrderCheckoutService } from "./cart-order-checkout.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { GoogleAnalyticsService } from "../../GoogleAnalytics/google-analytics.service";
 
 @Component({
@@ -30,10 +26,12 @@ export class CartOrderCheckoutComponent implements OnInit {
 	public cartError: any;
 	public wait: boolean;
 	public paymentOption: "now" | "at-branch";
+	public caller: string | null = null;
 
 	constructor(
 		private cartOrderCheckoutService: CartOrderCheckoutService,
 		private router: Router,
+		private route: ActivatedRoute,
 		private cartService: CartService,
 		private _googleAnalyticsService: GoogleAnalyticsService
 	) {}
@@ -60,6 +58,13 @@ export class CartOrderCheckoutComponent implements OnInit {
 				this.cartError = err;
 				this.wait = false;
 			});
+
+		this.route.queryParams.subscribe(async (params) => {
+			const paramCaller = params["caller"];
+			if (paramCaller) {
+				this.caller = paramCaller;
+			}
+		});
 	}
 
 	public watchTotalAmount() {
@@ -142,6 +147,12 @@ export class CartOrderCheckoutComponent implements OnInit {
 	}
 
 	public previousStep() {
+		console.log("previous step");
+		console.log("caller", this.caller);
+		if (this.caller) {
+			this.router.navigateByUrl(this.caller);
+			return;
+		}
 		--this.stepCount;
 		if (this.stepCount < 0) {
 			this.router.navigateByUrl("/cart");
