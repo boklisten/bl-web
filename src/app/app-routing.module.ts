@@ -97,7 +97,7 @@ const routes: Routes = [
 	},
 	{
 		path: "signering/:customerId",
-		component: GuardianSignatureComponent,
+		component: BlNextLinkerComponent,
 	},
 	{
 		path: "admin/hurtigutdeling",
