@@ -119,6 +119,10 @@ const routes: Routes = [
 		path: "order-history",
 		component: BlNextLinkerComponent,
 	},
+	{
+		path: "bestilling",
+		component: BlNextLinkerComponent,
+	},
 ];
 
 @NgModule({

@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
 		if (this.cartSize > 0) {
 			this._router.navigate(["/i/select"]);
 		} else {
-			this._router.navigate(["/fastbuy/regions"]);
+			this._router.navigate(["/bestilling"]);
 		}
 	}
 
