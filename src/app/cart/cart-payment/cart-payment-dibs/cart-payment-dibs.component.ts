@@ -139,7 +139,7 @@ export class CartPaymentDibsComponent
 				.placeOrder()
 				.then(() => {
 					removeStoredIds();
-					router.navigateByUrl("u/order");
+					router.navigateByUrl("order-history");
 				})
 				.catch(() => {
 					console.log(

@@ -26,7 +26,7 @@ export class CartCheckoutComponent implements OnInit {
 			.then(() => {
 				this.wait = false;
 				this.placeOrderError = false;
-				this.router.navigateByUrl("u/order");
+				this.router.navigateByUrl("order-history");
 			})
 			.catch(() => {
 				this.wait = false;

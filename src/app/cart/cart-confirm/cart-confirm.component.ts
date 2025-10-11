@@ -42,7 +42,7 @@ export class CartConfirmComponent implements OnInit {
 				this._cartConfirmService
 					.confirm(orderId)
 					.then(() => {
-						this._router.navigate(["/u/order"]);
+						this._router.navigate(["/order-history"]);
 					})
 					.catch((e) => {
 						this.createDibsElement();
@@ -83,7 +83,7 @@ export class CartConfirmComponent implements OnInit {
 				.placeOrder(orderId)
 				.then(() => {
 					removeStoredIds();
-					router.navigateByUrl("u/order");
+					router.navigateByUrl("order-history");
 				})
 				.catch(() => {
 					console.log(
