@@ -68,35 +68,11 @@ export class PriceService {
 		}
 	}
 
-	public calculateOrderItemPrices(
-		unitPrice: number,
-		taxRate: number
-	): {
-		amount: number;
-		unitPrice: number;
-		taxRate: number;
-		taxAmount: number;
-	} {
-		const taxAmount = this.calculateOrderItemTaxAmount(unitPrice, taxRate);
-
+	public calculateOrderItemPrices(unitPrice: number) {
 		return {
-			amount: this.calculateOrderItemAmount(unitPrice, taxAmount),
+			amount: this.sanitize(unitPrice),
 			unitPrice: this.sanitize(unitPrice),
-			taxRate: taxRate,
-			taxAmount: taxAmount,
 		};
-	}
-
-	public calculateOrderItemTaxAmount(unitPrice: number, taxRate: number) {
-		if (unitPrice <= 0) {
-			// no point in calculating tax amount on a price below 0
-			return 0;
-		}
-		return this.sanitize(unitPrice * taxRate);
-	}
-
-	public calculateOrderItemAmount(unitPrice: number, taxAmount: number) {
-		return this.sanitize(unitPrice + taxAmount);
 	}
 
 	public calculatePartlyPaymentAmountLeftToPay(

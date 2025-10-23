@@ -125,7 +125,7 @@ export class CartPaymentService {
 			order: order.id,
 			amount: this.calculatePaymentAmount(order, delivery),
 			info: {},
-			taxAmount: this.calculateTaxAmount(order, delivery),
+			taxAmount: 0,
 			customer: order.customer,
 			branch: order.branch,
 		} as Payment;
@@ -136,19 +136,5 @@ export class CartPaymentService {
 			return order.amount;
 		}
 		return order.amount + delivery.amount;
-	}
-
-	private calculateTaxAmount(order: Order, delivery?: Delivery): number {
-		let taxAmount = 0;
-
-		for (const orderItem of order.orderItems) {
-			taxAmount += orderItem.taxAmount;
-		}
-
-		if (delivery && delivery.taxAmount) {
-			return taxAmount + delivery.taxAmount;
-		}
-
-		return taxAmount;
 	}
 }

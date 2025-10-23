@@ -230,13 +230,10 @@ export class CartService {
 		);
 
 		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(
-			unitPrice,
-			item.taxRate
+			unitPrice
 		);
 
 		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
-		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
-		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
 		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
@@ -253,13 +250,10 @@ export class CartService {
 			orderItem.type
 		);
 		const calculatedOrderItemPrices = this._priceService.calculateOrderItemPrices(
-			unitPrice,
-			item.taxRate
+			unitPrice
 		);
 
 		orderItem.unitPrice = calculatedOrderItemPrices.unitPrice;
-		orderItem.taxAmount = calculatedOrderItemPrices.taxAmount;
-		orderItem.taxRate = calculatedOrderItemPrices.taxRate;
 		orderItem.amount = calculatedOrderItemPrices.amount;
 	}
 
